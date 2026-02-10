@@ -1,0 +1,306 @@
+/**
+ * THEME: Soft
+ * Inspirado en apps wellness, fintech amigables, diseño pastel
+ * 
+ * Personalidad: Warm stone neutrals, corners muy redondeados (16px),
+ * colores semánticos suavizados/pastel, sombras gentiles, 
+ * sensación acogedora y no intimidante. Accesible pero amigable.
+ * 
+ * PUNTO DE RESTAURACION: Eliminar este archivo + su import en App.tsx
+ * para revertir. globals.css no fue modificado.
+ */
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════ */
+html[data-theme="soft"] {
+  --background: #fdfcfb;
+  --foreground: #44403c;
+  --card: #ffffff;
+  --card-foreground: #292524;
+  --popover: #ffffff;
+  --popover-foreground: #292524;
+  --secondary: #57534e;
+  --secondary-foreground: #fafaf9;
+  --muted: #faf8f6;
+  --muted-foreground: #78716c;
+  --accent: #f5f0eb;
+  --accent-foreground: #44403c;
+  --destructive: #e57373;
+  --destructive-foreground: #ffffff;
+  --success: #66bb6a;
+  --success-foreground: #ffffff;
+  --warning: #ffb74d;
+  --warning-foreground: #5d4037;
+  --info: #64b5f6;
+  --info-foreground: #ffffff;
+  --border: #e7e5e4;
+  --input: #d6d3d1;
+  --input-border: #d6d3d1;
+  --input-background: #ffffff;
+  --switch-background: #d6d3d1;
+  --radius: 1rem;
+  --sidebar: #fdfcfb;
+  --sidebar-foreground: #44403c;
+  --sidebar-primary: #57534e;
+  --sidebar-primary-foreground: #fafaf9;
+  --sidebar-accent: #f5f0eb;
+  --sidebar-accent-foreground: #44403c;
+  --sidebar-border: #e7e5e4;
+  --sidebar-ring: #a8a29e;
+
+  /* Elevation — warm, gentle, barely-there */
+  --shadow-elevation-1: 0 1px 3px 0 rgb(120 113 108 / 0.06);
+  --shadow-elevation-2: 0 2px 6px -1px rgb(120 113 108 / 0.08), 0 1px 3px -1px rgb(120 113 108 / 0.04);
+  --shadow-elevation-3: 0 6px 12px -3px rgb(120 113 108 / 0.1), 0 3px 6px -3px rgb(120 113 108 / 0.06);
+  --shadow-elevation-4: 0 12px 24px -6px rgb(120 113 108 / 0.12), 0 6px 12px -6px rgb(120 113 108 / 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE — cozy warm dark, not cold black
+   ═══════════════════════════════════════════ */
+html.dark[data-theme="soft"] {
+  --background: #1a1816;
+  --foreground: #e7e5e4;
+  --card: #292524;
+  --card-foreground: #e7e5e4;
+  --popover: #292524;
+  --popover-foreground: #e7e5e4;
+  --secondary: #44403c;
+  --secondary-foreground: #e7e5e4;
+  --muted: #1c1917;
+  --muted-foreground: #a8a29e;
+  --accent: #292524;
+  --accent-foreground: #e7e5e4;
+  --destructive: #c62828;
+  --destructive-foreground: #ffebee;
+  --success: #2e7d32;
+  --success-foreground: #e8f5e9;
+  --warning: #e65100;
+  --warning-foreground: #fff3e0;
+  --info: #1565c0;
+  --info-foreground: #e3f2fd;
+  --border: #44403c;
+  --input: #44403c;
+  --input-border: #44403c;
+  --input-background: #292524;
+  --switch-background: #57534e;
+  --sidebar: #1a1816;
+  --sidebar-foreground: #e7e5e4;
+  --sidebar-primary: #e7e5e4;
+  --sidebar-primary-foreground: #1a1816;
+  --sidebar-accent: #292524;
+  --sidebar-accent-foreground: #e7e5e4;
+  --sidebar-border: #44403c;
+  --sidebar-ring: #57534e;
+
+  /* Elevation — warm dark */
+  --shadow-elevation-1: 0 1px 3px 0 rgb(0 0 0 / 0.25);
+  --shadow-elevation-2: 0 2px 6px -1px rgb(0 0 0 / 0.3), 0 1px 3px -1px rgb(0 0 0 / 0.2);
+  --shadow-elevation-3: 0 6px 12px -3px rgb(0 0 0 / 0.35), 0 3px 6px -3px rgb(0 0 0 / 0.2);
+  --shadow-elevation-4: 0 12px 24px -6px rgb(0 0 0 / 0.4), 0 6px 12px -6px rgb(0 0 0 / 0.25);
+
+  /* Dark bridge overrides */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ═══════════════════════════════════════════
+   SOFT-SPECIFIC ENHANCEMENTS
+   ═══════════════════════════════════════════ */
+
+/* ── Spacing: relaxed/cozy (most generous, comfortable breathing room) ── */
+html[data-theme="soft"] {
+  --spacing-card: 2rem;
+  --spacing-card-gap: 1.75rem;
+  --spacing-header-gap: 0.5rem;
+  --spacing-section: 2rem;
+  --spacing-element: 1.5rem;
+}
+
+html[data-theme="soft"] [data-slot="card"] {
+  gap: var(--spacing-card-gap);
+}
+
+html[data-theme="soft"] [data-slot="card-header"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-top: var(--spacing-card);
+  gap: var(--spacing-header-gap);
+}
+
+html[data-theme="soft"] [data-slot="card-content"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+}
+
+html[data-theme="soft"] [data-slot="card-content"]:last-child {
+  padding-bottom: var(--spacing-card);
+}
+
+html[data-theme="soft"] [data-slot="card-footer"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-bottom: var(--spacing-card);
+}
+
+/* ── Global transitions: gentle, warm (250ms ease-out) ── */
+html[data-theme="soft"] button,
+html[data-theme="soft"] a,
+html[data-theme="soft"] input,
+html[data-theme="soft"] select,
+html[data-theme="soft"] textarea,
+html[data-theme="soft"] [role="button"],
+html[data-theme="soft"] [role="tab"],
+html[data-theme="soft"] [role="menuitem"] {
+  transition: all 250ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ── Cards: pillow-soft — rounded, warm shadow, gentle border ── */
+html[data-theme="soft"] [data-slot="card"] {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevation-1);
+  transition: box-shadow 300ms cubic-bezier(0.25, 0.1, 0.25, 1),
+              border-color 300ms cubic-bezier(0.25, 0.1, 0.25, 1),
+              transform 300ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+html[data-theme="soft"] [data-slot="card"]:hover {
+  box-shadow: var(--shadow-elevation-2);
+  border-color: #d6d3d1;
+  transform: translateY(-1px);
+}
+
+html.dark[data-theme="soft"] [data-slot="card"]:hover {
+  border-color: #57534e;
+}
+
+/* ── Buttons: gentle scale hover, warm glow, cozy active spring ── */
+html[data-theme="soft"] [data-slot="button"]:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-elevation-2);
+}
+
+html[data-theme="soft"] [data-slot="button"]:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: var(--shadow-elevation-1);
+  transition-duration: 100ms;
+}
+
+/* ── Table: warm hover, rounded container, cozy feel ── */
+html[data-theme="soft"] [data-slot="table-row"] {
+  transition: background-color 200ms cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+html[data-theme="soft"] [data-slot="table-row"]:hover {
+  background-color: var(--accent);
+}
+
+html[data-theme="soft"] [data-slot="table-container"] {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+html[data-theme="soft"] [data-slot="table-cell"] {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+/* ── Inputs: extra rounded, warm focus glow ── */
+html[data-theme="soft"] input,
+html[data-theme="soft"] select,
+html[data-theme="soft"] textarea {
+  border-radius: 0.75rem;
+}
+
+html[data-theme="soft"] [data-slot="input"]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgb(var(--ring, 0 201 81) / 0.12),
+              0 0 12px -2px rgb(var(--ring, 0 201 81) / 0.08);
+}
+
+/* ── Tabs: extra rounded, warm active state ── */
+html[data-theme="soft"] [data-slot="tabs-list"] {
+  border-radius: 9999px;
+  padding: 4px;
+}
+
+html[data-theme="soft"] [data-slot="tabs-trigger"] {
+  border-radius: 9999px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-theme="soft"] [data-slot="tabs-trigger"][data-state="active"] {
+  box-shadow: var(--shadow-elevation-1);
+}
+
+/* ── Dialog: generous padding, warm shadow, rounded ── */
+html[data-theme="soft"] [data-slot="dialog-content"] {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elevation-3);
+  padding: 2rem;
+}
+
+html[data-theme="soft"] [data-slot="dialog-header"] {
+  gap: 0.5rem;
+}
+
+/* ── Accordion: generous spacing, warm transitions ── */
+html[data-theme="soft"] [data-slot="accordion-trigger"] {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+html[data-theme="soft"] [data-slot="accordion-content"] {
+  padding-bottom: 1rem;
+}
+
+/* ── Badges: pill shape (already set), warm feel ── */
+html[data-theme="soft"] [data-slot="badge"] {
+  border-radius: 9999px;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* ── Alert: rounded, warm shadow ── */
+html[data-theme="soft"] [data-slot="alert"] {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elevation-1);
+}
+
+/* ── Focus: soft warm glow ── */
+html[data-theme="soft"] :focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}

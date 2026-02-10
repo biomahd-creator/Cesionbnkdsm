@@ -1,0 +1,300 @@
+/**
+ * THEME: Minimal
+ * Inspirado en Notion, Stripe, Linear Docs
+ * 
+ * Personalidad: Ultra limpio, esquinas sharp, casi sin bordes visibles,
+ * neutrales stone, maximo whitespace, tipografia como protagonista.
+ * 
+ * PUNTO DE RESTAURACION: Eliminar este archivo + su import en App.tsx
+ * para revertir. globals.css no fue modificado.
+ */
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════ */
+html[data-theme="minimal"] {
+  --background: #ffffff;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+  --secondary: #292524;
+  --secondary-foreground: #fafaf9;
+  --muted: #fafaf9;
+  --muted-foreground: #78716c;
+  --accent: #fafaf9;
+  --accent-foreground: #1c1917;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+  --warning: #ca8a04;
+  --warning-foreground: #ffffff;
+  --info: #2563eb;
+  --info-foreground: #ffffff;
+  --border: #f5f5f4;
+  --input: #e7e5e4;
+  --input-border: #e7e5e4;
+  --input-background: #ffffff;
+  --switch-background: #d6d3d1;
+  --radius: 0.375rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1c1917;
+  --sidebar-primary: #1c1917;
+  --sidebar-primary-foreground: #fafaf9;
+  --sidebar-accent: #fafaf9;
+  --sidebar-accent-foreground: #1c1917;
+  --sidebar-border: #f5f5f4;
+  --sidebar-ring: #a8a29e;
+
+  /* Elevation — barely there */
+  --shadow-elevation-1: 0 0 0 0 transparent;
+  --shadow-elevation-2: 0 1px 2px 0 rgb(28 25 23 / 0.03);
+  --shadow-elevation-3: 0 2px 4px 0 rgb(28 25 23 / 0.04);
+  --shadow-elevation-4: 0 4px 8px -2px rgb(28 25 23 / 0.06);
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE
+   ═══════════════════════════════════════════ */
+html.dark[data-theme="minimal"] {
+  --background: #0c0a09;
+  --foreground: #fafaf9;
+  --card: #1c1917;
+  --card-foreground: #fafaf9;
+  --popover: #1c1917;
+  --popover-foreground: #fafaf9;
+  --secondary: #44403c;
+  --secondary-foreground: #fafaf9;
+  --muted: #292524;
+  --muted-foreground: #a8a29e;
+  --accent: #292524;
+  --accent-foreground: #fafaf9;
+  --destructive: #b91c1c;
+  --destructive-foreground: #fef2f2;
+  --success: #15803d;
+  --success-foreground: #f0fdf4;
+  --warning: #a16207;
+  --warning-foreground: #fefce8;
+  --info: #1d4ed8;
+  --info-foreground: #eff6ff;
+  --border: #292524;
+  --input: #292524;
+  --input-border: #292524;
+  --input-background: #292524;
+  --switch-background: #44403c;
+  --sidebar: #0c0a09;
+  --sidebar-foreground: #fafaf9;
+  --sidebar-primary: #fafaf9;
+  --sidebar-primary-foreground: #0c0a09;
+  --sidebar-accent: #292524;
+  --sidebar-accent-foreground: #fafaf9;
+  --sidebar-border: #292524;
+  --sidebar-ring: #57534e;
+
+  /* Elevation — minimal even in dark */
+  --shadow-elevation-1: 0 0 0 0 transparent;
+  --shadow-elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.2);
+  --shadow-elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.25);
+  --shadow-elevation-4: 0 4px 8px -2px rgb(0 0 0 / 0.3);
+
+  /* Dark bridge overrides */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ═══════════════════════════════════════════
+   MINIMAL-SPECIFIC ENHANCEMENTS
+   ═══════════════════════════════════════════ */
+
+/* ── Spacing: compact elements, generous whitespace (Notion, Stripe) ── */
+html[data-theme="minimal"] {
+  --spacing-card: 1.25rem;
+  --spacing-card-gap: 1rem;
+  --spacing-header-gap: 0.25rem;
+  --spacing-section: 2rem;
+  --spacing-element: 0.75rem;
+}
+
+html[data-theme="minimal"] [data-slot="card"] {
+  gap: var(--spacing-card-gap);
+}
+
+html[data-theme="minimal"] [data-slot="card-header"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-top: var(--spacing-card);
+  gap: var(--spacing-header-gap);
+}
+
+html[data-theme="minimal"] [data-slot="card-content"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+}
+
+html[data-theme="minimal"] [data-slot="card-content"]:last-child {
+  padding-bottom: var(--spacing-card);
+}
+
+html[data-theme="minimal"] [data-slot="card-footer"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-bottom: var(--spacing-card);
+}
+
+/* ── Cards: barely visible borders, no shadow, content-first ── */
+html[data-theme="minimal"] [data-slot="card"] {
+  border: 1px solid var(--border);
+  box-shadow: none;
+  transition: border-color 150ms ease;
+}
+
+html[data-theme="minimal"] [data-slot="card"]:hover {
+  border-color: var(--input);
+}
+
+/* ── Global transitions: fast & crisp (100ms, Notion feel) ── */
+html[data-theme="minimal"] button,
+html[data-theme="minimal"] a,
+html[data-theme="minimal"] input,
+html[data-theme="minimal"] select,
+html[data-theme="minimal"] textarea,
+html[data-theme="minimal"] [role="button"],
+html[data-theme="minimal"] [role="tab"],
+html[data-theme="minimal"] [role="menuitem"] {
+  transition: all 100ms ease;
+}
+
+/* ── Buttons: flat, no shadow, only color shift — Notion style ── */
+html[data-theme="minimal"] [data-slot="button"] {
+  box-shadow: none;
+}
+
+html[data-theme="minimal"] [data-slot="button"]:hover {
+  box-shadow: none;
+}
+
+html[data-theme="minimal"] [data-slot="button"]:active {
+  opacity: 0.8;
+}
+
+html[data-theme="minimal"] [data-slot="button"]:focus-visible {
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 3px var(--foreground);
+}
+
+/* ── Table: clean lines, very subtle hover — Stripe style ── */
+html[data-theme="minimal"] [data-slot="table-row"] {
+  border-bottom-color: var(--border);
+  transition: background-color 80ms ease;
+}
+
+html[data-theme="minimal"] [data-slot="table-row"]:hover {
+  background-color: var(--muted);
+}
+
+html[data-theme="minimal"] [data-slot="table-head"] {
+  color: var(--muted-foreground);
+}
+
+/* ── Inputs: borderless rest, border on focus only (Notion style) ── */
+html[data-theme="minimal"] [data-slot="input"] {
+  border-color: transparent;
+  background: var(--muted);
+}
+
+html[data-theme="minimal"] [data-slot="input"]:hover {
+  border-color: var(--border);
+}
+
+html[data-theme="minimal"] [data-slot="input"]:focus-visible {
+  border-color: var(--foreground);
+  background: var(--input-background);
+  box-shadow: none;
+}
+
+/* ── Tabs: underline-style indicator instead of pill (Stripe style) ── */
+html[data-theme="minimal"] [data-slot="tabs-list"] {
+  background: transparent;
+  border-radius: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0;
+  height: auto;
+  gap: 0;
+}
+
+html[data-theme="minimal"] [data-slot="tabs-trigger"] {
+  border-radius: 0;
+  border-bottom: 2px solid transparent;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: -1px;
+}
+
+html[data-theme="minimal"] [data-slot="tabs-trigger"][data-state="active"] {
+  background: transparent;
+  border-bottom-color: var(--foreground);
+  box-shadow: none;
+}
+
+html[data-theme="minimal"] [data-slot="tabs-trigger"]:hover {
+  background: transparent;
+  color: var(--foreground);
+}
+
+/* ── Dialog: minimal, clean, almost no shadow ── */
+html[data-theme="minimal"] [data-slot="dialog-content"] {
+  box-shadow: var(--shadow-elevation-2);
+  border: 1px solid var(--border);
+  padding: 1.25rem;
+}
+
+/* ── Accordion: clean lines, tight ── */
+html[data-theme="minimal"] [data-slot="accordion-item"] {
+  border-color: var(--border);
+}
+
+html[data-theme="minimal"] [data-slot="accordion-trigger"] {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+/* ── Badges: flat, barely-there ── */
+html[data-theme="minimal"] [data-slot="badge"] {
+  border-radius: calc(var(--radius) - 2px);
+  box-shadow: none;
+}
+
+/* ── Separator: extra subtle ── */
+html[data-theme="minimal"] [data-slot="separator-root"] {
+  opacity: 0.4;
+}

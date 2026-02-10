@@ -1,0 +1,640 @@
+{
+  "$schema": "https://www.figma.com/community/plugin/843461159747178978/Figma-Tokens",
+  "metadata": {
+    "name": "C-Financia Design System",
+    "description": "Tokens de diseño exportados desde globals.css para Figma",
+    "version": "1.0.0",
+    "lastUpdated": "2026-01-30"
+  },
+  "colors": {
+    "light": {
+      "background": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Background principal - Modo claro"
+      },
+      "foreground": {
+        "value": "#1C2D3A",
+        "type": "color",
+        "description": "Texto principal - Modo claro"
+      },
+      "card": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Fondo de tarjetas"
+      },
+      "card-foreground": {
+        "value": "#1C2D3A",
+        "type": "color",
+        "description": "Texto en tarjetas"
+      },
+      "popover": {
+        "value": "oklch(1 0 0)",
+        "type": "color",
+        "description": "Fondo de popovers"
+      },
+      "popover-foreground": {
+        "value": "#1C2D3A",
+        "type": "color",
+        "description": "Texto en popovers"
+      },
+      "primary": {
+        "value": "#00c951",
+        "type": "color",
+        "description": "Color primario verde - Brand"
+      },
+      "primary-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre color primario"
+      },
+      "secondary": {
+        "value": "#1C2D3A",
+        "type": "color",
+        "description": "Color secundario azul oscuro - Brand"
+      },
+      "secondary-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre color secundario"
+      },
+      "muted": {
+        "value": "#f4f4f5",
+        "type": "color",
+        "description": "Color apagado para fondos"
+      },
+      "muted-foreground": {
+        "value": "#52525b",
+        "type": "color",
+        "description": "Texto secundario/deshabilitado"
+      },
+      "accent": {
+        "value": "#f4f4f5",
+        "type": "color",
+        "description": "Color de acento"
+      },
+      "accent-foreground": {
+        "value": "#1C2D3A",
+        "type": "color",
+        "description": "Texto sobre acento"
+      },
+      "destructive": {
+        "value": "#ef4444",
+        "type": "color",
+        "description": "Color destructivo/error"
+      },
+      "destructive-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre destructivo"
+      },
+      "success": {
+        "value": "#22c55e",
+        "type": "color",
+        "description": "Color de éxito"
+      },
+      "success-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre éxito"
+      },
+      "warning": {
+        "value": "#f59e0b",
+        "type": "color",
+        "description": "Color de advertencia"
+      },
+      "warning-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre advertencia"
+      },
+      "info": {
+        "value": "#3b82f6",
+        "type": "color",
+        "description": "Color informativo"
+      },
+      "info-foreground": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Texto sobre info"
+      },
+      "border": {
+        "value": "#e4e4e7",
+        "type": "color",
+        "description": "Color de bordes"
+      },
+      "input": {
+        "value": "#e4e4e7",
+        "type": "color",
+        "description": "Borde de inputs"
+      },
+      "input-background": {
+        "value": "#ffffff",
+        "type": "color",
+        "description": "Fondo de inputs"
+      },
+      "switch-background": {
+        "value": "#cbced4",
+        "type": "color",
+        "description": "Fondo de switches"
+      },
+      "ring": {
+        "value": "#00c951",
+        "type": "color",
+        "description": "Color de focus ring"
+      }
+    },
+    "dark": {
+      "background": {
+        "value": "#0f172a",
+        "type": "color",
+        "description": "Background principal - Modo oscuro"
+      },
+      "foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto principal - Modo oscuro"
+      },
+      "card": {
+        "value": "#1e293b",
+        "type": "color",
+        "description": "Fondo de tarjetas - Dark"
+      },
+      "card-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto en tarjetas - Dark"
+      },
+      "popover": {
+        "value": "#1e293b",
+        "type": "color",
+        "description": "Fondo de popovers - Dark"
+      },
+      "popover-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto en popovers - Dark"
+      },
+      "secondary": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Color secundario - Dark"
+      },
+      "secondary-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre secundario - Dark"
+      },
+      "muted": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Color apagado - Dark"
+      },
+      "muted-foreground": {
+        "value": "#94a3b8",
+        "type": "color",
+        "description": "Texto secundario - Dark"
+      },
+      "accent": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Color de acento - Dark"
+      },
+      "accent-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre acento - Dark"
+      },
+      "destructive": {
+        "value": "#991b1b",
+        "type": "color",
+        "description": "Color destructivo - Dark"
+      },
+      "destructive-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre destructivo - Dark"
+      },
+      "success": {
+        "value": "#15803d",
+        "type": "color",
+        "description": "Color de éxito - Dark"
+      },
+      "success-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre éxito - Dark"
+      },
+      "warning": {
+        "value": "#b45309",
+        "type": "color",
+        "description": "Color de advertencia - Dark"
+      },
+      "warning-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre advertencia - Dark"
+      },
+      "info": {
+        "value": "#1d4ed8",
+        "type": "color",
+        "description": "Color informativo - Dark"
+      },
+      "info-foreground": {
+        "value": "#f8fafc",
+        "type": "color",
+        "description": "Texto sobre info - Dark"
+      },
+      "border": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Color de bordes - Dark"
+      },
+      "input": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Borde de inputs - Dark"
+      },
+      "input-background": {
+        "value": "#334155",
+        "type": "color",
+        "description": "Fondo de inputs - Dark"
+      }
+    },
+    "brand": {
+      "cfinancia-accent": {
+        "value": "rgb(222, 251, 73)",
+        "type": "color",
+        "description": "C-Financia Accent Yellow - #DEFB49"
+      },
+      "cfinancia-accent-hover": {
+        "value": "rgb(67, 249, 119)",
+        "type": "color",
+        "description": "C-Financia Accent Hover Green - #43F977"
+      },
+      "cfinancia-navy": {
+        "value": "rgb(5, 41, 55)",
+        "type": "color",
+        "description": "C-Financia Navy - #052937"
+      }
+    },
+    "kpi": {
+      "yellow": {
+        "value": "rgb(234, 179, 8)",
+        "type": "color",
+        "description": "KPI Yellow - #eab308"
+      },
+      "yellow-dark": {
+        "value": "rgb(202, 138, 4)",
+        "type": "color",
+        "description": "KPI Yellow Dark - #ca8a04"
+      },
+      "yellow-bg": {
+        "value": "rgb(254, 249, 195)",
+        "type": "color",
+        "description": "KPI Yellow Background - #fef9c3"
+      },
+      "orange": {
+        "value": "rgb(249, 115, 22)",
+        "type": "color",
+        "description": "KPI Orange - #f97316"
+      },
+      "orange-dark": {
+        "value": "rgb(234, 88, 12)",
+        "type": "color",
+        "description": "KPI Orange Dark - #ea580c"
+      },
+      "orange-bg": {
+        "value": "rgb(255, 237, 213)",
+        "type": "color",
+        "description": "KPI Orange Background - #ffedd5"
+      },
+      "blue": {
+        "value": "rgb(59, 130, 246)",
+        "type": "color",
+        "description": "KPI Blue - #3b82f6"
+      },
+      "blue-dark": {
+        "value": "rgb(37, 99, 235)",
+        "type": "color",
+        "description": "KPI Blue Dark - #2563eb"
+      },
+      "blue-bg": {
+        "value": "rgb(219, 234, 254)",
+        "type": "color",
+        "description": "KPI Blue Background - #dbeafe"
+      },
+      "lime": {
+        "value": "rgb(132, 204, 22)",
+        "type": "color",
+        "description": "KPI Lime - #84cc16"
+      },
+      "lime-dark": {
+        "value": "rgb(101, 163, 13)",
+        "type": "color",
+        "description": "KPI Lime Dark - #65a30d"
+      },
+      "lime-bg": {
+        "value": "rgb(247, 254, 231)",
+        "type": "color",
+        "description": "KPI Lime Background - #f7fee7"
+      }
+    },
+    "charts": {
+      "chart-1": {
+        "value": "oklch(0.646 0.222 41.116)",
+        "type": "color",
+        "description": "Chart Color 1"
+      },
+      "chart-2": {
+        "value": "oklch(0.6 0.118 184.704)",
+        "type": "color",
+        "description": "Chart Color 2"
+      },
+      "chart-3": {
+        "value": "oklch(0.398 0.07 227.392)",
+        "type": "color",
+        "description": "Chart Color 3"
+      },
+      "chart-4": {
+        "value": "oklch(0.828 0.189 84.429)",
+        "type": "color",
+        "description": "Chart Color 4"
+      },
+      "chart-5": {
+        "value": "oklch(0.769 0.188 70.08)",
+        "type": "color",
+        "description": "Chart Color 5"
+      }
+    },
+    "charts-dark": {
+      "chart-1": {
+        "value": "oklch(0.488 0.243 264.376)",
+        "type": "color",
+        "description": "Chart Color 1 - Dark"
+      },
+      "chart-2": {
+        "value": "oklch(0.696 0.17 162.48)",
+        "type": "color",
+        "description": "Chart Color 2 - Dark"
+      },
+      "chart-3": {
+        "value": "oklch(0.769 0.188 70.08)",
+        "type": "color",
+        "description": "Chart Color 3 - Dark"
+      },
+      "chart-4": {
+        "value": "oklch(0.627 0.265 303.9)",
+        "type": "color",
+        "description": "Chart Color 4 - Dark"
+      },
+      "chart-5": {
+        "value": "oklch(0.645 0.246 16.439)",
+        "type": "color",
+        "description": "Chart Color 5 - Dark"
+      }
+    },
+    "sidebar": {
+      "light": {
+        "sidebar": {
+          "value": "oklch(0.985 0 0)",
+          "type": "color",
+          "description": "Sidebar background - Light"
+        },
+        "sidebar-foreground": {
+          "value": "#1C2D3A",
+          "type": "color",
+          "description": "Sidebar text - Light"
+        },
+        "sidebar-primary": {
+          "value": "#1C2D3A",
+          "type": "color",
+          "description": "Sidebar primary - Light"
+        },
+        "sidebar-primary-foreground": {
+          "value": "oklch(0.985 0 0)",
+          "type": "color",
+          "description": "Sidebar primary text - Light"
+        },
+        "sidebar-accent": {
+          "value": "oklch(0.97 0 0)",
+          "type": "color",
+          "description": "Sidebar accent - Light"
+        },
+        "sidebar-accent-foreground": {
+          "value": "#1C2D3A",
+          "type": "color",
+          "description": "Sidebar accent text - Light"
+        },
+        "sidebar-border": {
+          "value": "oklch(0.922 0 0)",
+          "type": "color",
+          "description": "Sidebar border - Light"
+        },
+        "sidebar-ring": {
+          "value": "oklch(0.708 0 0)",
+          "type": "color",
+          "description": "Sidebar ring - Light"
+        }
+      },
+      "dark": {
+        "sidebar": {
+          "value": "#1e293b",
+          "type": "color",
+          "description": "Sidebar background - Dark"
+        },
+        "sidebar-foreground": {
+          "value": "#f8fafc",
+          "type": "color",
+          "description": "Sidebar text - Dark"
+        },
+        "sidebar-primary": {
+          "value": "#00c951",
+          "type": "color",
+          "description": "Sidebar primary - Dark"
+        },
+        "sidebar-primary-foreground": {
+          "value": "#1C2D3A",
+          "type": "color",
+          "description": "Sidebar primary text - Dark"
+        },
+        "sidebar-accent": {
+          "value": "#334155",
+          "type": "color",
+          "description": "Sidebar accent - Dark"
+        },
+        "sidebar-accent-foreground": {
+          "value": "#f8fafc",
+          "type": "color",
+          "description": "Sidebar accent text - Dark"
+        },
+        "sidebar-border": {
+          "value": "#334155",
+          "type": "color",
+          "description": "Sidebar border - Dark"
+        },
+        "sidebar-ring": {
+          "value": "#00c951",
+          "type": "color",
+          "description": "Sidebar ring - Dark"
+        }
+      }
+    }
+  },
+  "spacing": {
+    "radius": {
+      "value": "0.625rem",
+      "type": "borderRadius",
+      "description": "10px - Border radius base"
+    },
+    "radius-sm": {
+      "value": "calc(0.625rem - 4px)",
+      "type": "borderRadius",
+      "description": "6px - Border radius pequeño"
+    },
+    "radius-md": {
+      "value": "calc(0.625rem - 2px)",
+      "type": "borderRadius",
+      "description": "8px - Border radius mediano"
+    },
+    "radius-lg": {
+      "value": "0.625rem",
+      "type": "borderRadius",
+      "description": "10px - Border radius grande"
+    },
+    "radius-xl": {
+      "value": "calc(0.625rem + 4px)",
+      "type": "borderRadius",
+      "description": "14px - Border radius extra grande"
+    }
+  },
+  "typography": {
+    "fontFamily": {
+      "value": "Satoshi, sans-serif",
+      "type": "fontFamilies",
+      "description": "Fuente principal del sistema"
+    },
+    "fontSize": {
+      "base": {
+        "value": "16px",
+        "type": "fontSizes",
+        "description": "Tamaño base de fuente"
+      }
+    },
+    "fontWeight": {
+      "light": {
+        "value": "300",
+        "type": "fontWeights",
+        "description": "Peso ligero"
+      },
+      "normal": {
+        "value": "400",
+        "type": "fontWeights",
+        "description": "Peso normal"
+      },
+      "medium": {
+        "value": "500",
+        "type": "fontWeights",
+        "description": "Peso medio"
+      },
+      "semibold": {
+        "value": "600",
+        "type": "fontWeights",
+        "description": "Peso semi-negrita"
+      },
+      "bold": {
+        "value": "700",
+        "type": "fontWeights",
+        "description": "Peso negrita"
+      }
+    },
+    "letterSpacing": {
+      "base": {
+        "value": "0.025em",
+        "type": "letterSpacing",
+        "description": "Espaciado de letras base para Satoshi"
+      }
+    },
+    "lineHeight": {
+      "base": {
+        "value": "1.5",
+        "type": "lineHeights",
+        "description": "Altura de línea base"
+      }
+    }
+  },
+  "effects": {
+    "shadows": {
+      "light": {
+        "elevation-1": {
+          "value": "0 1px 2px 0 rgba(28, 45, 58, 0.05)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 1 - Light"
+        },
+        "elevation-2": {
+          "value": "0 4px 6px -1px rgba(28, 45, 58, 0.1), 0 2px 4px -2px rgba(28, 45, 58, 0.1)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 2 - Light"
+        },
+        "elevation-3": {
+          "value": "0 10px 15px -3px rgba(28, 45, 58, 0.1), 0 4px 6px -4px rgba(28, 45, 58, 0.1)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 3 - Light"
+        },
+        "elevation-4": {
+          "value": "0 20px 25px -5px rgba(28, 45, 58, 0.1), 0 8px 10px -6px rgba(28, 45, 58, 0.1)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 4 - Light"
+        }
+      },
+      "dark": {
+        "elevation-1": {
+          "value": "0 1px 2px 0 rgba(0, 0, 0, 0.3)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 1 - Dark"
+        },
+        "elevation-2": {
+          "value": "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 2 - Dark"
+        },
+        "elevation-3": {
+          "value": "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 3 - Dark"
+        },
+        "elevation-4": {
+          "value": "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3)",
+          "type": "boxShadow",
+          "description": "Sombra nivel 4 - Dark"
+        }
+      }
+    }
+  },
+  "animations": {
+    "duration": {
+      "fast": {
+        "value": "150ms",
+        "type": "other",
+        "description": "Duración rápida"
+      },
+      "base": {
+        "value": "300ms",
+        "type": "other",
+        "description": "Duración base - Estándar del sistema"
+      },
+      "slow": {
+        "value": "500ms",
+        "type": "other",
+        "description": "Duración lenta"
+      }
+    },
+    "easing": {
+      "ease-out": {
+        "value": "cubic-bezier(0.25, 0.1, 0.25, 1)",
+        "type": "other",
+        "description": "Easing suave para salidas"
+      }
+    }
+  }
+}

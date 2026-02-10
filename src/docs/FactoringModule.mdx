@@ -1,0 +1,111 @@
+{/* docs/FactoringModule.mdx */}
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Docs/Factoring Module" />
+
+# Factoring Module
+
+Componentes especificos del dominio de Factoring, ubicados en `/factoring/`.
+
+## Componentes de Dominio
+
+### InvoiceCard
+Tarjeta de factura con status badge, monto formateado (COP), fechas, probabilidad, y acciones.
+
+**Statuses:** `pending` | `approved` | `rejected` | `paid` | `overdue`
+
+### PayorCard
+Tarjeta de pagador con info empresarial, NIT, cupo de credito (progress bar), risk score, y comportamiento de pago.
+
+**Payment Behavior:** `excellent` | `good` | `fair` | `poor`
+
+### RiskIndicator
+Indicador de nivel de riesgo con 4 niveles y modo condensado.
+
+**Levels:** `low` (green) | `medium` (amber) | `high` (orange) | `critical` (red)
+
+### LiquidityMeter
+Medidor SVG semicircular de indice de liquidez. Color automatico por umbral (green >= 70, yellow >= 40, red < 40).
+
+### FactoringRateDisplay
+Panel de desglose de tasa: tasa mensual MV, tasa efectiva anual EA, componentes individuales, y indicador de tendencia.
+
+### CollectionTimeline
+Timeline de cobro con eventos tipados: email, call, payment, dispute, system.
+
+### DocumentVerificationStatus
+Checklist de documentos con progreso global. Statuses: verified, pending, rejected, missing, processing.
+
+## Sub-componentes (`/factoring/components/`)
+
+| Componente | Descripcion |
+|---|---|
+| `StatusBadge` | Badge de estado con colores pre-configurados para estados de pago y operacion |
+| `OperationDetailCard` | Detalle de operacion con pie chart (reserva vs anticipo) y resumen financiero |
+| `LiquidityCalculator` | Calculadora C-Financia: anticipo hasta 90%, plazo 30-180 dias, minimo $10M COP |
+| `OperationsList` | Lista de operaciones con filtros y acciones |
+| `FactoringDashboard` | Dashboard analitico con KPIs, line/bar charts (Recharts) |
+| `CFDashboard` | Dashboard C-Financia con metricas financieras y charts |
+
+## C-Financia Flow (`/factoring/c-financia/`)
+
+Flujo completo de la aplicacion C-Financia con branding propio.
+
+| Componente | Descripcion |
+|---|---|
+| `CFinanciaFlow` | Orquestador principal: Login -> Modulos -> Workspace |
+| `LoginScreen` | Pantalla de login con gradiente y logo CESIONBNK |
+| `ModulosScreen` | Seleccion de modulos (Factoring, Radian, Vinculaciones) |
+| `CFinanciaNavbar` | Navbar con logo SVG, nav items, dropdown menus, user profile |
+| `FactoringWorkspace` | Vista principal de trabajo con breadcrumbs y OperationsList |
+| `CFinanciaClientFlow` | Flujo cliente con KPI cards, invoice table tabbed, y modal de carga |
+| `LoadInvoicesModal` | Modal para carga de facturas (CSV/Excel o CUFE codes) |
+
+## Views (`/factoring/views/`)
+
+Vistas de pagina completas para el modulo de Factoring.
+
+| Vista | Descripcion |
+|---|---|
+| `ClientDashboard` | Dashboard cliente con welcome banner, cupo disponible, y stats |
+| `FactoringNewOperation` | Nueva operacion: upload, search, invoice table, tab navigation |
+| `OperationDetailStep1` | Detalle paso 1: seleccion de facturas con toggle buttons |
+| `OperationDetailStep2` | Detalle paso 2: confirmacion, excedente toggle, resumen financiero |
+| `RadianDashboard` | Dashboard Radian con tabs y tablas de datos |
+| `RadianAdminDashboard` | Dashboard admin Radian con gestion avanzada |
+
+## Modals (`/factoring/modals/`)
+
+| Modal | Descripcion |
+|---|---|
+| `UploadInvoicesDialog` | Dialog controlado para upload de facturas con drag & drop y tabs |
+
+## Playground (`/factoring/playground/`)
+
+| Componente | Descripcion |
+|---|---|
+| `PlaygroundIndex` | Indice de pantallas experimentales |
+| `FactoringNewOperationScreen` | Version playground de nueva operacion |
+
+## Convenciones
+
+1. **Moneda:** Formato COP con `Intl.NumberFormat('es-CO', { currency: 'COP' })`
+2. **Badges en tablas:** Estilo **Soft Outline** del DSM (`*-soft-outline`)
+3. **variantMap** en `FactoringKpiCardGroup.tsx`: `orange` -> `"yellow"`, `lime` -> `"green"`
+4. **KPI "Facturas Descartadas":** Usa `variant: "default"` (gris)
+5. **Hex en KpiCard:** Excepcion intencional — no convertir a tokens
+6. **StatusBadge:** Exporta helpers: `getStatusColor()`, `getStatusIconBg()`, `getStatusTextColor()`
+
+## Flujo de Operacion
+
+```
+1. Carga de Facturas (CSV/Excel)
+2. Validacion DIAN (CUFE)
+3. Verificacion de Pagador (cupo)
+4. Calculo de Tasas
+5. Aprobacion (Comite)
+6. Desembolso
+7. Cobro / Recaudo
+```
+
+Los componentes de este modulo cubren cada paso del flujo.

@@ -1,0 +1,294 @@
+/**
+ * THEME: Hero UI Pro
+ * Inspirado en HeroUI (NextUI), Vercel Dashboard, modern SaaS
+ * 
+ * Personalidad: Corners generosos (14px), sombras soft con tinte,
+ * zinc neutrals con matices cool, transiciones suaves 200ms,
+ * cards elevados con hover transform, feel premium moderno.
+ * 
+ * PUNTO DE RESTAURACION: Eliminar este archivo + su import en App.tsx
+ * para revertir. globals.css no fue modificado.
+ */
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE
+   ═══════════════════════════════════════════ */
+html[data-theme="heroui"] {
+  --background: #fafafa;
+  --foreground: #11181c;
+  --card: #ffffff;
+  --card-foreground: #11181c;
+  --popover: #ffffff;
+  --popover-foreground: #11181c;
+  --secondary: #1a1a1f;
+  --secondary-foreground: #fafafa;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f0f0f3;
+  --accent-foreground: #11181c;
+  --destructive: #f31260;
+  --destructive-foreground: #ffffff;
+  --success: #17c964;
+  --success-foreground: #ffffff;
+  --warning: #f5a524;
+  --warning-foreground: #ffffff;
+  --info: #006fee;
+  --info-foreground: #ffffff;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --input-border: #e4e4e7;
+  --input-background: #ffffff;
+  --switch-background: #d4d4d8;
+  --radius: 0.875rem;
+  --sidebar: #fafafa;
+  --sidebar-foreground: #11181c;
+  --sidebar-primary: #11181c;
+  --sidebar-primary-foreground: #fafafa;
+  --sidebar-accent: #f0f0f3;
+  --sidebar-accent-foreground: #11181c;
+  --sidebar-border: #e4e4e7;
+  --sidebar-ring: #a1a1aa;
+
+  /* Elevation — soft with subtle blue tint (HeroUI style) */
+  --shadow-elevation-1: 0 2px 4px -1px rgb(17 24 28 / 0.06);
+  --shadow-elevation-2: 0 4px 8px -2px rgb(17 24 28 / 0.08), 0 2px 4px -2px rgb(17 24 28 / 0.04);
+  --shadow-elevation-3: 0 8px 16px -4px rgb(17 24 28 / 0.1), 0 4px 8px -4px rgb(17 24 28 / 0.06);
+  --shadow-elevation-4: 0 16px 32px -8px rgb(17 24 28 / 0.12), 0 8px 16px -8px rgb(17 24 28 / 0.08);
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE
+   ═══════════════════════════════════════════ */
+html.dark[data-theme="heroui"] {
+  --background: #0a0a0a;
+  --foreground: #ecedee;
+  --card: #18181b;
+  --card-foreground: #ecedee;
+  --popover: #18181b;
+  --popover-foreground: #ecedee;
+  --secondary: #27272a;
+  --secondary-foreground: #ecedee;
+  --muted: #1c1c1f;
+  --muted-foreground: #a1a1aa;
+  --accent: #27272a;
+  --accent-foreground: #ecedee;
+  --destructive: #f31260;
+  --destructive-foreground: #ffffff;
+  --success: #17c964;
+  --success-foreground: #000000;
+  --warning: #f5a524;
+  --warning-foreground: #000000;
+  --info: #006fee;
+  --info-foreground: #ffffff;
+  --border: #2e2e33;
+  --input: #2e2e33;
+  --input-border: #2e2e33;
+  --input-background: #1c1c1f;
+  --switch-background: #3f3f46;
+  --sidebar: #0a0a0a;
+  --sidebar-foreground: #ecedee;
+  --sidebar-primary: #ecedee;
+  --sidebar-primary-foreground: #0a0a0a;
+  --sidebar-accent: #1c1c1f;
+  --sidebar-accent-foreground: #ecedee;
+  --sidebar-border: #2e2e33;
+  --sidebar-ring: #52525b;
+
+  /* Elevation — deep, with subtle luminous edges */
+  --shadow-elevation-1: 0 2px 4px -1px rgb(0 0 0 / 0.4);
+  --shadow-elevation-2: 0 4px 8px -2px rgb(0 0 0 / 0.4), 0 0 0 1px rgb(255 255 255 / 0.03);
+  --shadow-elevation-3: 0 8px 16px -4px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(255 255 255 / 0.04);
+  --shadow-elevation-4: 0 16px 32px -8px rgb(0 0 0 / 0.5), 0 0 0 1px rgb(255 255 255 / 0.05);
+
+  /* Dark bridge overrides */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ═══════════════════════════════════════════
+   HERO UI PRO-SPECIFIC ENHANCEMENTS
+   ═══════════════════════════════════════════ */
+
+/* ── Spacing: generous/spacious (modern SaaS, HeroUI density) ── */
+html[data-theme="heroui"] {
+  --spacing-card: 1.75rem;
+  --spacing-card-gap: 1.5rem;
+  --spacing-header-gap: 0.5rem;
+  --spacing-section: 1.75rem;
+  --spacing-element: 1.25rem;
+}
+
+html[data-theme="heroui"] [data-slot="card"] {
+  gap: var(--spacing-card-gap);
+}
+
+html[data-theme="heroui"] [data-slot="card-header"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-top: var(--spacing-card);
+  gap: var(--spacing-header-gap);
+}
+
+html[data-theme="heroui"] [data-slot="card-content"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+}
+
+html[data-theme="heroui"] [data-slot="card-content"]:last-child {
+  padding-bottom: var(--spacing-card);
+}
+
+html[data-theme="heroui"] [data-slot="card-footer"] {
+  padding-left: var(--spacing-card);
+  padding-right: var(--spacing-card);
+  padding-bottom: var(--spacing-card);
+}
+
+/* ── Global transitions: smooth 200ms (modern SaaS feel) ── */
+html[data-theme="heroui"] button,
+html[data-theme="heroui"] a,
+html[data-theme="heroui"] input,
+html[data-theme="heroui"] select,
+html[data-theme="heroui"] textarea,
+html[data-theme="heroui"] [role="button"],
+html[data-theme="heroui"] [role="tab"],
+html[data-theme="heroui"] [role="menuitem"] {
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Cards: elevated with generous rounding and hover lift ── */
+html[data-theme="heroui"] [data-slot="card"] {
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-elevation-2);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="heroui"] [data-slot="card"]:hover {
+  box-shadow: var(--shadow-elevation-3);
+  transform: translateY(-1px);
+}
+
+/* ── Focus: soft glow ring ── */
+html[data-theme="heroui"] :focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+/* ── Buttons: hover shadow/glow, active press with spring ── */
+html[data-theme="heroui"] [data-slot="button"]:hover {
+  box-shadow: var(--shadow-elevation-2);
+  transform: translateY(-1px);
+}
+
+html[data-theme="heroui"] [data-slot="button"]:active {
+  transform: scale(0.97) translateY(0);
+  box-shadow: var(--shadow-elevation-1);
+  transition-duration: 80ms;
+}
+
+/* ── Table: soft hover, smooth, generous ── */
+html[data-theme="heroui"] [data-slot="table-row"] {
+  transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html[data-theme="heroui"] [data-slot="table-row"]:hover {
+  background-color: var(--muted);
+}
+
+html[data-theme="heroui"] [data-slot="table-container"] {
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+html[data-theme="heroui"] [data-slot="table-cell"] {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+/* ── Inputs: colored focus ring, smooth transitions ── */
+html[data-theme="heroui"] [data-slot="input"] {
+  border-radius: var(--radius);
+}
+
+html[data-theme="heroui"] [data-slot="input"]:focus-visible {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px var(--background), 0 0 0 4px var(--ring);
+}
+
+/* ── Tabs: pill-shaped, smooth indicator ── */
+html[data-theme="heroui"] [data-slot="tabs-list"] {
+  border-radius: 9999px;
+  padding: 3px;
+}
+
+html[data-theme="heroui"] [data-slot="tabs-trigger"] {
+  border-radius: 9999px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+html[data-theme="heroui"] [data-slot="tabs-trigger"][data-state="active"] {
+  box-shadow: var(--shadow-elevation-1);
+}
+
+/* ── Dialog: generous, with shadow, modern ── */
+html[data-theme="heroui"] [data-slot="dialog-content"] {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elevation-4);
+  padding: 1.75rem;
+}
+
+html[data-theme="heroui"] [data-slot="dialog-overlay"] {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* ── Accordion: smooth expand, generous ── */
+html[data-theme="heroui"] [data-slot="accordion-trigger"] {
+  padding-top: 0.875rem;
+  padding-bottom: 0.875rem;
+}
+
+/* ── Badges: pill + slight hover scale ── */
+html[data-theme="heroui"] [data-slot="badge"] {
+  border-radius: 9999px;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Alert: generous, rounded, elevated ── */
+html[data-theme="heroui"] [data-slot="alert"] {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-elevation-1);
+}

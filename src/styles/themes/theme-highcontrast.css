@@ -1,0 +1,288 @@
+/**
+ * THEME: High Contrast
+ * Diseñado para accesibilidad extrema — WCAG AAA estricto
+ * 
+ * Personalidad: Contraste máximo, bordes gruesos, cero transparencias,
+ * colores semánticos oscurecidos para ratio 7:1+, focus indicators
+ * muy visibles, jerarquía visual inequívoca.
+ * 
+ * PUNTO DE RESTAURACION: Eliminar este archivo + su import en App.tsx
+ * para revertir. globals.css no fue modificado.
+ */
+
+/* ═══════════════════════════════════════════
+   LIGHT MODE — Pure white bg, near-black text
+   ═══════════════════════════════════════════ */
+html[data-theme="highcontrast"] {
+  --background: #ffffff;
+  --foreground: #050505;
+  --card: #ffffff;
+  --card-foreground: #050505;
+  --popover: #ffffff;
+  --popover-foreground: #050505;
+  --secondary: #171717;
+  --secondary-foreground: #ffffff;
+  --muted: #f0f0f0;
+  --muted-foreground: #404040;
+  --accent: #e5e5e5;
+  --accent-foreground: #050505;
+  --destructive: #b91c1c;
+  --destructive-foreground: #ffffff;
+  --success: #15803d;
+  --success-foreground: #ffffff;
+  --warning: #92400e;
+  --warning-foreground: #ffffff;
+  --info: #1e40af;
+  --info-foreground: #ffffff;
+  --border: #737373;
+  --input: #525252;
+  --input-border: #525252;
+  --input-background: #ffffff;
+  --switch-background: #737373;
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #050505;
+  --sidebar-primary: #050505;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #e5e5e5;
+  --sidebar-accent-foreground: #050505;
+  --sidebar-border: #737373;
+  --sidebar-ring: #050505;
+
+  /* Elevation — strong, no ambiguity */
+  --shadow-elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.15);
+  --shadow-elevation-2: 0 2px 4px -1px rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.15);
+  --shadow-elevation-3: 0 4px 8px -2px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.15);
+  --shadow-elevation-4: 0 8px 16px -4px rgb(0 0 0 / 0.25), 0 4px 8px -4px rgb(0 0 0 / 0.15);
+}
+
+/* ═══════════════════════════════════════════
+   DARK MODE — Pure black bg, pure white text
+   ═══════════════════════════════════════════ */
+html.dark[data-theme="highcontrast"] {
+  --background: #000000;
+  --foreground: #ffffff;
+  --card: #0a0a0a;
+  --card-foreground: #ffffff;
+  --popover: #0a0a0a;
+  --popover-foreground: #ffffff;
+  --secondary: #262626;
+  --secondary-foreground: #ffffff;
+  --muted: #171717;
+  --muted-foreground: #d4d4d4;
+  --accent: #262626;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --destructive-foreground: #000000;
+  --success: #4ade80;
+  --success-foreground: #000000;
+  --warning: #fbbf24;
+  --warning-foreground: #000000;
+  --info: #60a5fa;
+  --info-foreground: #000000;
+  --border: #a3a3a3;
+  --input: #a3a3a3;
+  --input-border: #a3a3a3;
+  --input-background: #171717;
+  --switch-background: #737373;
+  --sidebar: #000000;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffffff;
+  --sidebar-primary-foreground: #000000;
+  --sidebar-accent: #262626;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #a3a3a3;
+  --sidebar-ring: #ffffff;
+
+  /* Elevation — strong edges for visibility */
+  --shadow-elevation-1: 0 0 0 1px rgb(255 255 255 / 0.1);
+  --shadow-elevation-2: 0 0 0 1px rgb(255 255 255 / 0.15), 0 2px 4px 0 rgb(0 0 0 / 0.5);
+  --shadow-elevation-3: 0 0 0 1px rgb(255 255 255 / 0.15), 0 4px 8px 0 rgb(0 0 0 / 0.5);
+  --shadow-elevation-4: 0 0 0 1px rgb(255 255 255 / 0.2), 0 8px 16px 0 rgb(0 0 0 / 0.5);
+
+  /* Dark bridge overrides */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* ═══════════════════════════════════════════
+   HIGH CONTRAST-SPECIFIC ENHANCEMENTS
+   ═══════════════════════════════════════════ */
+
+/* ── Spacing: standard/functional (clear hierarchy) ── */
+html[data-theme="highcontrast"] {
+  --spacing-section: 1.5rem;
+  --spacing-element: 1rem;
+}
+
+/* ── Reduced motion: accessibility first ── */
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme="highcontrast"] * {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
+
+/* ── Cards: thick visible borders, no subtlety ── */
+html[data-theme="highcontrast"] [data-slot="card"] {
+  border: 2px solid var(--border);
+  box-shadow: none;
+  transition: border-color 100ms ease;
+}
+
+html[data-theme="highcontrast"] [data-slot="card"]:hover {
+  border-color: var(--foreground);
+}
+
+/* ── Focus: ultra-visible indicator — thick ring + offset ── */
+html[data-theme="highcontrast"] :focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+/* ── No transparency anywhere — solid everything ── */
+html[data-theme="highcontrast"] * {
+  --tw-bg-opacity: 1 !important;
+  --tw-text-opacity: 1 !important;
+}
+
+/* ── Global transitions: minimal motion, fast (color only) ── */
+html[data-theme="highcontrast"] button,
+html[data-theme="highcontrast"] a,
+html[data-theme="highcontrast"] input,
+html[data-theme="highcontrast"] select,
+html[data-theme="highcontrast"] textarea,
+html[data-theme="highcontrast"] [role="button"],
+html[data-theme="highcontrast"] [role="tab"],
+html[data-theme="highcontrast"] [role="menuitem"] {
+  transition: color 100ms ease, background-color 100ms ease, border-color 100ms ease;
+}
+
+/* ── Buttons: clear boundaries, strong hover, no transforms ── */
+html[data-theme="highcontrast"] [data-slot="button"] {
+  border-width: 2px;
+}
+
+html[data-theme="highcontrast"] [data-slot="button"]:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+html[data-theme="highcontrast"] [data-slot="button"]:active {
+  transform: none;
+  opacity: 0.85;
+}
+
+/* ── Table: strong borders, alternating rows for clarity ── */
+html[data-theme="highcontrast"] [data-slot="table-row"] {
+  border-bottom: 2px solid var(--border);
+  transition: background-color 80ms ease;
+}
+
+html[data-theme="highcontrast"] [data-slot="table-row"]:hover {
+  background-color: var(--accent);
+}
+
+html[data-theme="highcontrast"] [data-slot="table-body"] [data-slot="table-row"]:nth-child(even) {
+  background-color: var(--muted);
+}
+
+html[data-theme="highcontrast"] [data-slot="table-head"] {
+  border-bottom: 3px solid var(--foreground);
+}
+
+/* ── Inputs: thick borders for visibility ── */
+html[data-theme="highcontrast"] input,
+html[data-theme="highcontrast"] select,
+html[data-theme="highcontrast"] textarea {
+  border-width: 2px;
+}
+
+html[data-theme="highcontrast"] [data-slot="input"]:focus-visible {
+  border-color: var(--foreground);
+  outline: 3px solid var(--ring);
+  outline-offset: 1px;
+  box-shadow: none;
+}
+
+/* ── Tabs: high contrast indicator, thick underline ── */
+html[data-theme="highcontrast"] [data-slot="tabs-list"] {
+  border-radius: var(--radius);
+  border: 2px solid var(--border);
+}
+
+html[data-theme="highcontrast"] [data-slot="tabs-trigger"] {
+  border-radius: calc(var(--radius) - 4px);
+  border: 2px solid transparent;
+}
+
+html[data-theme="highcontrast"] [data-slot="tabs-trigger"][data-state="active"] {
+  border-color: var(--foreground);
+  box-shadow: none;
+}
+
+/* ── Dialog: thick border, no shadow ── */
+html[data-theme="highcontrast"] [data-slot="dialog-content"] {
+  border: 2px solid var(--foreground);
+  box-shadow: none;
+}
+
+/* ── Accordion: strong borders ── */
+html[data-theme="highcontrast"] [data-slot="accordion-item"] {
+  border-width: 2px;
+  border-color: var(--border);
+}
+
+/* ── Badges: thick border, clear ── */
+html[data-theme="highcontrast"] [data-slot="badge"] {
+  border-width: 2px;
+}
+
+/* ── Strong dividers ── */
+html[data-theme="highcontrast"] [data-slot="separator-root"] {
+  opacity: 1;
+  background-color: var(--border);
+}
+
+/* ── Underline all links for clarity ── */
+html[data-theme="highcontrast"] a:not([role="button"]):not([data-slot]) {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ── Alert: thick border, clear ── */
+html[data-theme="highcontrast"] [data-slot="alert"] {
+  border-width: 2px;
+  box-shadow: none;
+}
