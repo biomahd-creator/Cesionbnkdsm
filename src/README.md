@@ -69,4 +69,35 @@ function App() {
 ## Desarrollo Local
 
 1. Instalar dependencias: `npm install`
-2. Correr Storybook: `npm run storybook`
+2. Correr servidor de desarrollo: `npm run dev`
+3. Build para producción: `npm run build:lib`
+
+## Dependencias y Seguridad
+
+### Vulnerabilidades Conocidas
+
+**xlsx (dependencia transitiva de recharts)**
+
+- **Estado**: Vulnerabilidad sin fix automático disponible
+- **Impacto**: Bajo - Solo se usa en exportación de datos con importación dinámica
+- **Ubicación**: `components/advanced/ExportData.tsx`
+- **Contexto**: La biblioteca solo genera archivos Excel desde datos internos del cliente; no procesa archivos externos potencialmente maliciosos
+- **Riesgo**: Minimal en el contexto actual ya que:
+  - Se usa con importación dinámica (no afecta el bundle principal)
+  - Solo genera archivos, no parsea archivos de origen desconocido
+  - Se ejecuta únicamente cuando el usuario solicita exportar datos
+- **Alternativas evaluadas**: exceljs requiere refactorización significativa sin beneficio claro de seguridad en este contexto de uso
+
+**Nota**: Monitoreamos activamente actualizaciones de seguridad. Si tu aplicación necesita procesar archivos Excel de fuentes externas, considera implementar validación adicional o usar alternativas como `exceljs`.
+
+### Actualización de Dependencias
+
+Para actualizar dependencias y verificar vulnerabilidades:
+
+```bash
+npm audit
+npm update
+npm audit fix
+```
+
+Para dependencias con vulnerabilidades sin solución automática, evaluar manualmente el contexto de uso antes de aplicar correcciones manuales.
