@@ -58,78 +58,13 @@ interface ThemeConfig {
 interface ThemeContextType {
   config: ThemeConfig;
   theme: "light" | "dark";
-  styleTheme: string;
-  availableStyleThemes: readonly StyleThemeOption[];
   updateConfig: (updates: Partial<ThemeConfig>) => void;
   resetToDefaults: () => void;
   exportConfig: () => string;
   importConfig: (jsonString: string) => void;
   applyPreset: (preset: string) => void;
   toggleTheme: () => void;
-  setStyleTheme: (themeId: string) => void;
 }
-
-/**
- * Style Theme metadata — cada entrada corresponde a un CSS file
- * en /styles/themes/. Eliminar un tema = borrar su CSS + quitar de aquí.
- */
-export interface StyleThemeOption {
-  id: string;
-  name: string;
-  description: string;
-  icon: string; // emoji for simple UI
-}
-
-export const STYLE_THEMES: readonly StyleThemeOption[] = [
-  {
-    id: "default",
-    name: "CESIONBNK",
-    description: "Look original: Green + Dark Blue, bancario profesional",
-    icon: "🏦",
-  },
-  {
-    id: "premium",
-    name: "Premium",
-    description: "Inspirado en Linear/Vercel: zinc neutrals, bordes sutiles",
-    icon: "✨",
-  },
-  {
-    id: "glass",
-    name: "Glass",
-    description: "Glassmorphism: blur, transparencias, bordes luminosos",
-    icon: "🪟",
-  },
-  {
-    id: "minimal",
-    name: "Minimal",
-    description: "Ultra limpio: stone neutrals, casi sin bordes, flat",
-    icon: "◻️",
-  },
-  {
-    id: "tailwindpro",
-    name: "Tailwind Pro",
-    description: "Tailwind UI: slate neutrals, bordes crisp, ring focus, SaaS dashboard",
-    icon: "🎨",
-  },
-  {
-    id: "heroui",
-    name: "Hero UI Pro",
-    description: "HeroUI/NextUI: corners generosos, sombras soft, moderno premium",
-    icon: "🚀",
-  },
-  {
-    id: "soft",
-    name: "Soft",
-    description: "Pastel y acogedor: warm tones, super rounded, amigable",
-    icon: "🌸",
-  },
-  {
-    id: "highcontrast",
-    name: "High Contrast",
-    description: "WCAG AAA: contraste máximo, bordes gruesos, accesibilidad extrema",
-    icon: "♿",
-  },
-] as const;
 
 const defaultConfig: ThemeConfig = {
   primary: "#00c951",
@@ -216,16 +151,9 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [config, setConfig] = useState<ThemeConfig>(() => {
     const saved = localStorage.getItem("theme-config");
-    // If saved config exists, merge it with defaultConfig to ensure new defaults (like primary color) take effect if not explicitly overridden by user previous choices,
-    // OR just use defaultConfig if we want to force the update.
-    // Given the user wants the new default to be active immediately even if they visited before, we should be careful.
-    // However, usually "saved" implies user preference.
-    // If we want to FORCE the new default on everyone, we can ignore saved.
-    // But better: check if the saved primary is the OLD default (#DEFB49) and if so, migrate it to new default.
-    
     if (saved) {
       const parsed = JSON.parse(saved);
-      // Migration logic: If user has the old yellow or old green as primary, update to new green
+      // Migration: update old default colors to current green
       if (parsed.primary === "#DEFB49" || parsed.primary === "#84CC16") {
         return {
           ...parsed,
@@ -236,13 +164,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
           linkHover: "#00c951"
         };
       }
-      
-      // Ensure contrast is correct if user already has the correct green but wrong foreground
       if (parsed.primary === "#00c951" && parsed.primaryForeground !== "#ffffff") {
-        return {
-          ...parsed,
-          primaryForeground: "#ffffff"
-        };
+        return { ...parsed, primaryForeground: "#ffffff" };
       }
       return parsed;
     }
@@ -254,28 +177,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return savedTheme ? (savedTheme as "light" | "dark") : "light";
   });
 
-  /**
-   * Style Theme — controla el data-theme attribute en <html>.
-   * "default" = sin atributo (globals.css original, punto de restauración).
-   * Otros valores activan los CSS files en /styles/themes/.
-   */
-  const [styleTheme, setStyleThemeState] = useState<string>(() => {
-    return localStorage.getItem("style-theme") || "default";
-  });
-
-  // Apply style theme to DOM
+  // Clean up any leftover style-theme data from previous versions
   useEffect(() => {
-    const root = document.documentElement;
-    if (styleTheme === "default") {
-      root.removeAttribute("data-theme");
-    } else {
-      root.setAttribute("data-theme", styleTheme);
-    }
-    localStorage.setItem("style-theme", styleTheme);
-    // Re-apply inline styles after data-theme attribute changes,
-    // so applyThemeToDOM sees the correct isStyled value
-    applyThemeToDOM(config, theme);
-  }, [styleTheme]);
+    localStorage.removeItem("style-theme");
+    document.documentElement.removeAttribute("data-theme");
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("theme-config", JSON.stringify(config));
@@ -284,41 +190,25 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
-    
-    // Apply dark class to document root FIRST so CSS .dark {} is active
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
     } else {
       document.documentElement.classList.remove("dark");
     }
-    
-    // Then apply inline properties (dark-mode-aware)
     applyThemeToDOM(config, theme);
   }, [theme, config]);
 
   /**
    * applyThemeToDOM — Sets CSS custom properties on <html>.
    *
-   * CRITICAL: root.style.setProperty() creates INLINE STYLES on <html>,
-   * which have the highest CSS specificity and override EVERYTHING —
-   * including .dark {} rules in the stylesheet.
-   *
-   * Therefore, properties that change between light/dark mode must be
-   * REMOVED from inline styles in dark mode so the CSS .dark {} values
-   * take effect via normal cascade.
-   *
-   * Mode-independent properties (--primary, --radius, font weights, etc.)
-   * are safe to always set inline because they're the same in both modes.
+   * Mode-independent properties are always set inline.
+   * Mode-dependent properties are set only in light mode;
+   * in dark mode they are removed so CSS .dark {} values take effect.
    */
   const applyThemeToDOM = (themeConfig: ThemeConfig, currentTheme: "light" | "dark") => {
     const root = document.documentElement;
 
-    // When a non-default style theme is active, only apply --primary, --ring,
-    // --font-size, font-weights, and input source vars inline.
-    // All other tokens come from the theme CSS file via cascade.
-    const isStyled = styleTheme !== "default";
-
-    // ── Mode-independent: safe to always set inline ──
+    // Mode-independent: safe to always set inline
     root.style.setProperty("--primary", themeConfig.primary);
     root.style.setProperty("--primary-foreground", themeConfig.primaryForeground);
     root.style.setProperty("--font-size", themeConfig.fontSize);
@@ -328,25 +218,16 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     root.style.setProperty("--font-weight-semibold", themeConfig.fontWeightSemibold);
     root.style.setProperty("--font-weight-bold", themeConfig.fontWeightBold);
     root.style.setProperty("--ring", themeConfig.focusRing);
+    root.style.setProperty("--radius", themeConfig.radius);
 
-    // Radius: only set inline if default theme (styled themes control it via CSS)
-    if (!isStyled) {
-      root.style.setProperty("--radius", themeConfig.radius);
-    } else {
-      root.style.removeProperty("--radius");
-    }
-
-    // Input SOURCE variables (CSS uses these with var() to derive actual values)
+    // Input SOURCE variables
     root.style.setProperty("--input-background-light", themeConfig.inputBackgroundLight);
     root.style.setProperty("--input-background-dark", themeConfig.inputBackgroundDark);
     root.style.setProperty("--input-border-light", themeConfig.inputBorderLight);
     root.style.setProperty("--input-border-dark", themeConfig.inputBorderDark);
     root.style.setProperty("--input-border-width", themeConfig.inputBorderWidth);
 
-    // ── Mode-dependent: set in light, REMOVE in dark ──
-    // These properties have different values in .dark {} (globals.css).
-    // Inline styles would override .dark {}, breaking dark mode.
-    // When a style theme is active, ALSO remove in light mode so CSS cascade wins.
+    // Mode-dependent: set in light, REMOVE in dark so CSS .dark {} values take effect
     const modeDependentProps = [
       ["--secondary", themeConfig.secondary],
       ["--secondary-foreground", themeConfig.secondaryForeground],
@@ -368,13 +249,11 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       ["--selection", themeConfig.selection],
     ] as const;
 
-    if (currentTheme === "light" && !isStyled) {
-      // Light mode + default theme: set inline (overrides :root CSS defaults for customization)
+    if (currentTheme === "light") {
       for (const [prop, value] of modeDependentProps) {
         root.style.setProperty(prop, value);
       }
     } else {
-      // Dark mode OR styled theme: REMOVE inline so CSS cascade takes effect
       for (const [prop] of modeDependentProps) {
         root.style.removeProperty(prop);
       }
@@ -409,10 +288,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const setStyleTheme = (themeId: string) => {
-    setStyleThemeState(themeId);
-  };
-
   const toggleTheme = () => {
     setTheme((prev) => (prev === "light" ? "dark" : "light"));
   };
@@ -422,15 +297,12 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
       value={{
         config,
         theme,
-        styleTheme,
-        availableStyleThemes: STYLE_THEMES,
         updateConfig,
         resetToDefaults,
         exportConfig,
         importConfig,
         applyPreset,
         toggleTheme,
-        setStyleTheme,
       }}
     >
       {children}

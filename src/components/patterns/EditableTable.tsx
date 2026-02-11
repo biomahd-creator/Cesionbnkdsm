@@ -36,7 +36,7 @@ import {
 } from "lucide-react";
 import { format } from "date-fns";
 import { es } from "date-fns/locale";
-import { MasterDataGrid } from "./MasterDataGrid";
+import { MasterDataGrid } from "../advanced/MasterDataGrid";
 
 // Types for invoice data
 interface Invoice {

@@ -60,7 +60,7 @@ export function LiquidityMeter({ value, label = "Índice de Liquidez", amount, c
            />
         </svg>
         <div className="absolute bottom-0 flex flex-col items-center">
-          <span className={cn("text-3xl font-bold tabular-nums", colorClass)}>
+          <span className={cn("text-3xl font-bold font-satoshi", colorClass)}>
             {Math.round(percentage)}%
           </span>
           <span className="text-xs text-muted-foreground uppercase tracking-wider font-medium mt-1">

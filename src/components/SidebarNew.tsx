@@ -108,7 +108,7 @@ export type PageId =
   | "liquidity-calculator" | "onboarding" | "cf-dashboard" | "admin-portal"
 
   // ── DESIGN SYSTEM & SPECIAL ──
-  | "brand-layout" | "theme-customizer" | "elevation"
+  | "brand-layout" | "elevation"
   | "help-system-demo" | "animations" | "animation-system" | "icon-gallery"
   | "audit-log"
 
@@ -355,7 +355,6 @@ export function SidebarNew({ activePage, onPageChange, ...props }: SidebarProps)
   // ═══════════════════════════════════════════════════
   const designSystemPages: MenuItem[] = [
     { id: "brand-layout", label: "Brand Layout" },
-    { id: "theme-customizer", label: "Theme Customizer" },
     { id: "elevation", label: "Elevation & Shadows" },
   ];
 
@@ -587,7 +586,6 @@ export function SidebarNew({ activePage, onPageChange, ...props }: SidebarProps)
                   tooltip={page.label}
                 >
                   {page.id === "brand-layout" && <Paintbrush />}
-                  {page.id === "theme-customizer" && <Palette />}
                   {page.id === "elevation" && <Scale />}
                   <span className="flex flex-1 items-center gap-2 overflow-hidden text-sidebar-foreground group-data-[active=true]/menu-button:text-sidebar-primary-foreground group-data-[active=true]/menu-button:font-medium">
                     <span className="truncate">{page.label}</span>

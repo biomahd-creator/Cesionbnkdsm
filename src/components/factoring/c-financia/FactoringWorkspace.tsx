@@ -1,5 +1,6 @@
 // Causa 18: Movido de /factoring/c-financia/ a /components/factoring/c-financia/
 import { useState } from "react";
+import { toast } from "sonner@2.0.3";
 import { CFinanciaNavbar } from "./CFinanciaNavbar";
 import { OperationsList } from "../OperationsList";
 import { FactoringNewOperation } from "../views/FactoringNewOperation";
@@ -29,7 +30,7 @@ export function FactoringWorkspace({ onLogout }: FactoringWorkspaceProps) {
       {showNewOperation ? (
         <FactoringNewOperation 
           onBack={() => setShowNewOperation(false)}
-          onStartOperation={() => console.log("Start operation")}
+          onStartOperation={() => toast.success("Operación iniciada")}
         />
       ) : (
         <div className="min-h-screen bg-background">

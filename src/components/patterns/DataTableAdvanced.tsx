@@ -18,7 +18,7 @@ import {
 import { Button } from "../ui/button";
 import { Badge } from "../ui/badge";
 import { MoreHorizontal } from "lucide-react";
-import { MasterDataGrid } from "./MasterDataGrid";
+import { MasterDataGrid } from "../advanced/MasterDataGrid";
 
 const mockInvoices = [
   {

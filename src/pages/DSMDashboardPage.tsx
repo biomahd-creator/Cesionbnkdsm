@@ -28,31 +28,32 @@ interface VersionEntry {
 
 const versionHistory: VersionEntry[] = [
   {
+    version: "6.5.0",
+    date: "February 11, 2026",
+    type: "Minor",
+    sections: [
+      {
+        icon: Wrench,
+        title: "Simplification & Cleanup",
+        items: [
+          "**Theme System Removed**: Removed multi-theme selector (8 themes) to reduce complexity. Only default CESIONBNK theme remains.",
+          "**ThemeStyleSelector Deleted**: Component and all 7 non-default theme CSS files removed.",
+          "**ThemeCustomizerPage Removed**: Page and sidebar entry cleaned up.",
+          "**ThemeProvider Simplified**: Removed style theme state, data-theme attribute handling, and STYLE_THEMES array.",
+        ],
+      },
+    ],
+  },
+  {
     version: "6.4.0",
     date: "February 9, 2026",
     type: "Minor",
     sections: [
       {
         icon: Paintbrush,
-        title: "Theme Selector Expansion — 8 Styles",
+        title: "Theme Selector Expansion — 8 Styles (removed in 6.5.0)",
         items: [
-          "**4 New Themes**: Tailwind Pro, Hero UI Pro, Soft, High Contrast added to the style selector.",
-          "**Tailwind Pro**: Slate neutrals, crisp 1px borders, ring-based focus, clean SaaS dashboard aesthetic.",
-          "**Hero UI Pro**: Generous 14px radius, soft shadows with color tint, hover lift on cards, modern SaaS feel.",
-          "**Soft**: Warm stone neutrals, 16px radius, pastel semantics, pillow-soft shadows, cozy and friendly.",
-          "**High Contrast**: WCAG AAA — 2px borders, zero transparency, thick focus indicators, underlined links.",
-          "**ThemeStyleSelector Updated**: Preview swatches and scrollable popover for all 8 themes.",
-          "**Documentation Updated**: Guidelines, TOKENS, COMPONENTS updated with theme system architecture.",
-        ],
-      },
-      {
-        icon: Wrench,
-        title: "Infrastructure & Quality",
-        items: [
-          "**Each theme**: Full light + dark mode with `--color-*` bridge overrides.",
-          "**CSS Architecture**: `html[data-theme]` (0,1,1) > `:root`, `html.dark[data-theme]` (0,2,1) for cascading.",
-          "**Zero breakage**: `globals.css` untouched — remains as restoration point.",
-          "**Plug & play**: Add/remove themes by editing 3 files (CSS, App.tsx import, STYLE_THEMES array).",
+          "**Note**: This feature was removed in v6.5.0 to simplify the project.",
         ],
       },
     ],
@@ -77,7 +78,7 @@ const versionHistory: VersionEntry[] = [
         icon: Wrench,
         title: "Consistency Fixes",
         items: [
-          "**10 files updated** for TabsList pattern: AnimationSystem, Animations, Charts, AdvancedForms, DSMDashboard (×2), InvoiceUpload, ThemeCustomizer, ChartShowcase, HelpCenter, NotificationCenter, TableCatalog.",
+          "**10 files updated** for TabsList pattern: AnimationSystem, Animations, Charts, AdvancedForms, DSMDashboard (×2), InvoiceUpload, ChartShowcase, HelpCenter, NotificationCenter, TableCatalog.",
           "**Table Catalog**: Added to sidebar under Advanced with constrained TabsList.",
         ],
       },
@@ -537,10 +538,10 @@ export function DSMDashboardPage() {
         <div className="flex items-center gap-2">
           <Badge variant="default" className="gap-1.5">
             <GitBranch className="h-3 w-3" />
-            v6.4.0
+            v6.5.0
           </Badge>
           <Badge variant="outline" className="gap-1.5 text-muted-foreground">
-            Feb 9, 2026
+            Feb 11, 2026
           </Badge>
         </div>
       </div>

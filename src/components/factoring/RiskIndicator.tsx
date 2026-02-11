@@ -105,7 +105,7 @@ export function RiskIndicator({
       </div>
       
       {score !== undefined && (
-        <span className={cn("text-sm font-semibold tabular-nums shrink-0", config.text)}>
+        <span className={cn("text-sm font-semibold font-satoshi shrink-0", config.text)}>
           {score}
         </span>
       )}

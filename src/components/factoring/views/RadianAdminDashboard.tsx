@@ -198,9 +198,9 @@ export function RadianAdminDashboard({ onBack }: RadianAdminDashboardProps) {
                                     <div className="font-bold text-sm">{op.razonEndosatario}</div>
                                     <div className="text-[10px] text-muted-foreground uppercase">{op.nitEndosatario}</div>
                                 </TableCell>
-                                <TableCell className="text-center font-medium">{op.facturas}</TableCell>
-                                <TableCell className="text-right tabular-nums">{op.totalFacturas}</TableCell>
-                                <TableCell className="text-right tabular-nums text-primary font-bold">{op.totalEndosado}</TableCell>
+                                <TableCell className="text-center font-medium font-satoshi">{op.facturas}</TableCell>
+                                <TableCell className="text-right font-satoshi">{op.totalFacturas}</TableCell>
+                                <TableCell className="text-right text-primary font-bold font-satoshi">{op.totalEndosado}</TableCell>
                                 <TableCell className="text-center">
                                     <Button variant="ghost" size="icon" className="h-8 w-8 hover:bg-primary/10"><Eye className="h-4 w-4" /></Button>
                                 </TableCell>
@@ -293,7 +293,7 @@ export function RadianAdminDashboard({ onBack }: RadianAdminDashboardProps) {
                                     <TableCell className="text-xs">{t.venc}</TableCell>
                                     <TableCell className="text-xs max-w-[150px] truncate">{t.emisor}</TableCell>
                                     <TableCell className="text-xs max-w-[150px] truncate">{t.tenedor}</TableCell>
-                                    <TableCell className="text-right tabular-nums font-medium">{t.valor}</TableCell>
+                                    <TableCell className="text-right font-medium font-satoshi">{t.valor}</TableCell>
                                     <TableCell className="text-center">
                                         <Badge variant="warning-soft-outline" className="text-[10px]">{t.estado}</Badge>
                                     </TableCell>

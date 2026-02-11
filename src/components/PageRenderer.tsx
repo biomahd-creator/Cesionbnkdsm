@@ -13,7 +13,6 @@ import {
   TogglePage,
   ToggleGroupPage,
   BrandLayoutPage,
-  ThemeCustomizerPage,
   DatePickerPage,
   ComboboxPage,
   FormPage,
@@ -403,8 +402,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
     // DESIGN SYSTEM & SPECIAL
     case "brand-layout":
       return <BrandLayoutPage />;
-    case "theme-customizer":
-      return <ThemeCustomizerPage />;
     case "elevation":
       return <ElevationPage />;
     case "help-system-demo":

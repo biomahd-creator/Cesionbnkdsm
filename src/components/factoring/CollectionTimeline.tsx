@@ -56,8 +56,8 @@ export function CollectionTimeline({ events, className }: CollectionTimelineProp
 
                 <div className="flex flex-col gap-1">
                   <div className="flex items-center justify-between">
-                    <h4 className="text-sm font-semibold">{event.title}</h4>
-                    <span className="text-xs text-muted-foreground tabular-nums">
+                    <h4 className="text-sm font-semibold font-satoshi">{event.title}</h4>
+                    <span className="text-xs text-muted-foreground font-satoshi">
                       {event.date}
                     </span>
                   </div>

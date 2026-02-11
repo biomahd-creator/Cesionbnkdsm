@@ -21,7 +21,7 @@ import {
   CheckCircle,
   XCircle
 } from "lucide-react";
-import { MasterDataGrid } from "./MasterDataGrid";
+import { MasterDataGrid } from "../advanced/MasterDataGrid";
 
 /**
  * 🔒 BUSINESS PATTERN - Audit Log Viewer

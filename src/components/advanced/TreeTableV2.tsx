@@ -959,7 +959,7 @@ function OperacionRow({
         </TableCell>
 
         {/* Fecha Operacion */}
-        <TableCell className="tabular-nums text-muted-foreground">
+        <TableCell className="text-muted-foreground font-satoshi">
           {op.fechaOperacion}
         </TableCell>
 
@@ -1006,12 +1006,12 @@ function OperacionRow({
         </TableCell>
 
         {/* Valor Facturas */}
-        <TableCell className="tabular-nums font-medium">
+        <TableCell className="font-medium font-satoshi">
           {formatCurrency(op.valorFacturas)}
         </TableCell>
 
         {/* Valor Desembolso */}
-        <TableCell className="tabular-nums font-medium">
+        <TableCell className="font-medium font-satoshi">
           {formatCurrency(op.valorDesembolso)}
         </TableCell>
 
@@ -1197,12 +1197,12 @@ function renderPagadorRow({
         </TableCell>
 
         {/* Valor total for this pagador */}
-        <TableCell className="tabular-nums text-sm">
+        <TableCell className="text-sm font-satoshi">
           {formatCurrency(group.valorTotal)}
         </TableCell>
 
         {/* Valor Desembolso for this pagador */}
-        <TableCell className="tabular-nums text-sm">
+        <TableCell className="text-sm font-satoshi">
           {formatCurrency(group.valorDesembolsoTotal)}
         </TableCell>
 
@@ -1249,7 +1249,7 @@ function renderPagadorRow({
               </TableCell>
 
               {/* Fecha Vencimiento */}
-              <TableCell className="tabular-nums text-muted-foreground text-sm">
+              <TableCell className="text-muted-foreground text-sm font-satoshi">
                 {factura.fechaVencimiento}
               </TableCell>
 
@@ -1263,12 +1263,12 @@ function renderPagadorRow({
               <TableCell />
 
               {/* Valor Factura */}
-              <TableCell className="tabular-nums text-sm">
+              <TableCell className="text-sm font-satoshi">
                 {formatCurrency(factura.valor)}
               </TableCell>
 
               {/* Valor Desembolso Factura */}
-              <TableCell className="tabular-nums text-sm">
+              <TableCell className="text-sm font-satoshi">
                 {formatCurrency(factura.valorDesembolso)}
               </TableCell>
 

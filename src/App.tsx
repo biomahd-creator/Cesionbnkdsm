@@ -16,16 +16,7 @@ import { LoadingProvider } from "./components/providers/LoadingProvider";
 import { TransitionProvider } from "./components/providers/TransitionProvider";
 import { LoadingOverlay } from "./components/ui/loading-overlay";
 import { LanguageProvider, useLanguage } from "./components/i18n/LanguageProvider";
-import { LanguageSelector } from "./components/i18n/LanguageSelector";
-import { ThemeStyleSelector } from "./components/ThemeStyleSelector";
 import "./styles/tour.css";
-import "./styles/themes/theme-premium.css";
-import "./styles/themes/theme-glass.css";
-import "./styles/themes/theme-minimal.css";
-import "./styles/themes/theme-tailwindpro.css";
-import "./styles/themes/theme-heroui.css";
-import "./styles/themes/theme-soft.css";
-import "./styles/themes/theme-highcontrast.css";
 
 /**
  * App.tsx - Punto de Entrada Principal
@@ -34,14 +25,14 @@ import "./styles/themes/theme-highcontrast.css";
  * - Dos modos: DSM (Design System Manager) y Factoring
  * - Providers: Theme, Help, Loading, Transition, Language
  * - Accesibilidad: WCAG 2.1 AA compliant
- * - i18n: ES / EN
+ * - English only
  */
 
 type AppMode = "dsm" | "factoring";
 
 function AppContent() {
   const { theme, toggleTheme } = useTheme();
-  const { t, locale } = useLanguage();
+  const { t } = useLanguage();
   // Persist activePage in localStorage to survive Figma Make reloads
   const [activePage, setActivePage] = useState<PageId>(() => {
     const saved = localStorage.getItem('dsm-active-page');
@@ -52,11 +43,6 @@ function AppContent() {
     const saved = localStorage.getItem('app-mode');
     return (saved as AppMode) || "factoring";
   });
-
-  // Set lang attribute for WCAG compliance
-  useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
 
   // Save activePage to localStorage whenever it changes
   useEffect(() => {
@@ -150,12 +136,6 @@ function AppContent() {
                   <span className="hidden md:inline">{t("header.goFactoring")}</span>
                   <ArrowRight className="h-3 w-3 opacity-50 hidden md:block" />
                 </Button>
-
-                {/* Language Selector */}
-                <LanguageSelector />
-
-                {/* Style Theme Selector */}
-                <ThemeStyleSelector />
 
                 {/* Toggle Theme */}
                 <Button

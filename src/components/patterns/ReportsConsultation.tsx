@@ -176,7 +176,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                       </td>
                       <td className="py-3 px-4 text-sm">{report.fecha}</td>
                       <td className="py-3 px-4">
-                        <Badge variant="secondary" className="font-mono text-xs">
+                        <Badge variant="secondary" className="font-satoshi text-xs">
                           {report.tamano}
                         </Badge>
                       </td>

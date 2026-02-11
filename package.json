@@ -31,7 +31,6 @@
           "@radix-ui/react-toggle": "^1.1.2",
           "@radix-ui/react-toggle-group": "^1.1.2",
           "@radix-ui/react-tooltip": "^1.1.8",
-          "@storybook/react": "*",
           "@storybook/react-vite": "*",
           "@tanstack/react-table": "*",
           "@vitejs/plugin-react": "*",

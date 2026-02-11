@@ -1,29 +1,24 @@
-import { createContext, useContext, useState, useCallback, ReactNode } from "react";
-import { Locale, TranslationKey, translations } from "./translations";
+import { createContext, useContext, useCallback, ReactNode } from "react";
+import { TranslationKey, translations } from "./translations";
 
 interface LanguageContextType {
-  locale: Locale;
-  setLocale: (locale: Locale) => void;
+  locale: "en";
   t: (key: TranslationKey, params?: Record<string, string | number>) => string;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>(() => {
-    const saved = localStorage.getItem("dsm-locale");
-    return (saved === "en" || saved === "es") ? saved : "es";
-  });
+  const locale = "en" as const;
 
-  const setLocale = useCallback((newLocale: Locale) => {
-    setLocaleState(newLocale);
-    localStorage.setItem("dsm-locale", newLocale);
-    document.documentElement.lang = newLocale;
-  }, []);
+  // Set lang attribute once
+  if (typeof document !== "undefined") {
+    document.documentElement.lang = "en";
+  }
 
   const t = useCallback(
     (key: TranslationKey, params?: Record<string, string | number>): string => {
-      let text = translations[locale][key] ?? key;
+      let text = translations.en[key] ?? key;
       if (params) {
         Object.entries(params).forEach(([k, v]) => {
           text = text.replace(`{${k}}`, String(v));
@@ -31,11 +26,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       }
       return text;
     },
-    [locale]
+    []
   );
 
   return (
-    <LanguageContext.Provider value={{ locale, setLocale, t }}>
+    <LanguageContext.Provider value={{ locale, t }}>
       {children}
     </LanguageContext.Provider>
   );

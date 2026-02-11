@@ -109,7 +109,6 @@ export * from "./TablePage";
 export * from "./TabsPage";
 export * from "./TextareaAutoresizePage";
 export * from "./TextareaPage";
-export * from "./ThemeCustomizerPage";
 export * from "./TimelinePage";
 export * from "./ToastPage";
 export * from "./ToggleGroupPage";

@@ -46,6 +46,7 @@ import { Card, CardContent } from "../ui/card";
 import { FactoringKpiCardGroup } from "../patterns/FactoringKpiCardGroup";
 import { ReportsConsultation } from "../patterns/ReportsConsultation";
 import { cn } from "../../lib/utils";
+import { toast } from "sonner@2.0.3";
 import {
   Eye,
   CheckCircle,
@@ -485,7 +486,7 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
 
   const handleAction = useCallback((action: string, opId: string) => {
     if (action === "view") setSelectedOpDetail(opId);
-    else console.log(`Batch action: ${action} on ${opId}`);
+    else toast.info(`Acción ${action} ejecutada para ${opId}`);
   }, []);
 
   const kpiCards = [
@@ -653,7 +654,7 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                 {opPagadores.length === 1 ? (
                                     <div className="flex flex-col">
                                         <span className="truncate max-w-[150px] text-sm">{opPagadores[0].nombre}</span>
-                                        <span className="text-[10px] text-muted-foreground">{op.id}</span>
+                                        <span className="text-[10px] text-muted-foreground">{opPagadores[0].nit}</span>
                                     </div>
                                 ) : (
                                     <Tooltip>
@@ -679,15 +680,15 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                             <TableCell>
                                 <div className="flex flex-col">
                                     <span className="truncate max-w-[160px] font-semibold text-sm">{op.cliente.nombre}</span>
-                                    <span className="text-[10px] text-muted-foreground">{op.id}</span>
+                                    <span className="text-[10px] text-muted-foreground">{op.cliente.nit}</span>
                                 </div>
                             </TableCell>
-                            <TableCell className="tabular-nums text-muted-foreground text-sm">{op.fechaCreacion}</TableCell>
-                            <TableCell className="text-center">
-                                <Badge variant="info-soft-outline" className="h-5 text-[10px] font-bold">{op.facturas.length}</Badge>
+                            <TableCell className="text-muted-foreground text-sm font-satoshi">{op.fechaCreacion}</TableCell>
+                            <TableCell className="text-center font-satoshi">
+                                <Badge variant="info-soft-outline" className="h-5 text-[10px] font-bold font-satoshi">{op.facturas.length}</Badge>
                             </TableCell>
-                            <TableCell className="tabular-nums font-bold text-sm">{formatCurrency(op.valorFacturas)}</TableCell>
-                            <TableCell className="tabular-nums font-bold text-sm text-primary">{formatCurrency(op.valorDesembolso)}</TableCell>
+                            <TableCell className="font-bold text-sm font-satoshi">{formatCurrency(op.valorFacturas)}</TableCell>
+                            <TableCell className="font-bold text-sm text-primary font-satoshi">{formatCurrency(op.valorDesembolso)}</TableCell>
                             <TableCell className="text-center">
                                 <Badge variant={estadoCfg.variant as any} className="text-[10px] px-2 py-0 h-5 font-bold uppercase tracking-tighter">
                                     {estadoCfg.label}
@@ -760,8 +761,8 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                         </div>
                                     </TableCell>
                                     <TableCell>
-                                        <span className="text-[10px] text-muted-foreground">
-                                            {group.facturas[0]?.numero || "N/A"}
+                                        <span className="text-[10px] text-muted-foreground font-bold uppercase tracking-wider">
+                                            Facturas
                                         </span>
                                     </TableCell>
                                     <TableCell>
@@ -773,7 +774,7 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                                 <span className={cn("truncate max-w-[140px] text-sm font-medium leading-none", pagMatch && "bg-yellow-200/60 dark:bg-yellow-400/20 px-0.5 rounded")}>
                                                     {group.pagador.nombre}
                                                 </span>
-                                                <span className="text-[10px] text-muted-foreground">{group.facturas[0]?.numero || "N/A"}</span>
+                                                <span className="text-[10px] text-muted-foreground">{group.pagador.nit}</span>
                                             </div>
                                         </div>
                                     </TableCell>
@@ -784,8 +785,8 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                             {group.facturas.length}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className="tabular-nums text-xs font-semibold">{formatCurrency(group.valorTotal)}</TableCell>
-                                    <TableCell className="tabular-nums text-xs font-semibold text-primary/80">{formatCurrency(group.valorDesembolsoTotal)}</TableCell>
+                                    <TableCell className="text-xs font-semibold font-satoshi">{formatCurrency(group.valorTotal)}</TableCell>
+                                    <TableCell className="text-xs font-semibold text-primary/80 font-satoshi">{formatCurrency(group.valorDesembolsoTotal)}</TableCell>
                                     <TableCell />
                                     <TableCell />
                                 </TableRow>
@@ -823,10 +824,10 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                             </TableCell>
                                             <TableCell />
                                             <TableCell />
-                                            <TableCell className="tabular-nums text-muted-foreground text-sm">{factura.fechaVencimiento}</TableCell>
+                                            <TableCell className="text-muted-foreground text-sm font-satoshi">{factura.fechaVencimiento}</TableCell>
                                             <TableCell />
-                                            <TableCell className="tabular-nums text-sm">{formatCurrency(factura.valor)}</TableCell>
-                                            <TableCell className="tabular-nums text-sm">{formatCurrency(factura.valorDesembolso)}</TableCell>
+                                            <TableCell className="text-sm font-satoshi">{formatCurrency(factura.valor)}</TableCell>
+                                            <TableCell className="text-sm font-satoshi">{formatCurrency(factura.valorDesembolso)}</TableCell>
                                             <TableCell className="text-center">
                                                 <Badge variant={factEstadoCfg.variant} className="text-[11px] px-2 py-0.5">
                                                     {factEstadoCfg.label}
@@ -869,20 +870,20 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                             <ChevronLeft className="h-6 w-6" />
                         </Button>
                         <div>
-                            <h2 className="text-2xl font-bold">Detalle de Operación</h2>
-                            <p className="text-muted-foreground font-mono">{selectedOpDetail}</p>
+                            <h2 className="text-2xl font-bold font-satoshi">Detalle de Operación</h2>
+                            <p className="text-muted-foreground font-satoshi">{selectedOpDetail}</p>
                         </div>
                     </div>
-                    <Badge className="px-3 py-1">En Revisión</Badge>
+                    <Badge className="px-3 py-1 font-satoshi">En Revisión</Badge>
                 </div>
 
                 <div className="grid gap-6">
                     <Card>
                         <CardContent className="p-6 grid grid-cols-2 gap-4">
                             <div className="space-y-1">
-                                <span className="text-xs text-muted-foreground uppercase">Cliente</span>
-                                <p className="font-semibold">Retail JKL S.A.</p>
-                                <p className="text-xs text-muted-foreground font-mono">80.567.890-1</p>
+                                <span className="text-xs text-muted-foreground uppercase font-satoshi">Cliente</span>
+                                <p className="font-semibold font-satoshi">Retail JKL S.A.</p>
+                                <p className="text-xs text-muted-foreground font-satoshi">80.567.890-1</p>
                             </div>
                             <div className="space-y-1">
                                 <span className="text-xs text-muted-foreground uppercase">Ejecutivo</span>
