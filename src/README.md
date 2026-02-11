@@ -68,9 +68,42 @@ function App() {
 
 ## Desarrollo Local
 
-1. Instalar dependencias: `npm install`
-2. Correr servidor de desarrollo: `npm run dev`
-3. Build para producción: `npm run build:lib`
+### Requisitos Previos
+- Node.js 18+ 
+- npm 8+
+
+### Instalación e Inicio
+
+1. **Instalar dependencias**:
+   ```bash
+   npm install
+   ```
+
+2. **Iniciar servidor de desarrollo**:
+   ```bash
+   npm run dev
+   ```
+   El servidor arrancará en `http://localhost:5173` (por defecto)
+
+3. **Build para producción**:
+   ```bash
+   npm run build:lib
+   ```
+
+4. **Ejecutar validaciones (TypeScript + Build + Circular Dependencies)**:
+   ```bash
+   npm run validate
+   ```
+
+### Estructura de Archivos del Servidor Dev
+
+El proyecto requiere los siguientes archivos para funcionar en desarrollo:
+- `/index.html` - Punto de entrada HTML
+- `/main.tsx` - Punto de entrada React (bootstrap con createRoot)
+- `/App.tsx` - Componente principal con providers
+- `/vite.config.ts` - Configuración de Vite para desarrollo
+- `/tailwind.config.js` - Configuración de Tailwind CSS
+- `/postcss.config.js` - Configuración de PostCSS
 
 ## Dependencias y Seguridad
 
