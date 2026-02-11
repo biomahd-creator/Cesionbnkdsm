@@ -1,6 +1,6 @@
-@custom-variant dark (&:is(.dark *));
-
 @import url('https://fonts.cdnfonts.com/css/satoshi');
+
+@custom-variant dark (&:is(.dark *));
 
 :root {
   --font-size: 16px;
