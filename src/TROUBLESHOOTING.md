@@ -5,10 +5,16 @@
 Se han creado/modificado los siguientes archivos para resolver el error ERR_CONNECTION_REFUSED:
 
 1. **`/index.html`** - Archivo HTML de entrada con el div#root y script de bootstrap
-2. **`/main.tsx`** - Punto de entrada React con createRoot 
-3. **`/tailwind.config.js`** - Configuración de Tailwind CSS v3
-4. **`/postcss.config.js`** - Configuración de PostCSS
-5. **`/package.json`** - Agregadas `react` y `react-dom` a devDependencies
+2. **`/main.tsx`** - Punto de entrada React con createRoot (importa únicamente `/styles/globals.css` con Tailwind v4)
+3. **`/styles/globals.css`** - ÚNICO archivo de estilos con Tailwind v4 `@theme` + custom properties CESIONBNK
+4. **`/tailwind.config.js`** - Configuración de Tailwind CSS v4
+5. **`/postcss.config.js`** - Configuración de PostCSS
+
+### ⚠️ Archivos Eliminados (Conflicto Resuelto)
+
+- **`/index.css`** ❌ - Eliminado el 11 de febrero, 2026
+  - Razón: Era una versión compilada de Tailwind v3 que causaba redundancia y colisiones con `/styles/globals.css`
+  - Solución: Mantener únicamente `/styles/globals.css` con sintaxis `@theme` de Tailwind v4 para consistencia entre Figma Make y GitHub
 
 ## 🚀 Pasos para Iniciar el Servidor
 
