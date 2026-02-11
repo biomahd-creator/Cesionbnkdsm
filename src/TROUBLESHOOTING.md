@@ -6,15 +6,40 @@ Se han creado/modificado los siguientes archivos para resolver el error ERR_CONN
 
 1. **`/index.html`** - Archivo HTML de entrada con el div#root y script de bootstrap
 2. **`/main.tsx`** - Punto de entrada React con createRoot (importa únicamente `/styles/globals.css` con Tailwind v4)
-3. **`/styles/globals.css`** - ÚNICO archivo de estilos con Tailwind v4 `@theme` + custom properties CESIONBNK
-4. **`/tailwind.config.js`** - Configuración de Tailwind CSS v4
-5. **`/postcss.config.js`** - Configuración de PostCSS
+3. **`/styles/globals.css`** - ÚNICO archivo de estilos con Tailwind v4 `@import "tailwindcss"` + `@theme` + custom properties CESIONBNK
+4. **`/tailwind.config.js`** - Configuración de Tailwind CSS v4 (ubicado en root para que Vite lo detecte)
+5. **`/postcss.config.js`** - Configuración de PostCSS con `@tailwindcss/postcss` (ubicado en root para que Vite lo detecte)
 
 ### ⚠️ Archivos Eliminados (Conflicto Resuelto)
 
 - **`/index.css`** ❌ - Eliminado el 11 de febrero, 2026
   - Razón: Era una versión compilada de Tailwind v3 que causaba redundancia y colisiones con `/styles/globals.css`
-  - Solución: Mantener únicamente `/styles/globals.css` con sintaxis `@theme` de Tailwind v4 para consistencia entre Figma Make y GitHub
+  - Solución: Mantener únicamente `/styles/globals.css` con sintaxis `@import "tailwindcss"` + `@theme` de Tailwind v4 para consistencia entre Figma Make y GitHub
+
+## 🔧 Configuración Tailwind v4 + Vite
+
+### Cambios Críticos Implementados (11 de febrero, 2026)
+
+1. **Configuración movida al root**: 
+   - `tailwind.config.js` y `postcss.config.js` ahora están en `/` (root del proyecto)
+   - **Razón**: Vite solo busca estos archivos en la raíz, no en `/src/`
+   
+2. **PostCSS actualizado para Tailwind v4**:
+   - Plugin correcto: `@tailwindcss/postcss` (NO `tailwindcss`)
+   - Esto evita el error "Loading PostCSS Plugin failed"
+   
+3. **CSS actualizado para Tailwind v4**:
+   - Se usa `@import "tailwindcss";` en lugar de `@tailwind base/components/utilities`
+   - Esto es lo que hace que Tailwind v4 genere las clases correctamente
+   
+4. **Dependencias agregadas**:
+   - `@tailwindcss/postcss@^4.0.0` (devDependencies)
+   - `tailwindcss@^4.0.0` (actualizado en peerDependencies y devDependencies)
+
+### Errores Resueltos
+
+- ✅ **"@import must precede all other statements"** - Resuelto usando solo `@import "tailwindcss";` al inicio de globals.css
+- ✅ **"Cannot find module '@tailwindcss/postcss'"** - Resuelto instalando el paquete correcto
 
 ## 🚀 Pasos para Iniciar el Servidor
 
