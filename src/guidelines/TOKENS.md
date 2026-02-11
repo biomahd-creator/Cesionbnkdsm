@@ -687,31 +687,28 @@ Color NO es el unico indicador de estado
 
 | Archivo | Proposito |
 |---------|-----------|
-| `/styles/globals.css` | CSS custom properties (SSoT para CSS) |
-| `/styles/themes/theme-*.css` | 7 temas CSS independientes (overrides de globals.css) |
+| `/styles/globals.css` | CSS custom properties (SSoT para CSS) con soporte light/dark |
 | `/figma-tokens.json` | Export para Figma Tokens plugin |
 | `/tailwind-preset.js` | Configuracion de Tailwind |
 | `/lib/animation-config.ts` | Configuracion centralizada de animaciones |
-| `/components/ThemeProvider.tsx` | Provider con STYLE_THEMES array y estado styleTheme |
+| `/components/ThemeProvider.tsx` | Provider para toggle light/dark mode |
 
 ---
 
 ## 11. SISTEMA DE TEMAS
 
-### Arquitectura
+### Arquitectura Simplificada
 
-Los temas overridean las variables de `globals.css` usando especificidad CSS:
+El proyecto usa **exclusivamente el tema default CESIONBNK** sin selector de temas múltiples.
 
 ```
-:root (0,0,1)                    <- globals.css (default CESIONBNK)
-html[data-theme="X"] (0,1,1)     <- theme CSS (light overrides)
-.dark (0,1,0)                    <- globals.css (dark mode)
-html.dark[data-theme="X"] (0,2,1) <- theme CSS (dark overrides + bridges)
+:root (0,0,1)        <- globals.css (light mode variables)
+.dark (0,1,0)        <- globals.css (dark mode overrides)
 ```
 
-### Variables que cada tema DEBE definir
+### Variables Definidas
 
-**Light mode** (`html[data-theme="X"]`):
+**Light mode** (`:root`):
 - `--background`, `--foreground`, `--card`, `--card-foreground`
 - `--popover`, `--popover-foreground`, `--secondary`, `--secondary-foreground`
 - `--muted`, `--muted-foreground`, `--accent`, `--accent-foreground`
@@ -721,17 +718,17 @@ html.dark[data-theme="X"] (0,2,1) <- theme CSS (dark overrides + bridges)
 - `--sidebar-*` (8 variables)
 - `--shadow-elevation-{1-4}`
 
-**Dark mode** (`html.dark[data-theme="X"]`): 
-- Todas las anteriores + **puentes `--color-*`** (30+ variables)
+**Dark mode** (`.dark`): 
+- Todas las anteriores con valores ajustados para modo oscuro
 
-### Reglas criticas
+### Reglas Críticas
 
-1. **`--primary` y `--ring`**: Se heredan de `:root`. NO overridear en temas (mantener brand green)
-2. **`globals.css` nunca se modifica**: Es el punto de restauracion
-3. **Cada tema incluye enhancements CSS**: Cards, focus, transitions scoped a `html[data-theme="X"]`
+1. **`--primary` (`#00c951`) y `--ring`**: Se mantienen constantes en light y dark mode (brand identity)
+2. **`globals.css` es el único archivo de estilos**: No hay archivos de temas adicionales
+3. **ThemeProvider**: Solo gestiona el toggle entre light/dark, sin selector de estilos múltiples
 
 ---
 
-*Version: 1.1.0*
-*Ultima actualizacion: Febrero 2026*
+*Version: 1.2.0*
+*Ultima actualizacion: Febrero 11, 2026*
 *Licencia: Privada - C-Financia / CESIONBNK*

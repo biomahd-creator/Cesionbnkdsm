@@ -146,31 +146,21 @@ Piezas de UI especializadas, a menudo compuestas de primitivos.
 | `StatusKPICard` | KPI con indicador de estado (semáforo). |
 | `TimelineItem` | Item individual para timelines. |
 
+---
+
+## 5. THEMING & PROVIDERS (`/components/`)
+Componentes de infraestructura para temas y estado global.
+
+| Componente | Descripción |
+|---|---|
+| `ThemeProvider` | Provider de contexto para tema light/dark únicamente. |
+| `LanguageProvider` | Provider i18n simplificado (fijado en locale "en"). |
+| `LoadingProvider` | Provider de estados de carga globales. |
+| `TransitionProvider` | Provider de transiciones de página. |
+
+---
+
 ## Mantenimiento
 - Para agregar un componente nuevo, ubícalo en la carpeta correspondiente según su complejidad.
 - Actualiza este archivo al crear nuevos componentes.
 - Evita la duplicidad: revisa si existe un componente similar en `/ui` antes de crear uno en `/widgets`.
-
-## 5. THEMING & PROVIDERS (`/components/`)
-Componentes de infraestructura para temas, idiomas y estado global.
-
-| Componente | Descripción |
-|---|---|
-| `ThemeProvider` | Provider de contexto para tema (light/dark), estilo visual (8 temas CSS), y configuración de colores. |
-| `ThemeStyleSelector` | Popover selector de estilo visual global. Controla `data-theme` en `<html>`. |
-| `LanguageProvider` | Provider i18n (ES/EN). |
-| `LanguageSelector` | Dropdown selector de idioma. |
-| `LoadingProvider` | Provider de estados de carga globales. |
-| `TransitionProvider` | Provider de transiciones de página. |
-
-### Temas CSS disponibles (`/styles/themes/`)
-
-| Archivo | ID | Estilo |
-|---|---|---|
-| `theme-premium.css` | `premium` | Linear/Vercel — zinc, bordes sutiles |
-| `theme-glass.css` | `glass` | Apple/Figma — glassmorphism, blur |
-| `theme-minimal.css` | `minimal` | Notion/Stripe — stone, ultra limpio |
-| `theme-tailwindpro.css` | `tailwindpro` | Tailwind UI — slate, ring focus |
-| `theme-heroui.css` | `heroui` | HeroUI/NextUI — rounded, soft shadows |
-| `theme-soft.css` | `soft` | Pastel — warm stone, cozy |
-| `theme-highcontrast.css` | `highcontrast` | WCAG AAA — bordes gruesos, zero transparency |

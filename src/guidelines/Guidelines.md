@@ -24,42 +24,24 @@ Para facilitar la lectura por IAs y humanos, la documentación se ha dividido en
 
 ---
 
-## SISTEMA DE TEMAS VISUALES
+## SISTEMA DE TEMAS
 
-El DSM implementa un **theme selector con 8 estilos CSS independientes**. `globals.css` permanece intacto como punto de restauración.
+El proyecto usa **exclusivamente el tema default CESIONBNK** con soporte para modo claro y oscuro.
 
-### Temas Disponibles (v6.4.0)
+### Tema Único
 
-| # | ID | Nombre | Inspiración | Radius | Neutrales |
-|---|---|---|---|---|---|
-| 1 | `default` | CESIONBNK | Brand original | 10px | Navy (#1C2D3A) |
-| 2 | `premium` | Premium | Linear, Vercel | 8px | Zinc |
-| 3 | `glass` | Glass | Apple, Figma, Arc | 12px | Slate + blur |
-| 4 | `minimal` | Minimal | Notion, Stripe | 6px | Stone |
-| 5 | `tailwindpro` | Tailwind Pro | Tailwind UI | 8px | Slate |
-| 6 | `heroui` | Hero UI Pro | HeroUI/NextUI | 14px | Cool zinc |
-| 7 | `soft` | Soft | Pastel/Cozy | 16px | Warm stone |
-| 8 | `highcontrast` | High Contrast | WCAG AAA | 8px | Pure neutral |
+- **ID**: `default` (CESIONBNK)
+- **Colores**: Primary Green (`#00c951`) + Secondary Navy (`#1C2D3A`)
+- **Tipografía**: Satoshi (exclusiva)
+- **Border Radius**: 10px
+- **Modos**: Light / Dark
 
-### Arquitectura CSS
+### Arquitectura
 
-- **Especificidad**: `html[data-theme="X"]` (0,1,1) > `:root` (0,0,1)
-- **Dark mode**: `html.dark[data-theme="X"]` (0,2,1) incluye puentes `--color-*`
-- **Archivos**: `/styles/themes/theme-{id}.css`
-- **Registro**: `STYLE_THEMES[]` en `ThemeProvider.tsx`
-- **Imports**: `App.tsx`
-
-### Agregar un tema nuevo
-
-1. Crear `/styles/themes/theme-{id}.css` con `html[data-theme="{id}"]` + `html.dark[data-theme="{id}"]`
-2. Agregar `import "./styles/themes/theme-{id}.css"` en `App.tsx`
-3. Agregar entrada al array `STYLE_THEMES` en `ThemeProvider.tsx`
-
-### Eliminar un tema
-
-1. Borrar su archivo CSS
-2. Quitar el import en `App.tsx`
-3. Remover su entrada de `STYLE_THEMES`
+- **Archivo base**: `/styles/globals.css` contiene todas las CSS custom properties
+- **Light mode**: Variables definidas en `:root`
+- **Dark mode**: Variables definidas en `.dark` selector
+- **Provider**: `ThemeProvider.tsx` gestiona solo el toggle light/dark (sin selector de temas múltiples)
 
 ---
 
@@ -83,4 +65,4 @@ Para crear una nueva funcionalidad:
 3. Usa las reglas de **PROMPT_GUIDE.md** para pedirle a la IA que ensamble la pantalla.
 
 ---
-*Última actualización: Febrero 9, 2026 — v6.4.0*
+*Última actualización: Febrero 11, 2026 — v6.5.0*

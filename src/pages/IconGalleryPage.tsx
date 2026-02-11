@@ -76,7 +76,7 @@ import {
   Disc, Disc2, Disc3,
   
   // Status & Alerts
-  CheckCircle, CheckCircle2, XCircle, XOctagon as XOctagonStatus,
+  CheckCircle, CheckCircle2,
   AlertCircle, AlertTriangle, AlertOctagon,
   Info, HelpCircle,
   Ban, ShieldAlert, ShieldCheck, ShieldClose, ShieldX, ShieldQuestion, ShieldOff,
@@ -435,7 +435,6 @@ const ICON_CATALOG: Record<string, IconEntry[]> = {
   status: [
     { name: "check-circle", Icon: CheckCircle, importName: "CheckCircle" },
     { name: "check-circle-2", Icon: CheckCircle2, importName: "CheckCircle2" },
-    { name: "x-circle", Icon: XCircle, importName: "XCircle" },
     { name: "alert-circle", Icon: AlertCircle, importName: "AlertCircle" },
     { name: "alert-triangle", Icon: AlertTriangle, importName: "AlertTriangle" },
     { name: "info", Icon: Info, importName: "Info" },
