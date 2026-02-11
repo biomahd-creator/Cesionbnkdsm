@@ -1,7 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App';
-import './styles/globals.css'; // CESIONBNK Tailwind v4 + custom properties and theme tokens
+import './styles/globals.css';
 
 const root = document.getElementById('root');
 
