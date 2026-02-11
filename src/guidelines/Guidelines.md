@@ -22,13 +22,6 @@ Para facilitar la lectura por IAs y humanos, la documentación se ha dividido en
 - Plantillas de prompts.
 - Checklists de validación.
 
-### 4. [ARCHITECTURE.md](./ARCHITECTURE.md)
-**Estructura de Directorios**. Mapa completo del proyecto con 300+ componentes.
-- 4 capas de componentes (UI, Advanced, Patterns, Widgets).
-- Módulo de negocio Factoring.
-- Sistema de estilos y temas.
-- Reglas de arquitectura y flujos principales.
-
 ---
 
 ## SISTEMA DE TEMAS VISUALES
@@ -86,10 +79,9 @@ Este proyecto está habilitado **exclusivamente** para las siguientes plataforma
 
 ## USO RÁPIDO
 Para crear una nueva funcionalidad:
-1. Consulta **ARCHITECTURE.md** para entender la estructura y ubicación correcta.
-2. Consulta **COMPONENTS.md** para ver qué piezas tienes disponibles.
-3. Revisa **TOKENS.md** para aplicar los estilos correctos.
-4. Usa las reglas de **PROMPT_GUIDE.md** para pedirle a la IA que ensamble la pantalla.
+1. Consulta **COMPONENTS.md** para ver qué piezas tienes.
+2. Revisa **TOKENS.md** para aplicar los estilos correctos.
+3. Usa las reglas de **PROMPT_GUIDE.md** para pedirle a la IA que ensamble la pantalla.
 
 ---
 *Última actualización: Febrero 9, 2026 — v6.4.0*

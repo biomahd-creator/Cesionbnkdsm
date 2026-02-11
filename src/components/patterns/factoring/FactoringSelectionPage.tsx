@@ -1088,6 +1088,7 @@ export function FactoringSelectionPage({ onOperationSummaryChange }: FactoringSe
               },
             ]}
             activeId={activeKpiFilter}
+            onCardClick={(id) => setActiveKpiFilter(activeKpiFilter === id ? null : id)}
           />
 
           {activeKpiFilter && (

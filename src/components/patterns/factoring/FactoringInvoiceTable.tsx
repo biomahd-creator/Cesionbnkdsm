@@ -1,18 +1,12 @@
 /**
  * FactoringInvoiceTable
  * ─────────────────────
- * Tabla reutilizable de facturas para el módulo Factoring con:
- *  - Columnas dinámicas según tab activo (elegibles / pendientes / no-elegibles / descartadas)
- *  - Selección con checkbox
- *  - Celdas de doble línea (Progress + rango de fechas en "Vigencia")
- *  - Badges de estado con colores semánticos
- *  - Observaciones con enlace "más"
- *  - Barra de búsqueda y acciones en header
- *  - Paginación integrada
- *  - Empty state
+ * REFACTOR FINAL (Point-and-Click Fix):
+ * Se ha eliminado la modularidad de sub-componentes internos (BadgeCell, ObservationsCell, VigenciaCell)
+ * y se ha implementado un renderizado totalmente plano y directo en el TableBody.
+ * Esto asegura que el inspector de Figma Make identifique cada TableRow y TableCell individualmente.
  *
  * Capa: Patterns > Factoring
- * Dependencias: Table (ui), Badge (ui), Checkbox (ui), Progress (ui), Button (ui), Input (ui), Card (ui)
  */
 import React, { useState, useMemo } from "react";
 import { Card, CardContent, CardHeader } from "../../ui/card";
@@ -20,7 +14,6 @@ import { Button } from "../../ui/button";
 import { Input } from "../../ui/input";
 import { Checkbox } from "../../ui/checkbox";
 import { Badge } from "../../ui/badge";
-import { Progress } from "../../ui/progress";
 import { ProgressWithRange } from "../../ui/progress-with-range";
 import {
   Table,
@@ -34,7 +27,6 @@ import {
   Search,
   ChevronLeft,
   ChevronRight,
-  ArrowRight,
   Filter,
   Wand2,
   ListChecks,
@@ -68,39 +60,23 @@ export interface FactoringInvoice {
 }
 
 export interface FactoringInvoiceTableProps {
-  /** Invoices to display (already pre-filtered by category externally, or the component filters internally) */
   invoices: FactoringInvoice[];
-  /** Which tab/category determines the visible columns */
   activeTab: InvoiceCategory;
-  /** IDs of currently selected invoices */
   selectedInvoices: string[];
-  /** Toggle single invoice selection */
   onToggleInvoice: (id: string) => void;
-  /** Select all visible invoices */
   onSelectAll?: (invoiceIds: string[]) => void;
-  /** Select only eligible invoices */
   onSelectAllEligible?: (invoiceIds: string[]) => void;
-  /** Deselect all visible invoices */
   onDeselectAll?: (invoiceIds: string[]) => void;
-  /** Discard action */
   onDiscard?: (invoiceIds: string[]) => void;
-  /** Whether to filter invoices by activeTab internally (default: true) */
   filterByCategory?: boolean;
-  /** Items per page (default: 10) */
   itemsPerPage?: number;
-  /** Show the toolbar with search and actions (default: true) */
   showToolbar?: boolean;
-  /** External search value (controlled) */
   searchValue?: string;
-  /** External search change handler (controlled) */
   onSearchChange?: (value: string) => void;
-  /** Additional className */
   className?: string;
-  /** Empty state message */
   emptyMessage?: string;
 }
 
-// ── Column config per tab ────────────────────────────────────────────
 const COLUMN_CONFIGS: Record<InvoiceCategory, { key: string; label: string }[]> = {
   elegibles: [
     { key: "advanceValue", label: "Valor Adelanto" },
@@ -131,42 +107,14 @@ const COLUMN_CONFIGS: Record<InvoiceCategory, { key: string; label: string }[]> 
   ],
 };
 
-// ── Helpers: cell renderers ──────────────────────────────────────────
-function BadgeCell({ children, variant }: { children: React.ReactNode; variant: "info" | "success" | "warning" | "danger" | "muted" }) {
-  const variantMap: Record<string, "info-soft-outline" | "success-soft-outline" | "warning-soft-outline" | "destructive-soft-outline" | "secondary"> = {
-    info: "info-soft-outline",
-    success: "success-soft-outline",
-    warning: "warning-soft-outline",
-    danger: "destructive-soft-outline",
-    muted: "secondary",
-  };
-  return (
-    <Badge variant={variantMap[variant]}>
-      {children}
-    </Badge>
-  );
-}
+const VARIANT_MAP: Record<string, "info-soft-outline" | "success-soft-outline" | "warning-soft-outline" | "destructive-soft-outline" | "secondary"> = {
+  info: "info-soft-outline",
+  success: "success-soft-outline",
+  warning: "warning-soft-outline",
+  danger: "destructive-soft-outline",
+  muted: "secondary",
+};
 
-function ObservationsCell({ text }: { text: string }) {
-  return (
-    <TableCell className="text-sm text-foreground">
-      <span>{text} </span>
-      <a href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="text-info underline hover:text-info/80">
-        mas
-      </a>
-    </TableCell>
-  );
-}
-
-function VigenciaCell({ validFrom, validTo, progress }: { validFrom: string; validTo: string; progress: number }) {
-  return (
-    <TableCell>
-      <ProgressWithRange value={progress} from={validFrom} to={validTo} />
-    </TableCell>
-  );
-}
-
-// ── Main Component ───────────────────────────────────────────────────
 export function FactoringInvoiceTable({
   invoices,
   activeTab,
@@ -184,14 +132,12 @@ export function FactoringInvoiceTable({
   className,
   emptyMessage = "No hay facturas en esta categoria",
 }: FactoringInvoiceTableProps) {
-  // Internal state for uncontrolled search
   const [internalSearch, setInternalSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
 
   const searchQuery = externalSearch ?? internalSearch;
   const handleSearchChange = externalOnSearch ?? setInternalSearch;
 
-  // Reset page when tab or search changes
   const filteredInvoices = useMemo(() => {
     let result = invoices;
     if (filterByCategory) {
@@ -209,7 +155,6 @@ export function FactoringInvoiceTable({
     return result;
   }, [invoices, activeTab, searchQuery, filterByCategory]);
 
-  // Reset page when filtered data changes
   const totalPages = Math.max(1, Math.ceil(filteredInvoices.length / itemsPerPage));
   const safePage = Math.min(currentPage, totalPages);
   const paginatedInvoices = filteredInvoices.slice(
@@ -218,85 +163,11 @@ export function FactoringInvoiceTable({
   );
 
   const columns = COLUMN_CONFIGS[activeTab];
-  const baseColCount = 3; // checkbox + number + value
-  const totalColCount = baseColCount + columns.length;
-
   const allVisibleIds = filteredInvoices.map((inv) => inv.id);
   const eligibleIds = filteredInvoices.filter((inv) => inv.category === "elegibles").map((inv) => inv.id);
 
-  // ── Render cell by key ──
-  function renderCell(invoice: FactoringInvoice, key: string) {
-    switch (key) {
-      case "advanceValue":
-        return <TableCell className="text-sm text-foreground">{invoice.advanceValue}</TableCell>;
-      case "lastEvent":
-        return (
-          <TableCell>
-            <BadgeCell variant={activeTab === "elegibles" ? "info" : "info"}>
-              {invoice.lastEvent}
-            </BadgeCell>
-          </TableCell>
-        );
-      case "state":
-        return (
-          <TableCell>
-            <BadgeCell variant="success">{invoice.state}</BadgeCell>
-          </TableCell>
-        );
-      case "status":
-        return (
-          <TableCell>
-            <BadgeCell variant="danger">No Elegible</BadgeCell>
-          </TableCell>
-        );
-      case "observations":
-        return <ObservationsCell text={invoice.observations} />;
-      case "vigencia":
-        return (
-          <VigenciaCell
-            validFrom={invoice.validFrom}
-            validTo={invoice.validTo}
-            progress={invoice.progress}
-          />
-        );
-      case "daysToExpire":
-        return (
-          <TableCell className="text-center text-sm text-foreground">
-            {invoice.daysToExpire}
-          </TableCell>
-        );
-      case "reviewStatus":
-        return (
-          <TableCell>
-            <BadgeCell variant="warning">{invoice.reviewStatus}</BadgeCell>
-          </TableCell>
-        );
-      case "reviewer":
-        return <TableCell className="text-sm">{invoice.reviewer}</TableCell>;
-      case "rejectionReason":
-        return (
-          <TableCell>
-            <BadgeCell variant="danger">{invoice.rejectionReason}</BadgeCell>
-          </TableCell>
-        );
-      case "discardReason":
-        return (
-          <TableCell>
-            <Badge variant="outline" className="border-gray-300 bg-gray-100 text-gray-700 dark:border-gray-500/40 dark:bg-gray-500/15 dark:text-gray-400">
-              {invoice.discardReason}
-            </Badge>
-          </TableCell>
-        );
-      case "discardDate":
-        return <TableCell className="text-sm">{invoice.discardDate}</TableCell>;
-      default:
-        return <TableCell />;
-    }
-  }
-
   return (
     <Card className={cn("elevation-2 border-none shadow-md overflow-hidden bg-background", className)}>
-      {/* Toolbar */}
       {showToolbar && (
         <CardHeader className="pb-3 px-4 pt-4">
           <div className="flex flex-col gap-3 md:flex-row md:items-center justify-between">
@@ -351,7 +222,6 @@ export function FactoringInvoiceTable({
         </CardHeader>
       )}
 
-      {/* Table */}
       <CardContent className="p-0">
         <Table>
           <TableHeader>
@@ -369,7 +239,7 @@ export function FactoringInvoiceTable({
           <TableBody>
             {filteredInvoices.length === 0 ? (
               <TableRow>
-                <TableCell colSpan={totalColCount} className="text-center text-muted-foreground h-24">
+                <TableCell colSpan={columns.length + 3} className="text-center text-muted-foreground h-24">
                   <div className="flex flex-col items-center gap-2">
                     <FileX className="h-8 w-8 text-muted-foreground/50" />
                     {emptyMessage}
@@ -387,9 +257,65 @@ export function FactoringInvoiceTable({
                   </TableCell>
                   <TableCell className="text-sm font-medium text-foreground">{invoice.number}</TableCell>
                   <TableCell className="text-sm text-foreground">{invoice.invoiceValue}</TableCell>
+                  
+                  {/* Inline Flat-Mapping of cells for Point-and-Click compatibility */}
                   {columns.map((col) => {
-                    const cell = renderCell(invoice, col.key);
-                    return React.cloneElement(cell as React.ReactElement, { key: col.key });
+                    const key = col.key;
+                    if (key === "advanceValue") return <TableCell key={key} className="text-sm text-foreground">{invoice.advanceValue}</TableCell>;
+                    if (key === "lastEvent") return (
+                        <TableCell key={key}>
+                          <Badge variant={VARIANT_MAP["info"]}>{invoice.lastEvent}</Badge>
+                        </TableCell>
+                    );
+                    if (key === "state") return (
+                        <TableCell key={key}>
+                          <Badge variant={VARIANT_MAP["success"]}>{invoice.state}</Badge>
+                        </TableCell>
+                    );
+                    if (key === "status") return (
+                        <TableCell key={key}>
+                          <Badge variant={VARIANT_MAP["danger"]}>No Elegible</Badge>
+                        </TableCell>
+                    );
+                    if (key === "observations") return (
+                        <TableCell key={key} className="text-sm text-foreground">
+                            <span>{invoice.observations} </span>
+                            <a href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="text-info underline hover:text-info/80">
+                                mas
+                            </a>
+                        </TableCell>
+                    );
+                    if (key === "vigencia") return (
+                        <TableCell key={key}>
+                            <ProgressWithRange value={invoice.progress} from={invoice.validFrom} to={invoice.validTo} />
+                        </TableCell>
+                    );
+                    if (key === "daysToExpire") return (
+                        <TableCell key={key} className="text-center text-sm text-foreground">
+                            {invoice.daysToExpire}
+                        </TableCell>
+                    );
+                    if (key === "reviewStatus") return (
+                        <TableCell key={key}>
+                            <Badge variant={VARIANT_MAP["warning"]}>{invoice.reviewStatus}</Badge>
+                        </TableCell>
+                    );
+                    if (key === "reviewer") return <TableCell key={key} className="text-sm">{invoice.reviewer}</TableCell>;
+                    if (key === "rejectionReason") return (
+                        <TableCell key={key}>
+                            <Badge variant={VARIANT_MAP["danger"]}>{invoice.rejectionReason}</Badge>
+                        </TableCell>
+                    );
+                    if (key === "discardReason") return (
+                        <TableCell key={key}>
+                            <Badge variant="outline" className="border-gray-300 bg-gray-100 text-gray-700 dark:border-gray-500/40 dark:bg-gray-500/15 dark:text-gray-400">
+                                {invoice.discardReason}
+                            </Badge>
+                        </TableCell>
+                    );
+                    if (key === "discardDate") return <TableCell key={key} className="text-sm">{invoice.discardDate}</TableCell>;
+                    
+                    return <TableCell key={key} />;
                   })}
                 </TableRow>
               ))

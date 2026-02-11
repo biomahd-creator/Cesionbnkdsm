@@ -24,14 +24,15 @@ const PlaygroundIndexLazy = React.lazy(() =>
   }))
 );
 
+// Causa 18: Lazy imports apuntan a /components/factoring/c-financia/
 const CFinanciaFlowLazy = React.lazy(() =>
-  import("../../factoring/c-financia/CFinanciaFlow").then((m) => ({
+  import("./c-financia/CFinanciaFlow").then((m) => ({
     default: m.CFinanciaFlow,
   }))
 );
 
 const CFinanciaClientFlowLazy = React.lazy(() =>
-  import("../../factoring/c-financia/CFinanciaClientFlow").then((m) => ({
+  import("./c-financia/CFinanciaClientFlow").then((m) => ({
     default: m.CFinanciaClientFlow,
   }))
 );

@@ -15,6 +15,7 @@ interface FactoringKpiCardData {
 interface FactoringKpiCardGroupProps {
   cards: FactoringKpiCardData[];
   activeId?: string;
+  onCardClick?: (id: string) => void;
   className?: string;
 }
 
@@ -33,6 +34,7 @@ const variantMap: Record<string, "default" | "blue" | "yellow" | "green" | "oran
 export function FactoringKpiCardGroup({
   cards,
   activeId,
+  onCardClick,
   className,
 }: FactoringKpiCardGroupProps) {
   return (
@@ -46,7 +48,7 @@ export function FactoringKpiCardGroup({
           count={card.count}
           variant={variantMap[card.variant || "default"] || "default"}
           isActive={activeId === card.id}
-          // Eliminar completamente el onClick - las tarjetas son solo visuales
+          onClick={() => onCardClick?.(card.id)}
           icon={card.icon}
         />
       ))}

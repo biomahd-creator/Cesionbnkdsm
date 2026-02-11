@@ -62,12 +62,12 @@ export function FactoringKpiCard({
     <Card
       className={cn(
         "relative bg-card border-0 border-b-4 rounded-2xl transition-all duration-300 overflow-hidden",
-        /* Removed cursor-pointer since onClick has been disabled */
+        onClick && "cursor-pointer",
         classes.border,
         shadowClass,
         className
       )}
-      /* onClick disabled - cards are now for display only */
+      onClick={onClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >

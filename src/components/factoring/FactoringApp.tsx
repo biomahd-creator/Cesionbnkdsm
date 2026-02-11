@@ -18,14 +18,15 @@ import { useLoading } from "../providers/LoadingProvider";
 // que SÍ están instrumentados en /components/.
 // ═══════════════════════════════════════════════════════════════════
 
+// Causa 18: Lazy imports apuntan a /components/factoring/c-financia/
 const CFinanciaFlowLazy = React.lazy(() =>
-  import("../../factoring/c-financia/CFinanciaFlow").then((m) => ({
+  import("./c-financia/CFinanciaFlow").then((m) => ({
     default: m.CFinanciaFlow,
   }))
 );
 
 const CFinanciaClientFlowLazy = React.lazy(() =>
-  import("../../factoring/c-financia/CFinanciaClientFlow").then((m) => ({
+  import("./c-financia/CFinanciaClientFlow").then((m) => ({
     default: m.CFinanciaClientFlow,
   }))
 );
@@ -37,9 +38,14 @@ interface FactoringLayoutProps {
 export function FactoringApp({ onExit }: FactoringLayoutProps) {
   const [userRole, setUserRole] = useState<UserRole>("admin");
   // Persist currentView in localStorage to survive Figma Make reloads
+  // BUT never restore fullscreen views — always default to sidebar layout
   const [currentView, setCurrentView] = useState<View>(() => {
     const saved = localStorage.getItem("factoring-current-view");
-    return (saved as View) || "radian-dashboard";
+    const fullscreenViews: View[] = ["c-financia", "c-financia-cliente"];
+    if (saved && !fullscreenViews.includes(saved as View)) {
+      return saved as View;
+    }
+    return "radian-dashboard";
   });
   const { hideLoading } = useLoading();
 
@@ -90,17 +96,9 @@ export function FactoringApp({ onExit }: FactoringLayoutProps) {
   }
 
   return (
-    <div className="min-h-screen w-full">
+    <div className="min-h-screen w-full bg-background">
       <SidebarProvider
         defaultOpen={true}
-        style={{
-          "--sidebar": "var(--secondary)",
-          "--sidebar-foreground": "var(--secondary-foreground)",
-          "--sidebar-accent": "rgba(255,255,255,0.1)",
-          "--sidebar-accent-foreground": "var(--secondary-foreground)",
-          "--sidebar-border": "rgba(255,255,255,0.1)",
-          "--sidebar-ring": "var(--ring)",
-        } as React.CSSProperties}
       >
         <FactoringSidebar
           currentView={currentView}
@@ -118,7 +116,7 @@ export function FactoringApp({ onExit }: FactoringLayoutProps) {
             onLogout={handleLogout}
             onExit={handleExitSafely}
           />
-          <main className="flex-1 bg-muted/10">
+          <main className="flex-1 bg-muted/30">
             <FactoringViewRenderer
               currentView={currentView}
               userRole={userRole}

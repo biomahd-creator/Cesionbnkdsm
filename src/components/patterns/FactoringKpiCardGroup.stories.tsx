@@ -46,7 +46,7 @@ export const Interactive: Story = {
     }));
     return (
       <div className="space-y-4">
-        <FactoringKpiCardGroup cards={interactiveCards} activeId={active} />
+        <FactoringKpiCardGroup cards={interactiveCards} activeId={active} onCardClick={setActive} />
         <p className="text-sm text-muted-foreground text-center">
           Filtro activo: <strong>{kpiCards.find((c) => c.id === active)?.label}</strong>
         </p>

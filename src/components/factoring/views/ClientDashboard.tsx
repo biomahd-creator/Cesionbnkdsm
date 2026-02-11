@@ -23,10 +23,10 @@ export function ClientDashboard({ onNewRequest }: ClientDashboardProps) {
   return (
     <div className="space-y-8">
       {/* Welcome Banner */}
-      <div className="bg-secondary text-secondary-foreground rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
+      <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-background border border-primary/20 text-foreground rounded-xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 relative overflow-hidden">
         <div className="relative z-10">
           <h1 className="text-2xl md:text-3xl font-semibold mb-2">¡Hola, Tech Solutions SAS! 👋</h1>
-          <p className="text-secondary-foreground/80 max-w-xl">
+          <p className="text-muted-foreground max-w-xl">
             Tienes <span className="text-primary font-semibold">$125.000.000</span> disponibles en tu cupo rotativo para anticipar facturas hoy mismo.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function ClientDashboard({ onNewRequest }: ClientDashboardProps) {
         
         {/* Decorative background elements */}
         <div className="absolute right-0 top-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4" />
-        <div className="absolute left-0 bottom-0 w-48 h-48 bg-secondary/30 rounded-full blur-2xl translate-y-1/4 -translate-x-1/4" />
+        <div className="absolute left-0 bottom-0 w-48 h-48 bg-primary/5 rounded-full blur-2xl translate-y-1/4 -translate-x-1/4" />
       </div>
 
       {/* Status Overview */}

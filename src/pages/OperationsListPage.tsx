@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
-import { OperationsList } from "../factoring/components/OperationsList";
+import { OperationsList } from "../components/factoring/OperationsList";
 import { FileText, Info, CheckCircle } from "lucide-react";
 import { Alert, AlertDescription } from "../components/ui/alert";
 import { PageTransition } from "../components/ui/page-transition";

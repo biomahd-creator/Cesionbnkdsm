@@ -38,13 +38,13 @@ export function FactoringSidebar({ currentView, userRole, setCurrentView, onLogo
   return (
     <Sidebar>
       {/* Header */}
-      <SidebarHeader className="h-[64px] flex-row items-center gap-3 border-b border-white/10 bg-black/10 px-4">
+      <SidebarHeader className="h-[64px] flex-row items-center gap-3 border-b border-sidebar-border px-4">
         <div className="w-8 h-8 rounded bg-primary flex items-center justify-center shrink-0">
           <span className="font-bold text-primary-foreground">F</span>
         </div>
         <div>
-          <span className="font-bold text-lg tracking-wide block leading-none">FINANCIO</span>
-          <span className="text-xs text-secondary-foreground/50 uppercase">
+          <span className="font-bold text-lg tracking-wide block leading-none text-sidebar-foreground">FINANCIO</span>
+          <span className="text-xs text-muted-foreground uppercase">
             {userRole === "admin" ? "Admin Console" : "Empresas"}
           </span>
         </div>
@@ -53,7 +53,7 @@ export function FactoringSidebar({ currentView, userRole, setCurrentView, onLogo
       {/* Navigation */}
       <SidebarContent className="py-4">
         <SidebarGroup>
-          <SidebarGroupLabel className="text-secondary-foreground/50">Módulos</SidebarGroupLabel>
+          <SidebarGroupLabel className="text-muted-foreground">Módulos</SidebarGroupLabel>
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
@@ -69,7 +69,7 @@ export function FactoringSidebar({ currentView, userRole, setCurrentView, onLogo
 
         {userRole === "admin" && (
           <SidebarGroup>
-            <SidebarGroupLabel className="text-secondary-foreground/50">Desarrollo</SidebarGroupLabel>
+            <SidebarGroupLabel className="text-muted-foreground">Desarrollo</SidebarGroupLabel>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton
@@ -116,10 +116,10 @@ export function FactoringSidebar({ currentView, userRole, setCurrentView, onLogo
       </SidebarContent>
 
       {/* Footer */}
-      <SidebarFooter className="border-t border-white/10 bg-black/20">
+      <SidebarFooter className="border-t border-sidebar-border">
         <Button 
           variant="ghost" 
-          className="w-full justify-start gap-3 text-secondary-foreground/70 hover:text-secondary-foreground hover:bg-secondary-foreground/10"
+          className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground hover:bg-muted"
           onClick={onLogout}
         >
           <LogOut className="h-4 w-4" />
@@ -127,7 +127,7 @@ export function FactoringSidebar({ currentView, userRole, setCurrentView, onLogo
         </Button>
         <Button 
           variant="ghost" 
-          className="w-full justify-start gap-3 text-muted-foreground hover:text-muted-foreground hover:bg-muted-foreground/10"
+          className="w-full justify-start gap-3 text-muted-foreground hover:text-foreground hover:bg-muted"
           onClick={(e) => {
             e.stopPropagation();
             onExit();

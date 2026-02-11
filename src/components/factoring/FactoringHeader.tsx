@@ -42,39 +42,39 @@ export function FactoringHeader({
   onExit,
 }: FactoringHeaderProps) {
   return (
-    <header className="h-[64px] bg-secondary text-secondary-foreground flex items-center justify-between px-6 sticky top-0 z-40 shadow-md">
+    <header className="h-[64px] bg-background text-foreground flex items-center justify-between px-6 sticky top-0 z-40 border-b border-border shadow-sm">
       <div className="flex items-center gap-2">
         {/* Mobile sidebar trigger — usa el sistema Shadcn en vez de Sheet manual */}
-        <SidebarTrigger className="md:hidden text-secondary-foreground" />
+        <SidebarTrigger className="md:hidden text-foreground" />
 
-        <span className="font-medium text-secondary-foreground/50">C-FINANCIA</span>
-        <span className="text-secondary-foreground/30">/</span>
-        <span className="font-semibold text-secondary-foreground capitalize">
+        <span className="font-medium text-muted-foreground">C-FINANCIA</span>
+        <span className="text-border">/</span>
+        <span className="font-semibold text-foreground capitalize">
           {currentView === "welcome" ? "Inicio" : currentView.replace("-", " ")}
         </span>
       </div>
 
       <div className="flex items-center gap-4">
-        <Button variant="ghost" className="text-secondary-foreground/70 hover:text-secondary-foreground hover:bg-secondary-foreground/10 hidden md:flex gap-2">
+        <Button variant="ghost" className="text-muted-foreground hover:text-foreground hover:bg-muted hidden md:flex gap-2">
           <BookOpen className="h-4 w-4" />
           Instructivos
         </Button>
 
-        <div className="h-6 w-px bg-secondary-foreground/20 mx-1 hidden md:block" />
+        <div className="h-6 w-px bg-border mx-1 hidden md:block" />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-3 pl-2 pr-1 h-auto py-1 hover:bg-secondary-foreground/10 text-secondary-foreground">
+            <Button variant="ghost" className="flex items-center gap-3 pl-2 pr-1 h-auto py-1 hover:bg-muted text-foreground">
               <Avatar className="h-9 w-9 border-2 border-primary">
-                <AvatarFallback className="bg-secondary text-secondary-foreground">SP</AvatarFallback>
+                <AvatarFallback className="bg-primary/10 text-primary">SP</AvatarFallback>
               </Avatar>
               <div className="hidden md:flex flex-col items-start text-xs">
-                <span className="font-medium text-secondary-foreground">soporte.cfinancia</span>
+                <span className="font-medium text-foreground">soporte.cfinancia</span>
                 <span className="text-primary capitalize">
                   {userRole === "admin" ? "Administrador" : "Cliente"}
                 </span>
               </div>
-              <ChevronDown className="h-3 w-3 text-secondary-foreground/50" />
+              <ChevronDown className="h-3 w-3 text-muted-foreground" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56 bg-popover text-popover-foreground">
