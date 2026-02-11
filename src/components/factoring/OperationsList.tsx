@@ -8,9 +8,14 @@
  *
  * REFACTOR FINAL (Point-and-Click Fix):
  * Se ha eliminado la modularidad de sub-componentes para las filas (OperationsMainRow, etc.)
- * y se ha implementado un renderizado totalmente plano y directo en el TableBody. 
+ * e implementado un renderizado totalmente plano y directo en el TableBody. 
  * Esto asegura que el inspector de Figma Make identifique cada TableRow individualmente 
  * sin interferencia de capas de componentes intermedios o fragmentos ocultos.
+ *
+ * ACTUALIZACIÓN:
+ * - Reordenación de columnas: Checkbox, Factura (ID), Pagadores, Cliente, Fecha, Facturas, V. Facturas, V. Desembolso, Estado, Acciones.
+ * - Estilo de ID/Factura unificado con el de NIT bajo nombres (text-[10px], muted-foreground).
+ * - Alineación de datos en los 3 niveles del tree table.
  */
 import React, { useState, useEffect, useCallback, useMemo } from "react";
 import { Badge } from "../ui/badge";
@@ -587,9 +592,9 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                   <Checkbox checked={selectAllState} onCheckedChange={handleSelectAll} />
                 </TableHead>
                 <TableHead className="w-[120px]">ID</TableHead>
-                <TableHead className="w-[120px]">Fecha</TableHead>
-                <TableHead className="w-[200px]">Cliente</TableHead>
                 <TableHead className="w-[180px]">Pagadores</TableHead>
+                <TableHead className="w-[200px]">Cliente</TableHead>
+                <TableHead className="w-[120px]">Fecha</TableHead>
                 <TableHead className="w-[100px] text-center">Facturas</TableHead>
                 <TableHead className="w-[140px]">V. Facturas</TableHead>
                 <TableHead className="w-[140px]">V. Desembolso</TableHead>
@@ -639,19 +644,16 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                     </Button>
                                 </div>
                             </TableCell>
-                            <TableCell><span className="text-sm font-medium text-foreground">{op.id}</span></TableCell>
-                            <TableCell className="tabular-nums text-muted-foreground text-sm">{op.fechaCreacion}</TableCell>
                             <TableCell>
-                                <div className="flex flex-col">
-                                    <span className="truncate max-w-[160px] font-semibold text-sm">{op.cliente.nombre}</span>
-                                    <span className="text-[10px] text-muted-foreground uppercase tracking-tight">{op.cliente.nit}</span>
-                                </div>
+                                <span className="text-[10px] text-muted-foreground">
+                                    {op.id}
+                                </span>
                             </TableCell>
                             <TableCell>
                                 {opPagadores.length === 1 ? (
                                     <div className="flex flex-col">
                                         <span className="truncate max-w-[150px] text-sm">{opPagadores[0].nombre}</span>
-                                        <span className="text-[10px] text-muted-foreground">{opPagadores[0].nit}</span>
+                                        <span className="text-[10px] text-muted-foreground">{op.id}</span>
                                     </div>
                                 ) : (
                                     <Tooltip>
@@ -674,6 +676,13 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                     </Tooltip>
                                 )}
                             </TableCell>
+                            <TableCell>
+                                <div className="flex flex-col">
+                                    <span className="truncate max-w-[160px] font-semibold text-sm">{op.cliente.nombre}</span>
+                                    <span className="text-[10px] text-muted-foreground">{op.id}</span>
+                                </div>
+                            </TableCell>
+                            <TableCell className="tabular-nums text-muted-foreground text-sm">{op.fechaCreacion}</TableCell>
                             <TableCell className="text-center">
                                 <Badge variant="info-soft-outline" className="h-5 text-[10px] font-bold">{op.facturas.length}</Badge>
                             </TableCell>
@@ -751,19 +760,25 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                         </div>
                                     </TableCell>
                                     <TableCell>
+                                        <span className="text-[10px] text-muted-foreground">
+                                            {group.facturas[0]?.numero || "N/A"}
+                                        </span>
+                                    </TableCell>
+                                    <TableCell>
                                         <div className="flex items-center gap-2">
                                             <div className="h-6 w-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
                                                 <User className="h-3 w-3 text-primary" />
                                             </div>
                                             <div className="flex flex-col">
-                                                <span className={cn("truncate max-w-[140px] text-sm font-medium", pagMatch && "bg-yellow-200/60 dark:bg-yellow-400/20 px-0.5 rounded")}>
+                                                <span className={cn("truncate max-w-[140px] text-sm font-medium leading-none", pagMatch && "bg-yellow-200/60 dark:bg-yellow-400/20 px-0.5 rounded")}>
                                                     {group.pagador.nombre}
                                                 </span>
-                                                <span className="text-[10px] text-muted-foreground uppercase">{group.pagador.nit}</span>
+                                                <span className="text-[10px] text-muted-foreground">{group.facturas[0]?.numero || "N/A"}</span>
                                             </div>
                                         </div>
                                     </TableCell>
-                                    <TableCell /><TableCell /><TableCell />
+                                    <TableCell />
+                                    <TableCell />
                                     <TableCell className="text-center">
                                         <Badge variant="info-soft-outline" className="text-[10px] px-1.5 py-0 h-4 min-w-[20px] justify-center">
                                             {group.facturas.length}
@@ -771,7 +786,8 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                     </TableCell>
                                     <TableCell className="tabular-nums text-xs font-semibold">{formatCurrency(group.valorTotal)}</TableCell>
                                     <TableCell className="tabular-nums text-xs font-semibold text-primary/80">{formatCurrency(group.valorDesembolsoTotal)}</TableCell>
-                                    <TableCell /><TableCell />
+                                    <TableCell />
+                                    <TableCell />
                                 </TableRow>
                             );
 
@@ -800,9 +816,15 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                                                     />
                                                 </div>
                                             </TableCell>
-                                            <TableCell><span className="text-sm text-muted-foreground">{factura.numero}</span></TableCell>
+                                            <TableCell>
+                                                <span className="text-[10px] text-muted-foreground">
+                                                    {factura.numero}
+                                                </span>
+                                            </TableCell>
+                                            <TableCell />
+                                            <TableCell />
                                             <TableCell className="tabular-nums text-muted-foreground text-sm">{factura.fechaVencimiento}</TableCell>
-                                            <TableCell /><TableCell /><TableCell />
+                                            <TableCell />
                                             <TableCell className="tabular-nums text-sm">{formatCurrency(factura.valor)}</TableCell>
                                             <TableCell className="tabular-nums text-sm">{formatCurrency(factura.valorDesembolso)}</TableCell>
                                             <TableCell className="text-center">

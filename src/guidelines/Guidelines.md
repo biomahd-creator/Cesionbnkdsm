@@ -69,11 +69,10 @@ Este proyecto está habilitado **exclusivamente** para las siguientes plataforma
 
 | Plataforma | Uso | Workflow |
 |---|---|---|
-| **GitHub** | Repositorio, CI/CD (GitHub Actions), GitHub Pages | `validate.yml`, `storybook.yml` |
-| **Storybook** | Documentación de componentes, testing visual, deploy a GitHub Pages | `storybook.yml` |
+| **GitHub** | Repositorio, CI/CD (GitHub Actions), GitHub Pages | `validate.yml` |
 | **npm** | Publicación del paquete `@biomahd-creator/financio-design-system` | `publish.yml` |
 
-**No se permite** integración con: Chromatic, Vercel, Netlify, Firebase, AWS, Docker, Heroku, CircleCI, Travis, Jenkins, Sentry, Datadog, ni ningún otro servicio externo.
+**No se permite** integración con: Storybook (actualmente desactivado), Chromatic, Vercel, Netlify, Firebase, AWS, Docker, Heroku, CircleCI, Travis, Jenkins, Sentry, Datadog, ni ningún otro servicio externo.
 
 ---
 
