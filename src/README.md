@@ -1,6 +1,37 @@
 # Financio Design System
 
-La librería oficial de componentes UI para el ecosistema Financio / Biomahd Creator. Construida con React, TypeScript, Tailwind CSS y Radix UI.
+La librería oficial de componentes UI para el ecosistema Financio / Biomahd Creator. Construida con React, TypeScript, Tailwind CSS v4 y Radix UI.
+
+## 📚 Documentación
+
+### 🚀 Inicio rápido
+- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)**: Referencia rápida de comandos y tokens
+- **[SETUP_COMPLETE.md](./SETUP_COMPLETE.md)**: Resumen de configuración completada
+
+### 📖 Guías completas
+- **[LOCAL_DEV.md](./LOCAL_DEV.md)**: Guía completa para desarrollo local con Tailwind v4
+- **[SETUP_CHECKLIST.md](./SETUP_CHECKLIST.md)**: Checklist de verificación de configuración
+
+### 🎨 Sistema de diseño
+- **[Guidelines.md](./guidelines/Guidelines.md)**: Índice del sistema de diseño y arquitectura
+- **[TOKENS.md](./guidelines/TOKENS.md)**: Tokens de diseño visual
+- **[COMPONENTS.md](./guidelines/COMPONENTS.md)**: Catálogo de componentes
+
+### 🔧 Troubleshooting
+- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)**: Solución de problemas comunes
+
+## ⚡ Inicio rápido
+
+```bash
+# 1. Instalar dependencias
+npm install
+
+# 2. Verificar configuración (opcional)
+npm run check:setup
+
+# 3. Iniciar desarrollo
+npm run dev
+```
 
 ## Instalación
 

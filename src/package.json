@@ -25,6 +25,7 @@
     "build:lib": "tsc && vite build --config vite.config.lib.ts",
     "typecheck": "tsc --noEmit",
     "check:circular": "madge --circular --extensions ts,tsx --no-spinner components/",
+    "check:setup": "node scripts/verify-setup.js",
     "validate": "npm run typecheck && npm run build:lib && npm run check:circular",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
