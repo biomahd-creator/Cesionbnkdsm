@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+/* ============================================================
+   @source: Tell Tailwind v4 to scan from the project root.
+   Without this, automatic content detection starts from /styles/
+   and may miss .tsx files in /, /components/, /pages/, etc.
+   This is critical for local development with Vite.
+   ============================================================ */
+@source "../";
+
 @import url('https://fonts.cdnfonts.com/css/satoshi');
 
 @custom-variant dark (&:is(.dark *));

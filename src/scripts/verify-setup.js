@@ -83,6 +83,11 @@ checkFileContent(
 );
 checkFileContent(
   './styles/globals.css',
+  /@source\s+["']\.\.\/["']/,
+  'globals.css tiene @source "../" para escanear desde la raiz del proyecto'
+);
+checkFileContent(
+  './styles/globals.css',
   /@theme\s*\{/,
   'globals.css usa @theme'
 );

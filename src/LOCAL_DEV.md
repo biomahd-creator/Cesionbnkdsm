@@ -7,8 +7,19 @@ Este proyecto usa **Tailwind CSS v4** con la nueva sintaxis `@theme` en CSS.
 ### Archivos de configuración
 
 - **`/postcss.config.js`**: Configuración de PostCSS que usa el plugin `@tailwindcss/postcss` (versión 4.0)
-- **`/tailwind.config.js`**: Especifica los archivos a escanear para clases de Tailwind
-- **`/styles/globals.css`**: Contiene todos los tokens del sistema de diseño usando `@theme` y `@theme inline`
+- **`/tailwind.config.js`**: Archivo legacy/referencia. **NO es usado por Tailwind v4**. Solo se conserva para compatibilidad de tooling.
+- **`/styles/globals.css`**: Contiene todos los tokens del sistema de diseño usando `@theme` y `@theme inline`, ademas de la directiva `@source "../"` que indica a Tailwind v4 donde buscar archivos de contenido.
+
+### Directiva @source (CRITICA para desarrollo local)
+
+El archivo `/styles/globals.css` incluye la directiva:
+
+```css
+@import "tailwindcss";
+@source "../";
+```
+
+Esta directiva `@source "../"` es **esencial** para que Tailwind v4 funcione correctamente en desarrollo local. Sin ella, Tailwind solo escanea archivos dentro de `/styles/` y no genera las clases de utilidad usadas en los componentes `.tsx` del proyecto.
 
 ### Tokens del sistema de diseño
 
@@ -67,7 +78,7 @@ npm run validate
 
 ### Notas importantes
 
-1. **No modificar tokens directamente en tailwind.config.js**: Los tokens están en `/styles/globals.css` usando `@theme`.
+1. **No modificar tokens directamente en tailwind.config.js**: Los tokens están en `/styles/globals.css` usando `@theme`. El archivo `tailwind.config.js` es inerte (legacy) y no es referenciado por Tailwind v4.
 
 2. **Modo oscuro**: Se activa añadiendo la clase `.dark` al elemento `<html>` o `<body>` (gestionado por `ThemeProvider`).
 

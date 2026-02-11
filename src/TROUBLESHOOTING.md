@@ -119,7 +119,11 @@ El servidor debería arrancar en `http://localhost:5173`
 **Solución**: Verificar que `/index.html` y `/main.tsx` existen
 
 ### "Tailwind styles not loading"
-**Solución**: Verificar que `styles/globals.css` está importado en algún componente y que postcss.config.js existe
+**Solución**: 
+1. Verificar que `styles/globals.css` contiene `@source "../";` justo despues de `@import "tailwindcss";`. Esta directiva le dice a Tailwind v4 que escanee desde la raiz del proyecto. Sin ella, Tailwind solo busca archivos en `/styles/` y no encuentra los `.tsx` del proyecto.
+2. Verificar que `styles/globals.css` esta importado en `main.tsx`
+3. Verificar que `postcss.config.js` existe en la raiz con `@tailwindcss/postcss`
+4. Limpiar cache: `rm -rf node_modules/.vite && npm run dev`
 
 ### Puerto ocupado (EADDRINUSE)
 **Solución**: Vite asignará automáticamente el siguiente puerto disponible. Revisar la consola para ver el puerto asignado.
