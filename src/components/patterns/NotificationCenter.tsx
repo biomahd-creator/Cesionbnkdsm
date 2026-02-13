@@ -22,7 +22,7 @@ import {
 const notifications = [
   {
     id: 1,
-    type: "success",
+    type: "success" as const,
     category: "approval",
     title: "Invoice Approved",
     message: "Invoice INV-001 has been approved by Maria Garcia",
@@ -31,7 +31,7 @@ const notifications = [
   },
   {
     id: 2,
-    type: "warning",
+    type: "warning" as const,
     category: "pending",
     title: "Review Pending",
     message: "3 invoices require your urgent review",
@@ -40,7 +40,7 @@ const notifications = [
   },
   {
     id: 3,
-    type: "error",
+    type: "error" as const,
     category: "rejection",
     title: "Invoice Rejected",
     message: "Invoice INV-045 was rejected due to incomplete documentation",
@@ -49,7 +49,7 @@ const notifications = [
   },
   {
     id: 4,
-    type: "info",
+    type: "info" as const,
     category: "system",
     title: "System Update",
     message: "New version available with performance improvements",
@@ -58,7 +58,7 @@ const notifications = [
   },
   {
     id: 5,
-    type: "success",
+    type: "success" as const,
     category: "payment",
     title: "Payment Received",
     message: "Payment of $2,500,000 confirmed for INV-023",
@@ -67,7 +67,7 @@ const notifications = [
   },
   {
     id: 6,
-    type: "warning",
+    type: "warning" as const,
     category: "deadline",
     title: "Upcoming Deadline",
     message: "5 invoices expire in the next 24 hours",

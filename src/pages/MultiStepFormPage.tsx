@@ -1446,7 +1446,7 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               <Checkbox 
                 id="infoVeraz" 
                 checked={formData.infoVeraz || false}
-                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, infoVeraz: checked }))}
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, infoVeraz: checked === true }))}
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="infoVeraz" className="font-medium cursor-pointer">
@@ -1462,7 +1462,7 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               <Checkbox 
                 id="actualizar" 
                 checked={formData.actualizarInfo || false}
-                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, actualizarInfo: checked }))}
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, actualizarInfo: checked === true }))}
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="actualizar" className="font-medium cursor-pointer">
@@ -1478,7 +1478,7 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               <Checkbox 
                 id="privacidad" 
                 checked={formData.aceptaPolitica || false}
-                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, aceptaPolitica: checked }))}
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, aceptaPolitica: checked === true }))}
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="privacidad" className="font-medium cursor-pointer">
@@ -1494,7 +1494,7 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               <Checkbox 
                 id="riesgo" 
                 checked={formData.autorizaConsulta || false}
-                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, autorizaConsulta: checked }))}
+                onCheckedChange={(checked) => setFormData(prev => ({ ...prev, autorizaConsulta: checked === true }))}
               />
               <div className="grid gap-1.5 leading-none">
                 <div className="flex items-center gap-2">

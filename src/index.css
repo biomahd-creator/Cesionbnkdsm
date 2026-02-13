@@ -586,13 +586,13 @@
 
   body {
     background-color: var(--color-background);
-    --tw-font-weight: 400;
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
     color: var(--color-foreground);
     letter-spacing: var(--letter-spacing-base);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: Satoshi, sans-serif;
-    font-weight: 400;
   }
 
   p, span, label, a, button, input, textarea, select, h1, h2, h3, h4, h5, h6, div, td, th, li {
@@ -602,40 +602,40 @@
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h1 {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h2 {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h3 {
     font-size: var(--text-lg);
     line-height: var(--tw-leading, var(--text-lg--line-height));
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) h4, :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) label, :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) button {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
     line-height: 1.5;
   }
 
   :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) input {
     font-size: var(--text-base);
     line-height: var(--tw-leading, var(--text-base--line-height));
-    --tw-font-weight: 400;
-    font-weight: 400;
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
     line-height: 1.5;
   }
 
@@ -2201,7 +2201,15 @@
     flex: 1;
   }
 
-  .flex-shrink-0, .shrink-0 {
+  .flex-shrink-0 {
+    flex-shrink: 0;
+  }
+
+  .shrink {
+    flex-shrink: 1;
+  }
+
+  .shrink-0 {
     flex-shrink: 0;
   }
 
@@ -4972,28 +4980,28 @@
   }
 
   .font-bold {
-    --tw-font-weight: 700;
-    font-weight: 700;
+    --tw-font-weight: var(--font-weight-bold);
+    font-weight: var(--font-weight-bold);
   }
 
   .font-light {
-    --tw-font-weight: 300;
-    font-weight: 300;
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
   }
 
   .font-medium {
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
 
   .font-normal {
-    --tw-font-weight: 400;
-    font-weight: 400;
+    --tw-font-weight: var(--font-weight-normal);
+    font-weight: var(--font-weight-normal);
   }
 
   .font-semibold {
-    --tw-font-weight: 600;
-    font-weight: 600;
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
   }
 
   .tracking-tight {
@@ -7537,8 +7545,8 @@
   }
 
   .data-\[active\=true\]\:font-medium[data-active="true"] {
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
 
   .data-\[active\=true\]\:text-accent-foreground[data-active="true"] {
@@ -9949,8 +9957,8 @@
   }
 
   .\[\&_\[cmdk-group-heading\]\]\:font-medium [cmdk-group-heading] {
-    --tw-font-weight: 500;
-    font-weight: 500;
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
   }
 
   .\[\&_\[cmdk-group-heading\]\]\:text-muted-foreground [cmdk-group-heading] {

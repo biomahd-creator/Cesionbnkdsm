@@ -22,21 +22,21 @@ const invoices = [
     client: "Empresa ABC S.A.",
     amount: 2500000,
     date: "2024-01-15",
-    status: "approved",
+    status: "approved" as const,
   },
   {
     id: "INV-002",
     client: "Comercial XYZ Ltda.",
     amount: 1800000,
     date: "2024-01-18",
-    status: "pending",
+    status: "pending" as const,
   },
   {
     id: "INV-003",
     client: "Industrias DEF S.A.",
     amount: 3200000,
     date: "2024-01-20",
-    status: "rejected",
+    status: "rejected" as const,
   },
 ];
 

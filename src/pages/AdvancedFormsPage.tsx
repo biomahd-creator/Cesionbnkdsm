@@ -5,6 +5,11 @@ import { ConditionalForm } from "../components/advanced/ConditionalForm";
 import { MultiColumnForm } from "../components/advanced/MultiColumnForm";
 import { User, Building2, CreditCard, CheckCircle } from "lucide-react";
 import { ComponentShowcase } from "../components/ui/component-showcase";
+import { Badge } from "../components/ui/badge";
+import { Button } from "../components/ui/button";
+import { Separator } from "../components/ui/separator";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../components/ui/card";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 
 /**
  * AdvancedFormsPage - Showcase of advanced form components

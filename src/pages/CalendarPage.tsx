@@ -2,10 +2,11 @@ import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Calendar } from "../components/ui/calendar";
 import { useState } from "react";
 import { addDays } from "date-fns";
+import type { DateRange } from "react-day-picker";
 
 export function CalendarPage() {
   const [date, setDate] = useState<Date | undefined>(new Date());
-  const [range, setRange] = useState<{ from: Date | undefined; to: Date | undefined } | undefined>({
+  const [range, setRange] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 7),
   });
@@ -86,9 +87,10 @@ export function CalendarDemo() {
           code: `import { Calendar } from "@/components/ui/calendar"
 import { addDays } from "date-fns"
 import { useState } from "react"
+import type { DateRange } from "react-day-picker"
 
 export function CalendarRangeDemo() {
-  const [range, setRange] = useState({
+  const [range, setRange] = useState<DateRange | undefined>({
     from: new Date(),
     to: addDays(new Date(), 7),
   })

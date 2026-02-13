@@ -170,7 +170,7 @@ jobs:
       - name: Verify package metadata files
         run: |
           echo "=== Required metadata files ==="
-          FILES=("LICENSE" "README.md" "CHANGELOG.md" "llms.txt" "src/styles/theme.css")
+          FILES=("LICENSE" "README.md" "CHANGELOG.md" "llms.txt" "styles/theme.css")
           for f in "${FILES[@]}"; do
             if [ -f "$f" ]; then
               echo "  OK: $f"

@@ -5,10 +5,10 @@ const collectionTimelineCode = `import { CollectionTimeline } from "@/components
 
 export function CollectionTimelineDemo() {
   const events = [
-    { id: "1", type: "email", title: "Reminder sent", date: "Today", status: "completed" },
-    { id: "2", type: "call", title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
-    { id: "3", type: "payment", title: "Partial payment received", date: "3 days ago", status: "completed" },
-    { id: "4", type: "system", title: "Invoice filed", date: "10 days ago" },
+    { id: "1", type: "email" as const, title: "Reminder sent", date: "Today", status: "completed" },
+    { id: "2", type: "call" as const, title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
+    { id: "3", type: "payment" as const, title: "Partial payment received", date: "3 days ago", status: "completed" },
+    { id: "4", type: "system" as const, title: "Invoice filed", date: "10 days ago" },
   ];
 
   return <CollectionTimeline events={events} />;
@@ -16,10 +16,10 @@ export function CollectionTimelineDemo() {
 
 export function CollectionTimelinePage() {
   const events = [
-    { id: "1", type: "email", title: "Reminder sent", date: "Today", status: "completed" },
-    { id: "2", type: "call", title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
-    { id: "3", type: "payment", title: "Partial payment received", date: "3 days ago", status: "completed" },
-    { id: "4", type: "system", title: "Invoice filed", date: "10 days ago" },
+    { id: "1", type: "email" as const, title: "Reminder sent", date: "Today", status: "completed" },
+    { id: "2", type: "call" as const, title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
+    { id: "3", type: "payment" as const, title: "Partial payment received", date: "3 days ago", status: "completed" },
+    { id: "4", type: "system" as const, title: "Invoice filed", date: "10 days ago" },
   ];
 
   return (

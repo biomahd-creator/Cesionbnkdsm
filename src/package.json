@@ -1,6 +1,6 @@
 {
   "name": "@biomahd-creator/financio-design-system",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "CESIONBNK Design System - React + Tailwind CSS v4 component library for Factoring platforms",
   "private": false,
   "type": "module",
@@ -10,8 +10,8 @@
   "types": "./dist-lib/index.d.ts",
   "files": [
     "dist-lib",
-    "src/styles/theme.css",
-    "src/styles/globals.css",
+    "styles/theme.css",
+    "styles/globals.css",
     "tailwind-preset.cjs",
     "llms.txt",
     "CHANGELOG.md",
@@ -67,8 +67,8 @@
       "import": "./dist-lib/lib/index.js",
       "types": "./dist-lib/lib/index.d.ts"
     },
-    "./theme.css": "./src/styles/theme.css",
-    "./styles.css": "./src/styles/globals.css",
+    "./theme.css": "./styles/theme.css",
+    "./styles.css": "./styles/globals.css",
     "./tailwind-preset": "./tailwind-preset.cjs"
   },
   "typesVersions": {
@@ -94,7 +94,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "check:circular": "madge --circular --extensions ts,tsx --no-spinner src/components/",
+    "check:circular": "madge --circular --extensions ts,tsx --no-spinner components/",
     "check:boundary": "node scripts/check-boundary.js",
     "check:exports": "node scripts/check-exports.js",
     "check:setup": "node scripts/verify-setup.cjs",
@@ -154,10 +154,12 @@
     "@radix-ui/react-tooltip": "^1.0.7",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
-    "cmdk": "^0.2.0",
+    "cmdk": "^1.0.0",
     "date-fns": "^3.3.1",
+    "embla-carousel-react": "^8.0.0",
+    "input-otp": "^1.4.0",
     "lucide-react": "^0.344.0",
-    "motion": "^10.18.0",
+    "motion": "^11.0.0",
     "prop-types": "^15.8.1",
     "react-day-picker": "^8.10.0",
     "react-hook-form": "7.55.0",
@@ -165,8 +167,7 @@
     "recharts": "^2.12.2",
     "sonner": "^2.0.3",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss-animate": "^1.0.7",
-    "vaul": "^0.9.0",
+    "vaul": "^1.0.0",
     "zod": "^3.22.4"
   },
   "devDependencies": {
@@ -178,7 +179,6 @@
     "@types/react": "^18.2.61",
     "@types/react-dom": "^18.2.19",
     "@vitejs/plugin-react": "^4.2.1",
-    "autoprefixer": "^10.4.18",
     "eslint": "^8.57.0",
     "jsdom": "^24.0.0",
     "madge": "^7.0.0",

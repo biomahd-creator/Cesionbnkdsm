@@ -206,7 +206,7 @@ jobs:
           REQUIRED_FILES=(
             "package/dist-lib/index.js"
             "package/dist-lib/index.d.ts"
-            "package/src/styles/theme.css"
+            "package/styles/theme.css"
             "package/llms.txt"
             "package/LICENSE"
             "package/README.md"

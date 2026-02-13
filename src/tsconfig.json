@@ -7,10 +7,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
 
-    /* Paths — @/* resolves to src/* */
+    /* Paths — @/* resolves to ./* (root-relative, unified across Figma Make and GitHub) */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./*"]
     },
 
     /* Emit */
@@ -38,9 +38,9 @@
     "allowJs": false
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.d.ts"
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.d.ts"
   ],
   "exclude": [
     "node_modules",

@@ -1,4 +1,7 @@
-// Barrel Export for all pages
+/**
+ * Barrel Export for all DSM Showcase pages
+ * Each page is re-exported here for PageRenderer consumption.
+ */
 
 export * from "./AccordionPage";
 export * from "./ActivityFeedPage";
@@ -55,7 +58,6 @@ export * from "./FactoringSelectionShowcasePage";
 export * from "./FileUploaderPage";
 export * from "./FormPage";
 export * from "./GridShowcasePage";
-export * from "./LayoutShowcasePage";
 export * from "./HelpSystemDemoPage";
 export * from "./HomePage";
 export * from "./HoverCardPage";
@@ -69,6 +71,7 @@ export * from "./InvoiceGeneratorPage";
 export * from "./InvoiceUploadPage";
 export * from "./KpiShowcasePage";
 export * from "./LabelPage";
+export * from "./LayoutShowcasePage";
 export * from "./LiquidityCalculatorPage";
 export * from "./LiquidityMeterPage";
 export * from "./LoadingStatesPage";

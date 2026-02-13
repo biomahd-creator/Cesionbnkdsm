@@ -22,7 +22,7 @@ interface MultiSelectProps {
   disabled?: boolean;
 }
 
-const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
+const MultiSelect = React.forwardRef<HTMLButtonElement, MultiSelectProps>(
   ({ options, selected, onChange, placeholder = "Select options...", className, disabled }, ref) => {
     const [open, setOpen] = React.useState(false);
 

@@ -83,6 +83,65 @@ Este proyecto está habilitado **exclusivamente** para las siguientes plataforma
 
 ---
 
+## DIRECTORY STRUCTURE — FLAT ROOT (NO `src/`)
+
+> **Decision (v0.2.3)**: The project uses a **flat root structure** — all source files live at the repository root, NOT inside a `src/` directory. This is the canonical structure for both Figma Make and GitHub.
+
+### Rationale
+
+Figma Make exports projects without a `src/` folder. Instead of maintaining dual configurations (root for Figma Make, `src/` for GitHub), the project standardizes on a single flat structure to eliminate sync conflicts.
+
+### Affected Configuration Files
+
+All configs point to the root (`./`) — **do not change these to `./src/`**:
+
+| File | Key Setting | Value |
+|---|---|---|
+| `index.html` | `<script src>` | `/main.tsx` |
+| `vite.config.ts` | `alias @` | `path.resolve(__dirname, "./")` |
+| `vite.config.lib.ts` | `alias @` + entry points | `path.resolve(__dirname, "./")` |
+| `tsconfig.json` | `paths @/*` | `["./*"]` |
+| `tsconfig.paths.json` | `paths @/*` | `["./*"]` |
+| `vitest.config.ts` | `alias @` | `path.resolve(__dirname, "./")` |
+| `postcss.config.cjs` | (implicit) | Resolves from root |
+
+### Rules
+
+1. **Never create a `src/` directory** in the repository.
+2. **Never modify alias/paths** to point to `./src/*`.
+3. When cloning from GitHub, `npm run dev` must work immediately without moving files.
+4. The `README.md` and `llms.txt` references to `src/styles.css` describe the **consumer's** project structure, not ours.
+5. GitHub Actions workflows (`validate.yml`, `publish.yml`) assume root structure — no path prefixes needed.
+
+### Root Layout
+
+```
+/                          ← Repository root = source root
+├── App.tsx                ← DSM Showcase entry
+├── main.tsx               ← Vite entry
+├── index.ts               ← Library barrel (npm entry)
+├── index.html             ← Vite HTML entry
+├── components/            ← All components (ui/, patterns/, advanced/, widgets/, providers/, factoring/)
+├── pages/                 ← DSM Showcase pages (app-only)
+├── hooks/                 ← Custom hooks (library)
+├── lib/                   ← Utilities (library)
+├── styles/                ← CSS (globals.css, theme.css, tour.css)
+├── tests/                 ← Vitest test files
+├── guidelines/            ← Project documentation
+├── imports/               ← Figma imported assets (SVGs)
+├── workflows/             ← GitHub Actions (also in .github/workflows/)
+├── scripts/               ← Build/check scripts
+├── dist-lib/              ← Library build output (gitignored)
+├── vite.config.ts         ← Dev server config
+├── vite.config.lib.ts     ← Library build config
+├── vitest.config.ts       ← Test config
+├── tsconfig.json          ← TypeScript config
+├── package.json           ← Package manifest
+└── postcss.config.cjs     ← PostCSS config
+```
+
+---
+
 ## ROADMAP STATUS
 
 | Fase | Descripcion | Estado |
@@ -341,4 +400,4 @@ Para crear una nueva funcionalidad:
 3. Usa las reglas de **PROMPT_GUIDE.md** para pedirle a la IA que ensamble la pantalla.
 
 ---
-*Last updated: February 13, 2026 — v0.2.2 (E12 completed)*
+*Last updated: February 13, 2026 — v0.2.3 (Flat root structure decision)*

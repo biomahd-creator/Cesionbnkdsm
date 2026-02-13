@@ -11,7 +11,7 @@ const timelineEvents = [
     role: "Financial Analyst",
     action: "Invoice created",
     timestamp: "Jan 15, 2024, 10:30 AM",
-    status: "completed",
+    status: "completed" as const,
     comment: "Invoice entered into the system for review",
   },
   {
@@ -20,7 +20,7 @@ const timelineEvents = [
     role: "Supervisor",
     action: "Documentation verified",
     timestamp: "Jan 15, 2024, 02:15 PM",
-    status: "completed",
+    status: "completed" as const,
     comment: "All documents are complete and valid",
   },
   {
@@ -29,7 +29,7 @@ const timelineEvents = [
     role: "Risk Analyst",
     action: "Credit analysis",
     timestamp: "Jan 16, 2024, 09:45 AM",
-    status: "completed",
+    status: "completed" as const,
     comment: "Credit score approved: 850/1000",
   },
   {
@@ -38,7 +38,7 @@ const timelineEvents = [
     role: "Commercial Manager",
     action: "Approval pending",
     timestamp: "Jan 16, 2024, 11:20 AM",
-    status: "pending",
+    status: "pending" as const,
     comment: "Final review before approval",
   },
   {
@@ -47,7 +47,7 @@ const timelineEvents = [
     role: "Automated",
     action: "Disbursement scheduled",
     timestamp: "Pending",
-    status: "waiting",
+    status: "waiting" as const,
     comment: "Will execute after final approval",
   },
 ];

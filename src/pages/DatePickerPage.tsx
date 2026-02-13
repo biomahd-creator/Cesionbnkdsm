@@ -7,10 +7,11 @@ import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "../lib/utils";
 import { format, addDays } from "date-fns";
 import { useState } from "react";
+import type { DateRange } from "react-day-picker";
 
 export function DatePickerPage() {
   const [date, setDate] = useState<Date>();
-  const [range, setRange] = useState<{ from: Date | undefined; to: Date | undefined }>({
+  const [range, setRange] = useState<DateRange>({
     from: new Date(2024, 0, 20),
     to: addDays(new Date(2024, 0, 20), 20),
   });

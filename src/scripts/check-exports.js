@@ -70,8 +70,8 @@ function checkExports() {
     'README.md',
     'CHANGELOG.md',
     'llms.txt',
-    'src/styles/theme.css',
-    'src/styles/globals.css',
+    'styles/theme.css',
+    'styles/globals.css',
   ];
 
   for (const file of REQUIRED_FILES) {

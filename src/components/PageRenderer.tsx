@@ -1,10 +1,13 @@
 import { PageId } from "./types/PageId";
-// PageRenderer: Maps all PageIds to their components
-// Each case requires:
-//    1. Import of the component (above)
-//    2. Case in the switch (below)
-//    3. Existing PageId in /components/types/PageId.ts
-// Do NOT remove imports/cases without verifying references
+
+/**
+ * PageRenderer - Maps all PageIds to their page components.
+ *
+ * Requirements for each page:
+ *   1. Import the component from ../pages barrel
+ *   2. Add a case in the switch below
+ *   3. Ensure PageId exists in /components/types/PageId.ts
+ */
 
 import {
   HomePage,
@@ -142,7 +145,7 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <HomePage />;
     case "dsm-dashboard":
       return <DSMDashboardPage />;
-      
+
     // COMPONENTS > Actions
     case "button":
     case "button-new":

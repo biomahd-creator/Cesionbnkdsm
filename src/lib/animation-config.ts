@@ -195,7 +195,7 @@ export const getVariants = <T extends Record<string, any>>(variants: T): T => {
       initial: variants.animate,
       animate: variants.animate,
       exit: variants.animate,
-    } as T;
+    } as unknown as T;
   }
   return variants;
 };

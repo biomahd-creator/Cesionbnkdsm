@@ -40,7 +40,7 @@ export function AnimationSystemContent() {
     delay: 0,
     minDuration: 1500,
   });
-  const { execute, isLoading: asyncLoading, data, error } = useAsyncOperation();
+  const { execute, isLoading: asyncLoading, data, error } = useAsyncOperation<{ message: string }>();
   const { startGlobalLoading, stopGlobalLoading, isGlobalLoading } = useGlobalLoading();
 
   const handleButtonLoading = () => {

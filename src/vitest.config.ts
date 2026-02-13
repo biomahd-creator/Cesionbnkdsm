@@ -16,25 +16,26 @@ import path from 'path';
  * @version 0.1.1
  */
 export default defineConfig({
+  // @ts-expect-error - vite version mismatch between vitest internal vite and project vite
   plugins: [react()],
   test: {
     // Use jsdom for DOM simulation
     environment: 'jsdom',
 
     // Global test setup (Testing Library matchers, etc.)
-    setupFiles: ['./src/tests/setup.ts'],
+    setupFiles: ['./tests/setup.ts'],
 
     // Test file patterns
     include: [
-      'src/tests/**/*.{test,spec}.{ts,tsx}',
-      'src/components/**/*.{test,spec}.{ts,tsx}',
+      'tests/**/*.{test,spec}.{ts,tsx}',
+      'components/**/*.{test,spec}.{ts,tsx}',
     ],
 
     // Exclude app-only code from tests (factoring has its own test suite)
     exclude: [
       'node_modules',
       'dist-lib',
-      'src/components/factoring/**',
+      'components/factoring/**',
     ],
 
     // Coverage configuration
@@ -42,18 +43,18 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json-summary', 'html'],
       include: [
-        'src/components/ui/**',
-        'src/components/patterns/**',
-        'src/components/advanced/**',
-        'src/components/widgets/**',
-        'src/components/providers/**',
-        'src/hooks/**',
-        'src/lib/**',
+        'components/ui/**',
+        'components/patterns/**',
+        'components/advanced/**',
+        'components/widgets/**',
+        'components/providers/**',
+        'hooks/**',
+        'lib/**',
       ],
       exclude: [
         '**/*.d.ts',
         '**/index.ts',
-        'src/components/factoring/**',
+        'components/factoring/**',
       ],
       thresholds: {
         // Raised from 10% in v0.1.0 → 20% in v0.1.1
@@ -66,12 +67,12 @@ export default defineConfig({
 
     // TypeScript path aliases
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './'),
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src'),
+      '@': path.resolve(__dirname, './'),
     },
   },
 });
