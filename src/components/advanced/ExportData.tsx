@@ -171,9 +171,7 @@ export function ExportData({
 
     // Create workbook and worksheet
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.json_to_sheet(excelData, {
-      header: selectedColumnObjs.map((col) => col.label),
-    });
+    const ws = XLSX.utils.json_to_sheet(excelData);
 
     // Set column widths
     ws["!cols"] = selectedColumnObjs.map(() => ({ wch: 20 }));
@@ -331,7 +329,7 @@ export function ExportData({
                 <Checkbox
                   id="headers"
                   checked={includeHeaders}
-                  onCheckedChange={(checked) =>
+                  onCheckedChange={(checked: boolean | "indeterminate") =>
                     setIncludeHeaders(checked as boolean)
                   }
                 />
@@ -440,7 +438,7 @@ export function quickExportCSV(
   filename: string = "export",
   columns?: ExportColumn[]
 ) {
-  const cols = columns || Object.keys(data[0] || {}).map((key) => ({ key, label: key }));
+  const cols: ExportColumn[] = columns || Object.keys(data[0] || {}).map((key) => ({ key, label: key }));
   
   let csv = cols.map((col) => `"${col.label}"`).join(",") + "\n";
   

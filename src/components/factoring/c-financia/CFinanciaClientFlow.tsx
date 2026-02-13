@@ -302,7 +302,7 @@ export function CFinanciaClientFlow({ onExit }: { onExit?: () => void }) {
                     <div className="grid grid-cols-2 gap-4">
                          <div className="space-y-1">
                             <label className="text-xs text-muted-foreground uppercase">Operación</label>
-                            <ToggleButtonGroup options={[{ value: "factoring", label: "Factoring" }, { value: "confirming", label: "Confirming" }]} value={operationType} onChange={setOperationType} variant="primary" />
+                            <ToggleButtonGroup options={[{ value: "factoring", label: "Factoring" }, { value: "confirming", label: "Confirming" }]} value={operationType} onChange={(v) => setOperationType(v as "factoring" | "confirming")} variant="primary" />
                         </div>
                          <div className="space-y-1">
                             <label className="text-xs text-muted-foreground uppercase">Tipo</label>
@@ -321,7 +321,7 @@ export function CFinanciaClientFlow({ onExit }: { onExit?: () => void }) {
                     </div>
                     <div className="space-y-1">
                         <label className="text-xs text-muted-foreground uppercase">Responsabilidad</label>
-                        <ToggleButtonGroup options={[{ value: "con", label: "Con" }, { value: "sin", label: "Sin" }]} value={responsibilityType} onChange={setResponsibilityType} variant="primary" />
+                        <ToggleButtonGroup options={[{ value: "con", label: "Con" }, { value: "sin", label: "Sin" }]} value={responsibilityType} onChange={(v) => setResponsibilityType(v as "con" | "sin")} variant="primary" />
                     </div>
                 </CardContent>
             </Card>

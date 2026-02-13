@@ -347,7 +347,7 @@ export function InvoiceGenerator({
                 <Label htmlFor="currency">Currency</Label>
                 <Select
                   value={invoice.currency}
-                  onValueChange={(value) => updateInvoice("currency", value)}
+                  onValueChange={(value: string) => updateInvoice("currency", value)}
                 >
                   <SelectTrigger id="currency">
                     <SelectValue />

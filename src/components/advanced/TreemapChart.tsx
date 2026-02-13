@@ -124,9 +124,7 @@ export function TreemapChart({
         dataKey="size"
         stroke="#fff"
         fill="#8884d8"
-        content={(props) => (
-          <CustomTreemapContent {...props} colors={colors} />
-        )}
+        content={<CustomTreemapContent colors={colors} />}
       >
         <Tooltip
           content={({ payload }) => {

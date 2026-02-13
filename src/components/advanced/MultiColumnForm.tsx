@@ -212,7 +212,7 @@ export function MultiColumnForm() {
                     <Label htmlFor="state">State</Label>
                     <Select
                       value={formData.state}
-                      onValueChange={(value) => updateField("state", value)}
+                      onValueChange={(value: string) => updateField("state", value)}
                     >
                       <SelectTrigger id="state">
                         <SelectValue placeholder="Select state" />
@@ -244,7 +244,7 @@ export function MultiColumnForm() {
                   <Label htmlFor="country">Country</Label>
                   <Select
                     value={formData.country}
-                    onValueChange={(value) => updateField("country", value)}
+                    onValueChange={(value: string) => updateField("country", value)}
                   >
                     <SelectTrigger id="country">
                       <SelectValue placeholder="Select country" />
@@ -298,7 +298,7 @@ export function MultiColumnForm() {
                   <Label htmlFor="industry">Industry</Label>
                   <Select
                     value={formData.industry}
-                    onValueChange={(value) => updateField("industry", value)}
+                    onValueChange={(value: string) => updateField("industry", value)}
                   >
                     <SelectTrigger id="industry">
                       <SelectValue placeholder="Select industry" />
@@ -317,7 +317,7 @@ export function MultiColumnForm() {
                   <Label htmlFor="companySize">Company Size</Label>
                   <Select
                     value={formData.companySize}
-                    onValueChange={(value) => updateField("companySize", value)}
+                    onValueChange={(value: string) => updateField("companySize", value)}
                   >
                     <SelectTrigger id="companySize">
                       <SelectValue placeholder="Select size" />

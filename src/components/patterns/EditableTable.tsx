@@ -386,7 +386,7 @@ export function EditableTable() {
                               <Calendar
                                 mode="single"
                                 selected={editValue as Date}
-                                onSelect={(date) => {
+                                onSelect={(date: Date | undefined) => {
                                   if (date) setEditValue(date);
                                 }}
                                 initialFocus
@@ -428,7 +428,7 @@ export function EditableTable() {
                         <div className="flex items-center gap-2">
                           <Select
                             value={editValue as string}
-                            onValueChange={(value) => setEditValue(value)}
+                            onValueChange={(value: string) => setEditValue(value)}
                           >
                             <SelectTrigger className="h-8 w-36">
                               <SelectValue />
@@ -476,7 +476,7 @@ export function EditableTable() {
                       <div className="flex items-center justify-center">
                         <Checkbox
                           checked={invoice.priority}
-                          onCheckedChange={(checked) => {
+                          onCheckedChange={(checked: boolean | "indeterminate") => {
                             setInvoices((prev) =>
                               prev.map((inv) =>
                                 inv.id === invoice.id

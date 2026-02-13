@@ -87,7 +87,7 @@ function FieldTypeItem({ type, label, icon: Icon }: FieldTypeItemProps) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "FIELD_TYPE",
     item: { fieldType: type, label },
-    collect: (monitor) => ({
+    collect: (monitor: any) => ({
       isDragging: monitor.isDragging(),
     }),
   }));
@@ -118,7 +118,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "FORM_FIELD",
     item: { index },
-    collect: (monitor) => ({
+    collect: (monitor: any) => ({
       isDragging: monitor.isDragging(),
     }),
   }));
@@ -174,7 +174,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
                 variant={field.columns === width.value ? "default" : "outline"}
                 size="sm"
                 className="h-7 px-2 text-xs"
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   updateField(field.id, { columns: width.value });
                 }}
@@ -236,7 +236,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
                     const newOptions = field.options?.filter((_, i) => i !== optIndex);
                     updateField(field.id, { options: newOptions });
@@ -250,7 +250,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
             <Button
               variant="outline"
               size="sm"
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 const newOptions = [...(field.options || []), `Option ${(field.options?.length || 0) + 1}`];
                 updateField(field.id, { options: newOptions });
@@ -280,7 +280,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
                 <Button
                   variant="ghost"
                   size="sm"
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
                     const newOptions = field.options?.filter((_, i) => i !== optIndex);
                     updateField(field.id, { options: newOptions });
@@ -294,7 +294,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
             <Button
               variant="outline"
               size="sm"
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 const newOptions = [...(field.options || []), `Option ${(field.options?.length || 0) + 1}`];
                 updateField(field.id, { options: newOptions });
@@ -338,7 +338,7 @@ function FormFieldItem({ field, index, moveField, deleteField, updateField }: Fo
       <Button
         variant="ghost"
         size="sm"
-        onClick={(e) => {
+        onClick={(e: React.MouseEvent) => {
           e.stopPropagation();
           deleteField(field.id);
         }}
@@ -364,7 +364,7 @@ function FormCanvas({ onDrop, fields, moveField, deleteField, updateField }: For
     drop: (item: { fieldType: string; label: string }) => {
       onDrop(item.fieldType, item.label);
     },
-    collect: (monitor) => ({
+    collect: (monitor: any) => ({
       isOver: monitor.isOver(),
     }),
   }));

@@ -248,7 +248,7 @@ export function ContactForm({
               <Label htmlFor="subject">Subject *</Label>
               <Select
                 value={formData.subject}
-                onValueChange={(value) => handleChange("subject", value)}
+                onValueChange={(value: string) => handleChange("subject", value)}
               >
                 <SelectTrigger>
                   <SelectValue placeholder="Select a topic" />
@@ -289,7 +289,7 @@ export function ContactForm({
             <Checkbox
               id="terms"
               checked={formData.acceptTerms}
-              onCheckedChange={(checked) => handleChange("acceptTerms", checked as boolean)}
+              onCheckedChange={(checked: boolean | "indeterminate") => handleChange("acceptTerms", checked as boolean)}
               className={errors.acceptTerms ? "border-red-500" : ""}
             />
             <div className="space-y-1">

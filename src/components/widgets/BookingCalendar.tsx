@@ -118,11 +118,11 @@ export function BookingCalendar() {
               <Calendar
                 mode="single"
                 selected={date}
-                onSelect={(d) => {
+                onSelect={(d: Date | undefined) => {
                   setDate(d);
                   setSelectedTime("");
                 }}
-                disabled={(d) => d < new Date() || isWeekend(d)}
+                disabled={(d: Date) => d < new Date() || isWeekend(d)}
                 className="rounded-md border"
               />
             </div>

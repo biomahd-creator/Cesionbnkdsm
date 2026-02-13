@@ -16,9 +16,9 @@ export function CollectionTimelineDemo() {
 
 export function CollectionTimelinePage() {
   const events = [
-    { id: "1", type: "email" as const, title: "Reminder sent", date: "Today", status: "completed" },
-    { id: "2", type: "call" as const, title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
-    { id: "3", type: "payment" as const, title: "Partial payment received", date: "3 days ago", status: "completed" },
+    { id: "1", type: "email" as const, title: "Reminder sent", date: "Today", status: "completed" as const },
+    { id: "2", type: "call" as const, title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed" as const, user: "Ana" },
+    { id: "3", type: "payment" as const, title: "Partial payment received", date: "3 days ago", status: "completed" as const },
     { id: "4", type: "system" as const, title: "Invoice filed", date: "10 days ago" },
   ];
 

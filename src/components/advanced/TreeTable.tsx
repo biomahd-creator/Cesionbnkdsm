@@ -156,7 +156,7 @@ export function TreeTable({
                 variant="ghost"
                 size="sm"
                 className="h-6 w-6 p-0 hover:bg-primary/10"
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent) => {
                   e.stopPropagation();
                   toggleNode(node.id);
                 }}
@@ -174,7 +174,7 @@ export function TreeTable({
               <Checkbox
                 checked={isSelected}
                 onCheckedChange={() => toggleSelection(node.id)}
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               />
             )}
             <Icon className="h-4 w-4 text-muted-foreground shrink-0" />
@@ -226,7 +226,7 @@ export function TreeTable({
                 variant="ghost"
                 size="sm"
                 className="h-8 w-8 p-0"
-                onClick={(e) => e.stopPropagation()}
+                onClick={(e: React.MouseEvent) => e.stopPropagation()}
               >
                 <MoreVertical className="h-4 w-4" />
                 <span className="sr-only">Open menu</span>
@@ -283,7 +283,7 @@ export function TreeTable({
                   variant="outline"
                   size="sm"
                   className="h-8"
-                  onClick={(e) => {
+                  onClick={(e: React.MouseEvent) => {
                     e.stopPropagation();
                     loadMoreChildren(node.id, currentVisible);
                   }}
@@ -311,7 +311,7 @@ export function TreeTable({
                     variant="ghost"
                     size="sm"
                     className="h-8 text-xs"
-                    onClick={(e) => {
+                    onClick={(e: React.MouseEvent) => {
                       e.stopPropagation();
                       showAllChildren(node.id, totalChildren);
                     }}

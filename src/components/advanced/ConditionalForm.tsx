@@ -92,7 +92,7 @@ export function ConditionalForm() {
               </Label>
               <RadioGroup
                 value={formData.userType}
-                onValueChange={(value) => updateField("userType", value)}
+                onValueChange={(value: string) => updateField("userType", value)}
               >
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="individual" id="individual" />
@@ -124,7 +124,7 @@ export function ConditionalForm() {
                   </Label>
                   <Select
                     value={formData.businessType}
-                    onValueChange={(value) => updateField("businessType", value)}
+                    onValueChange={(value: string) => updateField("businessType", value)}
                   >
                     <SelectTrigger id="businessType">
                       <SelectValue placeholder="Select business type" />
@@ -156,7 +156,7 @@ export function ConditionalForm() {
                   <Label htmlFor="industry">Industry</Label>
                   <Select
                     value={formData.industry}
-                    onValueChange={(value) => updateField("industry", value)}
+                    onValueChange={(value: string) => updateField("industry", value)}
                   >
                     <SelectTrigger id="industry">
                       <SelectValue placeholder="Select industry" />
@@ -181,7 +181,7 @@ export function ConditionalForm() {
                       <Label htmlFor="fundingStage">Funding Stage</Label>
                       <Select
                         value={formData.fundingStage}
-                        onValueChange={(value) => updateField("fundingStage", value)}
+                        onValueChange={(value: string) => updateField("fundingStage", value)}
                       >
                         <SelectTrigger id="fundingStage">
                           <SelectValue placeholder="Select funding stage" />
@@ -206,7 +206,7 @@ export function ConditionalForm() {
                       <Label htmlFor="employeeCount">Number of Employees</Label>
                       <Select
                         value={formData.employeeCount}
-                        onValueChange={(value) => updateField("employeeCount", value)}
+                        onValueChange={(value: string) => updateField("employeeCount", value)}
                       >
                         <SelectTrigger id="employeeCount">
                           <SelectValue placeholder="Select range" />
@@ -238,7 +238,7 @@ export function ConditionalForm() {
                   <Checkbox
                     id="hasWebsite"
                     checked={formData.hasWebsite}
-                    onCheckedChange={(checked) => updateField("hasWebsite", checked)}
+                    onCheckedChange={(checked: boolean | "indeterminate") => updateField("hasWebsite", checked)}
                   />
                   <Label htmlFor="hasWebsite" className="font-normal cursor-pointer">
                     I have a company website
@@ -264,7 +264,7 @@ export function ConditionalForm() {
                   <Label htmlFor="monthlyRevenue">Estimated Monthly Revenue</Label>
                   <Select
                     value={formData.monthlyRevenue}
-                    onValueChange={(value) => updateField("monthlyRevenue", value)}
+                    onValueChange={(value: string) => updateField("monthlyRevenue", value)}
                   >
                     <SelectTrigger id="monthlyRevenue">
                       <SelectValue placeholder="Select range" />

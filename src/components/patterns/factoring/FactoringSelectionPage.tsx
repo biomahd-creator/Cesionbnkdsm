@@ -1087,8 +1087,8 @@ export function FactoringSelectionPage({ onOperationSummaryChange }: FactoringSe
                 icon: <FileCheck2 />,
               },
             ]}
-            activeId={activeKpiFilter}
-            onCardClick={(id) => setActiveKpiFilter(activeKpiFilter === id ? null : id)}
+            activeId={activeKpiFilter ?? undefined}
+            onCardClick={(id) => setActiveKpiFilter(activeKpiFilter === id ? null : id as typeof activeKpiFilter)}
           />
 
           {activeKpiFilter && (
@@ -1742,7 +1742,7 @@ export function FactoringSelectionPage({ onOperationSummaryChange }: FactoringSe
       <UploadInvoicesDialog open={showUploadDialog} onOpenChange={setShowUploadDialog} />
 
       {/* Notification Dialog */}
-      <Dialog open={showNotificationDialog} onOpenChange={(open) => {
+      <Dialog open={showNotificationDialog} onOpenChange={(open: boolean) => {
         setShowNotificationDialog(open);
         if (!open) setShowConfirmation(false); // Reset confirmation state when dialog closes
       }}>

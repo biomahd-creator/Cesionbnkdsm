@@ -157,7 +157,7 @@ export function MasterDataGrid({
                 <Select 
                   key={index} 
                   value={filter.value} 
-                  onValueChange={(val) => onFilterChange && onFilterChange(filter.label, val)}
+                  onValueChange={(val: string) => onFilterChange && onFilterChange(filter.label, val)}
                 >
                   <SelectTrigger className="h-9 w-[180px] border-dashed bg-background/50">
                     <Filter className="h-3.5 w-3.5 mr-2 text-muted-foreground" />
@@ -231,7 +231,7 @@ export function MasterDataGrid({
                           <Checkbox
                             id={column.id}
                             checked={column.visible}
-                            onCheckedChange={(checked) => 
+                            onCheckedChange={(checked: boolean | "indeterminate") => 
                               onColumnVisibilityChange(column.id, checked as boolean)
                             }
                           />
@@ -293,7 +293,7 @@ export function MasterDataGrid({
                         <span className="text-sm text-muted-foreground">Rows per page:</span>
                         <Select
                             value={`${itemsPerPage}`}
-                            onValueChange={(val) => onPageSizeChange(Number(val))}
+                            onValueChange={(val: string) => onPageSizeChange(Number(val))}
                         >
                             <SelectTrigger className="h-8 w-[70px]">
                                 <SelectValue placeholder={itemsPerPage} />

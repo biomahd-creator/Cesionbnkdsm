@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "include": [
+    "*.d.ts",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "hooks/**/*.ts",
+    "lib/**/*.ts",
+    "index.ts",
+    "versioned-imports.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist-lib",
+    "components/factoring/**",
+    "components/patterns/factoring/**",
+    "components/PageRenderer.tsx",
+    "components/SidebarNew.tsx",
+    "pages/**",
+    "tests/**",
+    "App.tsx",
+    "main.tsx",
+    "**/*.test.*",
+    "**/*.spec.*"
+  ]
+}

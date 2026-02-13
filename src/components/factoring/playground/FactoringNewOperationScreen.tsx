@@ -237,7 +237,7 @@ export function FactoringNewOperationScreen() {
               },
             ]}
             activeId={activeTab}
-            onCardClick={setActiveTab}
+            onCardClick={(id) => setActiveTab(id as typeof activeTab)}
           />
         </div>
 

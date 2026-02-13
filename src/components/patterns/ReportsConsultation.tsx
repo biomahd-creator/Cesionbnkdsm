@@ -223,7 +223,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
               <p className="text-sm text-muted-foreground">Show</p>
               <Select
                 value={itemsPerPage.toString()}
-                onValueChange={(value) => {
+                onValueChange={(value: string) => {
                   setItemsPerPage(Number(value));
                   setCurrentPage(1);
                 }}

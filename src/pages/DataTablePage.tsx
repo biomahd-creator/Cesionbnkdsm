@@ -1,4 +1,4 @@
-import { ColumnDef } from "@tanstack/react-table";
+import { ColumnDef, type Table, type Row, type Column } from "@tanstack/react-table";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -43,7 +43,7 @@ const data: Invoice[] = Array.from({ length: 50 }, (_, i) => ({
 const columns: ColumnDef<Invoice>[] = [
   {
     id: "select",
-    header: ({ table }) => (
+    header: ({ table }: { table: Table<Invoice> }) => (
       <Checkbox
         checked={
           table.getIsAllPageRowsSelected() ||
@@ -53,7 +53,7 @@ const columns: ColumnDef<Invoice>[] = [
         aria-label="Select all"
       />
     ),
-    cell: ({ row }) => (
+    cell: ({ row }: { row: Row<Invoice> }) => (
       <Checkbox
         checked={row.getIsSelected()}
         onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -66,7 +66,7 @@ const columns: ColumnDef<Invoice>[] = [
   {
     accessorKey: "status",
     header: "Status",
-    cell: ({ row }) => {
+    cell: ({ row }: { row: Row<Invoice> }) => {
       const status = row.getValue("status") as string;
       const config = {
         success: { color: "text-green-500 bg-green-500/10", icon: CheckCircle, label: "Paid" },
@@ -87,7 +87,7 @@ const columns: ColumnDef<Invoice>[] = [
   },
   {
     accessorKey: "client",
-    header: ({ column }) => (
+    header: ({ column }: { column: Column<Invoice> }) => (
       <Button
         variant="ghost"
         onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
@@ -96,17 +96,17 @@ const columns: ColumnDef<Invoice>[] = [
         <ArrowUpDown className="ml-2 h-4 w-4" />
       </Button>
     ),
-    cell: ({ row }) => <div className="font-medium ml-4">{row.getValue("client")}</div>,
+    cell: ({ row }: { row: Row<Invoice> }) => <div className="font-medium ml-4">{row.getValue("client")}</div>,
   },
   {
     accessorKey: "email",
     header: "Email",
-    cell: ({ row }) => <div className="lowercase text-muted-foreground">{row.getValue("email")}</div>,
+    cell: ({ row }: { row: Row<Invoice> }) => <div className="lowercase text-muted-foreground">{row.getValue("email")}</div>,
   },
   {
     accessorKey: "amount",
     header: () => <div className="text-right">Amount</div>,
-    cell: ({ row }) => {
+    cell: ({ row }: { row: Row<Invoice> }) => {
       const amount = parseFloat(row.getValue("amount"));
       const formatted = new Intl.NumberFormat("es-CL", {
         style: "currency",
@@ -119,7 +119,7 @@ const columns: ColumnDef<Invoice>[] = [
   {
     accessorKey: "riskScore",
     header: "Risk Score",
-    cell: ({ row }) => {
+    cell: ({ row }: { row: Row<Invoice> }) => {
       const score = row.getValue("riskScore") as number;
       const colorClass = score < 500 ? "text-red-500" : score < 700 ? "text-yellow-500" : "text-green-500";
 
@@ -143,7 +143,7 @@ const columns: ColumnDef<Invoice>[] = [
   },
   {
     id: "actions",
-    cell: ({ row }) => {
+    cell: ({ row }: { row: Row<Invoice> }) => {
       const payment = row.original;
 
       return (

@@ -272,7 +272,7 @@ export function OnboardingWizard() {
                   <Label htmlFor="tipoEmpresa">
                     Company Type *
                   </Label>
-                  <Select value={formData.tipoEmpresa} onValueChange={(value) => updateField("tipoEmpresa", value)}>
+                  <Select value={formData.tipoEmpresa} onValueChange={(value: string) => updateField("tipoEmpresa", value)}>
                     <SelectTrigger id="tipoEmpresa">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
@@ -290,7 +290,7 @@ export function OnboardingWizard() {
                   <Label htmlFor="sectorEconomico">
                     Economic Sector
                   </Label>
-                  <Select value={formData.sectorEconomico} onValueChange={(value) => updateField("sectorEconomico", value)}>
+                  <Select value={formData.sectorEconomico} onValueChange={(value: string) => updateField("sectorEconomico", value)}>
                     <SelectTrigger id="sectorEconomico">
                       <SelectValue placeholder="Select sector" />
                     </SelectTrigger>
@@ -382,7 +382,7 @@ export function OnboardingWizard() {
                 <Label htmlFor="ciudad">
                   City *
                 </Label>
-                <Select value={formData.ciudad} onValueChange={(value) => updateField("ciudad", value)}>
+                <Select value={formData.ciudad} onValueChange={(value: string) => updateField("ciudad", value)}>
                   <SelectTrigger id="ciudad">
                     <SelectValue placeholder="Select city" />
                   </SelectTrigger>
@@ -418,7 +418,7 @@ export function OnboardingWizard() {
                     <Landmark className="h-4 w-4 text-primary" />
                     Bank *
                   </Label>
-                  <Select value={formData.banco} onValueChange={(value) => updateField("banco", value)}>
+                  <Select value={formData.banco} onValueChange={(value: string) => updateField("banco", value)}>
                     <SelectTrigger id="banco">
                       <SelectValue placeholder="Select bank" />
                     </SelectTrigger>
@@ -441,7 +441,7 @@ export function OnboardingWizard() {
                   <Label htmlFor="tipoCuenta">
                     Account Type *
                   </Label>
-                  <Select value={formData.tipoCuenta} onValueChange={(value) => updateField("tipoCuenta", value)}>
+                  <Select value={formData.tipoCuenta} onValueChange={(value: string) => updateField("tipoCuenta", value)}>
                     <SelectTrigger id="tipoCuenta">
                       <SelectValue placeholder="Select type" />
                     </SelectTrigger>
@@ -658,7 +658,7 @@ export function OnboardingWizard() {
                   <Checkbox
                     id="aceptaContrato"
                     checked={formData.aceptaContrato}
-                    onCheckedChange={(checked) => updateField("aceptaContrato", checked)}
+                    onCheckedChange={(checked: boolean | "indeterminate") => updateField("aceptaContrato", checked)}
                   />
                   <div className="flex-1">
                     <Label htmlFor="aceptaContrato" className="cursor-pointer font-semibold">
@@ -677,7 +677,7 @@ export function OnboardingWizard() {
                   <Checkbox
                     id="aceptaDatos"
                     checked={formData.aceptaDatos}
-                    onCheckedChange={(checked) => updateField("aceptaDatos", checked)}
+                    onCheckedChange={(checked: boolean | "indeterminate") => updateField("aceptaDatos", checked)}
                   />
                   <div className="flex-1">
                     <Label htmlFor="aceptaDatos" className="cursor-pointer font-medium">

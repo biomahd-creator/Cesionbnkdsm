@@ -112,7 +112,7 @@ export function FactoringCalculator() {
               </Label>
               <Slider
                 value={[plazo]}
-                onValueChange={(value) => setPlazo(value[0])}
+                onValueChange={(value: number[]) => setPlazo(value[0])}
                 min={15}
                 max={90}
                 step={15}
@@ -141,7 +141,7 @@ export function FactoringCalculator() {
               </Label>
               <Slider
                 value={[tasaMensual]}
-                onValueChange={(value) => setTasaMensual(value[0])}
+                onValueChange={(value: number[]) => setTasaMensual(value[0])}
                 min={1.5}
                 max={5}
                 step={0.25}

@@ -16,7 +16,7 @@ export function PlaygroundIndex({ onBack }: PlaygroundIndexProps) {
   if (activeScreen === "new-operation") {
     return (
       <div className="min-h-screen w-full">
-        <FactoringNewOperationScreen onBack={() => setActiveScreen(null)} />
+        <FactoringNewOperationScreen />
       </div>
     );
   }

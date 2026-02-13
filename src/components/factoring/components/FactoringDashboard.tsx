@@ -89,7 +89,7 @@ export function FactoringDashboard() {
   // Obtener colores dinámicos
   const primaryColor = getBrandColors().primary;
   const mutedForegroundColor = getUIColors().mutedForeground;
-  const cardBg = getUIColors().card;
+  const cardBg = getThemeColor('--card');
   const borderColor = getUIColors().border;
 
   // Obtener datos con colores dinámicos
