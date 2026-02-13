@@ -212,11 +212,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/biomahd-creator/Cesionbnkdsm.git"
+    "url": "https://github.com/biomahd-creator/financio-design-system.git"
   },
-  "homepage": "https://github.com/biomahd-creator/Cesionbnkdsm#readme",
+  "homepage": "https://github.com/biomahd-creator/financio-design-system#readme",
   "bugs": {
-    "url": "https://github.com/biomahd-creator/Cesionbnkdsm/issues"
+    "url": "https://github.com/biomahd-creator/financio-design-system/issues"
   },
   "license": "MIT"
 }
