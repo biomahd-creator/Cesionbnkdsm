@@ -1,8 +1,18 @@
 name: Publish to NPM
 
+# TRIGGERS:
+# 1. GitHub Release created (manual via GitHub UI)
+# 2. Version tag pushed (automated via `npm run release`)
+#
+# The release scripts do: npm version patch → git push --follow-tags
+# This pushes a v* tag, which triggers this workflow automatically.
+# No need to manually create a GitHub Release.
 on:
   release:
     types: [created]
+  push:
+    tags:
+      - 'v*'
 
 # Ensure only one publish runs at a time
 concurrency:
@@ -16,9 +26,42 @@ permissions:
   id-token: write
 
 jobs:
+  # Prevent duplicate runs: if both release + tag fire, skip the tag-triggered run
+  check-duplicate:
+    name: Deduplicate Triggers
+    runs-on: ubuntu-latest
+    outputs:
+      should_run: ${{ steps.check.outputs.should_run }}
+    steps:
+      - name: Check if this is a duplicate run
+        id: check
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            # Tag push: check if a GitHub Release already exists for this tag
+            # If it does, the release event will handle it — skip this run
+            TAG="${GITHUB_REF#refs/tags/}"
+            echo "Tag push detected: $TAG"
+            echo "Checking if a GitHub Release exists for this tag..."
+            STATUS=$(curl -s -o /dev/null -w "%{http_code}" \
+              -H "Authorization: token ${{ secrets.GITHUB_TOKEN || '' }}" \
+              "https://api.github.com/repos/${{ github.repository }}/releases/tags/$TAG" 2>/dev/null || echo "000")
+            if [ "$STATUS" = "200" ]; then
+              echo "GitHub Release found for $TAG — skipping tag-push run (release event will handle it)"
+              echo "should_run=false" >> $GITHUB_OUTPUT
+            else
+              echo "No GitHub Release for $TAG — proceeding with tag-push publish"
+              echo "should_run=true" >> $GITHUB_OUTPUT
+            fi
+          else
+            echo "Release event — proceeding"
+            echo "should_run=true" >> $GITHUB_OUTPUT
+          fi
+
   validate:
     name: Pre-publish Validation
     runs-on: ubuntu-latest
+    needs: check-duplicate
+    if: needs.check-duplicate.outputs.should_run == 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -27,10 +70,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            echo "WARNING: No lockfile. Using npm install."
+            npm install
+          fi
 
       - name: TypeScript type check
         run: npm run typecheck
@@ -44,6 +92,8 @@ jobs:
   version-check:
     name: Version Consistency Check (G6)
     runs-on: ubuntu-latest
+    needs: check-duplicate
+    if: needs.check-duplicate.outputs.should_run == 'true'
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -51,14 +101,20 @@ jobs:
       - name: Validate version matches release tag
         run: |
           PKG_VERSION=$(node -p "require('./package.json').version")
-          TAG_VERSION="${GITHUB_REF#refs/tags/v}"
+          # Extract tag from either release event or tag push
+          if [ "${{ github.event_name }}" = "release" ]; then
+            TAG_VERSION="${{ github.event.release.tag_name }}"
+          else
+            TAG_VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          TAG_VERSION="${TAG_VERSION#v}"
           echo "package.json version: $PKG_VERSION"
           echo "Git tag version:      $TAG_VERSION"
           if [ "$PKG_VERSION" != "$TAG_VERSION" ]; then
             echo "ERROR: Version mismatch!"
             echo "package.json says $PKG_VERSION but tag says $TAG_VERSION"
             echo ""
-            echo "Fix: Update package.json version to match the release tag, or use:"
+            echo "Fix: Use the release scripts which keep everything in sync:"
             echo "  npm run release        # for patch (0.0.x)"
             echo "  npm run release:minor  # for minor (0.x.0)"
             echo "  npm run release:major  # for major (x.0.0)"
@@ -81,7 +137,13 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            echo "WARNING: No lockfile. Using npm install."
+            npm install
+          fi
 
       - name: Build Library (ESM with preserveModules)
         run: npm run build:lib

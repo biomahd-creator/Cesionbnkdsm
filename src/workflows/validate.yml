@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main, develop]
 
+# Reusable install command:
+# - Uses `npm ci` if package-lock.json exists (deterministic, fast)
+# - Falls back to `npm install` if no lockfile (first clone, new contributors)
+# After first run, commit the generated package-lock.json for reproducible builds.
+
 jobs:
   typecheck:
     name: TypeScript Type Check
@@ -18,17 +23,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
-
-      - name: Verify Node.js version meets engines requirement
-        run: |
-          REQUIRED="18.0.0"
-          CURRENT=$(node -v | sed 's/v//')
-          echo "Required: >= $REQUIRED"
-          echo "Current:  $CURRENT"
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            echo "Lockfile found — using npm ci (deterministic)"
+            npm ci
+          else
+            echo "WARNING: No package-lock.json found. Using npm install."
+            echo "Run 'npm install' locally and commit the lockfile for reproducible builds."
+            npm install
+          fi
 
       - name: Run TypeScript type check (tsc --noEmit)
         run: npm run typecheck
@@ -44,10 +49,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            echo "WARNING: No lockfile. Using npm install."
+            npm install
+          fi
 
       - name: Run tests with coverage
         run: npm run test:coverage
@@ -72,10 +82,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build library (ESM with preserveModules)
         run: npm run build:lib
@@ -135,10 +149,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build library for boundary check
         run: npm run build:lib
@@ -173,10 +191,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Check for circular dependencies (madge)
         run: npm run check:circular
@@ -193,10 +215,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install Dependencies
-        run: npm ci
+        run: |
+          if [ -f "package-lock.json" ]; then
+            npm ci
+          else
+            npm install
+          fi
 
       - name: Build library
         run: npm run build:lib
