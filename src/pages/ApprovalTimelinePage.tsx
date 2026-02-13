@@ -11,28 +11,28 @@ export function ApprovalTimelinePage() {
   return (
     <ComponentShowcase
       title="Approval Timeline"
-      description="Timeline visual de flujo de aprobación multi-etapa con estados (aprobado, pendiente, rechazado), iconos, badges y timestamps. Componente auto-contenido con datos de ejemplo."
+      description="Visual timeline of multi-stage approval flow with states (approved, pending, rejected), icons, badges, and timestamps. Self-contained component with example data."
       category="Business Pattern"
       preview={<ApprovalTimeline />}
       code={approvalTimelineCode}
       props={[
-        { name: "(self-contained)", type: "—", description: "Componente auto-contenido. Los pasos de aprobación están definidos internamente con estados: approved, pending, rejected." },
+        { name: "(self-contained)", type: "—", description: "Self-contained component. Approval steps are defined internally with states: approved, pending, rejected." },
       ]}
       examples={[
         {
-          title: "Uso en detalle de operación",
-          description: "Se integra dentro de una vista de detalle de operación de factoring.",
+          title: "Usage in operation detail",
+          description: "Integrates within a factoring operation detail view.",
           preview: (
             <div className="text-center py-6 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Muestra el progreso de aprobación dentro de un Card de detalle.</p>
+              <p className="text-sm text-muted-foreground">Shows approval progress inside a detail Card.</p>
             </div>
           ),
           code: `import { ApprovalTimeline } from "@/components/patterns/ApprovalTimeline";
 
 <Card>
   <CardHeader>
-    <CardTitle>Operación OP-2024-051</CardTitle>
-    <CardDescription>Factoring - Logística Norte</CardDescription>
+    <CardTitle>Operation OP-2024-051</CardTitle>
+    <CardDescription>Factoring - North Logistics</CardDescription>
   </CardHeader>
   <CardContent>
     <ApprovalTimeline />

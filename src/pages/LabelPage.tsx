@@ -59,25 +59,25 @@ export function LabelDemo() {
         {
           name: "htmlFor",
           type: "string",
-          description: "ID del control de formulario asociado",
+          description: "ID of the associated form control",
           required: true,
         },
         {
           name: "children",
           type: "ReactNode",
-          description: "Contenido del label",
+          description: "Label content",
           required: true,
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
         {
           name: "asChild",
           type: "boolean",
           default: "false",
-          description: "Renderiza como hijo del label",
+          description: "Renders as a child of the label",
         },
       ]}
       
@@ -85,7 +85,7 @@ export function LabelDemo() {
       examples={[
         {
           title: "With Input",
-          description: "Label básico asociado a un input",
+          description: "Basic label associated with an input",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="name">Full Name</Label>
@@ -106,7 +106,7 @@ export function LabelWithInput() {
         },
         {
           title: "Required Field Indicator",
-          description: "Label con asterisco para campos requeridos",
+          description: "Label with asterisk for required fields",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">
@@ -158,7 +158,7 @@ export function RequiredFields() {
         },
         {
           title: "With Helper Text",
-          description: "Label con texto de ayuda adicional",
+          description: "Label with additional helper text",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="bio">Biography</Label>
@@ -189,7 +189,7 @@ export function LabelWithHelper() {
         },
         {
           title: "With Checkbox",
-          description: "Label clickeable asociado a checkbox",
+          description: "Clickable label associated with a checkbox",
           preview: (
             <div className="w-full max-w-md space-y-3">
               <div className="flex items-center space-x-2">
@@ -231,7 +231,7 @@ export function LabelWithCheckbox() {
         },
         {
           title: "With Radio Group",
-          description: "Labels asociados a radio buttons",
+          description: "Labels associated with radio buttons",
           preview: (
             <div className="w-full max-w-md">
               <Label className="mb-3 block">Choose a plan</Label>
@@ -292,7 +292,7 @@ export function LabelWithRadio() {
         },
         {
           title: "With Switch",
-          description: "Labels para controles de switch",
+          description: "Labels for switch controls",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="flex items-center justify-between">
@@ -346,7 +346,7 @@ export function LabelWithSwitch() {
         },
         {
           title: "With Tooltip",
-          description: "Label con tooltip informativo",
+          description: "Label with informational tooltip",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <div className="flex items-center gap-2">
@@ -393,7 +393,7 @@ export function LabelWithTooltip() {
         },
         {
           title: "Disabled Label",
-          description: "Label para controles deshabilitados",
+          description: "Label for disabled controls",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">

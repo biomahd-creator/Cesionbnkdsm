@@ -48,17 +48,17 @@ interface TreeTableProps {
   data: TreeNode[];
   showCheckboxes?: boolean;
   onRowClick?: (node: TreeNode) => void;
-  itemsPerPage?: number; // Límite de items por nodo
-  enableLazyLoad?: boolean; // Habilitar carga perezosa
+  itemsPerPage?: number; // Items per node limit
+  enableLazyLoad?: boolean; // Enable lazy loading
   title?: string;
   description?: string;
 }
 
 const statusConfig = {
-  pending: { label: "Pendiente", variant: "secondary" as const },
-  approved: { label: "Aprobada", variant: "default" as const },
-  paid: { label: "Pagada", variant: "outline" as const },
-  rejected: { label: "Rechazada", variant: "destructive" as const },
+  pending: { label: "Pending", variant: "secondary" as const },
+  approved: { label: "Approved", variant: "default" as const },
+  paid: { label: "Paid", variant: "outline" as const },
+  rejected: { label: "Rejected", variant: "destructive" as const },
 };
 
 const typeIcons = {
@@ -87,7 +87,7 @@ export function TreeTable({
       newExpanded.delete(nodeId);
     } else {
       newExpanded.add(nodeId);
-      // Inicializar contador de hijos visibles
+      // Initialize visible children counter
       if (!visibleChildren[nodeId]) {
         setVisibleChildren(prev => ({
           ...prev,
@@ -109,7 +109,7 @@ export function TreeTable({
   };
 
   const loadMoreChildren = (nodeId: string, currentVisible: number) => {
-    // Simular carga asíncrona
+    // Simulate async loading
     setLoadingNodes(prev => new Set(prev).add(nodeId));
     
     setTimeout(() => {
@@ -189,16 +189,16 @@ export function TreeTable({
 
         <TableCell>
           <Badge variant="outline" className="capitalize">
-            {node.type === "client" && "Cliente"}
-            {node.type === "project" && "Proyecto"}
-            {node.type === "invoice" && "Factura"}
+            {node.type === "client" && "Client"}
+            {node.type === "project" && "Project"}
+            {node.type === "invoice" && "Invoice"}
           </Badge>
         </TableCell>
 
         <TableCell>
           {node.amount ? (
             <span className="font-medium">
-              ${node.amount.toLocaleString("es-ES")}
+              ${node.amount.toLocaleString("en-US")}
             </span>
           ) : (
             <span className="text-muted-foreground">—</span>
@@ -229,26 +229,26 @@ export function TreeTable({
                 onClick={(e) => e.stopPropagation()}
               >
                 <MoreVertical className="h-4 w-4" />
-                <span className="sr-only">Abrir menú</span>
+                <span className="sr-only">Open menu</span>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem>
                 <Eye className="mr-2 h-4 w-4" />
-                Ver Detalles
+                View Details
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Edit className="mr-2 h-4 w-4" />
-                Editar
+                Edit
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Download className="mr-2 h-4 w-4" />
-                Descargar
+                Download
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="text-destructive focus:text-destructive">
                 <Trash2 className="mr-2 h-4 w-4" />
-                Eliminar
+                Delete
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -292,18 +292,18 @@ export function TreeTable({
                   {isLoading ? (
                     <>
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                      Cargando...
+                      Loading...
                     </>
                   ) : (
                     <>
                       <ChevronsDown className="mr-2 h-4 w-4" />
-                      Cargar más ({itemsPerPage})
+                      Load more ({itemsPerPage})
                     </>
                   )}
                 </Button>
                 
                 <span className="text-xs text-muted-foreground">
-                  Mostrando {currentVisible} de {totalChildren} • {remainingCount} restantes
+                  Showing {currentVisible} of {totalChildren} • {remainingCount} remaining
                 </span>
 
                 {remainingCount > itemsPerPage && (
@@ -316,7 +316,7 @@ export function TreeTable({
                       showAllChildren(node.id, totalChildren);
                     }}
                   >
-                    Ver todas ({totalChildren})
+                    Show all ({totalChildren})
                   </Button>
                 )}
               </div>
@@ -351,12 +351,12 @@ export function TreeTable({
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead className="w-[40%]">Nombre</TableHead>
-                <TableHead className="w-[15%]">Tipo</TableHead>
-                <TableHead className="w-[15%]">Monto</TableHead>
-                <TableHead className="w-[15%]">Estado</TableHead>
-                <TableHead className="w-[10%]">Fecha</TableHead>
-                <TableHead className="w-[5%] text-right">Acciones</TableHead>
+                <TableHead className="w-[40%]">Name</TableHead>
+                <TableHead className="w-[15%]">Type</TableHead>
+                <TableHead className="w-[15%]">Amount</TableHead>
+                <TableHead className="w-[15%]">Status</TableHead>
+                <TableHead className="w-[10%]">Date</TableHead>
+                <TableHead className="w-[5%] text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -365,7 +365,7 @@ export function TreeTable({
               ) : (
                 <TableRow>
                   <TableCell colSpan={6} className="h-24 text-center">
-                    No hay datos disponibles
+                    No data available
                   </TableCell>
                 </TableRow>
               )}
@@ -376,7 +376,7 @@ export function TreeTable({
 
       {/* Mobile scroll indicator */}
       <div className="p-2 text-xs text-muted-foreground text-center md:hidden border-t bg-muted/20">
-        📱 Desliza horizontalmente para ver más columnas
+        📱 Swipe horizontally to see more columns
       </div>
     </MasterDataGrid>
   );

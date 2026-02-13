@@ -16,9 +16,10 @@ export function CodeBlock({
   showLineNumbers = true 
 }: CodeBlockProps) {
   const [copied, setCopied] = useState(false);
+  const safeCode = code ?? "";
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
+    await navigator.clipboard.writeText(safeCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -57,18 +58,18 @@ export function CodeBlock({
             {showLineNumbers ? (
               <div className="flex">
                 <div className="select-none text-slate-600 pr-4 text-right border-r border-slate-800 mr-4">
-                  {code.split('\n').map((_, i) => (
+                  {safeCode.split('\n').map((_, i) => (
                     <div key={i}>{i + 1}</div>
                   ))}
                 </div>
                 <div className="flex-1">
-                  {code.split('\n').map((line, i) => (
+                  {safeCode.split('\n').map((line, i) => (
                     <div key={i}>{line || '\u00A0'}</div>
                   ))}
                 </div>
               </div>
             ) : (
-              code
+              safeCode
             )}
           </code>
         </pre>

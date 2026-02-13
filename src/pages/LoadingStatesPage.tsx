@@ -30,23 +30,23 @@ export function LoadingStatesPage() {
   return (
     <ComponentShowcase
       title="Loading States"
-      description="Colección de indicadores de carga y skeletons."
+      description="Collection of loading indicators and skeletons."
       category="UI Pattern"
       preview={
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full">
           <div className="flex items-center gap-4 border p-4 rounded">
             <Spinner />
-            <span>Spinner Simple</span>
+            <span>Simple Spinner</span>
           </div>
           <div className="border p-4 rounded">
-            <Button onClick={() => setShowPageLoader(true)}>Probar Page Loader (3s)</Button>
+            <Button onClick={() => setShowPageLoader(true)}>Try Page Loader (3s)</Button>
             {showPageLoader && (() => {
               setTimeout(() => setShowPageLoader(false), 3000);
               return <PageLoader />;
             })()}
           </div>
           <div className="border p-4 rounded">
-            <Button disabled><ButtonLoader /> Procesando</Button>
+            <Button disabled><ButtonLoader /> Processing</Button>
           </div>
           <div className="border p-4 rounded">
             <DotLoader />
@@ -60,57 +60,57 @@ export function LoadingStatesPage() {
       }
       code={code}
       props={[
-        { name: "Spinner.className", type: "string", description: "Clases adicionales para el contenedor del spinner." },
-        { name: "PageLoader", type: "—", description: "Overlay de pantalla completa con spinner y texto 'Cargando'. Sin props." },
-        { name: "CardSkeleton", type: "—", description: "Skeleton con forma de card (título + contenido + footer). Sin props." },
-        { name: "TableSkeleton.rows", type: "number", default: "5", description: "Número de filas skeleton a mostrar en la tabla." },
-        { name: "ButtonLoader", type: "—", description: "Spinner inline para colocar dentro de un Button disabled. Sin props." },
-        { name: "DotLoader", type: "—", description: "Tres puntos animados con bounce. Sin props." },
+        { name: "Spinner.className", type: "string", description: "Additional classes for the spinner container." },
+        { name: "PageLoader", type: "—", description: "Full-screen overlay with spinner and 'Loading' text. No props." },
+        { name: "CardSkeleton", type: "—", description: "Card-shaped skeleton (title + content + footer). No props." },
+        { name: "TableSkeleton.rows", type: "number", default: "5", description: "Number of skeleton rows to display in the table." },
+        { name: "ButtonLoader", type: "—", description: "Inline spinner to place inside a disabled Button. No props." },
+        { name: "DotLoader", type: "—", description: "Three animated dots with bounce. No props." },
       ]}
       examples={[
         {
-          title: "Botón con estado de carga",
-          description: "ButtonLoader dentro de un Button disabled simula procesamiento.",
+          title: "Button with Loading State",
+          description: "ButtonLoader inside a disabled Button simulates processing.",
           preview: (
             <div className="flex gap-4 items-center">
-              <Button disabled><ButtonLoader /> Guardando...</Button>
-              <Button disabled variant="outline"><ButtonLoader /> Enviando</Button>
-              <Button disabled variant="secondary"><ButtonLoader /> Procesando</Button>
+              <Button disabled><ButtonLoader /> Saving...</Button>
+              <Button disabled variant="outline"><ButtonLoader /> Sending</Button>
+              <Button disabled variant="secondary"><ButtonLoader /> Processing</Button>
             </div>
           ),
           code: `<Button disabled>
-  <ButtonLoader /> Guardando...
+  <ButtonLoader /> Saving...
 </Button>
 
 <Button disabled variant="outline">
-  <ButtonLoader /> Enviando
+  <ButtonLoader /> Sending
 </Button>`,
         },
         {
-          title: "Skeleton de tabla",
-          description: "TableSkeleton con diferente número de filas.",
+          title: "Table Skeleton",
+          description: "TableSkeleton with different number of rows.",
           preview: (
             <div className="space-y-6 w-full">
               <TableSkeleton rows={3} />
             </div>
           ),
-          code: `{/* 3 filas */}
+          code: `{/* 3 rows */}
 <TableSkeleton rows={3} />
 
-{/* 8 filas para tablas largas */}
+{/* 8 rows for long tables */}
 <TableSkeleton rows={8} />`,
         },
         {
           title: "DotLoader inline",
-          description: "Indicador de carga con tres puntos animados.",
+          description: "Loading indicator with three animated dots.",
           preview: (
             <div className="flex items-center gap-2 border rounded-lg p-4">
-              <span className="text-sm text-muted-foreground">Cargando datos</span>
+              <span className="text-sm text-muted-foreground">Loading data</span>
               <DotLoader />
             </div>
           ),
           code: `<div className="flex items-center gap-2">
-  <span>Cargando datos</span>
+  <span>Loading data</span>
   <DotLoader />
 </div>`,
         },

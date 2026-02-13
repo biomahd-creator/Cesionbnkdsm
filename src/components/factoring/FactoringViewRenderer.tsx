@@ -7,19 +7,14 @@ import { Button } from "../ui/button";
 // Las vistas pesadas (CFinanciaFlow → OperationsList 1700+ líneas,
 // CFinanciaClientFlow 900+ líneas, PlaygroundIndex) se cargan
 // con React.lazy para que NO entren en el grafo de módulos inicial.
-// Esto evita que FGCmp2 procese archivos problemáticos al cargar
-// la app Factoring, restaurando point-and-click para la vista
-// por defecto (RadianAdminDashboard).
 // ═══════════════════════════════════════════════════════════════════
 
 // Vistas livianas — import estático (en /components/, instrumentables)
-import { ClientDashboard } from "./views/ClientDashboard";
-import { RadianAdminDashboard } from "./views/RadianAdminDashboard";
 import { MultiStepFormPage } from "../../pages/MultiStepFormPage";
 
 // Vistas pesadas — lazy import (NO entran en el grafo inicial)
 const PlaygroundIndexLazy = React.lazy(() =>
-  import("../../factoring/playground/PlaygroundIndex").then((m) => ({
+  import("./playground/PlaygroundIndex").then((m) => ({
     default: m.PlaygroundIndex,
   }))
 );
@@ -37,7 +32,13 @@ const CFinanciaClientFlowLazy = React.lazy(() =>
   }))
 );
 
-export type View = "welcome" | "radian-dashboard" | "client-dashboard" | "vinculacion" | "playground" | "c-financia" | "c-financia-cliente";
+const DashboardComercialLazy = React.lazy(() =>
+  import("./dashboard-comercial/DashboardComercial").then((m) => ({
+    default: m.DashboardComercial,
+  }))
+);
+
+export type View = "welcome" | "vinculacion" | "playground" | "c-financia" | "c-financia-cliente" | "dashboard-comercial";
 export type UserRole = "admin" | "client" | null;
 
 interface FactoringViewRendererProps {
@@ -67,20 +68,6 @@ export function FactoringViewRenderer({ currentView, userRole, setCurrentView, o
           <p className="mt-2 text-center max-w-md">
             Seleccione una opción del menú lateral para comenzar.
           </p>
-        </div>
-      );
-
-    case "radian-dashboard":
-      return (
-        <div className="w-full">
-          <RadianAdminDashboard />
-        </div>
-      );
-    
-    case "client-dashboard":
-      return (
-        <div className="w-full">
-          <ClientDashboard />
         </div>
       );
 
@@ -118,6 +105,15 @@ export function FactoringViewRenderer({ currentView, userRole, setCurrentView, o
         <div className="w-full">
           <Suspense fallback={<LazyFallback />}>
             <CFinanciaClientFlowLazy />
+          </Suspense>
+        </div>
+      );
+    
+    case "dashboard-comercial":
+      return (
+        <div className="w-full">
+          <Suspense fallback={<LazyFallback />}>
+            <DashboardComercialLazy />
           </Suspense>
         </div>
       );

@@ -100,7 +100,7 @@ export function StatusKPICard({
           )}
           {count !== undefined && (
             <div className="text-xs font-medium text-muted-foreground">
-              {count} {count === 1 ? "operación" : "operaciones"}
+              {count} {count === 1 ? "operation" : "operations"}
             </div>
           )}
         </div>

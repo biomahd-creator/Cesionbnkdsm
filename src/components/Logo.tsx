@@ -1,7 +1,7 @@
 import Capa1 from "../imports/Capa1";
 import Capa1Dark from "../imports/Capa1-31-175";
 import { cn } from "./ui/utils";
-import { useTheme } from "./ThemeProvider";
+import { useTheme } from "./providers/ThemeProvider";
 
 interface LogoProps {
   className?: string;

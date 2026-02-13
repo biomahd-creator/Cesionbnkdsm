@@ -9,16 +9,16 @@ export function CommentThreadDemo() {
       comments={[
         {
           id: "1",
-          author: { name: "Juan Pérez", initials: "JP" },
-          content: "¿Podemos revisar los términos de pago para este cliente?",
-          timestamp: "Hace 2 horas",
+          author: { name: "John Smith", initials: "JS" },
+          content: "Can we review the payment terms for this client?",
+          timestamp: "2 hours ago",
           likes: 5,
           replies: [
              {
                id: "2",
                author: { name: "Laura Torres", initials: "LT" },
-               content: "Claro, lo agendamos para la reunión de mañana.",
-               timestamp: "Hace 1 hora",
+               content: "Sure, let's schedule it for tomorrow's meeting.",
+               timestamp: "1 hour ago",
                likes: 2
              }
           ]
@@ -32,23 +32,23 @@ export function CommentThreadPage() {
   return (
     <ComponentShowcase
       title="Comment Thread"
-      description="Hilo de comentarios con respuestas anidadas, likes y formulario para agregar nuevos comentarios."
+      description="Comment thread with nested replies, likes, and form to add new comments."
       category="Business Pattern"
       preview={
         <CommentThread 
           comments={[
             {
               id: "1",
-              author: { name: "Juan Pérez", initials: "JP" },
-              content: "¿Podemos revisar los términos de pago para este cliente?",
-              timestamp: "Hace 2 horas",
+              author: { name: "John Smith", initials: "JS" },
+              content: "Can we review the payment terms for this client?",
+              timestamp: "2 hours ago",
               likes: 5,
               replies: [
                  {
                    id: "2",
                    author: { name: "Laura Torres", initials: "LT" },
-                   content: "Claro, lo agendamos para la reunión de mañana.",
-                   timestamp: "Hace 1 hora",
+                   content: "Sure, let's schedule it for tomorrow's meeting.",
+                   timestamp: "1 hour ago",
                    likes: 2
                  }
               ]
@@ -58,28 +58,28 @@ export function CommentThreadPage() {
       }
       code={commentCode}
       props={[
-        { name: "comments", type: "Comment[]", description: "Array de comentarios. Cada uno tiene: id, author (name, initials), content, timestamp, likes, replies (anidados).", required: true },
-        { name: "className", type: "string", description: "Clases adicionales para el contenedor raíz." },
-        { name: "onAddComment", type: "(content: string) => void", description: "Callback al agregar un nuevo comentario." },
-        { name: "onReply", type: "(commentId: string, content: string) => void", description: "Callback al responder a un comentario." },
-        { name: "onLike", type: "(commentId: string) => void", description: "Callback al dar like a un comentario." },
+        { name: "comments", type: "Comment[]", description: "Array of comments. Each has: id, author (name, initials), content, timestamp, likes, replies (nested).", required: true },
+        { name: "className", type: "string", description: "Additional classes for the root container." },
+        { name: "onAddComment", type: "(content: string) => void", description: "Callback when adding a new comment." },
+        { name: "onReply", type: "(commentId: string, content: string) => void", description: "Callback when replying to a comment." },
+        { name: "onLike", type: "(commentId: string) => void", description: "Callback when liking a comment." },
       ]}
       examples={[
         {
-          title: "Hilo con múltiples respuestas",
-          description: "Conversación con varias respuestas anidadas.",
+          title: "Thread with multiple replies",
+          description: "Conversation with several nested replies.",
           preview: (
             <CommentThread
               comments={[
                 {
                   id: "1",
-                  author: { name: "Director Financiero", initials: "DF" },
-                  content: "El cliente Logística Norte solicita ampliar el cupo de factoring a $500M. ¿Opiniones?",
-                  timestamp: "Hace 3 horas",
+                  author: { name: "CFO", initials: "CF" },
+                  content: "North Logistics client requests to increase factoring limit to $500M. Thoughts?",
+                  timestamp: "3 hours ago",
                   likes: 3,
                   replies: [
-                    { id: "2", author: { name: "Analista de Riesgo", initials: "AR" }, content: "El historial de pago es bueno. Score 85/100.", timestamp: "Hace 2 horas", likes: 1 },
-                    { id: "3", author: { name: "Gerente Comercial", initials: "GC" }, content: "De acuerdo, podemos escalar con condiciones.", timestamp: "Hace 1 hora", likes: 0 },
+                    { id: "2", author: { name: "Risk Analyst", initials: "RA" }, content: "Payment history is good. Score 85/100.", timestamp: "2 hours ago", likes: 1 },
+                    { id: "3", author: { name: "Commercial Manager", initials: "CM" }, content: "Agreed, we can scale with conditions.", timestamp: "1 hour ago", likes: 0 },
                   ],
                 },
               ]}
@@ -89,17 +89,17 @@ export function CommentThreadPage() {
   comments={[
     {
       id: "1",
-      author: { name: "Director Financiero", initials: "DF" },
-      content: "El cliente solicita ampliar el cupo. ¿Opiniones?",
-      timestamp: "Hace 3 horas",
+      author: { name: "CFO", initials: "CF" },
+      content: "Client requests to increase limit. Thoughts?",
+      timestamp: "3 hours ago",
       likes: 3,
       replies: [
-        { id: "2", author: { name: "Analista", initials: "AR" }, content: "Historial bueno. Score 85.", timestamp: "Hace 2 horas", likes: 1 },
-        { id: "3", author: { name: "Gerente", initials: "GC" }, content: "De acuerdo.", timestamp: "Hace 1 hora", likes: 0 },
+        { id: "2", author: { name: "Analyst", initials: "RA" }, content: "Good history. Score 85.", timestamp: "2 hours ago", likes: 1 },
+        { id: "3", author: { name: "Manager", initials: "CM" }, content: "Agreed.", timestamp: "1 hour ago", likes: 0 },
       ],
     },
   ]}
-  onAddComment={(content) => console.log("Nuevo:", content)}
+  onAddComment={(content) => console.log("New:", content)}
   onReply={(id, content) => console.log("Reply:", id, content)}
 />`,
         },

@@ -36,53 +36,53 @@ export function SliderDemo() {
         {
           name: "value",
           type: "number[]",
-          description: "Valor controlado del slider (array para múltiples thumbs)",
+          description: "Controlled slider value (array for multiple thumbs)",
         },
         {
           name: "defaultValue",
           type: "number[]",
           default: "[0]",
-          description: "Valor inicial no controlado",
+          description: "Uncontrolled initial value",
         },
         {
           name: "onValueChange",
           type: "(value: number[]) => void",
-          description: "Callback cuando cambia el valor",
+          description: "Callback when the value changes",
         },
         {
           name: "min",
           type: "number",
           default: "0",
-          description: "Valor mínimo del rango",
+          description: "Minimum range value",
         },
         {
           name: "max",
           type: "number",
           default: "100",
-          description: "Valor máximo del rango",
+          description: "Maximum range value",
         },
         {
           name: "step",
           type: "number",
           default: "1",
-          description: "Incremento entre valores",
+          description: "Increment between values",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el slider",
+          description: "Disables the slider",
         },
         {
           name: "orientation",
           type: '"horizontal" | "vertical"',
           default: '"horizontal"',
-          description: "Orientación del slider",
+          description: "Slider orientation",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
       ]}
       
@@ -90,7 +90,7 @@ export function SliderDemo() {
       examples={[
         {
           title: "Basic Slider",
-          description: "Slider simple con valor por defecto",
+          description: "Simple slider with a default value",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label>Basic Slider</Label>
@@ -111,7 +111,7 @@ export function BasicSlider() {
         },
         {
           title: "Volume Control",
-          description: "Slider con iconos y valor visible en tiempo real",
+          description: "Slider with icons and real-time visible value",
           preview: (
             <VolumeControlExample />
           ),
@@ -148,7 +148,7 @@ export function VolumeControl() {
         },
         {
           title: "Different Steps",
-          description: "Sliders con diferentes incrementos",
+          description: "Sliders with different step increments",
           preview: (
             <div className="w-full max-w-md space-y-6">
               <div className="space-y-2">
@@ -191,7 +191,7 @@ export function DifferentSteps() {
         },
         {
           title: "Price Range",
-          description: "Slider para seleccionar rango de precios",
+          description: "Slider to select a price range",
           preview: (
             <PriceRangeExample />
           ),
@@ -231,7 +231,7 @@ export function PriceRange() {
         },
         {
           title: "Brightness Control",
-          description: "Slider con mínimo y máximo personalizados",
+          description: "Slider with custom minimum and maximum values",
           preview: (
             <BrightnessControlExample />
           ),
@@ -267,7 +267,7 @@ export function BrightnessControl() {
         },
         {
           title: "Performance Gauge",
-          description: "Slider estilizado como indicador de rendimiento",
+          description: "Slider styled as a performance gauge",
           preview: (
             <PerformanceGaugeExample />
           ),
@@ -310,7 +310,7 @@ export function PerformanceGauge() {
         },
         {
           title: "Range Slider",
-          description: "Slider con múltiples thumbs para seleccionar rango",
+          description: "Slider with multiple thumbs for range selection",
           preview: (
             <RangeSliderExample />
           ),
@@ -346,7 +346,7 @@ export function RangeSlider() {
         },
         {
           title: "Disabled State",
-          description: "Slider en estado deshabilitado",
+          description: "Slider in disabled state",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">

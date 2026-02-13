@@ -27,11 +27,12 @@ import {
 import { useLoadingState, useAsyncOperation, useGlobalLoading } from "../hooks/useLoadingState";
 import { useScrollToTop } from "../hooks/usePageTransition";
 import { CodeBlock } from "../components/ui/code-block";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 /**
  * AnimationSystemContent
- * Contenido reutilizable del sistema de animaciones (sin header ni PageTransition wrapper).
- * Usado tanto por AnimationSystemPage como por la vista consolidada en AnimationsPage.
+ * Reusable animation system content (without header or PageTransition wrapper).
+ * Used by both AnimationSystemPage and the consolidated view in AnimationsPage.
  */
 export function AnimationSystemContent() {
   const [showSkeletons, setShowSkeletons] = useState<string | null>(null);
@@ -50,12 +51,12 @@ export function AnimationSystemContent() {
   const handleAsyncOperation = () => {
     execute(async () => {
       await new Promise(resolve => setTimeout(resolve, 2000));
-      return { message: "¡Datos cargados exitosamente!" };
+      return { message: "Data loaded successfully!" };
     });
   };
 
   const handleGlobalLoading = () => {
-    startGlobalLoading("Procesando operación...");
+    startGlobalLoading("Processing operation...");
     setTimeout(stopGlobalLoading, 2000);
   };
 
@@ -85,7 +86,7 @@ export function AnimationSystemContent() {
               PageTransition
             </CardTitle>
             <CardDescription>
-              Wrapper para páginas con animación automática de entrada/salida
+              Wrapper for pages with automatic enter/exit animation
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -93,7 +94,7 @@ export function AnimationSystemContent() {
               <div>
                 <h4 className="text-sm font-semibold mb-2">Variant: "page" (default)</h4>
                 <PageTransition variant="page" className="p-4 border rounded-lg bg-primary/5">
-                  <p className="text-sm">Fade + slight slide (mejor para páginas completas)</p>
+                  <p className="text-sm">Fade + slight slide (best for full pages)</p>
                 </PageTransition>
               </div>
 
@@ -107,7 +108,7 @@ export function AnimationSystemContent() {
               <div>
                 <h4 className="text-sm font-semibold mb-2">Variant: "scale"</h4>
                 <PageTransition variant="scale" className="p-4 border rounded-lg bg-chart-3/10">
-                  <p className="text-sm">Fade + scale (mejor para modals)</p>
+                  <p className="text-sm">Fade + scale (best for modals)</p>
                 </PageTransition>
               </div>
             </div>
@@ -119,8 +120,8 @@ export function AnimationSystemContent() {
 function MyPage() {
   return (
     <PageTransition variant="page">
-      <h1>Mi Página</h1>
-      <p>Contenido con animación automática</p>
+      <h1>My Page</h1>
+      <p>Content with automatic animation</p>
     </PageTransition>
   );
 }`}
@@ -133,20 +134,20 @@ function MyPage() {
           <CardHeader>
             <CardTitle>FadeInView</CardTitle>
             <CardDescription>
-              Componente que anima cuando entra al viewport (scroll)
+              Component that animates when entering the viewport (scroll)
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-4">
               <FadeInView>
                 <Card className="p-4 bg-primary/5">
-                  <p className="text-sm">Aparece con fade al hacer scroll</p>
+                  <p className="text-sm">Appears with fade on scroll</p>
                 </Card>
               </FadeInView>
 
               <FadeInView delay={0.2}>
                 <Card className="p-4 bg-chart-2/10">
-                  <p className="text-sm">Con delay de 0.2s</p>
+                  <p className="text-sm">With delay of 0.2s</p>
                 </Card>
               </FadeInView>
             </div>
@@ -156,7 +157,7 @@ function MyPage() {
               code={`import { FadeInView } from '@/components/ui/page-transition';
 
 <FadeInView delay={0.2}>
-  <Card>Aparece cuando haces scroll</Card>
+  <Card>Appears when you scroll</Card>
 </FadeInView>`}
             />
           </CardContent>
@@ -167,7 +168,7 @@ function MyPage() {
           <CardHeader>
             <CardTitle>StaggerContainer + StaggerItem</CardTitle>
             <CardDescription>
-              Para animar listas con efecto stagger (secuencial)
+              For animating lists with stagger (sequential) effect
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
@@ -200,7 +201,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>InlineSpinner</CardTitle>
-            <CardDescription>Spinner pequeño para usar inline</CardDescription>
+            <CardDescription>Small spinner for inline use</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center gap-4">
@@ -231,12 +232,12 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>ButtonLoading</CardTitle>
-            <CardDescription>Loading state para botones</CardDescription>
+            <CardDescription>Loading state for buttons</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button onClick={handleButtonLoading} disabled={buttonLoading}>
-              <ButtonLoading isLoading={buttonLoading} loadingText="Enviando...">
-                Enviar Formulario
+              <ButtonLoading isLoading={buttonLoading} loadingText="Sending...">
+                Submit Form
               </ButtonLoading>
             </Button>
 
@@ -245,8 +246,8 @@ function MyPage() {
               code={`import { ButtonLoading } from '@/components/ui/loading-overlay';
 
 <Button onClick={handleSubmit} disabled={isLoading}>
-  <ButtonLoading isLoading={isLoading} loadingText="Enviando...">
-    Enviar
+  <ButtonLoading isLoading={isLoading} loadingText="Sending...">
+    Submit
   </ButtonLoading>
 </Button>`}
             />
@@ -264,28 +265,28 @@ function MyPage() {
               useLoadingState
             </CardTitle>
             <CardDescription>
-              Hook para loading states locales con delays y duración mínima
+              Hook for local loading states with delays and minimum duration
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="p-4 border rounded-lg bg-muted/20">
               <p className="text-sm mb-4">
-                <strong>Características:</strong>
+                <strong>Features:</strong>
               </p>
               <ul className="text-sm space-y-1 text-muted-foreground">
-                <li>• <strong>delay</strong>: No mostrar si termina antes de Xms (evita flashes)</li>
-                <li>• <strong>minDuration</strong>: Mostrar mínimo Xms (evita parpadeos)</li>
-                <li>• <strong>onStart/onEnd</strong>: Callbacks opcionales</li>
+                <li>• <strong>delay</strong>: Don't show if operation completes before Xms (prevents flashes)</li>
+                <li>• <strong>minDuration</strong>: Show for minimum Xms (prevents flickering)</li>
+                <li>• <strong>onStart/onEnd</strong>: Optional callbacks</li>
               </ul>
             </div>
 
             <div className="space-y-2">
               <Button onClick={handleButtonLoading} disabled={buttonLoading}>
                 {buttonLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Test Loading (1.5s mínimo)
+                Test Loading (1.5s minimum)
               </Button>
               <p className="text-xs text-muted-foreground">
-                Con delay de 300ms y duración mínima de 1500ms
+                With 300ms delay and 1500ms minimum duration
               </p>
             </div>
 
@@ -295,8 +296,8 @@ function MyPage() {
 
 function MyComponent() {
   const { isLoading, showLoading, startLoading, stopLoading } = useLoadingState({
-    delay: 300,        // No mostrar si termina antes de 300ms
-    minDuration: 500,  // Mostrar mínimo 500ms
+    delay: 300,        // Don't show if operation completes before 300ms
+    minDuration: 500,  // Show for minimum 500ms
   });
 
   const handleSubmit = async () => {
@@ -317,14 +318,14 @@ function MyComponent() {
           <CardHeader>
             <CardTitle>useAsyncOperation</CardTitle>
             <CardDescription>
-              Loading automático para operaciones async con manejo de errores
+              Automatic loading for async operations with error handling
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-4">
               <Button onClick={handleAsyncOperation} disabled={asyncLoading}>
                 {asyncLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-                Cargar Datos
+                Load Data
               </Button>
 
               {data && (
@@ -363,7 +364,7 @@ function DataFetcher() {
   return (
     <>
       <Button onClick={fetchData} disabled={isLoading}>
-        Cargar Datos
+        Load Data
       </Button>
       {data && <div>{JSON.stringify(data)}</div>}
       {error && <p>Error: {error.message}</p>}
@@ -379,13 +380,13 @@ function DataFetcher() {
           <CardHeader>
             <CardTitle>useGlobalLoading</CardTitle>
             <CardDescription>
-              Loading global que cubre toda la pantalla (LoadingOverlay)
+              Global loading that covers the entire screen (LoadingOverlay)
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button onClick={handleGlobalLoading} disabled={isGlobalLoading}>
               {isGlobalLoading && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
-              Mostrar Loading Global
+              Show Global Loading
             </Button>
 
             <CodeBlock
@@ -396,7 +397,7 @@ function MyComponent() {
   const { startGlobalLoading, stopGlobalLoading } = useGlobalLoading();
 
   const handleBigOperation = async () => {
-    startGlobalLoading("Procesando datos...");
+    startGlobalLoading("Processing data...");
     try {
       await bigOperation();
     } finally {
@@ -413,13 +414,13 @@ function MyComponent() {
           <CardHeader>
             <CardTitle>useScrollToTop</CardTitle>
             <CardDescription>
-              Scroll automático al inicio al montar el componente
+              Automatic scroll to top when the component mounts
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <p className="text-sm text-muted-foreground">
-              Esta página usa <code className="px-1.5 py-0.5 rounded bg-muted text-xs">useScrollToTop()</code> automáticamente.
-              Cada vez que la cargas, hace scroll al inicio.
+              This page uses <code className="px-1.5 py-0.5 rounded bg-muted text-xs">useScrollToTop()</code> automatically.
+              Every time you load it, it scrolls to the top.
             </p>
 
             <CodeBlock
@@ -442,7 +443,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonTable</CardTitle>
-            <CardDescription>Skeleton para tablas de datos</CardDescription>
+            <CardDescription>Skeleton for data tables</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -450,7 +451,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('table')}
             >
-              {showSkeletons === 'table' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'table' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'table' && (
@@ -472,7 +473,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonCard & SkeletonCardGrid</CardTitle>
-            <CardDescription>Skeleton para cards individuales o grids</CardDescription>
+            <CardDescription>Skeleton for individual cards or grids</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -480,7 +481,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('cards')}
             >
-              {showSkeletons === 'cards' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'cards' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'cards' && (
@@ -506,7 +507,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonForm</CardTitle>
-            <CardDescription>Skeleton para formularios</CardDescription>
+            <CardDescription>Skeleton for forms</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -514,7 +515,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('form')}
             >
-              {showSkeletons === 'form' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'form' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'form' && (
@@ -536,7 +537,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonList</CardTitle>
-            <CardDescription>Skeleton para listas</CardDescription>
+            <CardDescription>Skeleton for lists</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -544,7 +545,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('list')}
             >
-              {showSkeletons === 'list' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'list' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'list' && (
@@ -566,7 +567,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonKpiCard (Factoring)</CardTitle>
-            <CardDescription>Skeleton para KPI cards específicos del sistema</CardDescription>
+            <CardDescription>Skeleton for system-specific KPI cards</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -574,7 +575,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('kpi')}
             >
-              {showSkeletons === 'kpi' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'kpi' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'kpi' && (
@@ -600,7 +601,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>SkeletonDashboard</CardTitle>
-            <CardDescription>Skeleton completo para dashboards</CardDescription>
+            <CardDescription>Complete skeleton for dashboards</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button 
@@ -608,7 +609,7 @@ function MyPage() {
               size="sm"
               onClick={() => toggleSkeleton('dashboard')}
             >
-              {showSkeletons === 'dashboard' ? 'Ocultar' : 'Mostrar'} Preview
+              {showSkeletons === 'dashboard' ? 'Hide' : 'Show'} Preview
             </Button>
 
             {showSkeletons === 'dashboard' && (
@@ -637,14 +638,14 @@ function MyPage() {
               Hover Effects
             </CardTitle>
             <CardDescription>
-              Clases CSS para efectos hover consistentes
+              CSS classes for consistent hover effects
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <Card className="hover-lift cursor-pointer p-6 text-center">
                 <p className="text-sm font-medium">hover-lift</p>
-                <p className="text-xs text-muted-foreground mt-1">Eleva + sombra</p>
+                <p className="text-xs text-muted-foreground mt-1">Lifts + shadow</p>
               </Card>
 
               <Card className="hover-scale cursor-pointer p-6 text-center">
@@ -665,7 +666,7 @@ function MyPage() {
 
             <CodeBlock
               language="tsx"
-              code={`// Aplicar directamente como className
+              code={`// Apply directly as className
 <Card className="hover-lift">...</Card>
 <Card className="hover-scale">...</Card>
 <Button className="hover-glow">...</Button>
@@ -678,7 +679,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>Focus States</CardTitle>
-            <CardDescription>Clases para focus visible (accesibilidad)</CardDescription>
+            <CardDescription>Classes for visible focus (accessibility)</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-4">
@@ -686,7 +687,7 @@ function MyPage() {
                 <p className="text-sm font-medium mb-2">focus-ring (outline)</p>
                 <input 
                   type="text" 
-                  placeholder="Tab para enfocar"
+                  placeholder="Tab to focus"
                   className="focus-ring px-4 py-2 border rounded-lg w-full"
                 />
               </div>
@@ -694,7 +695,7 @@ function MyPage() {
               <div>
                 <p className="text-sm font-medium mb-2">focus-ring-inset</p>
                 <button className="focus-ring-inset px-4 py-2 bg-primary text-primary-foreground rounded-lg">
-                  Botón con focus inset
+                  Button with inset focus
                 </button>
               </div>
             </div>
@@ -711,7 +712,7 @@ function MyPage() {
         <Card>
           <CardHeader>
             <CardTitle>Animation Classes</CardTitle>
-            <CardDescription>Clases CSS para animaciones simples</CardDescription>
+            <CardDescription>CSS classes for simple animations</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -743,35 +744,61 @@ function MyPage() {
 
 /**
  * AnimationSystemPage
- * Documentación completa del sistema de animaciones:
+ * Complete documentation of the animation system:
  * - Components (PageTransition, LoadingOverlay, Skeleton variants)
  * - Hooks (useLoadingState, usePageTransition)
  * - CSS Utilities (hover effects, transitions)
  */
 export function AnimationSystemPage() {
-  useScrollToTop();
-
   return (
-    <PageTransition variant="page">
-      <div className="space-y-8 w-full pb-16">
-        {/* Header */}
-        <div>
-          <div className="flex items-center gap-3 mb-3">
-            <Zap className="h-8 w-8 text-primary" />
-            <h1 className="mb-0">Animation System</h1>
-            <Badge variant="outline" className="gap-1">
-              <Code className="h-3 w-3" />
-              Global System
-            </Badge>
-          </div>
-          <p className="text-lg text-muted-foreground max-w-3xl">
-            Sistema global de animaciones, transiciones, loading states y skeleton loaders.
-            Arquitectura en capas con <strong>Providers</strong>, <strong>Hooks</strong> y <strong>Components</strong> reutilizables.
-          </p>
-        </div>
+    <ComponentShowcase
+      title="Animation System"
+      description="Global animation system with layered architecture: Components (PageTransition, FadeInView, StaggerContainer, InlineSpinner, ButtonLoading), Hooks (useLoadingState, useAsyncOperation, useGlobalLoading, useScrollToTop), Skeleton Variants (Table, Card, Form, List, KPI, Dashboard), and CSS Utilities (hover-lift, hover-scale, hover-glow, focus-ring, fade-in, slide-in-right, zoom-in)."
+      category="Design System"
+      preview={<AnimationSystemContent />}
+      code={`// Components
+import { PageTransition, FadeInView, StaggerContainer, StaggerItem } from "@/components/ui/page-transition";
+import { InlineSpinner, ButtonLoading } from "@/components/ui/loading-overlay";
+import { SkeletonTable, SkeletonCard, SkeletonForm, SkeletonDashboard } from "@/components/ui/skeleton-variants";
 
-        <AnimationSystemContent />
-      </div>
-    </PageTransition>
+// Hooks
+import { useLoadingState, useAsyncOperation, useGlobalLoading } from "@/hooks/useLoadingState";
+import { useScrollToTop } from "@/hooks/usePageTransition";
+
+// Page Transition wrapper
+<PageTransition variant="page"> {/* "page" | "fade" | "scale" */}
+  <MyPage />
+</PageTransition>
+
+// Scroll-triggered fade
+<FadeInView delay={0.2}>
+  <Card>Appears on scroll</Card>
+</FadeInView>
+
+// Stagger children
+<StaggerContainer>
+  {items.map(item => (
+    <StaggerItem key={item.id}>
+      <Card>{item.name}</Card>
+    </StaggerItem>
+  ))}
+</StaggerContainer>
+
+// Loading hook
+const { isLoading, startLoading, stopLoading } = useLoadingState({
+  delay: 300,
+  minDuration: 500,
+});
+
+// CSS classes: hover-lift, hover-scale, hover-glow, focus-ring, fade-in`}
+      props={[
+        { name: "PageTransition variant", type: "'page' | 'fade' | 'scale'", default: "'page'", description: "Animation variant for page-level transitions." },
+        { name: "FadeInView delay", type: "number", default: "0", description: "Delay in seconds before the fade animation starts." },
+        { name: "InlineSpinner size", type: "'sm' | 'md' | 'lg'", default: "'md'", description: "Size of the inline spinner." },
+        { name: "useLoadingState delay", type: "number", description: "Don't show loading if operation completes before this delay (ms)." },
+        { name: "useLoadingState minDuration", type: "number", description: "Minimum time to show the loading state (ms)." },
+        { name: "SkeletonTable rows/columns", type: "number", description: "Number of rows and columns for the skeleton table." },
+      ]}
+    />
   );
 }

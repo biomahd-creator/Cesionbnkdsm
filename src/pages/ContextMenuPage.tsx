@@ -18,7 +18,7 @@ export function ContextMenuPage() {
   return (
     <ComponentShowcase
       title="Context Menu"
-      description="Menú contextual que aparece al hacer click derecho."
+      description="Contextual menu that appears on right click."
       category="Navigation"
       
       // Main Preview
@@ -106,7 +106,7 @@ export function ContextMenuDemo() {
       examples={[
         {
           title: "File Context Menu",
-          description: "Acciones de archivo comunes.",
+          description: "Common file actions.",
           preview: (
             <ContextMenu>
               <ContextMenuTrigger className="flex h-[150px] w-full max-w-sm items-center justify-center rounded-md border border-dashed text-sm">

@@ -1,7 +1,7 @@
 # TOKENS - C-Financia Design System
 
 > **Single Source of Truth** para todos los tokens de diseno del sistema.
-> Los valores aqui definidos deben coincidir con `globals.css`, `figma-tokens.json` y `tailwind-preset.js`.
+> Los valores aqui definidos deben coincidir con `globals.css`, `figma-tokens.json` y `tailwind-preset.cjs` (deprecated).
 
 ---
 
@@ -689,9 +689,9 @@ Color NO es el unico indicador de estado
 |---------|-----------|
 | `/styles/globals.css` | CSS custom properties (SSoT para CSS) con soporte light/dark |
 | `/figma-tokens.json` | Export para Figma Tokens plugin |
-| `/tailwind-preset.js` | Configuracion de Tailwind |
+| `/tailwind-preset.cjs` | Configuracion de Tailwind (DEPRECATED, v3 only) |
 | `/lib/animation-config.ts` | Configuracion centralizada de animaciones |
-| `/components/ThemeProvider.tsx` | Provider para toggle light/dark mode |
+| `/components/providers/ThemeProvider.tsx` | Provider para toggle light/dark mode |
 
 ---
 

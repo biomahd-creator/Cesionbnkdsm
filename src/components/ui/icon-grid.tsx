@@ -4,15 +4,15 @@ import { toast } from "sonner@2.0.3";
 /**
  * IconGridItem
  * 
- * Componente reutilizable para mostrar un icono individual en la galería.
- * Incluye funcionalidad de copiar al portapapeles y feedback visual.
+ * Reusable component for displaying a single icon in the gallery.
+ * Includes functionality to copy to clipboard and visual feedback.
  * 
  * @component
- * @param {Object} props - Propiedades del componente
- * @param {string} props.name - Nombre del icono
- * @param {React.ComponentType} props.Icon - Componente del icono
- * @param {boolean} props.isCopied - Estado de copiado
- * @param {function} props.onCopy - Callback al copiar
+ * @param {Object} props - Component properties
+ * @param {string} props.name - Icon name
+ * @param {React.ComponentType} props.Icon - Icon component
+ * @param {boolean} props.isCopied - Copy state
+ * @param {function} props.onCopy - Copy callback
  */
 interface IconGridItemProps {
   name: string;
@@ -49,14 +49,14 @@ export function IconGridItem({ name, Icon, isCopied, onCopy }: IconGridItemProps
 /**
  * IconGrid
  * 
- * Grid responsivo para mostrar múltiples iconos.
- * Optimizado para diferentes tamaños de pantalla.
+ * Responsive grid for displaying multiple icons.
+ * Optimized for different screen sizes.
  * 
  * @component
- * @param {Object} props - Propiedades del componente
- * @param {Array} props.icons - Array de objetos con name e Icon
- * @param {string} props.copiedIcon - Nombre del icono actualmente copiado
- * @param {function} props.onCopyIcon - Callback al copiar un icono
+ * @param {Object} props - Component properties
+ * @param {Array} props.icons - Array of objects with name and Icon
+ * @param {string} props.copiedIcon - Name of the currently copied icon
+ * @param {function} props.onCopyIcon - Copy icon callback
  */
 interface IconGridProps {
   icons: Array<{ name: string; Icon: React.ComponentType<{ className?: string }> }>;
@@ -69,7 +69,7 @@ export function IconGrid({ icons, copiedIcon, onCopyIcon }: IconGridProps) {
     const importCode = `import { ${iconName} } from "lucide-react";\n\n<${iconName} className="h-4 w-4" />`;
     navigator.clipboard.writeText(importCode);
     onCopyIcon(iconName);
-    toast.success(`${iconName} copiado al portapapeles`);
+    toast.success(`${iconName} copied to clipboard`);
   };
 
   return (

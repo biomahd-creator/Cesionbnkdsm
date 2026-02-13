@@ -41,61 +41,61 @@ export function InputDemo() {
           name: "type",
           type: '"text" | "email" | "password" | "number" | "tel" | "url" | "date" | "time" | "file" | ...',
           default: '"text"',
-          description: "Tipo de input HTML nativo",
+          description: "Native HTML input type",
         },
         {
           name: "placeholder",
           type: "string",
-          description: "Texto placeholder que se muestra cuando el input está vacío",
+          description: "Placeholder text shown when the input is empty",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el input y previene interacción",
+          description: "Disables the input and prevents interaction",
         },
         {
           name: "value",
           type: "string",
-          description: "Valor controlado del input (componente controlado)",
+          description: "Controlled input value (controlled component)",
         },
         {
           name: "defaultValue",
           type: "string",
-          description: "Valor inicial del input (componente no controlado)",
+          description: "Initial input value (uncontrolled component)",
         },
         {
           name: "onChange",
           type: "(e: ChangeEvent<HTMLInputElement>) => void",
-          description: "Callback que se ejecuta cuando cambia el valor",
+          description: "Callback fired when the value changes",
         },
         {
           name: "onBlur",
           type: "(e: FocusEvent<HTMLInputElement>) => void",
-          description: "Callback que se ejecuta cuando el input pierde el foco",
+          description: "Callback fired when the input loses focus",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para el input",
+          description: "Additional CSS classes for the input",
         },
         {
           name: "id",
           type: "string",
-          description: "ID del input (útil para asociar con Label)",
+          description: "Input ID (useful for associating with Label)",
         },
         {
           name: "required",
           type: "boolean",
           default: "false",
-          description: "Marca el input como requerido en formularios HTML",
+          description: "Marks the input as required in HTML forms",
         },
       ]}
       
       examples={[
         {
           title: "With Label",
-          description: "Input con label y texto de ayuda",
+          description: "Input with label and helper text",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="email">Email</Label>
@@ -118,7 +118,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "Disabled",
-          description: "Input en estado deshabilitado",
+          description: "Input in disabled state",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="disabled">Disabled Input</Label>
@@ -129,7 +129,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "With Icon Prefix",
-          description: "Input con icono al inicio usando posicionamiento relativo",
+          description: "Input with leading icon using relative positioning",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="relative">
@@ -151,7 +151,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "With Icon Suffix",
-          description: "Input con icono al final",
+          description: "Input with trailing icon",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="relative">
@@ -173,7 +173,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "Error State",
-          description: "Input con estado de error y mensaje",
+          description: "Input with error state and message",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="error">Username</Label>
@@ -201,7 +201,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "Success State",
-          description: "Input con estado de éxito",
+          description: "Input with success state",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="success">Email</Label>
@@ -224,7 +224,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "File Upload",
-          description: "Input de tipo file para subir archivos",
+          description: "File type input for uploading files",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="file">Upload File</Label>
@@ -238,7 +238,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "Date and Time",
-          description: "Inputs de tipo date, time y datetime-local",
+          description: "Date, time, and datetime-local type inputs",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="grid gap-2">
@@ -261,7 +261,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "With Validation Patterns",
-          description: "Inputs con validación HTML5 nativa",
+          description: "Inputs with native HTML5 validation",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="grid gap-2">
@@ -296,7 +296,7 @@ import { Label } from "@/components/ui/label";
         },
         {
           title: "Form Integration",
-          description: "Ejemplo completo de input en un formulario con validación",
+          description: "Full example of input in a form with validation",
           preview: (
             <form className="grid gap-4 max-w-sm" onSubmit={(e) => e.preventDefault()}>
               <div className="grid gap-2">

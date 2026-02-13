@@ -1,16 +1,23 @@
-import { CFDashboard } from "../factoring/components/CFDashboard";
+import { ComponentShowcase } from "../components/ui/component-showcase";
+import { CFDashboard } from "../components/factoring/components/CFDashboard";
 
 export function CFDashboardPage() {
   return (
-    <div className="p-6 space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold">Dashboard Empresarial</h1>
-        <p className="text-muted-foreground">
-          Gestiona tu liquidez y monitorea tus operaciones de factoring en tiempo real
-        </p>
-      </div>
+    <ComponentShowcase
+      title="Enterprise Dashboard (CF)"
+      description="Full business dashboard for managing liquidity and monitoring factoring operations in real-time. Includes KPI cards, portfolio overview, recent transactions, quick actions, and chart visualizations for financial metrics."
+      category="Factoring"
+      preview={<CFDashboard />}
+      code={`import { CFDashboard } from "@/components/factoring/components/CFDashboard";
 
-      <CFDashboard />
-    </div>
+<CFDashboard />`}
+      props={[
+        {
+          name: "(pattern)",
+          type: "—",
+          description: "Self-contained dashboard component with embedded state, mock data, and layout. No external props required.",
+        },
+      ]}
+    />
   );
 }

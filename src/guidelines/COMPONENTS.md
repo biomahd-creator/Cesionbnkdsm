@@ -110,13 +110,18 @@ Soluciones completas para flujos de negocio comunes.
 | `CommentThread` | Sistema de comentarios anidados. |
 | `DataTableAdvanced` | Implementación específica de DataTable. |
 | `EditableTable` | Tabla con edición en línea (Excel-like). |
+| `FactoringCalculator` | Calculadora de costos/rendimiento para operaciones de factoring. |
+| `FactoringKpiCard` | Tarjeta KPI especializada para factoring con variantes de color (green, blue, yellow, orange, lime, purple). |
+| `FactoringKpiCardGroup` | Grupo de FactoringKpiCards con selección activa y navegación por tabs. |
 | `KPIShowcase` | Grid de tarjetas de indicadores clave. |
+| `KPIShowcaseExtended` | Grid de KPIs extendido con variantes avanzadas. |
 | `KpiCard` | Tarjeta individual de KPI. |
 | `MasterDataGrid` | Grid de datos maestro con edición masiva. |
 | `MultiStepWizard` | Asistente paso a paso genérico. |
 | `NotificationCenter` | Centro de notificaciones desplegable. |
 | `OnboardingWizard` | Flujo de bienvenida para usuarios. |
 | `QuickActionToolbar` | Barra de acciones rápidas contextuales. |
+| `ReportsConsultation` | Consulta y filtrado de reportes con paginación. |
 | `SearchResults` | Página de resultados de búsqueda. |
 | `StatsDashboard` | Dashboard de estadísticas generales. |
 | `UploadZone` | Zona de carga especializada. |
@@ -154,7 +159,6 @@ Componentes de infraestructura para temas y estado global.
 | Componente | Descripción |
 |---|---|
 | `ThemeProvider` | Provider de contexto para tema light/dark únicamente. |
-| `LanguageProvider` | Provider i18n simplificado (fijado en locale "en"). |
 | `LoadingProvider` | Provider de estados de carga globales. |
 | `TransitionProvider` | Provider de transiciones de página. |
 

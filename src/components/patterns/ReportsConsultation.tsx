@@ -34,7 +34,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
 
-  // Mock data basado en la imagen
+  // Mock data
   const mockReports: ReportData[] = [
     { id: "1", archivo: "Reporte_002.xlsx", fecha: "2025/01/02", tamano: "2.345 Kb" },
     { id: "2", archivo: "Reporte_010.xlsx", fecha: "2025/01/10", tamano: "2.345 Kb" },
@@ -59,13 +59,13 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
   );
 
   const handleView = (report: ReportData) => {
-    console.log("Ver reporte:", report.archivo);
-    // Implementar lógica de visualización
+    console.log("View report:", report.archivo);
+    // Implement view logic
   };
 
   const handleDownload = (report: ReportData) => {
-    console.log("Descargar reporte:", report.archivo);
-    // Implementar lógica de descarga
+    console.log("Download report:", report.archivo);
+    // Implement download logic
   };
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -80,7 +80,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
 
   return (
     <div className="space-y-4">
-      {/* Header con botón de volver */}
+      {/* Header with back button */}
       <div className="flex items-center gap-4">
         {onBack && (
           <Button
@@ -90,47 +90,47 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
             className="gap-2"
           >
             <ArrowLeft className="h-4 w-4" />
-            Volver
+            Back
           </Button>
         )}
         <div className="flex-1">
           <h1 className="text-3xl font-semibold tracking-tight">
-            Operaciones Reendosadas
+            Re-endorsed Operations
           </h1>
           <p className="text-muted-foreground">
-            Reportes de Endoso a Fondeadores
+            Endorsement Reports to Funders
           </p>
         </div>
       </div>
 
-      {/* Card con tabla */}
+      {/* Card with table */}
       <Card className="elevation-2 border-none shadow-md">
         <CardHeader className="pb-3">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <FileText className="h-5 w-5 text-primary" />
-                Archivo
+                File
               </CardTitle>
               <CardDescription className="mt-1">
-                {filteredReports.length} registro{filteredReports.length !== 1 ? 's' : ''}
+                {filteredReports.length} record{filteredReports.length !== 1 ? 's' : ''}
               </CardDescription>
             </div>
             <div className="flex items-center gap-2 w-full md:w-auto">
               <div className="relative w-full md:w-72">
                 <Input
-                  placeholder="Buscar..."
+                  placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="h-9"
                 />
               </div>
               <Button 
-                onClick={() => console.log("Generar Reporte")}
+                onClick={() => console.log("Generate Report")}
                 className="gap-2 shrink-0"
               >
                 <FileText className="h-4 w-4" />
-                Generar Reporte
+                Generate Report
               </Button>
             </div>
           </div>
@@ -143,10 +143,10 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                   <th className="text-left py-3 px-4 font-semibold text-sm w-[50px]">
                     #
                   </th>
-                  <th className="text-left py-3 px-4 font-semibold text-sm">Archivo</th>
-                  <th className="text-left py-3 px-4 font-semibold text-sm">Fecha</th>
-                  <th className="text-left py-3 px-4 font-semibold text-sm">Tamaño Archivo</th>
-                  <th className="text-center py-3 px-4 font-semibold text-sm">Opciones</th>
+                  <th className="text-left py-3 px-4 font-semibold text-sm">File</th>
+                  <th className="text-left py-3 px-4 font-semibold text-sm">Date</th>
+                  <th className="text-left py-3 px-4 font-semibold text-sm">File Size</th>
+                  <th className="text-center py-3 px-4 font-semibold text-sm">Options</th>
                 </tr>
               </thead>
               <tbody>
@@ -155,7 +155,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                     <td colSpan={5} className="text-center py-8">
                       <div className="flex flex-col items-center gap-2 text-muted-foreground">
                         <FileText className="h-8 w-8" />
-                        <p>No se encontraron reportes</p>
+                        <p>No reports found</p>
                       </div>
                     </td>
                   </tr>
@@ -188,23 +188,23 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                             onClick={() => handleView(report)}
                           >
                             <Eye className="h-4 w-4" />
-                            <span className="sr-only">Ver reporte</span>
+                            <span className="sr-only">View report</span>
                           </Button>
                           <DropdownMenu>
                             <DropdownMenuTrigger asChild>
                               <Button variant="ghost" size="icon">
                                 <MoreVertical className="h-4 w-4" />
-                                <span className="sr-only">Más opciones</span>
+                                <span className="sr-only">More options</span>
                               </Button>
                             </DropdownMenuTrigger>
                             <DropdownMenuContent align="end">
                               <DropdownMenuItem onClick={() => handleView(report)}>
                                 <Eye className="mr-2 h-4 w-4" />
-                                Ver
+                                View
                               </DropdownMenuItem>
                               <DropdownMenuItem onClick={() => handleDownload(report)}>
                                 <Download className="mr-2 h-4 w-4" />
-                                Descargar
+                                Download
                               </DropdownMenuItem>
                             </DropdownMenuContent>
                           </DropdownMenu>
@@ -220,7 +220,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
         <CardContent className="pt-4 pb-4 border-t">
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-2">
-              <p className="text-sm text-muted-foreground">Mostrar</p>
+              <p className="text-sm text-muted-foreground">Show</p>
               <Select
                 value={itemsPerPage.toString()}
                 onValueChange={(value) => {
@@ -238,7 +238,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                   <SelectItem value="50">50</SelectItem>
                 </SelectContent>
               </Select>
-              <p className="text-sm text-muted-foreground">registros por página</p>
+              <p className="text-sm text-muted-foreground">records per page</p>
             </div>
             <div className="flex items-center gap-2">
               <Button
@@ -250,7 +250,7 @@ export function ReportsConsultation({ onBack }: ReportsConsultationProps) {
                 <ChevronLeft className="h-4 w-4" />
               </Button>
               <p className="text-sm text-muted-foreground">
-                Página {currentPage} de {totalPages || 1}
+                Page {currentPage} of {totalPages || 1}
               </p>
               <Button
                 variant="outline"

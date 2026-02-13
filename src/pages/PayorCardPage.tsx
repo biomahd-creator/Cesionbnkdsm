@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { PayorCard } from "../factoring/PayorCard";
+import { PayorCard } from "../components/factoring/PayorCard";
 
 const payorCardCode = `import { PayorCard } from "@/factoring/PayorCard";
 
@@ -24,7 +24,7 @@ export function PayorCardPage() {
   return (
     <ComponentShowcase
       title="Payor Card"
-      description="Tarjeta de información del pagador con cupo de crédito y score."
+      description="Payor information card with credit limit and risk score."
       category="Business Component"
       preview={
         <div className="w-full max-w-md">

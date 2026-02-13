@@ -1,10 +1,10 @@
 /**
  * ColorPresetButton Component
  * 
- * BUSINESS PATTERN: Botón de color preset sin estilos inline
+ * BUSINESS PATTERN: Color preset button without inline styles
  * 
- * NO MODIFICAR sin consultar: /components/widgets/WIDGETS_ARCHITECTURE.md
- * Parte del sistema modular sin estilos inline
+ * DO NOT MODIFY without consulting: /components/widgets/WIDGETS_ARCHITECTURE.md
+ * Part of the modular system without inline styles
  */
 
 import { cn } from "../ui/utils";
@@ -16,7 +16,7 @@ interface ColorPresetButtonProps {
 }
 
 export function ColorPresetButton({ color, isSelected, onClick }: ColorPresetButtonProps) {
-  // Mapeo de colores conocidos a clases Tailwind
+  // Map known colors to Tailwind classes
   const colorClasses: Record<string, string> = {
     "#84cc16": "bg-primary",
     "#1C2D3A": "bg-secondary",

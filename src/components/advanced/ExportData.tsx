@@ -179,7 +179,7 @@ export function ExportData({
     ws["!cols"] = selectedColumnObjs.map(() => ({ wch: 20 }));
 
     // Add worksheet to workbook
-    XLSX.utils.book_append_sheet(wb, ws, "Datos");
+    XLSX.utils.book_append_sheet(wb, ws, "Data");
 
     // Generate Excel file and download
     XLSX.writeFile(wb, `${filename}.xlsx`);
@@ -188,7 +188,7 @@ export function ExportData({
       filename,
       columns: selectedColumnObjs,
       includeHeaders,
-      sheetName: "Datos",
+      sheetName: "Data",
     });
   };
 
@@ -219,7 +219,7 @@ export function ExportData({
           className="gap-2"
         >
           <FileText className="h-4 w-4" />
-          Exportar CSV
+          Export CSV
         </Button>
 
         <Button
@@ -231,7 +231,7 @@ export function ExportData({
           className="gap-2"
         >
           <FileSpreadsheet className="h-4 w-4" />
-          Exportar Excel
+          Export Excel
         </Button>
 
         <Button
@@ -240,7 +240,7 @@ export function ExportData({
           className="gap-2"
         >
           <Eye className="h-4 w-4" />
-          Vista Previa
+          Preview
         </Button>
       </div>
 
@@ -250,20 +250,20 @@ export function ExportData({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Settings2 className="h-5 w-5" />
-              Configurar Exportación
+              Configure Export
               <Badge variant={format === "csv" ? "secondary" : "default"}>
                 {format === "csv" ? "CSV" : "Excel"}
               </Badge>
             </DialogTitle>
             <DialogDescription>
-              Personaliza las opciones de exportación antes de descargar el archivo
+              Customize export options before downloading the file
             </DialogDescription>
           </DialogHeader>
 
           <div className="space-y-6">
             {/* Filename */}
             <div className="space-y-2">
-              <Label htmlFor="filename">Nombre del archivo</Label>
+              <Label htmlFor="filename">Filename</Label>
               <Input
                 id="filename"
                 value={filename}
@@ -271,15 +271,15 @@ export function ExportData({
                 placeholder="export"
               />
               <p className="text-xs text-muted-foreground">
-                Se agregará la extensión .{format === "csv" ? "csv" : "xlsx"}{" "}
-                automáticamente
+                The .{format === "csv" ? "csv" : "xlsx"} extension will be added{" "}
+                automatically
               </p>
             </div>
 
             {/* Column Selection */}
             <div className="space-y-3">
               <div className="flex items-center justify-between">
-                <Label>Columnas a exportar</Label>
+                <Label>Columns to export</Label>
                 <div className="flex gap-2">
                   <Button
                     variant="ghost"
@@ -287,7 +287,7 @@ export function ExportData({
                     onClick={selectAllColumns}
                     className="h-7 text-xs"
                   >
-                    Todas
+                    All
                   </Button>
                   <Button
                     variant="ghost"
@@ -295,7 +295,7 @@ export function ExportData({
                     onClick={deselectAllColumns}
                     className="h-7 text-xs"
                   >
-                    Ninguna
+                    None
                   </Button>
                 </div>
               </div>
@@ -319,14 +319,14 @@ export function ExportData({
               </div>
 
               <p className="text-xs text-muted-foreground">
-                {selectedColumns.length} de {columns.length} columnas
-                seleccionadas
+                {selectedColumns.length} of {columns.length} columns
+                selected
               </p>
             </div>
 
             {/* Options */}
             <div className="space-y-3">
-              <Label>Opciones</Label>
+              <Label>Options</Label>
               <div className="flex items-center space-x-2">
                 <Checkbox
                   id="headers"
@@ -336,7 +336,7 @@ export function ExportData({
                   }
                 />
                 <Label htmlFor="headers" className="cursor-pointer font-normal">
-                  Incluir encabezados
+                  Include headers
                 </Label>
               </div>
             </div>
@@ -345,14 +345,14 @@ export function ExportData({
             <Alert>
               <AlertDescription className="text-xs">
                 <strong>
-                  {data.length.toLocaleString("es-ES")} registros
+                  {data.length.toLocaleString("en-US")} records
                 </strong>{" "}
-                serán exportados con{" "}
-                <strong>{selectedColumns.length} columnas</strong>.
+                will be exported with{" "}
+                <strong>{selectedColumns.length} columns</strong>.
                 {format === "excel" && (
                   <span className="block mt-1">
-                    📊 El archivo Excel incluirá formato automático y anchos de
-                    columna optimizados.
+                    📊 The Excel file will include automatic formatting and
+                    optimized column widths.
                   </span>
                 )}
               </AlertDescription>
@@ -361,11 +361,11 @@ export function ExportData({
 
           <DialogFooter>
             <Button variant="outline" onClick={() => setShowConfig(false)}>
-              Cancelar
+              Cancel
             </Button>
             <Button onClick={handleExport} disabled={selectedColumns.length === 0}>
               <Download className="mr-2 h-4 w-4" />
-              Descargar {format === "csv" ? "CSV" : "Excel"}
+              Download {format === "csv" ? "CSV" : "Excel"}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -377,10 +377,10 @@ export function ExportData({
           <DialogHeader>
             <DialogTitle className="flex items-center gap-2">
               <Eye className="h-5 w-5" />
-              Vista Previa de Datos
+              Data Preview
             </DialogTitle>
             <DialogDescription>
-              Mostrando las primeras 5 filas de {data.length} registros totales
+              Showing first 5 rows of {data.length} total records
             </DialogDescription>
           </DialogHeader>
 
@@ -410,7 +410,7 @@ export function ExportData({
                       colSpan={selectedColumnObjs.length}
                       className="text-center h-24"
                     >
-                      No hay datos disponibles
+                      No data available
                     </TableCell>
                   </TableRow>
                 )}
@@ -420,13 +420,13 @@ export function ExportData({
 
           <Alert>
             <AlertDescription className="text-xs">
-              💡 Esta es solo una vista previa. Los datos reales se exportarán
-              según la configuración seleccionada.
+              💡 This is only a preview. Actual data will be exported
+              based on the selected configuration.
             </AlertDescription>
           </Alert>
 
           <DialogFooter>
-            <Button onClick={() => setShowPreview(false)}>Cerrar</Button>
+            <Button onClick={() => setShowPreview(false)}>Close</Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>

@@ -35,7 +35,6 @@ import {
   Building2
 } from "lucide-react";
 import { format } from "date-fns";
-import { es } from "date-fns/locale";
 import { MasterDataGrid } from "../advanced/MasterDataGrid";
 
 // Types for invoice data
@@ -90,10 +89,10 @@ const initialInvoices: Invoice[] = [
 ];
 
 const statusConfig = {
-  pending: { label: "Pendiente", variant: "secondary" as const },
-  approved: { label: "Aprobado", variant: "default" as const },
-  rejected: { label: "Rechazado", variant: "destructive" as const },
-  paid: { label: "Pagado", variant: "outline" as const },
+  pending: { label: "Pending", variant: "secondary" as const },
+  approved: { label: "Approved", variant: "default" as const },
+  rejected: { label: "Rejected", variant: "destructive" as const },
+  paid: { label: "Paid", variant: "outline" as const },
 };
 
 export function EditableTable() {
@@ -137,9 +136,9 @@ export function EditableTable() {
 
   // Format currency
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat('es-CL', {
+    return new Intl.NumberFormat('en-US', {
       style: 'currency',
-      currency: 'CLP',
+      currency: 'USD',
       minimumFractionDigits: 0,
     }).format(amount);
   };
@@ -157,8 +156,8 @@ export function EditableTable() {
             <Badge variant="outline" className="border-primary/50 text-primary">📱 Responsive</Badge>
           </div>
           <p className="text-muted-foreground">
-            Tabla interactiva con edición inline de diferentes tipos de datos: texto, números,
-            fechas, estados y checkboxes. Click en cualquier celda para editar.
+            Interactive table with inline editing of different data types: text, numbers,
+            dates, statuses and checkboxes. Click on any cell to edit.
           </p>
         </div>
       </div>
@@ -169,13 +168,13 @@ export function EditableTable() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2">
               <Edit2 className="h-4 w-4 text-primary" />
-              Edición Inline
+              Inline Editing
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Click en cualquier celda para activar el modo de edición. Guarda con el botón check
-              o cancela con la X.
+              Click on any cell to activate edit mode. Save with the check button
+              or cancel with X.
             </p>
           </CardContent>
         </Card>
@@ -184,13 +183,13 @@ export function EditableTable() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2">
               <DollarSign className="h-4 w-4 text-primary" />
-              Validación de Datos
+              Data Validation
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Los campos numéricos solo aceptan números. Los selectores tienen opciones
-              predefinidas para mantener consistencia.
+              Numeric fields only accept numbers. Selectors have predefined options
+              to maintain consistency.
             </p>
           </CardContent>
         </Card>
@@ -199,13 +198,13 @@ export function EditableTable() {
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2">
               <Building2 className="h-4 w-4 text-primary" />
-              Tipos de Datos
+              Data Types
             </CardTitle>
           </CardHeader>
           <CardContent>
             <p className="text-muted-foreground">
-              Soporta texto, números con formato de moneda, fechas con calendario, estados con
-              badge y checkboxes.
+              Supports text, currency-formatted numbers, calendar dates, status badges
+              and checkboxes.
             </p>
           </CardContent>
         </Card>
@@ -213,8 +212,8 @@ export function EditableTable() {
 
       {/* Editable Table replaced with MasterDataGrid */}
       <MasterDataGrid
-        title="Facturas Pendientes de Factoring"
-        description="Click en cualquier celda para editar los valores. Los cambios se guardan en tiempo real."
+        title="Pending Factoring Invoices"
+        description="Click on any cell to edit values. Changes are saved in real time."
         showExport={false}
         showRefresh={false}
         showViewOptions={false}
@@ -223,12 +222,12 @@ export function EditableTable() {
             <Table>
               <TableHeader>
                 <TableRow>
-                  <TableHead>Nº Factura</TableHead>
-                  <TableHead>Cliente</TableHead>
-                  <TableHead className="text-right">Monto</TableHead>
-                  <TableHead>Vencimiento</TableHead>
-                  <TableHead>Estado</TableHead>
-                  <TableHead className="text-center">Prioritario</TableHead>
+                  <TableHead>Invoice No.</TableHead>
+                  <TableHead>Client</TableHead>
+                  <TableHead className="text-right">Amount</TableHead>
+                  <TableHead>Due Date</TableHead>
+                  <TableHead>Status</TableHead>
+                  <TableHead className="text-center">Priority</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -379,8 +378,8 @@ export function EditableTable() {
                               >
                                 <CalendarIcon className="h-4 w-4" />
                                 {editValue instanceof Date
-                                  ? format(editValue, "dd/MM/yyyy", { locale: es })
-                                  : "Seleccionar"}
+                                  ? format(editValue, "MM/dd/yyyy")
+                                  : "Select"}
                               </Button>
                             </PopoverTrigger>
                             <PopoverContent className="w-auto p-0" align="start">
@@ -418,7 +417,7 @@ export function EditableTable() {
                           className="cursor-pointer hover:bg-accent/50 rounded px-2 py-1 -mx-2 -my-1 transition-colors"
                           onClick={() => startEditing(invoice.id, "dueDate", invoice.dueDate)}
                         >
-                          {format(invoice.dueDate, "dd/MM/yyyy", { locale: es })}
+                          {format(invoice.dueDate, "MM/dd/yyyy")}
                         </div>
                       )}
                     </TableCell>
@@ -435,10 +434,10 @@ export function EditableTable() {
                               <SelectValue />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="pending">Pendiente</SelectItem>
-                              <SelectItem value="approved">Aprobado</SelectItem>
-                              <SelectItem value="rejected">Rechazado</SelectItem>
-                              <SelectItem value="paid">Pagado</SelectItem>
+                              <SelectItem value="pending">Pending</SelectItem>
+                              <SelectItem value="approved">Approved</SelectItem>
+                              <SelectItem value="rejected">Rejected</SelectItem>
+                              <SelectItem value="paid">Paid</SelectItem>
                             </SelectContent>
                           </Select>
                           <div className="flex gap-1">
@@ -499,31 +498,31 @@ export function EditableTable() {
       {/* Technical Details */}
       <Card>
         <CardHeader>
-          <CardTitle>Detalles Técnicos</CardTitle>
+          <CardTitle>Technical Details</CardTitle>
         </CardHeader>
         <CardContent className="grid gap-4 md:grid-cols-2">
           <div>
-            <h3 className="mb-2">Componentes Utilizados</h3>
+            <h3 className="mb-2">Components Used</h3>
             <ul className="space-y-1 text-muted-foreground">
-              <li>• <strong>MasterDataGrid:</strong> Contenedor estándar</li>
-              <li>• <strong>Input:</strong> Edición de texto y números</li>
-              <li>• <strong>Select:</strong> Selector de estados</li>
-              <li>• <strong>Calendar + Popover:</strong> Selector de fechas</li>
-              <li>• <strong>Checkbox:</strong> Campo prioritario</li>
-              <li>• <strong>Badge:</strong> Visualización de estados</li>
-              <li>• <strong>Button:</strong> Acciones de guardar/cancelar</li>
+              <li>• <strong>MasterDataGrid:</strong> Standard container</li>
+              <li>• <strong>Input:</strong> Text and number editing</li>
+              <li>• <strong>Select:</strong> Status selector</li>
+              <li>• <strong>Calendar + Popover:</strong> Date picker</li>
+              <li>• <strong>Checkbox:</strong> Priority field</li>
+              <li>• <strong>Badge:</strong> Status display</li>
+              <li>• <strong>Button:</strong> Save/cancel actions</li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-2">Características</h3>
+            <h3 className="mb-2">Features</h3>
             <ul className="space-y-1 text-muted-foreground">
-              <li>• Click para editar cualquier celda</li>
-              <li>• Guardado con Enter o botón Check</li>
-              <li>• Cancelar con Escape o botón X</li>
-              <li>• Validación de tipos de datos</li>
-              <li>• Formato automático de moneda</li>
-              <li>• Estados visuales con badges</li>
-              <li>• Hover feedback en celdas editables</li>
+              <li>• Click to edit any cell</li>
+              <li>• Save with Enter or Check button</li>
+              <li>• Cancel with Escape or X button</li>
+              <li>• Data type validation</li>
+              <li>• Automatic currency formatting</li>
+              <li>• Visual status badges</li>
+              <li>• Hover feedback on editable cells</li>
             </ul>
           </div>
         </CardContent>
@@ -532,38 +531,38 @@ export function EditableTable() {
       {/* Use Cases */}
       <Card>
         <CardHeader>
-          <CardTitle>Casos de Uso en Factoring</CardTitle>
+          <CardTitle>Use Cases in Factoring</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid gap-4 md:grid-cols-3">
             <div>
               <h4 className="mb-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-primary" />
-                Corrección Rápida
+                Quick Correction
               </h4>
               <p className="text-muted-foreground">
-                Edita montos, fechas o nombres de clientes directamente sin formularios modales,
-                ideal para correcciones rápidas de datos.
+                Edit amounts, dates or client names directly without modal forms,
+                ideal for quick data corrections.
               </p>
             </div>
             <div>
               <h4 className="mb-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-primary" />
-                Gestión de Estados
+                Status Management
               </h4>
               <p className="text-muted-foreground">
-                Cambia el estado de facturas (pendiente, aprobado, pagado) sin salir de la vista de
-                listado principal.
+                Change invoice statuses (pending, approved, paid) without leaving the main
+                list view.
               </p>
             </div>
             <div>
               <h4 className="mb-2 flex items-center gap-2">
                 <div className="h-2 w-2 rounded-full bg-primary" />
-                Priorización
+                Prioritization
               </h4>
               <p className="text-muted-foreground">
-                Marca facturas como prioritarias con un simple click, útil para gestión de flujo de
-                trabajo.
+                Mark invoices as priority with a simple click, useful for workflow
+                management.
               </p>
             </div>
           </div>

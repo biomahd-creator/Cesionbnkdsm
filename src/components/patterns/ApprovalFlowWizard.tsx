@@ -34,37 +34,37 @@ interface FacturaSeleccionada {
 const steps = [
   { 
     id: 1, 
-    title: "Selección de Facturas", 
-    description: "Selecciona las facturas a financiar",
+    title: "Invoice Selection", 
+    description: "Select the invoices to finance",
     icon: FileText 
   },
   { 
     id: 2, 
-    title: "Validación de Cupos", 
-    description: "Verifica disponibilidad de límite",
+    title: "Credit Line Validation", 
+    description: "Verify limit availability",
     icon: DollarSign 
   },
   { 
     id: 3, 
-    title: "Cálculo y Términos", 
-    description: "Calcula comisión y monto a recibir",
+    title: "Calculation & Terms", 
+    description: "Calculate commission and amount to receive",
     icon: Calculator 
   },
   { 
     id: 4, 
-    title: "Revisión", 
-    description: "Revisa y confirma la operación",
+    title: "Review", 
+    description: "Review and confirm the operation",
     icon: Eye 
   },
   { 
     id: 5, 
-    title: "Confirmación", 
-    description: "Operación creada exitosamente",
+    title: "Confirmation", 
+    description: "Operation created successfully",
     icon: CheckCircle 
   },
 ];
 
-// Mock facturas disponibles
+// Mock available invoices
 const facturasDisponibles: FacturaSeleccionada[] = [
   {
     id: "F-2025-001",
@@ -137,7 +137,7 @@ export function ApprovalFlowWizard() {
   };
 
   const handleConfirm = () => {
-    // Aquí iría la lógica de confirmación (API call, etc.)
+    // Confirmation logic would go here (API call, etc.)
     setCurrentStep(5);
   };
 
@@ -148,13 +148,13 @@ export function ApprovalFlowWizard() {
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
             <div>
-              <CardTitle>Proceso de Aprobación de Factoring</CardTitle>
+              <CardTitle>Factoring Approval Process</CardTitle>
               <CardDescription>
-                Paso {currentStep} de 5 - {steps[currentStep - 1].description}
+                Step {currentStep} of 5 — {steps[currentStep - 1].description}
               </CardDescription>
             </div>
             <Badge variant="default" className="text-sm px-3 py-1">
-              {Math.round(progress)}% Completado
+              {Math.round(progress)}% Complete
             </Badge>
           </div>
           <Progress value={progress} className="h-2" />
@@ -214,13 +214,13 @@ export function ApprovalFlowWizard() {
           <CardDescription>{steps[currentStep - 1].description}</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
-          {/* Step 1: Selección de Facturas */}
+          {/* Step 1: Invoice Selection */}
           {currentStep === 1 && (
             <div className="space-y-4">
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Selecciona una o más facturas para crear la operación de factoring.
+                  Select one or more invoices to create the factoring operation.
                 </AlertDescription>
               </Alert>
 
@@ -262,7 +262,7 @@ export function ApprovalFlowWizard() {
                         <div className="text-right">
                           <p className="text-xl font-semibold">${factura.monto.toLocaleString()}</p>
                           <p className="text-xs text-muted-foreground">
-                            Vence: {factura.fechaVencimiento}
+                            Due: {factura.fechaVencimiento}
                           </p>
                         </div>
                       </div>
@@ -276,11 +276,11 @@ export function ApprovalFlowWizard() {
                   <CardContent className="p-4">
                     <div className="flex items-center justify-between">
                       <div>
-                        <p className="text-sm text-muted-foreground">Facturas seleccionadas</p>
+                        <p className="text-sm text-muted-foreground">Selected invoices</p>
                         <p className="text-2xl font-semibold">{facturasSeleccionadas.length}</p>
                       </div>
                       <div className="text-right">
-                        <p className="text-sm text-muted-foreground">Monto total</p>
+                        <p className="text-sm text-muted-foreground">Total amount</p>
                         <p className="text-2xl font-semibold text-primary">
                           ${montoTotal.toLocaleString()}
                         </p>
@@ -292,13 +292,13 @@ export function ApprovalFlowWizard() {
             </div>
           )}
 
-          {/* Step 2: Validación de Cupos */}
+          {/* Step 2: Credit Line Validation */}
           {currentStep === 2 && (
             <div className="space-y-4">
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Verifica que el monto total (${montoTotal.toLocaleString()}) esté dentro del cupo disponible.
+                  Verify that the total amount (${montoTotal.toLocaleString()}) is within the available credit line.
                 </AlertDescription>
               </Alert>
 
@@ -314,20 +314,20 @@ export function ApprovalFlowWizard() {
                 <Alert className="bg-green-500/10 border-green-500/50">
                   <CheckCircle className="h-4 w-4 text-green-500" />
                   <AlertDescription className="text-sm text-green-700 dark:text-green-400">
-                    ✓ Cupo validado correctamente. Puedes continuar al siguiente paso.
+                    Credit line validated successfully. You can proceed to the next step.
                   </AlertDescription>
                 </Alert>
               )}
             </div>
           )}
 
-          {/* Step 3: Cálculo y Términos */}
+          {/* Step 3: Calculation & Terms */}
           {currentStep === 3 && (
             <div className="space-y-4">
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Configura los términos de la operación y calcula la comisión.
+                  Configure the operation terms and calculate the commission.
                 </AlertDescription>
               </Alert>
 
@@ -341,31 +341,31 @@ export function ApprovalFlowWizard() {
                   {calculoCompletado ? (
                     <>
                       <CheckCircle className="h-4 w-4 mr-2" />
-                      Cálculo Confirmado
+                      Calculation Confirmed
                     </>
                   ) : (
-                    "Confirmar Cálculo"
+                    "Confirm Calculation"
                   )}
                 </Button>
               </div>
             </div>
           )}
 
-          {/* Step 4: Revisión */}
+          {/* Step 4: Review */}
           {currentStep === 4 && (
             <div className="space-y-4">
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Revisa todos los detalles antes de crear la operación.
+                  Review all details before creating the operation.
                 </AlertDescription>
               </Alert>
 
               <div className="space-y-6">
-                {/* Facturas */}
+                {/* Invoices */}
                 <Card className="elevation-1">
                   <CardHeader>
-                    <CardTitle className="text-lg">Facturas Seleccionadas</CardTitle>
+                    <CardTitle className="text-lg">Selected Invoices</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
@@ -383,7 +383,7 @@ export function ApprovalFlowWizard() {
                       ))}
                       <Separator />
                       <div className="flex items-center justify-between p-3">
-                        <p className="font-semibold">Monto Total</p>
+                        <p className="font-semibold">Total Amount</p>
                         <p className="text-xl font-bold text-primary">
                           ${montoTotal.toLocaleString()}
                         </p>
@@ -392,30 +392,30 @@ export function ApprovalFlowWizard() {
                   </CardContent>
                 </Card>
 
-                {/* Términos */}
+                {/* Terms */}
                 <Card className="elevation-1">
                   <CardHeader>
-                    <CardTitle className="text-lg">Términos de la Operación</CardTitle>
+                    <CardTitle className="text-lg">Operation Terms</CardTitle>
                   </CardHeader>
                   <CardContent>
                     <div className="space-y-3">
                       <div className="flex items-center justify-between p-3 rounded-lg border">
-                        <span className="text-sm text-muted-foreground">Plazo</span>
-                        <span className="font-semibold">30 días</span>
+                        <span className="text-sm text-muted-foreground">Term</span>
+                        <span className="font-semibold">30 days</span>
                       </div>
                       <div className="flex items-center justify-between p-3 rounded-lg border">
-                        <span className="text-sm text-muted-foreground">Tasa mensual</span>
+                        <span className="text-sm text-muted-foreground">Monthly rate</span>
                         <span className="font-semibold">2.5%</span>
                       </div>
                       <div className="flex items-center justify-between p-3 rounded-lg border">
-                        <span className="text-sm text-muted-foreground">Comisión estimada</span>
+                        <span className="text-sm text-muted-foreground">Estimated commission</span>
                         <span className="font-semibold text-destructive">
                           ${(montoTotal * 0.025).toLocaleString()}
                         </span>
                       </div>
                       <div className="flex items-center justify-between p-3 rounded-lg border bg-green-500/10">
                         <span className="font-semibold text-green-700 dark:text-green-400">
-                          Monto a recibir
+                          Amount to receive
                         </span>
                         <span className="text-xl font-bold text-green-600 dark:text-green-400">
                           ${(montoTotal * 0.975).toLocaleString()}
@@ -425,23 +425,23 @@ export function ApprovalFlowWizard() {
                   </CardContent>
                 </Card>
 
-                {/* Botón de confirmación */}
+                {/* Confirmation warning */}
                 <Alert variant="default" className="border-yellow-500/50 bg-yellow-500/10">
                   <AlertCircle className="h-4 w-4 text-yellow-600" />
                   <AlertDescription className="text-sm text-yellow-700 dark:text-yellow-400">
-                    Al confirmar, se creará la operación y se enviará para aprobación.
+                    By confirming, the operation will be created and sent for approval.
                   </AlertDescription>
                 </Alert>
 
                 <Button onClick={handleConfirm} className="w-full" size="lg">
                   <Send className="h-4 w-4 mr-2" />
-                  Crear Operación
+                  Create Operation
                 </Button>
               </div>
             </div>
           )}
 
-          {/* Step 5: Confirmación */}
+          {/* Step 5: Confirmation */}
           {currentStep === 5 && (
             <div className="space-y-6 text-center py-8">
               <div className="flex justify-center">
@@ -451,48 +451,48 @@ export function ApprovalFlowWizard() {
               </div>
 
               <div>
-                <h3 className="text-2xl font-semibold mb-2">¡Operación Creada Exitosamente!</h3>
+                <h3 className="text-2xl font-semibold mb-2">Operation Created Successfully!</h3>
                 <p className="text-muted-foreground">
-                  La operación ha sido registrada y está pendiente de aprobación.
+                  The operation has been registered and is pending approval.
                 </p>
               </div>
 
               <Card className="elevation-1 text-left">
                 <CardHeader>
-                  <CardTitle className="text-lg">Detalles de la Operación</CardTitle>
+                  <CardTitle className="text-lg">Operation Details</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-3">
                   <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-                    <span className="text-sm text-muted-foreground">ID de Operación</span>
+                    <span className="text-sm text-muted-foreground">Operation ID</span>
                     <Badge variant="default">OP-2025-157</Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-                    <span className="text-sm text-muted-foreground">Facturas incluidas</span>
+                    <span className="text-sm text-muted-foreground">Included invoices</span>
                     <span className="font-semibold">{facturasSeleccionadas.length}</span>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-                    <span className="text-sm text-muted-foreground">Monto total</span>
+                    <span className="text-sm text-muted-foreground">Total amount</span>
                     <span className="font-semibold">${montoTotal.toLocaleString()}</span>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-                    <span className="text-sm text-muted-foreground">Estado</span>
+                    <span className="text-sm text-muted-foreground">Status</span>
                     <Badge variant="secondary" className="bg-yellow-500/10 text-yellow-600 border-yellow-500/20">
-                      En Proceso
+                      In Progress
                     </Badge>
                   </div>
                   <div className="flex items-center justify-between p-3 rounded-lg bg-muted/20">
-                    <span className="text-sm text-muted-foreground">Fecha de creación</span>
-                    <span className="font-semibold">{new Date().toLocaleDateString('es-ES')}</span>
+                    <span className="text-sm text-muted-foreground">Created on</span>
+                    <span className="font-semibold">{new Date().toLocaleDateString('en-US')}</span>
                   </div>
                 </CardContent>
               </Card>
 
               <div className="flex gap-3">
                 <Button variant="outline" className="flex-1" onClick={() => window.location.reload()}>
-                  Crear Nueva Operación
+                  Create New Operation
                 </Button>
                 <Button className="flex-1">
-                  Ver Operación
+                  View Operation
                 </Button>
               </div>
             </div>
@@ -509,18 +509,18 @@ export function ApprovalFlowWizard() {
             disabled={currentStep === 1}
           >
             <ChevronLeft className="h-4 w-4 mr-2" />
-            Anterior
+            Previous
           </Button>
 
           <div className="text-sm text-muted-foreground">
-            Paso {currentStep} de 5
+            Step {currentStep} of 5
           </div>
 
           <Button
             onClick={handleNext}
             disabled={!canProceed()}
           >
-            {currentStep === 4 ? "Revisar" : "Siguiente"}
+            {currentStep === 4 ? "Review" : "Next"}
             <ChevronRight className="h-4 w-4 ml-2" />
           </Button>
         </div>

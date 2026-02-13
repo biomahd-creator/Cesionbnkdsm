@@ -3,23 +3,8 @@ import { GaugeChart } from "../components/advanced/GaugeChart";
 import { Heatmap } from "../components/advanced/Heatmap";
 import { TreemapChart } from "../components/advanced/TreemapChart";
 import { FunnelChart } from "../components/advanced/FunnelChart";
-import { Badge } from "../components/ui/badge";
-import { Separator } from "../components/ui/separator";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-
-/**
- * DataVisualizationPage - Showcase de componentes avanzados de visualización
- * 
- * Componentes implementados:
- * 1. Sparklines - Mini gráficos de tendencia
- * 2. Gauge Charts - Medidores de progreso/KPIs
- * 3. Heatmaps - Mapas de calor matriciales
- * 4. Treemaps - Visualización jerárquica
- * 5. Funnel Charts - Embudos de conversión
- * 
- * Ubicación: /pages/DataVisualizationPage.tsx
- * Estado: ✅ Completado - 5/5 componentes de prioridad media
- */
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 // Mock data
 const sparklineData = Array.from({ length: 30 }, (_, i) => ({
@@ -101,7 +86,7 @@ const funnelData = [
   { name: "Purchase Complete", value: 850, description: "Completed transaction" },
 ];
 
-export function DataVisualizationPage() {
+function DataVisualizationDemo() {
   return (
     <div className="space-y-12">
       {/* Page Header */}
@@ -109,12 +94,12 @@ export function DataVisualizationPage() {
         <div className="flex items-center gap-3">
           <h1 className="font-bold">Advanced Data Visualization</h1>
           <Badge className="bg-blue-500 hover:bg-blue-600 text-white">
-            PRIORIDAD MEDIA
+            MEDIUM PRIORITY
           </Badge>
         </div>
         <p className="text-muted-foreground">
-          Componentes avanzados de visualización de datos construidos con Recharts.
-          Incluye sparklines, gauges, heatmaps, treemaps y funnels para analytics profesionales.
+          Advanced data visualization components built with Recharts.
+          Includes sparklines, gauges, heatmaps, treemaps, and funnels for professional analytics.
         </p>
       </div>
 
@@ -128,8 +113,8 @@ export function DataVisualizationPage() {
             <Badge variant="secondary">Micro Charts</Badge>
           </div>
           <p className="text-muted-foreground">
-            Mini gráficos de tendencia perfectos para dashboards y KPI cards.
-            Muestran patrones sin ocupar mucho espacio.
+            Mini trend charts perfect for dashboards and KPI cards.
+            They show patterns without taking up much space.
           </p>
         </div>
 
@@ -162,8 +147,8 @@ export function DataVisualizationPage() {
 
         <Card>
           <CardHeader>
-            <CardTitle className="text-lg">Sparkline sin contexto</CardTitle>
-            <CardDescription>Solo la línea de datos, ideal para embeddings</CardDescription>
+            <CardTitle className="text-lg">Standalone Sparkline</CardTitle>
+            <CardDescription>Data line only, ideal for embeddings</CardDescription>
           </CardHeader>
           <CardContent>
             <Sparkline data={sparklineData} height={80} color="var(--primary)" />
@@ -171,14 +156,14 @@ export function DataVisualizationPage() {
         </Card>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Diseño minimalista sin ejes ni labels</li>
-            <li>Indicadores de tendencia con iconos (↑ ↓ →)</li>
-            <li>Porcentaje de cambio con colores semánticos</li>
-            <li>Modo card completo o standalone</li>
-            <li>Responsive y adaptable</li>
-            <li>Colores personalizables</li>
+            <li>Minimalist design without axes or labels</li>
+            <li>Trend indicators with icons (↑ ↓ →)</li>
+            <li>Change percentage with semantic colors</li>
+            <li>Full card mode or standalone</li>
+            <li>Responsive and adaptable</li>
+            <li>Customizable colors</li>
           </ul>
         </div>
       </section>
@@ -193,8 +178,8 @@ export function DataVisualizationPage() {
             <Badge variant="secondary">Progress Meters</Badge>
           </div>
           <p className="text-muted-foreground">
-            Medidores tipo velocímetro para visualizar progreso, KPIs y scores.
-            Colores automáticos basados en thresholds configurables.
+            Speedometer-style meters to visualize progress, KPIs, and scores.
+            Automatic colors based on configurable thresholds.
           </p>
         </div>
 
@@ -222,14 +207,14 @@ export function DataVisualizationPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Diseño semicircular tipo velocímetro</li>
-            <li>Thresholds configurables (bajo/medio/alto)</li>
-            <li>Colores automáticos basados en valor</li>
-            <li>Badge de estado (Low/Medium/High)</li>
-            <li>Porcentaje centrado con label opcional</li>
-            <li>Tamaño personalizable</li>
+            <li>Semicircular speedometer design</li>
+            <li>Configurable thresholds (low/medium/high)</li>
+            <li>Automatic colors based on value</li>
+            <li>Status badge (Low/Medium/High)</li>
+            <li>Centered percentage with optional label</li>
+            <li>Customizable size</li>
           </ul>
         </div>
       </section>
@@ -244,8 +229,8 @@ export function DataVisualizationPage() {
             <Badge variant="secondary">Matrix Visualization</Badge>
           </div>
           <p className="text-muted-foreground">
-            Mapas de calor para visualizar patrones en datos matriciales.
-            Ideal para activity tracking, correlaciones y análisis temporal.
+            Heat maps for visualizing patterns in matrix data.
+            Ideal for activity tracking, correlations, and temporal analysis.
           </p>
         </div>
 
@@ -260,15 +245,15 @@ export function DataVisualizationPage() {
         />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Tabla con celdas coloreadas por intensidad</li>
-            <li>Escala de color personalizable (low/medium/high)</li>
-            <li>Valores numéricos opcionales en celdas</li>
-            <li>Labels en filas y columnas</li>
-            <li>Hover effect con tooltip</li>
-            <li>Leyenda con min/max values</li>
-            <li>Tamaño de celda configurable</li>
+            <li>Table with cells colored by intensity</li>
+            <li>Customizable color scale (low/medium/high)</li>
+            <li>Optional numeric values in cells</li>
+            <li>Row and column labels</li>
+            <li>Hover effect with tooltip</li>
+            <li>Legend with min/max values</li>
+            <li>Configurable cell size</li>
           </ul>
         </div>
       </section>
@@ -283,8 +268,8 @@ export function DataVisualizationPage() {
             <Badge variant="secondary">Hierarchical Data</Badge>
           </div>
           <p className="text-muted-foreground">
-            Visualización jerárquica usando rectángulos proporcionales.
-            Perfecto para portfolios, market share, y estructuras de datos anidadas.
+            Hierarchical visualization using proportional rectangles.
+            Perfect for portfolios, market share, and nested data structures.
           </p>
         </div>
 
@@ -296,15 +281,15 @@ export function DataVisualizationPage() {
         />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Rectángulos proporcionales al valor</li>
-            <li>Soporte para datos jerárquicos (children)</li>
-            <li>Colores automáticos diferenciados</li>
-            <li>Labels con nombre y valor</li>
-            <li>Tooltip interactivo en hover</li>
-            <li>Responsive con SafeChartContainer</li>
-            <li>Paleta de colores personalizable</li>
+            <li>Rectangles proportional to value</li>
+            <li>Support for hierarchical data (children)</li>
+            <li>Automatically differentiated colors</li>
+            <li>Labels with name and value</li>
+            <li>Interactive tooltip on hover</li>
+            <li>Responsive with SafeChartContainer</li>
+            <li>Customizable color palette</li>
           </ul>
         </div>
       </section>
@@ -319,8 +304,8 @@ export function DataVisualizationPage() {
             <Badge variant="secondary">Conversion Tracking</Badge>
           </div>
           <p className="text-muted-foreground">
-            Embudos de conversión para visualizar procesos y drop-offs.
-            Esencial para sales analytics, user flows y optimization.
+            Conversion funnels to visualize processes and drop-offs.
+            Essential for sales analytics, user flows, and optimization.
           </p>
         </div>
 
@@ -333,16 +318,16 @@ export function DataVisualizationPage() {
         />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Barras que disminuyen de tamaño por etapa</li>
-            <li>Valores absolutos y porcentajes de conversión</li>
-            <li>Indicadores de drop-off entre etapas</li>
-            <li>Colores personalizables por etapa</li>
-            <li>Tooltips con descripciones en hover</li>
-            <li>Resumen de estadísticas al final</li>
-            <li>Tasa de conversión total calculada</li>
-            <li>Responsive y adaptable</li>
+            <li>Bars that decrease in size by stage</li>
+            <li>Absolute values and conversion percentages</li>
+            <li>Drop-off indicators between stages</li>
+            <li>Customizable colors per stage</li>
+            <li>Tooltips with descriptions on hover</li>
+            <li>Summary statistics at the end</li>
+            <li>Total conversion rate calculated</li>
+            <li>Responsive and adaptable</li>
           </ul>
         </div>
       </section>
@@ -351,19 +336,19 @@ export function DataVisualizationPage() {
 
       {/* Implementation Notes */}
       <section className="bg-primary/5 rounded-lg p-6 space-y-4">
-        <h3 className="font-semibold">📋 Notas de Implementación</h3>
+        <h3 className="font-semibold">📋 Implementation Notes</h3>
         <div className="space-y-3 text-sm">
           <p>
-            <strong>Ubicación:</strong> Todos los componentes están en{" "}
+            <strong>Location:</strong> All components are in{" "}
             <code className="bg-muted px-2 py-1 rounded">/components/advanced/</code>
           </p>
           <p>
-            <strong>Dependencias:</strong> Estos componentes usan{" "}
-            <code className="bg-muted px-2 py-1 rounded">recharts</code> para visualizaciones.
-            Recharts ya está instalado en el proyecto.
+            <strong>Dependencies:</strong> These components use{" "}
+            <code className="bg-muted px-2 py-1 rounded">recharts</code> for visualizations.
+            Recharts is already installed in the project.
           </p>
           <p>
-            <strong>Imports necesarios:</strong>
+            <strong>Required Imports:</strong>
           </p>
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li>
@@ -393,15 +378,41 @@ export function DataVisualizationPage() {
             </li>
           </ul>
           <p>
-            <strong>Compatibilidad:</strong> Todos los componentes son compatibles con el
-            Theme Customizer y adaptan colores automáticamente en modo claro/oscuro.
+            <strong>Compatibility:</strong> All components are compatible with the
+            Theme Customizer and automatically adapt colors in light/dark mode.
           </p>
           <p>
-            <strong>Estado:</strong> ✅ Fase 2 completada - 5 componentes de visualización
-            de datos de PRIORIDAD MEDIA implementados y documentados.
+            <strong>Status:</strong> ✅ Phase 2 completed - 5 MEDIUM PRIORITY data visualization
+            components implemented and documented.
           </p>
         </div>
       </section>
     </div>
+  );
+}
+
+export function DataVisualizationPage() {
+  return (
+    <ComponentShowcase
+      title="Data Visualization"
+      description="Advanced visualization components: Sparklines for mini trend charts, Gauge Charts for KPI meters, Heatmap for data density, Treemap for hierarchical data, and Funnel Chart for conversion flows."
+      category="Advanced"
+      preview={<DataVisualizationDemo />}
+      code={`import { Sparkline } from "@/components/advanced/Sparkline";
+import { GaugeChart } from "@/components/advanced/GaugeChart";
+import { Heatmap } from "@/components/advanced/Heatmap";
+import { TreemapChart } from "@/components/advanced/TreemapChart";
+import { FunnelChart } from "@/components/advanced/FunnelChart";
+
+<Sparkline data={[...]} />
+<GaugeChart value={75} max={100} />
+<Heatmap data={matrix} />
+<TreemapChart data={hierarchy} />
+<FunnelChart data={stages} />`}
+      props={[
+        { name: "(aggregation)", type: "—", description: "Showcases 5 self-contained visualization components with sample data." },
+      ]}
+      examples={[]}
+    />
   );
 }

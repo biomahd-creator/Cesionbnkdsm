@@ -1,127 +1,25 @@
-// Exportar UI Components (Atomos y Moleculas)
-export * from "./ui/accordion";
-export * from "./ui/alert";
-export * from "./ui/alert-dialog";
-export * from "./ui/aspect-ratio";
-export * from "./ui/avatar";
-export * from "./ui/badge";
-export * from "./ui/bottom-sheet";
-export * from "./ui/breadcrumb";
-export * from "./ui/button";
-export * from "./ui/calendar";
-export * from "./ui/card";
-export * from "./ui/carousel";
-export * from "./ui/chart";
-export * from "./ui/checkbox";
-export * from "./ui/code-block";
-export * from "./ui/collapsible";
-export * from "./ui/command";
-export * from "./ui/context-menu";
-export * from "./ui/date-range-picker";
-export * from "./ui/dialog";
-export * from "./ui/drawer";
-export * from "./ui/dropdown-menu";
-export * from "./ui/empty-state";
-export * from "./ui/error-boundary";
-export * from "./ui/floating-action-button";
-export * from "./ui/form";
-export * from "./ui/hover-card";
-export * from "./ui/input";
-export * from "./ui/input-file";
-export * from "./ui/input-otp";
-export * from "./ui/label";
-export * from "./ui/loading-overlay";
-export * from "./ui/loading-states";
-export * from "./ui/menubar";
-export * from "./ui/multi-select";
-export * from "./ui/navigation-menu";
-export * from "./ui/page-transition";
-export * from "./ui/pagination";
-export * from "./ui/popover";
-export * from "./ui/progress";
-export * from "./ui/radio-group";
-export * from "./ui/resizable";
-export * from "./ui/safe-chart-container";
-export * from "./ui/scroll-area";
-export * from "./ui/select";
-export * from "./ui/separator";
-export * from "./ui/sheet";
-export * from "./ui/sidebar";
-export * from "./ui/sidebar-button";
-export * from "./ui/skeleton";
-export * from "./ui/skeleton-variants";
-export * from "./ui/slider";
-export * from "./ui/sonner";
-export * from "./ui/split-button";
-export * from "./ui/switch";
-export * from "./ui/table";
-export * from "./ui/tabs";
-export * from "./ui/textarea";
-export * from "./ui/textarea-autoresize";
-export * from "./ui/toggle";
-export * from "./ui/toggle-button-group";
-export * from "./ui/toggle-group";
-export * from "./ui/tooltip";
+/**
+ * Components - Central Barrel Export
+ *
+ * Uses sub-barrel re-exports to prevent drift between
+ * individual listings and the actual index files in each layer.
+ *
+ * NOTA: /factoring/ and /pages/ are NOT exported here.
+ * Factoring is app-specific business logic (excluded from DS).
+ * Pages are showcase/demo views (excluded from DS).
+ */
 
-// Exportar UI Utilities
-export * from "./ui/component-showcase";
-export * from "./ui/grid-showcase";
-export * from "./ui/icon-grid";
-export * from "./ui/use-mobile";
-export * from "./ui/utils";
+// UI Components (Atoms & Molecules)
+export * from "./ui";
 
-// Exportar Patterns Genericos (Organismos sin logica de negocio especifica)
-export * from "./patterns/ActivityFeed";
-export * from "./patterns/AdminPortal";
-export * from "./patterns/AdvancedFilterPanel";
-export * from "./patterns/ApprovalFlowWizard";
-export * from "./patterns/ApprovalTimeline";
-export * from "./patterns/AuditLogViewer";
-export * from "./patterns/CommentThread";
-export * from "./patterns/CupoValidator";
-export * from "./patterns/DataTableAdvanced";
-export * from "./patterns/EditableTable";
-export * from "./patterns/FactoringCalculator";
-export * from "./patterns/FactoringKpiCard";
-export * from "./patterns/FactoringKpiCardGroup";
-export * from "./patterns/KPIShowcase";
-export * from "./patterns/MultiStepWizard";
-export * from "./patterns/NotificationCenter";
-export * from "./patterns/OnboardingWizard";
-export * from "./patterns/QuickActionToolbar";
-export * from "./patterns/ReportsConsultation";
-export * from "./patterns/SearchResults";
-export * from "./patterns/StatsDashboard";
-export * from "./patterns/UploadZone";
-export * from "./patterns/UserProfileCard";
-// NOTA: No exportamos nada de /factoring ni /pages aqui.
+// Patterns (Generic Organisms without business logic)
+export * from "./patterns";
 
-// Exportar Advanced Components (Charts, Tables, Editors, etc.)
-export * from "./advanced/ChartShowcase";
-export * from "./advanced/Combobox";
-export * from "./advanced/ConditionalForm";
-export * from "./advanced/DataTable";
-export * from "./advanced/DatePickerWithPresets";
-export * from "./advanced/ExportData";
-export * from "./advanced/FileUploader";
-export * from "./advanced/FormBuilder";
-export * from "./advanced/FunnelChart";
-export * from "./advanced/GaugeChart";
-export * from "./advanced/Heatmap";
-export * from "./advanced/InfiniteScroll";
-export * from "./advanced/InvoiceGenerator";
-export * from "./advanced/MasonryGrid";
-export * from "./advanced/MasterDataGrid";
-export * from "./advanced/MultiColumnForm";
-export * from "./advanced/RatingComponent";
-export * from "./advanced/RichTextEditor";
-export * from "./advanced/Sparkline";
-export * from "./advanced/StepIndicator";
-export * from "./advanced/Timeline";
-export * from "./advanced/TransferList";
-export * from "./advanced/TreeTable";
-export * from "./advanced/TreemapChart";
-export * from "./advanced/VirtualizedList";
+// Advanced Components (Charts, Tables, Editors, etc.)
+export * from "./advanced";
 
-// Exportar Widgets (Bloques funcionales compuestos)
+// Widgets (Composed Functional Blocks)
 export * from "./widgets";
+
+// Providers (All context providers — infrastructure + feature)
+export * from "./providers";

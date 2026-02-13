@@ -4,13 +4,40 @@ import path from 'path';
 import dts from 'vite-plugin-dts';
 
 /**
- * Externals: todas las dependencias peer que NO deben bundlearse.
- * Usamos una función para capturar versiones pinneadas (@x.y.z) en imports.
+ * vite.config.lib.ts - Library Build Configuration
+ *
+ * ARCHITECTURE (G1 + G3):
+ * - ESM-only output with preserveModules for maximum tree-shaking
+ * - Each component gets its own output file, allowing consumers
+ *   to import at any granularity:
+ *
+ *   // Full import (all components)
+ *   import { Button } from '@biomahd-creator/financio-design-system';
+ *
+ *   // Layer import (better tree-shaking)
+ *   import { Button } from '@biomahd-creator/financio-design-system/ui';
+ *
+ *   // Direct component import (best tree-shaking)
+ *   import { Button } from '@biomahd-creator/financio-design-system/ui/button';
+ *
+ * BOUNDARY (G1):
+ * - ONLY /components/, /hooks/, /lib/ are included in the library build.
+ * - /pages/, /components/factoring/, /App.tsx are EXCLUDED (app-only).
+ * - The entry point is /index.ts which re-exports the library surface.
+ *
+ * @version 0.1.0
+ */
+
+/**
+ * Externals: all peerDependencies that must NOT be bundled.
+ * Uses a function to catch pinned version imports (@x.y.z).
  */
 const EXTERNAL_PACKAGES = [
   // Core
   'react',
   'react-dom',
+  'react/jsx-runtime',
+  'react/jsx-dev-runtime',
   'tailwindcss',
 
   // Radix UI primitives
@@ -47,57 +74,87 @@ const EXTERNAL_PACKAGES = [
 
   // Layout
   'react-responsive-masonry',
+
+  // Form
+  'react-hook-form',
+  'zod',
 ];
 
 const isExternal = (id: string) =>
-  EXTERNAL_PACKAGES.some((pkg) => id === pkg || id.startsWith(`${pkg}/`) || id.startsWith(`${pkg}@`));
+  EXTERNAL_PACKAGES.some(
+    (pkg) => id === pkg || id.startsWith(`${pkg}/`) || id.startsWith(`${pkg}@`)
+  );
+
+/**
+ * Library entry points.
+ * Each entry produces a separate chunk tree for sub-path imports.
+ */
+const LIB_ENTRIES: Record<string, string> = {
+  // Root entry: re-exports everything
+  index: path.resolve(__dirname, 'index.ts'),
+
+  // Layer entries: allow `import ... from 'pkg/ui'` etc.
+  'components/ui/index': path.resolve(__dirname, 'components/ui/index.ts'),
+  'components/patterns/index': path.resolve(__dirname, 'components/patterns/index.ts'),
+  'components/advanced/index': path.resolve(__dirname, 'components/advanced/index.ts'),
+  'components/widgets/index': path.resolve(__dirname, 'components/widgets/index.ts'),
+  'components/providers/index': path.resolve(__dirname, 'components/providers/index.ts'),
+
+  // Utility layers
+  'hooks/index': path.resolve(__dirname, 'hooks/index.ts'),
+  'lib/index': path.resolve(__dirname, 'lib/index.ts'),
+};
 
 export default defineConfig({
   plugins: [
     react(),
-    dts({ 
+    dts({
       insertTypesEntry: true,
-      include: ['components'], // Solo genera tipos para la carpeta components
+      // Generate types for library-only code
+      include: ['components', 'hooks', 'lib', 'index.ts'],
+      // Exclude app-only code from type generation
+      exclude: [
+        'components/factoring/**',
+        'pages/**',
+        'App.tsx',
+        'main.tsx',
+        'tests/**',
+        '**/*.test.*',
+        '**/*.spec.*',
+      ],
     }),
   ],
   build: {
     outDir: 'dist-lib',
+    // ESM-only: modern consumers use bundlers that handle ESM natively.
+    // UMD dropped in v0.1.0 — see CHANGELOG.
     lib: {
-      entry: path.resolve(__dirname, 'components/index.ts'),
-      name: 'FigmaMakeDS',
-      fileName: (format) => `figma-make-ds.${format}.js`,
+      entry: LIB_ENTRIES,
+      formats: ['es'],
     },
     rollupOptions: {
-      // Externalizamos TODAS las peerDependencies para que el consumidor las provea
       external: isExternal,
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-          tailwindcss: 'tailwindcss',
-          'lucide-react': 'LucideReact',
-          recharts: 'Recharts',
-          motion: 'Motion',
-          'date-fns': 'DateFns',
-          clsx: 'clsx',
-          'tailwind-merge': 'tailwindMerge',
-          'class-variance-authority': 'cva',
-          'react-day-picker': 'ReactDayPicker',
-          'embla-carousel-react': 'EmblaCarouselReact',
-          cmdk: 'cmdk',
-          vaul: 'vaul',
-          'input-otp': 'InputOTP',
-          sonner: 'Sonner',
-          'react-dnd': 'ReactDnD',
-          'react-dnd-html5-backend': 'ReactDnDHTML5Backend',
-          'react-responsive-masonry': 'ReactResponsiveMasonry',
-        },
+        // preserveModules: each source file → one output file.
+        // This enables per-component tree-shaking without any bundler magic.
+        preserveModules: true,
+        preserveModulesRoot: '.',
+        entryFileNames: '[name].js',
+        // Ensure consistent chunk naming
+        chunkFileNames: '[name].js',
+        // No need for globals in ESM
       },
     },
+    // Disable CSS code splitting — consumers import theme.css separately
+    cssCodeSplit: false,
+    // Generate sourcemaps for debugging
+    sourcemap: true,
+    // Minification off: consumers' bundlers will minify
+    minify: false,
   },
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./"),
+      '@': path.resolve(__dirname, './'),
     },
   },
 });

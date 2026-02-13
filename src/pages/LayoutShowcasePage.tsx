@@ -72,7 +72,7 @@ function MiniKpiCard({
       <CardContent>
         <div className="text-2xl font-semibold">{value}</div>
         <p className="text-xs text-muted-foreground mt-1">
-          <span className="text-primary">{change}</span> vs mes anterior
+          <span className="text-primary">{change}</span> vs previous month
         </p>
       </CardContent>
     </Card>
@@ -84,34 +84,34 @@ function MiniFilterPanel() {
     <Card>
       <CardHeader>
         <CardTitle className="text-sm flex items-center gap-2">
-          <Filter className="h-4 w-4" /> Filtros
+          <Filter className="h-4 w-4" /> Filters
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div>
-          <label className="text-xs text-muted-foreground">Estado</label>
+          <label className="text-xs text-muted-foreground">Status</label>
           <Select defaultValue="all">
             <SelectTrigger className="mt-1 h-8">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all">Todos</SelectItem>
-              <SelectItem value="pendiente">Pendiente</SelectItem>
-              <SelectItem value="aprobada">Aprobada</SelectItem>
+              <SelectItem value="all">All</SelectItem>
+              <SelectItem value="pendiente">Pending</SelectItem>
+              <SelectItem value="aprobada">Approved</SelectItem>
             </SelectContent>
           </Select>
         </div>
         <div>
-          <label className="text-xs text-muted-foreground">Fecha desde</label>
+          <label className="text-xs text-muted-foreground">Date from</label>
           <Input type="date" className="mt-1 h-8" />
         </div>
         <div>
-          <label className="text-xs text-muted-foreground">Fecha hasta</label>
+          <label className="text-xs text-muted-foreground">Date to</label>
           <Input type="date" className="mt-1 h-8" />
         </div>
         <Separator />
         <Button variant="outline" size="sm" className="w-full">
-          Aplicar filtros
+          Apply Filters
         </Button>
       </CardContent>
     </Card>
@@ -122,17 +122,17 @@ function MiniTable() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="text-sm">Operaciones Recientes</CardTitle>
-        <CardDescription>Ultimas 5 operaciones de factoring</CardDescription>
+        <CardTitle className="text-sm">Recent Operations</CardTitle>
+        <CardDescription>Last 5 factoring operations</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-2">
           {[
-            { id: "OP-4635", client: "Grupo Aval", amount: "$125M", status: "Aprobada" },
-            { id: "OP-4636", client: "Ecopetrol", amount: "$89M", status: "Pendiente" },
-            { id: "OP-4637", client: "Bancolombia", amount: "$210M", status: "Desembolsada" },
-            { id: "OP-4638", client: "ISA Group", amount: "$67M", status: "Pendiente" },
-            { id: "OP-4639", client: "Nutresa", amount: "$145M", status: "Aprobada" },
+            { id: "OP-4635", client: "Grupo Aval", amount: "$125M", status: "Approved" },
+            { id: "OP-4636", client: "Ecopetrol", amount: "$89M", status: "Pending" },
+            { id: "OP-4637", client: "Bancolombia", amount: "$210M", status: "Disbursed" },
+            { id: "OP-4638", client: "ISA Group", amount: "$67M", status: "Pending" },
+            { id: "OP-4639", client: "Nutresa", amount: "$145M", status: "Approved" },
           ].map((row) => (
             <div
               key={row.id}
@@ -146,9 +146,9 @@ function MiniTable() {
                 <span className="text-sm tabular-nums font-medium">{row.amount}</span>
                 <Badge
                   variant={
-                    row.status === "Aprobada"
+                    row.status === "Approved"
                       ? "success-soft-outline"
-                      : row.status === "Pendiente"
+                      : row.status === "Pending"
                         ? "warning-soft-outline"
                         : "info-soft-outline"
                   }
@@ -171,16 +171,16 @@ function MiniSettingsForm() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Settings className="h-5 w-5" />
-          Configuracion de Operacion
+          Operation Settings
         </CardTitle>
         <CardDescription>
-          Parametros generales para nuevas operaciones de factoring
+          General parameters for new factoring operations
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <label className="text-sm font-medium">Tasa base (%)</label>
+            <label className="text-sm font-medium">Base rate (%)</label>
             <Input defaultValue="12.5" className="mt-1" />
           </div>
           <div>
@@ -189,17 +189,17 @@ function MiniSettingsForm() {
           </div>
         </div>
         <div>
-          <label className="text-sm font-medium">Plazo maximo (dias)</label>
+          <label className="text-sm font-medium">Max term (days)</label>
           <Input defaultValue="180" className="mt-1" />
         </div>
         <div>
-          <label className="text-sm font-medium">Monto maximo ($M)</label>
+          <label className="text-sm font-medium">Max amount ($M)</label>
           <Input defaultValue="500" className="mt-1" />
         </div>
         <Separator />
         <div className="flex gap-2 justify-end">
-          <Button variant="outline">Cancelar</Button>
-          <Button>Guardar cambios</Button>
+          <Button variant="outline">Cancel</Button>
+          <Button>Save Changes</Button>
         </div>
       </CardContent>
     </Card>
@@ -219,7 +219,7 @@ import { GridShowcase } from "@/components/ui/grid-showcase";
 // Dashboard: constrained + KPIs + split (table + sidebar)
 <PageLayout variant="constrained">
   <StackLayout gap="relaxed">
-    <SectionLayout title="Resumen" description="KPIs del periodo">
+    <SectionLayout title="Summary" description="Period KPIs">
       <GridShowcase columns={4} gap="sm">
         <KpiCard />
         <KpiCard />
@@ -239,8 +239,8 @@ import { GridShowcase } from "@/components/ui/grid-showcase";
 <PageLayout variant="narrow">
   <StackLayout gap="relaxed" dividers>
     <SectionLayout title="General">...</SectionLayout>
-    <SectionLayout title="Notificaciones">...</SectionLayout>
-    <SectionLayout title="Seguridad">...</SectionLayout>
+    <SectionLayout title="Notifications">...</SectionLayout>
+    <SectionLayout title="Security">...</SectionLayout>
   </StackLayout>
 </PageLayout>`;
 
@@ -250,7 +250,7 @@ export function LayoutShowcasePage() {
   return (
     <ComponentShowcase
       title="Page Layout"
-      description="Sistema de Layout Primitives que restringe el ancho del contenido, organiza paneles y secciones. Resuelve el problema de contenido que ocupa toda la pantalla sin control. Composable con GridShowcase."
+      description="Layout Primitives system that constrains content width, organizes panels and sections. Solves the problem of content spanning the full screen without control. Composable with GridShowcase."
       category="Layout"
       preview={
         <div className="w-full space-y-4">
@@ -274,13 +274,13 @@ export function LayoutShowcasePage() {
             <PageLayout variant={activeVariant as any}>
               <div className="rounded-lg border-2 border-dashed border-primary/40 bg-primary/5 p-4 text-center">
                 <p className="text-sm text-muted-foreground">
-                  Contenido con <code className="text-xs bg-muted px-1 py-0.5 rounded font-mono">variant=&quot;{activeVariant}&quot;</code>
+                  Content with <code className="text-xs bg-muted px-1 py-0.5 rounded font-mono">variant=&quot;{activeVariant}&quot;</code>
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  {activeVariant === "full" && "Sin restriccion — ocupa 100% del ancho"}
-                  {activeVariant === "constrained" && "max-w-7xl (1280px) — ideal para dashboards"}
-                  {activeVariant === "narrow" && "max-w-3xl (768px) — ideal para formularios"}
-                  {activeVariant === "prose" && "max-w-prose (65ch) — ideal para texto"}
+                  {activeVariant === "full" && "No restriction — takes 100% width"}
+                  {activeVariant === "constrained" && "max-w-7xl (1280px) — ideal for dashboards"}
+                  {activeVariant === "narrow" && "max-w-3xl (768px) — ideal for forms"}
+                  {activeVariant === "prose" && "max-w-prose (65ch) — ideal for text"}
                 </p>
               </div>
             </PageLayout>
@@ -289,41 +289,41 @@ export function LayoutShowcasePage() {
       }
       code={code}
       props={[
-        { name: "variant", type: '"full" | "constrained" | "narrow" | "prose"', default: '"constrained"', description: "Restriccion de ancho maximo del contenido" },
-        { name: "padding", type: '"none" | "sm" | "md" | "lg"', default: '"none"', description: "Padding horizontal" },
-        { name: "centered", type: "boolean", default: "true", description: "Centrar el contenido horizontalmente" },
-        { name: "ratio", type: '"equal" | "sidebar-left" | "sidebar-right" | "aside-left" | "aside-right"', description: "Ratio de SplitLayout entre paneles" },
-        { name: "gap", type: '"sm" | "md" | "lg" (Split) / "compact" | "default" | "relaxed" | "spacious" (Stack)', description: "Espaciado entre elementos" },
-        { name: "stickyPanel", type: '"left" | "right" | "none"', default: '"none"', description: "Panel que se mantiene fijo en scroll (SplitLayout)" },
-        { name: "dividers", type: "boolean", default: "false", description: "Agregar separadores entre secciones (StackLayout)" },
-        { name: "title", type: "string", description: "Titulo de la seccion (SectionLayout)" },
-        { name: "description", type: "string", description: "Descripcion de la seccion (SectionLayout)" },
-        { name: "action", type: "ReactNode", description: "Slot de accion a la derecha del titulo (SectionLayout)" },
+        { name: "variant", type: '"full" | "constrained" | "narrow" | "prose"', default: '"constrained"', description: "Maximum width constraint for content" },
+        { name: "padding", type: '"none" | "sm" | "md" | "lg"', default: '"none"', description: "Horizontal padding" },
+        { name: "centered", type: "boolean", default: "true", description: "Center content horizontally" },
+        { name: "ratio", type: '"equal" | "sidebar-left" | "sidebar-right" | "aside-left" | "aside-right"', description: "SplitLayout ratio between panels" },
+        { name: "gap", type: '"sm" | "md" | "lg" (Split) / "compact" | "default" | "relaxed" | "spacious" (Stack)', description: "Spacing between elements" },
+        { name: "stickyPanel", type: '"left" | "right" | "none"', default: '"none"', description: "Panel that stays fixed on scroll (SplitLayout)" },
+        { name: "dividers", type: "boolean", default: "false", description: "Add separators between sections (StackLayout)" },
+        { name: "title", type: "string", description: "Section title (SectionLayout)" },
+        { name: "description", type: "string", description: "Section description (SectionLayout)" },
+        { name: "action", type: "ReactNode", description: "Action slot to the right of the title (SectionLayout)" },
       ]}
       examples={[
         {
           title: "Dashboard Pattern — constrained + KPIs + Split",
           description:
-            "Patron mas comun en CESIONBNK: KPIs en grid arriba, tabla principal + panel de filtros abajo. Contenido restringido a max-w-7xl.",
+            "Most common pattern in CESIONBNK: KPIs in grid above, main table + filter panel below. Content constrained to max-w-7xl.",
           preview: (
             <div className="w-full">
               <PageLayout variant="constrained">
                 <StackLayout gap="relaxed">
                   <SectionLayout
-                    title="Dashboard de Factoring"
-                    description="Resumen del periodo actual"
+                    title="Factoring Dashboard"
+                    description="Current period summary"
                     action={
                       <Button variant="outline" size="sm" className="gap-1">
                         <BarChart3 className="h-3.5 w-3.5" />
-                        Exportar
+                        Export
                       </Button>
                     }
                   >
                     <GridShowcase columns={4} gap="sm">
-                      <MiniKpiCard title="Operaciones" value="142" change="+12%" icon={FileText} />
-                      <MiniKpiCard title="Desembolsos" value="$8.2B" change="+8.5%" icon={DollarSign} />
-                      <MiniKpiCard title="Clientes" value="38" change="+3" icon={Users} />
-                      <MiniKpiCard title="Tasa Promedio" value="14.2%" change="-0.3%" icon={TrendingUp} />
+                      <MiniKpiCard title="Operations" value="142" change="+12%" icon={FileText} />
+                      <MiniKpiCard title="Disbursements" value="$8.2B" change="+8.5%" icon={DollarSign} />
+                      <MiniKpiCard title="Clients" value="38" change="+3" icon={Users} />
+                      <MiniKpiCard title="Average Rate" value="14.2%" change="-0.3%" icon={TrendingUp} />
                     </GridShowcase>
                   </SectionLayout>
 
@@ -337,7 +337,7 @@ export function LayoutShowcasePage() {
           ),
           code: `<PageLayout variant="constrained">
   <StackLayout gap="relaxed">
-    <SectionLayout title="Dashboard" description="Resumen" action={<Button>Exportar</Button>}>
+    <SectionLayout title="Dashboard" description="Summary" action={<Button>Export</Button>}>
       <GridShowcase columns={4} gap="sm">
         <KpiCard /><KpiCard /><KpiCard /><KpiCard />
       </GridShowcase>
@@ -353,28 +353,28 @@ export function LayoutShowcasePage() {
         {
           title: "Settings Pattern — narrow + stacked sections + dividers",
           description:
-            "Para configuraciones y formularios. Ancho restringido a max-w-3xl con secciones divididas. El contenido nunca se estira en pantallas anchas.",
+            "For settings and forms. Width constrained to max-w-3xl with divided sections. Content never stretches on wide screens.",
           preview: (
             <div className="w-full bg-muted/10 rounded-lg p-6">
               <PageLayout variant="narrow">
                 <StackLayout gap="relaxed" dividers>
-                  <SectionLayout title="Parametros de Operacion" description="Configuracion basica para nuevas operaciones">
+                  <SectionLayout title="Operation Parameters" description="Basic settings for new operations">
                     <MiniSettingsForm />
                   </SectionLayout>
 
                   <SectionLayout
-                    title="Notificaciones"
-                    description="Como recibir alertas del sistema"
-                    action={<Badge variant="info-soft-outline">3 activas</Badge>}
+                    title="Notifications"
+                    description="How to receive system alerts"
+                    action={<Badge variant="info-soft-outline">3 active</Badge>}
                   >
                     <Card>
                       <CardContent className="pt-6 space-y-3">
-                        {["Email al crear operacion", "Push al aprobar", "SMS al desembolsar"].map(
+                        {["Email on operation creation", "Push on approval", "SMS on disbursement"].map(
                           (item) => (
                             <div key={item} className="flex items-center justify-between py-2">
                               <span className="text-sm">{item}</span>
                               <Badge variant="success-soft-outline" className="text-[11px]">
-                                Activa
+                                Active
                               </Badge>
                             </div>
                           )
@@ -383,17 +383,17 @@ export function LayoutShowcasePage() {
                     </Card>
                   </SectionLayout>
 
-                  <SectionLayout title="Zona de Peligro" description="Acciones irreversibles">
+                  <SectionLayout title="Danger Zone" description="Irreversible actions">
                     <Card className="border-destructive/30">
                       <CardContent className="pt-6 flex items-center justify-between">
                         <div>
-                          <p className="text-sm font-medium">Eliminar configuracion</p>
+                          <p className="text-sm font-medium">Delete configuration</p>
                           <p className="text-xs text-muted-foreground">
-                            Esta accion no se puede deshacer
+                            This action cannot be undone
                           </p>
                         </div>
                         <Button variant="destructive" size="sm">
-                          Eliminar
+                          Delete
                         </Button>
                       </CardContent>
                     </Card>
@@ -404,22 +404,22 @@ export function LayoutShowcasePage() {
           ),
           code: `<PageLayout variant="narrow">
   <StackLayout gap="relaxed" dividers>
-    <SectionLayout title="Parametros" description="Config basica">
+    <SectionLayout title="Parameters" description="Basic config">
       <SettingsForm />
     </SectionLayout>
-    <SectionLayout title="Notificaciones" action={<Badge>3 activas</Badge>}>
+    <SectionLayout title="Notifications" action={<Badge>3 active</Badge>}>
       <NotificationList />
     </SectionLayout>
-    <SectionLayout title="Zona de Peligro">
+    <SectionLayout title="Danger Zone">
       <DangerZone />
     </SectionLayout>
   </StackLayout>
 </PageLayout>`,
         },
         {
-          title: "SplitLayout — Todas las ratios",
+          title: "SplitLayout — All Ratios",
           description:
-            "5 ratios disponibles para organizar dos paneles. Todos colapsan a 1 columna en mobile.",
+            "5 available ratios for organizing two panels. All collapse to 1 column on mobile.",
           preview: (
             <div className="w-full space-y-6">
               {(
@@ -462,15 +462,15 @@ export function LayoutShowcasePage() {
 </SplitLayout>`,
         },
         {
-          title: "StackLayout — Gap y Dividers",
+          title: "StackLayout — Gaps & Dividers",
           description:
-            "4 niveles de spacing y opcion de separadores. Ideal para paginas de contenido secuencial.",
+            "4 spacing levels and divider option. Ideal for sequential content pages.",
           preview: (
             <div className="w-full">
               <Tabs defaultValue="gaps">
                 <TabsList className="grid w-full grid-cols-2 max-w-lg">
                   <TabsTrigger value="gaps">Gaps</TabsTrigger>
-                  <TabsTrigger value="dividers">Con Dividers</TabsTrigger>
+                  <TabsTrigger value="dividers">With Dividers</TabsTrigger>
                 </TabsList>
 
                 <TabsContent value="gaps" className="mt-4">
@@ -493,14 +493,14 @@ export function LayoutShowcasePage() {
                 <TabsContent value="dividers" className="mt-4">
                   <PageLayout variant="narrow">
                     <StackLayout gap="relaxed" dividers>
-                      <SectionLayout title="Seccion A" description="Primera seccion con separador inferior">
-                        <DemoBox label="Contenido A" h="h-16" />
+                      <SectionLayout title="Section A" description="First section with bottom separator">
+                        <DemoBox label="Content A" h="h-16" />
                       </SectionLayout>
-                      <SectionLayout title="Seccion B" description="Segunda seccion separada visualmente">
-                        <DemoBox label="Contenido B" h="h-16" />
+                      <SectionLayout title="Section B" description="Second section visually separated">
+                        <DemoBox label="Content B" h="h-16" />
                       </SectionLayout>
-                      <SectionLayout title="Seccion C" description="Tercera seccion con divider">
-                        <DemoBox label="Contenido C" h="h-16" />
+                      <SectionLayout title="Section C" description="Third section with divider">
+                        <DemoBox label="Content C" h="h-16" />
                       </SectionLayout>
                     </StackLayout>
                   </PageLayout>
@@ -508,22 +508,22 @@ export function LayoutShowcasePage() {
               </Tabs>
             </div>
           ),
-          code: `// Sin dividers
+          code: `// Without dividers
 <StackLayout gap="relaxed">
   <Section />
   <Section />
 </StackLayout>
 
-// Con dividers
+// With dividers
 <StackLayout gap="relaxed" dividers>
   <SectionLayout title="A">...</SectionLayout>
   <SectionLayout title="B">...</SectionLayout>
 </StackLayout>`,
         },
         {
-          title: "Composicion Real — Detalle de Operacion",
+          title: "Real Composition — Operation Detail",
           description:
-            "Ejemplo real: pagina de detalle de operacion usando PageLayout + SplitLayout + StackLayout + SectionLayout + GridShowcase juntos.",
+            "Real example: operation detail page using PageLayout + SplitLayout + StackLayout + SectionLayout + GridShowcase together.",
           preview: (
             <div className="w-full bg-muted/10 rounded-lg p-4">
               <PageLayout variant="constrained">
@@ -533,44 +533,44 @@ export function LayoutShowcasePage() {
                     <div>
                       <div className="flex items-center gap-3">
                         <h2 className="text-2xl font-semibold">OP-4635</h2>
-                        <Badge variant="success-soft-outline">Aprobada</Badge>
+                        <Badge variant="success-soft-outline">Approved</Badge>
                       </div>
                       <p className="text-sm text-muted-foreground mt-1">
                         Grupo Aval S.A. — NIT 860.002.964-4
                       </p>
                     </div>
                     <div className="flex gap-2">
-                      <Button variant="outline" size="sm">Historial</Button>
-                      <Button size="sm">Desembolsar</Button>
+                      <Button variant="outline" size="sm">History</Button>
+                      <Button size="sm">Disburse</Button>
                     </div>
                   </div>
 
                   {/* KPIs */}
                   <GridShowcase columns={4} gap="sm">
-                    <MiniKpiCard title="Facturas" value="12" change="+3" icon={FileText} />
-                    <MiniKpiCard title="Valor Total" value="$125M" change="+15%" icon={DollarSign} />
-                    <MiniKpiCard title="Desembolso" value="$118M" change="95%" icon={ArrowUpRight} />
-                    <MiniKpiCard title="Dias Promedio" value="45" change="-5d" icon={Activity} />
+                    <MiniKpiCard title="Invoices" value="12" change="+3" icon={FileText} />
+                    <MiniKpiCard title="Total Value" value="$125M" change="+15%" icon={DollarSign} />
+                    <MiniKpiCard title="Disbursement" value="$118M" change="95%" icon={ArrowUpRight} />
+                    <MiniKpiCard title="Avg Days" value="45" change="-5d" icon={Activity} />
                   </GridShowcase>
 
                   {/* Split: main + aside */}
                   <SplitLayout ratio="sidebar-right" gap="md">
                     <StackLayout gap="default">
-                      <SectionLayout title="Facturas" action={<Badge variant="info-soft-outline">12 facturas</Badge>}>
+                      <SectionLayout title="Invoices" action={<Badge variant="info-soft-outline">12 invoices</Badge>}>
                         <MiniTable />
                       </SectionLayout>
                     </StackLayout>
 
                     <StackLayout gap="default">
-                      <SectionLayout title="Resumen">
+                      <SectionLayout title="Summary">
                         <Card>
                           <CardContent className="pt-6 space-y-3">
                             {[
-                              ["Cliente", "Grupo Aval S.A."],
-                              ["Pagadores", "3 pagadores"],
-                              ["Fecha", "09/02/2026"],
-                              ["Tasa", "14.2%"],
-                              ["Comision", "$1.2M"],
+                              ["Client", "Grupo Aval S.A."],
+                              ["Payers", "3 payers"],
+                              ["Date", "09/02/2026"],
+                              ["Rate", "14.2%"],
+                              ["Commission", "$1.2M"],
                             ].map(([label, value]) => (
                               <div key={label} className="flex justify-between text-sm">
                                 <span className="text-muted-foreground">{label}</span>
@@ -585,10 +585,10 @@ export function LayoutShowcasePage() {
                         <Card>
                           <CardContent className="pt-6 space-y-2">
                             {[
-                              { step: "Creada", time: "09:15", done: true },
-                              { step: "Validada", time: "10:30", done: true },
-                              { step: "Aprobada", time: "14:22", done: true },
-                              { step: "Desembolso", time: "—", done: false },
+                              { step: "Created", time: "09:15", done: true },
+                              { step: "Validated", time: "10:30", done: true },
+                              { step: "Approved", time: "14:22", done: true },
+                              { step: "Disbursement", time: "—", done: false },
                             ].map((s) => (
                               <div key={s.step} className="flex items-center gap-3">
                                 <div
@@ -620,12 +620,12 @@ export function LayoutShowcasePage() {
     </GridShowcase>
 
     <SplitLayout ratio="sidebar-right">
-      <SectionLayout title="Facturas">
+      <SectionLayout title="Invoices">
         <InvoiceTable />
       </SectionLayout>
 
       <StackLayout gap="default">
-        <SectionLayout title="Resumen">
+        <SectionLayout title="Summary">
           <SummaryCard />
         </SectionLayout>
         <SectionLayout title="Timeline">

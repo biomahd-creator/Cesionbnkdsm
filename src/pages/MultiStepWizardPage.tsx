@@ -1,87 +1,18 @@
+import { ComponentShowcase } from "../components/ui/component-showcase";
 import { MultiStepWizard } from "../components/patterns/MultiStepWizard";
-import { Badge } from "../components/ui/badge";
-import { Separator } from "../components/ui/separator";
-import { Alert, AlertDescription } from "../components/ui/alert";
-import { AlertCircle, CheckCircle2, ListOrdered, Sparkles } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../components/ui/card";
 
 export function MultiStepWizardPage() {
   return (
-    <div className="space-y-8 pb-8">
-      {/* Header */}
-      <div>
-        <div className="flex items-center gap-3 mb-2">
-          <h1 className="text-2xl font-medium">Multi-Step Wizard</h1>
-          <Badge variant="default">Patterns</Badge>
+    <ComponentShowcase
+      title="Multi-Step Wizard"
+      description="Multi-step form wizard for complex processes like factoring applications. Guides users through structured stages with visual progress indicators, step validation, and intuitive navigation. Includes smooth transitions, contextual inputs (Info, Financial, Docs), and a final summary before submission."
+      category="Patterns"
+      preview={
+        <div className="max-w-3xl mx-auto">
+          <MultiStepWizard />
         </div>
-        <p className="text-muted-foreground text-lg">
-          Formulario de múltiples pasos para procesos complejos como solicitudes de factoring.
-        </p>
-      </div>
-
-      <Separator />
-
-      {/* Description */}
-      <Alert>
-        <AlertCircle className="h-4 w-4" />
-        <AlertDescription>
-          El <strong>Wizard Multi-Paso</strong> guía al usuario a través de un proceso largo dividiéndolo
-          en etapas manejables. Incluye validación por paso, indicadores de progreso y navegación intuitiva.
-        </AlertDescription>
-      </Alert>
-
-      {/* Main Component Showcase */}
-      <div className="max-w-3xl mx-auto">
-        <MultiStepWizard />
-      </div>
-
-      <Separator />
-
-      {/* Features */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Características Principales</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="grid md:grid-cols-2 gap-4">
-            <div className="space-y-3">
-              <h4 className="font-medium flex items-center gap-2">
-                <ListOrdered className="h-4 w-4 text-primary" />
-                Navegación Estructurada
-              </h4>
-              <ul className="space-y-2 text-sm text-muted-foreground ml-6">
-                <li>• Indicador de pasos visual con estado (activo, completado)</li>
-                <li>• Barra de progreso porcentual</li>
-                <li>• Navegación Anterior/Siguiente</li>
-                <li>• Validación antes de avanzar (simulada)</li>
-              </ul>
-            </div>
-
-            <div className="space-y-3">
-              <h4 className="font-medium flex items-center gap-2">
-                <Sparkles className="h-4 w-4 text-primary" />
-                Experiencia de Usuario
-              </h4>
-              <ul className="space-y-2 text-sm text-muted-foreground ml-6">
-                <li>• Transiciones suaves entre pestañas</li>
-                <li>• Resumen final antes de enviar</li>
-                <li>• Inputs específicos por contexto (Info, Financiero, Docs)</li>
-                <li>• Feedback visual claro en cada etapa</li>
-              </ul>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      {/* Code Usage */}
-      <Card>
-        <CardHeader>
-          <CardTitle>Implementación</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="bg-muted p-4 rounded-md overflow-x-auto">
-            <pre className="text-sm">
-              <code>{`import { MultiStepWizard } from "./components/patterns/MultiStepWizard";
+      }
+      code={`import { MultiStepWizard } from "@/components/patterns/MultiStepWizard";
 
 export default function ApplicationPage() {
   return (
@@ -89,11 +20,47 @@ export default function ApplicationPage() {
       <MultiStepWizard />
     </div>
   );
-}`}</code>
-            </pre>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+}`}
+      props={[
+        {
+          name: "(self-contained)",
+          type: "—",
+          description: "This component is self-contained with internal state management. No external props required.",
+        },
+      ]}
+      examples={[
+        {
+          title: "Key Features",
+          description: "Built-in capabilities of the Multi-Step Wizard pattern.",
+          preview: (
+            <div className="grid md:grid-cols-2 gap-4">
+              <div className="space-y-3 p-4 border rounded-lg">
+                <h4 className="font-medium">Structured Navigation</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>Visual step indicator (active, completed)</li>
+                  <li>Progress bar with percentage</li>
+                  <li>Previous / Next navigation</li>
+                  <li>Per-step validation before advancing</li>
+                </ul>
+              </div>
+              <div className="space-y-3 p-4 border rounded-lg">
+                <h4 className="font-medium">User Experience</h4>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>Smooth transitions between steps</li>
+                  <li>Final summary before submission</li>
+                  <li>Context-specific inputs per step</li>
+                  <li>Clear visual feedback at each stage</li>
+                </ul>
+              </div>
+            </div>
+          ),
+          code: `// The wizard internally manages:
+// Step 1: Company Information
+// Step 2: Financial Details
+// Step 3: Document Upload
+// Step 4: Review & Submit`,
+        },
+      ]}
+    />
   );
 }

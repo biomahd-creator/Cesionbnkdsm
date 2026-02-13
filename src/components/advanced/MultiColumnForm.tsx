@@ -11,12 +11,11 @@ import { Badge } from "../ui/badge";
 /**
  * 🔒 ADVANCED COMPONENT - Multi-Column Form
  * 
- * Formulario con diseño de múltiples columnas responsive
- * Optimiza el espacio en pantalla y mejora la UX para forms extensos
+ * Multi-column responsive form layout.
  * 
- * Ubicación: /components/advanced/MultiColumnForm.tsx
- * Categoría: Advanced Forms - Prioridad Media
- * Uso: Registration forms, profiles, checkout, applications
+ * Location: /components/advanced/MultiColumnForm.tsx
+ * Category: Advanced Forms - Medium Priority
+ * Usage: Registration forms, profiles, checkout, applications
  */
 
 interface FormData {

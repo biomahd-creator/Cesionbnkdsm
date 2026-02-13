@@ -19,10 +19,10 @@ import {
 
 // Data
 const lineData = [
-  { month: "Ene", value: 45 },
+  { month: "Jan", value: 45 },
   { month: "Feb", value: 52 },
   { month: "Mar", value: 61 },
-  { month: "Abr", value: 58 },
+  { month: "Apr", value: 58 },
   { month: "May", value: 70 },
   { month: "Jun", value: 65 },
 ];
@@ -36,10 +36,10 @@ const barData = [
 ];
 
 const pieData = [
-  { name: "Aprobadas", value: 65, color: "var(--primary)" },
-  { name: "Pendientes", value: 20, color: "var(--secondary)" },
-  { name: "Rechazadas", value: 10, color: "var(--destructive)" },
-  { name: "En Revisión", value: 5, color: "var(--warning)" },
+  { name: "Approved", value: 65, color: "var(--primary)" },
+  { name: "Pending", value: 20, color: "var(--secondary)" },
+  { name: "Rejected", value: 10, color: "var(--destructive)" },
+  { name: "In Review", value: 5, color: "var(--warning)" },
 ];
 
 export function ChartShowcase() {

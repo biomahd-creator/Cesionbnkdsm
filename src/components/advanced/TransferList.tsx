@@ -22,8 +22,8 @@ interface TransferListProps {
 }
 
 export function TransferList({
-  leftTitle = "Disponibles",
-  rightTitle = "Seleccionados",
+  leftTitle = "Available",
+  rightTitle = "Selected",
   items,
   initialRightIds = [],
   onChange,
@@ -107,7 +107,7 @@ export function TransferList({
             ))}
             {listItems.length === 0 && (
               <div className="text-center py-8 text-muted-foreground text-sm">
-                No hay elementos
+                No items
               </div>
             )}
           </div>
@@ -126,7 +126,7 @@ export function TransferList({
           size="icon"
           onClick={handleAllRight}
           disabled={leftItems.length === 0}
-          title="Mover todos a la derecha"
+          title="Move all to the right"
         >
           <ChevronsRight className="h-4 w-4 md:rotate-0 rotate-90" />
         </Button>
@@ -135,7 +135,7 @@ export function TransferList({
           size="icon"
           onClick={handleCheckedRight}
           disabled={leftChecked.length === 0}
-          title="Mover seleccionados a la derecha"
+          title="Move selected to the right"
         >
           <ChevronRight className="h-4 w-4 md:rotate-0 rotate-90" />
         </Button>
@@ -144,7 +144,7 @@ export function TransferList({
           size="icon"
           onClick={handleCheckedLeft}
           disabled={rightChecked.length === 0}
-          title="Mover seleccionados a la izquierda"
+          title="Move selected to the left"
         >
           <ChevronLeft className="h-4 w-4 md:rotate-0 rotate-90" />
         </Button>
@@ -153,7 +153,7 @@ export function TransferList({
           size="icon"
           onClick={handleAllLeft}
           disabled={rightItems.length === 0}
-          title="Mover todos a la izquierda"
+          title="Move all to the left"
         >
           <ChevronsLeft className="h-4 w-4 md:rotate-0 rotate-90" />
         </Button>

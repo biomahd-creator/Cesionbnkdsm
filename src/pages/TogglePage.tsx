@@ -53,46 +53,46 @@ export function ToggleDemo() {
           name: "variant",
           type: '"default" | "outline"',
           default: '"default"',
-          description: "Estilo visual del toggle",
+          description: "Visual style of the toggle",
         },
         {
           name: "size",
           type: '"default" | "sm" | "lg"',
           default: '"default"',
-          description: "Tamaño del toggle",
+          description: "Toggle size",
         },
         {
           name: "defaultPressed",
           type: "boolean",
           default: "false",
-          description: "Estado inicial del toggle (no controlado)",
+          description: "Initial toggle state (uncontrolled)",
         },
         {
           name: "pressed",
           type: "boolean",
-          description: "Estado controlado del toggle",
+          description: "Controlled toggle state",
         },
         {
           name: "onPressedChange",
           type: "(pressed: boolean) => void",
-          description: "Callback cuando cambia el estado",
+          description: "Callback when the state changes",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el toggle",
+          description: "Disables the toggle",
         },
         {
           name: "aria-label",
           type: "string",
-          description: "Etiqueta accesible (requerida)",
+          description: "Accessible label (required)",
           required: true,
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
       ]}
       
@@ -100,7 +100,7 @@ export function ToggleDemo() {
       examples={[
         {
           title: "Text Formatting Toolbar",
-          description: "Barra de herramientas común para editores de texto",
+          description: "Common toolbar for text editors",
           preview: (
             <div className="flex gap-2">
               <Toggle aria-label="Toggle bold">
@@ -147,7 +147,7 @@ export function TextFormattingToolbar() {
         },
         {
           title: "Outline Variants",
-          description: "Toggle con variante outline en todos los tamaños",
+          description: "Toggle with outline variant in all sizes",
           preview: (
             <div className="flex flex-col gap-4">
               <div className="flex items-center gap-4">
@@ -182,7 +182,7 @@ import { Italic, Bold, Underline } from "lucide-react";
 export function OutlineToggles() {
   return (
     <div className="flex flex-col gap-4">
-      {/* Tamaños */}
+      {/* Sizes */}
       <div className="flex gap-4">
         <Toggle variant="outline" size="sm">
           <Italic className="h-4 w-4" />
@@ -195,7 +195,7 @@ export function OutlineToggles() {
         </Toggle>
       </div>
       
-      {/* Con texto y estados */}
+      {/* With text and states */}
       <div className="flex gap-4">
         <Toggle variant="outline">
           <Italic className="mr-2 h-4 w-4" />
@@ -212,7 +212,7 @@ export function OutlineToggles() {
         },
         {
           title: "Sizes",
-          description: "Diferentes tamaños disponibles para el toggle",
+          description: "Different available sizes for the toggle",
           preview: (
             <div className="flex items-center gap-4">
               <Toggle size="sm" aria-label="Small toggle">
@@ -247,7 +247,7 @@ export function ToggleSizes() {
         },
         {
           title: "With Text",
-          description: "Toggle con texto e icono combinados",
+          description: "Toggle with icon and text combined",
           preview: (
             <div className="flex flex-wrap gap-4">
               <Toggle aria-label="Toggle italic">
@@ -288,7 +288,7 @@ export function ToggleWithText() {
         },
         {
           title: "Alignment Controls",
-          description: "Toggle para controles de alineación de texto",
+          description: "Toggle for text alignment controls",
           preview: (
             <div className="flex gap-2">
               <Toggle aria-label="Align left" defaultPressed>
@@ -323,7 +323,7 @@ export function AlignmentControls() {
         },
         {
           title: "List Controls",
-          description: "Toggle para controles de listas",
+          description: "Toggle for list controls",
           preview: (
             <div className="flex gap-2">
               <Toggle variant="outline" aria-label="Unordered list">
@@ -358,7 +358,7 @@ export function ListControls() {
         },
         {
           title: "Disabled States",
-          description: "Toggle en estados deshabilitados",
+          description: "Toggle in disabled states",
           preview: (
             <div className="flex flex-wrap gap-4">
               <Toggle disabled aria-label="Disabled off">
@@ -396,7 +396,7 @@ export function DisabledToggles() {
         },
         {
           title: "Controlled State",
-          description: "Toggle con estado controlado usando React state",
+          description: "Toggle with controlled state using React state",
           preview: (
             <div className="flex flex-col gap-4">
               <Toggle aria-label="Toggle bold">
@@ -404,8 +404,8 @@ export function DisabledToggles() {
                 Bold
               </Toggle>
               <p className="text-muted-foreground">
-                Usa la prop <code className="text-xs bg-muted px-1 py-0.5 rounded">pressed</code> y{" "}
-                <code className="text-xs bg-muted px-1 py-0.5 rounded">onPressedChange</code> para controlar el estado
+                Use the <code className="text-xs bg-muted px-1 py-0.5 rounded">pressed</code> and{" "}
+                <code className="text-xs bg-muted px-1 py-0.5 rounded">onPressedChange</code> props to control the state
               </p>
             </div>
           ),

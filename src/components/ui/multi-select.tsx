@@ -23,7 +23,7 @@ interface MultiSelectProps {
 }
 
 const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
-  ({ options, selected, onChange, placeholder = "Selecciona opciones...", className, disabled }, ref) => {
+  ({ options, selected, onChange, placeholder = "Select options...", className, disabled }, ref) => {
     const [open, setOpen] = React.useState(false);
 
     const handleSelect = (value: string) => {
@@ -78,7 +78,7 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
                         onClick={(e) => handleRemove(option.value, e)}
                       >
                         <X className="size-3" />
-                        <span className="sr-only">Eliminar {option.label}</span>
+                        <span className="sr-only">Remove {option.label}</span>
                       </button>
                     </Badge>
                   ))
@@ -90,9 +90,9 @@ const MultiSelect = React.forwardRef<HTMLDivElement, MultiSelectProps>(
         </PopoverTrigger>
         <PopoverContent className="w-full p-0" align="start">
           <Command>
-            <CommandInput placeholder="Buscar..." />
+            <CommandInput placeholder="Search..." />
             <CommandList>
-              <CommandEmpty>No se encontraron opciones.</CommandEmpty>
+              <CommandEmpty>No options found.</CommandEmpty>
               <CommandGroup>
                 {options.map((option) => {
                   const isSelected = selected.includes(option.value);

@@ -22,7 +22,7 @@ export function FactoringCalculator() {
   const [plazo, setPlazo] = useState<number>(30);
   const [tasaMensual, setTasaMensual] = useState<number>(2.5);
   
-  // Cálculos automáticos
+  // Automatic calculations
   const monto = parseFloat(montoFactura) || 0;
   const comision = monto * (tasaMensual / 100) * (plazo / 30);
   const montoARecibir = monto - comision;
@@ -41,7 +41,7 @@ export function FactoringCalculator() {
   };
 
   const formatDate = (date: Date) => {
-    return date.toLocaleDateString('es-ES', { 
+    return date.toLocaleDateString('en-US', { 
       year: 'numeric', 
       month: 'long', 
       day: 'numeric' 
@@ -50,39 +50,39 @@ export function FactoringCalculator() {
 
   return (
     <div className="space-y-6">
-      {/* Header con título */}
+      {/* Header with title */}
       <Card className="elevation-2 border-2 border-primary/20">
         <CardHeader>
           <div className="flex items-center justify-between">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Calculator className="h-5 w-5 text-primary" />
-                Calculadora de Factoring
+                Factoring Calculator
               </CardTitle>
               <CardDescription>
-                Calcula en tiempo real el costo y monto a recibir
+                Calculate cost and receivable amount in real time
               </CardDescription>
             </div>
             <Badge variant="default" className="bg-green-500 hover:bg-green-600">
-              En Tiempo Real
+              Real Time
             </Badge>
           </div>
         </CardHeader>
       </Card>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Panel de inputs */}
+        {/* Input panel */}
         <Card className="elevation-2">
           <CardHeader>
-            <CardTitle className="text-lg">Datos de la Operación</CardTitle>
-            <CardDescription>Configura los parámetros de financiamiento</CardDescription>
+            <CardTitle className="text-lg">Operation Details</CardTitle>
+            <CardDescription>Configure financing parameters</CardDescription>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Monto de la factura */}
+            {/* Invoice amount */}
             <div className="space-y-2">
               <Label htmlFor="monto" className="flex items-center gap-2">
                 <DollarSign className="h-4 w-4 text-primary" />
-                Monto de la Factura
+                Invoice Amount
               </Label>
               <Input
                 id="monto"
@@ -93,21 +93,21 @@ export function FactoringCalculator() {
                 className="text-lg font-semibold"
               />
               <p className="text-xs text-muted-foreground">
-                Valor nominal de la factura a financiar
+                Nominal value of the invoice to be financed
               </p>
             </div>
 
             <Separator />
 
-            {/* Plazo */}
+            {/* Term */}
             <div className="space-y-3">
               <Label className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-primary" />
-                  Plazo de Pago
+                  Payment Term
                 </span>
                 <Badge variant="outline" className="text-sm">
-                  {plazo} días
+                  {plazo} days
                 </Badge>
               </Label>
               <Slider
@@ -119,21 +119,21 @@ export function FactoringCalculator() {
                 className="py-4"
               />
               <div className="flex justify-between text-xs text-muted-foreground">
-                <span>15 días</span>
-                <span>30 días</span>
-                <span>60 días</span>
-                <span>90 días</span>
+                <span>15 days</span>
+                <span>30 days</span>
+                <span>60 days</span>
+                <span>90 days</span>
               </div>
             </div>
 
             <Separator />
 
-            {/* Tasa mensual */}
+            {/* Monthly rate */}
             <div className="space-y-3">
               <Label className="flex items-center justify-between">
                 <span className="flex items-center gap-2">
                   <Percent className="h-4 w-4 text-primary" />
-                  Tasa Mensual
+                  Monthly Rate
                 </span>
                 <Badge variant="outline" className="text-sm">
                   {tasaMensual.toFixed(2)}%
@@ -155,7 +155,7 @@ export function FactoringCalculator() {
               </div>
             </div>
 
-            {/* Botones de acción */}
+            {/* Action buttons */}
             <div className="flex gap-2 pt-2">
               <Button 
                 variant="outline" 
@@ -166,28 +166,28 @@ export function FactoringCalculator() {
                   setTasaMensual(2.5);
                 }}
               >
-                Restablecer
+                Reset
               </Button>
               <Button className="flex-1">
-                Solicitar Financiamiento
+                Request Financing
               </Button>
             </div>
           </CardContent>
         </Card>
 
-        {/* Panel de resultados */}
+        {/* Results panel */}
         <div className="space-y-6">
-          {/* Resumen visual */}
+          {/* Visual summary */}
           <Card className="elevation-2 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/30">
             <CardHeader>
-              <CardTitle className="text-lg">Resultado del Cálculo</CardTitle>
-              <CardDescription>Desglose completo de la operación</CardDescription>
+              <CardTitle className="text-lg">Calculation Result</CardTitle>
+              <CardDescription>Full operation breakdown</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
-              {/* Flujo visual */}
+              {/* Visual flow */}
               <div className="flex items-center justify-between p-4 rounded-lg bg-card border">
                 <div className="text-center flex-1">
-                  <p className="text-xs text-muted-foreground mb-1">Monto Factura</p>
+                  <p className="text-xs text-muted-foreground mb-1">Invoice Amount</p>
                   <p className="text-xl font-semibold text-primary">
                     {formatCurrency(monto)}
                   </p>
@@ -196,7 +196,7 @@ export function FactoringCalculator() {
                 <ArrowRight className="h-5 w-5 text-muted-foreground flex-shrink-0 mx-2" />
                 
                 <div className="text-center flex-1">
-                  <p className="text-xs text-muted-foreground mb-1">Comisión</p>
+                  <p className="text-xs text-muted-foreground mb-1">Commission</p>
                   <p className="text-xl font-semibold text-destructive flex items-center justify-center gap-1">
                     <TrendingDown className="h-4 w-4" />
                     {formatCurrency(comision)}
@@ -206,63 +206,63 @@ export function FactoringCalculator() {
                 <ArrowRight className="h-5 w-5 text-muted-foreground flex-shrink-0 mx-2" />
                 
                 <div className="text-center flex-1">
-                  <p className="text-xs text-muted-foreground mb-1">A Recibir</p>
+                  <p className="text-xs text-muted-foreground mb-1">To Receive</p>
                   <p className="text-xl font-semibold text-green-500">
                     {formatCurrency(montoARecibir)}
                   </p>
                 </div>
               </div>
 
-              {/* Detalles */}
+              {/* Details */}
               <div className="space-y-3">
                 <div className="flex items-center justify-between p-3 rounded-lg border bg-card">
-                  <span className="text-sm text-muted-foreground">Plazo de la operación</span>
-                  <span className="font-semibold">{plazo} días</span>
+                  <span className="text-sm text-muted-foreground">Operation term</span>
+                  <span className="font-semibold">{plazo} days</span>
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-lg border bg-card">
-                  <span className="text-sm text-muted-foreground">Tasa aplicada</span>
-                  <span className="font-semibold">{tasaMensual.toFixed(2)}% mensual</span>
+                  <span className="text-sm text-muted-foreground">Applied rate</span>
+                  <span className="font-semibold">{tasaMensual.toFixed(2)}% monthly</span>
                 </div>
 
                 <div className="flex items-center justify-between p-3 rounded-lg border bg-card">
-                  <span className="text-sm text-muted-foreground">Costo Efectivo Anual</span>
+                  <span className="text-sm text-muted-foreground">Effective Annual Cost</span>
                   <Badge variant="outline" className="font-semibold">
-                    {costoEfectivoAnual.toFixed(2)}% CEA
+                    {costoEfectivoAnual.toFixed(2)}% EAC
                   </Badge>
                 </div>
               </div>
 
               <Separator />
 
-              {/* Fechas */}
+              {/* Dates */}
               <div className="space-y-2">
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Fecha de desembolso</span>
+                  <span className="text-muted-foreground">Disbursement date</span>
                   <span className="font-medium">{formatDate(fechaHoy)}</span>
                 </div>
                 <div className="flex items-center justify-between text-sm">
-                  <span className="text-muted-foreground">Fecha de pago al cliente</span>
+                  <span className="text-muted-foreground">Client payment date</span>
                   <span className="font-medium">{formatDate(fechaPago)}</span>
                 </div>
               </div>
             </CardContent>
           </Card>
 
-          {/* Desglose detallado */}
+          {/* Detailed breakdown */}
           <Card className="elevation-1">
             <CardHeader>
-              <CardTitle className="text-lg">Desglose Financiero</CardTitle>
+              <CardTitle className="text-lg">Financial Breakdown</CardTitle>
             </CardHeader>
             <CardContent>
               <div className="space-y-2">
                 <div className="flex items-center justify-between py-2 border-b">
-                  <span className="text-sm">Monto nominal factura</span>
+                  <span className="text-sm">Nominal invoice amount</span>
                   <span className="font-semibold">{formatCurrency(monto)}</span>
                 </div>
                 <div className="flex items-center justify-between py-2 border-b">
                   <span className="text-sm text-muted-foreground">
-                    Comisión ({tasaMensual}% × {plazo/30} meses)
+                    Commission ({tasaMensual}% × {plazo/30} months)
                   </span>
                   <span className="font-semibold text-destructive">
                     - {formatCurrency(comision)}
@@ -270,7 +270,7 @@ export function FactoringCalculator() {
                 </div>
                 <div className="flex items-center justify-between py-3 bg-green-500/10 px-3 rounded-lg">
                   <span className="font-semibold text-green-700 dark:text-green-400">
-                    Monto a recibir hoy
+                    Amount to receive today
                   </span>
                   <span className="text-xl font-bold text-green-600 dark:text-green-400">
                     {formatCurrency(montoARecibir)}
@@ -280,32 +280,32 @@ export function FactoringCalculator() {
             </CardContent>
           </Card>
 
-          {/* Alert informativa */}
+          {/* Info alert */}
           <Alert className="border-primary/50 bg-primary/5">
             <Info className="h-4 w-4 text-primary" />
             <AlertDescription className="text-sm">
-              <strong>Nota:</strong> Los cálculos son referenciales. La tasa final puede variar 
-              según el perfil del cliente y la evaluación de riesgo.
+              <strong>Note:</strong> Calculations are for reference only. The final rate may vary 
+              based on the client profile and risk assessment.
             </AlertDescription>
           </Alert>
         </div>
       </div>
 
-      {/* Comparativa de escenarios */}
+      {/* Scenario comparison */}
       <Card className="elevation-1">
         <CardHeader>
-          <CardTitle className="text-lg">Comparativa de Escenarios</CardTitle>
-          <CardDescription>Diferentes plazos con el monto actual</CardDescription>
+          <CardTitle className="text-lg">Scenario Comparison</CardTitle>
+          <CardDescription>Different terms with the current amount</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-3 px-4 font-semibold text-sm">Plazo</th>
-                  <th className="text-right py-3 px-4 font-semibold text-sm">Comisión</th>
-                  <th className="text-right py-3 px-4 font-semibold text-sm">A Recibir</th>
-                  <th className="text-right py-3 px-4 font-semibold text-sm">CEA</th>
+                  <th className="text-left py-3 px-4 font-semibold text-sm">Term</th>
+                  <th className="text-right py-3 px-4 font-semibold text-sm">Commission</th>
+                  <th className="text-right py-3 px-4 font-semibold text-sm">To Receive</th>
+                  <th className="text-right py-3 px-4 font-semibold text-sm">EAC</th>
                 </tr>
               </thead>
               <tbody>
@@ -322,9 +322,9 @@ export function FactoringCalculator() {
                     >
                       <td className="py-3 px-4">
                         <div className="flex items-center gap-2">
-                          <span className="font-medium">{dias} días</span>
+                          <span className="font-medium">{dias} days</span>
                           {isSelected && (
-                            <Badge variant="default" className="text-xs">Actual</Badge>
+                            <Badge variant="default" className="text-xs">Current</Badge>
                           )}
                         </div>
                       </td>

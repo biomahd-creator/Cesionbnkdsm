@@ -1,14 +1,14 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { CollectionTimeline } from "../factoring/CollectionTimeline";
+import { CollectionTimeline } from "../components/factoring/CollectionTimeline";
 
-const collectionTimelineCode = `import { CollectionTimeline } from "@/factoring/CollectionTimeline";
+const collectionTimelineCode = `import { CollectionTimeline } from "@/components/factoring/CollectionTimeline";
 
 export function CollectionTimelineDemo() {
   const events = [
-    { id: "1", type: "email", title: "Recordatorio enviado", date: "Hoy", status: "completed" },
-    { id: "2", type: "call", title: "Llamada a tesorería", date: "Ayer", description: "Compromiso de pago para el viernes", status: "completed", user: "Ana" },
-    { id: "3", type: "payment", title: "Pago parcial recibido", date: "Hace 3 días", status: "completed" },
-    { id: "4", type: "system", title: "Factura radicada", date: "Hace 10 días" },
+    { id: "1", type: "email", title: "Reminder sent", date: "Today", status: "completed" },
+    { id: "2", type: "call", title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
+    { id: "3", type: "payment", title: "Partial payment received", date: "3 days ago", status: "completed" },
+    { id: "4", type: "system", title: "Invoice filed", date: "10 days ago" },
   ];
 
   return <CollectionTimeline events={events} />;
@@ -16,16 +16,16 @@ export function CollectionTimelineDemo() {
 
 export function CollectionTimelinePage() {
   const events = [
-    { id: "1", type: "email", title: "Recordatorio enviado", date: "Hoy", status: "completed" },
-    { id: "2", type: "call", title: "Llamada a tesorería", date: "Ayer", description: "Compromiso de pago para el viernes", status: "completed", user: "Ana" },
-    { id: "3", type: "payment", title: "Pago parcial recibido", date: "Hace 3 días", status: "completed" },
-    { id: "4", type: "system", title: "Factura radicada", date: "Hace 10 días" },
+    { id: "1", type: "email", title: "Reminder sent", date: "Today", status: "completed" },
+    { id: "2", type: "call", title: "Treasury call", date: "Yesterday", description: "Payment commitment for Friday", status: "completed", user: "Ana" },
+    { id: "3", type: "payment", title: "Partial payment received", date: "3 days ago", status: "completed" },
+    { id: "4", type: "system", title: "Invoice filed", date: "10 days ago" },
   ];
 
   return (
     <ComponentShowcase
       title="Collection Timeline"
-      description="Línea de tiempo para seguimiento de gestión de cobranza."
+      description="Timeline for collection management tracking."
       category="Business Component"
       preview={
         <div className="w-full max-w-md border rounded-lg p-4 bg-background">
@@ -34,31 +34,31 @@ export function CollectionTimelinePage() {
       }
       code={collectionTimelineCode}
       props={[
-        { name: "events", type: "TimelineEvent[]", description: "Array de eventos de cobranza. Cada evento: id, type ('email'|'call'|'payment'|'dispute'|'system'), title, description, date, user, status ('completed'|'pending'|'failed').", required: true },
-        { name: "className", type: "string", description: "Clases adicionales para el contenedor." },
+        { name: "events", type: "TimelineEvent[]", description: "Array of collection events. Each event: id, type ('email'|'call'|'payment'|'dispute'|'system'), title, description, date, user, status ('completed'|'pending'|'failed').", required: true },
+        { name: "className", type: "string", description: "Additional classes for the container." },
       ]}
       examples={[
         {
-          title: "Gestión con disputa",
-          description: "Timeline que incluye un evento de disputa y pago fallido.",
+          title: "Management with dispute",
+          description: "Timeline including a dispute event and failed payment.",
           preview: (
             <div className="w-full max-w-md border rounded-lg p-4 bg-background">
               <CollectionTimeline
                 events={[
-                  { id: "1", type: "email", title: "Primer aviso de cobro", date: "Hace 15 días", status: "completed" },
-                  { id: "2", type: "call", title: "Llamada de seguimiento", date: "Hace 10 días", description: "Cliente indica desacuerdo con monto", status: "completed", user: "Carlos" },
-                  { id: "3", type: "dispute", title: "Disputa abierta", date: "Hace 7 días", description: "Diferencia en cantidades facturadas", status: "pending" },
-                  { id: "4", type: "payment", title: "Pago rechazado por banco", date: "Hace 3 días", status: "failed" },
+                  { id: "1", type: "email", title: "First collection notice", date: "15 days ago", status: "completed" },
+                  { id: "2", type: "call", title: "Follow-up call", date: "10 days ago", description: "Client indicates disagreement with amount", status: "completed", user: "Carlos" },
+                  { id: "3", type: "dispute", title: "Dispute opened", date: "7 days ago", description: "Discrepancy in invoiced quantities", status: "pending" },
+                  { id: "4", type: "payment", title: "Payment rejected by bank", date: "3 days ago", status: "failed" },
                 ]}
               />
             </div>
           ),
           code: `<CollectionTimeline
   events={[
-    { id: "1", type: "email", title: "Primer aviso", date: "Hace 15 días", status: "completed" },
-    { id: "2", type: "call", title: "Seguimiento", date: "Hace 10 días", status: "completed", user: "Carlos" },
-    { id: "3", type: "dispute", title: "Disputa abierta", date: "Hace 7 días", status: "pending" },
-    { id: "4", type: "payment", title: "Pago rechazado", date: "Hace 3 días", status: "failed" },
+    { id: "1", type: "email", title: "First notice", date: "15 days ago", status: "completed" },
+    { id: "2", type: "call", title: "Follow-up", date: "10 days ago", status: "completed", user: "Carlos" },
+    { id: "3", type: "dispute", title: "Dispute opened", date: "7 days ago", status: "pending" },
+    { id: "4", type: "payment", title: "Payment rejected", date: "3 days ago", status: "failed" },
   ]}
 />`,
         },

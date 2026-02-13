@@ -64,11 +64,11 @@ const mockInvoices = [
 ];
 
 const statusConfig: Record<string, { label: string; variant: "default" | "secondary" | "outline" | "destructive" }> = {
-  approved: { label: "Aprobada", variant: "default" },
-  pending: { label: "Pendiente", variant: "secondary" },
-  review: { label: "En Revisión", variant: "outline" },
-  rejected: { label: "Rechazada", variant: "destructive" },
-  paid: { label: "Pagada", variant: "default" },
+  approved: { label: "Approved", variant: "default" },
+  pending: { label: "Pending", variant: "secondary" },
+  review: { label: "In Review", variant: "outline" },
+  rejected: { label: "Rejected", variant: "destructive" },
+  paid: { label: "Paid", variant: "default" },
 };
 
 export function DataTableAdvanced() {
@@ -92,23 +92,23 @@ export function DataTableAdvanced() {
 
   return (
     <MasterDataGrid
-      title="Facturas Recientes"
-      description="Gestión de facturas y estados de pago"
+      title="Recent Invoices"
+      description="Invoice management and payment status"
       searchQuery={searchQuery}
       onSearchChange={setSearchQuery}
-      searchPlaceholder="Buscar por cliente o número..."
+      searchPlaceholder="Search by client or number..."
       
       filterOptions={[
         {
-          label: "Estado",
+          label: "Status",
           value: statusFilter,
           options: [
-            { label: "Todos los estados", value: "all" },
-            { label: "Pendiente", value: "pending" },
-            { label: "En Revisión", value: "review" },
-            { label: "Aprobada", value: "approved" },
-            { label: "Rechazada", value: "rejected" },
-            { label: "Pagada", value: "paid" },
+            { label: "All statuses", value: "all" },
+            { label: "Pending", value: "pending" },
+            { label: "In Review", value: "review" },
+            { label: "Approved", value: "approved" },
+            { label: "Rejected", value: "rejected" },
+            { label: "Paid", value: "paid" },
           ]
         }
       ]}
@@ -126,13 +126,13 @@ export function DataTableAdvanced() {
             <Table>
             <TableHeader>
                 <TableRow>
-                <TableHead>N° Factura</TableHead>
-                <TableHead>Cliente</TableHead>
-                <TableHead>Monto</TableHead>
-                <TableHead>Fecha Emisión</TableHead>
-                <TableHead>Vencimiento</TableHead>
-                <TableHead>Estado</TableHead>
-                <TableHead className="text-right">Acciones</TableHead>
+                <TableHead>Invoice No.</TableHead>
+                <TableHead>Client</TableHead>
+                <TableHead>Amount</TableHead>
+                <TableHead>Issue Date</TableHead>
+                <TableHead>Due Date</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
             </TableHeader>
             <TableBody>
@@ -141,7 +141,7 @@ export function DataTableAdvanced() {
                     <TableCell className="font-medium">{invoice.id}</TableCell>
                     <TableCell>{invoice.client}</TableCell>
                     <TableCell>
-                    ${invoice.amount.toLocaleString("es-CL")}
+                    ${invoice.amount.toLocaleString("en-US")}
                     </TableCell>
                     <TableCell>{invoice.date}</TableCell>
                     <TableCell>{invoice.dueDate}</TableCell>
@@ -158,14 +158,14 @@ export function DataTableAdvanced() {
                         </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                        <DropdownMenuLabel>Acciones</DropdownMenuLabel>
+                        <DropdownMenuLabel>Actions</DropdownMenuLabel>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>Ver detalles</DropdownMenuItem>
-                        <DropdownMenuItem>Descargar PDF</DropdownMenuItem>
-                        <DropdownMenuItem>Aprobar</DropdownMenuItem>
+                        <DropdownMenuItem>View details</DropdownMenuItem>
+                        <DropdownMenuItem>Download PDF</DropdownMenuItem>
+                        <DropdownMenuItem>Approve</DropdownMenuItem>
                         <DropdownMenuSeparator />
                         <DropdownMenuItem className="text-destructive">
-                            Rechazar
+                            Reject
                         </DropdownMenuItem>
                         </DropdownMenuContent>
                     </DropdownMenu>

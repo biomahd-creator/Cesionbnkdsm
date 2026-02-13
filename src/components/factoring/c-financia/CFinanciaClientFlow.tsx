@@ -7,6 +7,7 @@
  * Utiliza FactoringInvoiceTable (ya refactorizado) para el detalle de facturas.
  */
 import { useState, useMemo } from "react";
+import { cn } from "../../ui/utils";
 import { CFinanciaNavbar } from "./CFinanciaNavbar";
 import { Button } from "../../ui/button";
 import { Card, CardContent, CardHeader } from "../../ui/card";

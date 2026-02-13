@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useCallback, ReactNode } fr
 
 /**
  * TRANSITION PROVIDER
- * Context global para manejar transiciones entre páginas/vistas
- * Coordina animaciones de entrada/salida
+ * Global context for managing transitions between pages/views
+ * Coordinates entry/exit animations
  */
 
 type TransitionDirection = "forward" | "backward" | "none";
@@ -78,7 +78,7 @@ export function TransitionProvider({ children, defaultType = "fade" }: Transitio
 }
 
 /**
- * Hook para usar el transition context
+ * Hook to use the transition context
  */
 export function useTransition() {
   const context = useContext(TransitionContext);

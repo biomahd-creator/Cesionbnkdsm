@@ -7,17 +7,17 @@ export function UserProfileDemo() {
   return (
     <UserProfileCard 
       user={{
-        name: "María González",
-        role: "Gerente Financiera",
+        name: "Maria Gonzalez",
+        role: "Financial Manager",
         initials: "MG",
-        email: "maria.gonzalez@empresa.com",
+        email: "maria.gonzalez@company.com",
         company: "Tech Solutions SAS",
         status: "active",
-        tags: ["Finanzas", "Aprobador", "Admin"],
+        tags: ["Finance", "Approver", "Admin"],
         stats: [
-          { label: "Operaciones", value: "145" },
-          { label: "Aprobadas", value: "98%" },
-          { label: "Equipo", value: "12" },
+          { label: "Operations", value: "145" },
+          { label: "Approved", value: "98%" },
+          { label: "Team", value: "12" },
         ]
       }}
     />
@@ -28,22 +28,22 @@ export function UserProfilePage() {
   return (
     <ComponentShowcase
       title="User Profile Card"
-      description="Tarjeta de perfil de usuario con estadísticas y tags."
+      description="User profile card with statistics and tags."
       category="Business Pattern"
       preview={
         <UserProfileCard 
           user={{
-            name: "María González",
-            role: "Gerente Financiera",
+            name: "Maria Gonzalez",
+            role: "Financial Manager",
             initials: "MG",
-            email: "maria.gonzalez@empresa.com",
+            email: "maria.gonzalez@company.com",
             company: "Tech Solutions SAS",
             status: "active",
-            tags: ["Finanzas", "Aprobador", "Admin"],
+            tags: ["Finance", "Approver", "Admin"],
             stats: [
-              { label: "Operaciones", value: "145" },
-              { label: "Aprobadas", value: "98%" },
-              { label: "Equipo", value: "12" },
+              { label: "Operations", value: "145" },
+              { label: "Approved", value: "98%" },
+              { label: "Team", value: "12" },
             ]
           }}
         />

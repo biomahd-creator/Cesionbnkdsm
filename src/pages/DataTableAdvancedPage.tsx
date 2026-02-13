@@ -11,29 +11,29 @@ export function DataTableAdvancedPage() {
   return (
     <ComponentShowcase
       title="Data Table Advanced"
-      description="Tabla avanzada con búsqueda, filtros por estado, ordenamiento, acciones por fila y paginación. Componente auto-contenido con datos mock de facturas."
+      description="Advanced table with search, status filters, sorting, per-row actions, and pagination. Self-contained component with mock invoice data."
       category="Business Pattern"
       preview={<DataTableAdvanced />}
       code={dataTableAdvancedCode}
       props={[
-        { name: "(self-contained)", type: "—", description: "Componente auto-contenido. Incluye búsqueda, filtro por estado, ordenamiento por columna, acciones contextuales por fila y paginación interna." },
+        { name: "(self-contained)", type: "—", description: "Self-contained component. Includes search, status filter, column sorting, contextual per-row actions, and internal pagination." },
       ]}
       examples={[
         {
-          title: "En layout de página completa",
-          description: "Integración típica dentro de un módulo de administración.",
+          title: "In full-page layout",
+          description: "Typical integration within an administration module.",
           preview: (
             <div className="text-center py-6 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Se renderiza como contenido principal de una página con header y sidebar.</p>
+              <p className="text-sm text-muted-foreground">Renders as the main content of a page with header and sidebar.</p>
             </div>
           ),
           code: `import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";
 
-// En tu módulo de facturas:
+// In your invoices module:
 <div className="space-y-4">
   <div className="flex justify-between items-center">
-    <h1>Gestión de Facturas</h1>
-    <Button>Nueva Factura</Button>
+    <h1>Invoice Management</h1>
+    <Button>New Invoice</Button>
   </div>
   <DataTableAdvanced />
 </div>`,

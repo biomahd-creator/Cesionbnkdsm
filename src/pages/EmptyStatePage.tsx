@@ -8,9 +8,9 @@ import { FileSearch } from "lucide-react";
 export function EmptyStateDemo() {
   return (
     <EmptyState 
-      title="No hay documentos"
-      description="Sube tu primer documento para comenzar el proceso de factoring."
-      action={{ label: "Subir Documento", onClick: () => {} }}
+      title="No documents"
+      description="Upload your first document to start the factoring process."
+      action={{ label: "Upload Document", onClick: () => {} }}
       icon={FileSearch}
     />
   );
@@ -20,58 +20,58 @@ export function EmptyStatePage() {
   return (
     <ComponentShowcase
       title="Empty State"
-      description="Estado vacío para listas o contenedores sin datos."
+      description="Empty state for lists or containers with no data."
       category="UI Pattern"
       preview={
         <EmptyState 
-          title="No hay documentos"
-          description="Sube tu primer documento para comenzar el proceso de factoring."
-          action={{ label: "Subir Documento", onClick: () => {} }}
+          title="No documents"
+          description="Upload your first document to start the factoring process."
+          action={{ label: "Upload Document", onClick: () => {} }}
           icon={FileSearch}
         />
       }
       code={code}
       props={[
-        { name: "title", type: "string", description: "Título principal del estado vacío.", required: true },
-        { name: "description", type: "string", description: "Texto descriptivo debajo del título.", required: true },
-        { name: "icon", type: "React.ElementType", default: "FileQuestion", description: "Ícono de Lucide que se muestra centrado arriba del título." },
-        { name: "action", type: "{ label: string; onClick: () => void }", description: "Botón de acción principal (ej. 'Crear nuevo', 'Subir archivo')." },
-        { name: "children", type: "ReactNode", description: "Contenido adicional debajo de la descripción y acción." },
-        { name: "className", type: "string", description: "Clases adicionales para el contenedor raíz." },
+        { name: "title", type: "string", description: "Main title of the empty state.", required: true },
+        { name: "description", type: "string", description: "Descriptive text below the title.", required: true },
+        { name: "icon", type: "React.ElementType", default: "FileQuestion", description: "Lucide icon displayed centered above the title." },
+        { name: "action", type: "{ label: string; onClick: () => void }", description: "Primary action button (e.g. 'Create new', 'Upload file')." },
+        { name: "children", type: "ReactNode", description: "Additional content below the description and action." },
+        { name: "className", type: "string", description: "Additional classes for the root container." },
       ]}
       examples={[
         {
-          title: "Sin acción",
-          description: "Estado vacío informativo sin botón de acción.",
+          title: "Without Action",
+          description: "Informational empty state without action button.",
           preview: (
             <EmptyState
-              title="Sin resultados"
-              description="No se encontraron facturas que coincidan con los filtros seleccionados."
+              title="No results"
+              description="No invoices were found matching the selected filters."
               icon={Search}
             />
           ),
           code: `<EmptyState
-  title="Sin resultados"
-  description="No se encontraron facturas que coincidan con los filtros seleccionados."
+  title="No results"
+  description="No invoices were found matching the selected filters."
   icon={Search}
 />`,
         },
         {
-          title: "Bandeja vacía",
-          description: "Variante para secciones de inbox o notificaciones.",
+          title: "Empty Inbox",
+          description: "Variant for inbox or notification sections.",
           preview: (
             <EmptyState
-              title="Bandeja vacía"
-              description="No tienes notificaciones nuevas por ahora."
+              title="Empty inbox"
+              description="You have no new notifications at this time."
               icon={Inbox}
-              action={{ label: "Configurar alertas", onClick: () => {} }}
+              action={{ label: "Configure alerts", onClick: () => {} }}
             />
           ),
           code: `<EmptyState
-  title="Bandeja vacía"
-  description="No tienes notificaciones nuevas por ahora."
+  title="Empty inbox"
+  description="You have no new notifications at this time."
   icon={Inbox}
-  action={{ label: "Configurar alertas", onClick: () => {} }}
+  action={{ label: "Configure alerts", onClick: () => {} }}
 />`,
         },
       ]}

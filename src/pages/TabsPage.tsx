@@ -74,29 +74,29 @@ export function TabsDemo() {
         {
           name: "defaultValue",
           type: "string",
-          description: "Tab activo por defecto (componente no controlado)",
+          description: "Default active tab (uncontrolled component)",
         },
         {
           name: "value",
           type: "string",
-          description: "Tab activo (componente controlado)",
+          description: "Active tab (controlled component)",
         },
         {
           name: "onValueChange",
           type: "(value: string) => void",
-          description: "Callback que se ejecuta cuando cambia el tab activo",
+          description: "Callback fired when the active tab changes",
         },
         {
           name: "orientation",
           type: '"horizontal" | "vertical"',
           default: '"horizontal"',
-          description: "Orientación de los tabs",
+          description: "Tab orientation",
         },
         {
           name: "dir",
           type: '"ltr" | "rtl"',
           default: '"ltr"',
-          description: "Dirección del texto",
+          description: "Text direction",
         },
       ]}
       
@@ -104,7 +104,7 @@ export function TabsDemo() {
       examples={[
         {
           title: "With Form Content",
-          description: "Tabs con formularios en cada panel",
+          description: "Tabs with forms in each panel",
           preview: (
             <Tabs defaultValue="account" className="w-full max-w-lg">
               <TabsList className="grid w-full grid-cols-2">
@@ -177,7 +177,7 @@ export function TabsDemo() {
         },
         {
           title: "With Icons",
-          description: "Tabs con iconos en los triggers",
+          description: "Tabs with icons in the triggers",
           preview: (
             <Tabs defaultValue="profile" className="w-full max-w-lg">
               <TabsList className="grid w-full grid-cols-3">
@@ -233,7 +233,7 @@ export function TabsDemo() {
         },
         {
           title: "Disabled Tab",
-          description: "Tabs con una opción deshabilitada",
+          description: "Tabs with a disabled option",
           preview: (
             <Tabs defaultValue="overview" className="w-full max-w-lg">
               <TabsList>
@@ -273,7 +273,7 @@ export function TabsDemo() {
         },
         {
           title: "With Badges",
-          description: "Tabs con badges para mostrar contadores",
+          description: "Tabs with badges to show counters",
           preview: (
             <Tabs defaultValue="all" className="w-full max-w-lg">
               <TabsList>
@@ -323,7 +323,7 @@ export function TabsDemo() {
         },
         {
           title: "Full Width Tabs",
-          description: "Tabs que ocupan todo el ancho disponible",
+          description: "Tabs that span the full available width",
           preview: (
             <Tabs defaultValue="tab1" className="w-full max-w-2xl">
               <TabsList className="grid w-full grid-cols-4">
@@ -358,7 +358,7 @@ export function TabsDemo() {
         },
         {
           title: "Settings Panel",
-          description: "Panel de configuración completo con múltiples tabs",
+          description: "Complete settings panel with multiple tabs",
           preview: (
             <Tabs defaultValue="general" className="w-full max-w-2xl">
               <TabsList>
@@ -469,7 +469,7 @@ export function TabsDemo() {
         },
         {
           title: "Controlled Tabs",
-          description: "Tabs como componente controlado con estado",
+          description: "Tabs as a controlled component with state",
           preview: (
             <Tabs 
               defaultValue="tab1" 

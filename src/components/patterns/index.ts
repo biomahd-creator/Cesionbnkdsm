@@ -28,6 +28,7 @@ export * from "./SearchResults";
 export * from "./StatsDashboard";
 export * from "./UploadZone";
 export * from "./UserProfileCard";
+export * from "./AppLayout";
 
 // NOTA: ./factoring/ (FactoringSelectionPage, OperationSummary)
 // se importan directamente desde sus respectivas rutas

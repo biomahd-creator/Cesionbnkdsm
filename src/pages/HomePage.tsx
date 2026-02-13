@@ -19,51 +19,52 @@ import {
   Scale
 } from "lucide-react";
 import { Logo } from "../components/Logo";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
-export function HomePage() {
+export function HomePageContent() {
   const stats = [
-    { label: "Componentes Totales", value: "125+", icon: Package, color: "text-primary" },
+    { label: "Total Components", value: "125+", icon: Package, color: "text-primary" },
     { label: "DSM Migration", value: "100%", icon: Sparkles, color: "text-green-500" },
-    { label: "Componentes Oficiales", value: "48", icon: CheckCircle2, color: "text-success" },
-    { label: "Compliance WCAG AA", value: "98%", icon: Accessibility, color: "text-warning" },
+    { label: "Official Components", value: "48", icon: CheckCircle2, color: "text-success" },
+    { label: "WCAG AA Compliance", value: "98%", icon: Accessibility, color: "text-warning" },
   ];
 
   const features = [
     {
       icon: Palette,
       title: "Design Tokens",
-      description: "Sistema de diseño basado en tokens CSS con colores corporativos #00c951 (Verde Lima) y #1C2D3A (Azul Oscuro)",
-      badge: "Activo"
+      description: "CSS token-based design system with corporate colors #00c951 (Lime Green) and #1C2D3A (Dark Blue)",
+      badge: "Active"
     },
     {
       icon: Accessibility,
       title: "WCAG 2.1 AA Compliant",
-      description: "98% de cumplimiento con ratios de contraste optimizados para accesibilidad",
-      badge: "Verificado"
+      description: "98% compliance with optimized contrast ratios for accessibility",
+      badge: "Verified"
     },
     {
       icon: Layers,
       title: "Atomic Design",
-      description: "Arquitectura jerárquica con Atoms, Molecules, Organisms, Templates y Pages",
-      badge: "Implementado"
+      description: "Hierarchical architecture with Atoms, Molecules, Organisms, Templates, and Pages",
+      badge: "Implemented"
     },
     {
       icon: Code2,
       title: "shadcn/ui Base",
-      description: "Construido sobre componentes oficiales de shadcn/ui con Radix UI primitives",
-      badge: "Estable"
+      description: "Built on top of official shadcn/ui components with Radix UI primitives",
+      badge: "Stable"
     },
     {
       icon: Zap,
-      title: "Reactivos y Dinámicos",
-      description: "Theme Customizer en tiempo real con soporte para modo claro/oscuro",
+      title: "Reactive & Dynamic",
+      description: "Real-time Theme Customizer with light/dark mode support",
       badge: "Live"
     },
     {
       icon: Shield,
-      title: "Tipografía Satoshi",
-      description: "Sistema tipográfico único con escalas predefinidas y pesos consistentes",
-      badge: "Sistema"
+      title: "Satoshi Typography",
+      description: "Unique typographic system with predefined scales and consistent weights",
+      badge: "System"
     },
   ];
 
@@ -77,8 +78,8 @@ export function HomePage() {
   ];
 
   const progress = {
-    components: 100, // 48/48 componentes oficiales shadcn/ui
-    patterns: 100, // 21/21 patterns completos
+    components: 100, // 48/48 official shadcn/ui components
+    patterns: 100, // 21/21 complete patterns
     business: 100, // 15/15 business components
     advanced: 100, // 25/25 advanced components
     accessibility: 98, // WCAG compliance
@@ -103,21 +104,21 @@ export function HomePage() {
             Design System Manager
           </h1>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6 font-light">
-            Sistema de diseño completo para aplicaciones de Factoring, construido con React, 
-            Tailwind CSS y shadcn/ui. Enfocado en accesibilidad, consistencia y escalabilidad.
+            Complete design system for Factoring applications, built with React, 
+            Tailwind CSS, and shadcn/ui. Focused on accessibility, consistency, and scalability.
           </p>
           <div className="flex flex-wrap gap-3">
             <Badge variant="outline" className="gap-2">
               <Activity className="h-3 w-3" />
-              Última actualización: Enero 2026
+              Last updated: January 2026
             </Badge>
             <Badge variant="outline" className="gap-2">
               <Users className="h-3 w-3" />
-              Metodología Atomic Design
+              Atomic Design Methodology
             </Badge>
             <Badge variant="outline" className="gap-2">
               <TrendingUp className="h-3 w-3" />
-              125+ Componentes
+              125+ Components
             </Badge>
           </div>
         </div>
@@ -147,56 +148,56 @@ export function HomePage() {
         <CardHeader>
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-primary" />
-            <CardTitle>Estado de Implementación</CardTitle>
+            <CardTitle>Implementation Status</CardTitle>
           </div>
           <CardDescription>
-            Progreso actual del desarrollo del Design System
+            Current progress of the Design System development
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Componentes Oficiales shadcn/ui</span>
+              <span className="text-muted-foreground">Official shadcn/ui Components</span>
               <span className="font-semibold">{progress.components}%</span>
             </div>
             <Progress value={progress.components} className="h-2" />
-            <p className="text-xs text-muted-foreground">48/48 componentes implementados</p>
+            <p className="text-xs text-muted-foreground">48/48 components implemented</p>
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Patterns Compuestos</span>
+              <span className="text-muted-foreground">Composite Patterns</span>
               <span className="font-semibold">{progress.patterns}%</span>
             </div>
             <Progress value={progress.patterns} className="h-2" />
-            <p className="text-xs text-muted-foreground">21/21 patterns de UX completos</p>
+            <p className="text-xs text-muted-foreground">21/21 UX patterns complete</p>
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Componentes de Negocio</span>
+              <span className="text-muted-foreground">Business Components</span>
               <span className="font-semibold">{progress.business}%</span>
             </div>
             <Progress value={progress.business} className="h-2" />
-            <p className="text-xs text-muted-foreground">15/15 componentes de negocio implementados</p>
+            <p className="text-xs text-muted-foreground">15/15 business components implemented</p>
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Componentes Avanzados</span>
+              <span className="text-muted-foreground">Advanced Components</span>
               <span className="font-semibold">{progress.advanced}%</span>
             </div>
             <Progress value={progress.advanced} className="h-2" />
-            <p className="text-xs text-muted-foreground">25/25 componentes avanzados implementados</p>
+            <p className="text-xs text-muted-foreground">25/25 advanced components implemented</p>
           </div>
 
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Accesibilidad WCAG 2.1 AA</span>
+              <span className="text-muted-foreground">WCAG 2.1 AA Accessibility</span>
               <span className="font-semibold">{progress.accessibility}%</span>
             </div>
             <Progress value={progress.accessibility} className="h-2" />
-            <p className="text-xs text-muted-foreground">Ratios de contraste optimizados</p>
+            <p className="text-xs text-muted-foreground">Optimized contrast ratios</p>
           </div>
         </CardContent>
       </Card>
@@ -204,9 +205,9 @@ export function HomePage() {
       {/* Features Grid */}
       <div>
         <div className="mb-6">
-          <h2 className="mb-2">Características Principales</h2>
+          <h2 className="mb-2">Key Features</h2>
           <p className="text-muted-foreground">
-            Fundamentos y pilares del Design System
+            Foundations and pillars of the Design System
           </p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -239,9 +240,9 @@ export function HomePage() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Code2 className="h-5 w-5 text-chart-2" />
-              <CardTitle>Stack Tecnológico</CardTitle>
+              <CardTitle>Tech Stack</CardTitle>
             </div>
-            <CardDescription>Librerías y frameworks utilizados</CardDescription>
+            <CardDescription>Libraries and frameworks used</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-3">
@@ -261,26 +262,26 @@ export function HomePage() {
           <CardHeader>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-success" />
-              <CardTitle>Heurísticas WCAG</CardTitle>
+              <CardTitle>WCAG Heuristics</CardTitle>
             </div>
-            <CardDescription>Cumplimiento de estándares de accesibilidad</CardDescription>
+            <CardDescription>Accessibility standards compliance</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-start gap-3">
               <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
               <div>
-                <p className="text-sm font-medium">Contraste de Color</p>
+                <p className="text-sm font-medium">Color Contrast</p>
                 <p className="text-xs text-muted-foreground">
-                  Ratios superiores a 4.5:1 para texto normal y 3:1 para texto grande
+                  Ratios above 4.5:1 for normal text and 3:1 for large text
                 </p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
               <div>
-                <p className="text-sm font-medium">Navegación por Teclado</p>
+                <p className="text-sm font-medium">Keyboard Navigation</p>
                 <p className="text-xs text-muted-foreground">
-                  Todos los componentes interactivos son accesibles vía Tab/Enter/Escape
+                  All interactive components are accessible via Tab/Enter/Escape
                 </p>
               </div>
             </div>
@@ -289,7 +290,7 @@ export function HomePage() {
               <div>
                 <p className="text-sm font-medium">Screen Readers</p>
                 <p className="text-xs text-muted-foreground">
-                  ARIA labels y roles semánticos en todos los componentes
+                  ARIA labels and semantic roles in all components
                 </p>
               </div>
             </div>
@@ -298,7 +299,7 @@ export function HomePage() {
               <div>
                 <p className="text-sm font-medium">Focus Visible</p>
                 <p className="text-xs text-muted-foreground">
-                  Ring de enfoque (#00c951) claramente visible en modo claro y oscuro
+                  Focus ring (#00c951) clearly visible in light and dark mode
                 </p>
               </div>
             </div>
@@ -314,19 +315,34 @@ export function HomePage() {
               <Activity className="h-5 w-5 text-warning" />
             </div>
             <div className="flex-1">
-              <h3 className="font-semibold mb-2">🧪 PRUEBA NO DESTRUCTIVA - Nueva estructura /pages</h3>
+              <h3 className="font-semibold mb-2">🧪 NON-DESTRUCTIVE TEST - New /pages structure</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                Este archivo está ubicado en <code>/pages/HomePage.tsx</code> (raíz) en lugar de 
-                <code>/components/pages/HomePage.tsx</code>. Esta es una prueba de concepto para validar 
-                la nueva arquitectura antes de realizar la migración completa.
+                This file is located at <code>/pages/HomePage.tsx</code> (root) instead of 
+                <code>/components/pages/HomePage.tsx</code>. This is a proof of concept to validate 
+                the new architecture before performing the complete migration.
               </p>
               <p className="text-xs text-muted-foreground">
-                <strong>Imports actualizados:</strong> Ahora usa rutas relativas desde /pages hacia /components
+                <strong>Updated imports:</strong> Now uses relative paths from /pages to /components
               </p>
             </div>
           </div>
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export function HomePage() {
+  return (
+    <ComponentShowcase
+      title="CESIONBNK Design System"
+      description="Design System overview and quick navigation. Browse 120+ components organized by category: UI Primitives, Advanced Components, Business Patterns, Widgets, and Factoring-specific screens."
+      category="Home"
+      preview={<HomePageContent />}
+      code={`// This is the DSM home/landing page
+// Navigate using the sidebar to explore components`}
+      props={[]}
+      examples={[]}
+    />
   );
 }

@@ -91,31 +91,17 @@ function CFinanciaViewRenderer({
 }
 
 export function CFinanciaFlow({ onExit }: { onExit?: () => void }) {
-  // Persist view in localStorage to survive Figma Make reloads
-  const [view, setView] = useState<"login" | "modules" | "workspace">(() => {
-    const saved = localStorage.getItem('cfinancia-flow-view');
-    return (saved as "login" | "modules" | "workspace") || "login";
-  });
+  // Always start at login when entering C-Financia Admin flow
+  const [view, setView] = useState<"login" | "modules" | "workspace">("login");
   
-  // Persist selectedModule in localStorage to survive Figma Make reloads
-  const [selectedModule, setSelectedModule] = useState<string | null>(() => {
-    const saved = localStorage.getItem('cfinancia-flow-module');
-    return saved || null;
-  });
+  // Always reset selectedModule on fresh mount
+  const [selectedModule, setSelectedModule] = useState<string | null>(null);
 
-  // Save view to localStorage whenever it changes
+  // Clear any stale localStorage on mount
   useEffect(() => {
-    localStorage.setItem('cfinancia-flow-view', view);
-  }, [view]);
-
-  // Save selectedModule to localStorage whenever it changes
-  useEffect(() => {
-    if (selectedModule) {
-      localStorage.setItem('cfinancia-flow-module', selectedModule);
-    } else {
-      localStorage.removeItem('cfinancia-flow-module');
-    }
-  }, [selectedModule]);
+    localStorage.removeItem('cfinancia-flow-view');
+    localStorage.removeItem('cfinancia-flow-module');
+  }, []);
 
   const handleLogin = () => {
     setView("modules");

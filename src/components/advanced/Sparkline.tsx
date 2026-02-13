@@ -6,12 +6,12 @@ import { SafeChartContainer } from "../ui/safe-chart-container";
 /**
  * 🔒 ADVANCED COMPONENT - Sparkline
  * 
- * Gráfico minimalista de tendencias para KPIs
- * Muestra tendencia sin ejes ni labels, solo la línea de datos
+ * Minimalist trend chart for KPIs.
+ * Shows trend without axes or labels, just the data line.
  * 
- * Ubicación: /components/advanced/Sparkline.tsx
- * Categoría: Data Visualization - Prioridad Media
- * Uso: Dashboards, tarjetas de métricas, indicadores de tendencia
+ * Location: /components/advanced/Sparkline.tsx
+ * Category: Data Visualization - Medium Priority
+ * Usage: Dashboards, metric cards, trend indicators
  */
 
 export interface SparklineData {

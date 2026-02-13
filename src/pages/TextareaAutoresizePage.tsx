@@ -12,7 +12,7 @@ export function TextareaAutoresizeDemo() {
     <TextareaAutoresize
       value={comment}
       onChange={(e) => setComment(e.target.value)}
-      placeholder="Escribe tu comentario..."
+      placeholder="Write your comment..."
       minRows={3}
       maxRows={10}
     />
@@ -21,42 +21,42 @@ export function TextareaAutoresizeDemo() {
 
 export function TextareaAutoresizePage() {
   const [value1, setValue1] = useState("");
-  const [value2, setValue2] = useState("Este es un texto inicial.\nOcupa varias líneas.\nPuedes editar y agregar más.");
+  const [value2, setValue2] = useState("This is initial text.\nIt spans multiple lines.\nYou can edit and add more.");
   const [value3, setValue3] = useState("");
 
   return (
     <ComponentShowcase
       title="Textarea Autoresize"
-      description="Textarea que se ajusta automáticamente en altura según el contenido. Auto-ajuste en tiempo real, control de altura mínima/máxima con minRows/maxRows, scrollbar automático, y misma API que textarea estándar."
+      description="Textarea that automatically adjusts its height based on content. Real-time auto-resize, min/max height control with minRows/maxRows, automatic scrollbar, and same API as a standard textarea."
       category="Forms"
       preview={
         <div className="w-full max-w-md space-y-2">
-          <label className="text-foreground font-medium">Escribe un comentario</label>
+          <label className="text-foreground font-medium">Write a comment</label>
           <TextareaAutoresize
             value={value1}
             onChange={(e) => setValue1(e.target.value)}
-            placeholder="El textarea crecerá automáticamente mientras escribes..."
+            placeholder="The textarea will grow automatically as you type..."
             minRows={3}
             maxRows={8}
           />
-          <p className="text-muted-foreground text-xs">Caracteres: {value1.length}</p>
+          <p className="text-muted-foreground text-xs">Characters: {value1.length}</p>
         </div>
       }
       code={code}
       props={[
-        { name: "minRows", type: "number", default: "3", description: "Número mínimo de filas visibles" },
-        { name: "maxRows", type: "number", default: "10", description: "Número máximo de filas antes de scroll" },
-        { name: "value", type: "string", description: "Valor controlado del textarea" },
-        { name: "onChange", type: "(e) => void", description: "Callback cuando cambia el valor" },
-        { name: "placeholder", type: "string", description: "Texto de placeholder" },
-        { name: "disabled", type: "boolean", default: "false", description: "Deshabilita el textarea" },
-        { name: "className", type: "string", description: "Clases CSS adicionales" },
-        { name: "...props", type: "TextareaHTMLAttributes", description: "Todas las props HTML de textarea" },
+        { name: "minRows", type: "number", default: "3", description: "Minimum number of visible rows" },
+        { name: "maxRows", type: "number", default: "10", description: "Maximum number of rows before scroll" },
+        { name: "value", type: "string", description: "Controlled textarea value" },
+        { name: "onChange", type: "(e) => void", description: "Callback when the value changes" },
+        { name: "placeholder", type: "string", description: "Placeholder text" },
+        { name: "disabled", type: "boolean", default: "false", description: "Disables the textarea" },
+        { name: "className", type: "string", description: "Additional CSS classes" },
+        { name: "...props", type: "TextareaHTMLAttributes", description: "All standard textarea HTML props" },
       ]}
       examples={[
         {
-          title: "Con contenido inicial",
-          description: "Textarea que ya tiene contenido y se ajusta automáticamente.",
+          title: "With Initial Content",
+          description: "Textarea that already has content and auto-adjusts.",
           preview: (
             <div className="w-full max-w-md">
               <TextareaAutoresize
@@ -75,39 +75,39 @@ export function TextareaAutoresizePage() {
 />`,
         },
         {
-          title: "Altura restringida",
-          description: "Control de altura con 2 filas mínimo y 5 máximo.",
+          title: "Constrained Height",
+          description: "Height control with 2 rows minimum and 5 maximum.",
           preview: (
             <div className="w-full max-w-md">
               <TextareaAutoresize
                 value={value3}
                 onChange={(e) => setValue3(e.target.value)}
-                placeholder="Este textarea tiene 2 filas mínimo y 5 máximo..."
+                placeholder="This textarea has 2 rows minimum and 5 maximum..."
                 minRows={2}
                 maxRows={5}
               />
             </div>
           ),
           code: `<TextareaAutoresize
-  placeholder="2 filas mínimo, 5 máximo..."
+  placeholder="2 rows min, 5 max..."
   minRows={2}
   maxRows={5}
 />`,
         },
         {
-          title: "Deshabilitado",
-          description: "Estado deshabilitado del componente.",
+          title: "Disabled",
+          description: "Disabled state of the component.",
           preview: (
             <div className="w-full max-w-md">
               <TextareaAutoresize
-                value="Este textarea está deshabilitado y no se puede editar."
+                value="This textarea is disabled and cannot be edited."
                 disabled
                 minRows={3}
               />
             </div>
           ),
           code: `<TextareaAutoresize
-  value="Contenido fijo"
+  value="Fixed content"
   disabled
   minRows={3}
 />`,

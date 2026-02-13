@@ -77,7 +77,7 @@ export interface MasterDataGridProps {
   onExport?: () => void;
   showViewOptions?: boolean;
   onViewOptions?: () => void;
-  onConsultReports?: () => void; // Callback para consultar reportes
+  onConsultReports?: () => void; // Callback for consulting reports
   toolbarActions?: React.ReactNode; // Custom actions in the toolbar
 
   // Pagination
@@ -100,9 +100,9 @@ export function MasterDataGrid({
   children,
   searchQuery,
   onSearchChange,
-  searchPlaceholder = "Buscar...",
+  searchPlaceholder = "Search...",
   onNewAction,
-  newActionLabel = "Nuevo",
+  newActionLabel = "New",
   newActionIcon,
   headerActions,
   filterOptions = [],
@@ -183,7 +183,7 @@ export function MasterDataGrid({
                     {sortColumn === 'fecha' && sortDirection === 'asc' && <ArrowUp className="mr-2 h-3.5 w-3.5" />}
                     {sortColumn === 'fecha' && sortDirection === 'desc' && <ArrowDown className="mr-2 h-3.5 w-3.5" />}
                     {sortColumn !== 'fecha' && <Calendar className="mr-2 h-3.5 w-3.5" />}
-                    Fecha
+                    Date
                   </Button>
               )}
 
@@ -204,7 +204,7 @@ export function MasterDataGrid({
           {/* Actions Group */}
           <div className="flex items-center gap-2 pt-2 md:pt-0">
              {showRefresh && (
-               <Button variant="outline" size="icon" className="h-9 w-9 hidden md:flex" onClick={onRefresh} title="Actualizar">
+               <Button variant="outline" size="icon" className="h-9 w-9 hidden md:flex" onClick={onRefresh} title="Refresh">
                 <RefreshCw className="h-4 w-4" />
               </Button>
              )}
@@ -213,15 +213,15 @@ export function MasterDataGrid({
                 <PopoverTrigger asChild>
                   <Button variant="outline" size="sm" className="h-9">
                     <SlidersHorizontal className="mr-2 h-3.5 w-3.5" />
-                    Columnas
+                    Columns
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-56" align="end">
                   <div className="space-y-3">
                     <div>
-                      <h4 className="font-medium text-sm mb-2">Mostrar columnas</h4>
+                      <h4 className="font-medium text-sm mb-2">Show columns</h4>
                       <p className="text-xs text-muted-foreground mb-3">
-                        Selecciona las columnas a mostrar
+                        Select which columns to display
                       </p>
                     </div>
                     <Separator />
@@ -256,19 +256,19 @@ export function MasterDataGrid({
              {showViewOptions && !columns && (
               <Button variant="outline" size="sm" className="h-9" onClick={onViewOptions}>
                 <SlidersHorizontal className="mr-2 h-3.5 w-3.5" />
-                Mostrar
+                View
               </Button>
              )}
              {showExport && (
               <Button variant="outline" size="sm" className="h-9" onClick={onExport}>
                 <Download className="mr-2 h-3.5 w-3.5" />
-                Exportar
+                Export
               </Button>
              )}
              {onConsultReports && (
                <Button variant="outline" size="sm" className="h-9" onClick={onConsultReports}>
                  <FileText className="mr-2 h-3.5 w-3.5" />
-                 Consultar reportes
+                 View Reports
                </Button>
              )}
              {toolbarActions}
@@ -285,12 +285,12 @@ export function MasterDataGrid({
           <div className="flex items-center justify-between p-4 border-t">
             <div className="flex items-center gap-4">
                 <div className="text-sm text-muted-foreground">
-                Mostrando {startIndex + 1} a {Math.min(startIndex + itemsPerPage, totalItems)} de {totalItems} registros
+                Showing {startIndex + 1} to {Math.min(startIndex + itemsPerPage, totalItems)} of {totalItems} records
                 </div>
                 
                 {pageSizeOptions && onPageSizeChange && (
                     <div className="flex items-center gap-2">
-                        <span className="text-sm text-muted-foreground">Filas por pagina:</span>
+                        <span className="text-sm text-muted-foreground">Rows per page:</span>
                         <Select
                             value={`${itemsPerPage}`}
                             onValueChange={(val) => onPageSizeChange(Number(val))}
@@ -316,7 +316,7 @@ export function MasterDataGrid({
                 disabled={currentPage === 1}
               >
                 <ChevronLeft className="h-4 w-4 mr-1" />
-                Anterior
+                Previous
               </Button>
               
               <div className="flex items-center gap-1">
@@ -369,7 +369,7 @@ export function MasterDataGrid({
                 onClick={() => onPageChange(Math.min(totalPages, currentPage + 1))}
                 disabled={currentPage === totalPages}
               >
-                Siguiente
+                Next
                 <ChevronRight className="h-4 w-4 ml-1" />
               </Button>
             </div>

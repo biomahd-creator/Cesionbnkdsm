@@ -5,7 +5,7 @@ import { useLoading } from "../providers/LoadingProvider";
 
 /**
  * LOADING OVERLAY
- * Overlay global de carga que cubre toda la pantalla
+ * Global loading overlay that covers the entire screen
  */
 
 interface LoadingOverlayProps {
@@ -14,7 +14,7 @@ interface LoadingOverlayProps {
 }
 
 export function LoadingOverlay({ 
-  message = "Cargando...", 
+  message = "Loading...", 
   variant = "spinner" 
 }: LoadingOverlayProps) {
   const { loadingState } = useLoading();
@@ -56,7 +56,7 @@ export function LoadingOverlay({
 
 /**
  * LOADING DOTS
- * Animación de tres puntos
+ * Three-dot animation
  */
 function LoadingDots() {
   return (
@@ -82,7 +82,7 @@ function LoadingDots() {
 
 /**
  * LOADING BAR
- * Barra de progreso indeterminada
+ * Indeterminate progress bar
  */
 function LoadingBar() {
   return (
@@ -104,7 +104,7 @@ function LoadingBar() {
 
 /**
  * INLINE LOADING SPINNER
- * Spinner pequeño para usar inline
+ * Small spinner for inline use
  */
 interface InlineSpinnerProps {
   size?: "sm" | "md" | "lg";
@@ -125,7 +125,7 @@ export function InlineSpinner({ size = "md", className = "" }: InlineSpinnerProp
 
 /**
  * BUTTON LOADING STATE
- * Loading state para botones (spinner + texto)
+ * Loading state for buttons (spinner + text)
  */
 interface ButtonLoadingProps {
   isLoading: boolean;
@@ -133,7 +133,7 @@ interface ButtonLoadingProps {
   children: React.ReactNode;
 }
 
-export function ButtonLoading({ isLoading, loadingText = "Cargando...", children }: ButtonLoadingProps) {
+export function ButtonLoading({ isLoading, loadingText = "Loading...", children }: ButtonLoadingProps) {
   return (
     <span className="inline-flex items-center">
       {isLoading ? (

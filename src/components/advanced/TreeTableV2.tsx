@@ -1,22 +1,26 @@
 /**
- * TreeTableV2 — Tabla de Operaciones de Factoring (3 niveles)
+ * TreeTableV2 — Factoring Operations Table (3 levels)
  *
- * Estructura:
- *   Nivel 1: Operacion (OP-XXXX) — datos del cliente
- *   Nivel 2: Pagador — agrupacion por pagador
- *   Nivel 3: Facturas individuales — con badge de estado
+ * Structure:
+ *   Level 1: Operation (OP-XXXX) — client data
+ *   Level 2: Payer — grouped by payer
+ *   Level 3: Individual invoices — with status badge
  *
- * Columnas header (10):
- *   Checkbox | ID | Fecha Op. | Cliente (NIT) | Pagadores | Facturas |
- *   Valor Facturas | Valor Desembolso | Estado | Acciones
+ * Column headers (10):
+ *   Checkbox | ID | Operation Date | Client (NIT) | Payers | Invoices |
+ *   Invoice Value | Disbursement Value | Status | Actions
  *
  * Features:
- * - Seleccion cascada tridireccional con indeterminate
- * - Busqueda por ID, cliente, pagador
- * - Sorting por columna clickeable en headers
- * - Filtro por estado de operacion
- * - Acciones batch (Aprobar, Exportar, Cancelar)
- * - Badges Soft-Outline del DSM
+ * - Tri-directional cascade selection with indeterminate
+ * - Search by ID, client, payer
+ * - Sortable column headers
+ * - Operation status filter
+ * - Batch actions (Approve, Export, Cancel)
+ * - DSM Soft-Outline badges
+ *
+ * NOTE: Props `onVerOperacion`, `onCancelarOperacion`, `onDescargarExcel`
+ * retain Spanish names to avoid breaking changes for existing consumers.
+ * A future major version may rename them.
  *
  * @layer advanced
  */
@@ -131,27 +135,27 @@ const estadoOperacionConfig: Record<
   OperacionFactoring["estado"],
   { label: string; variant: "warning-soft-outline" | "success-soft-outline" | "info-soft-outline" | "destructive-soft-outline"; order: number }
 > = {
-  pendiente:     { label: "Pendiente",     variant: "warning-soft-outline",      order: 1 },
-  aprobada:      { label: "Aprobada",      variant: "success-soft-outline",      order: 2 },
-  desembolsada:  { label: "Desembolsada",  variant: "info-soft-outline",         order: 3 },
-  cancelada:     { label: "Cancelada",     variant: "destructive-soft-outline",  order: 4 },
+  pendiente:     { label: "Pending",      variant: "warning-soft-outline",      order: 1 },
+  aprobada:      { label: "Approved",     variant: "success-soft-outline",      order: 2 },
+  desembolsada:  { label: "Disbursed",    variant: "info-soft-outline",         order: 3 },
+  cancelada:     { label: "Canceled",     variant: "destructive-soft-outline",  order: 4 },
 };
 
 const estadoFacturaConfig: Record<
   FacturaDetalle["estado"],
   { label: string; variant: "success-soft-outline" | "warning-soft-outline" | "info-soft-outline" }
 > = {
-  vigente: { label: "Vigente", variant: "success-soft-outline" },
-  vencida: { label: "Vencida", variant: "warning-soft-outline" },
-  pagada:  { label: "Pagada",  variant: "info-soft-outline" },
+  vigente: { label: "Current", variant: "success-soft-outline" },
+  vencida: { label: "Overdue", variant: "warning-soft-outline" },
+  pagada:  { label: "Paid",    variant: "info-soft-outline" },
 };
 
 const ESTADO_OPTIONS = [
-  { value: "all", label: "Todos los estados" },
-  { value: "pendiente", label: "Pendiente" },
-  { value: "aprobada", label: "Aprobada" },
-  { value: "desembolsada", label: "Desembolsada" },
-  { value: "cancelada", label: "Cancelada" },
+  { value: "all", label: "All Statuses" },
+  { value: "pendiente", label: "Pending" },
+  { value: "aprobada", label: "Approved" },
+  { value: "desembolsada", label: "Disbursed" },
+  { value: "cancelada", label: "Canceled" },
 ];
 
 /* ═══════════════════════════════════════════
@@ -588,7 +592,7 @@ export function TreeTableV2({
                 onClick={expandAll}
               >
                 <ChevronsUpDown className="h-3.5 w-3.5 mr-1" />
-                Expandir
+                Expand
               </Button>
               <Button
                 variant="ghost"
@@ -596,7 +600,7 @@ export function TreeTableV2({
                 className="h-8 px-2 text-xs text-muted-foreground"
                 onClick={collapseAll}
               >
-                Colapsar
+                Collapse
               </Button>
             </div>
           </div>
@@ -607,7 +611,7 @@ export function TreeTableV2({
           <div className="relative w-full sm:w-72">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <Input
-              placeholder="Buscar por ID, cliente, pagador, NIT..."
+              placeholder="Search by ID, client, payer, Tax ID..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               className="pl-9 h-9 bg-background/50"
@@ -625,7 +629,7 @@ export function TreeTableV2({
           <Select value={estadoFilter} onValueChange={setEstadoFilter}>
             <SelectTrigger className="h-9 w-full sm:w-[190px] border-dashed bg-background/50">
               <Filter className="h-3.5 w-3.5 mr-2 text-muted-foreground" />
-              <SelectValue placeholder="Estado" />
+              <SelectValue placeholder="Status" />
             </SelectTrigger>
             <SelectContent>
               {ESTADO_OPTIONS.map((opt) => (
@@ -655,7 +659,7 @@ export function TreeTableV2({
 
           {isFiltered && (
             <span className="text-xs text-muted-foreground whitespace-nowrap">
-              {processedData.length} de {data.length} operaciones
+              {processedData.length} of {data.length} operations
             </span>
           )}
         </div>
@@ -666,9 +670,8 @@ export function TreeTableV2({
         <div className="flex flex-wrap items-center justify-between gap-2 border-b bg-primary/5 px-4 py-2">
           <span className="text-sm text-muted-foreground">
             <span className="font-medium text-foreground">{selectedOpsCount}</span>{" "}
-            operacion{selectedOpsCount !== 1 ? "es" : ""} seleccionada
-            {selectedOpsCount !== 1 ? "s" : ""}
-            <span className="text-xs ml-1">({selectedFacturaCount} facturas)</span>
+            operation{selectedOpsCount !== 1 ? "s" : ""} selected
+            <span className="text-xs ml-1">({selectedFacturaCount} invoices)</span>
           </span>
           <div className="flex items-center gap-1.5">
             <Button
@@ -678,7 +681,7 @@ export function TreeTableV2({
               onClick={() => handleBatchAction("approve")}
             >
               <CheckCircle2 className="h-3.5 w-3.5 text-green-600" />
-              Aprobar
+              Approve
             </Button>
             <Button
               variant="outline"
@@ -687,7 +690,7 @@ export function TreeTableV2({
               onClick={() => handleBatchAction("export")}
             >
               <Download className="h-3.5 w-3.5" />
-              Exportar
+              Export
             </Button>
             <Button
               variant="outline"
@@ -696,7 +699,7 @@ export function TreeTableV2({
               onClick={() => handleBatchAction("cancel")}
             >
               <Trash2 className="h-3.5 w-3.5" />
-              Cancelar
+              Cancel
             </Button>
             <div className="w-px h-5 bg-border mx-1" />
             <Button
@@ -706,7 +709,7 @@ export function TreeTableV2({
               onClick={clearSelection}
             >
               <X className="h-3 w-3" />
-              Limpiar
+              Clear
             </Button>
           </div>
         </div>
@@ -724,7 +727,7 @@ export function TreeTableV2({
                     <Checkbox
                       checked={selectAllState}
                       onCheckedChange={handleSelectAll}
-                      aria-label="Seleccionar todo"
+                      aria-label="Select all"
                     />
                   </div>
                 </TableHead>
@@ -747,8 +750,8 @@ export function TreeTableV2({
                     onClick={() => handleSort("fecha")}
                   >
                     <span className="flex flex-col leading-tight text-left">
-                      <span className="text-[10px] text-muted-foreground font-normal">Fecha</span>
-                      <span>Operacion</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">Date</span>
+                      <span>Operation</span>
                     </span>
                     {renderSortIcon("fecha")}
                   </button>
@@ -760,16 +763,16 @@ export function TreeTableV2({
                     className="flex items-center gap-1 hover:text-foreground transition-colors"
                     onClick={() => handleSort("cliente")}
                   >
-                    Cliente
+                    Client
                     {renderSortIcon("cliente")}
                   </button>
                 </TableHead>
 
                 {/* Pagadores */}
-                <TableHead className="w-[160px]">Pagadores</TableHead>
+                <TableHead className="w-[160px]">Payers</TableHead>
 
                 {/* Facturas */}
-                <TableHead className="w-[80px] text-center">Facturas</TableHead>
+                <TableHead className="w-[80px] text-center">Invoices</TableHead>
 
                 {/* Valor Facturas */}
                 <TableHead className="w-[120px]">
@@ -778,8 +781,8 @@ export function TreeTableV2({
                     onClick={() => handleSort("valorFacturas")}
                   >
                     <span className="flex flex-col leading-tight text-left">
-                      <span className="text-[10px] text-muted-foreground font-normal">Valor</span>
-                      <span>Facturas</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">Value</span>
+                      <span>Invoices</span>
                     </span>
                     {renderSortIcon("valorFacturas")}
                   </button>
@@ -792,18 +795,18 @@ export function TreeTableV2({
                     onClick={() => handleSort("valorDesembolso")}
                   >
                     <span className="flex flex-col leading-tight text-left">
-                      <span className="text-[10px] text-muted-foreground font-normal">Valor</span>
-                      <span>Desembolso</span>
+                      <span className="text-[10px] text-muted-foreground font-normal">Value</span>
+                      <span>Disbursement</span>
                     </span>
                     {renderSortIcon("valorDesembolso")}
                   </button>
                 </TableHead>
 
                 {/* Estado */}
-                <TableHead className="w-[120px] text-center">Estado</TableHead>
+                <TableHead className="w-[120px] text-center">Status</TableHead>
 
                 {/* Acciones */}
-                <TableHead className="w-[130px] text-center">Acciones</TableHead>
+                <TableHead className="w-[130px] text-center">Actions</TableHead>
               </TableRow>
             </TableHeader>
 
@@ -849,12 +852,12 @@ export function TreeTableV2({
                         <Search className="h-8 w-8 text-muted-foreground/30" />
                         <span className="text-muted-foreground">
                           {isFiltered
-                            ? "No se encontraron operaciones para los filtros aplicados"
-                            : "No hay operaciones disponibles"}
+                            ? "No operations found for the applied filters"
+                            : "No operations available"}
                         </span>
                         {isFiltered && (
                           <Button variant="link" size="sm" onClick={resetFilters}>
-                            Limpiar filtros
+                            Clear filters
                           </Button>
                         )}
                       </div>
@@ -868,7 +871,7 @@ export function TreeTableV2({
 
       {/* Mobile hint */}
       <div className="p-2 text-xs text-muted-foreground text-center lg:hidden border-t bg-muted/20">
-        Desliza horizontalmente para ver todas las columnas
+        Swipe horizontally to see all columns
       </div>
     </div>
   );
@@ -936,7 +939,7 @@ function OperacionRow({
             <Checkbox
               checked={checkState}
               onCheckedChange={onToggleOpSelect}
-              aria-label={`Seleccionar ${op.id}`}
+              aria-label={`Select ${op.id}`}
             />
             <Button
               variant="ghost"
@@ -983,7 +986,7 @@ function OperacionRow({
               <TooltipTrigger asChild>
                 <span className="inline-flex">
                   <Badge variant="info-soft-outline" className="cursor-default">
-                    {pagadores.length} pagadores
+                    {pagadores.length} payers
                   </Badge>
                 </span>
               </TooltipTrigger>
@@ -1034,10 +1037,10 @@ function OperacionRow({
                   onClick={() => onVerOperacion?.(op)}
                 >
                   <Eye className="h-4 w-4" />
-                  <span className="sr-only">Ver operacion</span>
+                  <span className="sr-only">View operation</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Ver operacion</TooltipContent>
+              <TooltipContent>View operation</TooltipContent>
             </Tooltip>
 
             <Tooltip>
@@ -1050,10 +1053,10 @@ function OperacionRow({
                   disabled={op.estado === "cancelada" || op.estado === "desembolsada"}
                 >
                   <Ban className="h-4 w-4" />
-                  <span className="sr-only">Cancelar operacion</span>
+                  <span className="sr-only">Cancel operation</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Cancelar operacion</TooltipContent>
+              <TooltipContent>Cancel operation</TooltipContent>
             </Tooltip>
 
             <Tooltip>
@@ -1065,10 +1068,10 @@ function OperacionRow({
                   onClick={() => onDescargarExcel?.(op)}
                 >
                   <FileSpreadsheet className="h-4 w-4" />
-                  <span className="sr-only">Descargar Excel</span>
+                  <span className="sr-only">Download Excel</span>
                 </Button>
               </TooltipTrigger>
-              <TooltipContent>Descargar Excel</TooltipContent>
+              <TooltipContent>Download Excel</TooltipContent>
             </Tooltip>
           </div>
         </TableCell>
@@ -1130,11 +1133,11 @@ function renderPagadorRow({
   onToggleExpand,
   onToggleSelect,
   onToggleFacturaSelect,
-}: PagadorRowProps & { key: string }) {
-  return (
-    <React.Fragment key={key}>
-      {/* ── Level 2: Pagador Row ── */}
+}: PagadorRowProps & { key: string }): React.ReactNode[] {
+  return [
+      // ── Level 2: Pagador Row ──
       <TableRow
+        key={`pagador-${key}`}
         className={cn(
           "bg-muted/40 hover:bg-muted/70 transition-colors border-l-3 border-l-primary/30",
           checkState === true && "bg-primary/10 hover:bg-primary/15 border-l-primary/60",
@@ -1147,7 +1150,7 @@ function renderPagadorRow({
             <Checkbox
               checked={checkState}
               onCheckedChange={onToggleSelect}
-              aria-label={`Seleccionar pagador ${group.pagador.nombre}`}
+              aria-label={`Select payer ${group.pagador.nombre}`}
             />
             <Button
               variant="ghost"
@@ -1211,79 +1214,79 @@ function renderPagadorRow({
 
         {/* — (no acciones) */}
         <TableCell />
-      </TableRow>
+      </TableRow>,
 
-      {/* ═══ LEVEL 3: Factura Rows ═══ */}
-      {isExpanded &&
-        group.facturas.map((factura) => {
-          const isFacturaSelected = selectedIds.has(factura.id);
-          const facturaCfg = estadoFacturaConfig[factura.estado];
-          const facturaMatch =
-            searchQuery.trim() &&
-            (factura.numero.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
-              factura.pagador.nombre.toLowerCase().includes(searchQuery.toLowerCase().trim()));
+      // ═══ LEVEL 3: Factura Rows ═══
+      ...(isExpanded
+        ? group.facturas.map((factura) => {
+            const isFacturaSelected = selectedIds.has(factura.id);
+            const facturaCfg = estadoFacturaConfig[factura.estado];
+            const facturaMatch =
+              searchQuery.trim() &&
+              (factura.numero.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
+                factura.pagador.nombre.toLowerCase().includes(searchQuery.toLowerCase().trim()));
 
-          return (
-            <TableRow
-              key={factura.id}
-              className={cn(
-                "bg-muted/60 hover:bg-muted/80 transition-colors border-l-4 border-l-primary/15",
-                isFacturaSelected && "bg-primary/10 hover:bg-primary/15 border-l-primary/50",
-                facturaMatch && "bg-yellow-50 dark:bg-yellow-500/10"
-              )}
-            >
-              {/* Checkbox (double indented) */}
-              <TableCell>
-                <div className="flex items-center gap-1 pl-10">
-                  <Checkbox
-                    checked={isFacturaSelected}
-                    onCheckedChange={() => onToggleFacturaSelect(factura)}
-                    aria-label={`Seleccionar ${factura.numero}`}
-                  />
-                </div>
-              </TableCell>
+            return (
+              <TableRow
+                key={factura.id}
+                className={cn(
+                  "bg-muted/60 hover:bg-muted/80 transition-colors border-l-4 border-l-primary/15",
+                  isFacturaSelected && "bg-primary/10 hover:bg-primary/15 border-l-primary/50",
+                  facturaMatch && "bg-yellow-50 dark:bg-yellow-500/10"
+                )}
+              >
+                {/* Checkbox (double indented) */}
+                <TableCell>
+                  <div className="flex items-center gap-1 pl-10">
+                    <Checkbox
+                      checked={isFacturaSelected}
+                      onCheckedChange={() => onToggleFacturaSelect(factura)}
+                      aria-label={`Select ${factura.numero}`}
+                    />
+                  </div>
+                </TableCell>
 
-              {/* Factura # */}
-              <TableCell>
-                <span className="text-sm text-muted-foreground">{factura.numero}</span>
-              </TableCell>
+                {/* Factura # */}
+                <TableCell>
+                  <span className="text-sm text-muted-foreground">{factura.numero}</span>
+                </TableCell>
 
-              {/* Fecha Vencimiento */}
-              <TableCell className="text-muted-foreground text-sm font-satoshi">
-                {factura.fechaVencimiento}
-              </TableCell>
+                {/* Fecha Vencimiento */}
+                <TableCell className="text-muted-foreground text-sm font-satoshi">
+                  {factura.fechaVencimiento}
+                </TableCell>
 
-              {/* — (no cliente) */}
-              <TableCell />
+                {/* — (no cliente) */}
+                <TableCell />
 
-              {/* — (pagador already shown in L2) */}
-              <TableCell />
+                {/* — (pagador already shown in L2) */}
+                <TableCell />
 
-              {/* — */}
-              <TableCell />
+                {/* — */}
+                <TableCell />
 
-              {/* Valor Factura */}
-              <TableCell className="text-sm font-satoshi">
-                {formatCurrency(factura.valor)}
-              </TableCell>
+                {/* Valor Factura */}
+                <TableCell className="text-sm font-satoshi">
+                  {formatCurrency(factura.valor)}
+                </TableCell>
 
-              {/* Valor Desembolso Factura */}
-              <TableCell className="text-sm font-satoshi">
-                {formatCurrency(factura.valorDesembolso)}
-              </TableCell>
+                {/* Valor Desembolso Factura */}
+                <TableCell className="text-sm font-satoshi">
+                  {formatCurrency(factura.valorDesembolso)}
+                </TableCell>
 
-              {/* Estado factura — in dedicated column */}
-              <TableCell className="text-center">
-                <Badge variant={facturaCfg.variant} className="text-[11px] px-2 py-0.5">
-                  {facturaCfg.label}
-                </Badge>
-              </TableCell>
+                {/* Estado factura — in dedicated column */}
+                <TableCell className="text-center">
+                  <Badge variant={facturaCfg.variant} className="text-[11px] px-2 py-0.5">
+                    {facturaCfg.label}
+                  </Badge>
+                </TableCell>
 
-              {/* — (no acciones) */}
-              <TableCell />
-            </TableRow>
-          );
-        })}
-    </React.Fragment>
-  );
+                {/* — (no acciones) */}
+                <TableCell />
+              </TableRow>
+            );
+          })
+        : []),
+  ];
 }

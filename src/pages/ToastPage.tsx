@@ -6,7 +6,7 @@ export function ToastPage() {
   return (
     <ComponentShowcase
       title="Toast"
-      description="Mensaje temporal de notificación. Importa toast de sonner y úsalo para mostrar diferentes tipos de notificaciones."
+      description="Temporary notification message. Import toast from sonner and use it to display different types of notifications."
       category="Feedback"
       
       // Main Preview
@@ -52,13 +52,13 @@ export function ToastDemo() {
       
       // Props Documentation
       props={[
-        { name: "message", type: "string | ReactNode", description: "Texto principal del toast. Primer argumento de toast().", required: true },
-        { name: "description", type: "string | ReactNode", description: "Texto secundario debajo del mensaje." },
-        { name: "action", type: "{ label: string; onClick: () => void }", description: "Botón de acción dentro del toast." },
-        { name: "duration", type: "number", default: "4000", description: "Duración en ms antes de auto-cerrar. Infinity para persistente." },
-        { name: "position", type: "\"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\" | ...", description: "Posición del toast en pantalla." },
-        { name: "dismissible", type: "boolean", default: "true", description: "Permite cerrar el toast manualmente." },
-        { name: "id", type: "string | number", description: "ID único para actualizar o descartar un toast específico." },
+        { name: "message", type: "string | ReactNode", description: "Primary toast text. First argument of toast().", required: true },
+        { name: "description", type: "string | ReactNode", description: "Secondary text below the message." },
+        { name: "action", type: "{ label: string; onClick: () => void }", description: "Action button inside the toast." },
+        { name: "duration", type: "number", default: "4000", description: "Duration in ms before auto-close. Infinity for persistent." },
+        { name: "position", type: "\"top-left\" | \"top-right\" | \"bottom-left\" | \"bottom-right\" | ...", description: "Toast position on screen." },
+        { name: "dismissible", type: "boolean", default: "true", description: "Allows manual toast dismissal." },
+        { name: "id", type: "string | number", description: "Unique ID to update or dismiss a specific toast." },
       ]}
       
       // Examples

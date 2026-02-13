@@ -15,7 +15,7 @@ export function DateRangePickerDemo() {
     <DateRangePicker
       dateRange={dateRange}
       onDateRangeChange={setDateRange}
-      placeholder="Selecciona las fechas"
+      placeholder="Select dates"
     />
   );
 }`;
@@ -31,11 +31,11 @@ export function DateRangePickerPage() {
   return (
     <ComponentShowcase
       title="Date Range Picker"
-      description="Selector de rango de fechas con calendario visual de 2 meses, localización en español (date-fns), formato personalizable y popover responsivo. Ideal para filtros de reportes y búsquedas temporales."
+      description="Date range selector with a 2-month visual calendar, customizable format, and responsive popover. Ideal for report filters and temporal searches."
       category="Forms"
       preview={
         <div className="w-full max-w-sm space-y-2">
-          <label className="text-foreground font-medium">Selecciona un rango de fechas</label>
+          <label className="text-foreground font-medium">Select a date range</label>
           <DateRangePicker
             dateRange={range1}
             onDateRangeChange={setRange1}
@@ -43,24 +43,24 @@ export function DateRangePickerPage() {
           {range1?.from && (
             <p className="text-muted-foreground text-sm">
               {range1.to
-                ? `Rango: ${format(range1.from, "dd/MM/yyyy")} - ${format(range1.to, "dd/MM/yyyy")}`
-                : `Inicio: ${format(range1.from, "dd/MM/yyyy")}`}
+                ? `Range: ${format(range1.from, "dd/MM/yyyy")} - ${format(range1.to, "dd/MM/yyyy")}`
+                : `Start: ${format(range1.from, "dd/MM/yyyy")}`}
             </p>
           )}
         </div>
       }
       code={code}
       props={[
-        { name: "dateRange", type: "DateRange | undefined", default: "undefined", description: "Rango de fechas seleccionado" },
-        { name: "onDateRangeChange", type: "(range) => void", description: "Callback cuando cambia el rango", required: true },
-        { name: "placeholder", type: "string", default: '"Selecciona un rango..."', description: "Texto cuando no hay selección" },
-        { name: "disabled", type: "boolean", default: "false", description: "Deshabilita el componente" },
-        { name: "className", type: "string", description: "Clases CSS adicionales" },
+        { name: "dateRange", type: "DateRange | undefined", default: "undefined", description: "Selected date range" },
+        { name: "onDateRangeChange", type: "(range) => void", description: "Callback when the range changes", required: true },
+        { name: "placeholder", type: "string", default: '"Select a range..."', description: "Text when no selection exists" },
+        { name: "disabled", type: "boolean", default: "false", description: "Disables the component" },
+        { name: "className", type: "string", description: "Additional CSS classes" },
       ]}
       examples={[
         {
-          title: "Con valor por defecto",
-          description: "Date Range Picker con un rango preseleccionado.",
+          title: "With Default Value",
+          description: "Date Range Picker with a preselected range.",
           preview: (
             <div className="w-full max-w-sm">
               <DateRangePicker
@@ -75,26 +75,26 @@ export function DateRangePickerPage() {
 />`,
         },
         {
-          title: "Placeholder personalizado",
-          description: "Con texto de placeholder personalizado.",
+          title: "Custom Placeholder",
+          description: "With custom placeholder text.",
           preview: (
             <div className="w-full max-w-sm">
               <DateRangePicker
                 dateRange={range3}
                 onDateRangeChange={setRange3}
-                placeholder="Elige el período del reporte"
+                placeholder="Choose the report period"
               />
             </div>
           ),
           code: `<DateRangePicker
   dateRange={range}
   onDateRangeChange={setRange}
-  placeholder="Elige el período del reporte"
+  placeholder="Choose the report period"
 />`,
         },
         {
-          title: "Deshabilitado",
-          description: "Estado deshabilitado del componente.",
+          title: "Disabled",
+          description: "Disabled state of the component.",
           preview: (
             <div className="w-full max-w-sm">
               <DateRangePicker

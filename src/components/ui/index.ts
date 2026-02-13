@@ -42,6 +42,7 @@ export * from "./page-layout";
 export * from "./pagination";
 export * from "./popover";
 export * from "./progress";
+export * from "./progress-with-range";
 export * from "./radio-group";
 export * from "./resizable";
 export * from "./safe-chart-container";

@@ -26,16 +26,16 @@ import { MasterDataGrid } from "../advanced/MasterDataGrid";
 /**
  * 🔒 BUSINESS PATTERN - Audit Log Viewer
  * 
- * Componente para visualizar logs de auditoría del sistema
- * Incluye filtros, búsqueda, tipos de eventos y timestamps
+ * Component for viewing system audit logs.
+ * Includes filters, search, event types, and timestamps.
  * 
- * Ubicación: /components/patterns/AuditLogViewer.tsx
- * Categoría: Data Management - Alta Prioridad
- * Uso: Tracking de acciones de usuarios, compliance, debugging
+ * Location: /components/patterns/AuditLogViewer.tsx
+ * Category: Data Management - High Priority
+ * Usage: User action tracking, compliance, debugging
  * 
- * Nota: Movido desde /components/widgets/ para resolver la violación
- * de capas (widget → pattern). Al componer MasterDataGrid, este componente
- * pertenece correctamente a la capa patterns.
+ * Note: Moved from /components/widgets/ to resolve the layer violation
+ * (widget → pattern). As it composes MasterDataGrid, this component
+ * belongs correctly in the patterns layer.
  */
 
 export interface AuditLogEntry {
@@ -235,17 +235,17 @@ export function AuditLogViewer({
 
       <MasterDataGrid
         title="Audit Log Viewer"
-        description="Sistema de seguimiento y auditoría de acciones"
+        description="Action tracking and audit system"
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
-        searchPlaceholder="Buscar en logs..."
+        searchPlaceholder="Search logs..."
         
         filterOptions={[
           {
             label: "Status",
             value: filterStatus,
             options: [
-              { label: "Todos los estados", value: "all" },
+              { label: "All statuses", value: "all" },
               { label: "Success", value: "success" },
               { label: "Warning", value: "warning" },
               { label: "Error", value: "error" },

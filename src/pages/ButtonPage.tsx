@@ -13,7 +13,7 @@ export function ButtonPage() {
   return (
     <ComponentShowcase
       title="Button"
-      description="Displays a button or a component that looks like a button. Incluye variantes base y semánticas para cada tipo de acción."
+      description="Displays a button or a component that looks like a button. Includes base and semantic variants for each action type."
       category="Actions"
       
       // Main Preview
@@ -64,19 +64,19 @@ export function ButtonPage() {
             <div className="flex flex-wrap gap-3">
               <Button variant="success-outline">
                 <Check className="h-4 w-4" />
-                Aprobar
+                Approve
               </Button>
               <Button variant="destructive-outline">
                 <XCircle className="h-4 w-4" />
-                Rechazar
+                Reject
               </Button>
               <Button variant="warning-outline">
                 <Clock className="h-4 w-4" />
-                Pausar
+                Pause
               </Button>
               <Button variant="info-outline">
                 <Eye className="h-4 w-4" />
-                Ver Detalle
+                View Detail
               </Button>
             </div>
           </div>
@@ -89,19 +89,19 @@ export function ButtonPage() {
             <div className="flex flex-wrap gap-3">
               <Button variant="success-ghost">
                 <Save className="h-4 w-4" />
-                Guardar
+                Save
               </Button>
               <Button variant="destructive-ghost">
                 <Ban className="h-4 w-4" />
-                Cancelar
+                Cancel
               </Button>
               <Button variant="warning-ghost">
                 <ShieldAlert className="h-4 w-4" />
-                Revisar
+                Review
               </Button>
               <Button variant="info-ghost">
                 <HelpCircle className="h-4 w-4" />
-                Ayuda
+                Help
               </Button>
             </div>
           </div>
@@ -117,24 +117,24 @@ export function ButtonSemanticDemo() {
     <div className="flex flex-col gap-4">
       {/* Solid */}
       <div className="flex gap-3">
-        <Button variant="success"><CheckCircle /> Aprobar</Button>
-        <Button variant="destructive"><Trash2 /> Eliminar</Button>
-        <Button variant="warning"><AlertTriangle /> Advertencia</Button>
-        <Button variant="info"><Info /> Información</Button>
+        <Button variant="success"><CheckCircle /> Approve</Button>
+        <Button variant="destructive"><Trash2 /> Delete</Button>
+        <Button variant="warning"><AlertTriangle /> Warning</Button>
+        <Button variant="info"><Info /> Information</Button>
       </div>
       {/* Outline */}
       <div className="flex gap-3">
-        <Button variant="success-outline">Aprobar</Button>
-        <Button variant="destructive-outline">Rechazar</Button>
-        <Button variant="warning-outline">Pausar</Button>
-        <Button variant="info-outline">Detalle</Button>
+        <Button variant="success-outline">Approve</Button>
+        <Button variant="destructive-outline">Reject</Button>
+        <Button variant="warning-outline">Pause</Button>
+        <Button variant="info-outline">Detail</Button>
       </div>
       {/* Ghost */}
       <div className="flex gap-3">
-        <Button variant="success-ghost">Guardar</Button>
-        <Button variant="destructive-ghost">Cancelar</Button>
-        <Button variant="warning-ghost">Revisar</Button>
-        <Button variant="info-ghost">Ayuda</Button>
+        <Button variant="success-ghost">Save</Button>
+        <Button variant="destructive-ghost">Cancel</Button>
+        <Button variant="warning-ghost">Review</Button>
+        <Button variant="info-ghost">Help</Button>
       </div>
     </div>
   );
@@ -146,68 +146,68 @@ export function ButtonSemanticDemo() {
           name: "variant",
           type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link" | "success" | "warning" | "info" | "destructive-outline" | "success-outline" | "warning-outline" | "info-outline" | "destructive-ghost" | "success-ghost" | "warning-ghost" | "info-ghost"',
           default: '"default"',
-          description: "Estilo visual del botón. Las variantes semánticas usan colores explícitos compatibles con light/dark mode.",
+          description: "Visual style of the button. Semantic variants use explicit colors compatible with light/dark mode.",
         },
         {
           name: "size",
           type: '"default" | "sm" | "lg" | "icon"',
           default: '"default"',
-          description: "Tamaño del botón",
+          description: "Button size",
         },
         {
           name: "asChild",
           type: "boolean",
           default: "false",
-          description: "Merge props con el hijo directo vía Radix Slot (útil para Link, anchor, etc.)",
+          description: "Merge props with direct child via Radix Slot (useful for Link, anchor, etc.)",
         },
       ]}
       
       // Examples
       examples={[
         {
-          title: "Acciones de Operación (Factoring)",
-          description: "Ejemplo de cómo usar las variantes semánticas en un flujo de aprobación de operaciones.",
+          title: "Operation Actions (Factoring)",
+          description: "Example of using semantic variants in an operation approval flow.",
           preview: (
             <div className="flex flex-col gap-4 p-4 border rounded-lg bg-card">
-              <p className="text-sm text-muted-foreground">Operación OP-2024-001 — Cencosud S.A. — $45.200.000</p>
+              <p className="text-sm text-muted-foreground">Operation OP-2024-001 — Cencosud S.A. — $45,200,000</p>
               <div className="flex flex-wrap gap-2">
                 <Button variant="success" size="sm">
                   <Check className="h-4 w-4" />
-                  Aprobar
+                  Approve
                 </Button>
                 <Button variant="warning-outline" size="sm">
                   <Clock className="h-4 w-4" />
-                  Solicitar Revisión
+                  Request Review
                 </Button>
                 <Button variant="destructive-outline" size="sm">
                   <XCircle className="h-4 w-4" />
-                  Rechazar
+                  Reject
                 </Button>
                 <Button variant="info-ghost" size="sm">
                   <Eye className="h-4 w-4" />
-                  Ver Detalle
+                  View Detail
                 </Button>
               </div>
             </div>
           ),
           code: `<div className="flex gap-2">
   <Button variant="success" size="sm">
-    <Check /> Aprobar
+    <Check /> Approve
   </Button>
   <Button variant="warning-outline" size="sm">
-    <Clock /> Solicitar Revisión
+    <Clock /> Request Review
   </Button>
   <Button variant="destructive-outline" size="sm">
-    <XCircle /> Rechazar
+    <XCircle /> Reject
   </Button>
   <Button variant="info-ghost" size="sm">
-    <Eye /> Ver Detalle
+    <Eye /> View Detail
   </Button>
 </div>`,
         },
         {
           title: "With Icon",
-          description: "Botones con iconos de Lucide React",
+          description: "Buttons with Lucide React icons",
           preview: (
             <div className="flex flex-wrap gap-3">
               <Button>
@@ -220,7 +220,7 @@ export function ButtonSemanticDemo() {
               </Button>
               <Button variant="success">
                 <Send className="h-4 w-4" />
-                Enviar
+                Send
               </Button>
             </div>
           ),
@@ -232,14 +232,14 @@ export function ButtonWithIcon() {
     <div className="flex gap-3">
       <Button><Mail /> Send Email</Button>
       <Button variant="outline"><Download /> Download</Button>
-      <Button variant="success"><Send /> Enviar</Button>
+      <Button variant="success"><Send /> Send</Button>
     </div>
   );
 }`,
         },
         {
           title: "Loading State",
-          description: "Botón con estado de carga utilizando el icono Loader2",
+          description: "Button with loading state using the Loader2 icon",
           preview: (
             <div className="flex flex-wrap gap-3">
               <Button disabled>
@@ -248,7 +248,7 @@ export function ButtonWithIcon() {
               </Button>
               <Button variant="success" disabled>
                 <Loader2 className="h-4 w-4 animate-spin" />
-                Guardando...
+                Saving...
               </Button>
             </div>
           ),
@@ -266,7 +266,7 @@ export function ButtonLoading() {
         },
         {
           title: "Sizes",
-          description: "Todas las variantes semánticas en los diferentes tamaños disponibles.",
+          description: "All semantic variants in the different available sizes.",
           preview: (
             <div className="flex flex-col gap-4">
               <div className="flex flex-wrap items-center gap-3">
@@ -318,7 +318,7 @@ export function ButtonSizes() {
         },
         {
           title: "Disabled States",
-          description: "Todos los botones semánticos en estado deshabilitado.",
+          description: "All semantic buttons in disabled state.",
           preview: (
             <div className="flex flex-col gap-3">
               <div className="flex flex-wrap gap-3">

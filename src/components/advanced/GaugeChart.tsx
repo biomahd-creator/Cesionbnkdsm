@@ -6,12 +6,11 @@ import { Badge } from "../ui/badge";
 /**
  * 🔒 ADVANCED COMPONENT - Gauge Chart
  * 
- * Gráfico de tipo medidor/velocímetro para mostrar progreso
- * Ideal para KPIs con metas, porcentajes de completitud, scores
+ * Gauge/speedometer chart for showing progress.
  * 
- * Ubicación: /components/advanced/GaugeChart.tsx
- * Categoría: Data Visualization - Prioridad Media
- * Uso: Dashboards, métricas de performance, objetivos
+ * Location: /components/advanced/GaugeChart.tsx
+ * Category: Data Visualization - Medium Priority
+ * Usage: Dashboards, performance metrics, goals
  */
 
 interface GaugeChartProps {

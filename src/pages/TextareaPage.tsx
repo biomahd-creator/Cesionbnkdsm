@@ -37,50 +37,50 @@ export function TextareaDemo() {
         {
           name: "placeholder",
           type: "string",
-          description: "Texto de ayuda cuando está vacío",
+          description: "Help text shown when empty",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el textarea",
+          description: "Disables the textarea",
         },
         {
           name: "rows",
           type: "number",
           default: "3",
-          description: "Número de líneas visibles",
+          description: "Number of visible lines",
         },
         {
           name: "value",
           type: "string",
-          description: "Valor controlado del textarea",
+          description: "Controlled value of the textarea",
         },
         {
           name: "defaultValue",
           type: "string",
-          description: "Valor inicial no controlado",
+          description: "Initial uncontrolled value",
         },
         {
           name: "onChange",
           type: "(e: ChangeEvent<HTMLTextAreaElement>) => void",
-          description: "Callback cuando cambia el valor",
+          description: "Callback when the value changes",
         },
         {
           name: "maxLength",
           type: "number",
-          description: "Longitud máxima de caracteres",
+          description: "Maximum character length",
         },
         {
           name: "required",
           type: "boolean",
           default: "false",
-          description: "Campo requerido en formularios",
+          description: "Required field in forms",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
       ]}
       
@@ -88,7 +88,7 @@ export function TextareaDemo() {
       examples={[
         {
           title: "With Label",
-          description: "Textarea con label descriptivo para mejor accesibilidad",
+          description: "Textarea with descriptive label for better accessibility",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="message">Message</Label>
@@ -115,7 +115,7 @@ export function TextareaWithLabel() {
         },
         {
           title: "Different Sizes",
-          description: "Control del tamaño mediante la prop rows",
+          description: "Size control via the rows prop",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">
@@ -158,7 +158,7 @@ export function TextareaSizes() {
         },
         {
           title: "With Helper Text",
-          description: "Textarea con texto de ayuda y contador de caracteres",
+          description: "Textarea with helper text and character count",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="bio">Bio</Label>
@@ -193,7 +193,7 @@ export function TextareaWithHelper() {
         },
         {
           title: "Character Counter",
-          description: "Textarea con contador de caracteres en tiempo real",
+          description: "Textarea with real-time character count",
           preview: (
             <TextareaWithCounter />
           ),
@@ -225,7 +225,7 @@ export function TextareaWithCounter() {
         },
         {
           title: "Disabled State",
-          description: "Textarea en estado deshabilitado",
+          description: "Textarea in disabled state",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">
@@ -273,7 +273,7 @@ export function DisabledTextarea() {
         },
         {
           title: "Form Integration",
-          description: "Textarea integrado en un formulario completo",
+          description: "Textarea integrated into a complete form",
           preview: (
             <div className="w-full max-w-md space-y-4">
               <div className="space-y-2">
@@ -333,7 +333,7 @@ export function EmailForm() {
         },
         {
           title: "Required Field",
-          description: "Textarea como campo requerido con indicador visual",
+          description: "Textarea as a required field with visual indicator",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="required">
@@ -374,7 +374,7 @@ export function RequiredTextarea() {
         },
         {
           title: "With Error State",
-          description: "Textarea mostrando un estado de error",
+          description: "Textarea showing an error state",
           preview: (
             <div className="w-full max-w-md space-y-2">
               <Label htmlFor="error">Description</Label>

@@ -6,12 +6,11 @@ import { TrendingDown } from "lucide-react";
 /**
  * 🔒 ADVANCED COMPONENT - Funnel Chart
  * 
- * Gráfico de embudo para visualizar conversiones y procesos
- * Ideal para sales funnels, user flows, conversion rates
+ * Funnel chart for visualizing conversions and processes.
  * 
- * Ubicación: /components/advanced/FunnelChart.tsx
- * Categoría: Data Visualization - Prioridad Media
- * Uso: Sales analytics, conversion tracking, process optimization
+ * Location: /components/advanced/FunnelChart.tsx
+ * Category: Data Visualization - Medium Priority
+ * Usage: Sales analytics, conversion tracking, process optimization
  */
 
 export interface FunnelStage {

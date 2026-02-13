@@ -41,9 +41,9 @@ const invoices = [
 ];
 
 const statusConfig = {
-  approved: { label: "Aprobada", variant: "default" as const },
-  pending: { label: "Pendiente", variant: "secondary" as const },
-  rejected: { label: "Rechazada", variant: "destructive" as const },
+  approved: { label: "Approved", variant: "default" as const },
+  pending: { label: "Pending", variant: "secondary" as const },
+  rejected: { label: "Rejected", variant: "destructive" as const },
 };
 
 export function InvoiceTable() {
@@ -52,12 +52,12 @@ export function InvoiceTable() {
       <Table>
         <TableHeader>
           <TableRow>
-            <TableHead>N° Factura</TableHead>
-            <TableHead>Cliente</TableHead>
-            <TableHead>Monto</TableHead>
-            <TableHead>Fecha</TableHead>
-            <TableHead>Estado</TableHead>
-            <TableHead className="text-right">Acciones</TableHead>
+            <TableHead>Invoice #</TableHead>
+            <TableHead>Client</TableHead>
+            <TableHead>Amount</TableHead>
+            <TableHead>Date</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead className="text-right">Actions</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -65,7 +65,7 @@ export function InvoiceTable() {
             <TableRow key={invoice.id}>
               <TableCell className="font-medium">{invoice.id}</TableCell>
               <TableCell>{invoice.client}</TableCell>
-              <TableCell>${invoice.amount.toLocaleString("es-CL")}</TableCell>
+              <TableCell>${invoice.amount.toLocaleString("en-US")}</TableCell>
               <TableCell>{invoice.date}</TableCell>
               <TableCell>
                 <Badge variant={statusConfig[invoice.status].variant}>
@@ -80,9 +80,9 @@ export function InvoiceTable() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem>Ver detalles</DropdownMenuItem>
-                    <DropdownMenuItem>Descargar PDF</DropdownMenuItem>
-                    <DropdownMenuItem>Editar</DropdownMenuItem>
+                    <DropdownMenuItem>View details</DropdownMenuItem>
+                    <DropdownMenuItem>Download PDF</DropdownMenuItem>
+                    <DropdownMenuItem>Edit</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </TableCell>

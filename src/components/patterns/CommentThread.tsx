@@ -80,8 +80,8 @@ export function CommentThread({
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem>Reportar</DropdownMenuItem>
-              <DropdownMenuItem className="text-destructive">Eliminar</DropdownMenuItem>
+              <DropdownMenuItem>Report</DropdownMenuItem>
+              <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -108,7 +108,7 @@ export function CommentThread({
             onClick={() => setReplyingTo(replyingTo === comment.id ? null : comment.id)}
           >
             <Reply className="h-3.5 w-3.5 mr-1" />
-            <span className="text-xs">Responder</span>
+            <span className="text-xs">Reply</span>
           </Button>
         </div>
 
@@ -116,14 +116,14 @@ export function CommentThread({
           <div className="mt-4 flex gap-3 animate-in fade-in-0 zoom-in-95">
              <div className="flex-1 space-y-2">
                 <Textarea
-                  placeholder="Escribe una respuesta..."
+                  placeholder="Write a reply..."
                   value={replyContent}
                   onChange={(e) => setReplyContent(e.target.value)}
                   className="min-h-[80px]"
                 />
                 <div className="flex justify-end gap-2">
-                   <Button variant="ghost" size="sm" onClick={() => setReplyingTo(null)}>Cancelar</Button>
-                   <Button size="sm" onClick={() => handleReplySubmit(comment.id)}>Responder</Button>
+                   <Button variant="ghost" size="sm" onClick={() => setReplyingTo(null)}>Cancel</Button>
+                   <Button size="sm" onClick={() => handleReplySubmit(comment.id)}>Reply</Button>
                 </div>
              </div>
           </div>
@@ -140,19 +140,19 @@ export function CommentThread({
     <div className={cn("flex flex-col", className)}>
       <div className="flex items-center gap-2 mb-6">
         <MessageSquare className="h-5 w-5 text-primary" />
-        <h3 className="font-semibold text-lg">Comentarios ({initialComments.length})</h3>
+        <h3 className="font-semibold text-lg">Comments ({initialComments.length})</h3>
       </div>
 
       <div className="mb-8 space-y-4">
         <Textarea
-          placeholder="¿Qué estás pensando?"
+          placeholder="What's on your mind?"
           value={newComment}
           onChange={(e) => setNewComment(e.target.value)}
           className="min-h-[100px] resize-none"
         />
         <div className="flex justify-end">
           <Button onClick={handleSubmit} disabled={!newComment.trim()}>
-            Publicar comentario
+            Post Comment
           </Button>
         </div>
       </div>

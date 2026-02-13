@@ -104,12 +104,12 @@ export function TableDemo() {
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para personalizar la tabla",
+          description: "Additional CSS classes to customize the table",
         },
         {
           name: "children",
           type: "ReactNode",
-          description: "Contenido de la tabla (TableHeader, TableBody, TableFooter, TableCaption)",
+          description: "Table content (TableHeader, TableBody, TableFooter, TableCaption)",
           required: true,
         },
       ]}
@@ -118,7 +118,7 @@ export function TableDemo() {
       examples={[
         {
           title: "With Footer",
-          description: "Tabla con pie de página para totales",
+          description: "Table with footer for totals",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -171,7 +171,7 @@ export function TableDemo() {
         },
         {
           title: "With Actions",
-          description: "Tabla con acciones por fila usando Dropdown Menu",
+          description: "Table with actions per row using Dropdown Menu",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -248,7 +248,7 @@ export function TableDemo() {
         },
         {
           title: "Compact Table",
-          description: "Tabla con filas más compactas",
+          description: "Table with more compact rows",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -301,7 +301,7 @@ export function TableDemo() {
         },
         {
           title: "Striped Rows",
-          description: "Tabla con filas alternadas para mejor legibilidad",
+          description: "Table with alternating rows for better readability",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -349,7 +349,7 @@ export function TableDemo() {
         },
         {
           title: "Hoverable Rows",
-          description: "Tabla con efecto hover en las filas",
+          description: "Table with hover effect on rows",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -397,7 +397,7 @@ export function TableDemo() {
         },
         {
           title: "With Icon Buttons",
-          description: "Tabla con botones de acción rápida",
+          description: "Table with quick action buttons",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -471,7 +471,7 @@ export function TableDemo() {
         },
         {
           title: "Sortable Headers",
-          description: "Tabla con encabezados ordenables (visual)",
+          description: "Table with sortable headers (visual)",
           preview: (
             <div className="rounded-md border w-full">
               <Table>
@@ -542,7 +542,7 @@ export function TableDemo() {
         },
         {
           title: "Empty State",
-          description: "Tabla mostrando estado vacío cuando no hay datos",
+          description: "Table showing empty state when there is no data",
           preview: (
             <div className="rounded-md border w-full">
               <Table>

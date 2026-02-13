@@ -1,9 +1,8 @@
 import { ColumnDef } from "@tanstack/react-table";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
-import { Card } from "../components/ui/card";
 import { Checkbox } from "../components/ui/checkbox";
-import { Separator } from "../components/ui/separator";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -41,7 +40,7 @@ const data: Invoice[] = Array.from({ length: 50 }, (_, i) => ({
   riskScore: Math.floor(Math.random() * 1000),
 }));
 
-export const columns: ColumnDef<Invoice>[] = [
+const columns: ColumnDef<Invoice>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -80,25 +79,23 @@ export const columns: ColumnDef<Invoice>[] = [
 
       return (
         <Badge variant="outline" className={`${config.color} border-0 flex w-fit items-center gap-1`}>
-            <Icon className="h-3 w-3" />
-            {config.label}
+          <Icon className="h-3 w-3" />
+          {config.label}
         </Badge>
       );
     },
   },
   {
     accessorKey: "client",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Client
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+      >
+        Client
+        <ArrowUpDown className="ml-2 h-4 w-4" />
+      </Button>
+    ),
     cell: ({ row }) => <div className="font-medium ml-4">{row.getValue("client")}</div>,
   },
   {
@@ -120,38 +117,29 @@ export const columns: ColumnDef<Invoice>[] = [
     },
   },
   {
-      accessorKey: "riskScore",
-      header: "Risk Score",
-      cell: ({ row }) => {
-          const score = row.getValue("riskScore") as number;
-          let variant: "danger" | "warning" | "success" = "success";
-          let colorClass = "text-green-500";
-          
-          if (score < 500) {
-            variant = "danger";
-            colorClass = "text-red-500";
-          } else if (score < 700) {
-            variant = "warning";
-            colorClass = "text-yellow-500";
-          }
-          
-          return (
-              <div className="flex items-center gap-2">
-                  <div className="w-24">
-                    <Progress 
-                      value={score/10} 
-                      className="h-2" 
-                      indicatorClassName={
-                        score < 500 ? "bg-red-500" :
-                        score < 700 ? "bg-yellow-500" :
-                        "bg-green-500"
-                      }
-                    />
-                  </div>
-                  <span className={`text-xs font-medium ${colorClass}`}>{score}</span>
-              </div>
-          )
-      }
+    accessorKey: "riskScore",
+    header: "Risk Score",
+    cell: ({ row }) => {
+      const score = row.getValue("riskScore") as number;
+      const colorClass = score < 500 ? "text-red-500" : score < 700 ? "text-yellow-500" : "text-green-500";
+
+      return (
+        <div className="flex items-center gap-2">
+          <div className="w-24">
+            <Progress
+              value={score / 10}
+              className="h-2"
+              indicatorClassName={
+                score < 500 ? "bg-red-500" :
+                score < 700 ? "bg-yellow-500" :
+                "bg-green-500"
+              }
+            />
+          </div>
+          <span className={`text-xs font-medium ${colorClass}`}>{score}</span>
+        </div>
+      );
+    },
   },
   {
     id: "actions",
@@ -174,7 +162,7 @@ export const columns: ColumnDef<Invoice>[] = [
                   navigator.clipboard.writeText(payment.id)
                     .then(() => toast.success("Invoice ID copied to clipboard"))
                     .catch(() => toast.error("Failed to copy Invoice ID"));
-                } catch (error) {
+                } catch {
                   toast.error("Clipboard access not available");
                 }
               }}
@@ -193,58 +181,123 @@ export const columns: ColumnDef<Invoice>[] = [
 
 export function DataTablePage() {
   return (
-    <div className="space-y-8">
-      <div>
-        <div className="flex items-center gap-3 mb-2">
-          <h2 className="text-2xl font-medium">Advanced Data Table</h2>
-          <Badge>Advanced</Badge>
-          <Badge variant="outline" className="border-green-500 text-green-500">New</Badge>
-          <Badge variant="outline" className="border-primary/50 text-primary">📱 Responsive</Badge>
-        </div>
-        <p className="text-muted-foreground">
-          Powerful table component with sorting, filtering, pagination, and selection. Built on top of TanStack Table. Fully responsive with horizontal scroll on mobile.
-        </p>
-      </div>
-
-      <Separator />
-
-      <div className="space-y-4">
-        <DataTable 
-          columns={columns} 
-          data={data} 
-          searchKey="client" 
-          searchPlaceholder="Filter by client..." 
+    <ComponentShowcase
+      title="Advanced Data Table"
+      description="Powerful table component with sorting, filtering, pagination, row selection, column visibility, and custom cell renderers. Built on TanStack Table. Fully responsive with horizontal scroll on mobile."
+      category="Advanced"
+      preview={
+        <DataTable
+          columns={columns}
+          data={data}
+          searchKey="client"
+          searchPlaceholder="Filter by client..."
           title="Invoices"
           description="A list of all your invoices."
         />
-      </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Sorting</h3>
-              <p className="text-sm text-muted-foreground">Click on the "Client" header to sort alphabetically. Default support for multi-column sorting.</p>
-          </div>
-          <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Filtering</h3>
-              <p className="text-sm text-muted-foreground">Use the input field to filter rows by client name instantly. Customizable filter logic.</p>
-          </div>
-          <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Pagination</h3>
-              <p className="text-sm text-muted-foreground">Built-in pagination controls with page size selector (5, 10, 20...).</p>
-          </div>
-          <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Row Selection</h3>
-              <p className="text-sm text-muted-foreground">Select individual rows or all rows across the current page using the checkboxes.</p>
-          </div>
-          <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Column Visibility</h3>
-              <p className="text-sm text-muted-foreground">Use the "View" dropdown to toggle column visibility dynamically.</p>
-          </div>
-           <div className="p-4 border rounded-lg bg-card">
-              <h3 className="font-semibold mb-2">Custom Cells</h3>
-              <p className="text-sm text-muted-foreground">Support for complex cell renderers like Badges, Progress Bars (Risk Score), and Actions menus.</p>
-          </div>
-      </div>
-    </div>
+      }
+      code={`import { DataTable } from "@/components/advanced/DataTable";
+import { ColumnDef } from "@tanstack/react-table";
+
+type Invoice = {
+  id: string;
+  client: string;
+  amount: number;
+  status: "pending" | "success" | "failed";
+};
+
+const columns: ColumnDef<Invoice>[] = [
+  { accessorKey: "id", header: "ID" },
+  { accessorKey: "client", header: "Client" },
+  { accessorKey: "amount", header: "Amount" },
+  { accessorKey: "status", header: "Status" },
+];
+
+<DataTable
+  columns={columns}
+  data={data}
+  searchKey="client"
+  searchPlaceholder="Filter by client..."
+  title="Invoices"
+  description="A list of all your invoices."
+/>`}
+      props={[
+        {
+          name: "columns",
+          type: "ColumnDef<T>[]",
+          description: "TanStack Table column definitions.",
+          required: true,
+        },
+        {
+          name: "data",
+          type: "T[]",
+          description: "Array of data objects to display.",
+          required: true,
+        },
+        {
+          name: "searchKey",
+          type: "string",
+          description: "The column accessor key to use for the search filter.",
+        },
+        {
+          name: "searchPlaceholder",
+          type: "string",
+          default: '"Filter..."',
+          description: "Placeholder text for the search input.",
+        },
+        {
+          name: "title",
+          type: "string",
+          description: "Table title shown in the header.",
+        },
+        {
+          name: "description",
+          type: "string",
+          description: "Description text shown under the title.",
+        },
+      ]}
+      examples={[
+        {
+          title: "Features Overview",
+          description: "The DataTable supports sorting, filtering, pagination, row selection, column visibility, and custom cells like badges, progress bars, and action menus.",
+          preview: (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Sorting</h3>
+                <p className="text-sm text-muted-foreground">Click column headers to sort. Supports multi-column sorting.</p>
+              </div>
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Filtering</h3>
+                <p className="text-sm text-muted-foreground">Instant client-side filtering via the search input.</p>
+              </div>
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Pagination</h3>
+                <p className="text-sm text-muted-foreground">Built-in pagination with configurable page sizes (5, 10, 20).</p>
+              </div>
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Row Selection</h3>
+                <p className="text-sm text-muted-foreground">Checkbox-based selection for individual or all rows.</p>
+              </div>
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Column Visibility</h3>
+                <p className="text-sm text-muted-foreground">Toggle columns dynamically via the View dropdown.</p>
+              </div>
+              <div className="p-4 border rounded-lg bg-card">
+                <h3 className="font-semibold mb-2">Custom Cells</h3>
+                <p className="text-sm text-muted-foreground">Render badges, progress bars, and action menus in cells.</p>
+              </div>
+            </div>
+          ),
+          code: `// Custom cell example: Status Badge
+{
+  accessorKey: "status",
+  header: "Status",
+  cell: ({ row }) => {
+    const status = row.getValue("status");
+    return <Badge variant={status}>{status}</Badge>;
+  },
+}`,
+        },
+      ]}
+    />
   );
 }

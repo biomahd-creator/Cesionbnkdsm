@@ -15,12 +15,12 @@ export function NotificationCenterPage() {
   return (
     <ComponentShowcase
       title="Notification Center"
-      description="Centro de notificaciones centralizado con sistema de filtrado, marcado de lectura y acciones en tiempo real."
+      description="Centralized notification center with filtering system, read marking, and real-time actions."
       category="Business Pattern"
       preview={
         <div className="w-full max-w-4xl border rounded-lg p-6 bg-card min-h-[400px] flex items-center justify-center bg-muted/20">
           <div className="text-center space-y-4">
-             <p className="text-sm text-muted-foreground mb-4">Click en la campana para ver las notificaciones</p>
+             <p className="text-sm text-muted-foreground mb-4">Click the bell to view notifications</p>
              <NotificationCenter />
           </div>
         </div>

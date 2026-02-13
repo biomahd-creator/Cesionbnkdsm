@@ -51,46 +51,46 @@ export function SwitchDemo() {
         {
           name: "checked",
           type: "boolean",
-          description: "Estado controlado del switch",
+          description: "Controlled state of the switch",
         },
         {
           name: "defaultChecked",
           type: "boolean",
           default: "false",
-          description: "Estado inicial no controlado",
+          description: "Uncontrolled initial state",
         },
         {
           name: "onCheckedChange",
           type: "(checked: boolean) => void",
-          description: "Callback cuando cambia el estado",
+          description: "Callback when the state changes",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el switch",
+          description: "Disables the switch",
         },
         {
           name: "required",
           type: "boolean",
           default: "false",
-          description: "Campo requerido en formularios",
+          description: "Required field in forms",
         },
         {
           name: "name",
           type: "string",
-          description: "Nombre del campo (para formularios)",
+          description: "Field name (for forms)",
         },
         {
           name: "id",
           type: "string",
-          description: "ID para asociar con Label",
+          description: "ID to associate with Label",
           required: true,
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
       ]}
       
@@ -98,7 +98,7 @@ export function SwitchDemo() {
       examples={[
         {
           title: "Basic Switch",
-          description: "Switch simple con label",
+          description: "Simple switch with label",
           preview: (
             <div className="flex items-center space-x-2">
               <Switch id="basic" />
@@ -119,7 +119,7 @@ export function BasicSwitch() {
         },
         {
           title: "With Descriptions",
-          description: "Switches con descripciones adicionales en layout horizontal",
+          description: "Switches with additional descriptions in horizontal layout",
           preview: (
             <div className="space-y-4 max-w-md">
               <div className="flex items-center justify-between">
@@ -177,7 +177,7 @@ export function SwitchWithDescriptions() {
         },
         {
           title: "With Icons",
-          description: "Switches con iconos para mejor UX visual",
+          description: "Switches with icons for better visual UX",
           preview: (
             <div className="space-y-4">
               <div className="flex items-center justify-between max-w-xs">
@@ -239,7 +239,7 @@ export function SwitchWithIcons() {
         },
         {
           title: "Card Layout",
-          description: "Switches organizados en cards para agrupación visual",
+          description: "Switches organized in cards for visual grouping",
           preview: (
             <div className="grid gap-4 max-w-md">
               <Card className="p-4">
@@ -328,7 +328,7 @@ export function CardLayoutSwitch() {
         },
         {
           title: "Controlled State",
-          description: "Switch con estado controlado mediante React state",
+          description: "Switch with controlled state via React state",
           preview: (
             <SwitchControlledExample />
           ),
@@ -352,7 +352,7 @@ export function ControlledSwitch() {
         </Label>
       </div>
       
-      <p className="text-sm text-muted-foreground">
+      <p className="text-muted-foreground">
         Current state: <strong>{isEnabled ? "ON" : "OFF"}</strong>
       </p>
     </div>
@@ -361,7 +361,7 @@ export function ControlledSwitch() {
         },
         {
           title: "Disabled States",
-          description: "Switch en estados deshabilitados (on y off)",
+          description: "Switch in disabled states (on and off)",
           preview: (
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
@@ -395,7 +395,7 @@ export function DisabledSwitch() {
         },
         {
           title: "Settings Panel",
-          description: "Panel completo de configuración con múltiples switches",
+          description: "Complete settings panel with multiple switches",
           preview: (
             <div className="max-w-md space-y-1 border rounded-lg p-4">
               <h3 className="font-semibold mb-4">Privacy Settings</h3>
@@ -487,7 +487,7 @@ export function SettingsPanel() {
         },
         {
           title: "With Confirmation",
-          description: "Switch que requiere confirmación al activarse",
+          description: "Switch that requires confirmation when toggled on",
           preview: (
             <SwitchWithConfirmation />
           ),

@@ -20,8 +20,8 @@ interface FactoringKpiCardGroupProps {
 }
 
 // Mapeo de variantes antiguas a nuevas
-const variantMap: Record<string, "default" | "blue" | "yellow" | "green" | "orange" | "darkgray" | "purple"> = {
-  lime: "green",
+const variantMap: Record<string, "default" | "blue" | "yellow" | "green" | "orange" | "darkgray" | "purple" | "lime"> = {
+  lime: "lime",
   orange: "orange",
   yellow: "yellow",
   blue: "blue",

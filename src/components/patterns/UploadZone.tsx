@@ -61,7 +61,7 @@ export function UploadZone() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Carga de Documentos</CardTitle>
+        <CardTitle>Document Upload</CardTitle>
       </CardHeader>
       <CardContent className="space-y-6">
         {/* Upload Area */}
@@ -84,14 +84,14 @@ export function UploadZone() {
           <Upload className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
           <div className="space-y-2">
             <p className="font-medium">
-              Arrastra y suelta tus archivos aquí
+              Drag and drop your files here
             </p>
             <p className="text-sm text-muted-foreground">
-              o haz clic para seleccionar archivos
+              or click to select files
             </p>
           </div>
           <Button variant="outline" className="mt-4">
-            Seleccionar archivos
+            Select files
           </Button>
           <input
             type="file"
@@ -104,8 +104,8 @@ export function UploadZone() {
         <Alert>
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            Formatos permitidos: PDF, JPG, PNG. Tamaño máximo: 10 MB por
-            archivo
+            Allowed formats: PDF, JPG, PNG. Max size: 10 MB per
+            file
           </AlertDescription>
         </Alert>
 
@@ -114,8 +114,8 @@ export function UploadZone() {
         {/* File List */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h4 className="font-medium">Archivos cargados</h4>
-            <Badge variant="secondary">{files.length} archivos</Badge>
+            <h4 className="font-medium">Uploaded files</h4>
+            <Badge variant="secondary">{files.length} files</Badge>
           </div>
 
           {files.map((file) => {
@@ -141,12 +141,12 @@ export function UploadZone() {
                             />
                             {isUploading ? (
                               <span className="text-primary">
-                                Subiendo... {file.progress}%
+                                Uploading... {file.progress}%
                               </span>
                             ) : (
                               <div className="flex items-center gap-1 text-green-500">
                                 <CheckCircle className="h-3 w-3" />
-                                <span>Completado</span>
+                                <span>Completed</span>
                               </div>
                             )}
                           </div>
@@ -173,8 +173,8 @@ export function UploadZone() {
 
         {/* Actions */}
         <div className="flex gap-3">
-          <Button className="flex-1">Continuar</Button>
-          <Button variant="outline">Cancelar</Button>
+          <Button className="flex-1">Continue</Button>
+          <Button variant="outline">Cancel</Button>
         </div>
       </CardContent>
     </Card>

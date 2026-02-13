@@ -7,48 +7,48 @@ import { CheckCircle, Clock, XCircle, AlertCircle } from "lucide-react";
 const timelineEvents = [
   {
     id: 1,
-    user: "Juan Pérez",
-    role: "Analista Financiero",
-    action: "Factura creada",
-    timestamp: "15 Ene 2024, 10:30 AM",
+    user: "John Smith",
+    role: "Financial Analyst",
+    action: "Invoice created",
+    timestamp: "Jan 15, 2024, 10:30 AM",
     status: "completed",
-    comment: "Factura ingresada al sistema para revisión",
+    comment: "Invoice entered into the system for review",
   },
   {
     id: 2,
-    user: "María González",
+    user: "Maria Garcia",
     role: "Supervisor",
-    action: "Documentación verificada",
-    timestamp: "15 Ene 2024, 02:15 PM",
+    action: "Documentation verified",
+    timestamp: "Jan 15, 2024, 02:15 PM",
     status: "completed",
-    comment: "Todos los documentos están completos y válidos",
+    comment: "All documents are complete and valid",
   },
   {
     id: 3,
-    user: "Carlos Rodríguez",
-    role: "Analista de Riesgo",
-    action: "Análisis crediticio",
-    timestamp: "16 Ene 2024, 09:45 AM",
+    user: "Carlos Rodriguez",
+    role: "Risk Analyst",
+    action: "Credit analysis",
+    timestamp: "Jan 16, 2024, 09:45 AM",
     status: "completed",
-    comment: "Score crediticio aprobado: 850/1000",
+    comment: "Credit score approved: 850/1000",
   },
   {
     id: 4,
-    user: "Ana Martínez",
-    role: "Gerente Comercial",
-    action: "Aprobación pendiente",
-    timestamp: "16 Ene 2024, 11:20 AM",
+    user: "Ana Martinez",
+    role: "Commercial Manager",
+    action: "Approval pending",
+    timestamp: "Jan 16, 2024, 11:20 AM",
     status: "pending",
-    comment: "Revisión final antes de aprobación",
+    comment: "Final review before approval",
   },
   {
     id: 5,
-    user: "Sistema",
-    role: "Automatizado",
-    action: "Desembolso programado",
-    timestamp: "Pendiente",
+    user: "System",
+    role: "Automated",
+    action: "Disbursement scheduled",
+    timestamp: "Pending",
     status: "waiting",
-    comment: "Se ejecutará tras aprobación final",
+    comment: "Will execute after final approval",
   },
 ];
 
@@ -83,7 +83,7 @@ export function ApprovalTimeline() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Timeline de Aprobación - INV-001</CardTitle>
+        <CardTitle>Approval Timeline — INV-001</CardTitle>
       </CardHeader>
       <CardContent>
         <div className="relative space-y-6">
@@ -111,10 +111,10 @@ export function ApprovalTimeline() {
                         <p className="font-medium">{event.action}</p>
                         <Badge variant={config.badge} className="text-xs">
                           {event.status === "completed"
-                            ? "Completado"
+                            ? "Completed"
                             : event.status === "pending"
-                            ? "Pendiente"
-                            : "En espera"}
+                            ? "Pending"
+                            : "Waiting"}
                         </Badge>
                       </div>
                       <div className="flex items-center gap-2 text-sm text-muted-foreground">

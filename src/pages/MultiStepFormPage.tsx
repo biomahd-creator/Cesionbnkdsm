@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Card } from "../components/ui/card";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
@@ -15,7 +16,7 @@ import { Textarea } from "../components/ui/textarea";
 import { Switch } from "../components/ui/switch";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";
 
-// Tipos
+// Types
 interface Cliente {
   id: string;
   nombre: string;
@@ -39,11 +40,11 @@ interface Documento {
 }
 
 interface FormData {
-  // Documentos
+  // Documents
   documentos: Documento[];
   passwordPDF?: string;
   
-  // Datos extraídos automáticamente (Paso 2)
+  // Automatically extracted data (Step 2)
   razonSocial: string;
   nit: string;
   fechaConstitucion: string;
@@ -57,14 +58,14 @@ interface FormData {
   tipoCuenta: string;
   numeroCuenta: string;
   
-  // Datos de contacto (a completar en Paso 2)
+  // Contact details (to complete in Step 2)
   telefonoContacto: string;
   correoContacto: string;
   
-  // Clientes (Paso 3)
+  // Clients (Step 3)
   clientes: Cliente[];
   
-  // Declaraciones (Paso 3)
+  // Declarations (Step 3)
   obligacionesVencidas: boolean;
   insolvencia: boolean;
   registradaPais: boolean;
@@ -80,7 +81,7 @@ interface FormData {
   autorizaConsulta: boolean;
 }
 
-export function MultiStepFormPage() {
+function MultiStepFormDemo() {
   const [currentStep, setCurrentStep] = useState(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [dataExtracted, setDataExtracted] = useState(false);
@@ -89,24 +90,24 @@ export function MultiStepFormPage() {
   
   const [formData, setFormData] = useState<Partial<FormData>>({
     documentos: [
-      // Información de la Empresa
-      { id: "1", nombre: "RUT (Registro Único Tributario)", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false },
-      { id: "2", nombre: "Certificado Cámara de Comercio", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "No mayor a 30 días" },
-      { id: "3", nombre: "Cédula del Representante Legal", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF/JPG", maxSize: 5, progress: 0, uploaded: false },
+      // Company Information
+      { id: "1", nombre: "RUT (Tax Registration)", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false },
+      { id: "2", nombre: "Chamber of Commerce Certificate", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "Not older than 30 days" },
+      { id: "3", nombre: "Legal Representative ID", categoria: "empresa", archivo: null, requerido: true, tipo: "PDF/JPG", maxSize: 5, progress: 0, uploaded: false },
       
-      // Información Bancaria
-      { id: "4", nombre: "Estado de Cuenta Bancario", categoria: "bancaria", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "Puede estar protegido con contraseña." },
+      // Banking Information
+      { id: "4", nombre: "Bank Account Statement", categoria: "bancaria", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "May be password-protected." },
       
-      // Información Financiera
-      { id: "5", nombre: "Estado de Cuenta DIAN", categoria: "financiera", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false },
-      { id: "6", nombre: "Estados Financieros 2024", categoria: "financiera", archivo: null, requerido: true, tipo: "PDF/Excel", maxSize: 10, progress: 0, uploaded: false },
-      { id: "7", nombre: "Estados Financieros 2025", categoria: "financiera", archivo: null, requerido: false, tipo: "PDF/Excel", maxSize: 10, progress: 0, uploaded: false, ayuda: "Opcional" },
+      // Financial Information
+      { id: "5", nombre: "DIAN Account Statement", categoria: "financiera", archivo: null, requerido: true, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false },
+      { id: "6", nombre: "2024 Financial Statements", categoria: "financiera", archivo: null, requerido: true, tipo: "PDF/Excel", maxSize: 10, progress: 0, uploaded: false },
+      { id: "7", nombre: "2025 Financial Statements", categoria: "financiera", archivo: null, requerido: false, tipo: "PDF/Excel", maxSize: 10, progress: 0, uploaded: false, ayuda: "Optional" },
       
-      // Documentos Opcionales
-      { id: "8", nombre: "Composición Accionaria", categoria: "opcional", archivo: null, requerido: false, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "Puedes subirlo después si no lo tienes" },
+      // Optional Documents
+      { id: "8", nombre: "Shareholder Composition", categoria: "opcional", archivo: null, requerido: false, tipo: "PDF", maxSize: 5, progress: 0, uploaded: false, ayuda: "You can upload it later if you don't have it" },
     ],
     clientes: [],
-    // Declaraciones por defecto
+    // Default declarations
     obligacionesVencidas: false,
     insolvencia: false,
     registradaPais: true,
@@ -122,7 +123,7 @@ export function MultiStepFormPage() {
     autorizaConsulta: false,
   });
 
-  // Cliente actual (para agregar/editar)
+  // Current client (for add/edit)
   const [clienteActual, setClienteActual] = useState<Cliente | null>(null);
   const [mostrarFormCliente, setMostrarFormCliente] = useState(false);
 
@@ -131,53 +132,53 @@ export function MultiStepFormPage() {
   const steps: Step[] = [
     { 
       id: "carga-documentos",
-      title: "Carga de Documentos", 
-      description: "Sube todos los documentos",
+      title: "Document Upload", 
+      description: "Upload all documents",
       icon: <Upload className="h-5 w-5" />
     },
     { 
       id: "validacion-datos",
-      title: "Validación de Datos", 
-      description: "Revisa y completa información",
+      title: "Data Validation", 
+      description: "Review and complete information",
       icon: <FileCheck className="h-5 w-5" />
     },
     { 
       id: "clientes-declaraciones",
-      title: "Clientes", 
-      description: "Agrega clientes y declaraciones",
+      title: "Clients", 
+      description: "Add clients and declarations",
       icon: <Users className="h-5 w-5" />
     },
   ];
 
   const handleNext = async () => {
-    // Si estamos en paso 1 y tenemos documentos obligatorios cargados, procesar
+    // If on step 1 and required documents are uploaded, process
     if (currentStep === 1) {
       const docsObligatorios = formData.documentos?.filter(d => d.requerido) || [];
       const todosSubidos = docsObligatorios.every(d => d.uploaded);
       
       if (!todosSubidos) {
-        alert("Por favor sube todos los documentos obligatorios antes de continuar.");
+        alert("Please upload all required documents before continuing.");
         return;
       }
       
-      // Simular procesamiento de documentos
+      // Simulate document processing
       setIsProcessing(true);
       await new Promise(resolve => setTimeout(resolve, 2500));
       
-      // Simular extracción de datos
+      // Simulate data extraction
       setFormData({
         ...formData,
         razonSocial: "Acme Corporation SAS",
         nit: "900123456-7",
         fechaConstitucion: "15/03/2020",
-        direccion: "Carrera 7 #100-50, Bogotá",
-        actividadEconomica: "Servicios Financieros",
-        municipio: "Bogotá",
-        nombreRepresentante: "Juan Carlos García López",
+        direccion: "Carrera 7 #100-50, Bogota",
+        actividadEconomica: "Financial Services",
+        municipio: "Bogota",
+        nombreRepresentante: "Juan Carlos Garcia Lopez",
         cedulaRepresentante: "1234567890",
-        cargoRepresentante: "Gerente General",
+        cargoRepresentante: "General Manager",
         nombreBanco: "Bancolombia",
-        tipoCuenta: "Ahorros",
+        tipoCuenta: "Savings",
         numeroCuenta: "1234567890",
       });
       
@@ -196,13 +197,13 @@ export function MultiStepFormPage() {
     const doc = formData.documentos?.find(d => d.id === documentoId);
     if (!doc) return;
 
-    // Validar tamaño
+    // Validate size
     if (file.size > doc.maxSize * 1024 * 1024) {
-      alert(`El archivo excede el tamaño máximo de ${doc.maxSize}MB`);
+      alert(`File exceeds the maximum size of ${doc.maxSize}MB`);
       return;
     }
 
-    // Simular carga con progress
+    // Simulate upload with progress
     setFormData({
       ...formData,
       documentos: formData.documentos?.map(d =>
@@ -212,7 +213,7 @@ export function MultiStepFormPage() {
       ) || [],
     });
 
-    // Simular progreso
+    // Simulate progress
     let progress = 0;
     const interval = setInterval(() => {
       progress += 15;
@@ -279,17 +280,17 @@ export function MultiStepFormPage() {
   };
 
   const handleSubmit = () => {
-    // Validar declaraciones obligatorias
+    // Validate required declarations
     if (!formData.infoVeraz || !formData.actualizarInfo || !formData.aceptaPolitica || !formData.autorizaConsulta) {
-      alert("Por favor acepta todas las declaraciones obligatorias.");
+      alert("Please accept all required declarations.");
       return;
     }
 
-    // Generar ID de transacción
+    // Generate transaction ID
     const txId = `CFN-${Date.now().toString().slice(-8)}`;
     setTransactionId(txId);
     
-    // Simular envío
+    // Simulate submission
     setTimeout(() => {
       setShowSuccess(true);
     }, 1000);
@@ -342,18 +343,18 @@ export function MultiStepFormPage() {
           />
         </div>
 
-        {/* Procesando Documentos */}
+        {/* Processing Documents */}
         {isProcessing && (
           <Card className="p-8 mb-8">
             <div className="flex flex-col items-center justify-center space-y-4">
               <Loader2 className="h-12 w-12 text-primary animate-spin" />
               <div className="text-center">
-                <h3 className="text-lg font-semibold mb-2">Procesando Documentos...</h3>
+                <h3 className="text-lg font-semibold mb-2">Processing Documents...</h3>
                 <p className="text-sm text-muted-foreground">
-                  Estamos extrayendo información de tus documentos
+                  We are extracting information from your documents
                 </p>
                 <p className="text-xs text-muted-foreground mt-1">
-                  ⏱️ Tiempo estimado: 30-45 segundos
+                  Estimated time: 30-45 seconds
                 </p>
               </div>
               <Progress value={66} className="w-full max-w-md" />
@@ -367,14 +368,14 @@ export function MultiStepFormPage() {
             <div className="mb-6">
               <h2 className="text-2xl mb-2 font-semibold">{steps[currentStep - 1].title}</h2>
               <p className="text-sm text-muted-foreground">
-                {currentStep === 1 && "Por favor, adjunta los documentos requeridos para iniciar el estudio de tu solicitud."}
-                {currentStep === 2 && "Verifica que la información extraída sea correcta y completa los campos faltantes."}
-                {currentStep === 3 && "Registra la información de tus clientes y confirma las declaraciones finales."}
+                {currentStep === 1 && "Please attach the required documents to begin your application review."}
+                {currentStep === 2 && "Verify that the extracted information is correct and complete the missing fields."}
+                {currentStep === 3 && "Register your clients' information and confirm the final declarations."}
               </p>
             </div>
 
             <div className="transition-all duration-250">
-              {/* PASO 1: Carga de Documentos */}
+              {/* STEP 1: Document Upload */}
               {currentStep === 1 && (
                 <Paso1
                   formData={formData}
@@ -386,7 +387,7 @@ export function MultiStepFormPage() {
                 />
               )}
 
-              {/* PASO 2: Validación de Datos */}
+              {/* STEP 2: Data Validation */}
               {currentStep === 2 && (
                 <Paso2
                   formData={formData}
@@ -394,7 +395,7 @@ export function MultiStepFormPage() {
                 />
               )}
 
-              {/* PASO 3: Clientes y Declaraciones */}
+              {/* STEP 3: Clients & Declarations */}
               {currentStep === 3 && (
                 <Paso3
                   formData={formData}
@@ -417,19 +418,19 @@ export function MultiStepFormPage() {
                   variant="outline"
                   onClick={handleBack}
                 >
-                  Atrás
+                  Back
                 </Button>
               )}
               
               <Button
                 variant="outline"
                 onClick={() => {
-                  if (confirm("¿Está seguro de cancelar el formulario?")) {
+                  if (confirm("Are you sure you want to cancel the form?")) {
                     handleCloseSuccessModal();
                   }
                 }}
               >
-                Cancelar
+                Cancel
               </Button>
 
               <div className="flex-1" />
@@ -439,21 +440,21 @@ export function MultiStepFormPage() {
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                   onClick={handleNext}
                 >
-                  {currentStep === 1 ? "Procesar Documentos y Continuar" : "Continuar"}
+                  {currentStep === 1 ? "Process Documents & Continue" : "Continue"}
                 </Button>
               ) : (
                 <Button
                   className="bg-primary text-primary-foreground hover:bg-primary/90"
                   onClick={handleSubmit}
                 >
-                  Enviar Formulario ✓
+                  Submit Form
                 </Button>
               )}
             </div>
           </Card>
         )}
 
-        {/* Modal de Éxito */}
+        {/* Success Modal */}
         <Dialog open={showSuccess} onOpenChange={setShowSuccess}>
           <DialogContent className="sm:max-w-md">
             <DialogHeader>
@@ -463,33 +464,33 @@ export function MultiStepFormPage() {
                 </div>
               </div>
               <DialogTitle className="text-center text-2xl">
-                ¡Proceso Finalizado Exitosamente!
+                Process Completed Successfully!
               </DialogTitle>
               <DialogDescription className="text-center space-y-4 pt-4" asChild>
                 <div>
                   <p className="text-muted-foreground">
-                    Tu solicitud de factoring ha sido recibida correctamente y está siendo procesada.
+                    Your factoring application has been received successfully and is being processed.
                   </p>
                   
                   <div className="bg-muted p-4 rounded-lg">
-                    <p className="text-xs text-muted-foreground mb-1">Número de referencia:</p>
+                    <p className="text-xs text-muted-foreground mb-1">Reference number:</p>
                     <p className="font-semibold text-primary">{transactionId}</p>
                   </div>
 
                   <div className="bg-yellow-50 border border-yellow-200 p-4 rounded-lg text-left dark:bg-yellow-900/20 dark:border-yellow-800">
                     <p className="text-sm text-yellow-800 dark:text-yellow-200 mb-2">
-                      <strong>Próximos pasos:</strong>
+                      <strong>Next steps:</strong>
                     </p>
                     <ul className="text-xs text-yellow-800 dark:text-yellow-200 space-y-1 list-disc list-inside">
-                      <li>Recibirás un correo de confirmación en las próximas horas</li>
-                      <li>Nuestro equipo revisará tu solicitud en 2-3 días hábiles</li>
-                      <li>Serás contactado para confirmar la activación de tu cuenta</li>
-                      <li>Te notificaremos cualquier documento adicional requerido</li>
+                      <li>You will receive a confirmation email within the next few hours</li>
+                      <li>Our team will review your application in 2-3 business days</li>
+                      <li>You will be contacted to confirm your account activation</li>
+                      <li>We will notify you of any additional required documents</li>
                     </ul>
                   </div>
 
                   <p className="text-xs text-muted-foreground">
-                    Si tienes alguna pregunta, no dudes en contactarnos.
+                    If you have any questions, feel free to contact us.
                   </p>
                 </div>
               </DialogDescription>
@@ -499,14 +500,14 @@ export function MultiStepFormPage() {
                 className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
                 onClick={handleCloseSuccessModal}
               >
-                Entendido
+                Got It
               </Button>
               <Button
                 variant="outline"
                 onClick={() => window.print()}
                 className="w-full"
               >
-                Descargar Comprobante
+                Download Receipt
               </Button>
             </div>
           </DialogContent>
@@ -516,7 +517,7 @@ export function MultiStepFormPage() {
   );
 }
 
-// ========== PASO 1: CARGA DE DOCUMENTOS ==========
+// ========== STEP 1: DOCUMENT UPLOAD ==========
 function Paso1({
   formData,
   setFormData,
@@ -539,11 +540,11 @@ function Paso1({
 
   return (
     <div className="space-y-4">
-      {/* Información de la Empresa */}
+      {/* Company Information */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold flex items-center gap-2 pb-2 border-b border-border">
           <Building2 className="h-4 w-4" />
-          Información de la Empresa
+          Company Information
         </h3>
         <div className="space-y-2">
           {docsEmpresa.map((doc, index) => (
@@ -558,11 +559,11 @@ function Paso1({
         </div>
       </div>
 
-      {/* Información Bancaria */}
+      {/* Banking Information */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold flex items-center gap-2 pb-2 border-b border-border">
           <FileCheck className="h-4 w-4" />
-          Información Bancaria
+          Banking Information
         </h3>
         <div className="space-y-2">
           {docsBancaria.map((doc, index) => (
@@ -577,7 +578,7 @@ function Paso1({
                   <Lock className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
                   <Input
                     type="password"
-                    placeholder="Contraseña PDF"
+                    placeholder="PDF Password"
                     value={formData.passwordPDF || ""}
                     onChange={(e) => setFormData({ ...formData, passwordPDF: e.target.value })}
                     className="h-8 pl-8 text-xs"
@@ -589,11 +590,11 @@ function Paso1({
         </div>
       </div>
 
-      {/* Información Financiera */}
+      {/* Financial Information */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold flex items-center gap-2 pb-2 border-b border-border">
           <FileText className="h-4 w-4" />
-          Información Financiera
+          Financial Information
         </h3>
         <div className="space-y-2">
           {docsFinanciera.map((doc, index) => (
@@ -608,11 +609,11 @@ function Paso1({
         </div>
       </div>
 
-      {/* Documentos Opcionales */}
+      {/* Optional Documents */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold flex items-center gap-2 pb-2 border-b border-border">
           <FileText className="h-4 w-4" />
-          Documentos Opcionales
+          Optional Documents
         </h3>
         <div className="space-y-2">
           {docsOpcional.map((doc, index) => (
@@ -627,14 +628,14 @@ function Paso1({
         </div>
       </div>
 
-      {/* Contador de progreso */}
+      {/* Progress counter */}
       <Alert className={`${docsObligatoriosSubidos === totalDocsObligatorios ? 'bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800' : 'bg-muted border-border'}`}>
         <CheckCircle2 className={`h-4 w-4 ${docsObligatoriosSubidos === totalDocsObligatorios ? 'text-green-600 dark:text-green-400' : 'text-muted-foreground'}`} />
         <AlertDescription className="text-sm">
-          <strong>{docsObligatoriosSubidos} de {totalDocsObligatorios} documentos obligatorios cargados</strong>
+          <strong>{docsObligatoriosSubidos} of {totalDocsObligatorios} required documents uploaded</strong>
           {docsObligatoriosSubidos === totalDocsObligatorios && (
             <span className="text-xs ml-2 text-muted-foreground">
-              Procesamiento estimado: 30-45 segundos
+              Estimated processing: 30-45 seconds
             </span>
           )}
         </AlertDescription>
@@ -643,7 +644,7 @@ function Paso1({
   );
 }
 
-// Componente para subir documento individual
+// Component for individual document upload
 function DocumentoUpload({
   documento,
   index,
@@ -683,7 +684,7 @@ function DocumentoUpload({
             </span>
             {documento.uploaded && (
               <Badge variant="default" className="bg-green-600 hover:bg-green-700 text-white text-xs">
-                ✓ Subido
+                Uploaded
               </Badge>
             )}
             <span className="text-xs text-muted-foreground">
@@ -720,7 +721,7 @@ function DocumentoUpload({
               <Button size="sm" variant="outline" asChild>
                 <span className="cursor-pointer">
                   <Upload className="h-4 w-4 mr-1" />
-                  Subir
+                  Upload
                 </span>
               </Button>
             </label>
@@ -732,7 +733,7 @@ function DocumentoUpload({
                 onClick={handleViewFile}
               >
                 <Eye className="h-4 w-4 mr-1" />
-                Ver
+                View
               </Button>
               <Button
                 size="sm"
@@ -740,7 +741,7 @@ function DocumentoUpload({
                 onClick={() => onEliminar(documento.id)}
                 className="text-destructive hover:text-destructive"
               >
-                Eliminar
+                Remove
               </Button>
             </>
           )}
@@ -751,7 +752,7 @@ function DocumentoUpload({
   );
 }
 
-// ========== PASO 2: VALIDACIÓN Y COMPLETAR DATOS ==========
+// ========== STEP 2: VALIDATION & COMPLETE DATA ==========
 function Paso2({
   formData,
   setFormData,
@@ -765,19 +766,19 @@ function Paso2({
       <Alert className="bg-green-50 border-green-200 dark:bg-green-900/20 dark:border-green-800">
         <CheckCircle2 className="h-4 w-4 text-green-600 dark:text-green-400" />
         <AlertDescription className="text-sm text-green-800 dark:text-green-200">
-          <strong>Datos Extraídos Automáticamente</strong> - Verifica la información. Haz clic en cualquier campo para editarlo.
+          <strong>Data Extracted Automatically</strong> - Verify the information. Click any field to edit it.
         </AlertDescription>
       </Alert>
 
-      {/* Información de la Empresa */}
+      {/* Company Information */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold pb-2 border-b border-border flex items-center gap-2">
           <Building2 className="h-4 w-4" />
-          Información de la Empresa
+          Company Information
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <DatoExtraido
-            label="Razón Social"
+            label="Company Name"
             value={formData.razonSocial || ""}
             onChange={(val) => setFormData({ ...formData, razonSocial: val })}
           />
@@ -787,25 +788,25 @@ function Paso2({
             onChange={(val) => setFormData({ ...formData, nit: val })}
           />
           <DatoExtraido
-            label="Fecha Constitución"
+            label="Date of Incorporation"
             value={formData.fechaConstitucion || ""}
             onChange={(val) => setFormData({ ...formData, fechaConstitucion: val })}
           />
           <DatoExtraido
-            label="Municipio"
+            label="City"
             value={formData.municipio || ""}
             onChange={(val) => setFormData({ ...formData, municipio: val })}
           />
           <div className="md:col-span-2">
             <DatoExtraido
-              label="Dirección"
+              label="Address"
               value={formData.direccion || ""}
               onChange={(val) => setFormData({ ...formData, direccion: val })}
             />
           </div>
           <div className="md:col-span-2">
             <DatoExtraido
-              label="Actividad Económica"
+              label="Economic Activity"
               value={formData.actividadEconomica || ""}
               onChange={(val) => setFormData({ ...formData, actividadEconomica: val })}
             />
@@ -813,70 +814,70 @@ function Paso2({
         </div>
       </div>
 
-      {/* Representante Legal */}
+      {/* Legal Representative */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold pb-2 border-b border-border flex items-center gap-2">
           <Users className="h-4 w-4" />
-          Representante Legal
+          Legal Representative
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div className="md:col-span-2">
             <DatoExtraido
-              label="Nombre Completo"
+              label="Full Name"
               value={formData.nombreRepresentante || ""}
               onChange={(val) => setFormData({ ...formData, nombreRepresentante: val })}
             />
           </div>
           <DatoExtraido
-            label="Cédula"
+            label="ID Number"
             value={formData.cedulaRepresentante || ""}
             onChange={(val) => setFormData({ ...formData, cedulaRepresentante: val })}
           />
           <DatoExtraido
-            label="Cargo"
+            label="Position"
             value={formData.cargoRepresentante || ""}
             onChange={(val) => setFormData({ ...formData, cargoRepresentante: val })}
           />
         </div>
       </div>
 
-      {/* Datos Bancarios */}
+      {/* Banking Details */}
       <div className="space-y-3">
         <h3 className="text-sm font-semibold pb-2 border-b border-border flex items-center gap-2">
           <FileCheck className="h-4 w-4" />
-          Datos Bancarios
+          Banking Details
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
           <DatoExtraido
-            label="Banco"
+            label="Bank"
             value={formData.nombreBanco || ""}
             onChange={(val) => setFormData({ ...formData, nombreBanco: val })}
           />
           <DatoExtraido
-            label="Tipo de Cuenta"
+            label="Account Type"
             value={formData.tipoCuenta || ""}
             onChange={(val) => setFormData({ ...formData, tipoCuenta: val })}
           />
           <DatoExtraido
-            label="Número de Cuenta"
+            label="Account Number"
             value={formData.numeroCuenta || ""}
             onChange={(val) => setFormData({ ...formData, numeroCuenta: val })}
           />
         </div>
       </div>
 
-      {/* Información Requerida */}
+      {/* Required Information */}
       <div className="space-y-3">
         
         
         <h3 className="text-sm font-semibold pb-2 border-b border-border flex items-center gap-2">
           <Info className="h-4 w-4" />
-          Datos de Contacto
+          Contact Information
         </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           <div>
             <Label className="text-xs text-muted-foreground">
-              Teléfono/Celular <span className="text-destructive">*</span>
+              Phone/Mobile <span className="text-destructive">*</span>
             </Label>
             <Input
               type="tel"
@@ -888,11 +889,11 @@ function Paso2({
           </div>
           <div>
             <Label className="text-xs text-muted-foreground">
-              Correo Electrónico <span className="text-destructive">*</span>
+              Email <span className="text-destructive">*</span>
             </Label>
             <Input
               type="email"
-              placeholder="contacto@empresa.com"
+              placeholder="contact@company.com"
               value={formData.correoContacto || ""}
               onChange={(e) => setFormData({ ...formData, correoContacto: e.target.value })}
               className="mt-1"
@@ -904,7 +905,7 @@ function Paso2({
   );
 }
 
-// Componente para mostrar dato extraído con modo lectura/edición
+// Component for displaying extracted data with read/edit mode
 function DatoExtraido({
   label,
   value,
@@ -931,7 +932,7 @@ function DatoExtraido({
                 </span>
               </TooltipTrigger>
               <TooltipContent>
-                <p className="text-xs">Dato extraído automáticamente</p>
+                <p className="text-xs">Automatically extracted data</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -943,7 +944,7 @@ function DatoExtraido({
             size="sm"
             className="h-5 w-5 p-0 opacity-0 group-hover:opacity-100 transition-opacity"
             onClick={() => setIsEditing(true)}
-            title="Editar campo"
+            title="Edit field"
           >
             <Pencil className="h-3 w-3 text-muted-foreground hover:text-primary" />
           </Button>
@@ -975,16 +976,16 @@ function DatoExtraido({
         <div 
           className="h-9 px-3 py-1 flex items-center bg-muted/20 border border-transparent rounded-md text-sm cursor-pointer hover:bg-muted/50 hover:border-border transition-all truncate"
           onClick={() => setIsEditing(true)}
-          title="Clic para editar"
+          title="Click to edit"
         >
-          {value || <span className="text-muted-foreground italic text-xs">Sin información</span>}
+          {value || <span className="text-muted-foreground italic text-xs">No data</span>}
         </div>
       )}
     </div>
   );
 }
 
-// ========== PASO 3: CLIENTES Y DECLARACIONES ==========
+// ========== STEP 3: CLIENTS & DECLARATIONS ==========
 function Paso3({
   formData,
   setFormData,
@@ -1017,12 +1018,12 @@ function Paso3({
     <div className="space-y-6">
 
 
-      {/* Barra de búsqueda y botón agregar */}
+      {/* Search bar and add button */}
       <div className="flex gap-3 items-start relative z-10">
         <div className="flex-1 relative group">
           <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Buscar por nombre, NIT..."
+            placeholder="Search by name, NIT..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-10"
@@ -1030,11 +1031,11 @@ function Paso3({
           {/* Autocomplete Dropdown */}
           {(() => {
             const mockClientes = [
-              { nombre: "Tech Solutions SAS", nit: "900.123.456-1", contacto: "Carlos Rodríguez", email: "carlos@techsolutions.com", telefono: "3101234567" },
-              { nombre: "Inversiones Globales Ltda", nit: "800.987.654-3", contacto: "Ana María Pérez", email: "ana@inversiones.com", telefono: "3119876543" },
-              { nombre: "Distribuidora del Norte", nit: "901.555.444-8", contacto: "Jorge Ramírez", email: "jorge@distnorte.com", telefono: "3125554448" },
-              { nombre: "Constructora Andes", nit: "890.333.222-5", contacto: "Luisa Fernández", email: "luisa@andes.com", telefono: "3133332225" },
-              { nombre: "Logística Rápida", nit: "900.777.888-9", contacto: "Mario Gómez", email: "mario@logistica.com", telefono: "3147778889" },
+              { nombre: "Tech Solutions SAS", nit: "900.123.456-1", contacto: "Carlos Rodriguez", email: "carlos@techsolutions.com", telefono: "3101234567" },
+              { nombre: "Global Investments Ltd", nit: "800.987.654-3", contacto: "Ana Maria Perez", email: "ana@inversiones.com", telefono: "3119876543" },
+              { nombre: "Northern Distributors", nit: "901.555.444-8", contacto: "Jorge Ramirez", email: "jorge@distnorte.com", telefono: "3125554448" },
+              { nombre: "Andes Construction", nit: "890.333.222-5", contacto: "Luisa Fernandez", email: "luisa@andes.com", telefono: "3133332225" },
+              { nombre: "Quick Logistics", nit: "900.777.888-9", contacto: "Mario Gomez", email: "mario@logistica.com", telefono: "3147778889" },
             ];
             
             const filtered = mockClientes.filter(c => 
@@ -1048,14 +1049,14 @@ function Paso3({
               <div className="absolute top-full left-0 right-0 mt-1 bg-popover text-popover-foreground border rounded-md shadow-lg max-h-60 overflow-auto hidden group-focus-within:block animate-in fade-in-0 zoom-in-95 duration-200">
                 <div className="p-1">
                   <div className="px-2 py-1.5 text-xs font-medium text-muted-foreground">
-                    Sugerencias encontradas
+                    Suggestions found
                   </div>
                   {filtered.map((cliente, i) => (
                     <div
                       key={i}
                       className="relative flex cursor-pointer select-none items-center rounded-sm px-2 py-2 text-sm outline-none hover:bg-accent hover:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
                       onMouseDown={(e) => {
-                        e.preventDefault(); // Evitar perder foco antes del click
+                        e.preventDefault(); // Prevent losing focus before click
                         onAgregarCliente(cliente);
                         setSearchTerm("");
                       }}
@@ -1084,23 +1085,23 @@ function Paso3({
           className="bg-primary text-primary-foreground hover:bg-primary/90"
         >
           <Plus className="h-4 w-4 mr-2" />
-          Agregar Cliente
+          Add Client
         </Button>
       </div>
 
-      {/* Tabla de clientes */}
+      {/* Client table */}
       {formData.clientes && formData.clientes.length > 0 ? (
         <div className="border border-border rounded-lg overflow-hidden">
           <div className="bg-muted px-4 py-2">
-            <p className="text-sm font-medium">{formData.clientes.length} clientes agregados</p>
+            <p className="text-sm font-medium">{formData.clientes.length} clients added</p>
           </div>
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Nombre</TableHead>
+                <TableHead>Name</TableHead>
                 <TableHead>NIT</TableHead>
-                <TableHead>Contacto</TableHead>
-                <TableHead className="text-right">Acciones</TableHead>
+                <TableHead>Contact</TableHead>
+                <TableHead className="text-right">Actions</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -1122,7 +1123,7 @@ function Paso3({
                         size="sm"
                         variant="ghost"
                         onClick={() => {
-                          if (confirm("¿Eliminar este cliente?")) {
+                          if (confirm("Remove this client?")) {
                             onEliminarCliente(cliente.id);
                           }
                         }}
@@ -1141,12 +1142,12 @@ function Paso3({
         <Alert>
           <AlertCircle className="h-4 w-4" />
           <AlertDescription>
-            No has agregado clientes aún. Haz clic en "Agregar Cliente" para comenzar.
+            No clients added yet. Click "Add Client" to get started.
           </AlertDescription>
         </Alert>
       )}
 
-      {/* Formulario de cliente */}
+      {/* Client form */}
       {mostrarFormCliente && (
         <FormCliente
           cliente={clienteActual}
@@ -1158,13 +1159,13 @@ function Paso3({
         />
       )}
 
-      {/* Declaraciones */}
+      {/* Declarations */}
       <DeclaracionesSection formData={formData} setFormData={setFormData} />
     </div>
   );
 }
 
-// Formulario para agregar/editar cliente
+// Form for adding/editing client
 function FormCliente({
   cliente,
   onGuardar,
@@ -1184,7 +1185,7 @@ function FormCliente({
 
   const handleSubmit = () => {
     if (!form.nombre || !form.nit || !form.contacto) {
-      alert("Por favor completa los campos obligatorios");
+      alert("Please complete the required fields");
       return;
     }
     onGuardar(form);
@@ -1193,12 +1194,12 @@ function FormCliente({
   return (
     <Card className="p-6 border-primary/50">
       <h3 className="text-lg font-semibold mb-4">
-        {cliente ? "Editar Cliente" : "Nuevo Cliente"}
+        {cliente ? "Edit Client" : "New Client"}
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="md:col-span-2">
           <Label className="text-xs text-muted-foreground">
-            Nombre <span className="text-destructive">*</span>
+            Name <span className="text-destructive">*</span>
           </Label>
           <Input
             placeholder="ABC SAS"
@@ -1220,10 +1221,10 @@ function FormCliente({
         </div>
         <div>
           <Label className="text-xs text-muted-foreground">
-            Contacto <span className="text-destructive">*</span>
+            Contact <span className="text-destructive">*</span>
           </Label>
           <Input
-            placeholder="Juan García"
+            placeholder="John Smith"
             value={form.contacto}
             onChange={(e) => setForm({ ...form, contacto: e.target.value })}
             className="mt-1"
@@ -1233,14 +1234,14 @@ function FormCliente({
           <Label className="text-xs text-muted-foreground">Email</Label>
           <Input
             type="email"
-            placeholder="contacto@cliente.com"
+            placeholder="contact@client.com"
             value={form.email}
             onChange={(e) => setForm({ ...form, email: e.target.value })}
             className="mt-1"
           />
         </div>
         <div>
-          <Label className="text-xs text-muted-foreground">Teléfono</Label>
+          <Label className="text-xs text-muted-foreground">Phone</Label>
           <Input
             type="tel"
             placeholder="+57 301 234 5678"
@@ -1252,44 +1253,44 @@ function FormCliente({
       </div>
       <div className="flex gap-3 mt-6">
         <Button variant="outline" onClick={onCancelar}>
-          Cancelar
+          Cancel
         </Button>
         <Button
           className="bg-primary text-primary-foreground hover:bg-primary/90"
           onClick={handleSubmit}
         >
-          {cliente ? "Actualizar" : "Agregar"}
+          {cliente ? "Update" : "Add"}
         </Button>
       </div>
     </Card>
   );
 }
 
-// Sección de declaraciones
+// Declarations section
 function DeclaracionesSection({ formData, setFormData }: { formData: Partial<FormData>, setFormData: React.Dispatch<React.SetStateAction<Partial<FormData>>> }) {
   return (
     <div className="space-y-8 pt-6 border-t border-border">
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold text-foreground">Cumplimiento y Declaraciones</h3>
+        <h3 className="text-lg font-semibold text-foreground">Compliance & Declarations</h3>
         <Badge variant="outline" className="gap-1 bg-muted/50">
           <Info className="h-3 w-3" />
-          <span>Información Requerida</span>
+          <span>Required Information</span>
         </Badge>
       </div>
 
       <TooltipProvider>
-        {/* Situación Financiera */}
+        {/* Financial Status */}
         <div className="space-y-4">
           <h4 className="text-sm font-medium text-primary flex items-center gap-2">
             <Wallet className="h-4 w-4" />
-            Situación Financiera
+            Financial Status
           </h4>
           <div className="grid gap-4 md:grid-cols-2">
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 shadow-sm bg-card hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="obligaciones" className="text-base font-medium">Obligaciones Vencidas</Label>
+                <Label htmlFor="obligaciones" className="text-base font-medium">Overdue Obligations</Label>
                 <p className="text-xs text-muted-foreground">
-                  ¿Presenta obligaciones financieras vencidas?
+                  Any overdue financial obligations?
                 </p>
               </div>
               <Switch
@@ -1300,9 +1301,9 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
             </div>
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 shadow-sm bg-card hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="insolvencia" className="text-base font-medium">Insolvencia</Label>
+                <Label htmlFor="insolvencia" className="text-base font-medium">Insolvency</Label>
                 <p className="text-xs text-muted-foreground">
-                  ¿Proceso de insolvencia o reorganización?
+                  Any insolvency or reorganization proceedings?
                 </p>
               </div>
               <Switch
@@ -1314,18 +1315,18 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
           </div>
         </div>
 
-        {/* Cumplimiento Legal */}
+        {/* Legal Compliance */}
         <div className="space-y-4">
           <h4 className="text-sm font-medium text-primary flex items-center gap-2">
             <ShieldAlert className="h-4 w-4" />
-            Cumplimiento Legal
+            Legal Compliance
           </h4>
           <div className="grid gap-4 md:grid-cols-2">
-            {/* Empresa Registrada */}
+            {/* Registered Company */}
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="registrada" className="font-medium">Empresa Registrada</Label>
-                <p className="text-xs text-muted-foreground">Matrícula mercantil vigente</p>
+                <Label htmlFor="registrada" className="font-medium">Registered Company</Label>
+                <p className="text-xs text-muted-foreground">Active commercial registration</p>
               </div>
               <Switch
                 id="registrada"
@@ -1334,11 +1335,11 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
             </div>
 
-            {/* Regulaciones */}
+            {/* Regulations */}
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="regulaciones" className="font-medium">Cumplimiento Normativo</Label>
-                <p className="text-xs text-muted-foreground">Cumple regulaciones locales</p>
+                <Label htmlFor="regulaciones" className="font-medium">Regulatory Compliance</Label>
+                <p className="text-xs text-muted-foreground">Complies with local regulations</p>
               </div>
               <Switch
                 id="regulaciones"
@@ -1347,11 +1348,11 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
             </div>
 
-            {/* Actividades Ilegales */}
+            {/* Illegal Activities */}
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="ilegales" className="font-medium text-destructive">Actividades Ilícitas</Label>
-                <p className="text-xs text-muted-foreground">¿Realiza actividades ilegales?</p>
+                <Label htmlFor="ilegales" className="font-medium text-destructive">Illicit Activities</Label>
+                <p className="text-xs text-muted-foreground">Any illegal business activities?</p>
               </div>
               <Switch
                 id="ilegales"
@@ -1364,17 +1365,17 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
-                  <Label htmlFor="pep" className="font-medium">Personas PEP</Label>
+                  <Label htmlFor="pep" className="font-medium">PEP Status</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <HelpCircle className="h-3 w-3 text-muted-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-xs text-xs">Personas Expuestas Políticamente (Decreto 1674 de 2016)</p>
+                      <p className="max-w-xs text-xs">Politically Exposed Persons (Decree 1674 of 2016)</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
-                <p className="text-xs text-muted-foreground">¿Directivos expuestos políticamente?</p>
+                <p className="text-xs text-muted-foreground">Any politically exposed officers?</p>
               </div>
               <Switch
                 id="pep"
@@ -1383,11 +1384,11 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
             </div>
 
-            {/* Judiciales */}
+            {/* Judicial Proceedings */}
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="judiciales" className="font-medium">Vinculaciones Judiciales</Label>
-                <p className="text-xs text-muted-foreground">¿Investigaciones activas?</p>
+                <Label htmlFor="judiciales" className="font-medium">Legal Proceedings</Label>
+                <p className="text-xs text-muted-foreground">Any active investigations?</p>
               </div>
               <Switch
                 id="judiciales"
@@ -1396,11 +1397,11 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
             </div>
 
-            {/* Sanciones */}
+            {/* Sanctions */}
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors">
               <div className="space-y-0.5">
-                <Label htmlFor="sancionada" className="font-medium">Sanciones</Label>
-                <p className="text-xs text-muted-foreground">Tributarias o laborales</p>
+                <Label htmlFor="sancionada" className="font-medium">Sanctions</Label>
+                <p className="text-xs text-muted-foreground">Tax or labor sanctions</p>
               </div>
               <Switch
                 id="sancionada"
@@ -1413,17 +1414,17 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
             <div className="flex flex-row items-center justify-between rounded-lg border p-4 hover:bg-accent/5 transition-colors md:col-span-2">
               <div className="space-y-0.5">
                 <div className="flex items-center gap-2">
-                  <Label htmlFor="sarlaft" className="font-medium">Políticas SARLAFT / SAGRLAFT</Label>
+                  <Label htmlFor="sarlaft" className="font-medium">SARLAFT / SAGRLAFT Policies</Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <HelpCircle className="h-3 w-3 text-muted-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-xs text-xs">Sistema de Administración del Riesgo de Lavado de Activos y Financiación del Terrorismo</p>
+                      <p className="max-w-xs text-xs">Anti-Money Laundering and Counter-Terrorism Financing Risk Management System</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
-                <p className="text-xs text-muted-foreground">¿Cuenta con políticas de prevención de lavado de activos?</p>
+                <p className="text-xs text-muted-foreground">Do you have anti-money laundering prevention policies?</p>
               </div>
               <Switch
                 id="sarlaft"
@@ -1434,11 +1435,11 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
           </div>
         </div>
 
-        {/* Autorizaciones */}
+        {/* Authorizations */}
         <div className="space-y-4">
           <h4 className="text-sm font-medium text-primary flex items-center gap-2">
             <FileCheck className="h-4 w-4" />
-            Autorizaciones y Consentimiento <span className="text-destructive">*</span>
+            Authorizations & Consent <span className="text-destructive">*</span>
           </h4>
           <div className="grid gap-3 rounded-lg border bg-muted/30 p-5">
             <div className="flex items-start space-x-3">
@@ -1449,10 +1450,10 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="infoVeraz" className="font-medium cursor-pointer">
-                  Declaración de Veracidad
+                  Truthfulness Declaration
                 </Label>
                 <p className="text-xs text-muted-foreground">
-                  Declaro que la información suministrada es veraz y verificable.
+                  I declare that the information provided is truthful and verifiable.
                 </p>
               </div>
             </div>
@@ -1465,10 +1466,10 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="actualizar" className="font-medium cursor-pointer">
-                  Compromiso de Actualización
+                  Update Commitment
                 </Label>
                 <p className="text-xs text-muted-foreground">
-                  Me comprometo a actualizar cualquier cambio en la información.
+                  I commit to updating any changes to the information provided.
                 </p>
               </div>
             </div>
@@ -1481,10 +1482,10 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               />
               <div className="grid gap-1.5 leading-none">
                 <Label htmlFor="privacidad" className="font-medium cursor-pointer">
-                  Política de Privacidad
+                  Privacy Policy
                 </Label>
                 <p className="text-xs text-muted-foreground">
-                  Acepto la Política de Privacidad y Tratamiento de Datos.
+                  I accept the Privacy Policy and Data Processing Terms.
                 </p>
               </div>
             </div>
@@ -1498,19 +1499,19 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
               <div className="grid gap-1.5 leading-none">
                 <div className="flex items-center gap-2">
                    <Label htmlFor="riesgo" className="font-medium cursor-pointer">
-                    Centrales de Riesgo
+                    Credit Bureaus
                   </Label>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <Info className="h-3 w-3 text-muted-foreground cursor-help" />
                     </TooltipTrigger>
                     <TooltipContent>
-                      <p className="max-w-xs text-xs">Autoriza la consulta y reporte en centrales como Datacrédito y Cifin.</p>
+                      <p className="max-w-xs text-xs">Authorizes credit bureau queries and reports (e.g., Datacredito and Cifin).</p>
                     </TooltipContent>
                   </Tooltip>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Autorizo la consulta y reporte en centrales de riesgo financiero.
+                  I authorize credit bureau queries and financial risk reporting.
                 </p>
               </div>
             </div>
@@ -1521,7 +1522,7 @@ function DeclaracionesSection({ formData, setFormData }: { formData: Partial<For
   );
 }
 
-// Componente checkbox item (solo visual)
+// Checkbox item component (visual only)
 function CheckboxItem({
   label,
   checked,
@@ -1541,5 +1542,30 @@ function CheckboxItem({
         {required && <span className="text-destructive ml-1">*</span>}
       </label>
     </div>
+  );
+}
+
+export function MultiStepFormPage() {
+  return (
+    <ComponentShowcase
+      title="Multi-Step Factoring Form"
+      description="Complete 5-step factoring application form with document upload, OCR data extraction simulation, client management, compliance declarations, and final review. Features StepIndicator progress, file upload with validation, editable extracted fields, client CRUD with search, SARLAFT/PEP compliance toggles, and a detailed review step."
+      category="Patterns"
+      preview={<MultiStepFormDemo />}
+      code={`import { StepIndicator, Step } from "@/components/advanced/StepIndicator";
+
+// 5-step factoring application:
+// Step 1: Document Upload (RUT, Chamber of Commerce, Bank Certificate)
+// Step 2: Extracted Data Review (OCR simulation + manual fields)
+// Step 3: Client Management + Compliance Declarations
+// Step 4: Legal Terms & Authorization
+// Step 5: Final Review & Submit
+
+<StepIndicator steps={steps} currentStep={currentStep} />`}
+      props={[
+        { name: "(self-contained)", type: "—", description: "Full internal state management for a factoring onboarding flow. No external props." },
+      ]}
+      examples={[]}
+    />
   );
 }

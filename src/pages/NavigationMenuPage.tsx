@@ -15,32 +15,32 @@ const components: { title: string; href: string; description: string }[] = [
   {
     title: "Alert Dialog",
     href: "#",
-    description: "Modal dialog para confirmaciones importantes.",
+    description: "Modal dialog for important confirmations.",
   },
   {
     title: "Hover Card",
     href: "#",
-    description: "Preview de contenido al hacer hover sobre un elemento.",
+    description: "Content preview when hovering over an element.",
   },
   {
     title: "Progress",
     href: "#",
-    description: "Barra de progreso para indicar estado de carga.",
+    description: "Progress bar to indicate loading state.",
   },
   {
     title: "Scroll Area",
     href: "#",
-    description: "Área con scroll personalizado y estilizado.",
+    description: "Area with custom styled scrollbar.",
   },
   {
     title: "Tabs",
     href: "#",
-    description: "Organiza contenido en pestañas navegables.",
+    description: "Organizes content in navigable tabs.",
   },
   {
     title: "Tooltip",
     href: "#",
-    description: "Popup con información adicional sobre un elemento.",
+    description: "Popup with additional information about an element.",
   },
 ];
 
@@ -48,7 +48,7 @@ export function NavigationMenuPage() {
   return (
     <ComponentShowcase
       title="Navigation Menu"
-      description="Colección de links para navegación de sitios web. Construye menús complejos con NavigationMenu, NavigationMenuList e items con contenido expandible."
+      description="Collection of links for website navigation. Build complex menus with NavigationMenu, NavigationMenuList, and items with expandable content."
       category="Navigation"
       
       // Main Preview
@@ -139,14 +139,14 @@ export function NavigationMenuDemo() {
       
       // Props Documentation
       props={[
-        { name: "children", type: "ReactNode", description: "NavigationMenuList y sus items.", required: true },
-        { name: "className", type: "string", description: "Clases adicionales para el contenedor raíz." },
-        { name: "viewport", type: "boolean", default: "true", description: "Muestra el viewport animado para el contenido desplegable." },
-        { name: "defaultValue", type: "string", description: "Valor del item activo por defecto." },
-        { name: "value", type: "string", description: "Valor controlado del item activo." },
-        { name: "onValueChange", type: "(value: string) => void", description: "Callback al cambiar el item activo." },
-        { name: "delayDuration", type: "number", default: "200", description: "Delay en ms antes de abrir un menú al hacer hover." },
-        { name: "dir", type: "\"ltr\" | \"rtl\"", description: "Dirección de lectura." },
+        { name: "children", type: "ReactNode", description: "NavigationMenuList and its items.", required: true },
+        { name: "className", type: "string", description: "Additional classes for the root container." },
+        { name: "viewport", type: "boolean", default: "true", description: "Shows the animated viewport for dropdown content." },
+        { name: "defaultValue", type: "string", description: "Default active item value." },
+        { name: "value", type: "string", description: "Controlled value of the active item." },
+        { name: "onValueChange", type: "(value: string) => void", description: "Callback when the active item changes." },
+        { name: "delayDuration", type: "number", default: "200", description: "Delay in ms before opening a menu on hover." },
+        { name: "dir", type: "\"ltr\" | \"rtl\"", description: "Reading direction." },
       ]}
       
       // Examples

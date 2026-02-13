@@ -37,15 +37,15 @@ export function KPIShowcaseExtended() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-3xl font-semibold mb-2">Estilos Adicionales de KPIs</h1>
+        <h1 className="text-3xl font-semibold mb-2">Additional KPI Styles</h1>
         <p className="text-muted-foreground">
-          Variantes de KPIs: comparación lado a lado, semáforo, inline compactos, rankings y más
+          KPI variants: side-by-side comparison, traffic light, compact inline, rankings, and more
         </p>
       </div>
 
-      {/* 1. KPIs Comparación Lado a Lado (Current vs Previous) */}
+      {/* 1. Side-by-Side Comparison KPIs (Current vs Previous) */}
       <div>
-        <h3 className="text-lg font-medium mb-4">1. Comparación Lado a Lado</h3>
+        <h3 className="text-lg font-medium mb-4">1. Side-by-Side Comparison</h3>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           <Card className="elevation-2">
             <CardContent className="p-6">
@@ -157,9 +157,9 @@ export function KPIShowcaseExtended() {
         </div>
       </div>
 
-      {/* 2. KPIs con Status Indicators (Semáforo) */}
+      {/* 2. KPIs with Status Indicators (Traffic Light) */}
       <div>
-        <h3 className="text-lg font-medium mb-4">2. KPIs con Status Indicators</h3>
+        <h3 className="text-lg font-medium mb-4">2. KPIs with Status Indicators</h3>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Card className="elevation-2">
             <CardContent className="p-6">
@@ -238,7 +238,7 @@ export function KPIShowcaseExtended() {
         </div>
       </div>
 
-      {/* 3. KPIs Compactos en Línea */}
+      {/* 3. Compact Inline KPIs */}
       <div>
         <h3 className="text-lg font-medium mb-4">3. KPIs Compactos (Inline)</h3>
         <Card className="elevation-2">
@@ -308,7 +308,7 @@ export function KPIShowcaseExtended() {
         </Card>
       </div>
 
-      {/* 4. KPIs con Ranking/Leaderboard */}
+      {/* 4. KPIs with Ranking/Leaderboard */}
       <div>
         <h3 className="text-lg font-medium mb-4">4. Rankings y Leaderboards</h3>
         <div className="grid gap-4 md:grid-cols-2">
@@ -427,9 +427,9 @@ export function KPIShowcaseExtended() {
         </div>
       </div>
 
-      {/* 5. KPIs con Distribución Porcentual */}
+      {/* 5. KPIs with Percentage Distribution */}
       <div>
-        <h3 className="text-lg font-medium mb-4">5. Distribución Porcentual (Breakdown)</h3>
+        <h3 className="text-lg font-medium mb-4">5. Percentage Distribution (Breakdown)</h3>
         <div className="grid gap-4 md:grid-cols-2">
           <Card className="elevation-2">
             <CardHeader>
@@ -584,9 +584,9 @@ export function KPIShowcaseExtended() {
         </Card>
       </div>
 
-      {/* 7. KPIs con Score/Rating Visual */}
+      {/* 7. KPIs with Score/Rating Visual */}
       <div>
-        <h3 className="text-lg font-medium mb-4">7. KPIs con Score/Rating Visual</h3>
+        <h3 className="text-lg font-medium mb-4">7. KPIs with Score/Rating Visual</h3>
         <div className="grid gap-4 md:grid-cols-3">
           <Card className="elevation-2">
             <CardContent className="p-6">
@@ -671,9 +671,9 @@ export function KPIShowcaseExtended() {
         </div>
       </div>
 
-      {/* 8. KPIs con Alertas y Notificaciones */}
+      {/* 8. KPIs with Alerts and Notifications */}
       <div>
-        <h3 className="text-lg font-medium mb-4">8. KPIs con Alertas y Notificaciones</h3>
+        <h3 className="text-lg font-medium mb-4">8. KPIs with Alerts and Notifications</h3>
         <div className="grid gap-4 md:grid-cols-2">
           <Card className="elevation-2 border-yellow-500/50">
             <CardContent className="p-6">

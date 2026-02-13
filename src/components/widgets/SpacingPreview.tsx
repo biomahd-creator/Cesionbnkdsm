@@ -1,10 +1,10 @@
 /**
  * SpacingPreview Component
  * 
- * BUSINESS PATTERN: Visualización del sistema de espaciado sin estilos inline
+ * BUSINESS PATTERN: Spacing system visualization without inline styles
  * 
- * NO MODIFICAR sin consultar: /components/widgets/WIDGETS_ARCHITECTURE.md
- * Parte del sistema modular sin estilos inline
+ * DO NOT MODIFY without consulting: /components/widgets/WIDGETS_ARCHITECTURE.md
+ * Part of the modular system without inline styles
  */
 
 import { Badge } from "../ui/badge";

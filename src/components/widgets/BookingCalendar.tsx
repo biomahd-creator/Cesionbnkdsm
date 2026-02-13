@@ -14,10 +14,10 @@ export interface BookingData {
 }
 
 const services = [
-  { value: "consultoria", label: "Consultoría Financiera", duration: "60 min" },
-  { value: "factoring", label: "Asesoría de Factoring", duration: "45 min" },
-  { value: "credito", label: "Evaluación de Crédito", duration: "30 min" },
-  { value: "inversion", label: "Planificación de Inversión", duration: "90 min" },
+  { value: "consultoria", label: "Financial Consulting", duration: "60 min" },
+  { value: "factoring", label: "Factoring Advisory", duration: "45 min" },
+  { value: "credito", label: "Credit Evaluation", duration: "30 min" },
+  { value: "inversion", label: "Investment Planning", duration: "90 min" },
 ];
 
 const timeSlots = [
@@ -64,12 +64,12 @@ export function BookingCalendar() {
       <Card className="border-green-200 bg-green-50 dark:border-green-800 dark:bg-green-950/30">
         <CardContent className="flex flex-col items-center justify-center py-12 gap-4">
           <CheckCircle2 className="size-16 text-green-600 dark:text-green-400" />
-          <h3 className="text-green-800 dark:text-green-200">Cita Confirmada</h3>
+          <h3 className="text-green-800 dark:text-green-200">Appointment Confirmed</h3>
           <p className="text-sm text-green-600 dark:text-green-400">
-            {selectedServiceData?.label} - {date?.toLocaleDateString("es-CO", { weekday: "long", day: "numeric", month: "long" })} a las {selectedTime}
+            {selectedServiceData?.label} - {date?.toLocaleDateString("en-US", { weekday: "long", day: "numeric", month: "long" })} at {selectedTime}
           </p>
           <Badge variant="outline" className="border-green-300 text-green-700 dark:border-green-700 dark:text-green-300">
-            Recibirás confirmación por email
+            You will receive confirmation by email
           </Badge>
         </CardContent>
       </Card>
@@ -83,11 +83,11 @@ export function BookingCalendar() {
           <div>
             <CardTitle className="flex items-center gap-2">
               <CalendarDays className="size-5 text-primary" />
-              Agendar Cita
+              Schedule Appointment
             </CardTitle>
-            <CardDescription>Selecciona fecha, hora y servicio para tu cita</CardDescription>
+            <CardDescription>Select a date, time, and service for your appointment</CardDescription>
           </div>
-          <Badge variant="secondary">Paso {step}/3</Badge>
+          <Badge variant="secondary">Step {step}/3</Badge>
         </div>
       </CardHeader>
       <CardContent>
@@ -95,10 +95,10 @@ export function BookingCalendar() {
           {/* Left: Calendar + Service */}
           <div className="space-y-4">
             <div>
-              <label className="text-sm text-muted-foreground mb-2 block">Servicio</label>
+              <label className="text-sm text-muted-foreground mb-2 block">Service</label>
               <Select value={selectedService} onValueChange={setSelectedService}>
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecciona un servicio" />
+                  <SelectValue placeholder="Select a service" />
                 </SelectTrigger>
                 <SelectContent>
                   {services.map((s) => (
@@ -114,7 +114,7 @@ export function BookingCalendar() {
             </div>
 
             <div>
-              <label className="text-sm text-muted-foreground mb-2 block">Fecha</label>
+              <label className="text-sm text-muted-foreground mb-2 block">Date</label>
               <Calendar
                 mode="single"
                 selected={date}
@@ -134,7 +134,7 @@ export function BookingCalendar() {
               <div>
                 <label className="text-sm text-muted-foreground mb-2 flex items-center gap-1">
                   <Clock className="size-3.5" />
-                  Horarios disponibles - {date.toLocaleDateString("es-CO", { weekday: "short", day: "numeric", month: "short" })}
+                  Available times - {date.toLocaleDateString("en-US", { weekday: "short", day: "numeric", month: "short" })}
                 </label>
                 <div className="grid grid-cols-3 gap-2">
                   {timeSlots.map((slot) => (
@@ -161,29 +161,29 @@ export function BookingCalendar() {
                 <CardContent className="p-4 space-y-3">
                   <h4 className="flex items-center gap-2 text-sm">
                     <User className="size-4 text-primary" />
-                    Resumen de Cita
+                    Appointment Summary
                   </h4>
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Servicio:</span>
+                      <span className="text-muted-foreground">Service:</span>
                       <span>{selectedServiceData?.label}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Duración:</span>
+                      <span className="text-muted-foreground">Duration:</span>
                       <span>{selectedServiceData?.duration}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Fecha:</span>
-                      <span>{date.toLocaleDateString("es-CO", { day: "numeric", month: "long", year: "numeric" })}</span>
+                      <span className="text-muted-foreground">Date:</span>
+                      <span>{date.toLocaleDateString("en-US", { day: "numeric", month: "long", year: "numeric" })}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Hora:</span>
+                      <span className="text-muted-foreground">Time:</span>
                       <span>{selectedTime}</span>
                     </div>
                   </div>
                   <Button className="w-full mt-2" onClick={handleConfirm}>
                     <CheckCircle2 className="size-4 mr-2" />
-                    Confirmar Cita
+                    Confirm Appointment
                   </Button>
                 </CardContent>
               </Card>
@@ -191,7 +191,7 @@ export function BookingCalendar() {
 
             {!date && (
               <div className="flex items-center justify-center h-full text-muted-foreground text-sm">
-                Selecciona una fecha para ver los horarios disponibles
+                Select a date to see available time slots
               </div>
             )}
           </div>

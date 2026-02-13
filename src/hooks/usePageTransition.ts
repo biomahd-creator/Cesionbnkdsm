@@ -3,7 +3,7 @@ import { useTransition } from "../components/providers/TransitionProvider";
 
 /**
  * HOOK: usePageTransition
- * Facilita el manejo de transiciones entre páginas
+ * Facilitates page transition management
  * 
  * @example
  * const { triggerPageChange } = usePageTransition();
@@ -13,7 +13,7 @@ import { useTransition } from "../components/providers/TransitionProvider";
 interface UsePageTransitionOptions {
   onTransitionStart?: () => void;
   onTransitionEnd?: () => void;
-  duration?: number; // en ms
+  duration?: number; // in ms
 }
 
 export function usePageTransition(options: UsePageTransitionOptions = {}) {
@@ -27,13 +27,13 @@ export function usePageTransition(options: UsePageTransitionOptions = {}) {
       type: "fade" | "slide" | "scale" | "none" = "fade",
       direction: "forward" | "backward" | "none" = "forward"
     ) => {
-      // Callback de inicio
+      // Start callback
       onTransitionStart?.();
 
-      // Iniciar transición
+      // Start transition
       startTransition(from, to, type, direction);
 
-      // Finalizar transición después del duration
+      // End transition after duration
       setTimeout(() => {
         endTransition();
         onTransitionEnd?.();
@@ -50,8 +50,8 @@ export function usePageTransition(options: UsePageTransitionOptions = {}) {
 
 /**
  * HOOK: usePageEnter
- * Ejecuta una función cuando la página entra (se monta)
- * Útil para analytics, scroll to top, etc.
+ * Executes a function when the page enters (mounts).
+ * Useful for analytics, scroll to top, etc.
  */
 export function usePageEnter(callback: () => void, pageName?: string) {
   useEffect(() => {
@@ -61,7 +61,7 @@ export function usePageEnter(callback: () => void, pageName?: string) {
     if (pageName) {
       const liveRegion = document.getElementById("live-region-polite");
       if (liveRegion) {
-        liveRegion.textContent = `Navegaste a ${pageName}`;
+        liveRegion.textContent = `Navigated to ${pageName}`;
       }
     }
   }, [callback, pageName]);
@@ -69,7 +69,7 @@ export function usePageEnter(callback: () => void, pageName?: string) {
 
 /**
  * HOOK: useScrollToTop
- * Scroll automático al inicio al montar el componente
+ * Automatically scrolls to top when the component mounts
  */
 export function useScrollToTop(smooth = true) {
   useEffect(() => {

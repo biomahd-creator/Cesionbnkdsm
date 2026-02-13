@@ -1,18 +1,26 @@
 // UI Components
 export * from "./components/ui";
 
-// Patterns (Organismos reutilizables)
+// Patterns (Reusable Organisms)
 export * from "./components/patterns";
 
 // Advanced Components (Charts, Tables, Editors)
 export * from "./components/advanced";
 
-// Widgets (Bloques funcionales compuestos)
+// Widgets (Composed Functional Blocks)
 export * from "./components/widgets";
 
-// Providers
-export * from "./components/providers/LoadingProvider";
-export * from "./components/providers/TransitionProvider";
+// Providers (All application-level context providers)
+export {
+  ThemeProvider,
+  useTheme,
+  LoadingProvider,
+  useLoading,
+  TransitionProvider,
+  useTransition,
+  HelpProvider,
+  useHelp,
+} from "./components/providers";
 
 // Hooks
 export * from "./hooks";

@@ -4,15 +4,15 @@ import { LOADING_DELAYS } from "../lib/animation-config";
 
 /**
  * HOOK: useLoadingState
- * Maneja estados de carga locales con soporte para delays y cleanup
+ * Manages local loading states with delay and cleanup support
  * 
  * @example
  * const { isLoading, startLoading, stopLoading } = useLoadingState();
  */
 
 interface UseLoadingStateOptions {
-  delay?: number; // Delay antes de mostrar el loading (evita flashes)
-  minDuration?: number; // Duración mínima del loading (evita parpadeos)
+  delay?: number; // Delay before showing the loading (avoids flashes)
+  minDuration?: number; // Minimum loading duration (prevents flickering)
   onStart?: () => void;
   onEnd?: () => void;
 }
@@ -30,7 +30,7 @@ export function useLoadingState(options: UseLoadingStateOptions = {}) {
     setIsLoading(true);
     onStart?.();
 
-    // Si hay delay, esperar antes de mostrar
+    // If there's a delay, wait before showing
     if (delay > 0) {
       delayTimerRef.current = setTimeout(() => {
         setShowLoading(true);
@@ -43,7 +43,7 @@ export function useLoadingState(options: UseLoadingStateOptions = {}) {
   }, [delay, onStart]);
 
   const stopLoading = useCallback(() => {
-    // Si aún está en el delay, cancelar
+    // If still in the delay, cancel
     if (delayTimerRef.current) {
       clearTimeout(delayTimerRef.current);
       delayTimerRef.current = null;
@@ -52,11 +52,11 @@ export function useLoadingState(options: UseLoadingStateOptions = {}) {
       return;
     }
 
-    // Calcular tiempo transcurrido
+    // Calculate elapsed time
     const elapsed = startTimeRef.current ? Date.now() - startTimeRef.current : minDuration;
     const remaining = Math.max(0, minDuration - elapsed);
 
-    // Esperar la duración mínima
+    // Wait for the minimum duration
     minDurationTimerRef.current = setTimeout(() => {
       setShowLoading(false);
       setIsLoading(false);
@@ -83,7 +83,7 @@ export function useLoadingState(options: UseLoadingStateOptions = {}) {
 
 /**
  * HOOK: useGlobalLoading
- * Usa el LoadingProvider global
+ * Uses the global LoadingProvider
  */
 export function useGlobalLoading() {
   const { showLoading, hideLoading, isLoading } = useLoading();
@@ -105,7 +105,7 @@ export function useGlobalLoading() {
 
 /**
  * HOOK: useAsyncOperation
- * Ejecuta una operación async con loading automático
+ * Executes an async operation with automatic loading
  * 
  * @example
  * const { execute, isLoading } = useAsyncOperation();

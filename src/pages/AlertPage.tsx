@@ -12,7 +12,7 @@ export function AlertPage() {
   return (
     <ComponentShowcase
       title="Alert"
-      description="Displays a callout for user attention. Ahora con variantes semánticas nativas: default, destructive, success, warning e info."
+      description="Displays a callout for user attention. Includes native semantic variants: default, destructive, success, warning, and info."
       category="Feedback"
 
       // Main Preview
@@ -22,7 +22,7 @@ export function AlertPage() {
             <Terminal className="h-4 w-4" />
             <AlertTitle>Default</AlertTitle>
             <AlertDescription>
-              Alerta neutral para información general del sistema.
+              Neutral alert for general system information.
             </AlertDescription>
           </Alert>
 
@@ -30,7 +30,7 @@ export function AlertPage() {
             <CheckCircle className="h-4 w-4" />
             <AlertTitle>Success</AlertTitle>
             <AlertDescription>
-              La operación se completó exitosamente.
+              The operation was completed successfully.
             </AlertDescription>
           </Alert>
 
@@ -38,7 +38,7 @@ export function AlertPage() {
             <AlertCircle className="h-4 w-4" />
             <AlertTitle>Destructive</AlertTitle>
             <AlertDescription>
-              Ocurrió un error al procesar la solicitud.
+              An error occurred while processing the request.
             </AlertDescription>
           </Alert>
 
@@ -46,7 +46,7 @@ export function AlertPage() {
             <AlertTriangle className="h-4 w-4" />
             <AlertTitle>Warning</AlertTitle>
             <AlertDescription>
-              Esta acción no se puede deshacer. Proceda con precaución.
+              This action cannot be undone. Proceed with caution.
             </AlertDescription>
           </Alert>
 
@@ -54,7 +54,7 @@ export function AlertPage() {
             <Info className="h-4 w-4" />
             <AlertTitle>Info</AlertTitle>
             <AlertDescription>
-              Nuevas funciones disponibles en su dashboard.
+              New features available in your dashboard.
             </AlertDescription>
           </Alert>
         </div>
@@ -70,31 +70,31 @@ export function AlertSemanticDemo() {
       <Alert>
         <Terminal className="h-4 w-4" />
         <AlertTitle>Default</AlertTitle>
-        <AlertDescription>Información general.</AlertDescription>
+        <AlertDescription>General information.</AlertDescription>
       </Alert>
 
       <Alert variant="success">
         <CheckCircle className="h-4 w-4" />
         <AlertTitle>Success</AlertTitle>
-        <AlertDescription>Operación completada.</AlertDescription>
+        <AlertDescription>Operation completed.</AlertDescription>
       </Alert>
 
       <Alert variant="destructive">
         <AlertCircle className="h-4 w-4" />
         <AlertTitle>Error</AlertTitle>
-        <AlertDescription>Error al procesar.</AlertDescription>
+        <AlertDescription>Error processing request.</AlertDescription>
       </Alert>
 
       <Alert variant="warning">
         <AlertTriangle className="h-4 w-4" />
         <AlertTitle>Warning</AlertTitle>
-        <AlertDescription>Proceda con precaución.</AlertDescription>
+        <AlertDescription>Proceed with caution.</AlertDescription>
       </Alert>
 
       <Alert variant="info">
         <Info className="h-4 w-4" />
         <AlertTitle>Info</AlertTitle>
-        <AlertDescription>Nuevas funciones disponibles.</AlertDescription>
+        <AlertDescription>New features available.</AlertDescription>
       </Alert>
     </div>
   );
@@ -106,17 +106,17 @@ export function AlertSemanticDemo() {
           name: "variant",
           type: '"default" | "destructive" | "success" | "warning" | "info"',
           default: '"default"',
-          description: "Estilo visual del alert. Cada variante usa colores explícitos compatibles con light/dark mode.",
+          description: "Visual style of the alert. Each variant uses explicit colors compatible with light/dark mode.",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para el alert",
+          description: "Additional CSS classes for the alert",
         },
         {
           name: "children",
           type: "ReactNode",
-          description: "Contenido del alert (AlertTitle, AlertDescription, iconos, etc.)",
+          description: "Alert content (AlertTitle, AlertDescription, icons, etc.)",
           required: true,
         },
       ]}
@@ -124,8 +124,8 @@ export function AlertSemanticDemo() {
       // Examples
       examples={[
         {
-          title: "Todas las Variantes",
-          description: "Las 5 variantes nativas del componente Alert, sin necesidad de className manual.",
+          title: "All Variants",
+          description: "The 5 native variants of the Alert component, no manual className needed.",
           preview: (
             <div className="grid gap-4 max-w-2xl">
               <Alert>
@@ -190,189 +190,189 @@ export function AlertSemanticDemo() {
 </Alert>`,
         },
         {
-          title: "Escenarios de Factoring",
-          description: "Alerts semánticos en contextos reales del módulo de Factoring.",
+          title: "Factoring Scenarios",
+          description: "Semantic alerts in real-world Factoring module contexts.",
           preview: (
             <div className="grid gap-4 max-w-2xl">
               <Alert variant="success">
                 <ShieldCheck className="h-4 w-4" />
-                <AlertTitle>Operación Aprobada</AlertTitle>
+                <AlertTitle>Operation Approved</AlertTitle>
                 <AlertDescription>
-                  La operación OP-2024-001 por $45.200.000 fue aprobada por el Comité de Riesgo y está lista para cesión.
+                  Operation OP-2024-001 for $45,200,000 was approved by the Risk Committee and is ready for assignment.
                 </AlertDescription>
               </Alert>
 
               <Alert variant="warning">
                 <FileWarning className="h-4 w-4" />
-                <AlertTitle>Documentos Pendientes</AlertTitle>
+                <AlertTitle>Pending Documents</AlertTitle>
                 <AlertDescription>
-                  Faltan 2 documentos por verificar en la operación OP-2024-003. La cesión no puede ejecutarse hasta completar la validación.
+                  2 documents remain unverified in operation OP-2024-003. Assignment cannot proceed until validation is complete.
                 </AlertDescription>
               </Alert>
 
               <Alert variant="destructive">
                 <ServerCrash className="h-4 w-4" />
-                <AlertTitle>Error de Conexión SII</AlertTitle>
+                <AlertTitle>Tax Service Connection Error</AlertTitle>
                 <AlertDescription>
-                  No se pudo verificar las facturas contra el Servicio de Impuestos Internos. Reintente en unos minutos.
+                  Could not verify invoices against the Tax Service. Please retry in a few minutes.
                 </AlertDescription>
               </Alert>
 
               <Alert variant="info">
                 <Rocket className="h-4 w-4" />
-                <AlertTitle>Nueva Funcionalidad</AlertTitle>
+                <AlertTitle>New Feature</AlertTitle>
                 <AlertDescription>
-                  Ahora puede pre-evaluar operaciones con el motor de scoring automático. Acceda desde el panel de evaluación.
+                  You can now pre-evaluate operations with the automatic scoring engine. Access it from the evaluation panel.
                 </AlertDescription>
               </Alert>
             </div>
           ),
           code: `<Alert variant="success">
   <ShieldCheck className="h-4 w-4" />
-  <AlertTitle>Operación Aprobada</AlertTitle>
+  <AlertTitle>Operation Approved</AlertTitle>
   <AlertDescription>
-    OP-2024-001 aprobada por Comité de Riesgo.
+    OP-2024-001 approved by Risk Committee.
   </AlertDescription>
 </Alert>
 
 <Alert variant="warning">
   <FileWarning className="h-4 w-4" />
-  <AlertTitle>Documentos Pendientes</AlertTitle>
+  <AlertTitle>Pending Documents</AlertTitle>
   <AlertDescription>
-    Faltan 2 documentos por verificar.
+    2 documents remain unverified.
   </AlertDescription>
 </Alert>`,
         },
         {
           title: "With Actions",
-          description: "Alert con botones de acción usando las nuevas variantes semánticas de Button.",
+          description: "Alert with action buttons using the new semantic Button variants.",
           preview: (
             <div className="grid gap-4 max-w-2xl">
               <Alert variant="warning">
                 <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Sesión por Expirar</AlertTitle>
+                <AlertTitle>Session Expiring</AlertTitle>
                 <AlertDescription className="mt-1">
-                  Su sesión expirará en 5 minutos. ¿Desea extenderla?
+                  Your session will expire in 5 minutes. Would you like to extend it?
                 </AlertDescription>
                 <div className="flex gap-2 mt-3 col-start-2">
-                  <Button size="sm" variant="warning">Extender Sesión</Button>
-                  <Button size="sm" variant="warning-outline">Cerrar Sesión</Button>
+                  <Button size="sm" variant="warning">Extend Session</Button>
+                  <Button size="sm" variant="warning-outline">Log Out</Button>
                 </div>
               </Alert>
 
               <Alert variant="info">
                 <Zap className="h-4 w-4" />
-                <AlertTitle>Actualización Disponible</AlertTitle>
+                <AlertTitle>Update Available</AlertTitle>
                 <AlertDescription className="mt-1">
-                  Hay una nueva versión del módulo de Factoring disponible.
+                  A new version of the Factoring module is available.
                 </AlertDescription>
                 <div className="flex gap-2 mt-3 col-start-2">
-                  <Button size="sm" variant="info">Actualizar Ahora</Button>
-                  <Button size="sm" variant="info-outline">Recordar Después</Button>
+                  <Button size="sm" variant="info">Update Now</Button>
+                  <Button size="sm" variant="info-outline">Remind Later</Button>
                 </div>
               </Alert>
             </div>
           ),
           code: `<Alert variant="warning">
   <AlertTriangle className="h-4 w-4" />
-  <AlertTitle>Sesión por Expirar</AlertTitle>
-  <AlertDescription>Su sesión expirará en 5 minutos.</AlertDescription>
+  <AlertTitle>Session Expiring</AlertTitle>
+  <AlertDescription>Your session will expire in 5 minutes.</AlertDescription>
   <div className="flex gap-2 mt-3 col-start-2">
-    <Button size="sm" variant="warning">Extender</Button>
-    <Button size="sm" variant="warning-outline">Cerrar</Button>
+    <Button size="sm" variant="warning">Extend</Button>
+    <Button size="sm" variant="warning-outline">Log Out</Button>
   </div>
 </Alert>`,
         },
         {
           title: "Without Icon",
-          description: "Alert sin icono, solo con texto",
+          description: "Alert without icon, text only",
           preview: (
             <div className="grid gap-3 max-w-2xl">
               <Alert variant="info">
-                <AlertTitle>Nota Importante</AlertTitle>
+                <AlertTitle>Important Note</AlertTitle>
                 <AlertDescription>
-                  Los alertas sin icono también funcionan correctamente con todas las variantes semánticas.
+                  Alerts without icons also work correctly with all semantic variants.
                 </AlertDescription>
               </Alert>
             </div>
           ),
           code: `<Alert variant="info">
-  <AlertTitle>Nota Importante</AlertTitle>
+  <AlertTitle>Important Note</AlertTitle>
   <AlertDescription>
-    Funciona sin icono con cualquier variante.
+    Works without icons with any variant.
   </AlertDescription>
 </Alert>`,
         },
         {
           title: "Compact Alerts",
-          description: "Alertas compactas sin título, solo descripción.",
+          description: "Compact alerts without title, description only.",
           preview: (
             <div className="grid gap-3 max-w-2xl">
               <Alert variant="success">
                 <CheckCircle className="h-4 w-4" />
                 <AlertDescription>
-                  Cambios guardados exitosamente.
+                  Changes saved successfully.
                 </AlertDescription>
               </Alert>
               <Alert variant="warning">
                 <AlertTriangle className="h-4 w-4" />
                 <AlertDescription>
-                  Mantenimiento programado para las 23:00 hrs.
+                  Scheduled maintenance at 11:00 PM.
                 </AlertDescription>
               </Alert>
               <Alert variant="destructive">
                 <Lock className="h-4 w-4" />
                 <AlertDescription>
-                  Cuenta bloqueada por actividad sospechosa.
+                  Account locked due to suspicious activity.
                 </AlertDescription>
               </Alert>
               <Alert variant="info">
                 <Mail className="h-4 w-4" />
                 <AlertDescription>
-                  Tiene 3 mensajes sin leer en su bandeja.
+                  You have 3 unread messages in your inbox.
                 </AlertDescription>
               </Alert>
             </div>
           ),
           code: `<Alert variant="success">
   <CheckCircle className="h-4 w-4" />
-  <AlertDescription>Cambios guardados.</AlertDescription>
+  <AlertDescription>Changes saved.</AlertDescription>
 </Alert>`,
         },
         {
           title: "Notification Style (Border Left)",
-          description: "Alertas con borde lateral coloreado para estilo notificación.",
+          description: "Alerts with colored left border for notification style.",
           preview: (
             <div className="grid gap-4 max-w-2xl">
               <Alert variant="info" className="border-l-4 border-l-blue-500 dark:border-l-blue-400">
                 <Bell className="h-4 w-4" />
-                <AlertTitle>Nuevo Mensaje</AlertTitle>
+                <AlertTitle>New Message</AlertTitle>
                 <AlertDescription>
-                  Tiene 3 mensajes sin leer en su bandeja.
+                  You have 3 unread messages in your inbox.
                 </AlertDescription>
               </Alert>
 
               <Alert variant="success" className="border-l-4 border-l-green-500 dark:border-l-green-400">
                 <CheckCircle className="h-4 w-4" />
-                <AlertTitle>Deploy Exitoso</AlertTitle>
+                <AlertTitle>Deploy Successful</AlertTitle>
                 <AlertDescription>
-                  Su despliegue se completó y está en producción.
+                  Your deployment has completed and is now in production.
                 </AlertDescription>
               </Alert>
 
               <Alert variant="warning" className="border-l-4 border-l-amber-500 dark:border-l-amber-400">
                 <AlertTriangle className="h-4 w-4" />
-                <AlertTitle>Uso Elevado</AlertTitle>
+                <AlertTitle>High Usage</AlertTitle>
                 <AlertDescription>
-                  El uso de API está al 85% de su cuota mensual.
+                  API usage is at 85% of your monthly quota.
                 </AlertDescription>
               </Alert>
             </div>
           ),
           code: `<Alert variant="info" className="border-l-4 border-l-blue-500 dark:border-l-blue-400">
   <Bell className="h-4 w-4" />
-  <AlertTitle>Nuevo Mensaje</AlertTitle>
-  <AlertDescription>3 mensajes sin leer.</AlertDescription>
+  <AlertTitle>New Message</AlertTitle>
+  <AlertDescription>3 unread messages.</AlertDescription>
 </Alert>`,
         },
       ]}

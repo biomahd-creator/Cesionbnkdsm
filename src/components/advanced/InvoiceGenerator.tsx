@@ -99,7 +99,7 @@ export function InvoiceGenerator({
     
     currency: initialData?.currency || "CLP",
     notes: initialData?.notes || "",
-    terms: initialData?.terms || "Pago neto a 30 días. Intereses moratorios del 1.5% mensual sobre saldo vencido.",
+    terms: initialData?.terms || "Net payment within 30 days. Late interest of 1.5% monthly on overdue balance.",
   });
 
   const updateInvoice = (field: keyof InvoiceData, value: any) => {
@@ -174,7 +174,7 @@ export function InvoiceGenerator({
   };
 
   const formatCurrency = (amount: number) => {
-    return new Intl.NumberFormat("es-CL", {
+    return new Intl.NumberFormat("en-US", {
       style: "currency",
       currency: invoice.currency,
       minimumFractionDigits: 0,
@@ -196,7 +196,7 @@ export function InvoiceGenerator({
       <html>
         <head>
           <meta charset="utf-8">
-          <title>Factura ${invoice.invoiceNumber}</title>
+          <title>Invoice ${invoice.invoiceNumber}</title>
           <style>
             * { margin: 0; padding: 0; box-sizing: border-box; }
             body { 
@@ -237,16 +237,16 @@ export function InvoiceGenerator({
               <p>${invoice.companyEmail}</p>
             </div>
             <div class="invoice-info">
-              <h2>FACTURA</h2>
+              <h2>INVOICE</h2>
               <p><strong>N°:</strong> ${invoice.invoiceNumber}</p>
-              <p><strong>Fecha:</strong> ${new Date(invoice.invoiceDate).toLocaleDateString("es-CL")}</p>
-              <p><strong>Vencimiento:</strong> ${new Date(invoice.dueDate).toLocaleDateString("es-CL")}</p>
+              <p><strong>Date:</strong> ${new Date(invoice.invoiceDate).toLocaleDateString("en-US")}</p>
+              <p><strong>Due:</strong> ${new Date(invoice.dueDate).toLocaleDateString("en-US")}</p>
             </div>
           </div>
 
           <div class="parties">
             <div class="party">
-              <h3>Facturar a</h3>
+              <h3>Bill To</h3>
               <p><strong>${invoice.clientName}</strong></p>
               <p>${invoice.clientAddress || "—"}</p>
               <p>RUT: ${invoice.clientTaxId || "—"}</p>
@@ -258,9 +258,9 @@ export function InvoiceGenerator({
           <table>
             <thead>
               <tr>
-                <th>Descripción</th>
-                <th class="text-right">Cantidad</th>
-                <th class="text-right">Precio Unitario</th>
+                <th>Description</th>
+                <th class="text-right">Quantity</th>
+                <th class="text-right">Unit Price</th>
                 <th class="text-right">Total</th>
               </tr>
             </thead>
@@ -287,7 +287,7 @@ export function InvoiceGenerator({
             </div>
             ${invoice.discount > 0 ? `
               <div class="totals-row">
-                <span>Descuento:</span>
+                <span>Discount:</span>
                 <span>-${formatCurrency(invoice.discount)}</span>
               </div>
             ` : ""}
@@ -299,13 +299,13 @@ export function InvoiceGenerator({
 
           ${invoice.notes ? `
             <div class="footer">
-              <h4>Notas</h4>
+              <h4>Notes</h4>
               <p>${invoice.notes}</p>
             </div>
           ` : ""}
 
           <div class="footer">
-            <h4>Términos y Condiciones</h4>
+            <h4>Terms & Conditions</h4>
             <p>${invoice.terms}</p>
           </div>
         </body>
@@ -330,13 +330,13 @@ export function InvoiceGenerator({
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <FileText className="h-5 w-5" />
-              Información de Factura
+              Invoice Information
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="invoiceNumber">N° Factura</Label>
+                <Label htmlFor="invoiceNumber">Invoice No.</Label>
                 <Input
                   id="invoiceNumber"
                   value={invoice.invoiceNumber}
@@ -344,7 +344,7 @@ export function InvoiceGenerator({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="currency">Moneda</Label>
+                <Label htmlFor="currency">Currency</Label>
                 <Select
                   value={invoice.currency}
                   onValueChange={(value) => updateInvoice("currency", value)}
@@ -353,8 +353,8 @@ export function InvoiceGenerator({
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="CLP">CLP (Peso Chileno)</SelectItem>
-                    <SelectItem value="USD">USD (Dólar)</SelectItem>
+                    <SelectItem value="CLP">CLP (Chilean Peso)</SelectItem>
+                    <SelectItem value="USD">USD (Dollar)</SelectItem>
                     <SelectItem value="EUR">EUR (Euro)</SelectItem>
                   </SelectContent>
                 </Select>
@@ -363,7 +363,7 @@ export function InvoiceGenerator({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="invoiceDate">Fecha Emisión</Label>
+                <Label htmlFor="invoiceDate">Issue Date</Label>
                 <Input
                   id="invoiceDate"
                   type="date"
@@ -372,7 +372,7 @@ export function InvoiceGenerator({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="dueDate">Fecha Vencimiento</Label>
+                <Label htmlFor="dueDate">Due Date</Label>
                 <Input
                   id="dueDate"
                   type="date"
@@ -386,21 +386,21 @@ export function InvoiceGenerator({
 
         <Card>
           <CardHeader>
-            <CardTitle>Información del Cliente</CardTitle>
+            <CardTitle>Client Information</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="clientName">Nombre / Razón Social</Label>
+              <Label htmlFor="clientName">Name / Company</Label>
               <Input
                 id="clientName"
                 value={invoice.clientName}
                 onChange={(e) => updateInvoice("clientName", e.target.value)}
-                placeholder="Corporación Global S.A."
+                placeholder="Global Corporation Inc."
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="clientAddress">Dirección</Label>
+              <Label htmlFor="clientAddress">Address</Label>
               <Input
                 id="clientAddress"
                 value={invoice.clientAddress}
@@ -411,7 +411,7 @@ export function InvoiceGenerator({
 
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="clientTaxId">RUT</Label>
+                <Label htmlFor="clientTaxId">Tax ID</Label>
                 <Input
                   id="clientTaxId"
                   value={invoice.clientTaxId}
@@ -420,7 +420,7 @@ export function InvoiceGenerator({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="clientPhone">Teléfono</Label>
+                <Label htmlFor="clientPhone">Phone</Label>
                 <Input
                   id="clientPhone"
                   value={invoice.clientPhone}
@@ -446,10 +446,10 @@ export function InvoiceGenerator({
         <Card>
           <CardHeader>
             <div className="flex items-center justify-between">
-              <CardTitle>Items de Factura</CardTitle>
+              <CardTitle>Invoice Items</CardTitle>
               <Button onClick={addItem} size="sm" variant="outline">
                 <Plus className="h-4 w-4 mr-2" />
-                Agregar Item
+                Add Item
               </Button>
             </div>
           </CardHeader>
@@ -471,20 +471,20 @@ export function InvoiceGenerator({
                 </div>
 
                 <div className="space-y-2">
-                  <Label>Descripción</Label>
+                  <Label>Description</Label>
                   <Textarea
                     value={item.description}
                     onChange={(e) =>
                       updateItem(item.id, "description", e.target.value)
                     }
-                    placeholder="Ej: Servicio de factoring por adelanto de facturas del mes de enero 2024"
+                    placeholder="E.g.: Factoring service for invoice advance payment for January 2024"
                     rows={2}
                   />
                 </div>
 
                 <div className="grid grid-cols-3 gap-3">
                   <div className="space-y-2">
-                    <Label>Cantidad</Label>
+                    <Label>Quantity</Label>
                     <Input
                       type="number"
                       min="1"
@@ -495,7 +495,7 @@ export function InvoiceGenerator({
                     />
                   </div>
                   <div className="space-y-2">
-                    <Label>Precio Unit.</Label>
+                    <Label>Unit Price</Label>
                     <Input
                       type="number"
                       min="0"
@@ -521,12 +521,12 @@ export function InvoiceGenerator({
 
         <Card>
           <CardHeader>
-            <CardTitle>Cálculos</CardTitle>
+            <CardTitle>Calculations</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="taxRate">IVA (%)</Label>
+                <Label htmlFor="taxRate">Tax (%)</Label>
                 <Input
                   id="taxRate"
                   type="number"
@@ -537,7 +537,7 @@ export function InvoiceGenerator({
                 />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="discount">Descuento</Label>
+                <Label htmlFor="discount">Discount</Label>
                 <Input
                   id="discount"
                   type="number"
@@ -563,7 +563,7 @@ export function InvoiceGenerator({
               </div>
               {invoice.discount > 0 && (
                 <div className="flex justify-between text-sm">
-                  <span className="text-muted-foreground">Descuento:</span>
+                  <span className="text-muted-foreground">Discount:</span>
                   <span className="text-destructive">
                     -{formatCurrency(invoice.discount)}
                   </span>
@@ -580,22 +580,22 @@ export function InvoiceGenerator({
 
         <Card>
           <CardHeader>
-            <CardTitle>Notas y Términos</CardTitle>
+            <CardTitle>Notes & Terms</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="notes">Notas (opcional)</Label>
+              <Label htmlFor="notes">Notes (optional)</Label>
               <Textarea
                 id="notes"
                 value={invoice.notes}
                 onChange={(e) => updateInvoice("notes", e.target.value)}
-                placeholder="Información adicional o comentarios"
+                placeholder="Additional information or comments"
                 rows={3}
               />
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="terms">Términos y Condiciones</Label>
+              <Label htmlFor="terms">Terms & Conditions</Label>
               <Textarea
                 id="terms"
                 value={invoice.terms}
@@ -609,11 +609,11 @@ export function InvoiceGenerator({
         <div className="flex gap-3">
           <Button onClick={exportToPDF} className="flex-1 gap-2">
             <Download className="h-4 w-4" />
-            Exportar PDF
+            Export PDF
           </Button>
           <Button onClick={handleGenerate} variant="outline" className="flex-1 gap-2">
             <Eye className="h-4 w-4" />
-            Vista Previa
+            Preview
           </Button>
         </div>
       </div>
@@ -623,7 +623,7 @@ export function InvoiceGenerator({
         <div className="lg:sticky lg:top-6 h-fit">
           <Card className="overflow-hidden">
             <CardHeader className="bg-muted/50">
-              <CardTitle>Vista Previa</CardTitle>
+              <CardTitle>Preview</CardTitle>
             </CardHeader>
             <CardContent className="p-6 bg-card">
               {/* Invoice Preview */}
@@ -643,15 +643,15 @@ export function InvoiceGenerator({
                     </p>
                   </div>
                   <div className="text-right">
-                    <h3 className="text-3xl font-semibold text-foreground">FACTURA</h3>
+                    <h3 className="text-3xl font-semibold text-foreground">INVOICE</h3>
                     <p className="text-xs text-muted-foreground mt-2">
                       <strong>N°:</strong> {invoice.invoiceNumber}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      <strong>Fecha:</strong> {new Date(invoice.invoiceDate).toLocaleDateString("es-CL")}
+                      <strong>Date:</strong> {new Date(invoice.invoiceDate).toLocaleDateString("en-US")}
                     </p>
                     <p className="text-xs text-muted-foreground">
-                      <strong>Vencimiento:</strong> {new Date(invoice.dueDate).toLocaleDateString("es-CL")}
+                      <strong>Due:</strong> {new Date(invoice.dueDate).toLocaleDateString("en-US")}
                     </p>
                   </div>
                 </div>
@@ -660,10 +660,10 @@ export function InvoiceGenerator({
 
                 {/* Client Info */}
                 <div>
-                  <p className="text-xs text-muted-foreground mb-2">FACTURAR A</p>
+                  <p className="text-xs text-muted-foreground mb-2">BILL TO</p>
                   <p className="font-semibold text-foreground">{invoice.clientName || "—"}</p>
                   <p className="text-xs text-muted-foreground">{invoice.clientAddress || "—"}</p>
-                  <p className="text-xs text-muted-foreground">RUT: {invoice.clientTaxId || "—"}</p>
+                  <p className="text-xs text-muted-foreground">Tax ID: {invoice.clientTaxId || "—"}</p>
                   <p className="text-xs text-muted-foreground">
                     {invoice.clientPhone || "—"} | {invoice.clientEmail || "—"}
                   </p>
@@ -674,9 +674,9 @@ export function InvoiceGenerator({
                 {/* Items Table */}
                 <div>
                   <div className="grid grid-cols-12 gap-2 text-xs text-muted-foreground mb-2 pb-2 border-b">
-                    <div className="col-span-6">Descripción</div>
-                    <div className="col-span-2 text-right">Cant.</div>
-                    <div className="col-span-2 text-right">P. Unit.</div>
+                    <div className="col-span-6">Description</div>
+                    <div className="col-span-2 text-right">Qty.</div>
+                    <div className="col-span-2 text-right">Unit Price</div>
                     <div className="col-span-2 text-right">Total</div>
                   </div>
                   {invoice.items.map((item) => (
@@ -704,7 +704,7 @@ export function InvoiceGenerator({
                     </div>
                     {invoice.discount > 0 && (
                       <div className="flex justify-between">
-                        <span className="text-muted-foreground">Descuento:</span>
+                        <span className="text-muted-foreground">Discount:</span>
                         <span className="text-destructive">-{formatCurrency(invoice.discount)}</span>
                       </div>
                     )}
@@ -721,7 +721,7 @@ export function InvoiceGenerator({
                   <>
                     <Separator />
                     <div>
-                      <p className="text-xs text-muted-foreground mb-1">NOTAS</p>
+                      <p className="text-xs text-muted-foreground mb-1">NOTES</p>
                       <p className="text-xs text-foreground">{invoice.notes}</p>
                     </div>
                   </>
@@ -730,7 +730,7 @@ export function InvoiceGenerator({
                 <Separator />
 
                 <div>
-                  <p className="text-xs text-muted-foreground mb-1">TÉRMINOS Y CONDICIONES</p>
+                  <p className="text-xs text-muted-foreground mb-1">TERMS & CONDITIONS</p>
                   <p className="text-xs text-foreground">{invoice.terms}</p>
                 </div>
               </div>
@@ -739,7 +739,7 @@ export function InvoiceGenerator({
 
           <Alert className="mt-4">
             <AlertDescription className="text-xs">
-              💡 La vista previa muestra cómo se verá tu factura. Usa "Exportar PDF" para generar el documento final.
+              💡 The preview shows how your invoice will look. Use "Export PDF" to generate the final document.
             </AlertDescription>
           </Alert>
         </div>

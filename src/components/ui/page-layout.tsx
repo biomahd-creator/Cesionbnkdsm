@@ -1,23 +1,23 @@
 /**
- * PageLayout — Sistema de Layout Primitives para el DSM
+ * PageLayout — Layout Primitives System for the DSM
  *
- * Resuelve el problema de contenido que ocupa toda la pantalla sin restricción.
- * Provee 4 primitivas composables:
+ * Solves the problem of content occupying the full screen without restriction.
+ * Provides 4 composable primitives:
  *
- *   - PageLayout:    Constraint de ancho máximo (full | constrained | narrow | prose)
- *   - SplitLayout:   Dos paneles lado a lado con ratio configurable
- *   - StackLayout:   Secciones verticales con spacing consistente
- *   - SectionLayout:  Sección con título, descripción y separador
+ *   - PageLayout:    Max-width constraint (full | constrained | narrow | prose)
+ *   - SplitLayout:   Two side-by-side panels with configurable ratio
+ *   - StackLayout:   Vertical sections with consistent spacing
+ *   - SectionLayout: Section with title, description and separator
  *
- * Uso:
+ * Usage:
  *   <PageLayout variant="constrained">
  *     <StackLayout gap="relaxed">
  *       <SectionLayout title="KPIs">
  *         <GridShowcase columns={4}>...</GridShowcase>
  *       </SectionLayout>
  *       <SplitLayout ratio="sidebar-right">
- *         <main>Tabla principal</main>
- *         <aside>Filtros / Resumen</aside>
+ *         <main>Main table</main>
+ *         <aside>Filters / Summary</aside>
  *       </SplitLayout>
  *     </StackLayout>
  *   </PageLayout>

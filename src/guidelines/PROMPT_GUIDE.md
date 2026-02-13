@@ -81,11 +81,9 @@ function Demo() {
 
 ### Excepciones
 
-Algunas paginas NO usan `ComponentShowcase` por diseno:
-- **SidebarShowcasePage**: Layout visual de sidebars embebidos, no cabe en formato fijo.
-- **ChartsPage**: Panel lateral de seleccion + area de charts, layout custom con `h-[calc(100vh-10rem)]`.
-- **KpiShowcasePage**: Tabs entre Dashboard Avanzado y Standard, sin secciones Props/Examples.
-- Paginas de Factoring App (son pantallas funcionales, no showcases).
+**No hay excepciones.** Desde v0.2.0, el 100% de las 120 paginas del DSM usan `ComponentShowcase`.
+
+Para paginas con contenido complejo (formularios self-contained, dashboards, aggregation pages), se usa el patron de extraer la logica a una funcion interna (`*Content` / `*Demo`) y envolver con `ComponentShowcase` en el export principal.
 
 ---
 
@@ -118,7 +116,7 @@ Migra [NombrePage] al formato estandar ComponentShowcase:
 
 ### Checklist de validacion
 
-- [ ] Usa `ComponentShowcase` (excepto paginas en lista de excepciones)
+- [ ] Usa `ComponentShowcase` (todas las paginas sin excepcion)
 - [ ] `description` incluye contexto de uso (sin seccion Usage separada)
 - [ ] `preview` muestra el componente funcionando
 - [ ] `code` tiene imports correctos con `@/components/...`
@@ -129,4 +127,4 @@ Migra [NombrePage] al formato estandar ComponentShowcase:
 
 ---
 
-*Ultima actualizacion: Febrero 2026*
+*Ultima actualizacion: Febrero 13, 2026 — v0.2.0*

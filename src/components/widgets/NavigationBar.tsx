@@ -15,7 +15,7 @@ function CFinanciaLogo() {
     <div className="w-[180px] h-[34px]">
       <svg className="block w-full h-full" fill="none" viewBox="0 0 180 34.2844">
         <g id="Logo">
-          {/* Logo SVG paths - Estos son assets estáticos de Figma, mantener colores originales */}
+          {/* Logo SVG paths - These are static Figma assets, keep original colors */}
           <path d={svgPaths.p336ebef0} fill="#DEFB49" id="Vector" />
           <path d={svgPaths.pa9f4d00} fill="#43F977" id="Vector_2" />
           <path d={svgPaths.pe00f180} fill="#1C2D3A" id="Vector_3" />
@@ -154,13 +154,13 @@ export function NavigationBar({ onLogout, variant = "full" }: NavigationBarProps
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-48 bg-[rgb(var(--cfinancia-navy))] border-white/10 text-white">
                   <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
-                      Perfil
+                      Profile
                   </DropdownMenuItem>
                   <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
-                      Configuración
+                      Settings
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={onLogout} className="focus:bg-white/10 focus:text-destructive text-destructive cursor-pointer">
-                      Cerrar Sesión
+                      Sign Out
                   </DropdownMenuItem>
               </DropdownMenuContent>
           </DropdownMenu>

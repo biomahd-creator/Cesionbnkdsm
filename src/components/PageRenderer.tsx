@@ -1,10 +1,10 @@
-import { PageId } from "./SidebarNew";
-// CRITICAL: Este archivo mapea TODOS los PageIds a sus componentes
-// CADA CASO requiere:
-//    1. Import del componente (arriba)
-//    2. Case en el switch (abajo)
-//    3. PageId existente en SidebarNew.tsx
-// NO eliminar imports/casos sin verificar referencias
+import { PageId } from "./types/PageId";
+// PageRenderer: Maps all PageIds to their components
+// Each case requires:
+//    1. Import of the component (above)
+//    2. Case in the switch (below)
+//    3. Existing PageId in /components/types/PageId.ts
+// Do NOT remove imports/cases without verifying references
 
 import {
   HomePage,
@@ -127,9 +127,9 @@ import {
   TableCatalogPage,
   ProgressWithRangePage,
   FactoringInvoiceTablePage,
+  AppLayoutPage,
+  EditableTablePage,
 } from "../pages";
-
-import { EditableTable } from "./patterns/EditableTable";
 
 interface PageRendererProps {
   pageId: PageId;
@@ -286,6 +286,8 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <GridShowcasePage />;
     case "layout-showcase":
       return <LayoutShowcasePage />;
+    case "app-layout":
+      return <AppLayoutPage />;
 
     // PATTERNS
     case "stats-dashboard":
@@ -295,7 +297,7 @@ export function PageRenderer({ pageId }: PageRendererProps) {
     case "advanced-filter":
       return <AdvancedFilterPanelPage />;
     case "editable-table":
-      return <EditableTable />;
+      return <EditableTablePage />;
     case "invoice-generator":
       return <InvoiceGeneratorPage />;
     case "invoice-upload":

@@ -36,12 +36,12 @@ import { cn } from "../ui/utils";
 /**
  * 🔒 ADVANCED COMPONENT - Form Builder
  * 
- * Constructor visual de formularios con drag & drop
- * Permite crear formularios dinámicamente arrastrando campos
+ * Visual form builder with drag & drop.
+ * Allows creating forms dynamically by dragging fields.
  * 
- * Ubicación: /components/advanced/FormBuilder.tsx
- * Categoría: Advanced Forms - Prioridad Media
- * Uso: Form creation tools, admin panels, survey builders
+ * Location: /components/advanced/FormBuilder.tsx
+ * Category: Advanced Forms - Medium Priority
+ * Usage: Form creation tools, admin panels, survey builders
  */
 
 const FIELD_TYPES = [
@@ -71,7 +71,7 @@ interface FormField {
   placeholder?: string;
   required?: boolean;
   options?: string[];
-  columns: number; // Número de columnas que ocupa (3, 4, 6, 12)
+  columns: number; // Number of columns to span (3, 4, 6, 12)
   min?: number;
   max?: number;
   step?: number;
@@ -509,7 +509,7 @@ ${fields.map(field => {
   );
 };`;
     
-    alert(code); // En producción, esto podría copiar al clipboard o mostrarse en un modal
+    alert(code); // In production, this could copy to clipboard or display in a modal
   };
 
   return (

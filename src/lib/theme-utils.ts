@@ -1,11 +1,11 @@
 /**
- * THEME UTILITIES - Sistema Global de Colores Dinámicos
+ * THEME UTILITIES - Global Dynamic Color System
  * 
- * Este archivo contiene utilidades centralizadas para obtener colores
- * del Theme Customizer. Todos los componentes deben importar estas
- * funciones en lugar de crear sus propias implementaciones.
+ * This file contains centralized utilities for obtaining colors
+ * from the Theme Customizer. All components should import these
+ * functions instead of creating their own implementations.
  * 
- * USO:
+ * USAGE:
  * import { getThemeColor, getChartColors } from '@/lib/theme-utils';
  * 
  * const primaryColor = getThemeColor('--primary');
@@ -13,37 +13,37 @@
  */
 
 /**
- * Obtiene el valor de una variable CSS del tema actual
- * @param variable - Nombre de la variable CSS (ej: '--primary', '--chart-1')
- * @returns String con el valor en formato correcto (hsl, hex, rgb)
+ * Gets the value of a CSS variable from the current theme
+ * @param variable - CSS variable name (e.g.: '--primary', '--chart-1')
+ * @returns String with the value in the correct format (hsl, hex, rgb)
  */
 export function getThemeColor(variable: string): string {
   if (typeof window === 'undefined') {
-    return '#000000'; // Fallback para SSR
+    return '#000000'; // SSR fallback
   }
 
   const value = getComputedStyle(document.documentElement)
     .getPropertyValue(variable)
     .trim();
 
-  // Si no hay valor, retornar fallback
+  // If no value, return fallback
   if (!value) return '#000000';
 
-  // Si ya tiene formato de función CSS (hsl, rgb, etc), retornar tal cual
+  // If already in CSS function format (hsl, rgb, etc), return as-is
   if (value.includes('(')) return value;
 
-  // Si son valores numéricos HSL (ej: "76 96% 62%"), envolver en hsl()
+  // If numeric HSL values (e.g.: "76 96% 62%"), wrap in hsl()
   if (value.includes('%') || value.match(/^\d+\s+\d+%\s+\d+%/)) {
     return `hsl(${value})`;
   }
 
-  // Si es hexadecimal o cualquier otro formato, retornar tal cual
+  // If hex or any other format, return as-is
   return value;
 }
 
 /**
- * Obtiene todos los colores de marca principales del tema
- * @returns Objeto con los colores principales del tema
+ * Gets all main brand colors from the theme
+ * @returns Object with the theme's main colors
  */
 export function getBrandColors() {
   return {
@@ -58,8 +58,8 @@ export function getBrandColors() {
 }
 
 /**
- * Obtiene todos los colores para gráficos (Recharts)
- * @returns Array con los 5 colores de charts
+ * Gets all chart colors (Recharts)
+ * @returns Array with the 5 chart colors
  */
 export function getChartColors(): string[] {
   return [
@@ -72,8 +72,8 @@ export function getChartColors(): string[] {
 }
 
 /**
- * Obtiene un objeto con todos los colores de charts indexados
- * @returns Objeto con chart1-chart5
+ * Gets an indexed object with all chart colors
+ * @returns Object with chart1-chart5
  */
 export function getChartColorsMap() {
   return {
@@ -86,8 +86,8 @@ export function getChartColorsMap() {
 }
 
 /**
- * Obtiene colores de UI (texto, bordes, fondos)
- * @returns Objeto con colores de UI comunes
+ * Gets UI colors (text, borders, backgrounds)
+ * @returns Object with common UI colors
  */
 export function getUIColors() {
   return {
@@ -102,8 +102,8 @@ export function getUIColors() {
 }
 
 /**
- * Obtiene colores de links y navegación
- * @returns Objeto con colores de links
+ * Gets link and navigation colors
+ * @returns Object with link colors
  */
 export function getLinkColors() {
   return {
@@ -114,9 +114,9 @@ export function getLinkColors() {
 }
 
 /**
- * Obtiene todos los colores del tema en un solo objeto
- * Útil para pasar todos los colores de una vez a un componente
- * @returns Objeto completo con todos los colores del tema
+ * Gets all theme colors in a single object.
+ * Useful for passing all colors at once to a component.
+ * @returns Complete object with all theme colors
  */
 export function getAllThemeColors() {
   return {
@@ -130,11 +130,11 @@ export function getAllThemeColors() {
 }
 
 /**
- * Hook personalizado para usar colores del tema en componentes React
- * Útil si necesitas que el componente se re-renderice cuando cambie el tema
+ * Custom hook for using theme colors in React components.
+ * Useful if you need the component to re-render when the theme changes.
  */
 export function useThemeColors() {
-  // Por ahora retorna los colores directamente
-  // En el futuro se puede extender con un listener de cambios
+  // For now returns colors directly
+  // In the future this can be extended with a change listener
   return getAllThemeColors();
 }

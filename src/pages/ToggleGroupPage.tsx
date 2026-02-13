@@ -104,46 +104,46 @@ export function ToggleGroupDemo() {
         {
           name: "type",
           type: '"single" | "multiple"',
-          description: "Modo de selección del grupo",
+          description: "Group selection mode",
           required: true,
         },
         {
           name: "variant",
           type: '"default" | "outline"',
           default: '"default"',
-          description: "Estilo visual del grupo",
+          description: "Visual style of the group",
         },
         {
           name: "size",
           type: '"default" | "sm" | "lg"',
           default: '"default"',
-          description: "Tamaño de los items del grupo",
+          description: "Size of the group items",
         },
         {
           name: "value",
           type: "string | string[]",
-          description: "Valor controlado (string para single, array para multiple)",
+          description: "Controlled value (string for single, array for multiple)",
         },
         {
           name: "defaultValue",
           type: "string | string[]",
-          description: "Valor inicial no controlado",
+          description: "Initial uncontrolled value",
         },
         {
           name: "onValueChange",
           type: "(value: string | string[]) => void",
-          description: "Callback cuando cambia la selección",
+          description: "Callback when the selection changes",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita todo el grupo",
+          description: "Disables the entire group",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para el contenedor",
+          description: "Additional CSS classes for the container",
         },
       ]}
       
@@ -151,7 +151,7 @@ export function ToggleGroupDemo() {
       examples={[
         {
           title: "Text Alignment Controls",
-          description: "Controles de alineación de texto con single selection",
+          description: "Text alignment controls with single selection",
           preview: (
             <ToggleGroup type="single" defaultValue="left">
               <ToggleGroupItem value="left" aria-label="Align left">
@@ -192,7 +192,7 @@ export function AlignmentControls() {
         },
         {
           title: "Text Formatting Toolbar",
-          description: "Múltiples formatos de texto con multiple selection",
+          description: "Multiple text formats with multiple selection",
           preview: (
             <ToggleGroup type="multiple">
               <ToggleGroupItem value="bold" aria-label="Toggle bold">
@@ -233,7 +233,7 @@ export function TextFormattingToolbar() {
         },
         {
           title: "Outline Variant",
-          description: "Toggle group con variante outline",
+          description: "Toggle group with outline variant",
           preview: (
             <div className="flex flex-col gap-4">
               <ToggleGroup type="single" variant="outline" defaultValue="grid">
@@ -286,7 +286,7 @@ export function OutlineVariant() {
         },
         {
           title: "With Text Labels",
-          description: "Toggle group items con texto en lugar de solo iconos",
+          description: "Toggle group items with text instead of just icons",
           preview: (
             <ToggleGroup type="single" defaultValue="list">
               <ToggleGroupItem value="list">List View</ToggleGroupItem>
@@ -308,7 +308,7 @@ export function TextLabels() {
         },
         {
           title: "With Text and Icons",
-          description: "Combinación de texto e iconos para mejor UX",
+          description: "Combination of text and icons for better UX",
           preview: (
             <ToggleGroup type="single" variant="outline" defaultValue="desktop">
               <ToggleGroupItem value="desktop" aria-label="Desktop view">
@@ -349,7 +349,7 @@ export function TextAndIcons() {
         },
         {
           title: "Size Variants",
-          description: "Diferentes tamaños disponibles",
+          description: "Different available sizes",
           preview: (
             <div className="flex flex-col gap-4">
               <ToggleGroup type="single" size="sm" defaultValue="center">
@@ -439,7 +439,7 @@ export function SizeVariants() {
         },
         {
           title: "Disabled State",
-          description: "Toggle group en estado deshabilitado",
+          description: "Toggle group in disabled state",
           preview: (
             <div className="flex flex-col gap-4">
               <ToggleGroup type="single" disabled defaultValue="center">
@@ -504,7 +504,7 @@ export function DisabledState() {
         },
         {
           title: "Complete Text Editor Toolbar",
-          description: "Combinación de alignment y formatting en una barra completa",
+          description: "Combination of alignment and formatting in a complete toolbar",
           preview: (
             <div className="flex flex-wrap gap-2">
               <ToggleGroup type="single" defaultValue="left">

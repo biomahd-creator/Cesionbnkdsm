@@ -109,24 +109,24 @@ export function DialogDemo() {
         {
           name: "open",
           type: "boolean",
-          description: "Estado controlado del dialog (abierto/cerrado)",
+          description: "Controlled state of the dialog (open/closed)",
         },
         {
           name: "defaultOpen",
           type: "boolean",
           default: "false",
-          description: "Estado inicial del dialog (componente no controlado)",
+          description: "Initial state of the dialog (uncontrolled component)",
         },
         {
           name: "onOpenChange",
           type: "(open: boolean) => void",
-          description: "Callback que se ejecuta cuando cambia el estado del dialog",
+          description: "Callback that fires when the dialog state changes",
         },
         {
           name: "modal",
           type: "boolean",
           default: "true",
-          description: "Si true, bloquea la interacción con el contenido debajo del dialog",
+          description: "If true, blocks interaction with the content below the dialog",
         },
       ]}
       
@@ -134,7 +134,7 @@ export function DialogDemo() {
       examples={[
         {
           title: "With Form",
-          description: "Dialog con formulario completo y validación",
+          description: "Dialog with complete form and validation",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -200,7 +200,7 @@ export function DialogDemo() {
         },
         {
           title: "Destructive Action",
-          description: "Dialog para confirmar acciones destructivas con warning",
+          description: "Dialog to confirm destructive actions with warning",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -259,7 +259,7 @@ export function DialogDemo() {
         },
         {
           title: "Custom Width",
-          description: "Dialog con ancho personalizado",
+          description: "Dialog with custom width",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -299,7 +299,7 @@ export function DialogDemo() {
         },
         {
           title: "Scrollable Content",
-          description: "Dialog con contenido que excede la altura y hace scroll",
+          description: "Dialog with content that exceeds the height and scrolls",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -346,7 +346,7 @@ export function DialogDemo() {
         },
         {
           title: "Upload Dialog",
-          description: "Dialog para subir archivos con preview",
+          description: "Dialog for uploading files with preview",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -402,7 +402,7 @@ export function DialogDemo() {
         },
         {
           title: "Settings Dialog",
-          description: "Dialog de configuración con múltiples secciones",
+          description: "Settings dialog with multiple sections",
           preview: (
             <Dialog>
               <DialogTrigger asChild>
@@ -473,7 +473,7 @@ export function DialogDemo() {
         },
         {
           title: "Controlled Dialog",
-          description: "Dialog controlado con estado externo",
+          description: "Controlled dialog with external state",
           preview: (
             <Dialog>
               <DialogTrigger asChild>

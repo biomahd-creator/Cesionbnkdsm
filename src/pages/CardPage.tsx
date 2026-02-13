@@ -7,7 +7,7 @@ export function CardPage() {
   return (
     <ComponentShowcase
       title="Card"
-      description="Displays a card with header, content, and footer. Importa los componentes de Card desde @/components/ui/card."
+      description="Displays a card with header, content, and footer. Import Card components from @/components/ui/card."
       category="Layout"
       
       preview={
@@ -49,25 +49,25 @@ export function CardDemo() {
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales",
+          description: "Additional CSS classes",
         },
       ]}
       
       examples={[
         {
           title: "With Badge",
-          description: "Card con badge en el header",
+          description: "Card with badge in the header",
           preview: (
             <Card className="w-[350px]">
               <CardHeader>
                 <div className="flex items-center justify-between">
-                  <CardTitle>Nueva Operación</CardTitle>
-                  <Badge>Activo</Badge>
+                  <CardTitle>New Operation</CardTitle>
+                  <Badge>Active</Badge>
                 </div>
-                <CardDescription>Detalles de la operación</CardDescription>
+                <CardDescription>Operation details</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm">Contenido de ejemplo</p>
+                <p className="text-sm">Example content</p>
               </CardContent>
             </Card>
           ),
@@ -79,13 +79,13 @@ export function CardWithBadge() {
     <Card className="w-[350px]">
       <CardHeader>
         <div className="flex items-center justify-between">
-          <CardTitle>Nueva Operación</CardTitle>
-          <Badge>Activo</Badge>
+          <CardTitle>New Operation</CardTitle>
+          <Badge>Active</Badge>
         </div>
-        <CardDescription>Detalles de la operación</CardDescription>
+        <CardDescription>Operation details</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-sm">Contenido de ejemplo</p>
+        <p className="text-sm">Example content</p>
       </CardContent>
     </Card>
   );

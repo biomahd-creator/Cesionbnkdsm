@@ -24,18 +24,18 @@ export function AlertDialogDemo() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="destructive">Eliminar Cuenta</Button>
+        <Button variant="destructive">Delete Account</Button>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>¿Estás absolutamente seguro?</AlertDialogTitle>
+          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
           <AlertDialogDescription>
-            Esta acción no se puede deshacer.
+            This action cannot be undone.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancelar</AlertDialogCancel>
-          <AlertDialogAction>Sí, eliminar</AlertDialogAction>
+          <AlertDialogCancel>Cancel</AlertDialogCancel>
+          <AlertDialogAction>Yes, delete</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
@@ -46,28 +46,28 @@ export function AlertDialogPage() {
   return (
     <ComponentShowcase
       title="Alert Dialog"
-      description="Modal dialog para interrupciones importantes que requieren confirmación del usuario. Construido sobre Radix UI con focus trap, escape key, ARIA roles y restauración de foco. Usar para acciones destructivas o decisiones críticas irreversibles."
+      description="Modal dialog for important interruptions that require user confirmation. Built on Radix UI with focus trap, escape key, ARIA roles, and focus restoration. Use for destructive actions or irreversible critical decisions."
       category="Feedback"
       preview={
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive">
               <Trash2 className="h-4 w-4 mr-2" />
-              Eliminar Cuenta
+              Delete Account
             </Button>
           </AlertDialogTrigger>
           <AlertDialogContent>
             <AlertDialogHeader>
-              <AlertDialogTitle>¿Estás absolutamente seguro?</AlertDialogTitle>
+              <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
               <AlertDialogDescription>
-                Esta acción no se puede deshacer. Esto eliminará permanentemente tu cuenta
-                y removerá todos tus datos de nuestros servidores.
+                This action cannot be undone. This will permanently delete your account
+                and remove all your data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>
-              <AlertDialogCancel>Cancelar</AlertDialogCancel>
+              <AlertDialogCancel>Cancel</AlertDialogCancel>
               <AlertDialogAction className="bg-red-600 hover:bg-red-700">
-                Sí, eliminar cuenta
+                Yes, delete account
               </AlertDialogAction>
             </AlertDialogFooter>
           </AlertDialogContent>
@@ -75,146 +75,146 @@ export function AlertDialogPage() {
       }
       code={code}
       props={[
-        { name: "AlertDialog", type: "Component", description: "Contenedor principal del dialog" },
-        { name: "AlertDialogTrigger", type: "Component", description: "Botón que abre el dialog (usar asChild)" },
-        { name: "AlertDialogContent", type: "Component", description: "Contenido del modal con overlay" },
-        { name: "AlertDialogHeader", type: "Component", description: "Contenedor de título y descripción" },
-        { name: "AlertDialogTitle", type: "Component", description: "Título del alert dialog" },
-        { name: "AlertDialogDescription", type: "Component", description: "Texto descriptivo del dialog" },
-        { name: "AlertDialogFooter", type: "Component", description: "Contenedor de botones de acción" },
-        { name: "AlertDialogAction", type: "Component", description: "Botón de acción confirmatoria" },
-        { name: "AlertDialogCancel", type: "Component", description: "Botón de cancelar / cerrar" },
+        { name: "AlertDialog", type: "Component", description: "Main dialog container" },
+        { name: "AlertDialogTrigger", type: "Component", description: "Button that opens the dialog (use asChild)" },
+        { name: "AlertDialogContent", type: "Component", description: "Modal content with overlay" },
+        { name: "AlertDialogHeader", type: "Component", description: "Container for title and description" },
+        { name: "AlertDialogTitle", type: "Component", description: "Alert dialog title" },
+        { name: "AlertDialogDescription", type: "Component", description: "Descriptive text for the dialog" },
+        { name: "AlertDialogFooter", type: "Component", description: "Container for action buttons" },
+        { name: "AlertDialogAction", type: "Component", description: "Confirmatory action button" },
+        { name: "AlertDialogCancel", type: "Component", description: "Cancel / close button" },
       ]}
       examples={[
         {
-          title: "Advertencia",
-          description: "Alert dialog con tono de advertencia para cambios sin guardar.",
+          title: "Warning",
+          description: "Alert dialog with warning tone for unsaved changes.",
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline">
                   <AlertTriangle className="h-4 w-4 mr-2" />
-                  Ver Advertencia
+                  View Warning
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle className="flex items-center gap-2">
                     <AlertTriangle className="h-5 w-5 text-yellow-600" />
-                    Cambios sin guardar
+                    Unsaved Changes
                   </AlertDialogTitle>
                   <AlertDialogDescription>
-                    Tienes cambios sin guardar. Si continúas, perderás todos los cambios
-                    realizados en este documento.
+                    You have unsaved changes. If you continue, you will lose all changes
+                    made to this document.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction>Continuar sin guardar</AlertDialogAction>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Continue without saving</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="outline">Ver Advertencia</Button>
+    <Button variant="outline">View Warning</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>Cambios sin guardar</AlertDialogTitle>
+      <AlertDialogTitle>Unsaved Changes</AlertDialogTitle>
       <AlertDialogDescription>
-        Si continúas, perderás todos los cambios.
+        If you continue, you will lose all changes.
       </AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancelar</AlertDialogCancel>
-      <AlertDialogAction>Continuar</AlertDialogAction>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Continue</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
         },
         {
-          title: "Cerrar Sesión",
-          description: "Confirmación de cierre de sesión.",
+          title: "Log Out",
+          description: "Log out confirmation.",
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline">
                   <LogOut className="h-4 w-4 mr-2" />
-                  Cerrar Sesión
+                  Log Out
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>¿Cerrar sesión?</AlertDialogTitle>
+                  <AlertDialogTitle>Log out?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    Deberás iniciar sesión nuevamente para acceder a tu cuenta.
+                    You will need to log in again to access your account.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                  <AlertDialogAction>Cerrar Sesión</AlertDialogAction>
+                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogAction>Log Out</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button variant="outline">Cerrar Sesión</Button>
+    <Button variant="outline">Log Out</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>¿Cerrar sesión?</AlertDialogTitle>
+      <AlertDialogTitle>Log out?</AlertDialogTitle>
       <AlertDialogDescription>...</AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Cancelar</AlertDialogCancel>
-      <AlertDialogAction>Cerrar Sesión</AlertDialogAction>
+      <AlertDialogCancel>Cancel</AlertDialogCancel>
+      <AlertDialogAction>Log Out</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,
         },
         {
-          title: "Información",
-          description: "Alert dialog informativo para actualizaciones.",
+          title: "Information",
+          description: "Informational alert dialog for updates.",
           preview: (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline">
                   <Info className="h-4 w-4 mr-2" />
-                  Ver Información
+                  View Information
                 </Button>
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
                   <AlertDialogTitle className="flex items-center gap-2">
                     <Info className="h-5 w-5 text-blue-600" />
-                    Actualización Disponible
+                    Update Available
                   </AlertDialogTitle>
                   <AlertDialogDescription>
-                    Hay una nueva versión disponible con mejoras de rendimiento y
-                    correcciones de bugs.
+                    A new version is available with performance improvements and
+                    bug fixes.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Más tarde</AlertDialogCancel>
-                  <AlertDialogAction>Actualizar Ahora</AlertDialogAction>
+                  <AlertDialogCancel>Later</AlertDialogCancel>
+                  <AlertDialogAction>Update Now</AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
           ),
           code: `<AlertDialog>
   <AlertDialogTrigger asChild>
-    <Button>Ver Información</Button>
+    <Button>View Information</Button>
   </AlertDialogTrigger>
   <AlertDialogContent>
     <AlertDialogHeader>
-      <AlertDialogTitle>Actualización Disponible</AlertDialogTitle>
+      <AlertDialogTitle>Update Available</AlertDialogTitle>
       <AlertDialogDescription>...</AlertDialogDescription>
     </AlertDialogHeader>
     <AlertDialogFooter>
-      <AlertDialogCancel>Más tarde</AlertDialogCancel>
-      <AlertDialogAction>Actualizar</AlertDialogAction>
+      <AlertDialogCancel>Later</AlertDialogCancel>
+      <AlertDialogAction>Update</AlertDialogAction>
     </AlertDialogFooter>
   </AlertDialogContent>
 </AlertDialog>`,

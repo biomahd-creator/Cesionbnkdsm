@@ -16,14 +16,14 @@ import {
 import { Mail, Phone, User, Building, MessageSquare, Send, CheckCircle } from "lucide-react";
 
 /**
- * 🔒 BUSINESS PATTERN - Contact Form
+ * BUSINESS PATTERN - Contact Form
  * 
- * Formulario de contacto profesional con validación
- * Incluye campos personalizables, validación y estados de éxito/error
+ * Professional contact form with validation.
+ * Includes customizable fields, validation, and success/error states.
  * 
- * Ubicación: /components/widgets/ContactForm.tsx
- * Categoría: Business Components - Alta Prioridad
- * Uso: Landing pages, páginas de contacto, formularios de lead generation
+ * Location: /components/widgets/ContactForm.tsx
+ * Category: Business Components - High Priority
+ * Usage: Landing pages, contact pages, lead generation forms
  */
 
 interface ContactFormProps {
@@ -47,7 +47,7 @@ export function ContactForm({
   onSubmit,
   showCompany = true,
   showSubject = true,
-  submitButtonText = "Enviar Mensaje"
+  submitButtonText = "Send Message"
 }: ContactFormProps) {
   const [formData, setFormData] = useState<ContactFormData>({
     name: "",
@@ -67,23 +67,23 @@ export function ContactForm({
     const newErrors: Record<string, string> = {};
 
     if (!formData.name.trim()) {
-      newErrors.name = "El nombre es requerido";
+      newErrors.name = "Name is required";
     }
 
     if (!formData.email.trim()) {
-      newErrors.email = "El email es requerido";
+      newErrors.email = "Email is required";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-      newErrors.email = "Email inválido";
+      newErrors.email = "Invalid email";
     }
 
     if (!formData.message.trim()) {
-      newErrors.message = "El mensaje es requerido";
+      newErrors.message = "Message is required";
     } else if (formData.message.trim().length < 10) {
-      newErrors.message = "El mensaje debe tener al menos 10 caracteres";
+      newErrors.message = "Message must be at least 10 characters";
     }
 
     if (!formData.acceptTerms) {
-      newErrors.acceptTerms = "Debes aceptar los términos y condiciones";
+      newErrors.acceptTerms = "You must accept the terms and conditions";
     }
 
     setErrors(newErrors);
@@ -141,9 +141,9 @@ export function ContactForm({
               <CheckCircle className="h-8 w-8 text-green-600" />
             </div>
             <div className="space-y-2">
-              <h3 className="font-bold">¡Mensaje Enviado!</h3>
+              <h3 className="font-bold">Message Sent!</h3>
               <p className="text-muted-foreground">
-                Gracias por contactarnos. Te responderemos pronto.
+                Thank you for reaching out. We will get back to you soon.
               </p>
             </div>
           </div>
@@ -159,14 +159,14 @@ export function ContactForm({
           <div>
             <CardTitle className="flex items-center gap-2">
               <MessageSquare className="h-5 w-5" />
-              Formulario de Contacto
+              Contact Form
             </CardTitle>
             <CardDescription>
-              Completa el formulario y nos pondremos en contacto contigo
+              Fill out the form and we will get in touch with you
             </CardDescription>
           </div>
           <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
-            Respuesta en 24h
+            Response in 24h
           </Badge>
         </div>
       </CardHeader>
@@ -177,11 +177,11 @@ export function ContactForm({
             <div className="space-y-2">
               <Label htmlFor="name" className="flex items-center gap-2">
                 <User className="h-4 w-4" />
-                Nombre completo *
+                Full name *
               </Label>
               <Input
                 id="name"
-                placeholder="Juan Pérez"
+                placeholder="John Doe"
                 value={formData.name}
                 onChange={(e) => handleChange("name", e.target.value)}
                 className={errors.name ? "border-red-500" : ""}
@@ -199,7 +199,7 @@ export function ContactForm({
               <Input
                 id="email"
                 type="email"
-                placeholder="juan@empresa.com"
+                placeholder="john@company.com"
                 value={formData.email}
                 onChange={(e) => handleChange("email", e.target.value)}
                 className={errors.email ? "border-red-500" : ""}
@@ -215,12 +215,12 @@ export function ContactForm({
             <div className="space-y-2">
               <Label htmlFor="phone" className="flex items-center gap-2">
                 <Phone className="h-4 w-4" />
-                Teléfono
+                Phone
               </Label>
               <Input
                 id="phone"
                 type="tel"
-                placeholder="+57 300 123 4567"
+                placeholder="+1 555 123 4567"
                 value={formData.phone}
                 onChange={(e) => handleChange("phone", e.target.value)}
               />
@@ -230,11 +230,11 @@ export function ContactForm({
               <div className="space-y-2">
                 <Label htmlFor="company" className="flex items-center gap-2">
                   <Building className="h-4 w-4" />
-                  Empresa
+                  Company
                 </Label>
                 <Input
                   id="company"
-                  placeholder="Nombre de la empresa"
+                  placeholder="Company name"
                   value={formData.company}
                   onChange={(e) => handleChange("company", e.target.value)}
                 />
@@ -245,21 +245,21 @@ export function ContactForm({
           {/* Subject */}
           {showSubject && (
             <div className="space-y-2">
-              <Label htmlFor="subject">Asunto *</Label>
+              <Label htmlFor="subject">Subject *</Label>
               <Select
                 value={formData.subject}
                 onValueChange={(value) => handleChange("subject", value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Selecciona un tema" />
+                  <SelectValue placeholder="Select a topic" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="general">Consulta General</SelectItem>
-                  <SelectItem value="factoring">Servicios de Factoring</SelectItem>
-                  <SelectItem value="demo">Solicitar Demo</SelectItem>
-                  <SelectItem value="soporte">Soporte Técnico</SelectItem>
-                  <SelectItem value="ventas">Ventas</SelectItem>
-                  <SelectItem value="otro">Otro</SelectItem>
+                  <SelectItem value="general">General Inquiry</SelectItem>
+                  <SelectItem value="factoring">Factoring Services</SelectItem>
+                  <SelectItem value="demo">Request Demo</SelectItem>
+                  <SelectItem value="soporte">Technical Support</SelectItem>
+                  <SelectItem value="ventas">Sales</SelectItem>
+                  <SelectItem value="otro">Other</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -267,10 +267,10 @@ export function ContactForm({
 
           {/* Message */}
           <div className="space-y-2">
-            <Label htmlFor="message">Mensaje *</Label>
+            <Label htmlFor="message">Message *</Label>
             <Textarea
               id="message"
-              placeholder="Cuéntanos en qué podemos ayudarte..."
+              placeholder="Tell us how we can help you..."
               rows={5}
               value={formData.message}
               onChange={(e) => handleChange("message", e.target.value)}
@@ -280,7 +280,7 @@ export function ContactForm({
               <p className="text-sm text-red-500">{errors.message}</p>
             )}
             <p className="text-xs text-muted-foreground">
-              Mínimo 10 caracteres
+              Minimum 10 characters
             </p>
           </div>
 
@@ -297,13 +297,13 @@ export function ContactForm({
                 htmlFor="terms" 
                 className="text-sm font-normal cursor-pointer"
               >
-                Acepto los{" "}
+                I accept the{" "}
                 <a href="#" className="text-primary hover:underline">
-                  términos y condiciones
+                  terms and conditions
                 </a>{" "}
-                y la{" "}
+                and the{" "}
                 <a href="#" className="text-primary hover:underline">
-                  política de privacidad
+                  privacy policy
                 </a>
               </Label>
               {errors.acceptTerms && (
@@ -319,7 +319,7 @@ export function ContactForm({
             disabled={isSubmitting}
           >
             {isSubmitting ? (
-              <>Enviando...</>
+              <>Sending...</>
             ) : (
               <>
                 <Send className="h-4 w-4" />
@@ -330,7 +330,7 @@ export function ContactForm({
 
           {/* Footer Note */}
           <p className="text-xs text-center text-muted-foreground">
-            * Campos requeridos. Responderemos en un máximo de 24 horas hábiles.
+            * Required fields. We will respond within 24 business hours.
           </p>
         </form>
       </CardContent>

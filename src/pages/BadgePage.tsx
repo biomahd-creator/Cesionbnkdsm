@@ -11,7 +11,7 @@ export function BadgePage() {
   return (
     <ComponentShowcase
       title="Badge"
-      description="Displays a badge or a component that looks like a badge. Incluye variantes base y semánticas en 3 niveles de intensidad: Solid, Outline y Soft."
+      description="Displays a badge or a component that looks like a badge. Includes base and semantic variants in 3 intensity levels: Solid, Outline, and Soft."
       category="Data Display"
 
       // Main Preview
@@ -36,19 +36,19 @@ export function BadgePage() {
             <div className="flex flex-wrap gap-3">
               <Badge variant="success">
                 <Check className="h-3 w-3" />
-                Aprobado
+                Approved
               </Badge>
               <Badge variant="destructive">
                 <X className="h-3 w-3" />
-                Rechazado
+                Rejected
               </Badge>
               <Badge variant="warning">
                 <AlertCircle className="h-3 w-3" />
-                Pendiente
+                Pending
               </Badge>
               <Badge variant="info">
                 <Info className="h-3 w-3" />
-                En revisión
+                In Review
               </Badge>
             </div>
           </div>
@@ -61,19 +61,19 @@ export function BadgePage() {
             <div className="flex flex-wrap gap-3">
               <Badge variant="success-outline">
                 <Check className="h-3 w-3" />
-                Aprobado
+                Approved
               </Badge>
               <Badge variant="destructive-outline">
                 <X className="h-3 w-3" />
-                Rechazado
+                Rejected
               </Badge>
               <Badge variant="warning-outline">
                 <Clock className="h-3 w-3" />
-                Pendiente
+                Pending
               </Badge>
               <Badge variant="info-outline">
                 <Info className="h-3 w-3" />
-                En revisión
+                In Review
               </Badge>
             </div>
           </div>
@@ -86,19 +86,19 @@ export function BadgePage() {
             <div className="flex flex-wrap gap-3">
               <Badge variant="success-soft">
                 <Check className="h-3 w-3" />
-                Aprobado
+                Approved
               </Badge>
               <Badge variant="destructive-soft">
                 <X className="h-3 w-3" />
-                Rechazado
+                Rejected
               </Badge>
               <Badge variant="warning-soft">
                 <AlertCircle className="h-3 w-3" />
-                Pendiente
+                Pending
               </Badge>
               <Badge variant="info-soft">
                 <Info className="h-3 w-3" />
-                En revisión
+                In Review
               </Badge>
             </div>
           </div>
@@ -111,19 +111,19 @@ export function BadgePage() {
             <div className="flex flex-wrap gap-3">
               <Badge variant="success-soft-outline">
                 <Check className="h-3 w-3" />
-                Aprobado
+                Approved
               </Badge>
               <Badge variant="destructive-soft-outline">
                 <X className="h-3 w-3" />
-                Rechazado
+                Rejected
               </Badge>
               <Badge variant="warning-soft-outline">
                 <AlertCircle className="h-3 w-3" />
-                Pendiente
+                Pending
               </Badge>
               <Badge variant="info-soft-outline">
                 <Info className="h-3 w-3" />
-                En revisión
+                In Review
               </Badge>
             </div>
           </div>
@@ -139,24 +139,24 @@ export function BadgeSemanticDemo() {
     <div className="flex flex-col gap-4">
       {/* Solid */}
       <div className="flex gap-3">
-        <Badge variant="success"><Check /> Aprobado</Badge>
-        <Badge variant="destructive"><X /> Rechazado</Badge>
-        <Badge variant="warning"><AlertCircle /> Pendiente</Badge>
-        <Badge variant="info"><Info /> En revisión</Badge>
+        <Badge variant="success"><Check /> Approved</Badge>
+        <Badge variant="destructive"><X /> Rejected</Badge>
+        <Badge variant="warning"><AlertCircle /> Pending</Badge>
+        <Badge variant="info"><Info /> In Review</Badge>
       </div>
       {/* Outline */}
       <div className="flex gap-3">
-        <Badge variant="success-outline">Aprobado</Badge>
-        <Badge variant="destructive-outline">Rechazado</Badge>
-        <Badge variant="warning-outline">Pendiente</Badge>
-        <Badge variant="info-outline">En revisión</Badge>
+        <Badge variant="success-outline">Approved</Badge>
+        <Badge variant="destructive-outline">Rejected</Badge>
+        <Badge variant="warning-outline">Pending</Badge>
+        <Badge variant="info-outline">In Review</Badge>
       </div>
       {/* Soft */}
       <div className="flex gap-3">
-        <Badge variant="success-soft">Aprobado</Badge>
-        <Badge variant="destructive-soft">Rechazado</Badge>
-        <Badge variant="warning-soft">Pendiente</Badge>
-        <Badge variant="info-soft">En revisión</Badge>
+        <Badge variant="success-soft">Approved</Badge>
+        <Badge variant="destructive-soft">Rejected</Badge>
+        <Badge variant="warning-soft">Pending</Badge>
+        <Badge variant="info-soft">In Review</Badge>
       </div>
     </div>
   );
@@ -168,17 +168,17 @@ export function BadgeSemanticDemo() {
           name: "variant",
           type: '"default" | "secondary" | "outline" | "neutral" | "destructive" | "success" | "warning" | "info" | "destructive-outline" | "success-outline" | "warning-outline" | "info-outline" | "destructive-soft" | "success-soft" | "warning-soft" | "info-soft" | "success-soft-outline" | "destructive-soft-outline" | "warning-soft-outline" | "info-soft-outline"',
           default: '"default"',
-          description: "Estilo visual del badge. Solid = fondo sólido + texto blanco. Outline = borde coloreado + texto coloreado. Soft = fondo tenue + texto coloreado.",
+          description: "Visual style of the badge. Solid = solid background + white text. Outline = colored border + colored text. Soft = muted background + colored text.",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para el badge",
+          description: "Additional CSS classes for the badge",
         },
         {
           name: "children",
           type: "ReactNode",
-          description: "Contenido del badge (texto, iconos, etc.)",
+          description: "Badge content (text, icons, etc.)",
           required: true,
         },
       ]}
@@ -186,48 +186,48 @@ export function BadgeSemanticDemo() {
       // Examples
       examples={[
         {
-          title: "Estado de Operaciones (Factoring)",
-          description: "Badges semánticos aplicados al flujo de operaciones de factoring.",
+          title: "Operation Status (Factoring)",
+          description: "Semantic badges applied to the factoring operations flow.",
           preview: (
             <div className="flex flex-col gap-4 p-4 border rounded-lg bg-card">
               <div className="flex items-center justify-between">
                 <span className="text-sm">OP-2024-001 — Cencosud S.A.</span>
                 <Badge variant="success">
                   <FileCheck className="h-3 w-3" />
-                  Aprobada
+                  Approved
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm">OP-2024-002 — Falabella Retail</span>
                 <Badge variant="warning-soft">
                   <Clock className="h-3 w-3" />
-                  En evaluación
+                  Under Review
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm">OP-2024-003 — SMU Corp.</span>
                 <Badge variant="destructive-outline">
                   <Ban className="h-3 w-3" />
-                  Rechazada
+                  Rejected
                 </Badge>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-sm">OP-2024-004 — Ripley S.A.</span>
                 <Badge variant="info-soft">
                   <ArrowUpRight className="h-3 w-3" />
-                  En cesión
+                  In Assignment
                 </Badge>
               </div>
             </div>
           ),
-          code: `<Badge variant="success"><FileCheck /> Aprobada</Badge>
-<Badge variant="warning-soft"><Clock /> En evaluación</Badge>
-<Badge variant="destructive-outline"><Ban /> Rechazada</Badge>
-<Badge variant="info-soft"><ArrowUpRight /> En cesión</Badge>`,
+          code: `<Badge variant="success"><FileCheck /> Approved</Badge>
+<Badge variant="warning-soft"><Clock /> Under Review</Badge>
+<Badge variant="destructive-outline"><Ban /> Rejected</Badge>
+<Badge variant="info-soft"><ArrowUpRight /> In Assignment</Badge>`,
         },
         {
-          title: "Comparación de Intensidades",
-          description: "Cada color semántico en sus 4 niveles de intensidad visual: Solid, Outline, Soft y Soft Outline.",
+          title: "Intensity Comparison",
+          description: "Each semantic color in its 4 visual intensity levels: Solid, Outline, Soft, and Soft Outline.",
           preview: (
             <div className="space-y-4">
               {/* Success row */}
@@ -264,7 +264,7 @@ export function BadgeSemanticDemo() {
               </div>
             </div>
           ),
-          code: `{/* Cada color × 4 intensidades */}
+          code: `{/* Each color × 4 intensities */}
 <Badge variant="success">Solid</Badge>
 <Badge variant="success-outline">Outline</Badge>
 <Badge variant="success-soft">Soft</Badge>
@@ -287,12 +287,12 @@ export function BadgeSemanticDemo() {
         },
         {
           title: "With Icons",
-          description: "Badges con iconos de Lucide React para mayor contexto visual.",
+          description: "Badges with Lucide React icons for greater visual context.",
           preview: (
             <div className="flex flex-wrap gap-3">
               <Badge variant="success">
                 <Check className="h-3 w-3" />
-                Completado
+                Completed
               </Badge>
               <Badge variant="destructive">
                 <X className="h-3 w-3" />
@@ -300,76 +300,76 @@ export function BadgeSemanticDemo() {
               </Badge>
               <Badge variant="warning">
                 <AlertCircle className="h-3 w-3" />
-                Advertencia
+                Warning
               </Badge>
               <Badge variant="info">
                 <Info className="h-3 w-3" />
-                Información
+                Information
               </Badge>
               <Badge variant="outline">
                 <Clock className="h-3 w-3" />
-                Pendiente
+                Pending
               </Badge>
               <Badge variant="neutral">
                 <Shield className="h-3 w-3" />
-                Archivado
+                Archived
               </Badge>
             </div>
           ),
-          code: `<Badge variant="success"><Check /> Completado</Badge>
+          code: `<Badge variant="success"><Check /> Completed</Badge>
 <Badge variant="destructive"><X /> Error</Badge>
-<Badge variant="warning"><AlertCircle /> Advertencia</Badge>
-<Badge variant="info"><Info /> Información</Badge>
-<Badge variant="outline"><Clock /> Pendiente</Badge>
-<Badge variant="neutral"><Shield /> Archivado</Badge>`,
+<Badge variant="warning"><AlertCircle /> Warning</Badge>
+<Badge variant="info"><Info /> Information</Badge>
+<Badge variant="outline"><Clock /> Pending</Badge>
+<Badge variant="neutral"><Shield /> Archived</Badge>`,
         },
         {
           title: "Status Indicators",
-          description: "Badges para mostrar estados con punto indicador animado.",
+          description: "Badges to show statuses with animated indicator dot.",
           preview: (
             <div className="flex flex-col gap-3">
               <div className="flex items-center gap-2">
                 <span className="text-sm w-20">Online:</span>
                 <Badge variant="success-soft" className="gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-green-600 dark:bg-green-400 animate-pulse" />
-                  Activo
+                  Active
                 </Badge>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm w-20">Warning:</span>
                 <Badge variant="warning-soft" className="gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-amber-500 dark:bg-amber-400" />
-                  Degradado
+                  Degraded
                 </Badge>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm w-20">Offline:</span>
                 <Badge variant="destructive-soft" className="gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-red-600 dark:bg-red-400" />
-                  Caído
+                  Down
                 </Badge>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-sm w-20">Maint.:</span>
                 <Badge variant="info-soft" className="gap-1.5">
                   <span className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-400" />
-                  Mantenimiento
+                  Maintenance
                 </Badge>
               </div>
             </div>
           ),
           code: `<Badge variant="success-soft" className="gap-1.5">
   <span className="h-2 w-2 rounded-full bg-green-600 dark:bg-green-400 animate-pulse" />
-  Activo
+  Active
 </Badge>
 <Badge variant="warning-soft" className="gap-1.5">
   <span className="h-2 w-2 rounded-full bg-amber-500 dark:bg-amber-400" />
-  Degradado
+  Degraded
 </Badge>`,
         },
         {
           title: "Notification Badges",
-          description: "Badges para mostrar contadores de notificaciones.",
+          description: "Badges to show notification counters.",
           preview: (
             <div className="flex flex-wrap gap-6">
               <div className="relative inline-block">
@@ -407,7 +407,7 @@ export function BadgeSemanticDemo() {
         },
         {
           title: "Tag System",
-          description: "Badges como tags removibles usando variante soft.",
+          description: "Badges as removable tags using soft variant.",
           preview: (
             <div className="flex flex-wrap gap-2">
               <Badge variant="info-soft" className="gap-1.5 pr-1">

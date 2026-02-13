@@ -26,5 +26,6 @@ export * from "./StepIndicator";
 export * from "./Timeline";
 export * from "./TransferList";
 export * from "./TreeTable";
+export * from "./TreeTableV2";
 export * from "./TreemapChart";
 export * from "./VirtualizedList";

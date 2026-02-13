@@ -10,7 +10,7 @@ export interface TourStep {
   };
 }
 
-// Vinculación (Onboarding) Form Tour
+// Onboarding Form Tour
 export const vinculacionTourSteps: TourStep[] = [
   {
     element: "#tour-step-welcome",

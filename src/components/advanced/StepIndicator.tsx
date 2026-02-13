@@ -7,12 +7,12 @@ import { cn } from "../ui/utils";
 /**
  * 🔒 ADVANCED COMPONENT - Step Indicator
  * 
- * Componente reutilizable para mostrar progreso en procesos multi-paso
- * Soporta orientación horizontal y vertical, con estados: pending, active, completed
+ * Reusable component for showing progress in multi-step processes.
+ * Supports horizontal and vertical orientation, with states: pending, active, completed.
  * 
- * Ubicación: /components/advanced/StepIndicator.tsx
- * Categoría: Advanced Forms - Prioridad Media
- * Uso: Wizards, onboarding, checkout flows, form progression
+ * Location: /components/advanced/StepIndicator.tsx
+ * Category: Advanced Forms - Medium Priority
+ * Usage: Wizards, onboarding, checkout flows, form progression
  */
 
 export interface Step {
@@ -53,7 +53,7 @@ export function StepIndicator({
     }
   };
 
-  // Minimal variant - solo progress bar
+  // Minimal variant - progress bar only
   if (variant === "minimal") {
     return (
       <div className={cn("space-y-2", className)}>
@@ -68,7 +68,7 @@ export function StepIndicator({
     );
   }
 
-  // Compact variant - solo círculos sin labels
+  // Compact variant - circles only, no labels
   if (variant === "compact") {
     return (
       <div className={cn("space-y-4", className)}>

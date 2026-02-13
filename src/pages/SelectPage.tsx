@@ -71,40 +71,40 @@ export function SelectDemo() {
         {
           name: "defaultValue",
           type: "string",
-          description: "Valor por defecto del select (componente no controlado)",
+          description: "Default value of the select (uncontrolled component)",
         },
         {
           name: "value",
           type: "string",
-          description: "Valor controlado del select (componente controlado)",
+          description: "Controlled value of the select (controlled component)",
         },
         {
           name: "onValueChange",
           type: "(value: string) => void",
-          description: "Callback que se ejecuta cuando cambia el valor seleccionado",
+          description: "Callback fired when the selected value changes",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita el select completo",
+          description: "Disables the entire select",
         },
         {
           name: "name",
           type: "string",
-          description: "Nombre del campo para formularios HTML",
+          description: "Field name for HTML forms",
         },
         {
           name: "required",
           type: "boolean",
           default: "false",
-          description: "Marca el select como requerido en formularios",
+          description: "Marks the select as required in forms",
         },
         {
           name: "dir",
           type: '"ltr" | "rtl"',
           default: '"ltr"',
-          description: "Dirección del texto (left-to-right o right-to-left)",
+          description: "Text direction (left-to-right or right-to-left)",
         },
       ]}
       
@@ -112,7 +112,7 @@ export function SelectDemo() {
       examples={[
         {
           title: "With Label",
-          description: "Select con label descriptivo y helper text",
+          description: "Select with descriptive label and helper text",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="country">Country</Label>
@@ -153,7 +153,7 @@ export function SelectDemo() {
         },
         {
           title: "Disabled",
-          description: "Select en estado deshabilitado",
+          description: "Select in disabled state",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="disabled">Disabled Select</Label>
@@ -179,7 +179,7 @@ export function SelectDemo() {
         },
         {
           title: "With Groups",
-          description: "Select con opciones agrupadas usando SelectGroup",
+          description: "Select with grouped options using SelectGroup",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="timezone">Timezone</Label>
@@ -231,7 +231,7 @@ export function SelectDemo() {
         },
         {
           title: "With Icons",
-          description: "Select items con iconos decorativos",
+          description: "Select items with decorative icons",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="location">Location Type</Label>
@@ -286,7 +286,7 @@ export function SelectDemo() {
         },
         {
           title: "Form Integration",
-          description: "Select integrado en un formulario completo",
+          description: "Select integrated in a complete form",
           preview: (
             <form className="grid gap-4 max-w-sm" onSubmit={(e) => e.preventDefault()}>
               <div className="grid gap-2">
@@ -348,7 +348,7 @@ export function SelectDemo() {
         },
         {
           title: "Scrollable Content",
-          description: "Select con muchas opciones (scroll interno)",
+          description: "Select with many options (internal scroll)",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="year">Birth Year</Label>
@@ -387,7 +387,7 @@ export function SelectDemo() {
         },
         {
           title: "Controlled Component",
-          description: "Select como componente controlado con estado",
+          description: "Select as a controlled component with state",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="grid gap-2">
@@ -432,7 +432,7 @@ function ControlledSelect() {
         },
         {
           title: "Error State",
-          description: "Select con estado de error y mensaje de validación",
+          description: "Select with error state and validation message",
           preview: (
             <div className="grid gap-2 max-w-sm">
               <Label htmlFor="error">Category *</Label>

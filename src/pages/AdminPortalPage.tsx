@@ -1,16 +1,23 @@
+import { ComponentShowcase } from "../components/ui/component-showcase";
 import { AdminPortal } from "../components/patterns/AdminPortal";
 
 export function AdminPortalPage() {
   return (
-    <div className="p-6 space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold">Portal Administrativo</h1>
-        <p className="text-muted-foreground">
-          Gestión interna de solicitudes y aprobaciones de factoring
-        </p>
-      </div>
+    <ComponentShowcase
+      title="Admin Portal"
+      description="Internal management portal for factoring request approvals and operations. Includes role-based views, request queues, approval workflows, and administrative dashboards for monitoring platform activity."
+      category="Patterns"
+      preview={<AdminPortal />}
+      code={`import { AdminPortal } from "@/components/patterns/AdminPortal";
 
-      <AdminPortal />
-    </div>
+<AdminPortal />`}
+      props={[
+        {
+          name: "(pattern)",
+          type: "—",
+          description: "Self-contained pattern component. No external props required — manages its own state and layout.",
+        },
+      ]}
+    />
   );
 }

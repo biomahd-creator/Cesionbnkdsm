@@ -2,8 +2,8 @@ import React, { createContext, useContext, useState, useCallback, ReactNode } fr
 
 /**
  * LOADING PROVIDER
- * Context global para manejar estados de carga en toda la aplicación
- * Permite mostrar/ocultar loading overlays de manera centralizada
+ * Global context for managing loading states across the application
+ * Allows showing/hiding loading overlays in a centralized manner
  */
 
 interface LoadingState {
@@ -63,7 +63,7 @@ export function LoadingProvider({ children }: LoadingProviderProps) {
 }
 
 /**
- * Hook para usar el loading context
+ * Hook to use the loading context
  */
 export function useLoading() {
   const context = useContext(LoadingContext);

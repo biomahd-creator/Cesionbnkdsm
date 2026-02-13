@@ -5,7 +5,7 @@ export function AvatarPage() {
   return (
     <ComponentShowcase
       title="Avatar"
-      description="An image element with a fallback for representing a user or entity. El AvatarFallback se muestra automáticamente cuando la imagen no carga."
+      description="An image element with a fallback for representing a user or entity. AvatarFallback is displayed automatically when the image fails to load."
       category="Data Display"
       
       // Main Preview

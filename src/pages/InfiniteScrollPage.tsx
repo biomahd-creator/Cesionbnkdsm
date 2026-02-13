@@ -49,7 +49,7 @@ export function InfiniteScrollPage() {
   return (
     <ComponentShowcase
       title="Infinite Scroll"
-      description="Carga automática de contenido al hacer scroll."
+      description="Automatic content loading on scroll."
       category="Advanced"
       preview={
         <div className="h-[300px] overflow-auto border rounded-md p-4 min-w-[320px]">
@@ -68,19 +68,19 @@ export function InfiniteScrollPage() {
       }
       code={infiniteScrollCode}
       props={[
-        { name: "loadMore", type: "() => Promise<void>", description: "Función async que carga más datos cuando el usuario llega al final del scroll.", required: true },
-        { name: "hasMore", type: "boolean", description: "Indica si hay más datos por cargar. Cuando es false, deja de observar el scroll.", required: true },
-        { name: "isLoading", type: "boolean", default: "false", description: "Estado de carga. Muestra spinner mientras carga." },
-        { name: "children", type: "ReactNode", description: "Contenido scrolleable (lista de items).", required: true },
-        { name: "threshold", type: "number", default: "1.0", description: "Umbral de intersección (0 a 1) para disparar la carga. 1.0 = completamente visible." },
+        { name: "loadMore", type: "() => Promise<void>", description: "Async function that loads more data when the user reaches the end of the scroll.", required: true },
+        { name: "hasMore", type: "boolean", description: "Indicates if there is more data to load. When false, stops observing the scroll.", required: true },
+        { name: "isLoading", type: "boolean", default: "false", description: "Loading state. Shows spinner while loading." },
+        { name: "children", type: "ReactNode", description: "Scrollable content (list of items).", required: true },
+        { name: "threshold", type: "number", default: "1.0", description: "Intersection threshold (0 to 1) to trigger loading. 1.0 = fully visible." },
       ]}
       examples={[
         {
-          title: "Carga anticipada (threshold 0.5)",
-          description: "Carga datos cuando el sentinel está 50% visible.",
+          title: "Early Loading (threshold 0.5)",
+          description: "Loads data when the sentinel is 50% visible.",
           preview: (
             <div className="text-center py-6 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Threshold bajo pre-carga antes de llegar al final.</p>
+              <p className="text-sm text-muted-foreground">Low threshold pre-loads before reaching the end.</p>
             </div>
           ),
           code: `<InfiniteScroll
@@ -95,11 +95,11 @@ export function InfiniteScrollPage() {
 </InfiniteScroll>`,
         },
         {
-          title: "Con mensaje de fin",
-          description: "Muestra texto cuando no hay más datos.",
+          title: "With End Message",
+          description: "Shows text when there is no more data.",
           preview: (
             <div className="text-center py-6 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Cuando hasMore=false, el observer se desconecta.</p>
+              <p className="text-sm text-muted-foreground">When hasMore=false, the observer disconnects.</p>
             </div>
           ),
           code: `<div className="h-[400px] overflow-auto">
@@ -114,7 +114,7 @@ export function InfiniteScrollPage() {
   </InfiniteScroll>
   {!hasMore && (
     <p className="text-center text-muted-foreground py-4">
-      No hay más resultados
+      No more results
     </p>
   )}
 </div>`,

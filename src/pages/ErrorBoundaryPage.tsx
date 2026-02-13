@@ -29,16 +29,16 @@ function ErrorBoundaryDemo() {
           <AlertTriangle className="h-10 w-10 text-red-600 dark:text-red-400" />
         </div>
         <h2 className="mb-2 text-xl font-semibold text-red-900 dark:text-red-300">
-          Algo salió mal
+          Something went wrong
         </h2>
         <p className="mb-6 max-w-md text-sm text-red-800 dark:text-red-400">
-          ¡Boom! Este error fue atrapado por el ErrorBoundary.
+          Boom! This error was caught by the ErrorBoundary.
         </p>
         <Button
           onClick={() => setHasError(false)}
           className="bg-red-600 hover:bg-red-700 text-white border-none"
         >
-          Intentar de nuevo
+          Try Again
         </Button>
       </div>
     );
@@ -46,9 +46,9 @@ function ErrorBoundaryDemo() {
 
   return (
     <div className="text-center space-y-4">
-      <p className="text-muted-foreground">Este componente funciona correctamente.</p>
+      <p className="text-muted-foreground">This component is working correctly.</p>
       <Button variant="destructive" onClick={() => setHasError(true)}>
-        Simular Error
+        Simulate Error
       </Button>
     </div>
   );
@@ -58,7 +58,7 @@ export function ErrorBoundaryPage() {
   return (
     <ComponentShowcase
       title="Error Boundary"
-      description="Captura errores de renderizado y muestra una UI de fallback amigable."
+      description="Catches render errors and shows a friendly fallback UI."
       category="Utility"
       preview={
         <div className="w-full p-4 border rounded-lg">
@@ -69,26 +69,26 @@ export function ErrorBoundaryPage() {
       }
       code={code}
       props={[
-        { name: "children", type: "ReactNode", description: "Componentes hijos que serán envueltos por el boundary." },
-        { name: "fallback", type: "ReactNode", description: "UI personalizada de error. Si no se provee, usa el fallback por defecto con ícono y botón de reintentar." },
-        { name: "onReset", type: "() => void", description: "Callback ejecutado al hacer click en 'Intentar de nuevo'. Útil para limpiar estado." },
+        { name: "children", type: "ReactNode", description: "Child components that will be wrapped by the boundary." },
+        { name: "fallback", type: "ReactNode", description: "Custom error UI. If not provided, uses the default fallback with icon and retry button." },
+        { name: "onReset", type: "() => void", description: "Callback executed when clicking 'Try Again'. Useful for clearing state." },
       ]}
       examples={[
         {
-          title: "Fallback personalizado",
-          description: "ErrorBoundary con UI de error customizada.",
+          title: "Custom Fallback",
+          description: "ErrorBoundary with custom error UI.",
           preview: (
             <div className="w-full p-4 border rounded-lg">
               <div className="text-center py-8 space-y-2">
-                <p className="text-sm text-muted-foreground">El fallback personalizado reemplaza la UI por defecto del ErrorBoundary.</p>
+                <p className="text-sm text-muted-foreground">The custom fallback replaces the default ErrorBoundary UI.</p>
               </div>
             </div>
           ),
           code: `<ErrorBoundary
   fallback={
     <div className="text-center py-8">
-      <h3>Ocurrió un error inesperado</h3>
-      <p>Contacta soporte si el problema persiste.</p>
+      <h3>An unexpected error occurred</h3>
+      <p>Contact support if the problem persists.</p>
     </div>
   }
   onReset={() => window.location.reload()}
@@ -97,12 +97,12 @@ export function ErrorBoundaryPage() {
 </ErrorBoundary>`,
         },
         {
-          title: "Con callback onReset",
-          description: "Limpia estado externo al reintentar.",
+          title: "With onReset Callback",
+          description: "Clears external state on retry.",
           preview: (
             <div className="w-full p-4 border rounded-lg">
               <div className="text-center py-8 space-y-2">
-                <p className="text-sm text-muted-foreground">onReset se ejecuta al presionar "Intentar de nuevo" para limpiar estado corrupto.</p>
+                <p className="text-sm text-muted-foreground">onReset fires when pressing "Try Again" to clear corrupted state.</p>
               </div>
             </div>
           ),

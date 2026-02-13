@@ -23,7 +23,7 @@ export function MasonryGridPage() {
   return (
     <ComponentShowcase
       title="Masonry Grid"
-      description="Grid tipo Pinterest que optimiza el espacio vertical."
+      description="Pinterest-style grid that optimizes vertical space."
       category="Advanced"
       preview={
         <MasonryGrid gutter="16px">
@@ -40,14 +40,14 @@ export function MasonryGridPage() {
       }
       code={masonryCode}
       props={[
-        { name: "children", type: "ReactNode", description: "Elementos hijos que se distribuyen en el grid masonry.", required: true },
-        { name: "columnsCountBreakPoints", type: "{ [breakpoint: number]: columns }", default: "{ 350: 1, 750: 2, 900: 3 }", description: "Mapa de breakpoints (px) a número de columnas. Responsivo automático." },
-        { name: "gutter", type: "string", default: "\"1rem\"", description: "Espacio entre items del grid (CSS value)." },
+        { name: "children", type: "ReactNode", description: "Child elements distributed in the masonry grid.", required: true },
+        { name: "columnsCountBreakPoints", type: "{ [breakpoint: number]: columns }", default: "{ 350: 1, 750: 2, 900: 3 }", description: "Map of breakpoints (px) to number of columns. Automatically responsive." },
+        { name: "gutter", type: "string", default: "\"1rem\"", description: "Space between grid items (CSS value)." },
       ]}
       examples={[
         {
-          title: "2 columnas fijas",
-          description: "Grid masonry con 2 columnas y gutter amplio.",
+          title: "Fixed 2 Columns",
+          description: "Masonry grid with 2 columns and wide gutter.",
           preview: (
             <MasonryGrid columnsCountBreakPoints={{ 350: 1, 750: 2 }} gutter="24px">
               {[120, 180, 100, 160, 140, 200].map((h, i) => (
@@ -73,8 +73,8 @@ export function MasonryGridPage() {
 </MasonryGrid>`,
         },
         {
-          title: "4 columnas responsive",
-          description: "Grid con breakpoints para 1→2→3→4 columnas.",
+          title: "4 Responsive Columns",
+          description: "Grid with breakpoints for 1→2→3→4 columns.",
           preview: (
             <MasonryGrid columnsCountBreakPoints={{ 350: 1, 600: 2, 800: 3, 1100: 4 }} gutter="12px">
               {[90, 130, 70, 110, 100, 150, 80, 120].map((h, i) => (

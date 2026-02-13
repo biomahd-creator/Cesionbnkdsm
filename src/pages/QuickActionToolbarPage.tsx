@@ -11,7 +11,7 @@ export function QuickActionToolbarPage() {
   return (
     <ComponentShowcase
       title="Quick Action Toolbar"
-      description="Barra de herramientas para acciones rápidas y atajos de teclado."
+      description="Quick action toolbar with keyboard shortcuts."
       category="Business Pattern"
       preview={<QuickActionToolbar />}
       code={quickActionCode}

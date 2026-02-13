@@ -59,39 +59,39 @@ export function RadioGroupDemo() {
         {
           name: "value",
           type: "string",
-          description: "Valor controlado del radio seleccionado",
+          description: "Controlled value of the selected radio",
         },
         {
           name: "defaultValue",
           type: "string",
-          description: "Valor inicial no controlado",
+          description: "Uncontrolled initial value",
         },
         {
           name: "onValueChange",
           type: "(value: string) => void",
-          description: "Callback cuando cambia la selección",
+          description: "Callback when the selection changes",
         },
         {
           name: "disabled",
           type: "boolean",
           default: "false",
-          description: "Deshabilita todo el grupo",
+          description: "Disables the entire group",
         },
         {
           name: "required",
           type: "boolean",
           default: "false",
-          description: "Campo requerido en formularios",
+          description: "Required field in forms",
         },
         {
           name: "name",
           type: "string",
-          description: "Nombre del grupo (para formularios)",
+          description: "Group name (for forms)",
         },
         {
           name: "className",
           type: "string",
-          description: "Clases CSS adicionales para el contenedor",
+          description: "Additional CSS classes for the container",
         },
       ]}
       
@@ -99,7 +99,7 @@ export function RadioGroupDemo() {
       examples={[
         {
           title: "Basic Options",
-          description: "Radio group simple con opciones básicas",
+          description: "Simple radio group with basic options",
           preview: (
             <RadioGroup defaultValue="comfortable">
               <div className="flex items-center space-x-2">
@@ -140,7 +140,7 @@ export function BasicRadioGroup() {
         },
         {
           title: "With Descriptions",
-          description: "Radio buttons con descripciones adicionales",
+          description: "Radio buttons with additional descriptions",
           preview: (
             <RadioGroup defaultValue="basic" className="space-y-3">
               <div className="flex items-start space-x-3">
@@ -213,7 +213,7 @@ export function RadioWithDescriptions() {
         },
         {
           title: "Card Style Options",
-          description: "Radio buttons dentro de cards para mejor UI",
+          description: "Radio buttons inside cards for better UI",
           preview: (
             <RadioGroup defaultValue="card-1" className="grid gap-4">
               <div>
@@ -293,7 +293,7 @@ export function CardStyleRadio() {
         },
         {
           title: "Payment Method Selector",
-          description: "Radio group para seleccionar método de pago con iconos",
+          description: "Radio group for selecting payment method with icons",
           preview: (
             <RadioGroup defaultValue="card" className="space-y-3">
               <div className="flex items-center space-x-3">
@@ -355,7 +355,7 @@ export function PaymentMethodSelector() {
         },
         {
           title: "Horizontal Layout",
-          description: "Radio group en disposición horizontal",
+          description: "Radio group in horizontal layout",
           preview: (
             <RadioGroup defaultValue="yes" className="flex gap-4">
               <div className="flex items-center space-x-2">
@@ -396,7 +396,7 @@ export function HorizontalRadioGroup() {
         },
         {
           title: "Disabled State",
-          description: "Radio group en estado deshabilitado",
+          description: "Radio group in disabled state",
           preview: (
             <RadioGroup defaultValue="disabled-1" disabled>
               <div className="flex items-center space-x-2">
@@ -437,7 +437,7 @@ export function DisabledRadioGroup() {
         },
         {
           title: "Form Integration",
-          description: "Radio group dentro de un formulario completo",
+          description: "Radio group inside a complete form",
           preview: (
             <div className="space-y-4 max-w-md">
               <div className="space-y-2">

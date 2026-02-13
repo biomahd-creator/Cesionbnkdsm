@@ -4,29 +4,29 @@ import { DollarSign, FileText, CheckCircle, Clock } from "lucide-react";
 export function StatsGrid() {
   const stats = [
     {
-      title: "Cartera Activa",
+      title: "Active Portfolio",
       value: "$45,231,890",
       change: "+20.1%",
       trend: "up" as const,
       icon: DollarSign,
     },
     {
-      title: "Facturas Procesadas",
+      title: "Invoices Processed",
       value: "1,234",
       change: "+12.5%",
       trend: "up" as const,
       icon: FileText,
     },
     {
-      title: "Tasa de Aprobación",
+      title: "Approval Rate",
       value: "94.2%",
       change: "+2.3%",
       trend: "up" as const,
       icon: CheckCircle,
     },
     {
-      title: "Tiempo Promedio",
-      value: "2.4 días",
+      title: "Average Time",
+      value: "2.4 days",
       change: "-15.8%",
       trend: "down" as const,
       icon: Clock,

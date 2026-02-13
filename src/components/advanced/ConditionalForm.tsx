@@ -13,12 +13,12 @@ import { AlertCircle, CheckCircle2 } from "lucide-react";
 /**
  * 🔒 ADVANCED COMPONENT - Conditional Form
  * 
- * Formulario con lógica condicional que muestra/oculta campos dinámicamente
- * Basado en las respuestas del usuario en tiempo real
+ * Form with conditional logic that dynamically shows/hides fields
+ * based on user responses in real time.
  * 
- * Ubicación: /components/advanced/ConditionalForm.tsx
- * Categoría: Advanced Forms - Prioridad Media
- * Uso: Surveys, applications, smart forms, dynamic questionnaires
+ * Location: /components/advanced/ConditionalForm.tsx
+ * Category: Advanced Forms - Medium Priority
+ * Usage: Surveys, applications, smart forms, dynamic questionnaires
  */
 
 interface FormData {

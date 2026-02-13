@@ -1,4 +1,4 @@
-// Barrel Export de todas las páginas
+// Barrel Export for all pages
 
 export * from "./AccordionPage";
 export * from "./ActivityFeedPage";
@@ -9,6 +9,7 @@ export * from "./AlertDialogPage";
 export * from "./AlertPage";
 export * from "./AnimationSystemPage";
 export * from "./AnimationsPage";
+export * from "./AppLayoutPage";
 export * from "./ApprovalFlowPage";
 export * from "./ApprovalTimelinePage";
 export * from "./AuditLogViewerPage";
@@ -42,6 +43,7 @@ export * from "./DialogPage";
 export * from "./DocVerificationPage";
 export * from "./DrawerPage";
 export * from "./DropdownMenuPage";
+export * from "./EditableTablePage";
 export * from "./ElevationPage";
 export * from "./EmptyStatePage";
 export * from "./ErrorBoundaryPage";

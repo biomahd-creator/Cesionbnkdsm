@@ -43,10 +43,10 @@ export class ErrorBoundary extends Component<Props, State> {
             <AlertTriangle className="h-10 w-10 text-red-600 dark:text-red-400" />
           </div>
           <h2 className="mb-2 text-xl font-semibold text-red-900 dark:text-red-300">
-            Algo salió mal
+            Something went wrong
           </h2>
           <p className="mb-6 max-w-md text-sm text-red-800 dark:text-red-400">
-            {this.state.error?.message || "Ha ocurrido un error inesperado al cargar este componente."}
+            {this.state.error?.message || "An unexpected error occurred while loading this component."}
           </p>
           <div className="flex gap-4">
             <Button
@@ -54,14 +54,14 @@ export class ErrorBoundary extends Component<Props, State> {
               onClick={() => window.location.reload()}
               className="border-red-200 bg-card hover:bg-red-50 hover:text-red-900 dark:border-red-800 dark:hover:bg-red-900/50 dark:hover:text-red-200"
             >
-              Recargar página
+              Reload page
             </Button>
             <Button
               onClick={this.handleReset}
               className="bg-red-600 hover:bg-red-700 text-white border-none"
             >
               <RefreshCw className="mr-2 h-4 w-4" />
-              Intentar de nuevo
+              Try again
             </Button>
           </div>
         </div>

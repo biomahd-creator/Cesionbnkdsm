@@ -5,7 +5,7 @@ export function AccordionPage() {
   return (
     <ComponentShowcase
       title="Accordion"
-      description="A vertically stacked set of interactive headings that reveal content. Usa Accordion como contenedor y anida AccordionItem para cada sección."
+      description="A vertically stacked set of interactive headings that reveal content. Use Accordion as a container and nest AccordionItem for each section."
       category="Layout"
       
       // Main Preview

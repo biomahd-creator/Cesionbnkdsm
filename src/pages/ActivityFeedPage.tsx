@@ -7,9 +7,9 @@ export function ActivityFeedDemo() {
   return (
     <ActivityFeed 
       items={[
-        { id: "1", user: { name: "Ana García", initials: "AG" }, action: "creó la factura", target: "INV-001", timestamp: "Hace 5 min" },
-        { id: "2", user: { name: "Carlos Ruiz", initials: "CR" }, action: "comentó en", target: "Reporte Mensual", timestamp: "Hace 1 hora", description: "Excelente trabajo con los gráficos." },
-        { id: "3", user: { name: "Sistema", initials: "SYS" }, action: "actualizó el estado de", target: "Pago #452", timestamp: "Hace 2 horas" },
+        { id: "1", user: { name: "Ana Garcia", initials: "AG" }, action: "created invoice", target: "INV-001", timestamp: "5 min ago" },
+        { id: "2", user: { name: "Carlos Ruiz", initials: "CR" }, action: "commented on", target: "Monthly Report", timestamp: "1 hour ago", description: "Great work on the charts." },
+        { id: "3", user: { name: "System", initials: "SYS" }, action: "updated status of", target: "Payment #452", timestamp: "2 hours ago" },
       ]}
     />
   );
@@ -19,31 +19,31 @@ export function ActivityFeedPage() {
   return (
     <ComponentShowcase
       title="Activity Feed"
-      description="Línea de tiempo de actividad de usuarios y sistema."
+      description="User and system activity timeline."
       category="Business Pattern"
       preview={
         <ActivityFeed 
           items={[
-            { id: "1", user: { name: "Ana García", initials: "AG" }, action: "creó la factura", target: "INV-001", timestamp: "Hace 5 min" },
-            { id: "2", user: { name: "Carlos Ruiz", initials: "CR" }, action: "comentó en", target: "Reporte Mensual", timestamp: "Hace 1 hora", description: "Excelente trabajo con los gráficos." },
-            { id: "3", user: { name: "Sistema", initials: "SYS" }, action: "actualizó el estado de", target: "Pago #452", timestamp: "Hace 2 horas" },
+            { id: "1", user: { name: "Ana Garcia", initials: "AG" }, action: "created invoice", target: "INV-001", timestamp: "5 min ago" },
+            { id: "2", user: { name: "Carlos Ruiz", initials: "CR" }, action: "commented on", target: "Monthly Report", timestamp: "1 hour ago", description: "Great work on the charts." },
+            { id: "3", user: { name: "System", initials: "SYS" }, action: "updated status of", target: "Payment #452", timestamp: "2 hours ago" },
           ]}
         />
       }
       code={code}
       props={[
-        { name: "items", type: "ActivityItem[]", description: "Array de actividades. Cada item tiene: user (name, avatar, initials), action, target, timestamp, description.", required: true },
-        { name: "className", type: "string", description: "Clases adicionales para el contenedor raíz." },
+        { name: "items", type: "ActivityItem[]", description: "Array of activities. Each item has: user (name, avatar, initials), action, target, timestamp, description.", required: true },
+        { name: "className", type: "string", description: "Additional classes for the root container." },
       ]}
       examples={[
         {
-          title: "Feed con descripciones",
-          description: "Actividades con texto adicional de detalle.",
+          title: "Feed with descriptions",
+          description: "Activities with additional detail text.",
           preview: (
             <ActivityFeed
               items={[
-                { id: "1", user: { name: "María López", initials: "ML" }, action: "aprobó", target: "Operación OP-2024-051", timestamp: "Hace 10 min", description: "Aprobación final del comité de riesgo." },
-                { id: "2", user: { name: "Roberto Méndez", initials: "RM" }, action: "rechazó", target: "Factura FV-8810", timestamp: "Hace 30 min", description: "Documentación incompleta. Se requiere cámara de comercio." },
+                { id: "1", user: { name: "Maria Lopez", initials: "ML" }, action: "approved", target: "Operation OP-2024-051", timestamp: "10 min ago", description: "Final approval from risk committee." },
+                { id: "2", user: { name: "Roberto Mendez", initials: "RM" }, action: "rejected", target: "Invoice FV-8810", timestamp: "30 min ago", description: "Incomplete documentation. Chamber of commerce certificate required." },
               ]}
             />
           ),
@@ -51,39 +51,39 @@ export function ActivityFeedPage() {
   items={[
     {
       id: "1",
-      user: { name: "María López", initials: "ML" },
-      action: "aprobó",
-      target: "Operación OP-2024-051",
-      timestamp: "Hace 10 min",
-      description: "Aprobación final del comité de riesgo."
+      user: { name: "Maria Lopez", initials: "ML" },
+      action: "approved",
+      target: "Operation OP-2024-051",
+      timestamp: "10 min ago",
+      description: "Final approval from risk committee."
     },
     {
       id: "2",
-      user: { name: "Roberto Méndez", initials: "RM" },
-      action: "rechazó",
-      target: "Factura FV-8810",
-      timestamp: "Hace 30 min",
-      description: "Documentación incompleta."
+      user: { name: "Roberto Mendez", initials: "RM" },
+      action: "rejected",
+      target: "Invoice FV-8810",
+      timestamp: "30 min ago",
+      description: "Incomplete documentation."
     },
   ]}
 />`,
         },
         {
-          title: "Feed de sistema",
-          description: "Solo eventos automáticos del sistema.",
+          title: "System Feed",
+          description: "System-only automated events.",
           preview: (
             <ActivityFeed
               items={[
-                { id: "1", user: { name: "Sistema", initials: "SYS" }, action: "generó reporte de", target: "Cartera Enero 2026", timestamp: "Hace 1 hora" },
-                { id: "2", user: { name: "Cron Job", initials: "CJ" }, action: "ejecutó conciliación para", target: "Banco Nacional", timestamp: "Hace 4 horas" },
-                { id: "3", user: { name: "Sistema", initials: "SYS" }, action: "envió recordatorio a", target: "5 clientes con mora", timestamp: "Ayer" },
+                { id: "1", user: { name: "System", initials: "SYS" }, action: "generated report for", target: "Portfolio January 2026", timestamp: "1 hour ago" },
+                { id: "2", user: { name: "Cron Job", initials: "CJ" }, action: "ran reconciliation for", target: "National Bank", timestamp: "4 hours ago" },
+                { id: "3", user: { name: "System", initials: "SYS" }, action: "sent reminder to", target: "5 overdue clients", timestamp: "Yesterday" },
               ]}
             />
           ),
           code: `<ActivityFeed
   items={[
-    { id: "1", user: { name: "Sistema", initials: "SYS" }, action: "generó reporte de", target: "Cartera Enero", timestamp: "Hace 1 hora" },
-    { id: "2", user: { name: "Cron Job", initials: "CJ" }, action: "ejecutó conciliación para", target: "Banco Nacional", timestamp: "Hace 4 horas" },
+    { id: "1", user: { name: "System", initials: "SYS" }, action: "generated report for", target: "Portfolio January", timestamp: "1 hour ago" },
+    { id: "2", user: { name: "Cron Job", initials: "CJ" }, action: "ran reconciliation for", target: "National Bank", timestamp: "4 hours ago" },
   ]}
 />`,
         },

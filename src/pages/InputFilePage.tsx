@@ -13,7 +13,7 @@ export function InputFileDemo() {
       onFilesChange={setFiles}
       maxFiles={3}
       accept="image/*,.pdf"
-      placeholder="Selecciona imágenes o PDFs"
+      placeholder="Select images or PDFs"
     />
   );
 }`;
@@ -26,11 +26,11 @@ export function InputFilePage() {
   return (
     <ComponentShowcase
       title="Input File"
-      description="Componente para carga de archivos con drag & drop, preview de archivos seleccionados y soporte para múltiples archivos. Incluye navegación por teclado, restricción de tipos y eliminación individual."
+      description="File upload component with drag & drop, preview of selected files, and support for multiple files. Includes keyboard navigation, type restrictions, and individual file removal."
       category="Forms"
       preview={
         <div className="w-full max-w-md space-y-2">
-          <label className="text-foreground font-medium">Archivo único</label>
+          <label className="text-foreground font-medium">Single file</label>
           <InputFile
             onFilesChange={setFiles1}
             maxFiles={1}
@@ -40,35 +40,35 @@ export function InputFilePage() {
       }
       code={code}
       props={[
-        { name: "onFilesChange", type: "(files: File[]) => void", description: "Callback cuando cambian los archivos" },
-        { name: "maxFiles", type: "number", default: "1", description: "Número máximo de archivos permitidos" },
-        { name: "showPreview", type: "boolean", default: "true", description: "Mostrar lista de archivos seleccionados" },
-        { name: "accept", type: "string", description: "Tipos de archivo permitidos (ej: .pdf, image/*)" },
-        { name: "disabled", type: "boolean", default: "false", description: "Deshabilita el input" },
-        { name: "className", type: "string", description: "Clases CSS adicionales" },
+        { name: "onFilesChange", type: "(files: File[]) => void", description: "Callback when files change" },
+        { name: "maxFiles", type: "number", default: "1", description: "Maximum number of allowed files" },
+        { name: "showPreview", type: "boolean", default: "true", description: "Show list of selected files" },
+        { name: "accept", type: "string", description: "Allowed file types (e.g.: .pdf, image/*)" },
+        { name: "disabled", type: "boolean", default: "false", description: "Disables the input" },
+        { name: "className", type: "string", description: "Additional CSS classes" },
       ]}
       examples={[
         {
-          title: "Múltiples archivos",
-          description: "Permite seleccionar múltiples archivos con un máximo definido.",
+          title: "Multiple Files",
+          description: "Allows selecting multiple files with a defined maximum.",
           preview: (
             <div className="w-full max-w-md">
               <InputFile
                 onFilesChange={setFiles2}
                 maxFiles={5}
-                placeholder="Selecciona hasta 5 archivos"
+                placeholder="Select up to 5 files"
               />
             </div>
           ),
           code: `<InputFile
   onFilesChange={setFiles}
   maxFiles={5}
-  placeholder="Selecciona hasta 5 archivos"
+  placeholder="Select up to 5 files"
 />`,
         },
         {
-          title: "Sin preview",
-          description: "Input de archivo sin mostrar la lista de archivos seleccionados.",
+          title: "Without Preview",
+          description: "File input without showing the selected files list.",
           preview: (
             <div className="w-full max-w-md">
               <InputFile
@@ -83,33 +83,33 @@ export function InputFilePage() {
 />`,
         },
         {
-          title: "Solo PDFs",
-          description: "Input restringido a tipos de archivo específicos.",
+          title: "PDFs Only",
+          description: "Input restricted to specific file types.",
           preview: (
             <div className="w-full max-w-md">
               <InputFile
                 accept=".pdf,application/pdf"
-                placeholder="Selecciona archivos PDF"
+                placeholder="Select PDF files"
               />
             </div>
           ),
           code: `<InputFile
   accept=".pdf,application/pdf"
-  placeholder="Selecciona archivos PDF"
+  placeholder="Select PDF files"
 />`,
         },
         {
-          title: "Deshabilitado",
-          description: "Estado deshabilitado del componente.",
+          title: "Disabled",
+          description: "Disabled state of the component.",
           preview: (
             <div className="w-full max-w-md">
               <InputFile
                 disabled
-                placeholder="Input deshabilitado"
+                placeholder="Input disabled"
               />
             </div>
           ),
-          code: `<InputFile disabled placeholder="Input deshabilitado" />`,
+          code: `<InputFile disabled placeholder="Input disabled" />`,
         },
       ]}
     />

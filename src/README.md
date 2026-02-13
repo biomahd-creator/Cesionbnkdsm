@@ -1,167 +1,254 @@
-# Financio Design System
+# @biomahd-creator/financio-design-system
 
-La librería oficial de componentes UI para el ecosistema Financio / Biomahd Creator. Construida con React, TypeScript, Tailwind CSS v4 y Radix UI.
+[![npm version](https://img.shields.io/npm/v/@biomahd-creator/financio-design-system.svg)](https://www.npmjs.com/package/@biomahd-creator/financio-design-system)
+[![npm downloads](https://img.shields.io/npm/dm/@biomahd-creator/financio-design-system.svg)](https://www.npmjs.com/package/@biomahd-creator/financio-design-system)
+[![license](https://img.shields.io/npm/l/@biomahd-creator/financio-design-system.svg)](./LICENSE)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.3-blue.svg)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-v4-38bdf8.svg)](https://tailwindcss.com/)
 
-## 📚 Documentación
+CESIONBNK Design System — React + Tailwind CSS v4 component library for Factoring platforms.
 
-### 🚀 Inicio rápido
-- **[QUICK_REFERENCE.md](./QUICK_REFERENCE.md)**: Referencia rápida de comandos y tokens
-- **[SETUP_COMPLETE.md](./SETUP_COMPLETE.md)**: Resumen de configuración completada
+Built with React, TypeScript, Tailwind CSS v4, and Radix UI. 120+ components following Atomic Design principles.
 
-### 📖 Guías completas
-- **[LOCAL_DEV.md](./LOCAL_DEV.md)**: Guía completa para desarrollo local con Tailwind v4
-- **[SETUP_CHECKLIST.md](./SETUP_CHECKLIST.md)**: Checklist de verificación de configuración
+---
 
-### 🎨 Sistema de diseño
-- **[Guidelines.md](./guidelines/Guidelines.md)**: Índice del sistema de diseño y arquitectura
-- **[TOKENS.md](./guidelines/TOKENS.md)**: Tokens de diseño visual
-- **[COMPONENTS.md](./guidelines/COMPONENTS.md)**: Catálogo de componentes
+## Quick Start (30 seconds)
 
-### 🔧 Troubleshooting
-- **[TROUBLESHOOTING.md](./TROUBLESHOOTING.md)**: Solución de problemas comunes
-
-## ⚡ Inicio rápido
-
-```bash
-# 1. Instalar dependencias
-npm install
-
-# 2. Verificar configuración (opcional)
-npm run check:setup
-
-# 3. Iniciar desarrollo
-npm run dev
-```
-
-## Instalación
+### 1. Install
 
 ```bash
 npm install @biomahd-creator/financio-design-system
 ```
 
-## Configuración Obligatoria
+### 2. Import Styles
 
-Para que los estilos funcionen correctamente, necesitas integrar los tokens y estilos base en tu proyecto.
+In your main CSS file (e.g., `src/styles.css`):
 
-### 1. Importar Estilos Base
-
-En tu archivo de entrada principal (ej: `src/main.tsx` o `src/App.tsx`), importa el CSS:
-
-```tsx
-import "@biomahd-creator/financio-design-system/styles.css";
+```css
+@import "tailwindcss";
+@import "@biomahd-creator/financio-design-system/theme.css";
 ```
 
-### 2. Configurar Tailwind
+> **Note:** `theme.css` is a Tailwind v4 CSS preset that provides all CESIONBNK design tokens (colors, typography, spacing, shadows). It replaces the deprecated `tailwind-preset.cjs` from v3.
 
-Edita tu archivo `tailwind.config.js` para usar el preset de la librería. Esto inyectará automáticamente los colores, fuentes y animaciones.
-
-```javascript
-// tailwind.config.js
-module.exports = {
-  presets: [
-    require('@biomahd-creator/financio-design-system/tailwind-preset')
-  ],
-  content: [
-    // Asegúrate de incluir el path a node_modules para que Tailwind escanee las clases dentro de la librería
-    './node_modules/@biomahd-creator/financio-design-system/dist-lib/**/*.{js,ts,jsx,tsx}',
-    './src/**/*.{js,ts,jsx,tsx}',
-  ],
-  // ... tu configuración local
-}
-```
-
-## Uso de Componentes
-
-Ahora puedes usar los componentes directamente:
+### 3. Use Components
 
 ```tsx
-import { Button, Card, useLoading } from "@biomahd-creator/financio-design-system";
+import { Button } from "@biomahd-creator/financio-design-system";
 
 function App() {
-  const { startLoading } = useLoading();
-
-  return (
-    <Card className="p-4">
-      <h1 className="text-primary font-bold">Hola Mundo</h1>
-      <Button onClick={startLoading}>Click Me</Button>
-    </Card>
-  );
+  return <Button>Get Started</Button>;
 }
 ```
 
-## Estructura del Proyecto
+That's it. All tokens (colors, fonts, shadows) are automatically available via Tailwind classes.
 
-- `components/ui`: Componentes atómicos (Botones, Inputs, etc.)
-- `components/patterns`: Patrones compuestos complejos (Tablas avanzadas, Wizards)
-- `components/advanced`: Componentes de visualización de datos (Gráficos, Tablas Pivote)
-- `hooks`: Hooks personalizados reutilizables
-- `lib`: Utilidades (cn, formats)
+---
 
-## Desarrollo Local
+## Import Paths & Tree-Shaking
 
-### Requisitos Previos
-- Node.js 18+ 
-- npm 8+
+The library supports three levels of imports for optimal tree-shaking:
 
-### Instalación e Inicio
+```tsx
+// Full import (convenient, imports entire library)
+import { Button, Card, Badge } from "@biomahd-creator/financio-design-system";
 
-1. **Instalar dependencias**:
-   ```bash
-   npm install
-   ```
+// Layer import (better tree-shaking, imports one category)
+import { Button } from "@biomahd-creator/financio-design-system/ui";
+import { DataTable } from "@biomahd-creator/financio-design-system/advanced";
+import { StatsDashboard } from "@biomahd-creator/financio-design-system/patterns";
 
-2. **Iniciar servidor de desarrollo**:
-   ```bash
-   npm run dev
-   ```
-   El servidor arrancará en `http://localhost:5173` (por defecto)
-
-3. **Build para producción**:
-   ```bash
-   npm run build:lib
-   ```
-
-4. **Ejecutar validaciones (TypeScript + Build + Circular Dependencies)**:
-   ```bash
-   npm run validate
-   ```
-
-### Estructura de Archivos del Servidor Dev
-
-El proyecto requiere los siguientes archivos para funcionar en desarrollo:
-- `/index.html` - Punto de entrada HTML
-- `/main.tsx` - Punto de entrada React (bootstrap con createRoot)
-- `/App.tsx` - Componente principal con providers
-- `/vite.config.ts` - Configuración de Vite para desarrollo
-- `/tailwind.config.js` - Configuración de Tailwind CSS
-- `/postcss.config.js` - Configuración de PostCSS
-
-## Dependencias y Seguridad
-
-### Vulnerabilidades Conocidas
-
-**xlsx (dependencia transitiva de recharts)**
-
-- **Estado**: Vulnerabilidad sin fix automático disponible
-- **Impacto**: Bajo - Solo se usa en exportación de datos con importación dinámica
-- **Ubicación**: `components/advanced/ExportData.tsx`
-- **Contexto**: La biblioteca solo genera archivos Excel desde datos internos del cliente; no procesa archivos externos potencialmente maliciosos
-- **Riesgo**: Minimal en el contexto actual ya que:
-  - Se usa con importación dinámica (no afecta el bundle principal)
-  - Solo genera archivos, no parsea archivos de origen desconocido
-  - Se ejecuta únicamente cuando el usuario solicita exportar datos
-- **Alternativas evaluadas**: exceljs requiere refactorización significativa sin beneficio claro de seguridad en este contexto de uso
-
-**Nota**: Monitoreamos activamente actualizaciones de seguridad. Si tu aplicación necesita procesar archivos Excel de fuentes externas, considera implementar validación adicional o usar alternativas como `exceljs`.
-
-### Actualización de Dependencias
-
-Para actualizar dependencias y verificar vulnerabilidades:
-
-```bash
-npm audit
-npm update
-npm audit fix
+// Direct component import (best tree-shaking, single file)
+import { Button } from "@biomahd-creator/financio-design-system/ui/button";
+import { DataTable } from "@biomahd-creator/financio-design-system/advanced/DataTable";
 ```
 
-Para dependencias con vulnerabilidades sin solución automática, evaluar manualmente el contexto de uso antes de aplicar correcciones manuales.
+### Available Sub-Paths
+
+| Path | Description | Examples |
+|---|---|---|
+| `/ui` | Atoms & Molecules (Shadcn/Radix) | Button, Input, Card, Badge, Dialog |
+| `/patterns` | Business Organisms | StatsDashboard, MultiStepWizard, SearchResults |
+| `/advanced` | Complex Visualizations | DataTable, Charts, RichTextEditor, TreeTable |
+| `/widgets` | Composed Blocks | StatCard, FilterBar, SearchBar, InvoiceTable |
+| `/providers` | Context Providers | ThemeProvider, LoadingProvider |
+| `/hooks` | Custom Hooks | useLoadingState, usePageTransition |
+| `/lib` | Utilities | cn(), animation-config |
+
+---
+
+## Design Tokens
+
+The library ships with a complete token system. All tokens are CSS custom properties, so you can override them:
+
+### Colors
+
+| Token | Light | Dark | Usage |
+|---|---|---|---|
+| `--primary` | `#00c951` | `#00c951` | Brand green, CTAs, links |
+| `--secondary` | `#1C2D3A` | `#334155` | Navy, text, headers |
+| `--destructive` | `#ef4444` | `#991b1b` | Errors, delete actions |
+| `--success` | `#22c55e` | `#15803d` | Confirmations, positive |
+| `--warning` | `#f59e0b` | `#b45309` | Alerts, caution |
+| `--info` | `#3b82f6` | `#1d4ed8` | Informational |
+
+### Typography
+
+The library uses **Satoshi** as its exclusive font family. It's loaded automatically via `theme.css`.
+
+```css
+/* Available via Tailwind classes */
+font-sans    /* Satoshi */
+font-satoshi /* Satoshi (alias) */
+```
+
+### Dark Mode
+
+Add the `dark` class to `<html>` or any parent element:
+
+```tsx
+// Toggle example
+document.documentElement.classList.toggle("dark");
+
+// Or use the built-in ThemeProvider
+import { ThemeProvider, useTheme } from "@biomahd-creator/financio-design-system/providers";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <MyApp />
+    </ThemeProvider>
+  );
+}
+
+function ThemeToggle() {
+  const { theme, toggleTheme } = useTheme();
+  return <button onClick={toggleTheme}>{theme === "dark" ? "Light" : "Dark"}</button>;
+}
+```
+
+### Customizing Tokens
+
+Override any token in your own CSS:
+
+```css
+@import "tailwindcss";
+@import "@biomahd-creator/financio-design-system/theme.css";
+
+/* Your overrides */
+:root {
+  --primary: #6366f1;      /* Change brand color to indigo */
+  --radius: 0.5rem;        /* Adjust border radius */
+}
+```
+
+---
+
+## Component Categories
+
+### UI Primitives (68 components)
+Core building blocks built on Radix UI: Button, Input, Card, Badge, Dialog, Select, Tabs, Tooltip, Progress, Skeleton, and many more.
+
+### Advanced Components (20+ components)
+Complex data visualization and interaction: DataTable (TanStack), TreeTable, Charts (Recharts), RichTextEditor, FileUploader, InvoiceGenerator, VirtualizedList.
+
+### Business Patterns (20+ components)
+Ready-to-use business flows: StatsDashboard, MultiStepWizard, ApprovalFlow, OnboardingWizard, NotificationCenter, AdminPortal.
+
+### Widgets (15+ components)
+Composed functional blocks: StatCard, FilterBar, SearchBar, InvoiceTable, StatusKPICard.
+
+---
+
+## Development
+
+### Prerequisites
+- Node.js 18+
+- npm 8+
+
+### Commands
+
+```bash
+# Start dev server (DSM Showcase)
+npm run dev
+
+# Run tests
+npm test
+npm run test:watch
+npm run test:coverage
+
+# Build library for publishing
+npm run build:lib
+
+# Full validation (typecheck + test + build + circular deps + boundary)
+npm run validate
+
+# Release
+npm run release          # patch (0.1.x)
+npm run release:minor    # minor (0.x.0)
+npm run release:major    # major (x.0.0)
+```
+
+### Project Structure
+
+```
+Library (published to npm):
+  /index.ts              -> Root barrel export
+  /components/ui/        -> Atoms & Molecules
+  /components/patterns/  -> Generic Organisms
+  /components/advanced/  -> Charts, Tables, Editors
+  /components/widgets/   -> Composed Blocks
+  /components/providers/ -> Context Providers
+  /hooks/                -> Custom Hooks
+  /lib/                  -> Utilities
+  /styles/theme.css      -> Tailwind v4 CSS preset
+
+App-only (NOT published):
+  /App.tsx               -> DSM Showcase entry
+  /pages/                -> 120+ showcase pages
+  /components/factoring/ -> Business logic demo
+```
+
+### CI/CD
+
+| Workflow | Trigger | Purpose |
+|---|---|---|
+| `validate.yml` | Push / PR | TypeCheck + Test + Build + Boundary Check |
+| `publish.yml` | Tag push | Build + Publish to npm + Version consistency |
+
+---
+
+## Documentation
+
+| File | Purpose |
+|---|---|
+| [Guidelines.md](./guidelines/Guidelines.md) | System architecture index |
+| [TOKENS.md](./guidelines/TOKENS.md) | Design tokens reference |
+| [COMPONENTS.md](./guidelines/COMPONENTS.md) | Component inventory (120+) |
+| [PROMPT_GUIDE.md](./guidelines/PROMPT_GUIDE.md) | AI prompt templates |
+| [llms.txt](./llms.txt) | AI/LLM instructions for code generation |
+| [CHANGELOG.md](./CHANGELOG.md) | Version history |
+
+---
+
+## Dependencies & Security
+
+### Known Vulnerabilities
+
+**xlsx (transitive via recharts):** Low impact — only used for client-side Excel export via dynamic import. Does not process external files. See [ExportData component](./components/advanced/ExportData.tsx).
+
+### Peer Dependencies
+
+```json
+{
+  "react": "^18.2.0 || ^19.0.0",
+  "react-dom": "^18.2.0 || ^19.0.0",
+  "tailwindcss": "^4.0.0"
+}
+```
+
+---
+
+## License
+
+MIT

@@ -5,12 +5,12 @@ import { Badge } from "../ui/badge";
 /**
  * 🔒 ADVANCED COMPONENT - Heatmap
  * 
- * Mapa de calor para visualizar datos matriciales
- * Ideal para patrones temporales, correlaciones, actividad
+ * Heat map for visualizing matrix data.
+ * Ideal for temporal patterns, correlations, and activity.
  * 
- * Ubicación: /components/advanced/Heatmap.tsx
- * Categoría: Data Visualization - Prioridad Media
- * Uso: Analytics, activity tracking, patrones de uso
+ * Location: /components/advanced/Heatmap.tsx
+ * Category: Data Visualization - Medium Priority
+ * Usage: Analytics, activity tracking, usage patterns
  */
 
 export interface HeatmapCell {
@@ -55,12 +55,12 @@ export function Heatmap({
   min,
   max
 }: HeatmapProps) {
-  // Validación: si no hay datos, mostrar mensaje
+  // Validation: if no data, show message
   if (!data || data.length === 0 || !rows || rows.length === 0 || !columns || columns.length === 0) {
     return (
       <Card className="w-full">
         <CardContent className="p-12 text-center">
-          <p className="text-muted-foreground">No hay datos para mostrar en el heatmap</p>
+          <p className="text-muted-foreground">No data available for the heatmap</p>
         </CardContent>
       </Card>
     );

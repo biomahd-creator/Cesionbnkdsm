@@ -6,11 +6,11 @@ const code = `import { SplitButton } from "@/components/ui/split-button";
 export function SplitButtonDemo() {
   return (
     <SplitButton 
-      label="Guardar"
-      onMainAction={() => alert('Guardado')}
+      label="Save"
+      onMainAction={() => alert('Saved')}
       actions={[
-        { label: "Guardar como borrador", onClick: () => {} },
-        { label: "Guardar y enviar", onClick: () => {} },
+        { label: "Save as draft", onClick: () => {} },
+        { label: "Save and send", onClick: () => {} },
       ]}
     />
   );
@@ -20,16 +20,16 @@ export function SplitButtonPage() {
   return (
     <ComponentShowcase
       title="Split Button"
-      description="Botón con acción principal y menú desplegable de acciones secundarias."
+      description="Button with a primary action and a dropdown menu for secondary actions."
       category="UI Pattern"
       preview={
         <div className="h-[200px] flex items-center justify-center">
           <SplitButton 
-            label="Guardar"
-            onMainAction={() => alert('Guardado')}
+            label="Save"
+            onMainAction={() => alert('Saved')}
             actions={[
-              { label: "Guardar como borrador", onClick: () => {} },
-              { label: "Guardar y enviar", onClick: () => {} },
+              { label: "Save as draft", onClick: () => {} },
+              { label: "Save and send", onClick: () => {} },
             ]}
           />
         </div>

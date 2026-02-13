@@ -10,7 +10,7 @@ import {
 
 /**
  * PAGE TRANSITION WRAPPER
- * Wrapper que aplica animaciones de transición a páginas/vistas
+ * Wrapper that applies transition animations to pages/views
  */
 
 interface PageTransitionProps {
@@ -51,7 +51,7 @@ export function PageTransition({
 
 /**
  * ANIMATED PRESENCE WRAPPER
- * Wrapper para AnimatePresence con configuración estándar
+ * Wrapper for AnimatePresence with standard configuration
  */
 interface AnimatedPresenceWrapperProps {
   children: ReactNode;
@@ -71,7 +71,7 @@ export function AnimatedPresenceWrapper({
 
 /**
  * FADE IN VIEW
- * Componente que hace fade in cuando entra al viewport
+ * Component that fades in when entering the viewport
  */
 interface FadeInViewProps {
   children: ReactNode;
@@ -98,7 +98,7 @@ export function FadeInView({ children, className = "", delay = 0 }: FadeInViewPr
 
 /**
  * STAGGER CONTAINER
- * Contenedor para animar children con stagger effect
+ * Container for animating children with stagger effect
  */
 interface StaggerContainerProps {
   children: ReactNode;
@@ -131,7 +131,7 @@ export function StaggerContainer({
 
 /**
  * STAGGER ITEM
- * Item individual en un StaggerContainer
+ * Individual item in a StaggerContainer
  */
 interface StaggerItemProps {
   children: ReactNode;

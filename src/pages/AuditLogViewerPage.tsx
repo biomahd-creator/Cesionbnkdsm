@@ -11,7 +11,7 @@ export function AuditLogViewerPage() {
   return (
     <ComponentShowcase
       title="Audit Log Viewer"
-      description="Sistema completo de visualización de logs de auditoría con filtros, búsqueda y estadísticas."
+      description="Complete audit log visualization system with filters, search, and statistics."
       category="Business Component"
       preview={
         <div className="w-full border rounded-lg p-6 bg-card">
@@ -20,17 +20,17 @@ export function AuditLogViewerPage() {
       }
       code={auditLogCode}
       props={[
-        { name: "logs", type: "AuditLogEntry[]", description: "Array de entradas de log. Cada entry: id, timestamp, user, action, resource, status ('success'|'warning'|'error'), ipAddress, details.", default: "mockLogs" },
-        { name: "onExport", type: "() => void", description: "Callback al clickear el botón de exportar logs." },
-        { name: "onFilterChange", type: "(filter: string) => void", description: "Callback al cambiar el filtro de estado." },
+        { name: "logs", type: "AuditLogEntry[]", description: "Array of log entries. Each entry: id, timestamp, user, action, resource, status ('success'|'warning'|'error'), ipAddress, details.", default: "mockLogs" },
+        { name: "onExport", type: "() => void", description: "Callback when clicking the export logs button." },
+        { name: "onFilterChange", type: "(filter: string) => void", description: "Callback when changing the status filter." },
       ]}
       examples={[
         {
-          title: "Integración con API",
-          description: "Carga logs desde un endpoint y permite exportar.",
+          title: "API Integration",
+          description: "Load logs from an endpoint and enable export.",
           preview: (
             <div className="text-center py-6 border rounded-lg">
-              <p className="text-sm text-muted-foreground">Integra con tu API REST para logs en tiempo real.</p>
+              <p className="text-sm text-muted-foreground">Integrate with your REST API for real-time logs.</p>
             </div>
           ),
           code: `const [logs, setLogs] = useState([]);

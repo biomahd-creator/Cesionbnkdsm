@@ -54,7 +54,7 @@ import {
   InvoiceValidationBadges,
 } from "./InvoiceValidationPanel";
 import type { InvoiceValidation } from "./InvoiceValidationPanel";
-import { UploadInvoicesDialog } from "../../../factoring/modals/UploadInvoicesDialog";
+import { UploadInvoicesDialog } from "../../factoring/modals/UploadInvoicesDialog";
 
 // Types
 interface Invoice {

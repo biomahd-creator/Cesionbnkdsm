@@ -33,8 +33,8 @@ export function Combobox({
   options,
   value,
   onChange,
-  placeholder = "Seleccionar opción...",
-  emptyText = "No se encontraron resultados.",
+  placeholder = "Select option...",
+  emptyText = "No results found.",
 }: ComboboxProps) {
   const [open, setOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value || "");
@@ -63,7 +63,7 @@ export function Combobox({
       </PopoverTrigger>
       <PopoverContent className="w-full p-0" align="start">
         <Command>
-          <CommandInput placeholder="Buscar..." />
+          <CommandInput placeholder="Search..." />
           <CommandList>
             <CommandEmpty>{emptyText}</CommandEmpty>
             <CommandGroup>

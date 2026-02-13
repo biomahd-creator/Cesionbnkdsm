@@ -33,7 +33,7 @@ export function FactoringWorkspace({ onLogout }: FactoringWorkspaceProps) {
           onStartOperation={() => toast.success("Operación iniciada")}
         />
       ) : (
-        <div className="min-h-screen bg-background">
+        <div className="min-h-screen bg-muted/30">
           {/* Navbar Completo */}
           <CFinanciaNavbar variant="full" onLogout={onLogout} />
           

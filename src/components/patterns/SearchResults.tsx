@@ -59,7 +59,7 @@ export function SearchResults({
     return (
       <div className="p-8 text-center text-muted-foreground">
         <Search className="h-12 w-12 mx-auto mb-3 opacity-20" />
-        <p>No se encontraron resultados para "{query}"</p>
+        <p>No results found for "{query}"</p>
       </div>
     );
   }
@@ -67,7 +67,7 @@ export function SearchResults({
   if (!query) {
     return (
       <div className="p-8 text-center text-muted-foreground">
-        <p>Ingresa un término para buscar...</p>
+        <p>Enter a search term...</p>
       </div>
     );
   }
@@ -78,7 +78,7 @@ export function SearchResults({
     <ScrollArea className={cn("h-[400px]", className)}>
       <div className="p-2">
         <p className="text-xs font-medium text-muted-foreground mb-3 px-2 uppercase tracking-wider">
-          Resultados ({results.length})
+          Results ({results.length})
         </p>
         <div className="space-y-1">
           {results.map((item) => {

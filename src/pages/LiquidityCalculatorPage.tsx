@@ -1,16 +1,23 @@
-import { LiquidityCalculator } from "../factoring/components/LiquidityCalculator";
+import { ComponentShowcase } from "../components/ui/component-showcase";
+import { LiquidityCalculator } from "../components/factoring/components/LiquidityCalculator";
 
 export function LiquidityCalculatorPage() {
   return (
-    <div className="p-6 space-y-6">
-      <div className="space-y-2">
-        <h1 className="text-3xl font-semibold">Calculadora de Liquidez</h1>
-        <p className="text-muted-foreground">
-          Simula cuánto dinero recibirás al anticipar tus facturas con C-Financia
-        </p>
-      </div>
+    <ComponentShowcase
+      title="Liquidity Calculator"
+      description="Interactive calculator that simulates how much money you'll receive when advancing your invoices. Features real-time calculation of advance amounts, discount rates, fees, and net payout based on invoice value, term, and rate parameters."
+      category="Factoring"
+      preview={<LiquidityCalculator />}
+      code={`import { LiquidityCalculator } from "@/components/factoring/components/LiquidityCalculator";
 
-      <LiquidityCalculator />
-    </div>
+<LiquidityCalculator />`}
+      props={[
+        {
+          name: "(pattern)",
+          type: "—",
+          description: "Self-contained calculator component. Manages its own inputs, calculations, and display. No external props required.",
+        },
+      ]}
+    />
   );
 }

@@ -5,12 +5,12 @@ import { SafeChartContainer } from "../ui/safe-chart-container";
 /**
  * 🔒 ADVANCED COMPONENT - Treemap Chart
  * 
- * Gráfico de mapa de árbol para visualizar datos jerárquicos
- * Muestra proporciones usando rectángulos anidados
+ * Treemap chart for visualizing hierarchical data.
+ * Displays proportions using nested rectangles.
  * 
- * Ubicación: /components/advanced/TreemapChart.tsx
- * Categoría: Data Visualization - Prioridad Media
- * Uso: Portfolio visualization, file systems, market share
+ * Location: /components/advanced/TreemapChart.tsx
+ * Category: Data Visualization - Medium Priority
+ * Usage: Portfolio visualization, file systems, market share
  */
 
 export interface TreemapData {

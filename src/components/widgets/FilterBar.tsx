@@ -16,17 +16,17 @@ export function FilterBar() {
       {/* Search and Filters Row */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="flex-1">
-          <SearchBar placeholder="Buscar por cliente o número de factura..." />
+          <SearchBar placeholder="Search by client or invoice number..." />
         </div>
         <Select defaultValue="all">
           <SelectTrigger className="w-full sm:w-[180px]">
-            <SelectValue placeholder="Estado" />
+            <SelectValue placeholder="Status" />
           </SelectTrigger>
           <SelectContent>
-            <SelectItem value="all">Todos los estados</SelectItem>
-            <SelectItem value="pending">Pendiente</SelectItem>
-            <SelectItem value="approved">Aprobada</SelectItem>
-            <SelectItem value="rejected">Rechazada</SelectItem>
+            <SelectItem value="all">All Statuses</SelectItem>
+            <SelectItem value="pending">Pending</SelectItem>
+            <SelectItem value="approved">Approved</SelectItem>
+            <SelectItem value="rejected">Rejected</SelectItem>
           </SelectContent>
         </Select>
         <Button variant="outline" size="icon">
@@ -39,12 +39,12 @@ export function FilterBar() {
 
       {/* Active Filters Row */}
       <div className="flex items-center gap-2 flex-wrap">
-        <span className="text-sm text-muted-foreground">Filtros activos:</span>
-        <FilterChip label="Estado" value="Aprobada" onRemove={() => {}} />
-        <FilterChip label="Fecha" value="Enero 2024" onRemove={() => {}} />
-        <FilterChip label="Monto" value="$1M - $5M" onRemove={() => {}} />
+        <span className="text-sm text-muted-foreground">Active filters:</span>
+        <FilterChip label="Status" value="Approved" onRemove={() => {}} />
+        <FilterChip label="Date" value="January 2024" onRemove={() => {}} />
+        <FilterChip label="Amount" value="$1M - $5M" onRemove={() => {}} />
         <Button variant="ghost" size="sm" className="text-xs">
-          Limpiar todos
+          Clear all
         </Button>
       </div>
     </div>

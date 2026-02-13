@@ -3,20 +3,21 @@ import { ContactForm } from "../components/widgets/ContactForm";
 import { BookingCalendar } from "../components/widgets/BookingCalendar";
 import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 /**
- * BusinessComponentsPage - Showcase de componentes widgets de alta prioridad
+ * BusinessComponentsPage - Showcase of high-priority widget components
  * 
- * Componentes implementados:
- * 1. Audit Log Viewer - Sistema de auditoría y tracking
- * 2. Contact Form - Formulario de contacto profesional
- * 3. Booking Calendar - Sistema de agendamiento de citas
+ * Implemented components:
+ * 1. Audit Log Viewer - Audit and tracking system
+ * 2. Contact Form - Professional contact form
+ * 3. Booking Calendar - Appointment scheduling system
  * 
- * Ubicación: /pages/BusinessComponentsPage.tsx
- * Estado: ✅ Completado - 4/4 componentes de alta prioridad
+ * Location: /pages/BusinessComponentsPage.tsx
+ * Status: ✅ Completed - 4/4 high priority components
  */
 
-export function BusinessComponentsPage() {
+function BusinessComponentsDemo() {
   return (
     <div className="space-y-12">
       {/* Page Header */}
@@ -24,12 +25,12 @@ export function BusinessComponentsPage() {
         <div className="flex items-center gap-3">
           <h1 className="font-bold">Widgets Components</h1>
           <Badge className="bg-green-500 hover:bg-green-600 text-white">
-            ALTA PRIORIDAD
+            HIGH PRIORITY
           </Badge>
         </div>
         <p className="text-muted-foreground">
-          Componentes empresariales esenciales para aplicaciones profesionales.
-          Incluye sistemas de auditoría, formularios de contacto y reservas.
+          Essential business components for professional applications.
+          Includes audit systems, contact forms, and booking calendars.
         </p>
       </div>
 
@@ -43,8 +44,8 @@ export function BusinessComponentsPage() {
             <Badge variant="secondary">Data Management</Badge>
           </div>
           <p className="text-muted-foreground">
-            Sistema completo de visualización de logs de auditoría con filtros,
-            búsqueda y estadísticas. Ideal para compliance y debugging.
+            Complete audit log visualization system with filters,
+            search, and statistics. Ideal for compliance and debugging.
           </p>
         </div>
 
@@ -53,15 +54,15 @@ export function BusinessComponentsPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Tabla con filas alternadas (striped) sin bordes</li>
-            <li>Filtrado por estado (Success, Warning, Error)</li>
-            <li>Búsqueda en tiempo real por usuario, acción o recurso</li>
-            <li>Tarjetas de resumen con contadores por estado</li>
-            <li>Iconos contextuales para cada tipo de acción</li>
-            <li>Timestamps precisos e información de IP</li>
-            <li>Exportación de datos (placeholder)</li>
+            <li>Table with alternating (striped) rows without borders</li>
+            <li>Filter by status (Success, Warning, Error)</li>
+            <li>Real-time search by user, action, or resource</li>
+            <li>Summary cards with counters by status</li>
+            <li>Contextual icons for each action type</li>
+            <li>Precise timestamps and IP information</li>
+            <li>Data export (placeholder)</li>
           </ul>
         </div>
       </section>
@@ -76,8 +77,8 @@ export function BusinessComponentsPage() {
             <Badge variant="secondary">Lead Generation</Badge>
           </div>
           <p className="text-muted-foreground">
-            Formulario de contacto profesional con validación completa,
-            campos personalizables y estados de éxito/error.
+            Professional contact form with complete validation,
+            customizable fields, and success/error states.
           </p>
         </div>
 
@@ -86,18 +87,18 @@ export function BusinessComponentsPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Validación en tiempo real de campos requeridos</li>
-            <li>Validación de formato de email</li>
-            <li>Campos configurables (empresa, asunto, teléfono)</li>
-            <li>Select con opciones predefinidas de asunto</li>
-            <li>Checkbox de términos y condiciones</li>
-            <li>Estados de carga (submitting) con feedback visual</li>
-            <li>Pantalla de éxito con auto-reset</li>
-            <li>Mensajes de error específicos por campo</li>
-            <li>Diseño responsive en dos columnas</li>
-            <li>Badge de tiempo de respuesta (24h)</li>
+            <li>Real-time validation of required fields</li>
+            <li>Email format validation</li>
+            <li>Configurable fields (company, subject, phone)</li>
+            <li>Select with predefined subject options</li>
+            <li>Terms and conditions checkbox</li>
+            <li>Loading states (submitting) with visual feedback</li>
+            <li>Success screen with auto-reset</li>
+            <li>Field-specific error messages</li>
+            <li>Responsive two-column design</li>
+            <li>Response time badge (24h)</li>
           </ul>
         </div>
       </section>
@@ -112,8 +113,8 @@ export function BusinessComponentsPage() {
             <Badge variant="secondary">Scheduling</Badge>
           </div>
           <p className="text-muted-foreground">
-            Sistema completo de agendamiento de citas con calendario interactivo,
-            selección de horarios y confirmación visual.
+            Complete appointment scheduling system with interactive calendar,
+            time slot selection, and visual confirmation.
           </p>
         </div>
 
@@ -122,18 +123,18 @@ export function BusinessComponentsPage() {
         </div>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Calendario interactivo con shadcn/ui Calendar</li>
-            <li>Bloqueo automático de fines de semana y fechas pasadas</li>
-            <li>Grid de horarios disponibles con estados (disponible/ocupado)</li>
-            <li>Select de servicios con duración visible</li>
-            <li>Tarjeta de resumen con todos los detalles</li>
-            <li>Flujo de 3 pasos: fecha → hora → confirmación</li>
-            <li>Pantalla de confirmación exitosa con auto-reset</li>
-            <li>Layout responsive en dos columnas</li>
-            <li>Badges de progreso (Paso X/3)</li>
-            <li>Formato de fecha localizado en español</li>
+            <li>Interactive calendar with shadcn/ui Calendar</li>
+            <li>Automatic blocking of weekends and past dates</li>
+            <li>Available time slot grid with states (available/busy)</li>
+            <li>Service select with visible duration</li>
+            <li>Summary card with all details</li>
+            <li>3-step flow: date → time → confirmation</li>
+            <li>Successful confirmation screen with auto-reset</li>
+            <li>Responsive two-column layout</li>
+            <li>Progress badges (Step X/3)</li>
+            <li>Localized date format</li>
           </ul>
         </div>
       </section>
@@ -142,14 +143,14 @@ export function BusinessComponentsPage() {
 
       {/* Implementation Notes */}
       <section className="bg-primary/5 rounded-lg p-6 space-y-4">
-        <h3 className="font-semibold">📋 Notas de Implementación</h3>
+        <h3 className="font-semibold">📋 Implementation Notes</h3>
         <div className="space-y-3 text-sm">
           <p>
-            <strong>Ubicación:</strong> Todos los componentes están en{" "}
+            <strong>Location:</strong> All components are in{" "}
             <code className="bg-muted px-2 py-1 rounded">/components/widgets/</code>
           </p>
           <p>
-            <strong>Imports necesarios:</strong>
+            <strong>Required Imports:</strong>
           </p>
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li>
@@ -169,16 +170,38 @@ export function BusinessComponentsPage() {
             </li>
           </ul>
           <p>
-            <strong>Compatibilidad:</strong> Todos los componentes usan únicamente
-            componentes oficiales de shadcn/ui y siguen los estándares de Guidelines.md
-            (tipografía Satoshi, tokens de color, sin estilos inline).
+            <strong>Compatibility:</strong> All components use only
+            official shadcn/ui components and follow the Guidelines.md standards
+            (Satoshi typography, color tokens, no inline styles).
           </p>
           <p>
-            <strong>Estado:</strong> ✅ Fase 1 completada - 3 componentes de ALTA PRIORIDAD
-            implementados y documentados.
+            <strong>Status:</strong> ✅ Phase 1 completed - 3 HIGH PRIORITY components
+            implemented and documented.
           </p>
         </div>
       </section>
     </div>
+  );
+}
+
+export function BusinessComponentsPage() {
+  return (
+    <ComponentShowcase
+      title="Business Components"
+      description="High-priority business widgets: Audit Log Viewer for activity tracking, Contact Form for professional inquiries, and Booking Calendar for appointment scheduling."
+      category="Patterns"
+      preview={<BusinessComponentsDemo />}
+      code={`import { AuditLogViewer } from "@/components/patterns/AuditLogViewer";
+import { ContactForm } from "@/components/widgets/ContactForm";
+import { BookingCalendar } from "@/components/widgets/BookingCalendar";
+
+<AuditLogViewer />
+<ContactForm />
+<BookingCalendar />`}
+      props={[
+        { name: "(aggregation)", type: "—", description: "Showcases 3 self-contained business components." },
+      ]}
+      examples={[]}
+    />
   );
 }

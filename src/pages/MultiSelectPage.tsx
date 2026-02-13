@@ -14,20 +14,20 @@ const frameworks: MultiSelectOption[] = [
 ];
 
 const countries: MultiSelectOption[] = [
-  { label: "España", value: "es" },
-  { label: "México", value: "mx" },
+  { label: "Spain", value: "es" },
+  { label: "Mexico", value: "mx" },
   { label: "Argentina", value: "ar" },
   { label: "Colombia", value: "co" },
   { label: "Chile", value: "cl" },
-  { label: "Perú", value: "pe" },
+  { label: "Peru", value: "pe" },
 ];
 
 const departments: MultiSelectOption[] = [
-  { label: "Desarrollo", value: "dev" },
-  { label: "Diseño", value: "design" },
+  { label: "Development", value: "dev" },
+  { label: "Design", value: "design" },
   { label: "Marketing", value: "marketing" },
-  { label: "Ventas", value: "sales" },
-  { label: "Recursos Humanos", value: "hr" },
+  { label: "Sales", value: "sales" },
+  { label: "Human Resources", value: "hr" },
 ];
 
 const code = `import { MultiSelect, MultiSelectOption } from "@/components/ui/multi-select";
@@ -47,7 +47,7 @@ export function MultiSelectDemo() {
       options={options}
       selected={selected}
       onChange={setSelected}
-      placeholder="Selecciona uno o más..."
+      placeholder="Select one or more..."
     />
   );
 }`;
@@ -61,44 +61,44 @@ export function MultiSelectPage() {
   return (
     <ComponentShowcase
       title="Multi Select"
-      description="Componente de selección múltiple con búsqueda integrada, badges para elementos seleccionados y soporte completo de teclado. Ideal para formularios con opciones múltiples."
+      description="Multiple selection component with integrated search, badges for selected items, and full keyboard support. Ideal for forms with multiple options."
       category="Forms"
       preview={
         <div className="w-full max-w-md space-y-2">
-          <label className="text-foreground font-medium">Selecciona frameworks</label>
+          <label className="text-foreground font-medium">Select frameworks</label>
           <MultiSelect
             options={frameworks}
             selected={selected1}
             onChange={setSelected1}
-            placeholder="Selecciona uno o más frameworks..."
+            placeholder="Select one or more frameworks..."
           />
           {selected1.length > 0 && (
             <p className="text-muted-foreground text-sm">
-              Seleccionados: {selected1.join(", ")}
+              Selected: {selected1.join(", ")}
             </p>
           )}
         </div>
       }
       code={code}
       props={[
-        { name: "options", type: "MultiSelectOption[]", description: "Array de opciones disponibles", required: true },
-        { name: "selected", type: "string[]", description: "Array de valores seleccionados", required: true },
-        { name: "onChange", type: "(selected: string[]) => void", description: "Callback cuando cambia la selección", required: true },
-        { name: "placeholder", type: "string", default: '"Selecciona opciones..."', description: "Texto cuando no hay selección" },
-        { name: "disabled", type: "boolean", default: "false", description: "Deshabilita el componente" },
-        { name: "className", type: "string", description: "Clases CSS adicionales" },
+        { name: "options", type: "MultiSelectOption[]", description: "Array of available options", required: true },
+        { name: "selected", type: "string[]", description: "Array of selected values", required: true },
+        { name: "onChange", type: "(selected: string[]) => void", description: "Callback when selection changes", required: true },
+        { name: "placeholder", type: "string", default: '"Select options..."', description: "Text when nothing is selected" },
+        { name: "disabled", type: "boolean", default: "false", description: "Disables the component" },
+        { name: "className", type: "string", description: "Additional CSS classes" },
       ]}
       examples={[
         {
-          title: "Con valores por defecto",
-          description: "Multi Select con opciones preseleccionadas.",
+          title: "With Default Values",
+          description: "Multi Select with preselected options.",
           preview: (
             <div className="w-full max-w-md">
               <MultiSelect
                 options={frameworks}
                 selected={selected2}
                 onChange={setSelected2}
-                placeholder="Selecciona frameworks..."
+                placeholder="Select frameworks..."
               />
             </div>
           ),
@@ -109,15 +109,15 @@ export function MultiSelectPage() {
 />`,
         },
         {
-          title: "Países",
-          description: "Multi Select con diferentes conjuntos de opciones.",
+          title: "Countries",
+          description: "Multi Select with different option sets.",
           preview: (
             <div className="w-full max-w-md">
               <MultiSelect
                 options={countries}
                 selected={selected3}
                 onChange={setSelected3}
-                placeholder="Selecciona países..."
+                placeholder="Select countries..."
               />
             </div>
           ),
@@ -125,19 +125,19 @@ export function MultiSelectPage() {
   options={countries}
   selected={selected}
   onChange={setSelected}
-  placeholder="Selecciona países..."
+  placeholder="Select countries..."
 />`,
         },
         {
-          title: "Departamentos",
-          description: "Multi Select integrado en un formulario.",
+          title: "Departments",
+          description: "Multi Select integrated in a form.",
           preview: (
             <div className="w-full max-w-md">
               <MultiSelect
                 options={departments}
                 selected={selected4}
                 onChange={setSelected4}
-                placeholder="Selecciona departamentos..."
+                placeholder="Select departments..."
               />
             </div>
           ),
@@ -148,8 +148,8 @@ export function MultiSelectPage() {
 />`,
         },
         {
-          title: "Deshabilitado",
-          description: "Estado deshabilitado del componente.",
+          title: "Disabled",
+          description: "Disabled state of the component.",
           preview: (
             <div className="w-full max-w-md">
               <MultiSelect
@@ -157,7 +157,7 @@ export function MultiSelectPage() {
                 selected={["react", "vue"]}
                 onChange={() => {}}
                 disabled
-                placeholder="Multi Select deshabilitado"
+                placeholder="Disabled Multi Select"
               />
             </div>
           ),

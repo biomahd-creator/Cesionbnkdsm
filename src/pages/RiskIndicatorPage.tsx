@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { RiskIndicator } from "../factoring/RiskIndicator";
+import { RiskIndicator } from "../components/factoring/RiskIndicator";
 import { Separator } from "../components/ui/separator";
 
 const riskIndicatorCode = `import { RiskIndicator } from "@/factoring/RiskIndicator";
@@ -25,13 +25,13 @@ export function RiskIndicatorPage() {
   return (
     <ComponentShowcase
       title="Risk Indicator"
-      description="Indicador visual de nivel de riesgo con score numérico y variantes condensadas. Compatible con light y dark mode."
+      description="Visual risk level indicator with numeric score and condensed variants. Compatible with light and dark mode."
       category="Business Component"
       preview={
         <div className="flex flex-col gap-6">
           {/* Full indicators with score */}
           <div>
-            <p className="text-xs text-muted-foreground mb-3">Con Score</p>
+            <p className="text-xs text-muted-foreground mb-3">With Score</p>
             <div className="flex flex-wrap gap-3">
               <RiskIndicator level="low" score={95} />
               <RiskIndicator level="medium" score={60} />
@@ -42,7 +42,7 @@ export function RiskIndicatorPage() {
           <Separator />
           {/* Label only, no score */}
           <div>
-            <p className="text-xs text-muted-foreground mb-3">Solo Label</p>
+            <p className="text-xs text-muted-foreground mb-3">Label Only</p>
             <div className="flex flex-wrap gap-3">
               <RiskIndicator level="low" />
               <RiskIndicator level="medium" />
@@ -53,7 +53,7 @@ export function RiskIndicatorPage() {
           <Separator />
           {/* Condensed (icon only with tooltip) */}
           <div>
-            <p className="text-xs text-muted-foreground mb-3">Condensado</p>
+            <p className="text-xs text-muted-foreground mb-3">Condensed</p>
             <div className="flex gap-2">
               <RiskIndicator level="low" condensed score={95} />
               <RiskIndicator level="medium" condensed score={60} />
@@ -65,11 +65,11 @@ export function RiskIndicatorPage() {
       }
       code={riskIndicatorCode}
       props={[
-        { name: "level", type: '"low" | "medium" | "high" | "critical"', description: "Nivel de riesgo que determina color e icono.", required: true },
-        { name: "score", type: "number (0-100)", description: "Score numérico opcional. Muestra barra de progreso." },
-        { name: "showLabel", type: "boolean", default: "true", description: "Mostrar/ocultar el label de texto." },
-        { name: "condensed", type: "boolean", default: "false", description: "Modo compacto: solo icono circular con tooltip." },
-        { name: "className", type: "string", description: "Clases CSS adicionales." },
+        { name: "level", type: '"low" | "medium" | "high" | "critical"', description: "Risk level that determines color and icon.", required: true },
+        { name: "score", type: "number (0-100)", description: "Optional numeric score. Shows a progress bar." },
+        { name: "showLabel", type: "boolean", default: "true", description: "Show/hide the text label." },
+        { name: "condensed", type: "boolean", default: "false", description: "Compact mode: icon-only circle with tooltip." },
+        { name: "className", type: "string", description: "Additional CSS classes." },
       ]}
     />
   );

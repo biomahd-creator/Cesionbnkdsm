@@ -1,11 +1,11 @@
 /**
  * ANIMATION CONFIGURATION
- * Configuración centralizada de animaciones y transiciones
- * Fuente única de verdad para durations, easings y variants
+ * Centralized animation and transition configuration.
+ * Single source of truth for durations, easings, and variants.
  */
 
 // ============================================
-// DURATIONS (en segundos)
+// DURATIONS (in seconds)
 // ============================================
 export const ANIMATION_DURATION = {
   instant: 0,
@@ -25,7 +25,7 @@ export const EASING = {
   easeOut: [0, 0, 0.2, 1],
   easeInOut: [0.4, 0, 0.2, 1],
   
-  // Custom easings (más suaves)
+  // Custom easings (smoother)
   smooth: [0.25, 0.1, 0.25, 1],
   snappy: [0.4, 0, 0.6, 1],
   bounce: [0.68, -0.55, 0.265, 1.55],
@@ -45,7 +45,7 @@ export const fadeVariants = {
 };
 
 /**
- * Fade + Scale (para modals, popovers)
+ * Fade + Scale (for modals, popovers)
  */
 export const fadeScaleVariants = {
   initial: { opacity: 0, scale: 0.95 },
@@ -54,7 +54,7 @@ export const fadeScaleVariants = {
 };
 
 /**
- * Slide from Right (para drawers, sidebars)
+ * Slide from Right (for drawers, sidebars)
  */
 export const slideFromRightVariants = {
   initial: { x: "100%" },
@@ -72,7 +72,7 @@ export const slideFromLeftVariants = {
 };
 
 /**
- * Slide from Bottom (para sheets, toasts)
+ * Slide from Bottom (for sheets, toasts)
  */
 export const slideFromBottomVariants = {
   initial: { y: "100%" },
@@ -99,7 +99,7 @@ export const pageTransitionVariants = {
 };
 
 /**
- * Stagger Children (para listas)
+ * Stagger Children (for lists)
  */
 export const staggerContainerVariants = {
   animate: {
@@ -146,10 +146,10 @@ export const transitionConfig = {
 // LOADING STATES
 // ============================================
 export const LOADING_DELAYS = {
-  immediate: 0,      // Sin delay
-  short: 300,        // 300ms - para acciones rápidas
-  normal: 500,       // 500ms - delay estándar
-  long: 1000,        // 1s - para operaciones lentas
+  immediate: 0,      // No delay
+  short: 300,        // 300ms - for quick actions
+  normal: 500,       // 500ms - standard delay
+  long: 1000,        // 1s - for slow operations
 } as const;
 
 // ============================================
@@ -180,7 +180,7 @@ export const shouldReduceMotion = (): boolean => {
  */
 export const getTransition = (config: keyof typeof transitionConfig) => {
   if (shouldReduceMotion()) {
-    return { duration: 0.01 }; // Casi instantáneo
+    return { duration: 0.01 }; // Nearly instant
   }
   return transitionConfig[config];
 };
@@ -190,7 +190,7 @@ export const getTransition = (config: keyof typeof transitionConfig) => {
  */
 export const getVariants = <T extends Record<string, any>>(variants: T): T => {
   if (shouldReduceMotion()) {
-    // Retornar solo el estado final sin animación
+    // Return only the final state without animation
     return {
       initial: variants.animate,
       animate: variants.animate,

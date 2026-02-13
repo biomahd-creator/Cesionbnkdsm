@@ -1,7 +1,7 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { FactoringRateDisplay } from "../factoring/FactoringRateDisplay";
+import { FactoringRateDisplay } from "../components/factoring/FactoringRateDisplay";
 
-const rateDisplayCode = `import { FactoringRateDisplay } from "@/factoring/FactoringRateDisplay";
+const rateDisplayCode = `import { FactoringRateDisplay } from "@/components/factoring/FactoringRateDisplay";
 
 export function RateDisplayDemo() {
   return (
@@ -10,9 +10,9 @@ export function RateDisplayDemo() {
       annualRate={34.49}
       trend="down"
       components={[
-        { label: "Tasa Base", value: 1.8, description: "Interés corriente del banco" },
-        { label: "Spread de Riesgo", value: 0.5, description: "Basado en score del pagador" },
-        { label: "Comisión Plataforma", value: 0.2 },
+        { label: "Base Rate", value: 1.8, description: "Bank current interest rate" },
+        { label: "Risk Spread", value: 0.5, description: "Based on payor score" },
+        { label: "Platform Fee", value: 0.2 },
       ]}
     />
   );
@@ -22,7 +22,7 @@ export function RateDisplayPage() {
   return (
     <ComponentShowcase
       title="Rate Display"
-      description="Desglose detallado de tasas financieras y sus componentes."
+      description="Detailed breakdown of financial rates and their components."
       category="Business Component"
       preview={
         <div className="w-full max-w-md">
@@ -31,9 +31,9 @@ export function RateDisplayPage() {
             annualRate={34.49}
             trend="down"
             components={[
-              { label: "Tasa Base", value: 1.8, description: "Interés corriente del banco" },
-              { label: "Spread de Riesgo", value: 0.5, description: "Basado en score del pagador" },
-              { label: "Comisión Plataforma", value: 0.2 },
+              { label: "Base Rate", value: 1.8, description: "Bank current interest rate" },
+              { label: "Risk Spread", value: 0.5, description: "Based on payor score" },
+              { label: "Platform Fee", value: 0.2 },
             ]}
           />
         </div>

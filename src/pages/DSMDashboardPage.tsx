@@ -6,8 +6,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../components/ui/collapsible";
 import { CheckCircle2, Code2, Sparkles, Layers, Palette, MousePointerClick, MessageSquare, Database, FileCode, Layout, TrendingUp, Award, BookOpen, Shield, GitBranch, Component, Box, Puzzle, LayoutTemplate, Calendar, Package, Wrench, AlertTriangle, Rocket, Zap, FileText, BarChart3, ChevronDown, ChevronRight, Eye, Keyboard, Accessibility as AccessibilityIcon, Paintbrush } from "lucide-react";
 import { Logo } from "../components/Logo";
-import { useLanguage } from "../components/i18n/LanguageProvider";
 import { Progress } from "../components/ui/progress";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 // ── Navigation helper ──
 function navigateTo(pageId: string) {
@@ -459,8 +459,7 @@ function VersionCard({ entry, defaultOpen = false }: { entry: VersionEntry; defa
   );
 }
 
-export function DSMDashboardPage() {
-  const { t } = useLanguage();
+function DSMDashboardContent() {
 
   // ── Architecture Layers ──
   const architectureLayers = [
@@ -529,9 +528,9 @@ export function DSMDashboardPage() {
         <div className="flex items-center gap-4">
           <Logo size="lg" variant="auto" />
           <div>
-            <h1 className="text-2xl text-foreground">{t("dashboard.title")}</h1>
+            <h1 className="text-2xl text-foreground">CESIONBNK Design System</h1>
             <p className="text-sm text-muted-foreground">
-              {t("dashboard.subtitle", { count: totalComponents })}
+              {totalComponents} components · React + Tailwind CSS v4
             </p>
           </div>
         </div>
@@ -553,7 +552,7 @@ export function DSMDashboardPage() {
         <Card>
           <CardContent className="pt-5 pb-4 px-5">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted-foreground">{t("dashboard.kpi.components")}</span>
+              <span className="text-xs text-muted-foreground">Components</span>
               <Component className="h-4 w-4 text-primary" />
             </div>
             <div className="text-2xl text-foreground">{totalComponents}</div>
@@ -562,7 +561,7 @@ export function DSMDashboardPage() {
         <Card>
           <CardContent className="pt-5 pb-4 px-5">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted-foreground">{t("dashboard.kpi.pages")}</span>
+              <span className="text-xs text-muted-foreground">Showcase Pages</span>
               <FileText className="h-4 w-4 text-blue-500" />
             </div>
             <div className="text-2xl text-foreground">117</div>
@@ -571,7 +570,7 @@ export function DSMDashboardPage() {
         <Card>
           <CardContent className="pt-5 pb-4 px-5">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted-foreground">{t("dashboard.kpi.propsCoverage")}</span>
+              <span className="text-xs text-muted-foreground">Props Coverage</span>
               <Code2 className="h-4 w-4 text-emerald-500" />
             </div>
             <div className="text-2xl text-foreground">100%</div>
@@ -580,7 +579,7 @@ export function DSMDashboardPage() {
         <Card>
           <CardContent className="pt-5 pb-4 px-5">
             <div className="flex items-center justify-between mb-1">
-              <span className="text-xs text-muted-foreground">{t("dashboard.kpi.wcag")}</span>
+              <span className="text-xs text-muted-foreground">WCAG 2.1 AA</span>
               <Shield className="h-4 w-4 text-green-500" />
             </div>
             <div className="text-2xl text-foreground">98%</div>
@@ -592,7 +591,7 @@ export function DSMDashboardPage() {
       <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
         {/* Architecture */}
         <section>
-          <h2 className="text-lg text-foreground mb-4">{t("dashboard.architecture")}</h2>
+          <h2 className="text-lg text-foreground mb-4">Architecture Layers</h2>
           <div className="grid gap-3 grid-cols-2">
             {architectureLayers.map((layer) => (
               <Card key={layer.name} className={`border ${layer.borderColor} hover:shadow-md transition-shadow`}>
@@ -603,7 +602,7 @@ export function DSMDashboardPage() {
                     </div>
                     <div>
                       <div className="text-sm text-foreground">{layer.name}</div>
-                      <div className="text-xs text-muted-foreground">{layer.count} {t("dashboard.layer.components")}</div>
+                      <div className="text-xs text-muted-foreground">{layer.count} components</div>
                     </div>
                   </div>
                   <p className="text-xs text-muted-foreground leading-relaxed">
@@ -618,7 +617,7 @@ export function DSMDashboardPage() {
 
         {/* Categories */}
         <section>
-          <h2 className="text-lg text-foreground mb-4">{t("dashboard.categories")}</h2>
+          <h2 className="text-lg text-foreground mb-4">Browse by Category</h2>
           <div className="grid grid-cols-2 gap-3">
             {categories.map((cat) => (
               <Card
@@ -633,7 +632,7 @@ export function DSMDashboardPage() {
                     </div>
                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">{cat.name}</span>
                   </div>
-                  <div className="text-xs text-muted-foreground pl-8">{cat.count} {t("dashboard.layer.components")}</div>
+                  <div className="text-xs text-muted-foreground pl-8">{cat.count} components</div>
                 </CardContent>
               </Card>
             ))}
@@ -647,17 +646,17 @@ export function DSMDashboardPage() {
         <section>
           <div className="flex items-center gap-3 mb-4">
             <GitBranch className="h-5 w-5 text-primary" />
-            <h2 className="text-lg text-foreground">{t("dashboard.changelog")}</h2>
+            <h2 className="text-lg text-foreground">Changelog</h2>
             <Badge variant="outline" className="text-[10px] px-1.5 py-0">
-              {versionHistory.length} {t("dashboard.releases")}
+              {versionHistory.length} releases
             </Badge>
           </div>
 
           <Tabs defaultValue="releases" className="w-full">
             <TabsList className="grid w-full grid-cols-3 max-w-lg">
-              <TabsTrigger value="releases">{t("dashboard.tab.releases")}</TabsTrigger>
-              <TabsTrigger value="summary">{t("dashboard.tab.summary")}</TabsTrigger>
-              <TabsTrigger value="roadmap">{t("dashboard.tab.roadmap")}</TabsTrigger>
+              <TabsTrigger value="releases">Releases</TabsTrigger>
+              <TabsTrigger value="summary">Summary</TabsTrigger>
+              <TabsTrigger value="roadmap">Roadmap</TabsTrigger>
             </TabsList>
 
             {/* Releases */}
@@ -676,15 +675,15 @@ export function DSMDashboardPage() {
                   <CardHeader className="pb-3">
                     <div className="flex items-center gap-2">
                       <Layers className="h-5 w-5 text-primary" />
-                      <CardTitle className="text-foreground text-sm">{t("dashboard.summary.componentDist")}</CardTitle>
+                      <CardTitle className="text-foreground text-sm">Component Distribution</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {[
-                        { label: t("dashboard.summary.coreComponents"), count: 60 },
-                        { label: t("dashboard.summary.advancedComponents"), count: 25 },
-                        { label: t("dashboard.summary.businessPatterns"), count: 27 },
+                        { label: "Core Components", count: 60 },
+                        { label: "Advanced Components", count: 25 },
+                        { label: "Business Patterns", count: 27 },
                         { label: "Widgets", count: 19 },
                       ].map((row) => (
                         <li key={row.label} className="flex justify-between text-sm">
@@ -694,7 +693,7 @@ export function DSMDashboardPage() {
                       ))}
                       <Separator className="my-2" />
                       <li className="flex justify-between">
-                        <span className="text-foreground">{t("dashboard.summary.total")}</span>
+                        <span className="text-foreground">Total</span>
                         <span className="text-primary">{totalComponents}</span>
                       </li>
                     </ul>
@@ -705,18 +704,18 @@ export function DSMDashboardPage() {
                   <CardHeader className="pb-3">
                     <div className="flex items-center gap-2">
                       <BarChart3 className="h-5 w-5 text-primary" />
-                      <CardTitle className="text-foreground text-sm">{t("dashboard.summary.systemHealth")}</CardTitle>
+                      <CardTitle className="text-foreground text-sm">System Health</CardTitle>
                     </div>
                   </CardHeader>
                   <CardContent>
                     <ul className="space-y-2">
                       {[
-                        { label: t("dashboard.summary.propsCoverage"), value: "100%" },
-                        { label: t("dashboard.summary.docCoverage"), value: "100%" },
-                        { label: t("dashboard.summary.tsStrictness"), value: "100%" },
-                        { label: t("dashboard.summary.accessibility"), value: "98%" },
-                        { label: t("dashboard.summary.responsive"), value: "100%" },
-                        { label: t("dashboard.summary.dark"), value: "100%" },
+                        { label: "Props Coverage", value: "100%" },
+                        { label: "Doc Coverage", value: "100%" },
+                        { label: "TS Strictness", value: "100%" },
+                        { label: "Accessibility", value: "98%" },
+                        { label: "Responsive", value: "100%" },
+                        { label: "Dark Mode", value: "100%" },
                       ].map((row) => (
                         <li key={row.label} className="flex justify-between text-sm">
                           <span className="text-muted-foreground">{row.label}</span>
@@ -736,30 +735,30 @@ export function DSMDashboardPage() {
                   <div className="relative border-l border-primary/20 ml-4 space-y-8 py-2">
                     <div className="relative pl-8">
                       <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full border-2 border-primary bg-background" />
-                      <div className="mb-1 text-sm text-primary">{t("dashboard.roadmap.current")}</div>
-                      <h3 className="text-foreground">{t("dashboard.roadmap.performance")}</h3>
+                      <div className="mb-1 text-sm text-primary">Current</div>
+                      <h3 className="text-foreground">Performance Optimization</h3>
                       <p className="text-sm text-muted-foreground mb-2">
-                        {t("dashboard.roadmap.performanceDesc")}
+                        Bundle splitting, lazy loading, and tree-shaking optimization.
                       </p>
-                      <Badge variant="outline">{t("dashboard.roadmap.inProgress")}</Badge>
+                      <Badge variant="outline">In Progress</Badge>
                     </div>
                     <div className="relative pl-8">
                       <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full border-2 border-muted-foreground bg-background" />
                       <div className="mb-1 text-sm text-muted-foreground">Q2 2026</div>
-                      <h3 className="text-foreground">{t("dashboard.roadmap.mobile")}</h3>
+                      <h3 className="text-foreground">Mobile Components</h3>
                       <p className="text-sm text-muted-foreground mb-2">
-                        {t("dashboard.roadmap.mobileDesc")}
+                        Touch-optimized components and responsive patterns.
                       </p>
-                      <Badge variant="secondary">{t("dashboard.roadmap.planned")}</Badge>
+                      <Badge variant="secondary">Planned</Badge>
                     </div>
                     <div className="relative pl-8">
                       <div className="absolute -left-1.5 top-1.5 h-3 w-3 rounded-full border-2 border-muted-foreground bg-background" />
                       <div className="mb-1 text-sm text-muted-foreground">Q3 2026</div>
-                      <h3 className="text-foreground">{t("dashboard.roadmap.theming")}</h3>
+                      <h3 className="text-foreground">Multi-theme Engine</h3>
                       <p className="text-sm text-muted-foreground mb-2">
-                        {t("dashboard.roadmap.themingDesc")}
+                        Dynamic theme switching with custom brand presets.
                       </p>
-                      <Badge variant="secondary">{t("dashboard.roadmap.planned")}</Badge>
+                      <Badge variant="secondary">Planned</Badge>
                     </div>
                   </div>
                 </CardContent>
@@ -772,7 +771,7 @@ export function DSMDashboardPage() {
         <section>
           <div className="flex items-center gap-3 mb-4">
             <AccessibilityIcon className="h-5 w-5 text-green-500" />
-            <h2 className="text-lg text-foreground">{t("dashboard.wcag.title")}</h2>
+            <h2 className="text-lg text-foreground">WCAG 2.1 Compliance</h2>
             <Badge className="bg-green-500 text-white">AA</Badge>
           </div>
 
@@ -780,21 +779,21 @@ export function DSMDashboardPage() {
           <div className="grid grid-cols-3 gap-3 mb-5">
             <Card className="border-green-500/20 bg-green-500/5">
               <CardContent className="pt-4 pb-3 px-4">
-                <div className="text-xs text-muted-foreground mb-1">{t("dashboard.wcag.score")}</div>
+                <div className="text-xs text-muted-foreground mb-1">Overall Score</div>
                 <div className="text-2xl text-green-500 mb-1.5">98%</div>
                 <Progress value={98} className="h-1.5" />
               </CardContent>
             </Card>
             <Card>
               <CardContent className="pt-4 pb-3 px-4">
-                <div className="text-xs text-muted-foreground mb-1">{t("dashboard.wcag.criteriaMet")}</div>
+                <div className="text-xs text-muted-foreground mb-1">Criteria Met</div>
                 <div className="text-2xl text-foreground mb-1.5">18/18</div>
-                <p className="text-xs text-muted-foreground">100% {t("dashboard.wcag.ofCriteria")}</p>
+                <p className="text-xs text-muted-foreground">100% of criteria</p>
               </CardContent>
             </Card>
             <Card>
               <CardContent className="pt-4 pb-3 px-4">
-                <div className="text-xs text-muted-foreground mb-1">{t("dashboard.wcag.conformance")}</div>
+                <div className="text-xs text-muted-foreground mb-1">Conformance</div>
                 <div className="flex items-center gap-1.5 mb-1.5">
                   <CheckCircle2 className="h-5 w-5 text-green-500" />
                   <span className="text-lg text-foreground">WCAG 2.1</span>
@@ -807,16 +806,16 @@ export function DSMDashboardPage() {
           {/* WCAG Details Tabs */}
           <Tabs defaultValue="criteria" className="w-full">
             <TabsList className="grid w-full grid-cols-3 max-w-lg">
-              <TabsTrigger value="criteria">{t("dashboard.wcag.tab.criteria")}</TabsTrigger>
-              <TabsTrigger value="features">{t("dashboard.wcag.tab.features")}</TabsTrigger>
-              <TabsTrigger value="contrast">{t("dashboard.wcag.tab.contrast")}</TabsTrigger>
+              <TabsTrigger value="criteria">Criteria</TabsTrigger>
+              <TabsTrigger value="features">Features</TabsTrigger>
+              <TabsTrigger value="contrast">Contrast</TabsTrigger>
             </TabsList>
 
             <TabsContent value="criteria" className="mt-4">
               <div className="grid gap-3 grid-cols-2">
                 {[
                   {
-                    title: t("dashboard.wcag.perceivable"),
+                    title: "Perceivable",
                     items: [
                       { id: "1.1.1", name: "Text alternatives", level: "A" },
                       { id: "1.3.1", name: "Info & relationships", level: "A" },
@@ -826,7 +825,7 @@ export function DSMDashboardPage() {
                     ],
                   },
                   {
-                    title: t("dashboard.wcag.operable"),
+                    title: "Operable",
                     items: [
                       { id: "2.1.1", name: "Keyboard", level: "A" },
                       { id: "2.1.2", name: "No keyboard trap", level: "A" },
@@ -836,7 +835,7 @@ export function DSMDashboardPage() {
                     ],
                   },
                   {
-                    title: t("dashboard.wcag.understandable"),
+                    title: "Understandable",
                     items: [
                       { id: "3.1.1", name: "Language of page", level: "A" },
                       { id: "3.2.1", name: "On focus", level: "A" },
@@ -845,7 +844,7 @@ export function DSMDashboardPage() {
                     ],
                   },
                   {
-                    title: t("dashboard.wcag.robust"),
+                    title: "Robust",
                     items: [
                       { id: "4.1.1", name: "Parsing", level: "A" },
                       { id: "4.1.2", name: "Name, role, value", level: "A" },
@@ -880,22 +879,22 @@ export function DSMDashboardPage() {
               <div className="grid gap-3 grid-cols-2">
                 {[
                   {
-                    title: t("dashboard.wcag.keyboardNav"),
+                    title: "Keyboard Navigation",
                     icon: Keyboard,
                     items: ["Tab / Shift+Tab navigation", "Skip links", "Focus trap (modals)", "Escape to close", "Arrow keys (menus)"],
                   },
                   {
-                    title: t("dashboard.wcag.ariaAttrs"),
+                    title: "ARIA Attributes",
                     icon: Eye,
                     items: ["aria-label (navigation)", "aria-expanded (accordions)", "aria-selected (tabs)", "aria-live regions", "Semantic roles"],
                   },
                   {
-                    title: t("dashboard.wcag.colorContrast"),
+                    title: "Color Contrast",
                     icon: Palette,
                     items: ["Main text: 7.2:1 (AAA)", "Secondary text: 5.1:1 (AA)", "Primary: 7.22:1 (AAA)", "Buttons: 4.8:1 (AA)", "Borders: 3.2:1 (AA)"],
                   },
                   {
-                    title: t("dashboard.wcag.semanticHTML"),
+                    title: "Semantic HTML",
                     icon: Code2,
                     items: ["<nav> for navigation", "<main> for content", "<aside> for sidebar", "Hierarchical headings (h1-h6)", "ARIA landmarks"],
                   },
@@ -925,8 +924,8 @@ export function DSMDashboardPage() {
             <TabsContent value="contrast" className="mt-4">
               <Card>
                 <CardHeader className="pb-3">
-                  <CardTitle className="text-sm text-foreground">{t("dashboard.wcag.contrastRatios")}</CardTitle>
-                  <CardDescription>{t("dashboard.wcag.allColorsPass")}</CardDescription>
+                  <CardTitle className="text-sm text-foreground">Contrast Ratios</CardTitle>
+                  <CardDescription>All color combinations pass WCAG AA</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -965,25 +964,39 @@ export function DSMDashboardPage() {
           <div className="flex flex-wrap items-center gap-x-8 gap-y-3 justify-between">
             <div className="flex items-center gap-2">
               <CheckCircle2 className="h-4 w-4 text-primary" />
-              <span className="text-sm text-foreground">{t("dashboard.systemProduction")}</span>
+              <span className="text-sm text-foreground">System ready for production</span>
             </div>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-xs text-muted-foreground">
               <span className="flex items-center gap-1.5">
                 <Palette className="h-3 w-3" />
-                {t("dashboard.tokens")}
+                CSS Tokens
               </span>
               <span className="flex items-center gap-1.5">
                 <Code2 className="h-3 w-3" />
-                {t("dashboard.tsStrict")}
+                TypeScript Strict
               </span>
               <span className="flex items-center gap-1.5">
                 <Shield className="h-3 w-3" />
-                {t("dashboard.darkMode")}
+                Dark Mode
               </span>
             </div>
           </div>
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export function DSMDashboardPage() {
+  return (
+    <ComponentShowcase
+      title="DSM Dashboard"
+      description="Design System Manager dashboard with version history, changelog, migration status, and system health metrics."
+      category="Home"
+      preview={<DSMDashboardContent />}
+      code={`// DSM Dashboard - internal changelog and metrics page`}
+      props={[]}
+      examples={[]}
+    />
   );
 }

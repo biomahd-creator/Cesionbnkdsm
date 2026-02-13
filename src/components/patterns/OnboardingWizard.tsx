@@ -27,72 +27,72 @@ import {
 } from "lucide-react";
 
 /**
- * WIZARD DE ONBOARDING C-FINANCIA
+ * ONBOARDING WIZARD — C-FINANCIA
  * 
- * Proceso de registro para empresas cedentes:
+ * Company registration process for assignor companies:
  * 
- * PASO 1: Información de la Empresa
- * - RUT (Registro Único Tributario)
- * - NIT (Número de Identificación Tributaria)
- * - Razón social
- * - Tipo de empresa
- * - Sector económico
+ * STEP 1: Company Information
+ * - RUT (Colombian Tax Registry)
+ * - NIT (Tax Identification Number)
+ * - Legal name
+ * - Company type
+ * - Economic sector
  * 
- * PASO 2: Datos de Contacto
- * - Representante legal
- * - Email corporativo
- * - Teléfono
- * - Dirección
- * - Ciudad
+ * STEP 2: Contact Details
+ * - Legal representative
+ * - Corporate email
+ * - Phone
+ * - Address
+ * - City
  * 
- * PASO 3: Información Bancaria
- * - Banco
- * - Tipo de cuenta
- * - Número de cuenta
- * - Titular
+ * STEP 3: Banking Information
+ * - Bank
+ * - Account type
+ * - Account number
+ * - Account holder
  * 
- * PASO 4: Verificación de Documentos
- * - RUT escaneado
- * - Cámara de comercio (< 30 días)
- * - Estados financieros
- * - Cédula del representante legal
+ * STEP 4: Document Verification
+ * - Scanned RUT
+ * - Chamber of Commerce certificate (< 30 days)
+ * - Financial statements
+ * - Legal representative's ID
  * 
- * PASO 5: Términos y Condiciones
- * - Contrato de factoring
- * - Autorización tratamiento de datos
- * - Confirmación final
+ * STEP 5: Terms & Conditions
+ * - Factoring contract
+ * - Data processing authorization
+ * - Final confirmation
  */
 
 type OnboardingStep = 1 | 2 | 3 | 4 | 5;
 
 interface OnboardingData {
-  // Paso 1: Empresa
+  // Step 1: Company
   rut: string;
   nit: string;
   razonSocial: string;
   tipoEmpresa: string;
   sectorEconomico: string;
   
-  // Paso 2: Contacto
+  // Step 2: Contact
   representanteLegal: string;
   emailCorporativo: string;
   telefono: string;
   direccion: string;
   ciudad: string;
   
-  // Paso 3: Bancaria
+  // Step 3: Banking
   banco: string;
   tipoCuenta: string;
   numeroCuenta: string;
   titularCuenta: string;
   
-  // Paso 4: Documentos
+  // Step 4: Documents
   rutArchivo: File | null;
   camaraComercio: File | null;
   estadosFinancieros: File | null;
   cedulaRepresentante: File | null;
   
-  // Paso 5: Términos
+  // Step 5: Terms
   aceptaContrato: boolean;
   aceptaDatos: boolean;
 }
@@ -147,11 +147,11 @@ export function OnboardingWizard() {
   };
 
   const handleSubmit = () => {
-    alert("🎉 ¡Registro completado!\n\nTu solicitud ha sido enviada para aprobación.\n\nRecibirás un correo de confirmación en las próximas 2 horas con:\n\n✓ Acceso a tu portal empresarial\n✓ Cupo de factoring aprobado\n✓ Instrucciones para cargar facturas\n\n¡Bienvenido a C-Financia!");
-    console.log("Datos del formulario:", formData);
+    alert("Registration complete!\n\nYour application has been submitted for approval.\n\nYou will receive a confirmation email within 2 hours with:\n\n- Access to your corporate portal\n- Approved factoring credit line\n- Instructions for uploading invoices\n\nWelcome to C-Financia!");
+    console.log("Form data:", formData);
   };
 
-  // Validaciones por paso
+  // Per-step validations
   const isStep1Valid = formData.rut && formData.nit && formData.razonSocial && formData.tipoEmpresa;
   const isStep2Valid = formData.representanteLegal && formData.emailCorporativo && formData.telefono && formData.ciudad;
   const isStep3Valid = formData.banco && formData.tipoCuenta && formData.numeroCuenta && formData.titularCuenta;
@@ -171,65 +171,65 @@ export function OnboardingWizard() {
 
   return (
     <div className="max-w-4xl mx-auto space-y-6">
-      {/* Header con progreso */}
+      {/* Header with progress */}
       <Card className="elevation-2 border-2 border-primary/30 bg-gradient-to-br from-primary/5 to-primary/10">
         <CardHeader>
           <div className="flex items-center justify-between mb-4">
             <div>
               <CardTitle className="flex items-center gap-2">
                 <Building2 className="h-6 w-6 text-primary" />
-                Registro de Empresa - C-Financia
+                Company Registration — C-Financia
               </CardTitle>
               <CardDescription className="mt-2">
-                Completa tu registro en 5 pasos para acceder a liquidez inmediata
+                Complete your registration in 5 steps to access immediate liquidity
               </CardDescription>
             </div>
             <Badge variant="outline" className="text-sm">
-              Paso {currentStep} de {totalSteps}
+              Step {currentStep} of {totalSteps}
             </Badge>
           </div>
 
-          {/* Barra de progreso */}
+          {/* Progress bar */}
           <div className="space-y-2">
             <Progress value={progress} className="h-2" />
             <div className="flex justify-between text-xs text-muted-foreground">
-              <span className={currentStep >= 1 ? "text-primary font-semibold" : ""}>Empresa</span>
-              <span className={currentStep >= 2 ? "text-primary font-semibold" : ""}>Contacto</span>
-              <span className={currentStep >= 3 ? "text-primary font-semibold" : ""}>Bancaria</span>
-              <span className={currentStep >= 4 ? "text-primary font-semibold" : ""}>Documentos</span>
-              <span className={currentStep >= 5 ? "text-primary font-semibold" : ""}>Confirmación</span>
+              <span className={currentStep >= 1 ? "text-primary font-semibold" : ""}>Company</span>
+              <span className={currentStep >= 2 ? "text-primary font-semibold" : ""}>Contact</span>
+              <span className={currentStep >= 3 ? "text-primary font-semibold" : ""}>Banking</span>
+              <span className={currentStep >= 4 ? "text-primary font-semibold" : ""}>Documents</span>
+              <span className={currentStep >= 5 ? "text-primary font-semibold" : ""}>Confirmation</span>
             </div>
           </div>
         </CardHeader>
       </Card>
 
-      {/* Contenido del paso actual */}
+      {/* Current step content */}
       <Card className="elevation-2">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
-            {currentStep === 1 && <><Building2 className="h-5 w-5 text-primary" /> Información de la Empresa</>}
-            {currentStep === 2 && <><User className="h-5 w-5 text-primary" /> Datos de Contacto</>}
-            {currentStep === 3 && <><Landmark className="h-5 w-5 text-primary" /> Información Bancaria</>}
-            {currentStep === 4 && <><Upload className="h-5 w-5 text-primary" /> Verificación de Documentos</>}
-            {currentStep === 5 && <><Shield className="h-5 w-5 text-primary" /> Términos y Condiciones</>}
+            {currentStep === 1 && <><Building2 className="h-5 w-5 text-primary" /> Company Information</>}
+            {currentStep === 2 && <><User className="h-5 w-5 text-primary" /> Contact Details</>}
+            {currentStep === 3 && <><Landmark className="h-5 w-5 text-primary" /> Banking Information</>}
+            {currentStep === 4 && <><Upload className="h-5 w-5 text-primary" /> Document Verification</>}
+            {currentStep === 5 && <><Shield className="h-5 w-5 text-primary" /> Terms & Conditions</>}
           </CardTitle>
           <CardDescription>
-            {currentStep === 1 && "Ingresa los datos fiscales de tu empresa"}
-            {currentStep === 2 && "Información del representante legal y ubicación"}
-            {currentStep === 3 && "Cuenta bancaria para recibir desembolsos"}
-            {currentStep === 4 && "Carga los documentos requeridos para verificación"}
-            {currentStep === 5 && "Revisa y acepta los términos del servicio"}
+            {currentStep === 1 && "Enter your company's tax information"}
+            {currentStep === 2 && "Legal representative and location details"}
+            {currentStep === 3 && "Bank account for receiving disbursements"}
+            {currentStep === 4 && "Upload the required documents for verification"}
+            {currentStep === 5 && "Review and accept the terms of service"}
           </CardDescription>
         </CardHeader>
 
         <CardContent>
-          {/* PASO 1: Información de la Empresa */}
+          {/* STEP 1: Company Information */}
           {currentStep === 1 && (
             <div className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="rut">
-                    RUT (Registro Único Tributario) *
+                    RUT (Colombian Tax Registry) *
                   </Label>
                   <Input
                     id="rut"
@@ -242,7 +242,7 @@ export function OnboardingWizard() {
 
                 <div className="space-y-2">
                   <Label htmlFor="nit">
-                    NIT (Número de Identificación Tributaria) *
+                    NIT (Tax Identification Number) *
                   </Label>
                   <Input
                     id="nit"
@@ -256,53 +256,53 @@ export function OnboardingWizard() {
 
               <div className="space-y-2">
                 <Label htmlFor="razonSocial">
-                  Razón Social *
+                  Legal Name *
                 </Label>
                 <Input
                   id="razonSocial"
                   type="text"
                   value={formData.razonSocial}
                   onChange={(e) => updateField("razonSocial", e.target.value)}
-                  placeholder="EMPRESA S.A.S."
+                  placeholder="COMPANY S.A.S."
                 />
               </div>
 
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="tipoEmpresa">
-                    Tipo de Empresa *
+                    Company Type *
                   </Label>
                   <Select value={formData.tipoEmpresa} onValueChange={(value) => updateField("tipoEmpresa", value)}>
                     <SelectTrigger id="tipoEmpresa">
-                      <SelectValue placeholder="Selecciona tipo" />
+                      <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="sas">S.A.S. (Sociedad por Acciones Simplificada)</SelectItem>
-                      <SelectItem value="sa">S.A. (Sociedad Anónima)</SelectItem>
-                      <SelectItem value="ltda">LTDA (Limitada)</SelectItem>
-                      <SelectItem value="sc">S.C. (Sociedad Colectiva)</SelectItem>
-                      <SelectItem value="eu">E.U. (Empresa Unipersonal)</SelectItem>
+                      <SelectItem value="sas">S.A.S. (Simplified Joint-Stock Company)</SelectItem>
+                      <SelectItem value="sa">S.A. (Corporation)</SelectItem>
+                      <SelectItem value="ltda">LTDA (Limited Liability)</SelectItem>
+                      <SelectItem value="sc">S.C. (General Partnership)</SelectItem>
+                      <SelectItem value="eu">E.U. (Sole Proprietorship)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="sectorEconomico">
-                    Sector Económico
+                    Economic Sector
                   </Label>
                   <Select value={formData.sectorEconomico} onValueChange={(value) => updateField("sectorEconomico", value)}>
                     <SelectTrigger id="sectorEconomico">
-                      <SelectValue placeholder="Selecciona sector" />
+                      <SelectValue placeholder="Select sector" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="comercio">Comercio</SelectItem>
-                      <SelectItem value="servicios">Servicios</SelectItem>
-                      <SelectItem value="manufactura">Manufactura</SelectItem>
-                      <SelectItem value="construccion">Construcción</SelectItem>
-                      <SelectItem value="tecnologia">Tecnología</SelectItem>
-                      <SelectItem value="transporte">Transporte y Logística</SelectItem>
-                      <SelectItem value="agricultura">Agricultura</SelectItem>
-                      <SelectItem value="otro">Otro</SelectItem>
+                      <SelectItem value="comercio">Commerce</SelectItem>
+                      <SelectItem value="servicios">Services</SelectItem>
+                      <SelectItem value="manufactura">Manufacturing</SelectItem>
+                      <SelectItem value="construccion">Construction</SelectItem>
+                      <SelectItem value="tecnologia">Technology</SelectItem>
+                      <SelectItem value="transporte">Transport & Logistics</SelectItem>
+                      <SelectItem value="agricultura">Agriculture</SelectItem>
+                      <SelectItem value="otro">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -311,26 +311,26 @@ export function OnboardingWizard() {
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Asegúrate de que los datos coincidan con tu RUT y cámara de comercio.
+                  Make sure the information matches your RUT and Chamber of Commerce certificate.
                 </AlertDescription>
               </Alert>
             </div>
           )}
 
-          {/* PASO 2: Datos de Contacto */}
+          {/* STEP 2: Contact Details */}
           {currentStep === 2 && (
             <div className="space-y-6">
               <div className="space-y-2">
                 <Label htmlFor="representanteLegal" className="flex items-center gap-2">
                   <User className="h-4 w-4 text-primary" />
-                  Representante Legal *
+                  Legal Representative *
                 </Label>
                 <Input
                   id="representanteLegal"
                   type="text"
                   value={formData.representanteLegal}
                   onChange={(e) => updateField("representanteLegal", e.target.value)}
-                  placeholder="Nombre completo del representante"
+                  placeholder="Full name of the representative"
                 />
               </div>
 
@@ -338,21 +338,21 @@ export function OnboardingWizard() {
                 <div className="space-y-2">
                   <Label htmlFor="emailCorporativo" className="flex items-center gap-2">
                     <Mail className="h-4 w-4 text-primary" />
-                    Email Corporativo *
+                    Corporate Email *
                   </Label>
                   <Input
                     id="emailCorporativo"
                     type="email"
                     value={formData.emailCorporativo}
                     onChange={(e) => updateField("emailCorporativo", e.target.value)}
-                    placeholder="contacto@empresa.com.co"
+                    placeholder="contact@company.com"
                   />
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="telefono" className="flex items-center gap-2">
                     <Phone className="h-4 w-4 text-primary" />
-                    Teléfono *
+                    Phone *
                   </Label>
                   <Input
                     id="telefono"
@@ -367,24 +367,24 @@ export function OnboardingWizard() {
               <div className="space-y-2">
                 <Label htmlFor="direccion" className="flex items-center gap-2">
                   <MapPin className="h-4 w-4 text-primary" />
-                  Dirección Comercial
+                  Business Address
                 </Label>
                 <Input
                   id="direccion"
                   type="text"
                   value={formData.direccion}
                   onChange={(e) => updateField("direccion", e.target.value)}
-                  placeholder="Calle 123 # 45-67"
+                  placeholder="Street 123 # 45-67"
                 />
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="ciudad">
-                  Ciudad *
+                  City *
                 </Label>
                 <Select value={formData.ciudad} onValueChange={(value) => updateField("ciudad", value)}>
                   <SelectTrigger id="ciudad">
-                    <SelectValue placeholder="Selecciona ciudad" />
+                    <SelectValue placeholder="Select city" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value="bogota">Bogotá D.C.</SelectItem>
@@ -395,7 +395,7 @@ export function OnboardingWizard() {
                     <SelectItem value="bucaramanga">Bucaramanga</SelectItem>
                     <SelectItem value="pereira">Pereira</SelectItem>
                     <SelectItem value="manizales">Manizales</SelectItem>
-                    <SelectItem value="otro">Otra</SelectItem>
+                    <SelectItem value="otro">Other</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
@@ -403,24 +403,24 @@ export function OnboardingWizard() {
               <Alert className="border-primary/50 bg-primary/5">
                 <Info className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  El email corporativo será usado para todas las notificaciones importantes.
+                  The corporate email will be used for all important notifications.
                 </AlertDescription>
               </Alert>
             </div>
           )}
 
-          {/* PASO 3: Información Bancaria */}
+          {/* STEP 3: Banking Information */}
           {currentStep === 3 && (
             <div className="space-y-6">
               <div className="grid gap-6 md:grid-cols-2">
                 <div className="space-y-2">
                   <Label htmlFor="banco" className="flex items-center gap-2">
                     <Landmark className="h-4 w-4 text-primary" />
-                    Banco *
+                    Bank *
                   </Label>
                   <Select value={formData.banco} onValueChange={(value) => updateField("banco", value)}>
                     <SelectTrigger id="banco">
-                      <SelectValue placeholder="Selecciona banco" />
+                      <SelectValue placeholder="Select bank" />
                     </SelectTrigger>
                     <SelectContent>
                       <SelectItem value="bancolombia">Bancolombia</SelectItem>
@@ -432,22 +432,22 @@ export function OnboardingWizard() {
                       <SelectItem value="av_villas">AV Villas</SelectItem>
                       <SelectItem value="colpatria">Colpatria</SelectItem>
                       <SelectItem value="agrario">Banco Agrario</SelectItem>
-                      <SelectItem value="otro">Otro</SelectItem>
+                      <SelectItem value="otro">Other</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
                   <Label htmlFor="tipoCuenta">
-                    Tipo de Cuenta *
+                    Account Type *
                   </Label>
                   <Select value={formData.tipoCuenta} onValueChange={(value) => updateField("tipoCuenta", value)}>
                     <SelectTrigger id="tipoCuenta">
-                      <SelectValue placeholder="Selecciona tipo" />
+                      <SelectValue placeholder="Select type" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="ahorros">Ahorros</SelectItem>
-                      <SelectItem value="corriente">Corriente</SelectItem>
+                      <SelectItem value="ahorros">Savings</SelectItem>
+                      <SelectItem value="corriente">Checking</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
@@ -455,7 +455,7 @@ export function OnboardingWizard() {
 
               <div className="space-y-2">
                 <Label htmlFor="numeroCuenta">
-                  Número de Cuenta *
+                  Account Number *
                 </Label>
                 <Input
                   id="numeroCuenta"
@@ -465,43 +465,43 @@ export function OnboardingWizard() {
                   placeholder="0000-0000-0000"
                 />
                 <p className="text-xs text-muted-foreground">
-                  Cuenta a la que se realizarán los desembolsos
+                  Account where disbursements will be deposited
                 </p>
               </div>
 
               <div className="space-y-2">
                 <Label htmlFor="titularCuenta">
-                  Titular de la Cuenta *
+                  Account Holder *
                 </Label>
                 <Input
                   id="titularCuenta"
                   type="text"
                   value={formData.titularCuenta}
                   onChange={(e) => updateField("titularCuenta", e.target.value)}
-                  placeholder="Nombre del titular"
+                  placeholder="Account holder name"
                 />
                 <p className="text-xs text-muted-foreground">
-                  Debe coincidir con la razón social de la empresa
+                  Must match the company's legal name
                 </p>
               </div>
 
               <Alert className="border-blue-500/50 bg-blue-500/5">
                 <Clock className="h-4 w-4 text-blue-500" />
                 <AlertDescription className="text-sm">
-                  <strong>Desembolsos en 24 horas:</strong> Una vez aprobada tu solicitud, 
-                  el dinero se transferirá a esta cuenta bancaria.
+                  <strong>24-hour disbursements:</strong> Once your application is approved, 
+                  funds will be transferred to this bank account.
                 </AlertDescription>
               </Alert>
             </div>
           )}
 
-          {/* PASO 4: Verificación de Documentos */}
+          {/* STEP 4: Document Verification */}
           {currentStep === 4 && (
             <div className="space-y-6">
               <Alert className="border-primary/50 bg-primary/5">
                 <FileCheck className="h-4 w-4 text-primary" />
                 <AlertDescription className="text-sm">
-                  Carga documentos en formato PDF o JPG (máximo 5 MB por archivo)
+                  Upload documents in PDF or JPG format (maximum 5 MB per file)
                 </AlertDescription>
               </Alert>
 
@@ -510,12 +510,12 @@ export function OnboardingWizard() {
                 <Card className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <Label htmlFor="rutArchivo" className="font-medium">
-                      RUT (Registro Único Tributario) *
+                      RUT (Tax Registry Number) *
                     </Label>
                     {formData.rutArchivo && (
                       <Badge variant="default" className="bg-green-500">
                         <CheckCircle2 className="h-3 w-3 mr-1" />
-                        Cargado
+                        Uploaded
                       </Badge>
                     )}
                   </div>
@@ -532,16 +532,16 @@ export function OnboardingWizard() {
                   )}
                 </Card>
 
-                {/* Cámara de Comercio */}
+                {/* Chamber of Commerce */}
                 <Card className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <Label htmlFor="camaraComercio" className="font-semibold">
-                      Certificado Cámara de Comercio (vigencia &lt; 30 días) *
+                      Chamber of Commerce Certificate (validity &lt; 30 days) *
                     </Label>
                     {formData.camaraComercio && (
                       <Badge variant="default" className="bg-green-500">
                         <CheckCircle2 className="h-3 w-3 mr-1" />
-                        Cargado
+                        Uploaded
                       </Badge>
                     )}
                   </div>
@@ -558,16 +558,16 @@ export function OnboardingWizard() {
                   )}
                 </Card>
 
-                {/* Estados Financieros */}
+                {/* Financial Statements */}
                 <Card className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <Label htmlFor="estadosFinancieros" className="font-semibold">
-                      Estados Financieros (último año) *
+                      Financial Statements (last year) *
                     </Label>
                     {formData.estadosFinancieros && (
                       <Badge variant="default" className="bg-green-500">
                         <CheckCircle2 className="h-3 w-3 mr-1" />
-                        Cargado
+                        Uploaded
                       </Badge>
                     )}
                   </div>
@@ -584,16 +584,16 @@ export function OnboardingWizard() {
                   )}
                 </Card>
 
-                {/* Cédula Representante */}
+                {/* Legal Representative's ID */}
                 <Card className="p-4">
                   <div className="flex items-center justify-between mb-2">
                     <Label htmlFor="cedulaRepresentante" className="font-medium">
-                      Cédula del Representante Legal *
+                      Legal Representative's ID *
                     </Label>
                     {formData.cedulaRepresentante && (
                       <Badge variant="default" className="bg-green-500">
                         <CheckCircle2 className="h-3 w-3 mr-1" />
-                        Cargado
+                        Uploaded
                       </Badge>
                     )}
                   </div>
@@ -613,46 +613,46 @@ export function OnboardingWizard() {
             </div>
           )}
 
-          {/* PASO 5: Términos y Condiciones */}
+          {/* STEP 5: Terms & Conditions */}
           {currentStep === 5 && (
             <div className="space-y-6">
               <Alert className="border-green-500/50 bg-green-500/5">
                 <CheckCircle2 className="h-4 w-4 text-green-500" />
                 <AlertDescription className="text-sm">
-                  <strong>¡Casi listo!</strong> Revisa y acepta los términos para completar tu registro.
+                  <strong>Almost done!</strong> Review and accept the terms to complete your registration.
                 </AlertDescription>
               </Alert>
 
-              {/* Resumen de datos */}
+              {/* Registration summary */}
               <Card className="p-4 bg-muted/30">
-                <h4 className="font-semibold mb-3">Resumen de tu Registro</h4>
+                <h4 className="font-semibold mb-3">Registration Summary</h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-muted-foreground">Empresa</span>
-                    <span className="font-medium">{formData.razonSocial || "Sin especificar"}</span>
+                    <span className="text-muted-foreground">Company</span>
+                    <span className="font-medium">{formData.razonSocial || "Not specified"}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
                     <span className="text-muted-foreground">NIT</span>
-                    <span className="font-medium">{formData.nit || "Sin especificar"}</span>
+                    <span className="font-medium">{formData.nit || "Not specified"}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
-                    <span className="text-muted-foreground">Representante Legal</span>
-                    <span className="font-medium">{formData.representanteLegal || "Sin especificar"}</span>
+                    <span className="text-muted-foreground">Legal Representative</span>
+                    <span className="font-medium">{formData.representanteLegal || "Not specified"}</span>
                   </div>
                   <div className="flex items-center justify-between py-2 border-b">
                     <span className="text-muted-foreground">Email</span>
-                    <span className="font-medium">{formData.emailCorporativo || "Sin especificar"}</span>
+                    <span className="font-medium">{formData.emailCorporativo || "Not specified"}</span>
                   </div>
                   <div className="flex items-center justify-between py-2">
-                    <span className="text-muted-foreground">Cuenta Bancaria</span>
-                    <span className="font-medium">{formData.banco || "Sin especificar"} - {formData.numeroCuenta || "Sin especificar"}</span>
+                    <span className="text-muted-foreground">Bank Account</span>
+                    <span className="font-medium">{formData.banco || "Not specified"} - {formData.numeroCuenta || "Not specified"}</span>
                   </div>
                 </div>
               </Card>
 
               <Separator />
 
-              {/* Términos */}
+              {/* Terms */}
               <div className="space-y-4">
                 <div className="flex items-start gap-3 p-4 border rounded-lg">
                   <Checkbox
@@ -662,12 +662,12 @@ export function OnboardingWizard() {
                   />
                   <div className="flex-1">
                     <Label htmlFor="aceptaContrato" className="cursor-pointer font-semibold">
-                      Acepto el Contrato de Factoring *
+                      I Accept the Factoring Contract *
                     </Label>
                     <p className="text-sm text-muted-foreground mt-1">
-                      He leído y acepto los términos del contrato de cesión de facturas. 
+                      I have read and accept the terms of the invoice assignment contract. 
                       <Button variant="link" className="h-auto p-0 ml-1">
-                        Ver contrato completo
+                        View full contract
                       </Button>
                     </p>
                   </div>
@@ -681,12 +681,12 @@ export function OnboardingWizard() {
                   />
                   <div className="flex-1">
                     <Label htmlFor="aceptaDatos" className="cursor-pointer font-medium">
-                      Autorizo el Tratamiento de Datos Personales *
+                      I Authorize Personal Data Processing *
                     </Label>
                     <p className="text-sm text-muted-foreground mt-1">
-                      Autorizo a C-Financia para el tratamiento de mis datos personales según la Ley 1581 de 2012.
+                      I authorize C-Financia for the processing of my personal data in accordance with Law 1581 of 2012.
                       <Button variant="link" className="h-auto p-0 ml-1">
-                        Ver política de privacidad
+                        View privacy policy
                       </Button>
                     </p>
                   </div>
@@ -696,15 +696,15 @@ export function OnboardingWizard() {
               <Alert className="border-blue-500/50 bg-blue-500/5">
                 <Shield className="h-4 w-4 text-blue-500" />
                 <AlertDescription className="text-sm">
-                  <strong>Protección de datos:</strong> Tus datos están protegidos con encriptación 
-                  de grado bancario. C-Financia cumple con todas las normativas de protección de datos.
+                  <strong>Data protection:</strong> Your data is protected with bank-grade encryption. 
+                  C-Financia complies with all data protection regulations.
                 </AlertDescription>
               </Alert>
             </div>
           )}
         </CardContent>
 
-        {/* Footer con botones de navegación */}
+        {/* Footer with navigation buttons */}
         <CardFooter className="flex justify-between gap-4">
           <Button
             variant="outline"
@@ -712,7 +712,7 @@ export function OnboardingWizard() {
             disabled={currentStep === 1}
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
-            Anterior
+            Previous
           </Button>
 
           <div className="flex gap-2">
@@ -721,7 +721,7 @@ export function OnboardingWizard() {
                 onClick={handleNext}
                 disabled={!canProceed()}
               >
-                Siguiente
+                Next
                 <ArrowRight className="h-4 w-4 ml-2" />
               </Button>
             )}
@@ -733,22 +733,22 @@ export function OnboardingWizard() {
                 className="bg-green-600 hover:bg-green-700"
               >
                 <CheckCircle2 className="h-4 w-4 mr-2" />
-                Completar Registro
+                Complete Registration
               </Button>
             )}
           </div>
         </CardFooter>
       </Card>
 
-      {/* Ayuda y soporte */}
+      {/* Help & support */}
       <Card className="elevation-1">
         <CardContent className="pt-6">
           <div className="flex items-start gap-3">
             <Info className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
             <div>
-              <h4 className="font-semibold mb-1">¿Necesitas ayuda?</h4>
+              <h4 className="font-semibold mb-1">Need help?</h4>
               <p className="text-sm text-muted-foreground mb-2">
-                Nuestro equipo está disponible para asistirte en el proceso de registro.
+                Our team is available to assist you throughout the registration process.
               </p>
               <div className="flex gap-4 text-sm">
                 <div className="flex items-center gap-1">
@@ -757,7 +757,7 @@ export function OnboardingWizard() {
                 </div>
                 <div className="flex items-center gap-1">
                   <Mail className="h-4 w-4 text-primary" />
-                  <span>soporte@c-financia.com.co</span>
+                  <span>support@c-financia.com</span>
                 </div>
               </div>
             </div>

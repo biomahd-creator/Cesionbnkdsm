@@ -37,9 +37,10 @@ import {
   ExternalLink,
 } from "lucide-react";
 import { Alert, AlertDescription } from "../components/ui/alert";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 // ============================================================
-// TABLE CATALOG — Catálogo completo de variaciones de tabla DSM
+// TABLE CATALOG — Complete catalog of DSM table variations
 // ============================================================
 
 interface TableVariation {
@@ -67,16 +68,16 @@ const tableVariations: TableVariation[] = [
     pageId: "table-new",
     usesMasterDataGrid: null,
     description:
-      "Primitivo base de Shadcn UI. Envuelve <table> con estilos consistentes. Sin lógica de estado, filtrado o paginación. Base para todos los demás componentes de tabla.",
+      "Base Shadcn UI primitive. Wraps <table> with consistent styles. No state logic, filtering, or pagination. Foundation for all other table components.",
     bestFor: [
-      "Tablas estáticas simples",
-      "Datos de solo lectura sin interacción",
-      "Base para componer tablas custom",
+      "Simple static tables",
+      "Read-only data without interaction",
+      "Base for composing custom tables",
     ],
     features: [
       "Table, TableHeader, TableBody, TableRow, TableHead, TableCell, TableCaption, TableFooter",
-      "Estilos consistentes con el DSM",
-      "Responsive con overflow-x-auto",
+      "Consistent DSM styles",
+      "Responsive with overflow-x-auto",
     ],
     icon: TableProperties,
     layerColor: "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
@@ -109,21 +110,21 @@ const tableVariations: TableVariation[] = [
     pageId: null,
     usesMasterDataGrid: true,
     description:
-      "Contenedor maestro reutilizable. Provee header con título, barra de búsqueda, filtros con Select, ordenamiento, toggle de visibilidad de columnas (Popover), botones de acción (refresh, exportar, reportes) y paginación completa con selector de page-size. Recibe la tabla como children.",
+      "Reusable master container. Provides header with title, search bar, filters with Select, sorting, column visibility toggle (Popover), action buttons (refresh, export, reports), and full pagination with page-size selector. Receives the table as children.",
     bestFor: [
-      "Tablas con muchas columnas (toggle de visibilidad)",
-      "Necesidad de toolbar estándar con search + filtros + acciones",
-      "Contenedor base para DataTable, TreeTable, EditableTable, etc.",
+      "Tables with many columns (visibility toggle)",
+      "Need for standard toolbar with search + filters + actions",
+      "Base container for DataTable, TreeTable, EditableTable, etc.",
     ],
     features: [
-      "Search input con icono",
-      "Filtros dinámicos (Select con border-dashed)",
-      "Ordenamiento por columna (fecha)",
-      "Popover de visibilidad de columnas",
-      "Botones: Refresh, Export, Consultar Reportes",
-      "Paginación con page numbers + ellipsis + page-size selector",
-      "Header con título, descripción y acciones custom",
-      "Toolbar extensible vía toolbarActions slot",
+      "Search input with icon",
+      "Dynamic filters (Select with border-dashed)",
+      "Column sorting (date)",
+      "Column visibility Popover",
+      "Buttons: Refresh, Export, Query Reports",
+      "Pagination with page numbers + ellipsis + page-size selector",
+      "Header with title, description, and custom actions",
+      "Extensible toolbar via toolbarActions slot",
     ],
     icon: LayoutGrid,
     layerColor: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
@@ -151,7 +152,7 @@ const tableVariations: TableVariation[] = [
   onPageSizeChange={setPageSize}
 >
   <Table>
-    {/* Tu tabla aquí */}
+    {/* Your table here */}
   </Table>
 </MasterDataGrid>`,
   },
@@ -163,21 +164,21 @@ const tableVariations: TableVariation[] = [
     pageId: "data-table",
     usesMasterDataGrid: true,
     description:
-      "Integración completa con TanStack React Table. Define columnas declarativamente con ColumnDef[], sorting automático, filtrado, visibilidad de columnas, selección de filas y paginación. Compone sobre MasterDataGrid para la UI del contenedor.",
+      "Full integration with TanStack React Table. Declaratively define columns with ColumnDef[], automatic sorting, filtering, column visibility, row selection, and pagination. Composes on top of MasterDataGrid for the container UI.",
     bestFor: [
-      "Tablas con datos estructurados complejos",
-      "Necesidad de sorting multi-columna declarativo",
-      "Selección de filas (checkbox)",
-      "Columnas definidas por configuración (ColumnDef[])",
+      "Tables with complex structured data",
+      "Need for declarative multi-column sorting",
+      "Row selection (checkbox)",
+      "Configuration-defined columns (ColumnDef[])",
     ],
     features: [
       "TanStack React Table (sorting, filtering, pagination, row selection)",
-      "ColumnDef[] declarativo",
-      "Sorting interactivo por columna",
-      "Filtrado por columna clave (searchKey)",
-      "Visibilidad de columnas (DropdownMenu)",
-      "Row selection con checkbox",
-      "Paginación automática",
+      "Declarative ColumnDef[]",
+      "Interactive column sorting",
+      "Key column filtering (searchKey)",
+      "Column visibility (DropdownMenu)",
+      "Row selection with checkbox",
+      "Automatic pagination",
     ],
     icon: ListFilter,
     layerColor: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
@@ -208,21 +209,21 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "tree-table-v2",
     usesMasterDataGrid: true,
     description:
-      "Variante avanzada del TreeTable con badges Soft-Outline del DSM, seleccion multiple en cascada (padre auto-selecciona hijos), checkbox indeterminate, propagacion bottom-up (hijos completos auto-check padre), select-all en header y barra de resumen de seleccion.",
+      "Advanced TreeTable variant with Soft-Outline DSM badges, cascading multi-selection (parent auto-selects children), indeterminate checkbox, bottom-up propagation (complete children auto-check parent), select-all in header, and selection summary bar.",
     bestFor: [
-      "Operaciones batch sobre jerarquias completas",
-      "Seleccion de facturas por cliente/proyecto en bloque",
-      "Tablas con badges semanticos Soft-Outline",
+      "Batch operations on complete hierarchies",
+      "Invoice selection by client/project in bulk",
+      "Tables with Soft-Outline semantic badges",
     ],
     features: [
-      "Badges Soft-Outline: warning, success, info, destructive",
-      "Seleccion cascada: padre → todos los descendientes",
-      "Checkbox indeterminate en seleccion parcial",
-      "Propagacion bottom-up: hijos completos → padre auto-check",
-      "Select All en header con 3 estados",
-      "Barra de resumen con contador + limpiar",
+      "Soft-Outline Badges: warning, success, info, destructive",
+      "Cascade selection: parent → all descendants",
+      "Indeterminate checkbox on partial selection",
+      "Bottom-up propagation: complete children → parent auto-check",
+      "Select All in header with 3 states",
+      "Summary bar with counter + clear",
       "Callback onSelectionChange(Set<string>)",
-      "Lazy load + paginacion por nodo",
+      "Lazy load + per-node pagination",
     ],
     icon: TreePine,
     layerColor: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
@@ -261,24 +262,24 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "data-table-advanced",
     usesMasterDataGrid: true,
     description:
-      "Pattern auto-contenido de tabla de facturas con búsqueda, filtros por estado, ordenamiento y acciones contextuales por fila (DropdownMenu). Incluye datos mock. Ideal como referencia de implementación.",
+      "Self-contained invoice table pattern with search, status filters, sorting, and contextual row actions (DropdownMenu). Includes mock data. Ideal as an implementation reference.",
     bestFor: [
-      "Referencia/demo de cómo componer MasterDataGrid + Table",
-      "Tabla CRUD con acciones por fila",
-      "Prototipado rápido con datos mock",
+      "Reference/demo of how to compose MasterDataGrid + Table",
+      "CRUD table with row actions",
+      "Rapid prototyping with mock data",
     ],
     features: [
-      "Búsqueda por cliente/ID",
-      "Filtro por estado (Select)",
-      "Acciones por fila: Ver, Editar, Duplicar, Eliminar",
-      "Formato de moneda CLP",
-      "Badges de estado semánticos",
-      "Datos mock incluidos",
+      "Search by client/ID",
+      "Status filter (Select)",
+      "Row actions: View, Edit, Duplicate, Delete",
+      "CLP currency format",
+      "Semantic status badges",
+      "Included mock data",
     ],
     icon: FileText,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
     imports: `import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";`,
-    usageCode: `// Auto-contenido, sin props requeridas
+    usageCode: `// Self-contained, no props required
 <DataTableAdvanced />`,
   },
   {
@@ -289,24 +290,24 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "editable-table",
     usesMasterDataGrid: true,
     description:
-      "Tabla con edición inline directa en las celdas. Inputs de texto, números, fechas (DatePicker), selects de estado, y checkboxes de prioridad. Ideal para flujos donde el usuario edita múltiples registros sin abrir modales.",
+      "Table with direct inline cell editing. Text inputs, numbers, dates (DatePicker), status selects, and priority checkboxes. Ideal for flows where the user edits multiple records without opening modals.",
     bestFor: [
-      "Edición masiva de registros",
-      "Formularios tipo spreadsheet",
-      "Flujos donde abrir un modal por registro es ineficiente",
+      "Bulk record editing",
+      "Spreadsheet-style forms",
+      "Flows where opening a modal per record is inefficient",
     ],
     features: [
-      "Input inline para texto y números",
-      "DatePicker inline para fechas",
-      "Select inline para estados",
-      "Checkbox de prioridad",
-      "Validación visual (bordes rojos en error)",
-      "Resumen automático (total, promedios)",
+      "Inline input for text and numbers",
+      "Inline DatePicker for dates",
+      "Inline Select for statuses",
+      "Priority checkbox",
+      "Visual validation (red borders on error)",
+      "Automatic summary (totals, averages)",
     ],
     icon: Edit,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
     imports: `import { EditableTable } from "@/components/patterns/EditableTable";`,
-    usageCode: `// Auto-contenido con datos mock
+    usageCode: `// Self-contained with mock data
 <EditableTable />`,
   },
   {
@@ -317,24 +318,24 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "audit-log",
     usesMasterDataGrid: true,
     description:
-      "Visor de logs de auditoría con filtrado por tipo de evento, búsqueda, badges de acción (CREATE, UPDATE, DELETE, READ), badges de status (success, warning, error), timestamps, IP y detalles expandibles.",
+      "Audit log viewer with event type filtering, search, action badges (CREATE, UPDATE, DELETE, READ), status badges (success, warning, error), timestamps, IP, and expandable details.",
     bestFor: [
-      "Compliance y tracking de acciones",
-      "Debugging y soporte técnico",
-      "Historial de cambios de un recurso",
+      "Compliance and action tracking",
+      "Debugging and technical support",
+      "Change history for a resource",
     ],
     features: [
-      "Filtrado por tipo de acción",
-      "Búsqueda por usuario/recurso",
-      "Badges de acción con iconos",
+      "Filter by action type",
+      "Search by user/resource",
+      "Action badges with icons",
       "Status: success/warning/error",
-      "Timestamp y dirección IP",
-      "Datos mock de ejemplo",
+      "Timestamp and IP address",
+      "Example mock data",
     ],
     icon: ScrollText,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
     imports: `import { AuditLogViewer } from "@/components/patterns/AuditLogViewer";`,
-    usageCode: `// Auto-contenido con datos mock
+    usageCode: `// Self-contained with mock data
 <AuditLogViewer />`,
   },
   {
@@ -345,20 +346,20 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "factoring-selection",
     usesMasterDataGrid: false,
     description:
-      "Tabla de selección de facturas por deudor con Accordion. Agrupa facturas por deudor, permite selección individual y masiva, calcula KPIs en tiempo real, y guía al usuario en un flujo multi-paso (Seleccionar → Revisar → Confirmar). Patrón propio sin MasterDataGrid.",
+      "Invoice selection table by debtor with Accordion. Groups invoices by debtor, allows individual and bulk selection, calculates real-time KPIs, and guides the user through a multi-step flow (Select → Review → Confirm). Custom pattern without MasterDataGrid.",
     bestFor: [
-      "Selección de facturas agrupadas por deudor/pagador",
-      "Flujos de operación de factoring",
-      "KPIs dinámicos que cambian con la selección",
+      "Invoice selection grouped by debtor/payor",
+      "Factoring operation flows",
+      "Dynamic KPIs that change with selection",
     ],
     features: [
-      "Accordion por deudor",
-      "Selección individual y bulk",
-      "KPI Cards dinámicos (monto, tasa, descuento)",
-      "Progress bar de completitud",
-      "Flujo multi-paso",
-      "Badges de elegibilidad",
-      "Sorting por monto/fecha",
+      "Accordion by debtor",
+      "Individual and bulk selection",
+      "Dynamic KPI Cards (amount, rate, discount)",
+      "Completion progress bar",
+      "Multi-step flow",
+      "Eligibility badges",
+      "Sorting by amount/date",
     ],
     icon: CheckSquare,
     layerColor: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
@@ -373,18 +374,18 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "virtualized-list",
     usesMasterDataGrid: null,
     description:
-      "Lista virtualizada que solo renderiza los items visibles en el viewport. Usa scroll position + item height fijo para calcular qué elementos mostrar. Ideal para listas de 1,000+ elementos sin impacto en rendimiento.",
+      "Virtualized list that only renders items visible in the viewport. Uses scroll position + fixed item height to calculate which elements to display. Ideal for 1,000+ element lists without performance impact.",
     bestFor: [
-      "Listas con 1,000+ elementos",
-      "Performance crítica (mobile, dispositivos limitados)",
-      "Listas de selección con muchas opciones",
+      "Lists with 1,000+ elements",
+      "Critical performance (mobile, limited devices)",
+      "Selection lists with many options",
     ],
     features: [
-      "Render solo de items visibles + buffer",
-      "Item height fijo (configurable)",
-      "Scroll nativo",
-      "Genérico: renderItem callback",
-      "Sin dependencias externas",
+      "Render only visible items + buffer",
+      "Fixed item height (configurable)",
+      "Native scroll",
+      "Generic: renderItem callback",
+      "No external dependencies",
     ],
     icon: Zap,
     layerColor: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
@@ -408,17 +409,17 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "infinite-scroll",
     usesMasterDataGrid: null,
     description:
-      "Wrapper que detecta cuando el usuario llega al final del scroll y dispara la carga de más datos. Usa IntersectionObserver. Composable con cualquier tabla o lista.",
+      "Wrapper that detects when the user reaches the end of scroll and triggers loading more data. Uses IntersectionObserver. Composable with any table or list.",
     bestFor: [
-      "APIs paginadas (cursor-based / offset)",
-      "Feeds de actividad",
-      "Listas que crecen bajo demanda",
+      "Paginated APIs (cursor-based / offset)",
+      "Activity feeds",
+      "Lists that grow on demand",
     ],
     features: [
-      "IntersectionObserver nativo",
-      "Loading spinner integrado (Loader2)",
+      "IntersectionObserver native",
+      "Loading spinner integrated (Loader2)",
       "Threshold configurable",
-      "Composable con Table, VirtualizedList, etc.",
+      "Composable with Table, VirtualizedList, etc.",
     ],
     icon: Infinity,
     layerColor: "bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-300",
@@ -429,7 +430,7 @@ import { ColumnDef } from "@tanstack/react-table";`,
   isLoading={isFetching}
 >
   <Table>
-    {/* rows crecen incrementalmente */}
+    {/* rows grow incrementally */}
   </Table>
 </InfiniteScroll>`,
   },
@@ -441,24 +442,24 @@ import { ColumnDef } from "@tanstack/react-table";`,
     pageId: "advanced-filter",
     usesMasterDataGrid: null,
     description:
-      "Panel lateral (Sheet) para filtros complejos: rangos de fecha (DatePicker), checkboxes múltiples, selects, y badges de filtros activos. Se compone JUNTO a una tabla, no la contiene. Complemento ideal para MasterDataGrid cuando los filtros inline no son suficientes.",
+      "Side panel (Sheet) for complex filters: date ranges (DatePicker), multiple checkboxes, selects, and active filter badges. Composes ALONGSIDE a table, does not contain it. Ideal complement for MasterDataGrid when inline filters are not enough.",
     bestFor: [
-      "Filtros complejos que no caben en la toolbar",
-      "Rangos de fecha + múltiples criterios",
-      "Complemento de MasterDataGrid o DataTable",
+      "Complex filters that don't fit in the toolbar",
+      "Date ranges + multiple criteria",
+      "Complement for MasterDataGrid or DataTable",
     ],
     features: [
-      "Sheet lateral (slide-in)",
-      "DatePicker para rango de fechas",
-      "Checkbox groups (estados, tipos)",
-      "Select de ordenamiento",
-      "Badges de filtros activos",
-      "Botón de limpiar filtros",
+      "Side Sheet (slide-in)",
+      "DatePicker for date ranges",
+      "Checkbox groups (statuses, types)",
+      "Sort select",
+      "Active filter badges",
+      "Clear filters button",
     ],
     icon: Filter,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
     imports: `import { AdvancedFilterPanel } from "@/components/patterns/AdvancedFilterPanel";`,
-    usageCode: `{/* Junto a tu tabla */}
+    usageCode: `{/* Alongside your table */}
 <div className="flex gap-4">
   <AdvancedFilterPanel />
   <MasterDataGrid ...>
@@ -470,15 +471,15 @@ import { ColumnDef } from "@tanstack/react-table";`,
 
 // ─── Composability Map ───
 const composabilityData = [
-  { from: "Table", to: "MasterDataGrid", relation: "children", desc: "Table se pasa como children a MasterDataGrid" },
-  { from: "MasterDataGrid", to: "DataTable", relation: "compone", desc: "DataTable usa MasterDataGrid como contenedor" },
-  { from: "MasterDataGrid", to: "TreeTable", relation: "compone", desc: "TreeTable usa MasterDataGrid como contenedor" },
-  { from: "MasterDataGrid", to: "EditableTable", relation: "compone", desc: "EditableTable usa MasterDataGrid como contenedor" },
-  { from: "MasterDataGrid", to: "DataTableAdvanced", relation: "compone", desc: "DataTableAdvanced usa MasterDataGrid como contenedor" },
-  { from: "MasterDataGrid", to: "AuditLogViewer", relation: "compone", desc: "AuditLogViewer usa MasterDataGrid como contenedor" },
-  { from: "AdvancedFilterPanel", to: "MasterDataGrid", relation: "complementa", desc: "Panel lateral para filtros que no caben en toolbar" },
-  { from: "InfiniteScroll", to: "Table", relation: "envuelve", desc: "Wrapper de scroll infinito para cualquier tabla" },
-  { from: "VirtualizedList", to: "—", relation: "standalone", desc: "Lista independiente, no compone con Table directamente" },
+  { from: "Table", to: "MasterDataGrid", relation: "children", desc: "Table is passed as children to MasterDataGrid" },
+  { from: "MasterDataGrid", to: "DataTable", relation: "composes", desc: "DataTable uses MasterDataGrid as container" },
+  { from: "MasterDataGrid", to: "TreeTable", relation: "composes", desc: "TreeTable uses MasterDataGrid as container" },
+  { from: "MasterDataGrid", to: "EditableTable", relation: "composes", desc: "EditableTable uses MasterDataGrid as container" },
+  { from: "MasterDataGrid", to: "DataTableAdvanced", relation: "composes", desc: "DataTableAdvanced uses MasterDataGrid as container" },
+  { from: "MasterDataGrid", to: "AuditLogViewer", relation: "composes", desc: "AuditLogViewer uses MasterDataGrid as container" },
+  { from: "AdvancedFilterPanel", to: "MasterDataGrid", relation: "complements", desc: "Side panel for filters that don't fit in toolbar" },
+  { from: "InfiniteScroll", to: "Table", relation: "wraps", desc: "Infinite scroll wrapper for any table" },
+  { from: "VirtualizedList", to: "—", relation: "standalone", desc: "Independent list, does not compose with Table directly" },
 ];
 
 function LayerBadge({ layer }: { layer: string }) {
@@ -517,7 +518,7 @@ function VariationCard({ variation, onNavigate }: { variation: TableVariation; o
                 )}
                 {variation.usesMasterDataGrid === false && (
                   <Badge variant="outline" className="text-[10px] px-1.5 py-0 bg-orange-50 text-orange-700 border-orange-300 dark:bg-orange-900 dark:text-orange-300 dark:border-orange-600">
-                    patrón propio
+                    custom pattern
                   </Badge>
                 )}
               </div>
@@ -540,7 +541,7 @@ function VariationCard({ variation, onNavigate }: { variation: TableVariation; o
         <p className="text-sm text-muted-foreground">{variation.description}</p>
         
         <div>
-          <p className="text-xs font-medium text-foreground/80 mb-1.5">Mejor para:</p>
+          <p className="text-xs font-medium text-foreground/80 mb-1.5">Best for:</p>
           <ul className="space-y-1">
             {variation.bestFor.map((item, i) => (
               <li key={i} className="text-xs text-muted-foreground flex items-start gap-1.5">
@@ -577,7 +578,7 @@ function VariationCard({ variation, onNavigate }: { variation: TableVariation; o
   );
 }
 
-export function TableCatalogPage() {
+function TableCatalogContent() {
   const [activeTab, setActiveTab] = useState("catalog");
   const [selectedVariation, setSelectedVariation] = useState<string | null>(null);
 
@@ -607,8 +608,8 @@ export function TableCatalogPage() {
           </Badge>
         </div>
         <p className="text-muted-foreground">
-          Catálogo completo de las {totalVariations} variaciones de tabla disponibles en el DSM.
-          Incluye primitivos, componentes avanzados y business patterns.
+          Complete catalog of all {totalVariations} table variations available in the DSM.
+          Includes primitives, advanced components, and business patterns.
         </p>
       </div>
 
@@ -619,31 +620,31 @@ export function TableCatalogPage() {
         <Card className="bg-muted/30">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-semibold">{totalVariations}</p>
-            <p className="text-xs text-muted-foreground mt-1">Variaciones totales</p>
+            <p className="text-xs text-muted-foreground mt-1">Total variations</p>
           </CardContent>
         </Card>
         <Card className="bg-muted/30">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-semibold">{useMDG}</p>
-            <p className="text-xs text-muted-foreground mt-1">Usan MasterDataGrid</p>
+            <p className="text-xs text-muted-foreground mt-1">Use MasterDataGrid</p>
           </CardContent>
         </Card>
         <Card className="bg-muted/30">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-semibold">{layerCounts.ui}</p>
-            <p className="text-xs text-muted-foreground mt-1">Capa UI</p>
+            <p className="text-xs text-muted-foreground mt-1">UI Layer</p>
           </CardContent>
         </Card>
         <Card className="bg-muted/30">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-semibold">{layerCounts.advanced}</p>
-            <p className="text-xs text-muted-foreground mt-1">Capa Advanced</p>
+            <p className="text-xs text-muted-foreground mt-1">Advanced Layer</p>
           </CardContent>
         </Card>
         <Card className="bg-muted/30">
           <CardContent className="p-4 text-center">
             <p className="text-2xl font-semibold">{layerCounts.patterns}</p>
-            <p className="text-xs text-muted-foreground mt-1">Capa Patterns</p>
+            <p className="text-xs text-muted-foreground mt-1">Patterns Layer</p>
           </CardContent>
         </Card>
       </div>
@@ -651,19 +652,19 @@ export function TableCatalogPage() {
       {/* Main Content */}
       <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-4">
         <TabsList className="grid w-full grid-cols-4 max-w-lg">
-          <TabsTrigger value="catalog">Catálogo Visual</TabsTrigger>
-          <TabsTrigger value="comparison">Tabla Comparativa</TabsTrigger>
-          <TabsTrigger value="composability">Composabilidad</TabsTrigger>
-          <TabsTrigger value="usage">Guía de Uso</TabsTrigger>
+          <TabsTrigger value="catalog">Visual Catalog</TabsTrigger>
+          <TabsTrigger value="comparison">Comparison Table</TabsTrigger>
+          <TabsTrigger value="composability">Composability</TabsTrigger>
+          <TabsTrigger value="usage">Usage Guide</TabsTrigger>
         </TabsList>
 
-        {/* ─── TAB 1: CATÁLOGO VISUAL ─── */}
+        {/* ─── TAB 1: VISUAL CATALOG ─── */}
         <TabsContent value="catalog" className="space-y-6">
           {/* By Layer */}
           {[
-            { layer: "ui", title: "UI Primitives", desc: "Componentes base de Shadcn UI" },
-            { layer: "advanced", title: "Advanced", desc: "Componentes con lógica compleja" },
-            { layer: "patterns", title: "Patterns", desc: "Business patterns compuestos", includeFactoring: true },
+            { layer: "ui", title: "UI Primitives", desc: "Base Shadcn UI components" },
+            { layer: "advanced", title: "Advanced", desc: "Components with complex logic" },
+            { layer: "patterns", title: "Patterns", desc: "Composed business patterns", includeFactoring: true },
           ].map((group) => {
             const items = tableVariations.filter((v) =>
               group.includeFactoring
@@ -688,13 +689,13 @@ export function TableCatalogPage() {
           })}
         </TabsContent>
 
-        {/* ─── TAB 2: TABLA COMPARATIVA ─── */}
+        {/* ─── TAB 2: COMPARISON TABLE ─── */}
         <TabsContent value="comparison" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Comparativa de Features</CardTitle>
+              <CardTitle>Feature Comparison</CardTitle>
               <CardDescription>
-                Referencia rápida para elegir la variación correcta
+                Quick reference for choosing the right variation
               </CardDescription>
             </CardHeader>
             <CardContent className="p-0">
@@ -702,10 +703,10 @@ export function TableCatalogPage() {
                 <Table>
                   <TableHeader>
                     <TableRow>
-                      <TableHead className="w-[180px] font-medium">Componente</TableHead>
-                      <TableHead className="font-medium">Capa</TableHead>
+                      <TableHead className="w-[180px] font-medium">Component</TableHead>
+                      <TableHead className="font-medium">Layer</TableHead>
                       <TableHead className="text-center font-medium">Search</TableHead>
-                      <TableHead className="text-center font-medium">Filtros</TableHead>
+                      <TableHead className="text-center font-medium">Filters</TableHead>
                       <TableHead className="text-center font-medium">Sort</TableHead>
                       <TableHead className="text-center font-medium">Col Visibility</TableHead>
                       <TableHead className="text-center font-medium">Pagination</TableHead>
@@ -719,12 +720,12 @@ export function TableCatalogPage() {
                   <TableBody>
                     {[
                       { name: "Table", layer: "ui", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "—" },
-                      { name: "MasterDataGrid", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "es él" },
-                      { name: "DataTable", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: true, edit: false, hierarchy: false, virtual: false, mdg: "sí" },
-                      { name: "TreeTable", layer: "advanced", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "sí" },
-                      { name: "DataTableAdvanced", layer: "patterns", search: true, filters: true, sort: true, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "sí" },
-                      { name: "EditableTable", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: true, hierarchy: false, virtual: false, mdg: "sí" },
-                      { name: "AuditLogViewer", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "sí" },
+                      { name: "MasterDataGrid", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "is it" },
+                      { name: "DataTable", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: true, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
+                      { name: "TreeTable", layer: "advanced", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "yes" },
+                      { name: "DataTableAdvanced", layer: "patterns", search: true, filters: true, sort: true, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
+                      { name: "EditableTable", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: true, hierarchy: false, virtual: false, mdg: "yes" },
+                      { name: "AuditLogViewer", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
                       { name: "FactoringSelection", layer: "patterns", search: true, filters: false, sort: true, colVis: false, pagination: false, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "no" },
                       { name: "VirtualizedList", layer: "advanced", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: true, mdg: "—" },
                       { name: "InfiniteScroll", layer: "advanced", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "—" },
@@ -752,30 +753,30 @@ export function TableCatalogPage() {
           </Card>
         </TabsContent>
 
-        {/* ─── TAB 3: COMPOSABILIDAD ─── */}
+        {/* ─── TAB 3: COMPOSABILITY ─── */}
         <TabsContent value="composability" className="space-y-4">
           <Card>
             <CardHeader>
-              <CardTitle>Árbol de Composabilidad</CardTitle>
+              <CardTitle>Composability Tree</CardTitle>
               <CardDescription>
-                Cómo se componen los componentes de tabla entre sí
+                How table components compose with each other
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-6">
               {/* Visual Tree */}
               <div className="bg-muted/30 rounded-lg p-6 space-y-2 font-mono text-sm">
-                <div className="text-muted-foreground">{"// Árbol de dependencia"}</div>
+                <div className="text-muted-foreground">{"// Dependency tree"}</div>
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
                     <Badge variant="outline" className="text-[10px] bg-slate-100 dark:bg-slate-800">ui</Badge>
                     <span className="font-semibold">Table</span>
-                    <span className="text-muted-foreground text-xs">← primitivo base</span>
+                    <span className="text-muted-foreground text-xs">← base primitive</span>
                   </div>
                   <div className="ml-4 border-l-2 border-muted-foreground/20 pl-4 space-y-1">
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-[10px] bg-blue-100 dark:bg-blue-900">advanced</Badge>
                       <span className="font-semibold">MasterDataGrid</span>
-                      <span className="text-muted-foreground text-xs">← contenedor master (recibe Table como children)</span>
+                      <span className="text-muted-foreground text-xs">← master container (receives Table as children)</span>
                     </div>
                     <div className="ml-4 border-l-2 border-muted-foreground/20 pl-4 space-y-1">
                       <div className="flex items-center gap-2">
@@ -786,22 +787,22 @@ export function TableCatalogPage() {
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px] bg-blue-100 dark:bg-blue-900">advanced</Badge>
                         <span>TreeTable</span>
-                        <span className="text-muted-foreground text-xs">+ expand/collapse jerárquico</span>
+                        <span className="text-muted-foreground text-xs">+ hierarchical expand/collapse</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px] bg-purple-100 dark:bg-purple-900">patterns</Badge>
                         <span>DataTableAdvanced</span>
-                        <span className="text-muted-foreground text-xs">+ acciones por fila</span>
+                        <span className="text-muted-foreground text-xs">+ row actions</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px] bg-purple-100 dark:bg-purple-900">patterns</Badge>
                         <span>EditableTable</span>
-                        <span className="text-muted-foreground text-xs">+ edición inline</span>
+                        <span className="text-muted-foreground text-xs">+ inline editing</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px] bg-purple-100 dark:bg-purple-900">patterns</Badge>
                         <span>AuditLogViewer</span>
-                        <span className="text-muted-foreground text-xs">+ log de auditoría</span>
+                        <span className="text-muted-foreground text-xs">+ audit log</span>
                       </div>
                     </div>
                   </div>
@@ -809,25 +810,25 @@ export function TableCatalogPage() {
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-[10px] bg-amber-100 dark:bg-amber-900">factoring</Badge>
                       <span className="font-semibold">FactoringSelectionPage</span>
-                      <span className="text-muted-foreground text-xs">← patrón propio (Accordion + Table)</span>
+                      <span className="text-muted-foreground text-xs">← custom pattern (Accordion + Table)</span>
                     </div>
                   </div>
                   <div className="mt-3 pt-3 border-t border-dashed border-muted-foreground/20 space-y-1">
-                    <div className="text-muted-foreground text-xs mb-1">{"// Componentes complementarios (composables)"}</div>
+                    <div className="text-muted-foreground text-xs mb-1">{"// Complementary components (composables)"}</div>
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-[10px] bg-blue-100 dark:bg-blue-900">advanced</Badge>
                       <span>VirtualizedList</span>
-                      <span className="text-muted-foreground text-xs">← standalone, render virtualizado</span>
+                      <span className="text-muted-foreground text-xs">← standalone, virtualized render</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-[10px] bg-blue-100 dark:bg-blue-900">advanced</Badge>
                       <span>InfiniteScroll</span>
-                      <span className="text-muted-foreground text-xs">← wrapper, compone con cualquier tabla</span>
+                      <span className="text-muted-foreground text-xs">← wrapper, composes with any table</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <Badge variant="outline" className="text-[10px] bg-purple-100 dark:bg-purple-900">patterns</Badge>
                       <span>AdvancedFilterPanel</span>
-                      <span className="text-muted-foreground text-xs">← Sheet lateral, complemento de MasterDataGrid</span>
+                      <span className="text-muted-foreground text-xs">← side Sheet, MasterDataGrid complement</span>
                     </div>
                   </div>
                 </div>
@@ -837,10 +838,10 @@ export function TableCatalogPage() {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead className="font-medium">Desde</TableHead>
-                    <TableHead className="font-medium">Relación</TableHead>
-                    <TableHead className="font-medium">Hacia</TableHead>
-                    <TableHead className="font-medium">Descripción</TableHead>
+                    <TableHead className="font-medium">From</TableHead>
+                    <TableHead className="font-medium">Relation</TableHead>
+                    <TableHead className="font-medium">To</TableHead>
+                    <TableHead className="font-medium">Description</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -860,74 +861,74 @@ export function TableCatalogPage() {
           </Card>
         </TabsContent>
 
-        {/* ─── TAB 4: GUÍA DE USO ─── */}
+        {/* ─── TAB 4: USAGE GUIDE ─── */}
         <TabsContent value="usage" className="space-y-4">
           <Alert>
             <Info className="h-4 w-4" />
             <AlertDescription>
-              Esta guía te ayuda a elegir la variación de tabla correcta según tu caso de uso.
-              Haz click en el nombre de un componente para ver su código de uso.
+              This guide helps you choose the right table variation for your use case.
+              Click on a component name to see its usage code.
             </AlertDescription>
           </Alert>
 
           {/* Decision Tree */}
           <Card>
             <CardHeader>
-              <CardTitle>Árbol de Decisión</CardTitle>
-              <CardDescription>¿Qué tabla necesito?</CardDescription>
+              <CardTitle>Decision Tree</CardTitle>
+              <CardDescription>Which table do I need?</CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="space-y-3">
                 {[
                   {
-                    question: "¿Necesitas datos estáticos sin interacción?",
+                    question: "Need static data without interaction?",
                     answer: "Table",
-                    desc: "Usa el primitivo Table de ui/. Sin lógica, solo estilos.",
+                    desc: "Use the Table primitive from ui/. No logic, just styles.",
                   },
                   {
-                    question: "¿Necesitas search + filtros + paginación + visibilidad de columnas?",
+                    question: "Need search + filters + pagination + column visibility?",
                     answer: "MasterDataGrid",
-                    desc: "Contenedor master. Pasa tu Table como children.",
+                    desc: "Master container. Pass your Table as children.",
                   },
                   {
-                    question: "¿Necesitas sorting declarativo con ColumnDef[] y TanStack?",
+                    question: "Need declarative sorting with ColumnDef[] and TanStack?",
                     answer: "DataTable",
-                    desc: "Define columnas como config, el componente hace el resto.",
+                    desc: "Define columns as config, the component does the rest.",
                   },
                   {
-                    question: "¿Tus datos son jerárquicos (parent → child)?",
+                    question: "Is your data hierarchical (parent → child)?",
                     answer: "TreeTable",
-                    desc: "Expand/collapse con nodos. Ideal para portafolio.",
+                    desc: "Expand/collapse with nodes. Ideal for portfolios.",
                   },
                   {
-                    question: "¿Necesitas edición inline en las celdas?",
+                    question: "Need inline cell editing?",
                     answer: "EditableTable",
-                    desc: "Inputs, selects, datepickers directamente en la tabla.",
+                    desc: "Inputs, selects, datepickers directly in the table.",
                   },
                   {
-                    question: "¿Es un log de auditoría/historial?",
+                    question: "Is it an audit log / history?",
                     answer: "AuditLogViewer",
-                    desc: "Badges de acción, timestamps, filtros de evento.",
+                    desc: "Action badges, timestamps, event filters.",
                   },
                   {
-                    question: "¿Selección de facturas agrupadas por deudor?",
+                    question: "Invoice selection grouped by debtor?",
                     answer: "FactoringSelectionPage",
-                    desc: "Accordion + selección + KPIs dinámicos.",
+                    desc: "Accordion + selection + dynamic KPIs.",
                   },
                   {
-                    question: "¿Tienes 1,000+ items y necesitas performance?",
+                    question: "Have 1,000+ items and need performance?",
                     answer: "VirtualizedList",
-                    desc: "Solo renderiza los items visibles en viewport.",
+                    desc: "Only renders visible items in the viewport.",
                   },
                   {
-                    question: "¿Los datos se cargan incrementalmente (API paginada)?",
+                    question: "Data loads incrementally (paginated API)?",
                     answer: "InfiniteScroll",
-                    desc: "Wrapper con IntersectionObserver. Compone con cualquier tabla.",
+                    desc: "Wrapper with IntersectionObserver. Composes with any table.",
                   },
                   {
-                    question: "¿Los filtros inline no son suficientes?",
+                    question: "Inline filters not enough?",
                     answer: "AdvancedFilterPanel",
-                    desc: "Panel lateral con rangos de fecha, checkboxes y más. Complemento.",
+                    desc: "Side panel with date ranges, checkboxes, and more. Complement.",
                   },
                 ].map((item, i) => (
                   <div key={i} className="flex items-start gap-3 p-3 rounded-lg border bg-card hover:bg-muted/30 transition-colors">
@@ -971,7 +972,7 @@ export function TableCatalogPage() {
                     size="sm"
                     onClick={() => setSelectedVariation(null)}
                   >
-                    Cerrar
+                    Close
                   </Button>
                 </div>
               </CardHeader>
@@ -981,7 +982,7 @@ export function TableCatalogPage() {
                   <CodeBlock code={selectedVar.imports} language="typescript" />
                 </div>
                 <div>
-                  <p className="text-xs font-medium text-foreground/80 mb-2">Uso:</p>
+                  <p className="text-xs font-medium text-foreground/80 mb-2">Usage:</p>
                   <CodeBlock code={selectedVar.usageCode} language="tsx" />
                 </div>
               </CardContent>
@@ -990,5 +991,37 @@ export function TableCatalogPage() {
         </TabsContent>
       </Tabs>
     </div>
+  );
+}
+
+export function TableCatalogPage() {
+  return (
+    <ComponentShowcase
+      title="Table Catalog"
+      description="Complete catalog of all 11 table variations in the DSM. Covers 3 layers: UI primitives (Table), Advanced components (MasterDataGrid, DataTable, TreeTable V2, VirtualizedList, InfiniteScroll), and Business Patterns (DataTableAdvanced, EditableTable, AuditLogViewer, FactoringSelectionPage, AdvancedFilterPanel). Includes visual catalog, feature comparison matrix, composability tree, and interactive decision guide."
+      category="Advanced"
+      preview={<TableCatalogContent />}
+      code={`// UI Layer
+import { Table } from "@/components/ui/table";
+
+// Advanced Layer
+import { MasterDataGrid } from "@/components/advanced/MasterDataGrid";
+import { DataTable } from "@/components/advanced/DataTable";
+import { TreeTableV2 } from "@/components/advanced/TreeTableV2";
+import { VirtualizedList } from "@/components/advanced/VirtualizedList";
+import { InfiniteScroll } from "@/components/advanced/InfiniteScroll";
+
+// Patterns Layer
+import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";
+import { EditableTable } from "@/components/patterns/EditableTable";
+import { AuditLogViewer } from "@/components/patterns/AuditLogViewer";
+import { AdvancedFilterPanel } from "@/components/patterns/AdvancedFilterPanel";
+import { FactoringSelectionPage } from "@/components/patterns/factoring/FactoringSelectionPage";
+
+// Composability: Table → MasterDataGrid → DataTable/TreeTable/EditableTable`}
+      props={[
+        { name: "(catalog)", type: "—", description: "Self-contained reference page. No external props — displays all 11 table variations with comparison data." },
+      ]}
+    />
   );
 }

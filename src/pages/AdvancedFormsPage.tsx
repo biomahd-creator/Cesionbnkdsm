@@ -3,24 +3,20 @@ import { StepIndicator, Step } from "../components/advanced/StepIndicator";
 import { FormBuilder } from "../components/advanced/FormBuilder";
 import { ConditionalForm } from "../components/advanced/ConditionalForm";
 import { MultiColumnForm } from "../components/advanced/MultiColumnForm";
-import { Badge } from "../components/ui/badge";
-import { Separator } from "../components/ui/separator";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
-import { Button } from "../components/ui/button";
 import { User, Building2, CreditCard, CheckCircle } from "lucide-react";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
 /**
- * AdvancedFormsPage - Showcase de componentes avanzados de formularios
+ * AdvancedFormsPage - Showcase of advanced form components
  * 
- * Componentes implementados:
- * 1. Step Indicator - Indicadores de progreso multi-paso
- * 2. Form Builder - Constructor visual con drag & drop
- * 3. Conditional Form - Formularios con lógica condicional
- * 4. Multi-Column Form - Formularios con diseño de columnas responsive
+ * Implemented components:
+ * 1. Step Indicator - Multi-step progress indicators
+ * 2. Form Builder - Visual drag & drop builder
+ * 3. Conditional Form - Forms with conditional logic
+ * 4. Multi-Column Form - Forms with responsive column layouts
  * 
- * Ubicación: /pages/AdvancedFormsPage.tsx
- * Estado: ✅ Completado - 4/4 componentes de prioridad media
+ * Location: /pages/AdvancedFormsPage.tsx
+ * Status: ✅ Completed - 4/4 medium priority components
  */
 
 const demoSteps: Step[] = [
@@ -38,7 +34,7 @@ const verticalSteps: Step[] = [
   { id: "5", title: "Review", description: "Verify your information" },
 ];
 
-export function AdvancedFormsPage() {
+function AdvancedFormsDemo() {
   const [currentStep, setCurrentStep] = useState(0);
   const [currentVerticalStep, setCurrentVerticalStep] = useState(2);
 
@@ -61,12 +57,12 @@ export function AdvancedFormsPage() {
         <div className="flex items-center gap-3">
           <h1 className="font-bold">Advanced Forms</h1>
           <Badge className="bg-blue-500 hover:bg-blue-600 text-white">
-            PRIORIDAD MEDIA
+            MEDIUM PRIORITY
           </Badge>
         </div>
         <p className="text-muted-foreground">
-          Componentes avanzados para formularios complejos: step indicators, form builders,
-          lógica condicional y layouts multi-columna. Construidos con shadcn/ui y react-dnd.
+          Advanced components for complex forms: step indicators, form builders,
+          conditional logic and multi-column layouts. Built with shadcn/ui and react-dnd.
         </p>
       </div>
 
@@ -80,8 +76,8 @@ export function AdvancedFormsPage() {
             <Badge variant="secondary">Progress Tracking</Badge>
           </div>
           <p className="text-muted-foreground">
-            Indicadores de progreso reutilizables para wizards y procesos multi-paso.
-            Soporta orientación horizontal/vertical y múltiples variantes.
+            Reusable progress indicators for wizards and multi-step processes.
+            Supports horizontal/vertical orientation and multiple variants.
           </p>
         </div>
 
@@ -193,15 +189,15 @@ export function AdvancedFormsPage() {
         </Tabs>
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Orientación horizontal y vertical</li>
-            <li>3 variantes: default, compact, minimal</li>
-            <li>Estados: pending, active, completed</li>
-            <li>Clickable steps para navegación</li>
-            <li>Progress bar integrado</li>
-            <li>Iconos personalizables por paso</li>
-            <li>Totalmente responsive</li>
+            <li>Horizontal and vertical orientation</li>
+            <li>3 variants: default, compact, minimal</li>
+            <li>States: pending, active, completed</li>
+            <li>Clickable steps for navigation</li>
+            <li>Integrated progress bar</li>
+            <li>Customizable icons per step</li>
+            <li>Fully responsive</li>
           </ul>
         </div>
       </section>
@@ -216,24 +212,24 @@ export function AdvancedFormsPage() {
             <Badge variant="secondary">Drag & Drop</Badge>
           </div>
           <p className="text-muted-foreground">
-            Constructor visual de formularios con drag & drop. Arrastra campos desde la paleta,
-            reordena en el canvas, y genera código React automáticamente.
+            Visual form builder with drag & drop. Drag fields from the palette,
+            reorder on the canvas, and generate React code automatically.
           </p>
         </div>
 
         <FormBuilder />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Drag & drop de campos desde paleta</li>
-            <li>7 tipos de campos: text, email, phone, date, textarea, checkbox, select</li>
-            <li>Reordenamiento de campos con drag & drop</li>
-            <li>Live preview del formulario</li>
-            <li>Generación de código React</li>
-            <li>Eliminación de campos individual</li>
-            <li>Clear all para resetear</li>
-            <li>Construido con react-dnd</li>
+            <li>Drag & drop fields from palette</li>
+            <li>7 field types: text, email, phone, date, textarea, checkbox, select</li>
+            <li>Field reordering with drag & drop</li>
+            <li>Live preview of the form</li>
+            <li>React code generation</li>
+            <li>Individual field deletion</li>
+            <li>Clear all to reset</li>
+            <li>Built with react-dnd</li>
           </ul>
         </div>
       </section>
@@ -248,23 +244,23 @@ export function AdvancedFormsPage() {
             <Badge variant="secondary">Smart Forms</Badge>
           </div>
           <p className="text-muted-foreground">
-            Formulario inteligente con lógica condicional. Los campos aparecen o desaparecen
-            dinámicamente basándose en las respuestas del usuario en tiempo real.
+            Smart form with conditional logic. Fields appear or disappear
+            dynamically based on user responses in real time.
           </p>
         </div>
 
         <ConditionalForm />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Campos que aparecen/desaparecen dinámicamente</li>
-            <li>Lógica basada en selección de usuario (Individual vs Business)</li>
-            <li>Sub-condiciones anidadas (Startup vs Enterprise)</li>
-            <li>Validaciones condicionales</li>
-            <li>Sections visuales diferenciadas con colores</li>
-            <li>Estado de envío con animación</li>
-            <li>Reset automático después de submit</li>
+            <li>Fields that appear/disappear dynamically</li>
+            <li>Logic based on user selection (Individual vs Business)</li>
+            <li>Nested sub-conditions (Startup vs Enterprise)</li>
+            <li>Conditional validations</li>
+            <li>Visually differentiated sections with colors</li>
+            <li>Submission state with animation</li>
+            <li>Automatic reset after submit</li>
           </ul>
         </div>
       </section>
@@ -279,24 +275,24 @@ export function AdvancedFormsPage() {
             <Badge variant="secondary">Responsive Layout</Badge>
           </div>
           <p className="text-muted-foreground">
-            Formulario con diseño de múltiples columnas que se adapta al tamaño de pantalla.
-            Optimiza el espacio y mejora la UX para formularios extensos.
+            Form with multi-column design that adapts to screen size.
+            Optimizes space and improves UX for extensive forms.
           </p>
         </div>
 
         <MultiColumnForm />
 
         <div className="space-y-3">
-          <h3 className="font-semibold">Características principales:</h3>
+          <h3 className="font-semibold">Key Features:</h3>
           <ul className="list-disc list-inside space-y-2 text-sm text-muted-foreground">
-            <li>Grid responsive: 1 columna (mobile) → 2-3 columnas (desktop)</li>
-            <li>4 secciones organizadas: Personal, Address, Company, Additional</li>
-            <li>Separadores visuales entre secciones</li>
-            <li>Mezcla de 2-col y 3-col grids según contexto</li>
-            <li>Campos full-width estratégicos (street, textarea)</li>
-            <li>Form state management completo</li>
+            <li>Responsive grid: 1 column (mobile) → 2-3 columns (desktop)</li>
+            <li>4 organized sections: Personal, Address, Company, Additional</li>
+            <li>Visual separators between sections</li>
+            <li>Mix of 2-col and 3-col grids depending on context</li>
+            <li>Strategic full-width fields (street, textarea)</li>
+            <li>Complete form state management</li>
             <li>Clear form functionality</li>
-            <li>Success state con animación</li>
+            <li>Success state with animation</li>
           </ul>
         </div>
       </section>
@@ -305,25 +301,25 @@ export function AdvancedFormsPage() {
 
       {/* Implementation Notes */}
       <section className="bg-primary/5 rounded-lg p-6 space-y-4">
-        <h3 className="font-semibold">📋 Notas de Implementación</h3>
+        <h3 className="font-semibold">📋 Implementation Notes</h3>
         <div className="space-y-3 text-sm">
           <p>
-            <strong>Ubicación:</strong> Todos los componentes están en{" "}
+            <strong>Location:</strong> All components are in{" "}
             <code className="bg-muted px-2 py-1 rounded">/components/advanced/</code>
           </p>
           <p>
-            <strong>Dependencias:</strong>
+            <strong>Dependencies:</strong>
           </p>
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li>
-              <code className="bg-muted px-2 py-1 rounded">react-dnd</code> y{" "}
-              <code className="bg-muted px-2 py-1 rounded">react-dnd-html5-backend</code> para Form Builder
+              <code className="bg-muted px-2 py-1 rounded">react-dnd</code> and{" "}
+              <code className="bg-muted px-2 py-1 rounded">react-dnd-html5-backend</code> for Form Builder
             </li>
             <li>shadcn/ui components (Input, Select, Button, Card, etc.)</li>
-            <li>lucide-react para iconos</li>
+            <li>lucide-react for icons</li>
           </ul>
           <p>
-            <strong>Imports necesarios:</strong>
+            <strong>Required Imports:</strong>
           </p>
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li>
@@ -348,7 +344,7 @@ export function AdvancedFormsPage() {
             </li>
           </ul>
           <p>
-            <strong>Uso recomendado:</strong>
+            <strong>Recommended Usage:</strong>
           </p>
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li><strong>Step Indicator:</strong> Onboarding, checkout flows, multi-step wizards</li>
@@ -357,15 +353,39 @@ export function AdvancedFormsPage() {
             <li><strong>Multi-Column Form:</strong> Registration, profiles, long forms</li>
           </ul>
           <p>
-            <strong>Compatibilidad:</strong> Todos los componentes son compatibles con el
-            Theme Customizer y adaptan colores automáticamente en modo claro/oscuro.
+            <strong>Compatibility:</strong> All components are compatible with the
+            Theme Customizer and automatically adapt colors in light/dark mode.
           </p>
           <p>
-            <strong>Estado:</strong> ✅ Fase 3 completada - 4 componentes de formularios avanzados
-            de PRIORIDAD MEDIA implementados y documentados.
+            <strong>Status:</strong> ✅ Phase 3 completed - 4 advanced form components
+            of MEDIUM PRIORITY implemented and documented.
           </p>
         </div>
       </section>
     </div>
+  );
+}
+
+export function AdvancedFormsPage() {
+  return (
+    <ComponentShowcase
+      title="Advanced Forms"
+      description="Showcase of advanced form components: StepIndicator for multi-step progress, FormBuilder for dynamic field generation, ConditionalForm for logic-driven fields, and MultiColumnForm for complex layouts."
+      category="Advanced"
+      preview={<AdvancedFormsDemo />}
+      code={`import { StepIndicator } from "@/components/advanced/StepIndicator";
+import { FormBuilder } from "@/components/advanced/FormBuilder";
+import { ConditionalForm } from "@/components/advanced/ConditionalForm";
+import { MultiColumnForm } from "@/components/advanced/MultiColumnForm";
+
+<StepIndicator steps={steps} currentStep={2} />
+<FormBuilder schema={schema} />
+<ConditionalForm />
+<MultiColumnForm />`}
+      props={[
+        { name: "(aggregation)", type: "—", description: "Showcases 4 advanced form components." },
+      ]}
+      examples={[]}
+    />
   );
 }

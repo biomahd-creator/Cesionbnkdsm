@@ -1,0 +1,552 @@
+# CESIONBNK Design System - AI Instructions
+# @biomahd-creator/financio-design-system v0.2.2
+#
+# This file helps AI/LLM tools (Claude, ChatGPT, Copilot, Figma Make, etc.)
+# correctly use this design system when generating code.
+# It ships with the npm package and should be read before generating any UI.
+
+---
+
+## 1. CRITICAL SETUP (MUST DO FIRST)
+
+Before using ANY component, the consumer project MUST import the theme CSS.
+Without this, components render without colors, fonts, spacing, or dark mode.
+
+```css
+/* In your main CSS file (e.g., src/styles.css or src/index.css) */
+@import "tailwindcss";
+@import "@biomahd-creator/financio-design-system/theme.css";
+```
+
+This single import provides:
+- All CSS custom properties (colors, shadows, radius)
+- Satoshi font family (loaded via CDN)
+- Light/Dark mode variables
+- Tailwind v4 @theme bindings
+- KPI color variants
+- Elevation shadow scale
+
+If styles are not appearing, the theme.css import is missing. This is the #1 issue.
+
+---
+
+## 2. COMPONENT CATALOG
+
+### 2.1 Import Syntax
+
+```tsx
+// Option A: Full import (convenient)
+import { Button, Card, Badge } from "@biomahd-creator/financio-design-system";
+
+// Option B: Layer import (better tree-shaking)
+import { Button } from "@biomahd-creator/financio-design-system/ui";
+
+// Option C: Direct import (best tree-shaking)
+import { Button } from "@biomahd-creator/financio-design-system/ui/button";
+```
+
+### 2.2 UI Primitives (`/ui`) - Atoms & Molecules
+
+Core building blocks. Built on Radix UI + Tailwind CSS.
+
+| Component | Import from | Key Props | Notes |
+|---|---|---|---|
+| `Accordion` | `/ui/accordion` | `type`, `collapsible` | AccordionItem, AccordionTrigger, AccordionContent |
+| `Alert` | `/ui/alert` | `variant`: default, destructive, success, warning, info | AlertTitle, AlertDescription |
+| `AlertDialog` | `/ui/alert-dialog` | — | AlertDialogTrigger, AlertDialogContent, AlertDialogAction, AlertDialogCancel |
+| `AspectRatio` | `/ui/aspect-ratio` | `ratio` | Wraps content in aspect ratio container |
+| `Avatar` | `/ui/avatar` | — | AvatarImage, AvatarFallback |
+| `Badge` | `/ui/badge` | `variant`: default, secondary, destructive, outline, success, warning, info | Inline status label |
+| `BottomSheet` | `/ui/bottom-sheet` | — | Mobile-first sliding panel |
+| `Breadcrumb` | `/ui/breadcrumb` | — | BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator |
+| `Button` | `/ui/button` | `variant`: default, destructive, outline, secondary, ghost, link; `size`: default, sm, lg, icon | Main interactive element |
+| `Calendar` | `/ui/calendar` | `selected`, `onSelect`, `mode` | Based on react-day-picker |
+| `Card` | `/ui/card` | — | Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction |
+| `Carousel` | `/ui/carousel` | — | CarouselContent, CarouselItem, CarouselPrevious, CarouselNext |
+| `Checkbox` | `/ui/checkbox` | `checked`, `onCheckedChange` | Binary selection |
+| `CodeBlock` | `/ui/code-block` | `code`, `language` | Syntax-highlighted code display |
+| `Collapsible` | `/ui/collapsible` | `open`, `onOpenChange` | CollapsibleTrigger, CollapsibleContent |
+| `Command` | `/ui/command` | — | CommandInput, CommandList, CommandGroup, CommandItem |
+| `ContextMenu` | `/ui/context-menu` | — | ContextMenuTrigger, ContextMenuContent, ContextMenuItem |
+| `DateRangePicker` | `/ui/date-range-picker` | `value`, `onChange` | Date range selector |
+| `Dialog` | `/ui/dialog` | — | DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter |
+| `Drawer` | `/ui/drawer` | — | DrawerTrigger, DrawerContent, DrawerHeader, DrawerFooter |
+| `DropdownMenu` | `/ui/dropdown-menu` | — | DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem |
+| `EmptyState` | `/ui/empty-state` | `icon`, `title`, `description`, `action` | Placeholder for empty content |
+| `FloatingActionButton` | `/ui/floating-action-button` | `icon`, `onClick` | Fixed-position action button |
+| `Form` | `/ui/form` | — | FormField, FormItem, FormLabel, FormControl, FormMessage (react-hook-form wrappers) |
+| `HoverCard` | `/ui/hover-card` | — | HoverCardTrigger, HoverCardContent |
+| `Input` | `/ui/input` | `type`, `placeholder`, `disabled` | Standard text input |
+| `InputFile` | `/ui/input-file` | `accept`, `multiple` | File selector |
+| `InputOTP` | `/ui/input-otp` | `maxLength` | One-time password input |
+| `Label` | `/ui/label` | `htmlFor` | Accessible form label |
+| `LoadingOverlay` | `/ui/loading-overlay` | `isLoading`, `text` | Full-screen loading state |
+| `LoadingStates` | `/ui/loading-states` | `variant` | Spinner, skeleton, pulse variants |
+| `Menubar` | `/ui/menubar` | — | MenubarMenu, MenubarTrigger, MenubarContent, MenubarItem |
+| `MultiSelect` | `/ui/multi-select` | `options`, `value`, `onChange` | Multi-select with tags |
+| `NavigationMenu` | `/ui/navigation-menu` | — | NavigationMenuList, NavigationMenuItem, NavigationMenuLink |
+| `Pagination` | `/ui/pagination` | — | PaginationContent, PaginationItem, PaginationLink, PaginationPrevious, PaginationNext |
+| `Popover` | `/ui/popover` | — | PopoverTrigger, PopoverContent |
+| `Progress` | `/ui/progress` | `value` (0-100) | Linear progress bar |
+| `ProgressWithRange` | `/ui/progress-with-range` | `value`, `startLabel`, `endLabel` | Progress bar with range labels |
+| `RadioGroup` | `/ui/radio-group` | `value`, `onValueChange` | RadioGroupItem |
+| `ResizablePanelGroup` | `/ui/resizable` | `direction` | ResizablePanel, ResizableHandle |
+| `ScrollArea` | `/ui/scroll-area` | — | Custom scrollbar container |
+| `Select` | `/ui/select` | — | SelectTrigger, SelectValue, SelectContent, SelectItem |
+| `Separator` | `/ui/separator` | `orientation`: horizontal, vertical | Visual divider |
+| `Sheet` | `/ui/sheet` | `side`: top, right, bottom, left | SheetTrigger, SheetContent, SheetHeader, SheetTitle |
+| `Skeleton` | `/ui/skeleton` | `className` (set width/height) | Loading placeholder |
+| `Slider` | `/ui/slider` | `value`, `onValueChange`, `min`, `max`, `step` | Range selector |
+| `SplitButton` | `/ui/split-button` | `label`, `onClick`, `menuItems` | Button with dropdown |
+| `Switch` | `/ui/switch` | `checked`, `onCheckedChange` | Toggle on/off |
+| `Table` | `/ui/table` | — | TableHeader, TableBody, TableRow, TableHead, TableCell |
+| `Tabs` | `/ui/tabs` | `defaultValue` | TabsList, TabsTrigger, TabsContent |
+| `Textarea` | `/ui/textarea` | `placeholder`, `rows` | Multiline text input |
+| `TextareaAutoresize` | `/ui/textarea-autoresize` | `placeholder` | Auto-growing textarea |
+| `Toggle` | `/ui/toggle` | `pressed`, `onPressedChange`, `variant` | Binary state button |
+| `ToggleGroup` | `/ui/toggle-group` | `type`: single, multiple; `value` | Group of toggles |
+| `Tooltip` | `/ui/tooltip` | — | TooltipTrigger, TooltipContent (wrap in TooltipProvider) |
+
+### 2.3 Advanced Components (`/advanced`) - Complex Visualizations
+
+| Component | Import from | Key Props | Notes |
+|---|---|---|---|
+| `ChartShowcase` | `/advanced/ChartShowcase` | — | Gallery of chart examples |
+| `Combobox` | `/advanced/Combobox` | `options`, `value`, `onChange`, `placeholder` | Autocomplete select |
+| `ConditionalForm` | `/advanced/ConditionalForm` | `schema` | Dynamic form with conditional fields |
+| `DataTable` | `/advanced/DataTable` | `columns`, `data` | TanStack Table with filters, sort, pagination |
+| `DatePickerWithPresets` | `/advanced/DatePickerWithPresets` | `value`, `onChange`, `presets` | Date picker with quick presets |
+| `ExportData` | `/advanced/ExportData` | `data`, `columns`, `filename` | CSV/Excel export utility |
+| `FileUploader` | `/advanced/FileUploader` | `accept`, `maxSize`, `onUpload` | Drag & drop file upload |
+| `FormBuilder` | `/advanced/FormBuilder` | `fields`, `onSubmit` | Visual form constructor |
+| `FunnelChart` | `/advanced/FunnelChart` | `data` | Funnel visualization |
+| `GaugeChart` | `/advanced/GaugeChart` | `value`, `min`, `max` | Gauge/speedometer |
+| `Heatmap` | `/advanced/Heatmap` | `data`, `xLabels`, `yLabels` | Heatmap visualization |
+| `InfiniteScroll` | `/advanced/InfiniteScroll` | `loadMore`, `hasMore` | Infinite scrolling list |
+| `InvoiceGenerator` | `/advanced/InvoiceGenerator` | — | Invoice PDF/preview generator |
+| `MasonryGrid` | `/advanced/MasonryGrid` | `columns` | Pinterest-style grid |
+| `MasterDataGrid` | `/advanced/MasterDataGrid` | `data`, `columns` | Master data with bulk editing |
+| `RatingComponent` | `/advanced/RatingComponent` | `value`, `onChange`, `max` | Star rating input |
+| `RichTextEditor` | `/advanced/RichTextEditor` | `value`, `onChange` | WYSIWYG editor |
+| `Sparkline` | `/advanced/Sparkline` | `data`, `color` | Mini inline chart |
+| `StepIndicator` | `/advanced/StepIndicator` | `steps`, `currentStep` | Wizard step progress |
+| `Timeline` | `/advanced/Timeline` | `items` | Vertical timeline |
+| `TransferList` | `/advanced/TransferList` | `leftItems`, `rightItems` | Dual-list transfer |
+| `TreeTable` | `/advanced/TreeTable` | `data` | Hierarchical table |
+| `TreemapChart` | `/advanced/TreemapChart` | `data` | Treemap visualization |
+| `VirtualizedList` | `/advanced/VirtualizedList` | `items`, `rowHeight` | High-performance list |
+
+### 2.4 Business Patterns (`/patterns`) - Ready-to-Use Organisms
+
+| Component | Import from | Key Props | Notes |
+|---|---|---|---|
+| `ActivityFeed` | `/patterns/ActivityFeed` | `items` | Recent activity feed |
+| `AdminPortal` | `/patterns/AdminPortal` | — | Admin panel layout |
+| `AdvancedFilterPanel` | `/patterns/AdvancedFilterPanel` | `filters`, `onApply` | Complex filter sidebar |
+| `AppLayout` | `/patterns/AppLayout` | `sidebar`, `children` | Full layout with collapsible sidebar |
+| `ApprovalFlowWizard` | `/patterns/ApprovalFlowWizard` | `steps` | Approval process wizard |
+| `ApprovalTimeline` | `/patterns/ApprovalTimeline` | `steps` | Approval status timeline |
+| `AuditLogViewer` | `/patterns/AuditLogViewer` | `logs` | Audit log viewer |
+| `CommentThread` | `/patterns/CommentThread` | `comments` | Nested comment system |
+| `CupoValidator` | `/patterns/CupoValidator` | — | Credit limit validator |
+| `DataTableAdvanced` | `/patterns/DataTableAdvanced` | `data`, `columns` | Advanced DataTable implementation |
+| `EditableTable` | `/patterns/EditableTable` | `data`, `columns` | Excel-like inline editing |
+| `FactoringCalculator` | `/patterns/FactoringCalculator` | — | Factoring cost calculator |
+| `FactoringKpiCard` | `/patterns/FactoringKpiCard` | `title`, `value`, `icon`, `variant`: green, blue, yellow, orange, lime, purple | KPI card for factoring |
+| `FactoringKpiCardGroup` | `/patterns/FactoringKpiCardGroup` | `cards`, `activeIndex`, `onSelect` | Clickable KPI card group |
+| `KPIShowcase` | `/patterns/KPIShowcase` | — | KPI cards grid |
+| `MultiStepWizard` | `/patterns/MultiStepWizard` | `steps` | Generic step wizard |
+| `NotificationCenter` | `/patterns/NotificationCenter` | `notifications` | Notification dropdown |
+| `OnboardingWizard` | `/patterns/OnboardingWizard` | `steps` | User onboarding flow |
+| `QuickActionToolbar` | `/patterns/QuickActionToolbar` | `actions` | Contextual action bar |
+| `ReportsConsultation` | `/patterns/ReportsConsultation` | — | Report filtering & pagination |
+| `SearchResults` | `/patterns/SearchResults` | `results`, `query` | Search results page |
+| `StatsDashboard` | `/patterns/StatsDashboard` | — | Statistics dashboard |
+| `UploadZone` | `/patterns/UploadZone` | `onUpload`, `accept` | Specialized upload area |
+| `UserProfileCard` | `/patterns/UserProfileCard` | `user` | Detailed profile card |
+
+### 2.5 Widgets (`/widgets`) - Composed Blocks
+
+| Component | Import from | Key Props | Notes |
+|---|---|---|---|
+| `ActionButton` | `/widgets/ActionButton` | `onClick`, `loading`, `success` | Button with loading/success states |
+| `BookingCalendar` | `/widgets/BookingCalendar` | `onBook` | Calendar booking widget |
+| `ColorBox` | `/widgets/ColorBox` | `color`, `label` | Color display box |
+| `ColorSwatch` | `/widgets/ColorSwatch` | `color` | Static color sample |
+| `ContactForm` | `/widgets/ContactForm` | `onSubmit` | Contact form widget |
+| `ContrastPreview` | `/widgets/ContrastPreview` | `foreground`, `background` | Accessibility contrast check |
+| `FilterBar` | `/widgets/FilterBar` | `filters`, `onFilter` | Horizontal filter bar |
+| `FilterChip` | `/widgets/FilterChip` | `label`, `active`, `onToggle` | Individual filter chip |
+| `InvoiceTable` | `/widgets/InvoiceTable` | `invoices` | Invoice-specific table |
+| `NavigationBar` | `/widgets/NavigationBar` | `items` | Secondary navigation |
+| `SearchBar` | `/widgets/SearchBar` | `onSearch`, `placeholder` | Expandable search bar |
+| `StatCard` | `/widgets/StatCard` | `title`, `value`, `trend`, `icon` | Simple stat card |
+| `StatsGrid` | `/widgets/StatsGrid` | `stats` | Grid of stat cards |
+| `StatusKPICard` | `/widgets/StatusKPICard` | `title`, `value`, `status` | KPI card with traffic-light status |
+
+### 2.6 Providers (`/providers`)
+
+| Export | Import from | Usage |
+|---|---|---|
+| `ThemeProvider` | `/providers` | Wrap app root for light/dark toggle |
+| `useTheme` | `/providers` | `{ theme, toggleTheme }` |
+| `LoadingProvider` | `/providers` | Global loading state management |
+| `useLoading` | `/providers` | `{ isLoading, setLoading }` |
+| `TransitionProvider` | `/providers` | Page transition animations |
+| `HelpProvider` | `/providers` | Contextual help system |
+
+### 2.7 Hooks (`/hooks`)
+
+| Hook | Import from | Returns |
+|---|---|---|
+| `useLoadingState` | `/hooks` | `{ loading, error, execute }` |
+| `useGlobalLoading` | `/hooks` | Global loading hook |
+| `useAsyncOperation` | `/hooks` | Async operation with loading state |
+| `usePageTransition` | `/hooks` | Page transition hook |
+| `usePageEnter` | `/hooks` | Page enter animation |
+| `useScrollToTop` | `/hooks` | Scroll to top on navigation |
+
+### 2.8 Utilities (`/lib`)
+
+| Export | Import from | Usage |
+|---|---|---|
+| `cn()` | `@biomahd-creator/financio-design-system` (root) | Tailwind class merger: `cn("px-4", condition && "bg-primary")` |
+| `fadeVariants` | `/lib` | Motion fade animation |
+| `fadeScaleVariants` | `/lib` | Motion fade + scale (modals) |
+| `slideFromRightVariants` | `/lib` | Drawer slide animation |
+| `slideFromBottomVariants` | `/lib` | Sheet slide animation |
+| `transitionConfig` | `/lib` | `{ fast, normal, slow, spring }` |
+| `shouldReduceMotion()` | `/lib` | Checks prefers-reduced-motion |
+
+---
+
+## 3. DESIGN TOKENS & STYLING RULES
+
+### 3.1 Brand Identity
+
+| Token | Value | Usage |
+|---|---|---|
+| **Primary** | `#00c951` (Green) | CTAs, links, focus ring, brand accent |
+| **Secondary** | `#1C2D3A` (Navy) | Headers, secondary actions, dark backgrounds |
+| **Font** | Satoshi (geometric sans-serif) | Exclusive font, loaded via theme.css |
+| **Border Radius** | 10px base (`--radius`) | Cards: 14px, Buttons: 10px, Inputs: 8px |
+
+### 3.2 Semantic Color Classes (Tailwind)
+
+ALWAYS use semantic token classes. NEVER use raw Tailwind colors (bg-white, text-gray-500, etc.).
+
+| Purpose | Background | Text | Border |
+|---|---|---|---|
+| **Page background** | `bg-background` | `text-foreground` | — |
+| **Cards** | `bg-card` | `text-card-foreground` | `border-border` |
+| **Muted areas** | `bg-muted` | `text-muted-foreground` | — |
+| **Primary actions** | `bg-primary` | `text-primary-foreground` | — |
+| **Secondary actions** | `bg-secondary` | `text-secondary-foreground` | — |
+| **Destructive** | `bg-destructive` | `text-destructive-foreground` | — |
+| **Success** | `bg-success` | `text-success-foreground` | — |
+| **Warning** | `bg-warning` | `text-warning-foreground` | — |
+| **Info** | `bg-info` | `text-info-foreground` | — |
+| **Inputs** | `bg-input-background` | `text-foreground` | `border-input` |
+| **Subtle background** | `bg-muted/30` | — | — |
+
+### 3.3 Typography Scale
+
+Font: Satoshi (automatically loaded). Letter-spacing: 0.025em global.
+
+| Level | Size | Weight | Tailwind |
+|---|---|---|---|
+| **H1** | 30px | 600 | `text-3xl font-semibold` |
+| **H2** | 24px | 600 | `text-2xl font-semibold` |
+| **H3** | 20px | 500 | `text-xl font-medium` |
+| **H4** | 18px | 500 | `text-lg font-medium` |
+| **Body** | 16px | 400 | `text-base font-normal` |
+| **Small** | 14px | 400 | `text-sm font-normal` |
+| **Caption** | 12px | 400 | `text-xs font-normal` |
+| **Label** | 14px | 500 | `text-sm font-medium` |
+| **KPI Value** | 36px | 700 | `text-4xl font-bold leading-tight` |
+
+### 3.4 Spacing System (base: 4px)
+
+| Context | Tailwind | Value |
+|---|---|---|
+| Small elements gap | `gap-2` | 8px |
+| Form inputs | `gap-4` | 16px |
+| Card sections | `gap-3` or `gap-4` | 12-16px |
+| Page sections | `gap-6` | 24px |
+| Large sections | `gap-8` | 32px |
+| Card padding | `p-6` | 24px |
+| Page container padding | `p-8` | 32px |
+
+### 3.5 Border Radius
+
+| Component | Tailwind | Value |
+|---|---|---|
+| Buttons | `rounded-lg` | 10px |
+| Cards, Modals | `rounded-xl` | 14px |
+| Inputs, Badges | `rounded-md` | 8px |
+| Pills, Tags | `rounded-full` | 9999px |
+
+### 3.6 Elevation Shadows
+
+| Level | Tailwind | Use |
+|---|---|---|
+| Level 1 | `shadow-elevation-1` | Buttons, inputs |
+| Level 2 | `shadow-elevation-2` | Cards, tables |
+| Level 3 | `shadow-elevation-3` | Hover cards, dropdowns |
+| Level 4 | `shadow-elevation-4` | Modals, active KPI |
+
+### 3.7 Dark Mode
+
+The system supports light/dark mode via CSS class strategy:
+
+```tsx
+import { ThemeProvider, useTheme } from "@biomahd-creator/financio-design-system/providers";
+
+function App() {
+  return (
+    <ThemeProvider>
+      <YourApp />
+    </ThemeProvider>
+  );
+}
+
+// Toggle anywhere
+function Toggle() {
+  const { theme, toggleTheme } = useTheme();
+  return <Button onClick={toggleTheme}>{theme}</Button>;
+}
+```
+
+All semantic colors automatically adapt. No conditional classes needed.
+
+---
+
+## 4. COMPOSITION PATTERNS
+
+### 4.1 Basic Page Layout
+
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@biomahd-creator/financio-design-system/ui";
+
+function Page() {
+  return (
+    <div className="min-h-screen bg-background p-8">
+      <div className="max-w-7xl mx-auto space-y-6">
+        <div>
+          <h1 className="text-3xl font-semibold text-foreground">Page Title</h1>
+          <p className="text-muted-foreground">Page description</p>
+        </div>
+        <Card>
+          <CardHeader>
+            <CardTitle>Section Title</CardTitle>
+            <CardDescription>Section description</CardDescription>
+          </CardHeader>
+          <CardContent>
+            {/* Content */}
+          </CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
+```
+
+### 4.2 Dashboard with KPI Cards
+
+```tsx
+import { Card, CardHeader, CardTitle, CardContent } from "@biomahd-creator/financio-design-system/ui";
+import { StatCard } from "@biomahd-creator/financio-design-system/widgets";
+import { Badge } from "@biomahd-creator/financio-design-system/ui";
+
+function Dashboard() {
+  return (
+    <div className="p-8 bg-muted/30 min-h-screen space-y-6">
+      <h1 className="text-3xl font-semibold">Dashboard</h1>
+
+      {/* KPI Row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StatCard title="Revenue" value="$1.2M" trend="+12%" icon={DollarSign} />
+        <StatCard title="Users" value="8,430" trend="+5.2%" icon={Users} />
+        <StatCard title="Orders" value="1,240" trend="-2.1%" icon={ShoppingCart} />
+        <StatCard title="Growth" value="23%" trend="+8%" icon={TrendingUp} />
+      </div>
+
+      {/* Content Grid */}
+      <div className="grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-6">
+        <Card>
+          <CardHeader><CardTitle>Main Chart</CardTitle></CardHeader>
+          <CardContent>{/* Chart here */}</CardContent>
+        </Card>
+        <Card>
+          <CardHeader><CardTitle>Recent Activity</CardTitle></CardHeader>
+          <CardContent>{/* Activity list */}</CardContent>
+        </Card>
+      </div>
+    </div>
+  );
+}
+```
+
+### 4.3 Form Layout
+
+```tsx
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@biomahd-creator/financio-design-system/ui";
+import { Input, Label, Button, Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@biomahd-creator/financio-design-system/ui";
+
+function FormExample() {
+  return (
+    <Card className="max-w-2xl mx-auto">
+      <CardHeader>
+        <CardTitle>Create Account</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <Label htmlFor="name">Full Name</Label>
+            <Input id="name" placeholder="John Doe" />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="john@example.com" />
+          </div>
+        </div>
+      </CardContent>
+      <CardFooter className="flex justify-end gap-2">
+        <Button variant="outline">Cancel</Button>
+        <Button>Submit</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+### 4.4 Data Table Page
+
+```tsx
+import { Card, CardHeader, CardTitle, CardContent } from "@biomahd-creator/financio-design-system/ui";
+import { Table, TableHeader, TableBody, TableRow, TableHead, TableCell } from "@biomahd-creator/financio-design-system/ui";
+import { Badge, Button, Input } from "@biomahd-creator/financio-design-system/ui";
+
+function DataPage() {
+  return (
+    <div className="p-8 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-3xl font-semibold">Records</h1>
+        <Button>Add New</Button>
+      </div>
+      <Card>
+        <CardHeader>
+          <div className="flex items-center gap-4">
+            <Input placeholder="Search..." className="max-w-sm" />
+          </div>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Name</TableHead>
+                <TableHead>Status</TableHead>
+                <TableHead>Amount</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableCell>Item A</TableCell>
+                <TableCell><Badge variant="success">Active</Badge></TableCell>
+                <TableCell>$1,200</TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+```
+
+---
+
+## 5. CRITICAL RULES
+
+### DO:
+- Always import theme.css before using components
+- Use semantic color classes: `bg-background`, `text-foreground`, `border-border`
+- Use the component library for all UI elements (Button, Card, Badge, Input, etc.)
+- Use `gap-*` for spacing between elements, `p-*` for padding
+- Use `rounded-xl` for cards, `rounded-lg` for buttons, `rounded-md` for inputs
+- Use `shadow-elevation-*` for depth
+- Wrap app in `<ThemeProvider>` for dark mode support
+- Use `cn()` utility for conditional classes: `cn("base-class", condition && "conditional-class")`
+- Use lucide-react for icons (it's a peer dependency)
+
+### DON'T:
+- Don't use raw Tailwind colors (`bg-white`, `text-gray-500`, `bg-green-500`)
+- Don't use `bg-slate-*`, `bg-zinc-*`, or any Tailwind color palette directly
+- Don't hardcode hex colors in className
+- Don't create custom CSS for things the token system already provides
+- Don't use `border-gray-200` — use `border-border` instead
+- Don't use `text-black` or `text-white` — use `text-foreground` or `text-primary-foreground`
+- Don't skip the theme.css import (components will look unstyled)
+- Don't create custom Button/Card/Input components — use the library's
+
+### Chart Colors:
+When using Recharts, use CSS variables for chart colors:
+```tsx
+// Use these for chart series
+"var(--chart-1)"  // Series 1
+"var(--chart-2)"  // Series 2
+"var(--chart-3)"  // Series 3
+"var(--chart-4)"  // Series 4
+"var(--chart-5)"  // Series 5
+```
+
+---
+
+## 6. QUICK REFERENCE
+
+### Most Used Components (80% of screens)
+
+```tsx
+import {
+  Button,
+  Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter,
+  Badge,
+  Input,
+  Label,
+  Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
+  Tabs, TabsList, TabsTrigger, TabsContent,
+  Dialog, DialogTrigger, DialogContent, DialogHeader, DialogTitle, DialogFooter,
+  Select, SelectTrigger, SelectValue, SelectContent, SelectItem,
+  Separator,
+  Avatar, AvatarImage, AvatarFallback,
+  Tooltip, TooltipTrigger, TooltipContent, TooltipProvider,
+  Progress,
+  Switch,
+  Checkbox,
+  ScrollArea,
+  DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem,
+  Sheet, SheetTrigger, SheetContent, SheetHeader, SheetTitle,
+} from "@biomahd-creator/financio-design-system";
+```
+
+### Color Palette Quick Reference
+
+```
+Primary Green:  bg-primary text-primary-foreground       (#00c951)
+Navy:           bg-secondary text-secondary-foreground    (#1C2D3A)
+Background:     bg-background text-foreground
+Cards:          bg-card text-card-foreground
+Muted:          bg-muted text-muted-foreground
+Subtle BG:      bg-muted/30
+Error:          bg-destructive text-destructive-foreground
+Success:        bg-success text-success-foreground
+Warning:        bg-warning text-warning-foreground
+Info:           bg-info text-info-foreground
+Border:         border-border
+Input border:   border-input
+Focus ring:     ring-ring  (green)
+```
+
+---
+
+*CESIONBNK Design System v0.2.2 | MIT License | @biomahd-creator/financio-design-system*

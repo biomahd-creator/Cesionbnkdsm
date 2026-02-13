@@ -1,10 +1,10 @@
 /**
  * GridSystemPreview Component
  * 
- * BUSINESS PATTERN: Visualización del sistema de grid sin estilos inline
+ * BUSINESS PATTERN: Grid system visualization without inline styles
  * 
- * NO MODIFICAR sin consultar: /components/widgets/WIDGETS_ARCHITECTURE.md
- * Parte del sistema modular sin estilos inline
+ * DO NOT MODIFY without consulting: /components/widgets/WIDGETS_ARCHITECTURE.md
+ * Part of the modular system without inline styles
  */
 
 import { Badge } from "../ui/badge";
@@ -29,7 +29,7 @@ export function GridSystemPreview({
         <div>
           <h4 className="font-semibold">{device}</h4>
           <p className="text-sm text-muted-foreground">
-            {columns} columnas · Gutter {gutter} · Margin {margin}
+            {columns} columns · Gutter {gutter} · Margin {margin}
           </p>
         </div>
         <Badge>{columns} cols</Badge>

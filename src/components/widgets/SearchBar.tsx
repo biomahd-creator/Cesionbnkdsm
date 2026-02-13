@@ -7,7 +7,7 @@ interface SearchBarProps {
   onSearch?: (query: string) => void;
 }
 
-export function SearchBar({ placeholder = "Buscar...", onSearch }: SearchBarProps) {
+export function SearchBar({ placeholder = "Search...", onSearch }: SearchBarProps) {
   return (
     <div className="flex gap-2">
       <Input 

@@ -32,16 +32,16 @@ import { ScrollArea } from "../ui/scroll-area";
 import { Filter, Calendar as CalendarIcon, X } from "lucide-react";
 
 const statusOptions = [
-  { id: "pending", label: "Pendiente" },
-  { id: "review", label: "En Revisión" },
-  { id: "approved", label: "Aprobada" },
-  { id: "rejected", label: "Rechazada" },
-  { id: "paid", label: "Pagada" },
+  { id: "pending", label: "Pending" },
+  { id: "review", label: "In Review" },
+  { id: "approved", label: "Approved" },
+  { id: "rejected", label: "Rejected" },
+  { id: "paid", label: "Paid" },
 ];
 
 const clientTypes = [
-  { id: "corporate", label: "Empresa Grande" },
-  { id: "sme", label: "PYME" },
+  { id: "corporate", label: "Large Enterprise" },
+  { id: "sme", label: "SME" },
   { id: "startup", label: "Startup" },
 ];
 
@@ -52,8 +52,8 @@ export function AdvancedFilterPanel() {
   const [activeFilters, setActiveFilters] = useState(0);
 
   const formatDate = (date: Date | undefined) => {
-    if (!date) return "Seleccionar";
-    return date.toLocaleDateString("es-ES", {
+    if (!date) return "Select";
+    return date.toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
       day: "numeric",
@@ -89,7 +89,7 @@ export function AdvancedFilterPanel() {
       <SheetTrigger asChild>
         <Button variant="outline" className="relative">
           <Filter className="mr-2 h-4 w-4" />
-          Filtros Avanzados
+          Advanced Filters
           {activeFilters > 0 && (
             <Badge
               variant="default"
@@ -102,9 +102,9 @@ export function AdvancedFilterPanel() {
       </SheetTrigger>
       <SheetContent className="w-full sm:max-w-md">
         <SheetHeader className="px-6">
-          <SheetTitle>Filtros Avanzados</SheetTitle>
+          <SheetTitle>Advanced Filters</SheetTitle>
           <SheetDescription>
-            Refina tu búsqueda con criterios específicos
+            Refine your search with specific criteria
           </SheetDescription>
         </SheetHeader>
 
@@ -113,10 +113,10 @@ export function AdvancedFilterPanel() {
             {/* Date Range */}
             <div className="space-y-4">
               <div>
-                <h4 className="font-medium mb-3">Rango de Fechas</h4>
+                <h4 className="font-medium mb-3">Date Range</h4>
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="start-date">Desde</Label>
+                    <Label htmlFor="start-date">From</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -140,7 +140,7 @@ export function AdvancedFilterPanel() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="end-date">Hasta</Label>
+                    <Label htmlFor="end-date">To</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -170,10 +170,10 @@ export function AdvancedFilterPanel() {
 
             {/* Amount Range */}
             <div className="space-y-4">
-              <h4 className="font-medium">Rango de Monto</h4>
+              <h4 className="font-medium">Amount Range</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="min-amount">Mínimo</Label>
+                  <Label htmlFor="min-amount">Minimum</Label>
                   <Input
                     id="min-amount"
                     placeholder="$0"
@@ -181,10 +181,10 @@ export function AdvancedFilterPanel() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="max-amount">Máximo</Label>
+                  <Label htmlFor="max-amount">Maximum</Label>
                   <Input
                     id="max-amount"
-                    placeholder="Sin límite"
+                    placeholder="No limit"
                     type="number"
                   />
                 </div>
@@ -195,7 +195,7 @@ export function AdvancedFilterPanel() {
 
             {/* Status Filter */}
             <div className="space-y-4">
-              <h4 className="font-medium">Estado de Factura</h4>
+              <h4 className="font-medium">Invoice Status</h4>
               <div className="space-y-3">
                 {statusOptions.map((status) => (
                   <div
@@ -222,7 +222,7 @@ export function AdvancedFilterPanel() {
 
             {/* Client Type */}
             <div className="space-y-4">
-              <h4 className="font-medium">Tipo de Cliente</h4>
+              <h4 className="font-medium">Client Type</h4>
               <div className="space-y-3">
                 {clientTypes.map((type) => (
                   <div key={type.id} className="flex items-center space-x-2">
@@ -242,16 +242,16 @@ export function AdvancedFilterPanel() {
 
             {/* Risk Level */}
             <div className="space-y-4">
-              <h4 className="font-medium">Nivel de Riesgo</h4>
+              <h4 className="font-medium">Risk Level</h4>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seleccionar nivel" />
+                  <SelectValue placeholder="Select level" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="low">Bajo</SelectItem>
-                  <SelectItem value="medium">Medio</SelectItem>
-                  <SelectItem value="high">Alto</SelectItem>
-                  <SelectItem value="all">Todos</SelectItem>
+                  <SelectItem value="low">Low</SelectItem>
+                  <SelectItem value="medium">Medium</SelectItem>
+                  <SelectItem value="high">High</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -260,17 +260,17 @@ export function AdvancedFilterPanel() {
 
             {/* Analyst */}
             <div className="space-y-4">
-              <h4 className="font-medium">Analista Asignado</h4>
+              <h4 className="font-medium">Assigned Analyst</h4>
               <Select>
                 <SelectTrigger>
-                  <SelectValue placeholder="Seleccionar analista" />
+                  <SelectValue placeholder="Select analyst" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="juan">Juan Pérez</SelectItem>
-                  <SelectItem value="maria">María González</SelectItem>
-                  <SelectItem value="carlos">Carlos Rodríguez</SelectItem>
-                  <SelectItem value="ana">Ana Martínez</SelectItem>
-                  <SelectItem value="all">Todos</SelectItem>
+                  <SelectItem value="juan">Juan Perez</SelectItem>
+                  <SelectItem value="maria">Maria Gonzalez</SelectItem>
+                  <SelectItem value="carlos">Carlos Rodriguez</SelectItem>
+                  <SelectItem value="ana">Ana Martinez</SelectItem>
+                  <SelectItem value="all">All</SelectItem>
                 </SelectContent>
               </Select>
             </div>
@@ -285,11 +285,11 @@ export function AdvancedFilterPanel() {
               onClick={handleClearFilters}
             >
               <X className="mr-2 h-4 w-4" />
-              Limpiar
+              Clear
             </Button>
             <SheetClose asChild>
               <Button className="flex-1" onClick={handleApplyFilters}>
-                Aplicar Filtros
+                Apply Filters
               </Button>
             </SheetClose>
           </div>

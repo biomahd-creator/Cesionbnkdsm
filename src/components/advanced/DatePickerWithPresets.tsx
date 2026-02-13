@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { addDays, format } from "date-fns";
-import { es } from "date-fns/locale";
 import { Calendar as CalendarIcon } from "lucide-react";
 import { cn } from "../ui/utils";
 import { Button } from "../ui/button";
@@ -69,19 +68,19 @@ export function DatePickerWithPresets({
           )}
         >
           <CalendarIcon className="mr-2 h-4 w-4" />
-          {date ? format(date, "PPP", { locale: es }) : "Seleccionar fecha"}
+          {date ? format(date, "PPP") : "Select date"}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="flex w-auto flex-col space-y-2 p-2" align="start">
         <Select onValueChange={handlePreset}>
           <SelectTrigger>
-            <SelectValue placeholder="Seleccionar..." />
+            <SelectValue placeholder="Select..." />
           </SelectTrigger>
           <SelectContent position="popper">
-            <SelectItem value="today">Hoy</SelectItem>
-            <SelectItem value="tomorrow">Mañana</SelectItem>
-            <SelectItem value="week">En una semana</SelectItem>
-            <SelectItem value="month">En un mes</SelectItem>
+            <SelectItem value="today">Today</SelectItem>
+            <SelectItem value="tomorrow">Tomorrow</SelectItem>
+            <SelectItem value="week">In a week</SelectItem>
+            <SelectItem value="month">In a month</SelectItem>
           </SelectContent>
         </Select>
         <div className="rounded-md border">
@@ -89,7 +88,6 @@ export function DatePickerWithPresets({
             mode="single"
             selected={date}
             onSelect={handleSelect}
-            locale={es}
           />
         </div>
       </PopoverContent>

@@ -4,8 +4,9 @@ import { Input } from "../components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { useState, useMemo } from "react";
 import React from "react";
+import { ComponentShowcase } from "../components/ui/component-showcase";
 
-// Importar TODOS los iconos más populares de lucide-react
+// Import all popular icons from lucide-react
 import {
   // Arrows & Navigation
   ArrowLeft, ArrowRight, ArrowUp, ArrowDown, ArrowUpRight, ArrowDownLeft, ArrowUpLeft, ArrowDownRight,
@@ -253,8 +254,8 @@ import {
 /**
  * IconGalleryPage
  * 
- * Galería curada de 300+ iconos más populares de lucide-react organizados por categorías.
- * Incluye búsqueda en tiempo real, ejemplos de uso y mejores prácticas.
+ * Curated gallery of 300+ most popular lucide-react icons organized by categories.
+ * Includes real-time search, usage examples, and best practices.
  * 
  * @component
  * @example
@@ -273,7 +274,7 @@ interface IconEntry {
 }
 
 /**
- * Catálogo completo de iconos organizados por categoría
+ * Complete icon catalog organized by category
  */
 const ICON_CATALOG: Record<string, IconEntry[]> = {
   arrows: [
@@ -559,7 +560,7 @@ const ICON_CATALOG: Record<string, IconEntry[]> = {
 // ... (Rest of the component code, similar to original but with paths updated if needed)
 // For brevity, I'll implement the main component structure and logic, reusing the catalog.
 
-export function IconGalleryPage() {
+function IconGalleryContent() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState<string>("all");
   const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
@@ -667,5 +668,35 @@ export function IconGalleryPage() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+export function IconGalleryPage() {
+  return (
+    <ComponentShowcase
+      title="Icon Gallery"
+      description="Curated collection of 500+ icons from Lucide React organized by category (Arrows, Actions, UI/Layout, Communication, Media, Status, User, Commerce, Time, Weather, Tech, Transport, Building). Features real-time search, category filtering, and click-to-copy icon name. All icons are tree-shakeable — only imported icons are bundled."
+      category="Design System"
+      preview={<IconGalleryContent />}
+      code={`import { Search, Home, User, Settings } from "lucide-react";
+
+// Standard usage
+<Search className="h-4 w-4" />
+<Home className="h-5 w-5 text-primary" />
+<User className="h-6 w-6 text-muted-foreground" />
+<Settings className="h-4 w-4" strokeWidth={1.5} />
+
+// In buttons
+<Button><Plus className="h-4 w-4 mr-2" />Add</Button>
+
+// In badges
+<Badge><CheckCircle className="h-3 w-3 mr-1" />Done</Badge>`}
+      props={[
+        { name: "className", type: "string", description: "Tailwind classes for size (h-4 w-4) and color (text-primary)." },
+        { name: "strokeWidth", type: "number", default: "2", description: "SVG stroke width. Use 1.5 for thinner lines." },
+        { name: "size", type: "number", default: "24", description: "Width and height in pixels (prefer className for sizing)." },
+        { name: "fill", type: "string", default: "none", description: "SVG fill color. Use 'currentColor' for filled icons." },
+      ]}
+    />
   );
 }

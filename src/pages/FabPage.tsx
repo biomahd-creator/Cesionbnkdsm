@@ -12,31 +12,31 @@ export function FabPage() {
   return (
     <ComponentShowcase
       title="Floating Action Button"
-      description="Botón de acción principal flotante."
+      description="Floating primary action button."
       category="UI Pattern"
       preview={
         <div className="h-[200px] w-full relative bg-muted/20 rounded-md overflow-hidden border">
           <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
-            El botón flota en la esquina
+            The button floats in the corner
           </div>
           <FloatingActionButton position="bottom-right" className="absolute" />
         </div>
       }
       code={code}
       props={[
-        { name: "icon", type: "React.ElementType", default: "Plus", description: "Ícono de Lucide que se muestra en el botón." },
-        { name: "label", type: "string", description: "Texto del tooltip al hacer hover sobre el botón." },
-        { name: "position", type: '"bottom-right" | "bottom-left" | "top-right" | "top-left"', default: '"bottom-right"', description: "Esquina donde se posiciona el botón flotante." },
-        { name: "className", type: "string", description: "Clases adicionales. Soporta todos los props de Button (variant, size, onClick, etc.)." },
+        { name: "icon", type: "React.ElementType", default: "Plus", description: "Lucide icon displayed in the button." },
+        { name: "label", type: "string", description: "Tooltip text on hover over the button." },
+        { name: "position", type: '"bottom-right" | "bottom-left" | "top-right" | "top-left"', default: '"bottom-right"', description: "Corner where the floating button is positioned." },
+        { name: "className", type: "string", description: "Additional classes. Supports all Button props (variant, size, onClick, etc.)." },
       ]}
       examples={[
         {
-          title: "Posición inferior izquierda",
-          description: "FAB con ícono personalizado en la esquina inferior izquierda.",
+          title: "Bottom-left Position",
+          description: "FAB with custom icon in the bottom-left corner.",
           preview: (
             <div className="h-[200px] w-full relative bg-muted/20 rounded-md overflow-hidden border">
               <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                Esquina inferior izquierda
+                Bottom-left corner
               </div>
               <FloatingActionButton position="bottom-left" icon={MessageSquare} className="absolute" />
             </div>
@@ -44,17 +44,17 @@ export function FabPage() {
           code: `<FloatingActionButton 
   position="bottom-left" 
   icon={MessageSquare}
-  label="Nuevo mensaje"
+  label="New message"
   onClick={() => openChat()}
 />`,
         },
         {
-          title: "Posición superior derecha",
-          description: "FAB con ícono de upload en la esquina superior derecha.",
+          title: "Top-right Position",
+          description: "FAB with upload icon in the top-right corner.",
           preview: (
             <div className="h-[200px] w-full relative bg-muted/20 rounded-md overflow-hidden border">
               <div className="absolute inset-0 flex items-center justify-center text-muted-foreground text-sm">
-                Esquina superior derecha
+                Top-right corner
               </div>
               <FloatingActionButton position="top-right" icon={Upload} className="absolute" />
             </div>
@@ -62,7 +62,7 @@ export function FabPage() {
           code: `<FloatingActionButton 
   position="top-right" 
   icon={Upload}
-  label="Subir archivo"
+  label="Upload file"
   onClick={() => openUploader()}
 />`,
         },

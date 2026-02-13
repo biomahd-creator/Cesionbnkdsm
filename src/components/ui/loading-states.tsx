@@ -18,7 +18,7 @@ export function PageLoader() {
       <div className="flex flex-col items-center gap-4">
         <Loader2 className="h-12 w-12 animate-spin text-primary" />
         <p className="text-sm font-medium text-muted-foreground animate-pulse">
-          Cargando aplicación...
+          Loading application...
         </p>
       </div>
     </div>
