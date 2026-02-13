@@ -576,6 +576,26 @@
 
   @supports (color: color-mix(in lab, red, red)) {
     * {
+      outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
+    }
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    letter-spacing: .025em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: Satoshi, ui-sans-serif, system-ui, sans-serif;
+  }
+
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    * {
       outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
     }
   }

@@ -29,7 +29,11 @@ In your main CSS file (e.g., `src/styles.css`):
 @import "@biomahd-creator/financio-design-system/theme.css";
 ```
 
-> **Note:** `theme.css` is a Tailwind v4 CSS preset that provides all CESIONBNK design tokens (colors, typography, spacing, shadows). It replaces the deprecated `tailwind-preset.cjs` from v3.
+> **How it works:** `theme.css` does three critical things:
+> 1. **`@source "../dist-lib"`** — tells Tailwind v4 to scan the library's compiled components for utility classes. Without this, TW4 ignores `node_modules` and components render **unstyled**.
+> 2. **CSS Custom Properties** — all CESIONBNK design tokens (colors, typography, shadows) for light/dark modes.
+> 3. **`@theme` bindings** — registers tokens with Tailwind v4 so classes like `bg-primary`, `text-muted-foreground` resolve correctly.
+> 4. **`@layer base`** — essential base styles (body bg/text, border colors, Satoshi font).
 
 ### 3. Use Components
 
@@ -166,11 +170,32 @@ Composed functional blocks: StatCard, FilterBar, SearchBar, InvoiceTable, Status
 - Node.js 18+
 - npm 8+
 
+### First-Time Setup (after cloning)
+
+```bash
+git clone https://github.com/biomahd-creator/Cesionbnkdsm.git
+cd Cesionbnkdsm
+
+# If files are inside src/ (Figma Make wrapper), flatten:
+npm run flatten
+
+# Install all dependencies (includes Figma Make runtime packages)
+npm install
+
+# Start dev server
+npm run dev
+```
+
+> **Note:** The `vite.config.ts` plugin automatically handles Figma Make's versioned imports (`"sonner@2.0.3"` -> `"sonner"`) and `figma:asset/*` stubs at the module resolution level. No manual steps needed for dev.
+
 ### Commands
 
 ```bash
 # Start dev server (DSM Showcase)
 npm run dev
+
+# Strip versioned imports (required before typecheck/test/build)
+npm run strip-versions
 
 # Run tests
 npm test
@@ -180,7 +205,7 @@ npm run test:coverage
 # Build library for publishing
 npm run build:lib
 
-# Full validation (typecheck + test + build + circular deps + boundary)
+# Full validation (strip-versions + typecheck + test + build + circular deps + boundary)
 npm run validate
 
 # Release
@@ -188,6 +213,8 @@ npm run release          # patch (0.1.x)
 npm run release:minor    # minor (0.x.0)
 npm run release:major    # major (x.0.0)
 ```
+
+> See [PUBLISH_GUIDE.md](./PUBLISH_GUIDE.md) for the complete step-by-step from Figma Make to npm to AI tools.
 
 ### Project Structure
 

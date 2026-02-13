@@ -148,10 +148,10 @@ export default defineConfig({
         '**/*.test.*',
         '**/*.spec.*',
       ],
-      // Skip diagnostics — safety net in case dts still can't resolve some
-      // Figma Make versioned imports. The primary fix is including
-      // versioned-imports.d.ts in the include array above.
-      skipDiagnostics: true,
+      // Note: skipDiagnostics was removed in vite-plugin-dts v3.8+.
+      // Versioned imports are stripped by strip-versioned-imports.mjs before
+      // build, so diagnostics should pass cleanly. The versioned-imports.d.ts
+      // file is included above as a fallback for any remaining declarations.
     }),
     // Post-process .d.ts files: strip Figma Make version suffixes from import paths
     // so consumers see standard package names (e.g., "lucide-react" not "lucide-react@0.487.0").

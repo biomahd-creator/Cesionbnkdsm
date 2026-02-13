@@ -5,11 +5,25 @@
  *   @import "tailwindcss";
  *   @import "@biomahd-creator/financio-design-system/theme.css";
  *
- * This replaces the deprecated tailwind-preset.js (v3).
- * All tokens are defined via @theme / @theme inline for Tailwind v4.
+ * This file provides:
+ *   1. @source — tells Tailwind v4 to scan dist-lib/ for utility classes
+ *      (without this, TW4 ignores node_modules and components render unstyled)
+ *   2. CSS Custom Properties — light/dark mode design tokens
+ *   3. @theme / @theme inline — Tailwind v4 token bindings
+ *   4. @layer base — essential base styles (border, typography, body)
+ *   5. Satoshi font via CDN
  *
- * @version 0.0.3
+ * @version 2.0.2
  */
+
+/* ============================================================
+   CRITICAL: Tell Tailwind v4 to scan the library's compiled
+   output for utility classes. Without this directive, TW4
+   only scans the consumer's own source files and ignores
+   node_modules — resulting in unstyled components.
+   Path is relative to this CSS file's location in the package.
+   ============================================================ */
+@source "../dist-lib";
 
 @import url('https://fonts.cdnfonts.com/css/satoshi');
 
@@ -332,4 +346,29 @@
 
   /* Letter-spacing calibration for Satoshi */
   --letter-spacing-base: 0.025em;
+}
+
+/* ============================================================
+   @layer base: Essential base styles for DSM components.
+   Mirrors the critical rules from globals.css so consumers
+   get correct borders, focus rings, body bg/text, and font.
+   ============================================================ */
+@layer base {
+  * {
+    border-color: var(--color-border);
+    outline-color: color-mix(in srgb, var(--color-ring) 50%, transparent);
+  }
+
+  html {
+    font-size: var(--font-size);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Satoshi", ui-sans-serif, system-ui, sans-serif;
+    letter-spacing: 0.025em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
 }
