@@ -1,5 +1,5 @@
 # CESIONBNK Design System - AI Instructions
-# @biomahd-creator/financio-design-system v0.2.2
+# @biomahd-creator/financio-design-system v0.2.3
 #
 # This file helps AI/LLM tools (Claude, ChatGPT, Copilot, Figma Make, etc.)
 # correctly use this design system when generating code.
@@ -549,4 +549,4 @@ Focus ring:     ring-ring  (green)
 
 ---
 
-*CESIONBNK Design System v0.2.2 | MIT License | @biomahd-creator/financio-design-system*
+*CESIONBNK Design System v0.2.3 | MIT License | @biomahd-creator/financio-design-system*
