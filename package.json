@@ -76,6 +76,17 @@
       },
       "scripts": {
           "dev": "vite",
-          "build": "vite build"
+          "build": "vite build",
+          "typecheck": "npm run typecheck --prefix src",
+          "test": "npm run test --prefix src",
+          "test:coverage": "npm run test:coverage --prefix src",
+          "build:lib": "npm run build:lib --prefix src",
+          "check:circular": "npm run check:circular --prefix src",
+          "check:boundary": "npm run check:boundary --prefix src",
+          "check:exports": "npm run check:exports --prefix src",
+          "validate": "npm run validate --prefix src",
+          "release": "npm run release --prefix src",
+          "release:minor": "npm run release:minor --prefix src",
+          "release:major": "npm run release:major --prefix src"
       }
   }
