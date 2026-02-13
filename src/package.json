@@ -10,8 +10,8 @@
   "types": "./dist-lib/index.d.ts",
   "files": [
     "dist-lib",
-    "styles/theme.css",
-    "styles/globals.css",
+    "src/styles/theme.css",
+    "src/styles/globals.css",
     "tailwind-preset.cjs",
     "llms.txt",
     "CHANGELOG.md",
@@ -67,8 +67,8 @@
       "import": "./dist-lib/lib/index.js",
       "types": "./dist-lib/lib/index.d.ts"
     },
-    "./theme.css": "./styles/theme.css",
-    "./styles.css": "./styles/globals.css",
+    "./theme.css": "./src/styles/theme.css",
+    "./styles.css": "./src/styles/globals.css",
     "./tailwind-preset": "./tailwind-preset.cjs"
   },
   "typesVersions": {
@@ -94,7 +94,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
-    "check:circular": "madge --circular --extensions ts,tsx --no-spinner components/",
+    "check:circular": "madge --circular --extensions ts,tsx --no-spinner src/components/",
     "check:boundary": "node scripts/check-boundary.js",
     "check:exports": "node scripts/check-exports.js",
     "check:setup": "node scripts/verify-setup.cjs",

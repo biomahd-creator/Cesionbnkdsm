@@ -22,19 +22,19 @@ export default defineConfig({
     environment: 'jsdom',
 
     // Global test setup (Testing Library matchers, etc.)
-    setupFiles: ['./tests/setup.ts'],
+    setupFiles: ['./src/tests/setup.ts'],
 
     // Test file patterns
     include: [
-      'tests/**/*.{test,spec}.{ts,tsx}',
-      'components/**/*.{test,spec}.{ts,tsx}',
+      'src/tests/**/*.{test,spec}.{ts,tsx}',
+      'src/components/**/*.{test,spec}.{ts,tsx}',
     ],
 
     // Exclude app-only code from tests (factoring has its own test suite)
     exclude: [
       'node_modules',
       'dist-lib',
-      'components/factoring/**',
+      'src/components/factoring/**',
     ],
 
     // Coverage configuration
@@ -42,18 +42,18 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json-summary', 'html'],
       include: [
-        'components/ui/**',
-        'components/patterns/**',
-        'components/advanced/**',
-        'components/widgets/**',
-        'components/providers/**',
-        'hooks/**',
-        'lib/**',
+        'src/components/ui/**',
+        'src/components/patterns/**',
+        'src/components/advanced/**',
+        'src/components/widgets/**',
+        'src/components/providers/**',
+        'src/hooks/**',
+        'src/lib/**',
       ],
       exclude: [
         '**/*.d.ts',
         '**/index.ts',
-        'components/factoring/**',
+        'src/components/factoring/**',
       ],
       thresholds: {
         // Raised from 10% in v0.1.0 → 20% in v0.1.1
@@ -66,12 +66,12 @@ export default defineConfig({
 
     // TypeScript path aliases
     alias: {
-      '@': path.resolve(__dirname, './'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './'),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 });

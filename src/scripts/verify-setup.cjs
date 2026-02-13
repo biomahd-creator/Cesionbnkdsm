@@ -53,8 +53,8 @@ function checkFileContent(filePath, pattern, description) {
 // 1. Verificar archivos de configuración
 console.log('Archivos de configuración:\n');
 checkFile('./postcss.config.cjs', 'PostCSS config');
-checkFile('./styles/globals.css', 'Globals CSS');
-checkFile('./main.tsx', 'Main entry point');
+checkFile('./src/styles/globals.css', 'Globals CSS');
+checkFile('./src/main.tsx', 'Main entry point');
 checkFile('./vite.config.ts', 'Vite config');
 console.log('');
 
@@ -70,22 +70,22 @@ console.log('');
 // 3. Verificar globals.css
 console.log('Contenido de globals.css:\n');
 checkFileContent(
-  './styles/globals.css',
+  './src/styles/globals.css',
   /@import\s+["']tailwindcss["']/,
   'globals.css importa tailwindcss'
 );
 checkFileContent(
-  './styles/globals.css',
+  './src/styles/globals.css',
   /@source\s+["']\.\.\/["']/,
   'globals.css tiene @source "../" para escanear desde la raiz del proyecto'
 );
 checkFileContent(
-  './styles/globals.css',
+  './src/styles/globals.css',
   /@theme\s*\{/,
   'globals.css usa @theme'
 );
 checkFileContent(
-  './styles/globals.css',
+  './src/styles/globals.css',
   /--color-primary:\s*var\(--primary\)/,
   'globals.css define color tokens'
 );
@@ -94,7 +94,7 @@ console.log('');
 // 4. Verificar main.tsx
 console.log('Contenido de main.tsx:\n');
 checkFileContent(
-  './main.tsx',
+  './src/main.tsx',
   /import\s+['"]\.\/styles\/globals\.css['"]/,
   'main.tsx importa globals.css'
 );

@@ -7,10 +7,10 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
 
-    /* Paths */
+    /* Paths — @/* resolves to src/* */
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./src/*"]
     },
 
     /* Emit */
@@ -38,30 +38,16 @@
     "allowJs": false
   },
   "include": [
-    "index.ts",
-    "App.tsx",
-    "main.tsx",
-    "vite-env.d.ts",
-    "versioned-imports.d.ts",
-    "components/**/*.ts",
-    "components/**/*.tsx",
-    "hooks/**/*.ts",
-    "hooks/**/*.tsx",
-    "lib/**/*.ts",
-    "lib/**/*.tsx",
-    "pages/**/*.ts",
-    "pages/**/*.tsx",
-    "tests/**/*.ts",
-    "tests/**/*.tsx"
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
   ],
   "exclude": [
     "node_modules",
     "dist-lib",
     "scripts",
     "*.cjs",
-    "LICENSE",
-    "*.config.ts",
-    "*.config.lib.ts"
+    "LICENSE"
   ],
   "references": []
 }

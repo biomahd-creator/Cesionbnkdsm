@@ -129,9 +129,9 @@ function checkBoundary() {
 
 function checkSourceBoundary() {
   // Validate that index.ts doesn't import forbidden modules
-  const indexPath = path.join(ROOT, 'index.ts');
+  const indexPath = path.join(ROOT, 'src', 'index.ts');
   if (!fs.existsSync(indexPath)) {
-    console.error('FAIL: index.ts not found');
+    console.error('FAIL: src/index.ts not found');
     process.exit(1);
   }
 
@@ -147,34 +147,34 @@ function checkSourceBoundary() {
     'DSMSidebarNav',
   ];
 
-  console.log('Checking index.ts for forbidden imports...');
+  console.log('Checking src/index.ts for forbidden imports...');
   for (const pattern of SOURCE_FORBIDDEN) {
     // Match import statements containing the pattern
     const regex = new RegExp(`from\\s+['"].*${pattern}.*['"]`, 'i');
     if (regex.test(indexContent)) {
-      console.error(`  LEAK: index.ts imports "${pattern}"`);
+      console.error(`  LEAK: src/index.ts imports "${pattern}"`);
       errors++;
     }
   }
 
   if (errors === 0) {
-    console.log('  OK: index.ts has clean library-only imports');
+    console.log('  OK: src/index.ts has clean library-only imports');
   }
 
   // Check components/index.ts
-  const componentsIndexPath = path.join(ROOT, 'components', 'index.ts');
+  const componentsIndexPath = path.join(ROOT, 'src', 'components', 'index.ts');
   if (fs.existsSync(componentsIndexPath)) {
     const content = fs.readFileSync(componentsIndexPath, 'utf-8');
-    console.log('\nChecking components/index.ts...');
+    console.log('\nChecking src/components/index.ts...');
     for (const pattern of SOURCE_FORBIDDEN) {
       const regex = new RegExp(`from\\s+['"].*${pattern}.*['"]`, 'i');
       if (regex.test(content)) {
-        console.error(`  LEAK: components/index.ts imports "${pattern}"`);
+        console.error(`  LEAK: src/components/index.ts imports "${pattern}"`);
         errors++;
       }
     }
     if (errors === 0) {
-      console.log('  OK: components/index.ts has clean exports');
+      console.log('  OK: src/components/index.ts has clean exports');
     }
   }
 
