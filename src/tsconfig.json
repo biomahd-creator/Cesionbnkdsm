@@ -38,14 +38,30 @@
     "allowJs": false
   },
   "include": [
-    "**/*.ts",
-    "**/*.tsx"
+    "index.ts",
+    "App.tsx",
+    "main.tsx",
+    "vite-env.d.ts",
+    "versioned-imports.d.ts",
+    "components/**/*.ts",
+    "components/**/*.tsx",
+    "hooks/**/*.ts",
+    "hooks/**/*.tsx",
+    "lib/**/*.ts",
+    "lib/**/*.tsx",
+    "pages/**/*.ts",
+    "pages/**/*.tsx",
+    "tests/**/*.ts",
+    "tests/**/*.tsx"
   ],
   "exclude": [
     "node_modules",
     "dist-lib",
     "scripts",
-    "*.cjs"
+    "*.cjs",
+    "LICENSE",
+    "*.config.ts",
+    "*.config.lib.ts"
   ],
   "references": []
 }

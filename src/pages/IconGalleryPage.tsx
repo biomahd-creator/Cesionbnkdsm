@@ -265,7 +265,7 @@ import {
  */
 
 // Tipos y utilidades
-type IconComponent = React.ComponentType<{ className?: string; strokeWidth?: number; fill?: string }>;
+type IconComponent = React.ComponentType<{ className?: string; strokeWidth?: string | number; fill?: string }>;
 
 interface IconEntry {
   name: string;

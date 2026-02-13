@@ -9,7 +9,7 @@ import {
 import {
   BookOpen, Bot, ChevronRight, ChevronsUpDown, Command, Inbox, Calendar, Search,
   PanelLeft, GalleryVerticalEnd, AudioWaveform, Send, Sparkles, Settings2,
-  SquareTerminal, Trash2, Frame, PieChart, Map, LifeBuoy,
+  Terminal, Trash2, Frame, PieChart, Map, LifeBuoy,
 } from "lucide-react";
 import { Badge } from "../components/ui/badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../components/ui/collapsible";
@@ -40,7 +40,7 @@ function StandardSidebar() {
                 <Collapsible defaultOpen className="group/collapsible">
                   <SidebarMenuItem>
                     <CollapsibleTrigger asChild>
-                      <SidebarMenuButton tooltip="Playground"><SquareTerminal /><span>Playground</span><ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /></SidebarMenuButton>
+                      <SidebarMenuButton tooltip="Playground"><Terminal /><span>Playground</span><ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" /></SidebarMenuButton>
                     </CollapsibleTrigger>
                     <CollapsibleContent>
                       <SidebarMenuSub>
