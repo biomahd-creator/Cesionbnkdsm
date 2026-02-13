@@ -1,6 +1,6 @@
 {
   "name": "@biomahd-creator/financio-design-system",
-  "version": "0.2.3",
+  "version": "0.2.2",
   "description": "CESIONBNK Design System - React + Tailwind CSS v4 component library for Factoring platforms",
   "private": false,
   "type": "module",
