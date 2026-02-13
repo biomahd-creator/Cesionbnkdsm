@@ -88,6 +88,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "flatten": "bash scripts/flatten-src.sh",
     "build": "tsc && vite build",
     "build:lib": "tsc -p tsconfig.build.json && vite build --config vite.config.lib.ts",
     "typecheck": "tsc --noEmit",

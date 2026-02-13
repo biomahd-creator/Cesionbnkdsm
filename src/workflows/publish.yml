@@ -66,6 +66,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -98,6 +101,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
+
       - name: Validate version matches release tag
         run: |
           PKG_VERSION=$(node -p "require('./package.json').version")
@@ -129,6 +135,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4

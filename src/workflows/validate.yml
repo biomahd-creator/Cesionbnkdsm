@@ -19,6 +19,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -44,6 +47,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -77,6 +83,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -145,6 +154,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -187,6 +199,9 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -210,6 +225,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
+      - name: Flatten Figma Make src/ structure
+        run: bash scripts/flatten-src.sh
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -257,7 +275,7 @@ jobs:
       - name: Check results
         run: |
           echo "========================================="
-          echo "  Validation Summary (v0.2.2)"
+          echo "  Validation Summary (v0.2.3)"
           echo "========================================="
           echo "TypeScript:       ${{ needs.typecheck.result }}"
           echo "Tests (G2):       ${{ needs.test.result }}"
