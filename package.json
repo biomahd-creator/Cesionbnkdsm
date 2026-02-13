@@ -76,6 +76,17 @@
       },
       "scripts": {
           "dev": "vite",
-          "build": "vite build"
+          "build": "vite build",
+          "typecheck": "cd src && npm run typecheck",
+          "test": "cd src && npm run test",
+          "test:coverage": "cd src && npm run test:coverage",
+          "build:lib": "cd src && npm run build:lib",
+          "check:circular": "cd src && npm run check:circular",
+          "check:boundary": "cd src && npm run check:boundary",
+          "check:exports": "cd src && npm run check:exports",
+          "validate": "cd src && npm run validate",
+          "release": "cd src && npm run release",
+          "release:minor": "cd src && npm run release:minor",
+          "release:major": "cd src && npm run release:major"
       }
   }
