@@ -1,5 +1,4 @@
 import { defineConfig } from 'vitest/config';
-import type { Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
 
@@ -17,22 +16,28 @@ import path from 'path';
  *   npm run test:watch  - Run tests in watch mode
  *   npm run test:coverage - Run with coverage report
  *
- * @version 0.2.3
+ * @version 0.2.4
  */
 
 /**
  * Figma Make Compatibility Plugin (shared logic with vite.config.ts).
  * Strips version suffixes from import specifiers so Vitest can resolve them.
+ *
+ * NOTE: Return type is intentionally NOT annotated as `Plugin` from 'vite'.
+ * Importing Plugin from 'vite' can conflict with vitest/config's internal
+ * Vite types if npm installs two copies of vite. By letting TypeScript
+ * infer the type from the object literal, structural compatibility is
+ * checked instead of nominal type identity.
  */
-function figmaMakeCompat(): Plugin {
+function figmaMakeCompat() {
   const VERSIONED_RE =
     /^(@[a-z0-9-]+\/[a-z0-9.-]+|[a-z][a-z0-9.-]*)@\d+\.\d+\.\d+(\/.*)?$/;
 
   return {
-    name: 'figma-make-compat',
-    enforce: 'pre',
+    name: 'figma-make-compat' as const,
+    enforce: 'pre' as const,
 
-    resolveId(source: string, importer: string | undefined, options: { skipSelf?: boolean }) {
+    resolveId(source: string, importer: string | undefined, options: Record<string, unknown>) {
       // Handle figma:asset/* virtual modules
       if (source.startsWith('figma:asset/')) {
         return '\0figma-asset-placeholder';
@@ -42,6 +47,7 @@ function figmaMakeCompat(): Plugin {
       const match = source.match(VERSIONED_RE);
       if (match) {
         const plainSpecifier = match[1] + (match[2] || '');
+        // @ts-expect-error — this.resolve exists at runtime in Vite/Vitest plugin context
         return this.resolve(plainSpecifier, importer, {
           ...options,
           skipSelf: true,
