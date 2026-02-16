@@ -19,7 +19,8 @@ describe("KPIShowcase", () => {
 
   it("renders Total Revenue KPI", () => {
     render(<KPIShowcase />);
-    expect(screen.getByText("Total Revenue")).toBeInTheDocument();
+    const totalRevenueElements = screen.getAllByText("Total Revenue");
+    expect(totalRevenueElements.length).toBeGreaterThanOrEqual(1);
     expect(screen.getByText("$845,000")).toBeInTheDocument();
   });
 

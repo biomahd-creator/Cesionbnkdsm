@@ -54,6 +54,19 @@ if (!Element.prototype.scrollIntoView) {
   Element.prototype.scrollIntoView = () => {};
 }
 
+// Mock pointer capture methods for Radix UI components (Select, Slider, etc.).
+// jsdom doesn't implement the Pointer Capture API, causing
+// "target.hasPointerCapture is not a function" errors.
+if (typeof Element.prototype.hasPointerCapture !== 'function') {
+  Element.prototype.hasPointerCapture = () => false;
+}
+if (typeof Element.prototype.setPointerCapture !== 'function') {
+  Element.prototype.setPointerCapture = () => {};
+}
+if (typeof Element.prototype.releasePointerCapture !== 'function') {
+  Element.prototype.releasePointerCapture = () => {};
+}
+
 // Mock scrollTo for window (used by some scroll-based components)
 if (!window.scrollTo) {
   window.scrollTo = () => {};

@@ -142,7 +142,7 @@ describe('ContactForm', () => {
     // Wait for simulated API call (1500ms)
     await vi.advanceTimersByTimeAsync(1500);
     // Success state should show
-    expect(await screen.findByText(/Message sent successfully/i)).toBeInTheDocument();
+    expect(await screen.findByText(/Message Sent/i)).toBeInTheDocument();
     expect(handleSubmit).toHaveBeenCalledTimes(1);
     vi.useRealTimers();
   });

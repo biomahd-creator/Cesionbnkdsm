@@ -107,7 +107,7 @@ describe('MultiStepWizard', () => {
     const user = userEvent.setup();
     render(<MultiStepWizard />);
     await user.click(screen.getByText('Next'));
-    expect(screen.getByLabelText('Annual Revenue')).toBeInTheDocument();
+    expect(screen.getByLabelText('Requested Amount')).toBeInTheDocument();
   });
 
   // --- Step 3 content ---

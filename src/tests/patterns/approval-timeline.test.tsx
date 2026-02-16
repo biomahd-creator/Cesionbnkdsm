@@ -62,7 +62,8 @@ describe('ApprovalTimeline', () => {
 
   it('renders Pending badge', () => {
     render(<ApprovalTimeline />);
-    expect(screen.getByText('Pending')).toBeInTheDocument();
+    const pendingBadges = screen.getAllByText('Pending');
+    expect(pendingBadges.length).toBeGreaterThanOrEqual(1);
   });
 
   it('renders Waiting badge', () => {

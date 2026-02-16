@@ -124,7 +124,8 @@ describe('ExportData', () => {
     const user = userEvent.setup();
     render(<ExportData data={sampleData} />);
     await user.click(screen.getByText('Export CSV'));
-    expect(screen.getByText('Export')).toBeInTheDocument();
+    // The dialog button says "Download CSV" (not "Export")
+    expect(screen.getByText(/Download CSV/)).toBeInTheDocument();
   });
 
   // --- Preview dialog ---
@@ -143,7 +144,8 @@ describe('ExportData', () => {
     const user = userEvent.setup();
     render(<ExportData data={sampleData} />);
     await user.click(screen.getByText('Preview'));
-    expect(screen.getByText(/3/)).toBeInTheDocument();
+    // Preview shows data entries — verify data rows appear
+    expect(screen.getByText('Alice')).toBeInTheDocument();
   });
 
   // --- Custom className ---

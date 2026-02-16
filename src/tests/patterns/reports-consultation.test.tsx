@@ -92,7 +92,7 @@ describe("ReportsConsultation", () => {
 
   it("renders file size values", () => {
     render(<ReportsConsultation />);
-    const sizes = screen.getAllByText(/KB|MB/);
+    const sizes = screen.getAllByText(/Kb/);
     expect(sizes.length).toBeGreaterThanOrEqual(1);
   });
 

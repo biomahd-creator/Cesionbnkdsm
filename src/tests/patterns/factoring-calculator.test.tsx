@@ -28,13 +28,15 @@ describe("FactoringCalculator", () => {
 
   it("renders Invoice Amount input", () => {
     render(<FactoringCalculator />);
-    expect(screen.getByText("Invoice Amount")).toBeInTheDocument();
+    const elements = screen.getAllByText("Invoice Amount");
+    expect(elements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders Payment Term section", () => {
     render(<FactoringCalculator />);
     expect(screen.getByText("Payment Term")).toBeInTheDocument();
-    expect(screen.getByText("30 days")).toBeInTheDocument();
+    const dayElements = screen.getAllByText("30 days");
+    expect(dayElements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders Monthly Rate section", () => {
@@ -56,17 +58,20 @@ describe("FactoringCalculator", () => {
 
   it("renders the invoice amount value", () => {
     render(<FactoringCalculator />);
-    expect(screen.getByText("$50,000.00")).toBeInTheDocument();
+    const elements = screen.getAllByText("$50,000.00");
+    expect(elements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders Commission label", () => {
     render(<FactoringCalculator />);
-    expect(screen.getByText("Commission")).toBeInTheDocument();
+    const elements = screen.getAllByText("Commission");
+    expect(elements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders To Receive label", () => {
     render(<FactoringCalculator />);
-    expect(screen.getByText("To Receive")).toBeInTheDocument();
+    const elements = screen.getAllByText("To Receive");
+    expect(elements.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders action buttons", () => {
@@ -89,8 +94,9 @@ describe("FactoringCalculator", () => {
     await user.clear(amountInput);
     await user.type(amountInput, "100000");
     expect(amountInput.value).toBe("100000");
-    // The calculation result should update
-    expect(screen.getByText("$100,000.00")).toBeInTheDocument();
+    // The calculation result should update — may appear in multiple places
+    const results = screen.getAllByText("$100,000.00");
+    expect(results.length).toBeGreaterThanOrEqual(1);
   });
 
   it("resets to default values when Reset is clicked", async () => {
@@ -113,7 +119,8 @@ describe("FactoringCalculator", () => {
     const amountInput = screen.getByLabelText("Invoice Amount") as HTMLInputElement;
     await user.clear(amountInput);
     // Commission should be $0.00 and To Receive should be $0.00
-    expect(screen.getByText("$0.00")).toBeInTheDocument();
+    const zeroValues = screen.getAllByText("$0.00");
+    expect(zeroValues.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders date information", () => {
