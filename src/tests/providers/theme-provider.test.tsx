@@ -7,21 +7,26 @@
  * @version 0.1.0
  */
 
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { render, screen, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { ThemeProvider, useTheme } from '../../components/providers/ThemeProvider';
 
 // Helper component to test useTheme hook
 function ThemeConsumer() {
-  const { theme, toggleTheme, config, resetToDefaults, exportConfig } = useTheme();
+  const { theme, toggleTheme, config, updateConfig, resetToDefaults, exportConfig, importConfig } = useTheme();
 
   return (
     <div>
       <span data-testid="current-theme">{theme}</span>
       <span data-testid="primary-color">{config.primary}</span>
+      <span data-testid="radius">{config.radius}</span>
+      <span data-testid="logo-url">{config.logoUrl || 'none'}</span>
       <button onClick={toggleTheme}>Toggle Theme</button>
       <button onClick={resetToDefaults}>Reset</button>
+      <button onClick={() => updateConfig({ primary: '#ff0000' })}>Update Primary</button>
+      <button onClick={() => importConfig('{"primary":"#abcdef"}')}>Import Valid</button>
+      <button onClick={() => importConfig('not-json')}>Import Invalid</button>
       <button onClick={() => {
         const json = exportConfig();
         document.title = json; // Quick way to expose export result
@@ -169,6 +174,78 @@ describe('ThemeProvider', () => {
 
     await user.click(screen.getByText('Reset'));
     expect(screen.getByTestId('primary-color').textContent).toBe('#00c951');
+  });
+
+  it('updateConfig updates a single property', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    expect(screen.getByTestId('primary-color').textContent).toBe('#00c951');
+    await user.click(screen.getByText('Update Primary'));
+    expect(screen.getByTestId('primary-color').textContent).toBe('#ff0000');
+  });
+
+  it('importConfig updates config from valid JSON', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    await user.click(screen.getByText('Import Valid'));
+    expect(screen.getByTestId('primary-color').textContent).toBe('#abcdef');
+  });
+
+  it('importConfig handles invalid JSON gracefully', async () => {
+    const user = userEvent.setup();
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    await user.click(screen.getByText('Import Invalid'));
+    // Should not crash, primary should remain the default
+    expect(screen.getByTestId('primary-color').textContent).toBe('#00c951');
+    expect(consoleSpy).toHaveBeenCalledWith('Invalid JSON configuration', expect.any(Error));
+    consoleSpy.mockRestore();
+  });
+
+  it('adds dark class to documentElement in dark mode', async () => {
+    const user = userEvent.setup();
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    await user.click(screen.getByText('Toggle Theme'));
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+  });
+
+  it('removes dark class from documentElement in light mode', async () => {
+    const user = userEvent.setup();
+    localStorage.setItem('theme', 'dark');
+
+    render(
+      <ThemeProvider>
+        <ThemeConsumer />
+      </ThemeProvider>
+    );
+
+    expect(document.documentElement.classList.contains('dark')).toBe(true);
+    await user.click(screen.getByText('Toggle Theme'));
+    expect(document.documentElement.classList.contains('dark')).toBe(false);
   });
 });
 

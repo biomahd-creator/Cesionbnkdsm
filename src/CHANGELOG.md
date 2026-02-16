@@ -5,19 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [2.0.1] - 2026-02-13
+## [Unreleased]
 
-### Fixed
-- **Publish pipeline**: `npm run validate` now runs `strip-versions` as its first step, ensuring Figma Make versioned imports (`@x.y.z` suffixes, `figma:asset/*`) are cleaned before `typecheck` and `build:lib`. Previously, `prepublishOnly` → `validate` would fail because `tsc` saw unresolved versioned imports.
-- **TypeScript: `data:image/gif;base64,...` imports**: Added `declare module` in `versioned-imports.d.ts` for the inline data URI that `strip-versioned-imports.mjs` generates when replacing `figma:asset/*` references. Fixes `TS2307` in `CFinanciaClientFlow.tsx`, `FactoringNewOperationScreen.tsx`, and `FactoringNewOperation.tsx`.
-- **TypeScript: `@tanstack/react-table` stub**: Added missing `Table`, `Row`, and `Column` type exports to the ambient declaration in `versioned-imports.d.ts`. Fixes `TS2305` in `DataTablePage.tsx`.
-- **`vite.config.lib.ts`**: Removed `skipDiagnostics: true` from `vite-plugin-dts` options — the property was removed in v3.8+ and caused `TS2353`. No longer needed because `strip-versions` runs before `build:lib`.
-- **CRITICAL: Unstyled components for npm consumers** — Components rendered without any CSS because Tailwind v4 does not scan `node_modules` by default. Added `@source "../dist-lib"` directive to `theme.css` so the consumer's Tailwind build automatically detects all utility classes used by DSM components. Also added `@layer base` with essential styles (body bg/text, border-color, Satoshi font, font-smoothing) that components depend on.
+### Added
+- **G14 Batch 1: Expanded test coverage** — 12 new test files targeting core UI components and utilities.
+  - `tests/components/checkbox.test.tsx` — Checked/unchecked/indeterminate, disabled, a11y, interaction.
+  - `tests/components/switch.test.tsx` — Toggle on/off, disabled, thumb rendering, a11y.
+  - `tests/components/skeleton.test.tsx` — Render, animate-pulse, className merge, props forwarding.
+  - `tests/components/avatar.test.tsx` — Root/image/fallback composition, className merge, data-slot.
+  - `tests/components/toggle.test.tsx` — Variants (default/outline), sizes (sm/default/lg), pressed state, ref.
+  - `tests/components/tabs.test.tsx` — Tab switching, active/inactive state, disabled tabs, className merge.
+  - `tests/components/accordion.test.tsx` — Expand/collapse, single/multiple type, collapsible, aria-expanded.
+  - `tests/components/radio-group.test.tsx` — Selection, deselection, onValueChange, disabled group, data-slot.
+  - `tests/components/breadcrumb.test.tsx` — Structure, a11y (aria-label, aria-current), separator, ellipsis.
+  - `tests/components/pagination.test.tsx` — Active link, aria-current, previous/next, ellipsis sr-only text.
+  - `tests/lib/theme-utils.test.ts` — getThemeColor (hex/hsl/rgb/fallback), getBrandColors, getChartColors, getUIColors, getAllThemeColors.
+  - `tests/hooks/useLoadingState.test.ts` — Start/stop loading, delay, minDuration, callbacks, cleanup.
+- **CSS refactoring**: Extracted shared tokens to `styles/tokens.css` as single source of truth.
+  - `globals.css` and `theme.css` both `@import "./tokens.css"` — zero duplication.
+  - Added `styles/tokens.css` to `package.json` files array.
+- **NPM Consumer CSS Health Check** page (`/pages/NpmConsumerTestPage.tsx`).
 
 ### Changed
-- `package.json`: `validate` script prepends `npm run strip-versions &&` before `typecheck`.
-- `styles/theme.css`: Added `@source "../dist-lib"`, `@layer base` with essential consumer styles, updated JSDoc header documenting all 5 responsibilities of the file.
-- `README.md`: Updated "Import Styles" section explaining how `theme.css` works (`@source`, tokens, `@theme`, `@layer base`).
+- **IconGalleryPage: Complete rewrite** — Reduced from ~900 lines to ~260 lines with ~30 representative sample icons.
+- `DSMDashboardPage.tsx`: Updated changelog entry to reflect Icon Gallery simplification.
+
+### Fixed
+- **Publish pipeline**: `npm run validate` now runs `strip-versions` as first step.
+- **TypeScript**: 12 errors fixed across `vitest.config.ts`, `export-data.test.tsx`, `date-range-picker.test.tsx`, `error-boundary.test.tsx`.
+- **CRITICAL: Unstyled components for npm consumers** — Added `@source "../dist-lib"` to `theme.css` and `@layer base` with essential consumer styles.
+- **Performance**: Eliminated ~500 static lucide-react imports from Icon Gallery page.
+- **LICENSE**: Fixed recurring Figma Make bug where LICENSE file becomes a directory.
 
 ## [0.2.3] - 2026-02-13
 
@@ -131,7 +149,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
-[2.0.1]: https://github.com/biomahd-creator/Cesionbnkdsm/compare/v0.2.3...v2.0.1
+[Unreleased]: https://github.com/biomahd-creator/Cesionbnkdsm/compare/v0.2.3...HEAD
 [0.2.3]: https://github.com/biomahd-creator/Cesionbnkdsm/compare/v0.2.2...v0.2.3
 [0.2.2]: https://github.com/biomahd-creator/Cesionbnkdsm/compare/v0.2.1...v0.2.2
 [0.2.1]: https://github.com/biomahd-creator/Cesionbnkdsm/compare/v0.2.0...v0.2.1

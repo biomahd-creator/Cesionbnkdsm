@@ -1,3 +1,16 @@
+/**
+ * CESIONBNK Design System — Local Development Stylesheet
+ *
+ * Used by: DSM Showcase + Factoring App (local dev only, NOT published to npm)
+ *
+ * Architecture:
+ *   tokens.css  → Single source of truth (shared tokens, @theme, base styles)
+ *   globals.css → This file (Tailwind + @source + local-only utilities)
+ *   theme.css   → NPM consumer version (different @source, same tokens)
+ *
+ * @version 0.2.4
+ */
+
 @import "tailwindcss";
 
 /* ============================================================
@@ -8,361 +21,19 @@
    ============================================================ */
 @source "../";
 
-@import url('https://fonts.cdnfonts.com/css/satoshi');
-
-@custom-variant dark (&:is(.dark *));
-
-:root {
-  --font-size: 16px;
-  --background: #ffffff;
-  --foreground: #1C2D3A;
-  --card: #ffffff;
-  --card-foreground: #1C2D3A;
-  --popover: oklch(1 0 0);
-  --popover-foreground: #1C2D3A;
-  --primary: #00c951;
-  --primary-foreground: #ffffff;
-  --secondary: #1C2D3A;
-  --secondary-foreground: #ffffff;
-  --muted: #f4f4f5;
-  --muted-foreground: #52525b;
-  --accent: #f4f4f5;
-  --accent-foreground: #1C2D3A;
-  --destructive: #ef4444;
-  --destructive-foreground: #ffffff;
-  --success: #22c55e;
-  --success-foreground: #ffffff;
-  --warning: #f59e0b;
-  --warning-foreground: #ffffff;
-  --info: #3b82f6;
-  --info-foreground: #ffffff;
-  --border: var(--input-border-light, #e4e4e7);
-  --input: var(--input-border-light, #e4e4e7);
-  --input-border: var(--input-border-light, #e4e4e7);
-  --input-border-width: 1px;
-  --input-background-light: #ffffff;
-  --input-background-dark: #334155;
-  --input-background: var(--input-background-light);
-  --switch-background: #cbced4;
-  --ring: #00c951;
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: #1C2D3A;
-  --sidebar-primary: #1C2D3A;
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: #1C2D3A;
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-
-  /* KPI Card Variants - Factoring Module */
-  --kpi-yellow: 234 179 8;        /* #eab308 */
-  --kpi-yellow-dark: 202 138 4;   /* #ca8a04 */
-  --kpi-yellow-bg: 254 249 195;   /* #fef9c3 */
-  
-  --kpi-orange: 249 115 22;       /* #f97316 */
-  --kpi-orange-dark: 234 88 12;   /* #ea580c */
-  --kpi-orange-bg: 255 237 213;   /* #ffedd5 */
-  
-  --kpi-blue: 59 130 246;         /* #3b82f6 */
-  --kpi-blue-dark: 37 99 235;     /* #2563eb */
-  --kpi-blue-bg: 219 234 254;     /* #dbeafe */
-  
-  --kpi-lime: 132 204 22;         /* #84cc16 */
-  --kpi-lime-dark: 101 163 13;    /* #65a30d */
-  --kpi-lime-bg: 247 254 231;     /* #f7fee7 */
-
-  /* C-Financia Brand Colors */
-  --cfinancia-accent: 222 251 73;       /* #DEFB49 */
-  --cfinancia-accent-hover: 67 249 119; /* #43F977 */
-  --cfinancia-navy: 5 41 55;            /* #052937 */
-
-  /* Elevation Shadows - Light Mode (Brand Toned) */
-  --shadow-elevation-1: 0 1px 2px 0 rgb(28 45 58 / 0.05);
-  --shadow-elevation-2: 0 4px 6px -1px rgb(28 45 58 / 0.1), 0 2px 4px -2px rgb(28 45 58 / 0.1);
-  --shadow-elevation-3: 0 10px 15px -3px rgb(28 45 58 / 0.1), 0 4px 6px -4px rgb(28 45 58 / 0.1);
-  --shadow-elevation-4: 0 20px 25px -5px rgb(28 45 58 / 0.1), 0 8px 10px -6px rgb(28 45 58 / 0.1);
-
-  /* Colored Glow Shadows - Light Mode */
-  --shadow-glow-blue-sm: 0 2px 8px 0 rgb(59 130 246 / 0.15), 0 1px 3px 0 rgb(59 130 246 / 0.1);
-  --shadow-glow-blue-md: 0 4px 14px -2px rgb(59 130 246 / 0.2), 0 2px 6px -1px rgb(59 130 246 / 0.15);
-  --shadow-glow-blue-lg: 0 10px 25px -3px rgb(59 130 246 / 0.25), 0 4px 10px -4px rgb(59 130 246 / 0.2);
-  --shadow-glow-blue-xl: 0 20px 40px -5px rgb(59 130 246 / 0.3), 0 8px 16px -6px rgb(59 130 246 / 0.2);
-
-  --shadow-glow-green-sm: 0 2px 8px 0 rgb(34 197 94 / 0.15), 0 1px 3px 0 rgb(34 197 94 / 0.1);
-  --shadow-glow-green-md: 0 4px 14px -2px rgb(34 197 94 / 0.2), 0 2px 6px -1px rgb(34 197 94 / 0.15);
-  --shadow-glow-green-lg: 0 10px 25px -3px rgb(34 197 94 / 0.25), 0 4px 10px -4px rgb(34 197 94 / 0.2);
-  --shadow-glow-green-xl: 0 20px 40px -5px rgb(34 197 94 / 0.3), 0 8px 16px -6px rgb(34 197 94 / 0.2);
-
-  --shadow-glow-yellow-sm: 0 2px 8px 0 rgb(234 179 8 / 0.15), 0 1px 3px 0 rgb(234 179 8 / 0.1);
-  --shadow-glow-yellow-md: 0 4px 14px -2px rgb(234 179 8 / 0.2), 0 2px 6px -1px rgb(234 179 8 / 0.15);
-  --shadow-glow-yellow-lg: 0 10px 25px -3px rgb(234 179 8 / 0.25), 0 4px 10px -4px rgb(234 179 8 / 0.2);
-  --shadow-glow-yellow-xl: 0 20px 40px -5px rgb(234 179 8 / 0.3), 0 8px 16px -6px rgb(234 179 8 / 0.2);
-
-  --shadow-glow-primary-sm: 0 2px 8px 0 rgb(0 201 81 / 0.15), 0 1px 3px 0 rgb(0 201 81 / 0.1);
-  --shadow-glow-primary-md: 0 4px 14px -2px rgb(0 201 81 / 0.2), 0 2px 6px -1px rgb(0 201 81 / 0.15);
-  --shadow-glow-primary-lg: 0 10px 25px -3px rgb(0 201 81 / 0.25), 0 4px 10px -4px rgb(0 201 81 / 0.2);
-  --shadow-glow-primary-xl: 0 20px 40px -5px rgb(0 201 81 / 0.3), 0 8px 16px -6px rgb(0 201 81 / 0.2);
-}
-
-.dark {
-  --background: #0f172a;
-  --foreground: #f8fafc;
-  --card: #1e293b;
-  --card-foreground: #f8fafc;
-  --popover: #1e293b;
-  --popover-foreground: #f8fafc;
-  /* primary, primary-foreground inherited from root */
-  --secondary: #334155;
-  --secondary-foreground: #f8fafc;
-  --muted: #334155;
-  --muted-foreground: #94a3b8;
-  --accent: #334155;
-  --accent-foreground: #f8fafc;
-  --destructive: #991b1b;
-  --destructive-foreground: #f8fafc;
-  --success: #15803d;
-  --success-foreground: #f8fafc;
-  --warning: #b45309;
-  --warning-foreground: #f8fafc;
-  --info: #1d4ed8;
-  --info-foreground: #f8fafc;
-  --border: var(--input-border-dark, #334155);
-  --input: var(--input-border-dark, #334155);
-  --input-border: var(--input-border-dark, #334155);
-  --input-background: var(--input-background-dark);
-  --switch-background: #475569;
-  /* ring inherited from root */
-  /* font weights inherited from root */
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: #1e293b;
-  --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #00c951;
-  --sidebar-primary-foreground: #1C2D3A;
-  --sidebar-accent: #334155;
-  --sidebar-accent-foreground: #f8fafc;
-  --sidebar-border: #334155;
-  --sidebar-ring: #00c951;
-
-  /* ==========================================================
-     @theme bridge: Override --color-* custom properties so that
-     Tailwind utility classes (bg-accent, text-muted-foreground…)
-     resolve to dark values via normal CSS cascade.
-     @theme generates :root { --color-X: <light value> }.
-     We override here so .dark { --color-X } wins over :root.
-     Uses var(--X) to stay DRY with the source variables above.
-     ========================================================== */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Elevation Shadows - Dark Mode (Stronger Black) */
-  --shadow-elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-elevation-2: 0 4px 6px -1px rgb(0 0 0 / 0.3), 0 2px 4px -2px rgb(0 0 0 / 0.3);
-  --shadow-elevation-3: 0 10px 15px -3px rgb(0 0 0 / 0.3), 0 4px 6px -4px rgb(0 0 0 / 0.3);
-  --shadow-elevation-4: 0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);
-
-  /* Colored Glow Shadows - Dark Mode (more intense for visibility) */
-  --shadow-glow-blue-sm: 0 2px 8px 0 rgb(59 130 246 / 0.2), 0 1px 3px 0 rgb(59 130 246 / 0.15);
-  --shadow-glow-blue-md: 0 4px 14px -2px rgb(59 130 246 / 0.3), 0 2px 6px -1px rgb(59 130 246 / 0.2);
-  --shadow-glow-blue-lg: 0 10px 25px -3px rgb(59 130 246 / 0.35), 0 4px 10px -4px rgb(59 130 246 / 0.25);
-  --shadow-glow-blue-xl: 0 20px 40px -5px rgb(59 130 246 / 0.4), 0 8px 16px -6px rgb(59 130 246 / 0.3);
-
-  --shadow-glow-green-sm: 0 2px 8px 0 rgb(34 197 94 / 0.2), 0 1px 3px 0 rgb(34 197 94 / 0.15);
-  --shadow-glow-green-md: 0 4px 14px -2px rgb(34 197 94 / 0.3), 0 2px 6px -1px rgb(34 197 94 / 0.2);
-  --shadow-glow-green-lg: 0 10px 25px -3px rgb(34 197 94 / 0.35), 0 4px 10px -4px rgb(34 197 94 / 0.25);
-  --shadow-glow-green-xl: 0 20px 40px -5px rgb(34 197 94 / 0.4), 0 8px 16px -6px rgb(34 197 94 / 0.3);
-
-  --shadow-glow-yellow-sm: 0 2px 8px 0 rgb(234 179 8 / 0.2), 0 1px 3px 0 rgb(234 179 8 / 0.15);
-  --shadow-glow-yellow-md: 0 4px 14px -2px rgb(234 179 8 / 0.3), 0 2px 6px -1px rgb(234 179 8 / 0.2);
-  --shadow-glow-yellow-lg: 0 10px 25px -3px rgb(234 179 8 / 0.35), 0 4px 10px -4px rgb(234 179 8 / 0.25);
-  --shadow-glow-yellow-xl: 0 20px 40px -5px rgb(234 179 8 / 0.4), 0 8px 16px -6px rgb(234 179 8 / 0.3);
-
-  --shadow-glow-primary-sm: 0 2px 8px 0 rgb(0 201 81 / 0.2), 0 1px 3px 0 rgb(0 201 81 / 0.15);
-  --shadow-glow-primary-md: 0 4px 14px -2px rgb(0 201 81 / 0.3), 0 2px 6px -1px rgb(0 201 81 / 0.2);
-  --shadow-glow-primary-lg: 0 10px 25px -3px rgb(0 201 81 / 0.35), 0 4px 10px -4px rgb(0 201 81 / 0.25);
-  --shadow-glow-primary-xl: 0 20px 40px -5px rgb(0 201 81 / 0.4), 0 8px 16px -6px rgb(0 201 81 / 0.3);
-}
+/* ============================================================
+   Shared Design Tokens (single source of truth)
+   Contains: :root, .dark, @theme, @theme inline, @layer base
+   ============================================================ */
+@import "./tokens.css";
 
 /* ============================================================
-   THEME INLINE: Static resolution for values that either:
-   - Don't change between light/dark (radius, font weights, KPI, brand)
-   - Have same-name self-references (shadows: --shadow-X: var(--shadow-X))
-     which would be circular without inline resolution.
+   LOCAL-ONLY: Additional base styles for DSM Showcase
+   These are NOT shipped to npm consumers.
    ============================================================ */
-@theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-
-  /* Shadows — same-name refs, must resolve statically */
-  --shadow-elevation-1: var(--shadow-elevation-1);
-  --shadow-elevation-2: var(--shadow-elevation-2);
-  --shadow-elevation-3: var(--shadow-elevation-3);
-  --shadow-elevation-4: var(--shadow-elevation-4);
-
-  --shadow-glow-blue-sm: var(--shadow-glow-blue-sm);
-  --shadow-glow-blue-md: var(--shadow-glow-blue-md);
-  --shadow-glow-blue-lg: var(--shadow-glow-blue-lg);
-  --shadow-glow-blue-xl: var(--shadow-glow-blue-xl);
-  --shadow-glow-green-sm: var(--shadow-glow-green-sm);
-  --shadow-glow-green-md: var(--shadow-glow-green-md);
-  --shadow-glow-green-lg: var(--shadow-glow-green-lg);
-  --shadow-glow-green-xl: var(--shadow-glow-green-xl);
-  --shadow-glow-yellow-sm: var(--shadow-glow-yellow-sm);
-  --shadow-glow-yellow-md: var(--shadow-glow-yellow-md);
-  --shadow-glow-yellow-lg: var(--shadow-glow-yellow-lg);
-  --shadow-glow-yellow-xl: var(--shadow-glow-yellow-xl);
-  --shadow-glow-primary-sm: var(--shadow-glow-primary-sm);
-  --shadow-glow-primary-md: var(--shadow-glow-primary-md);
-  --shadow-glow-primary-lg: var(--shadow-glow-primary-lg);
-  --shadow-glow-primary-xl: var(--shadow-glow-primary-xl);
-  
-  /* KPI Card Variants — no dark override */
-  --color-kpi-yellow: rgb(var(--kpi-yellow));
-  --color-kpi-yellow-dark: rgb(var(--kpi-yellow-dark));
-  --color-kpi-yellow-bg: rgb(var(--kpi-yellow-bg));
-  --color-kpi-orange: rgb(var(--kpi-orange));
-  --color-kpi-orange-dark: rgb(var(--kpi-orange-dark));
-  --color-kpi-orange-bg: rgb(var(--kpi-orange-bg));
-  --color-kpi-blue: rgb(var(--kpi-blue));
-  --color-kpi-blue-dark: rgb(var(--kpi-blue-dark));
-  --color-kpi-blue-bg: rgb(var(--kpi-blue-bg));
-  --color-kpi-lime: rgb(var(--kpi-lime));
-  --color-kpi-lime-dark: rgb(var(--kpi-lime-dark));
-  --color-kpi-lime-bg: rgb(var(--kpi-lime-bg));
-  
-  /* C-Financia Brand Colors — no dark override */
-  --color-cfinancia-accent: rgb(var(--cfinancia-accent));
-  --color-cfinancia-accent-hover: rgb(var(--cfinancia-accent-hover));
-  --color-cfinancia-navy: rgb(var(--cfinancia-navy));
-}
-
-@theme {
-  /* Satoshi Typography Mapping */
-  --font-sans: "Satoshi", ui-sans-serif, system-ui, sans-serif;
-  --font-satoshi: "Satoshi", ui-sans-serif, system-ui, sans-serif;
-  --font-mono: "Satoshi", monospace;
-
-  /* Color tokens: chain to runtime CSS vars for dark mode cascade */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
-
-  /* Optical Weight Calibration for Satoshi */
-  --font-weight-light: 300;
-  --font-weight-normal: 400;
-  --font-weight-medium: 500;
-  --font-weight-semibold: 600;
-  --font-weight-bold: 700;
-
-  /* Letter-spacing calibration for Satoshi (geometric font) */
-  --letter-spacing-base: 0.025em;
-}
-
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  html {
-    font-size: var(--font-size);
-  }
-
-  body {
-    @apply bg-background text-foreground font-normal;
-    font-family: 'Satoshi', sans-serif;
-    letter-spacing: var(--letter-spacing-base);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
   /* Apply base letter-spacing to all typographic elements */
-  p, span, label, a, button, input, textarea, select, 
+  p, span, label, a, button, input, textarea, select,
   h1, h2, h3, h4, h5, h6,
   div, td, th, li {
     letter-spacing: var(--letter-spacing-base);
@@ -400,12 +71,16 @@
       line-height: 1.5;
     }
   }
+
   /* Force outline style for badges inside tables */
   table [data-slot="badge"] {
     @apply bg-transparent border shadow-none;
   }
 }
 
+/* ============================================================
+   LOCAL-ONLY: Animation & Transition Utilities
+   ============================================================ */
 @layer utilities {
   .no-scrollbar::-webkit-scrollbar {
     display: none;
@@ -448,12 +123,11 @@
   }
 
   /* ========================================== */
-  /* ANIMATION & TRANSITION UTILITIES */
+  /* HOVER EFFECTS                              */
   /* ========================================== */
-  
-  /* Hover Effects - Consistentes en toda la app */
+
   .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1), 
+    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
                 box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
   }
   .hover-lift:hover {
@@ -482,7 +156,7 @@
     filter: brightness(1.1);
   }
 
-  /* Focus States - Accesibilidad mejorada */
+  /* Focus States */
   .focus-ring {
     @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
   }
@@ -496,7 +170,6 @@
     scroll-behavior: smooth;
   }
 
-  /* Hide Scrollbar pero mantener funcionalidad */
   .hide-scrollbar {
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -505,7 +178,7 @@
     display: none;
   }
 
-  /* Transiciones de color suaves */
+  /* Smooth color transitions */
   .transition-colors-smooth {
     transition: color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
                 background-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
@@ -519,7 +192,10 @@
     border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
   }
 
-  /* Skeleton Pulse Animation */
+  /* ========================================== */
+  /* ANIMATIONS                                 */
+  /* ========================================== */
+
   .skeleton-pulse {
     animation: skeleton-pulse 1.5s ease-in-out infinite;
   }
@@ -533,7 +209,6 @@
     }
   }
 
-  /* Fade In Animation */
   .fade-in {
     animation: fade-in 0.3s ease-out;
   }
@@ -549,7 +224,6 @@
     }
   }
 
-  /* Slide In Animations */
   .slide-in-right {
     animation: slide-in-right 0.3s ease-out;
   }
@@ -576,7 +250,6 @@
     }
   }
 
-  /* Loading Dots Animation */
   .loading-dots span {
     animation: loading-dots 1.4s infinite;
     animation-fill-mode: both;
@@ -597,7 +270,7 @@
     }
   }
 
-  /* Respeto a prefers-reduced-motion */
+  /* Respect prefers-reduced-motion */
   @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

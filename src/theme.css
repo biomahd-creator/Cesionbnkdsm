@@ -1,0 +1,15 @@
+/**
+ * CESIONBNK Design System - Root-level theme.css forwarder
+ *
+ * This file exists at the package root so that CSS resolvers that
+ * do NOT support package.json "exports" can still resolve:
+ *
+ *   @import "@biomahd-creator/financio-design-system/theme.css";
+ *
+ * Without this file, some PostCSS / Lightning CSS resolvers look
+ * for the literal path "theme.css" at the package root and fail
+ * silently — resulting in components rendering completely unstyled.
+ *
+ * The actual theme lives in ./styles/theme.css.
+ */
+@import "./styles/theme.css";

@@ -47,3 +47,20 @@ Object.defineProperty(window, 'IntersectionObserver', {
   writable: true,
   value: IntersectionObserverMock,
 });
+
+// Mock scrollIntoView for components that use cmdk, Radix portals, etc.
+// jsdom doesn't implement scrollIntoView natively.
+if (!Element.prototype.scrollIntoView) {
+  Element.prototype.scrollIntoView = () => {};
+}
+
+// Mock scrollTo for window (used by some scroll-based components)
+if (!window.scrollTo) {
+  window.scrollTo = () => {};
+}
+
+// Mock document.execCommand for RichTextEditor and other contentEditable components.
+// jsdom doesn't implement execCommand natively.
+if (typeof document.execCommand !== 'function') {
+  document.execCommand = () => true;
+}

@@ -65,6 +65,7 @@ export type PageId =
   | "brand-layout" | "elevation"
   | "help-system-demo" | "animations" | "animation-system" | "icon-gallery"
   | "audit-log"
+  | "npm-consumer-test"
 
   // ── LEGACY ALIASES (backward compat for localStorage) ──
   | "changelog" | "button-new"

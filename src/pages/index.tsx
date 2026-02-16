@@ -84,6 +84,7 @@ export * from "./MultiStepWizardPage";
 export * from "./MultiStepWizardVerticalPage";
 export * from "./NavigationMenuPage";
 export * from "./NotificationCenterPage";
+export * from "./NpmConsumerTestPage";
 export * from "./OnboardingPage";
 export * from "./OperationsListPage";
 export * from "./PaginationPage";

@@ -87,7 +87,17 @@ describe('Library Boundary (G1)', () => {
     );
 
     it('has sideEffects: false for tree-shaking', () => {
-      expect(pkg.sideEffects).toBe(false);
+      // sideEffects can be false (fully tree-shakeable) or an array
+      // of glob patterns for files with side effects (e.g. CSS)
+      const se = pkg.sideEffects;
+      if (Array.isArray(se)) {
+        // Only CSS files should be marked as side-effectful
+        se.forEach((pattern: string) => {
+          expect(pattern).toMatch(/\.css/);
+        });
+      } else {
+        expect(se).toBe(false);
+      }
     });
 
     it('has type: module for ESM', () => {

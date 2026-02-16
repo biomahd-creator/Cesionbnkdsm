@@ -27,6 +27,7 @@ import {
   BookOpen,
   Box,
   Briefcase,
+  Package,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -290,6 +291,7 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
     { id: "animation-system", label: "Animation System", icon: Clapperboard },
     { id: "icon-gallery", label: "Icon Gallery", icon: ImageIcon },
     { id: "audit-log", label: "Audit Log Viewer", icon: BookOpen },
+    { id: "npm-consumer-test", label: "NPM CSS Health Check", icon: Package },
   ];
 
   // ═══════════════════════════════════════════════════

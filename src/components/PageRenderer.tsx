@@ -132,6 +132,7 @@ import {
   FactoringInvoiceTablePage,
   AppLayoutPage,
   EditableTablePage,
+  NpmConsumerTestPage,
 } from "../pages";
 
 interface PageRendererProps {
@@ -425,6 +426,8 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <ProgressWithRangePage />;
     case "factoring-invoice-table":
       return <FactoringInvoiceTablePage />;
+    case "npm-consumer-test":
+      return <NpmConsumerTestPage />;
 
     // LEGACY ALIASES (backward compat)
     case "changelog":

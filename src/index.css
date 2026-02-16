@@ -1,5 +1,4 @@
 @import url("https://fonts.cdnfonts.com/css/satoshi");
-@import url("https://fonts.cdnfonts.com/css/satoshi");
 /*! tailwindcss v4.1.3 | MIT License | https://tailwindcss.com */
 @layer properties {
   @supports (((-webkit-hyphens: none)) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color: rgb(from red r g b)))) {
@@ -283,6 +282,7 @@
     --color-warning: var(--warning);
     --color-info: var(--info);
     --color-input-background: var(--input-background);
+    --letter-spacing-base: .025em;
     --shadow-elevation-1: var(--shadow-elevation-1);
     --shadow-elevation-2: var(--shadow-elevation-2);
     --shadow-elevation-3: var(--shadow-elevation-3);
@@ -303,7 +303,6 @@
     --shadow-glow-primary-md: var(--shadow-glow-primary-md);
     --shadow-glow-primary-lg: var(--shadow-glow-primary-lg);
     --shadow-glow-primary-xl: var(--shadow-glow-primary-xl);
-    --letter-spacing-base: .025em;
   }
 }
 
@@ -580,6 +579,10 @@
     }
   }
 
+  html {
+    font-size: var(--font-size);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -587,32 +590,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-family: Satoshi, ui-sans-serif, system-ui, sans-serif;
-  }
-
-  * {
-    border-color: var(--color-border);
-    outline-color: color-mix(in srgb, var(--ring) 50%, transparent);
-  }
-
-  @supports (color: color-mix(in lab, red, red)) {
-    * {
-      outline-color: color-mix(in oklab, var(--color-ring) 50%, transparent);
-    }
-  }
-
-  html {
-    font-size: var(--font-size);
-  }
-
-  body {
-    background-color: var(--color-background);
-    --tw-font-weight: var(--font-weight-normal);
-    font-weight: var(--font-weight-normal);
-    color: var(--color-foreground);
-    letter-spacing: var(--letter-spacing-base);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: Satoshi, sans-serif;
   }
 
   p, span, label, a, button, input, textarea, select, h1, h2, h3, h4, h5, h6, div, td, th, li {
@@ -1005,10 +982,6 @@
     grid-column: span 12 / span 12;
   }
 
-  .col-span-full {
-    grid-column: 1 / -1;
-  }
-
   .col-start-2 {
     grid-column-start: 2;
   }
@@ -1373,6 +1346,11 @@
   .size-5 {
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
+  }
+
+  .size-6 {
+    width: calc(var(--spacing) * 6);
+    height: calc(var(--spacing) * 6);
   }
 
   .size-7 {
@@ -1805,6 +1783,10 @@
     width: calc(var(--spacing) * 5);
   }
 
+  .w-5\/6 {
+    width: 83.3333%;
+  }
+
   .w-6 {
     width: calc(var(--spacing) * 6);
   }
@@ -2221,15 +2203,7 @@
     flex: 1;
   }
 
-  .flex-shrink-0 {
-    flex-shrink: 0;
-  }
-
-  .shrink {
-    flex-shrink: 1;
-  }
-
-  .shrink-0 {
+  .flex-shrink-0, .shrink-0 {
     flex-shrink: 0;
   }
 
@@ -3325,6 +3299,16 @@
     }
   }
 
+  .border-red-500\/30 {
+    border-color: color-mix(in srgb, oklch(.637 .237 25.331) 30%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-red-500\/30 {
+      border-color: color-mix(in oklab, var(--color-red-500) 30%, transparent);
+    }
+  }
+
   .border-red-500\/50 {
     border-color: color-mix(in srgb, oklch(.637 .237 25.331) 50%, transparent);
   }
@@ -3739,6 +3723,16 @@
     background-color: var(--color-destructive);
   }
 
+  .bg-destructive\/5 {
+    background-color: color-mix(in srgb, var(--destructive) 5%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-destructive\/5 {
+      background-color: color-mix(in oklab, var(--color-destructive) 5%, transparent);
+    }
+  }
+
   .bg-destructive\/10 {
     background-color: color-mix(in srgb, var(--destructive) 10%, transparent);
   }
@@ -4091,6 +4085,16 @@
     background-color: var(--color-red-500);
   }
 
+  .bg-red-500\/5 {
+    background-color: color-mix(in srgb, oklch(.637 .237 25.331) 5%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-red-500\/5 {
+      background-color: color-mix(in oklab, var(--color-red-500) 5%, transparent);
+    }
+  }
+
   .bg-red-500\/10 {
     background-color: color-mix(in srgb, oklch(.637 .237 25.331) 10%, transparent);
   }
@@ -4117,6 +4121,16 @@
 
   .bg-secondary {
     background-color: var(--color-secondary);
+  }
+
+  .bg-secondary-foreground\/10 {
+    background-color: color-mix(in srgb, var(--secondary-foreground) 10%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-secondary-foreground\/10 {
+      background-color: color-mix(in oklab, var(--color-secondary-foreground) 10%, transparent);
+    }
   }
 
   .bg-secondary\/5 {
@@ -4243,6 +4257,16 @@
 
   .bg-yellow-500 {
     background-color: var(--color-yellow-500);
+  }
+
+  .bg-yellow-500\/5 {
+    background-color: color-mix(in srgb, oklch(.795 .184 86.047) 5%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-yellow-500\/5 {
+      background-color: color-mix(in oklab, var(--color-yellow-500) 5%, transparent);
+    }
   }
 
   .bg-yellow-500\/10 {
@@ -4846,6 +4870,10 @@
     padding-left: calc(var(--spacing) * 4);
   }
 
+  .pl-5 {
+    padding-left: calc(var(--spacing) * 5);
+  }
+
   .pl-6 {
     padding-left: calc(var(--spacing) * 6);
   }
@@ -4951,8 +4979,16 @@
     font-size: 12px;
   }
 
+  .text-\[13px\] {
+    font-size: 13px;
+  }
+
   .text-\[14px\] {
     font-size: 14px;
+  }
+
+  .text-\[15px\] {
+    font-size: 15px;
   }
 
   .text-\[24px\] {
@@ -5211,6 +5247,10 @@
     color: var(--color-gray-700);
   }
 
+  .text-green-400 {
+    color: var(--color-green-400);
+  }
+
   .text-green-500 {
     color: var(--color-green-500);
   }
@@ -5407,6 +5447,16 @@
     color: var(--color-secondary-foreground);
   }
 
+  .text-secondary-foreground\/70 {
+    color: color-mix(in srgb, var(--secondary-foreground) 70%, transparent);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-secondary-foreground\/70 {
+      color: color-mix(in oklab, var(--color-secondary-foreground) 70%, transparent);
+    }
+  }
+
   .text-sidebar-foreground {
     color: var(--color-sidebar-foreground);
   }
@@ -5562,6 +5612,10 @@
 
   .underline-offset-4 {
     text-underline-offset: 4px;
+  }
+
+  .accent-foreground {
+    accent-color: var(--color-foreground);
   }
 
   .opacity-0 {
@@ -5980,6 +6034,10 @@
     --tw-ring-inset: inset;
   }
 
+  .running {
+    animation-play-state: running;
+  }
+
   .slide-in-from-bottom-2 {
     --tw-enter-translate-y: calc(2 * var(--spacing));
   }
@@ -6002,10 +6060,6 @@
 
   .zoom-in-95 {
     --tw-enter-scale: .95;
-  }
-
-  .zoom-out {
-    --tw-exit-scale: 0;
   }
 
   .group-focus-within\:block:is(:where(.group):focus-within *) {
@@ -6804,6 +6858,18 @@
   @media (hover: hover) {
     .hover\:bg-red-700:hover {
       background-color: var(--color-red-700);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-secondary-foreground\/20:hover {
+      background-color: color-mix(in srgb, var(--secondary-foreground) 20%, transparent);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-secondary-foreground\/20:hover {
+        background-color: color-mix(in oklab, var(--color-secondary-foreground) 20%, transparent);
+      }
     }
   }
 
@@ -8353,8 +8419,8 @@
   }
 
   @media (width >= 40rem) {
-    .sm\:grid-cols-4 {
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+    .sm\:grid-cols-5 {
+      grid-template-columns: repeat(5, minmax(0, 1fr));
     }
   }
 
@@ -10956,7 +11022,6 @@
 }
 
 
-
 :root {
   --font-size: 16px;
   --background: #fff;
@@ -11133,7 +11198,7 @@
   --shadow-glow-green-lg: 0 10px 25px -3px #22c55e59, 0 4px 10px -4px #22c55e40;
   --shadow-glow-green-xl: 0 20px 40px -5px #22c55e66, 0 8px 16px -6px #22c55e4d;
   --shadow-glow-yellow-sm: 0 2px 8px 0 #eab30833, 0 1px 3px 0 #eab30826;
-  --shadow-glow-yellow-md: 0 4px 14px -2px #eab3084d, 0 2px 6px -1px #eab30833;
+  --shadow-glow-yellow-md: 0 4px 14px -2px #eab3084d, 0 2px 6px -1px #eab30826;
   --shadow-glow-yellow-lg: 0 10px 25px -3px #eab30859, 0 4px 10px -4px #eab30840;
   --shadow-glow-yellow-xl: 0 20px 40px -5px #eab30866, 0 8px 16px -6px #eab3084d;
   --shadow-glow-primary-sm: 0 2px 8px 0 #00c95133, 0 1px 3px 0 #00c95126;

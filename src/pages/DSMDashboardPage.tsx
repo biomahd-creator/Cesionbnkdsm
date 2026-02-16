@@ -225,10 +225,9 @@ const versionHistory: VersionEntry[] = [
         icon: Rocket,
         title: "Added - Icon Gallery Expansion",
         items: [
-          "Icon Gallery: Massive expansion from 27 to **~520 icons** from lucide-react.",
-          "Categories: Increased from 4 to **21 semantic categories**.",
-          "Features: Real-time search, category filters, click-to-copy code.",
-          "Optimized with useMemo hooks for efficient rendering.",
+          "Icon Gallery: Simplified to reference guide with ~30 sample icons and implementation examples.",
+          "External library: Documented lucide-react as peer dependency with link to lucide.dev/icons.",
+          "Removed: 500+ icon imports, search bar, category filters — reduced bundle stress.",
         ],
       },
     ],
