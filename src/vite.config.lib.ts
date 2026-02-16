@@ -140,6 +140,7 @@ export default defineConfig({
         'components/factoring/**',
         'components/patterns/factoring/**',
         'components/PageRenderer.tsx',
+        'components/DSMSidebarNav.tsx',
         'components/SidebarNew.tsx',
         'pages/**',
         'App.tsx',
