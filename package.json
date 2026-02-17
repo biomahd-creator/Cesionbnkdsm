@@ -1,7 +1,7 @@
 
   {
-      "name": "C-Financia DSM v1.2",
-      "version": "0.1.0",
+  "name": "@biomahd-creator/cfinancia-dsm",
+    "version": "0.1.0",
       "private": true,
       "dependencies": {
           "@biomahd-creator/financio-design-system": "*",
