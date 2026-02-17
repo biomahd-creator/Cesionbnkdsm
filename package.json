@@ -2,8 +2,7 @@
   {
   "name": "@biomahd-creator/cfinancia-dsm",
     "version": "0.1.0",
-      "private": true,
-      "dependencies": {
+  "private": false,      "dependencies": {
           "@biomahd-creator/financio-design-system": "*",
           "@hookform/resolvers": "*",
           "@radix-ui/react-accordion": "^1.2.3",
