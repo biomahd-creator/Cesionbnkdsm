@@ -22,7 +22,14 @@ Para facilitar la lectura por IAs y humanos, la documentación se ha dividido en
 - Plantillas de prompts.
 - Checklists de validación.
 
-### 4. [llms.txt](../llms.txt)
+### 4. [NAMING_CONVENTION.md](./NAMING_CONVENTION.md)
+**Naming Convention — Triple Alignment**. Convención unificada para nombres de archivos, exports React y componentes Figma.
+- Regla maestra: kebab-case (archivos) ↔ PascalCase (exports) ↔ Layer/Name (Figma).
+- Plan de migración en 4 fases.
+- Checklist para nuevos componentes.
+- Status: Planned (pendiente de ejecución).
+
+### 5. [llms.txt](../llms.txt)
 **AI/LLM Instructions**. Archivo que se publica con el paquete npm para que herramientas de IA (Claude, ChatGPT, Figma Make, Copilot) generen código correctamente usando el DSM.
 - Setup crítico (theme.css).
 - Catálogo completo de componentes con import paths y props.
