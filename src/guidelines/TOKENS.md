@@ -681,7 +681,7 @@ Color NO es el unico indicador de estado
 | Archivo | Proposito |
 |---------|-----------|
 | `/styles/globals.css` | CSS custom properties (SSoT para CSS) con soporte light/dark |
-| `/figma-tokens.json` | Export para Figma Tokens plugin |
+| `/figma-tokens.json` | Export para Figma Variables Import plugin (3 colecciones: Primitives, Semantic, Component) |
 | `/tailwind-preset.cjs` | Configuracion de Tailwind (DEPRECATED, v3 only) |
 | `/lib/animation-config.ts` | Configuracion centralizada de animaciones |
 | `/components/providers/ThemeProvider.tsx` | Provider para toggle light/dark mode |

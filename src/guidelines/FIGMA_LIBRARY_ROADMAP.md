@@ -1,7 +1,8 @@
 # FIGMA LIBRARY ROADMAP — De Figma Make a Figma Design Library
 
-> **Status**: Pendiente (pre-requisito: completar limpieza de componentes)
+> **Status**: En ejecucion — Fase 1 completada (figma-tokens.json generado)
 > **Created**: 2026-02-19
+> **Updated**: 2026-02-19
 > **Contexto**: Guía para transcribir el DSM code-first (Figma Make) a una Figma Design Library conectada.
 
 ---
@@ -12,7 +13,7 @@ El DSM de CESIONBNK ya está validado visualmente en Figma Make. El objetivo es 
 
 ---
 
-## FASE 1 — Variables de Figma (Tokens) | ~2-3 horas
+## FASE 1 — Variables de Figma (Tokens) | ~2-3 horas | **COMPLETADA**
 
 Base de toda la librería. Sin esto, nada escala.
 
@@ -29,7 +30,7 @@ Base de toda la librería. Sin esto, nada escala.
 ```
 globals.css                    →  Figma Variable
 ─────────────────────────────────────────────────
---primary: #00c951             →  Primitives/Green/500
+--primary: #00c951             ���  Primitives/Green/500
 --secondary: #1C2D3A           →  Primitives/Navy/900
 --background: #ffffff  (:root) →  Semantic/Surface/Background (Light)
 --background: #0f172a  (.dark) →  Semantic/Surface/Background (Dark)
@@ -45,7 +46,9 @@ Las variables semánticas en Figma deben **referenciar** las primitives, no ser 
 
 ### Herramienta recomendada
 
-Plugin [**Variables Import**](https://www.figma.com/community/plugin/1254544481498308624) de Figma — exportar JSON desde `globals.css` e importar directo.
+Plugin [**Variables Import**](https://www.figma.com/community/plugin/1254544481498308624) de Figma — importar `/figma-tokens.json` directo.
+
+> **Artefacto generado**: `/figma-tokens.json` — Contiene las 3 colecciones (Primitives, Semantic con Light/Dark, Component) + referencia de shadows, text styles, spacing y radius-por-componente. Listo para importar.
 
 ---
 
@@ -231,7 +234,8 @@ Esto cierra el loop Design ↔ Code completamente.
 
 ## PRE-REQUISITO
 
-> Completar la limpieza pendiente de componentes antes de iniciar la transcripción a Figma. No transcribir componentes que van a ser eliminados.
+> ~~Completar la limpieza pendiente de componentes antes de iniciar la transcripcion a Figma. No transcribir componentes que van a ser eliminados.~~
+> **Completado**: Limpieza de componentes huerfanos ejecutada (StatusBadge eliminado, carousel/menubar/resizable excluidos del barrel y protegidos por el entorno).
 
 ---
 

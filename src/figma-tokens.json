@@ -1,0 +1,516 @@
+{
+  "$schema": "https://design-tokens.github.io/community-group/format/",
+  "$name": "CESIONBNK Design System",
+  "$description": "Figma Variables Import — 3 collections mapped from globals.css (Single Source of Truth). Compatible with Figma 'Variables Import' plugin by Mana Lab.",
+  "$version": "0.3.0",
+  "$source": "/styles/globals.css",
+
+  "collections": [
+    {
+      "name": "1. Primitives",
+      "description": "Raw color values. No modes. These are referenced by the Semantic collection.",
+      "modes": ["Value"],
+      "variables": [
+        { "name": "Green/500", "type": "COLOR", "values": { "Value": "#00c951" } },
+        { "name": "Green/600", "type": "COLOR", "values": { "Value": "#22c55e" } },
+        { "name": "Green/800", "type": "COLOR", "values": { "Value": "#15803d" } },
+
+        { "name": "Navy/900", "type": "COLOR", "values": { "Value": "#1C2D3A" } },
+
+        { "name": "Slate/50", "type": "COLOR", "values": { "Value": "#f8fafc" } },
+        { "name": "Slate/100", "type": "COLOR", "values": { "Value": "#f1f5f9" } },
+        { "name": "Slate/400", "type": "COLOR", "values": { "Value": "#94a3b8" } },
+        { "name": "Slate/600", "type": "COLOR", "values": { "Value": "#475569" } },
+        { "name": "Slate/700", "type": "COLOR", "values": { "Value": "#334155" } },
+        { "name": "Slate/800", "type": "COLOR", "values": { "Value": "#1e293b" } },
+        { "name": "Slate/900", "type": "COLOR", "values": { "Value": "#0f172a" } },
+
+        { "name": "Zinc/100", "type": "COLOR", "values": { "Value": "#f4f4f5" } },
+        { "name": "Zinc/200", "type": "COLOR", "values": { "Value": "#e4e4e7" } },
+        { "name": "Zinc/500", "type": "COLOR", "values": { "Value": "#52525b" } },
+
+        { "name": "Neutral/White", "type": "COLOR", "values": { "Value": "#ffffff" } },
+        { "name": "Neutral/Gray", "type": "COLOR", "values": { "Value": "#cbced4" } },
+        { "name": "Neutral/98", "type": "COLOR", "values": { "Value": "#fafafa" } },
+        { "name": "Neutral/97", "type": "COLOR", "values": { "Value": "#f5f5f5" } },
+        { "name": "Neutral/92", "type": "COLOR", "values": { "Value": "#e5e5e5" } },
+        { "name": "Neutral/71", "type": "COLOR", "values": { "Value": "#adadad" } },
+
+        { "name": "Red/500", "type": "COLOR", "values": { "Value": "#ef4444" } },
+        { "name": "Red/900", "type": "COLOR", "values": { "Value": "#991b1b" } },
+
+        { "name": "Amber/500", "type": "COLOR", "values": { "Value": "#f59e0b" } },
+        { "name": "Amber/700", "type": "COLOR", "values": { "Value": "#b45309" } },
+
+        { "name": "Blue/500", "type": "COLOR", "values": { "Value": "#3b82f6" } },
+        { "name": "Blue/700", "type": "COLOR", "values": { "Value": "#1d4ed8" } },
+
+        { "name": "Chart/Light/1", "type": "COLOR", "values": { "Value": "#e76f51" } },
+        { "name": "Chart/Light/2", "type": "COLOR", "values": { "Value": "#2a9d8f" } },
+        { "name": "Chart/Light/3", "type": "COLOR", "values": { "Value": "#264653" } },
+        { "name": "Chart/Light/4", "type": "COLOR", "values": { "Value": "#e9c46a" } },
+        { "name": "Chart/Light/5", "type": "COLOR", "values": { "Value": "#f4a261" } },
+        { "name": "Chart/Dark/1", "type": "COLOR", "values": { "Value": "#6366f1" } },
+        { "name": "Chart/Dark/2", "type": "COLOR", "values": { "Value": "#34d399" } },
+        { "name": "Chart/Dark/3", "type": "COLOR", "values": { "Value": "#f4a261" } },
+        { "name": "Chart/Dark/4", "type": "COLOR", "values": { "Value": "#a855f7" } },
+        { "name": "Chart/Dark/5", "type": "COLOR", "values": { "Value": "#ef4444" } },
+
+        { "name": "CFinancia/Lime", "type": "COLOR", "values": { "Value": "#DEFB49" } },
+        { "name": "CFinancia/Teal", "type": "COLOR", "values": { "Value": "#43F977" } },
+        { "name": "CFinancia/Navy", "type": "COLOR", "values": { "Value": "#052937" } },
+
+        { "name": "KPI/Yellow/Base", "type": "COLOR", "values": { "Value": "#eab308" } },
+        { "name": "KPI/Yellow/Dark", "type": "COLOR", "values": { "Value": "#ca8a04" } },
+        { "name": "KPI/Yellow/Bg", "type": "COLOR", "values": { "Value": "#fef9c3" } },
+        { "name": "KPI/Orange/Base", "type": "COLOR", "values": { "Value": "#f97316" } },
+        { "name": "KPI/Orange/Dark", "type": "COLOR", "values": { "Value": "#ea580c" } },
+        { "name": "KPI/Orange/Bg", "type": "COLOR", "values": { "Value": "#ffedd5" } },
+        { "name": "KPI/Blue/Base", "type": "COLOR", "values": { "Value": "#3b82f6" } },
+        { "name": "KPI/Blue/Dark", "type": "COLOR", "values": { "Value": "#2563eb" } },
+        { "name": "KPI/Blue/Bg", "type": "COLOR", "values": { "Value": "#dbeafe" } },
+        { "name": "KPI/Lime/Base", "type": "COLOR", "values": { "Value": "#84cc16" } },
+        { "name": "KPI/Lime/Dark", "type": "COLOR", "values": { "Value": "#65a30d" } },
+        { "name": "KPI/Lime/Bg", "type": "COLOR", "values": { "Value": "#f7fee7" } }
+      ]
+    },
+
+    {
+      "name": "2. Semantic",
+      "description": "Semantic tokens with Light/Dark modes. In Figma, these should REFERENCE Primitives (alias), not be direct hex values. The hex values here are provided for import — after import, re-link each to its Primitive alias manually.",
+      "modes": ["Light", "Dark"],
+      "variables": [
+        {
+          "name": "Brand/Primary",
+          "type": "COLOR",
+          "description": "--primary: Green CTA, actions, focus ring",
+          "cssVar": "--primary",
+          "tailwind": "bg-primary / text-primary",
+          "aliasLight": "Primitives/Green/500",
+          "aliasDark": "Primitives/Green/500",
+          "values": { "Light": "#00c951", "Dark": "#00c951" }
+        },
+        {
+          "name": "Brand/Primary Foreground",
+          "type": "COLOR",
+          "cssVar": "--primary-foreground",
+          "tailwind": "text-primary-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#ffffff" }
+        },
+        {
+          "name": "Brand/Secondary",
+          "type": "COLOR",
+          "cssVar": "--secondary",
+          "tailwind": "bg-secondary / text-secondary",
+          "aliasLight": "Primitives/Navy/900",
+          "aliasDark": "Primitives/Slate/700",
+          "values": { "Light": "#1C2D3A", "Dark": "#334155" }
+        },
+        {
+          "name": "Brand/Secondary Foreground",
+          "type": "COLOR",
+          "cssVar": "--secondary-foreground",
+          "tailwind": "text-secondary-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#f8fafc" }
+        },
+
+        {
+          "name": "Surface/Background",
+          "type": "COLOR",
+          "cssVar": "--background",
+          "tailwind": "bg-background",
+          "aliasLight": "Primitives/Neutral/White",
+          "aliasDark": "Primitives/Slate/900",
+          "values": { "Light": "#ffffff", "Dark": "#0f172a" }
+        },
+        {
+          "name": "Surface/Foreground",
+          "type": "COLOR",
+          "cssVar": "--foreground",
+          "tailwind": "text-foreground",
+          "aliasLight": "Primitives/Navy/900",
+          "aliasDark": "Primitives/Slate/50",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Surface/Card",
+          "type": "COLOR",
+          "cssVar": "--card",
+          "tailwind": "bg-card",
+          "values": { "Light": "#ffffff", "Dark": "#1e293b" }
+        },
+        {
+          "name": "Surface/Card Foreground",
+          "type": "COLOR",
+          "cssVar": "--card-foreground",
+          "tailwind": "text-card-foreground",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Surface/Popover",
+          "type": "COLOR",
+          "cssVar": "--popover",
+          "tailwind": "bg-popover",
+          "values": { "Light": "#ffffff", "Dark": "#1e293b" }
+        },
+        {
+          "name": "Surface/Popover Foreground",
+          "type": "COLOR",
+          "cssVar": "--popover-foreground",
+          "tailwind": "text-popover-foreground",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+
+        {
+          "name": "Neutral/Muted",
+          "type": "COLOR",
+          "cssVar": "--muted",
+          "tailwind": "bg-muted",
+          "aliasLight": "Primitives/Zinc/100",
+          "aliasDark": "Primitives/Slate/700",
+          "values": { "Light": "#f4f4f5", "Dark": "#334155" }
+        },
+        {
+          "name": "Neutral/Muted Foreground",
+          "type": "COLOR",
+          "cssVar": "--muted-foreground",
+          "tailwind": "text-muted-foreground",
+          "aliasLight": "Primitives/Zinc/500",
+          "aliasDark": "Primitives/Slate/400",
+          "values": { "Light": "#52525b", "Dark": "#94a3b8" }
+        },
+        {
+          "name": "Neutral/Accent",
+          "type": "COLOR",
+          "cssVar": "--accent",
+          "tailwind": "bg-accent",
+          "values": { "Light": "#f4f4f5", "Dark": "#334155" }
+        },
+        {
+          "name": "Neutral/Accent Foreground",
+          "type": "COLOR",
+          "cssVar": "--accent-foreground",
+          "tailwind": "text-accent-foreground",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+
+        {
+          "name": "Feedback/Destructive",
+          "type": "COLOR",
+          "cssVar": "--destructive",
+          "tailwind": "bg-destructive",
+          "aliasLight": "Primitives/Red/500",
+          "aliasDark": "Primitives/Red/900",
+          "values": { "Light": "#ef4444", "Dark": "#991b1b" }
+        },
+        {
+          "name": "Feedback/Destructive Foreground",
+          "type": "COLOR",
+          "cssVar": "--destructive-foreground",
+          "tailwind": "text-destructive-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Feedback/Success",
+          "type": "COLOR",
+          "cssVar": "--success",
+          "tailwind": "bg-success",
+          "aliasLight": "Primitives/Green/600",
+          "aliasDark": "Primitives/Green/800",
+          "values": { "Light": "#22c55e", "Dark": "#15803d" }
+        },
+        {
+          "name": "Feedback/Success Foreground",
+          "type": "COLOR",
+          "cssVar": "--success-foreground",
+          "tailwind": "text-success-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Feedback/Warning",
+          "type": "COLOR",
+          "cssVar": "--warning",
+          "tailwind": "bg-warning",
+          "aliasLight": "Primitives/Amber/500",
+          "aliasDark": "Primitives/Amber/700",
+          "values": { "Light": "#f59e0b", "Dark": "#b45309" }
+        },
+        {
+          "name": "Feedback/Warning Foreground",
+          "type": "COLOR",
+          "cssVar": "--warning-foreground",
+          "tailwind": "text-warning-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Feedback/Info",
+          "type": "COLOR",
+          "cssVar": "--info",
+          "tailwind": "bg-info",
+          "aliasLight": "Primitives/Blue/500",
+          "aliasDark": "Primitives/Blue/700",
+          "values": { "Light": "#3b82f6", "Dark": "#1d4ed8" }
+        },
+        {
+          "name": "Feedback/Info Foreground",
+          "type": "COLOR",
+          "cssVar": "--info-foreground",
+          "tailwind": "text-info-foreground",
+          "values": { "Light": "#ffffff", "Dark": "#f8fafc" }
+        },
+
+        {
+          "name": "Form/Border",
+          "type": "COLOR",
+          "cssVar": "--border",
+          "tailwind": "border-border",
+          "aliasLight": "Primitives/Zinc/200",
+          "aliasDark": "Primitives/Slate/700",
+          "values": { "Light": "#e4e4e7", "Dark": "#334155" }
+        },
+        {
+          "name": "Form/Input Border",
+          "type": "COLOR",
+          "cssVar": "--input",
+          "tailwind": "border-input",
+          "values": { "Light": "#e4e4e7", "Dark": "#334155" }
+        },
+        {
+          "name": "Form/Input Background",
+          "type": "COLOR",
+          "cssVar": "--input-background",
+          "tailwind": "bg-input-background",
+          "values": { "Light": "#ffffff", "Dark": "#334155" }
+        },
+        {
+          "name": "Form/Switch Background",
+          "type": "COLOR",
+          "cssVar": "--switch-background",
+          "tailwind": "bg-switch-background",
+          "values": { "Light": "#cbced4", "Dark": "#475569" }
+        },
+        {
+          "name": "Form/Ring",
+          "type": "COLOR",
+          "cssVar": "--ring",
+          "tailwind": "ring-ring",
+          "values": { "Light": "#00c951", "Dark": "#00c951" }
+        },
+
+        {
+          "name": "Sidebar/Background",
+          "type": "COLOR",
+          "cssVar": "--sidebar",
+          "tailwind": "bg-sidebar",
+          "values": { "Light": "#fafafa", "Dark": "#1e293b" }
+        },
+        {
+          "name": "Sidebar/Foreground",
+          "type": "COLOR",
+          "cssVar": "--sidebar-foreground",
+          "tailwind": "text-sidebar-foreground",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Sidebar/Primary",
+          "type": "COLOR",
+          "cssVar": "--sidebar-primary",
+          "tailwind": "bg-sidebar-primary",
+          "values": { "Light": "#1C2D3A", "Dark": "#00c951" }
+        },
+        {
+          "name": "Sidebar/Primary Foreground",
+          "type": "COLOR",
+          "cssVar": "--sidebar-primary-foreground",
+          "tailwind": "text-sidebar-primary-foreground",
+          "values": { "Light": "#fafafa", "Dark": "#1C2D3A" }
+        },
+        {
+          "name": "Sidebar/Accent",
+          "type": "COLOR",
+          "cssVar": "--sidebar-accent",
+          "tailwind": "bg-sidebar-accent",
+          "values": { "Light": "#f5f5f5", "Dark": "#334155" }
+        },
+        {
+          "name": "Sidebar/Accent Foreground",
+          "type": "COLOR",
+          "cssVar": "--sidebar-accent-foreground",
+          "tailwind": "text-sidebar-accent-foreground",
+          "values": { "Light": "#1C2D3A", "Dark": "#f8fafc" }
+        },
+        {
+          "name": "Sidebar/Border",
+          "type": "COLOR",
+          "cssVar": "--sidebar-border",
+          "tailwind": "border-sidebar-border",
+          "values": { "Light": "#e5e5e5", "Dark": "#334155" }
+        },
+        {
+          "name": "Sidebar/Ring",
+          "type": "COLOR",
+          "cssVar": "--sidebar-ring",
+          "tailwind": "ring-sidebar-ring",
+          "values": { "Light": "#adadad", "Dark": "#00c951" }
+        },
+
+        {
+          "name": "Chart/1",
+          "type": "COLOR",
+          "cssVar": "--chart-1",
+          "tailwind": "bg-chart-1",
+          "values": { "Light": "#e76f51", "Dark": "#6366f1" }
+        },
+        {
+          "name": "Chart/2",
+          "type": "COLOR",
+          "cssVar": "--chart-2",
+          "tailwind": "bg-chart-2",
+          "values": { "Light": "#2a9d8f", "Dark": "#34d399" }
+        },
+        {
+          "name": "Chart/3",
+          "type": "COLOR",
+          "cssVar": "--chart-3",
+          "tailwind": "bg-chart-3",
+          "values": { "Light": "#264653", "Dark": "#f4a261" }
+        },
+        {
+          "name": "Chart/4",
+          "type": "COLOR",
+          "cssVar": "--chart-4",
+          "tailwind": "bg-chart-4",
+          "values": { "Light": "#e9c46a", "Dark": "#a855f7" }
+        },
+        {
+          "name": "Chart/5",
+          "type": "COLOR",
+          "cssVar": "--chart-5",
+          "tailwind": "bg-chart-5",
+          "values": { "Light": "#f4a261", "Dark": "#ef4444" }
+        }
+      ]
+    },
+
+    {
+      "name": "3. Component",
+      "description": "Component-level tokens: border radius and shadow definitions. Radius values are FLOAT (pixels). Shadows are STRING (CSS syntax for reference).",
+      "modes": ["Value"],
+      "variables": [
+        {
+          "name": "Radius/sm",
+          "type": "FLOAT",
+          "description": "calc(--radius - 4px) = 6px. Badges, small inputs.",
+          "cssVar": "--radius-sm",
+          "tailwind": "rounded-sm",
+          "values": { "Value": 6 }
+        },
+        {
+          "name": "Radius/md",
+          "type": "FLOAT",
+          "description": "calc(--radius - 2px) = 8px. Inputs, badges.",
+          "cssVar": "--radius-md",
+          "tailwind": "rounded-md",
+          "values": { "Value": 8 }
+        },
+        {
+          "name": "Radius/lg",
+          "type": "FLOAT",
+          "description": "Base radius = 10px. Buttons.",
+          "cssVar": "--radius",
+          "tailwind": "rounded-lg",
+          "values": { "Value": 10 }
+        },
+        {
+          "name": "Radius/xl",
+          "type": "FLOAT",
+          "description": "calc(--radius + 4px) = 14px. Cards, modals, dialogs.",
+          "cssVar": "--radius-xl",
+          "tailwind": "rounded-xl",
+          "values": { "Value": 14 }
+        },
+        {
+          "name": "Radius/full",
+          "type": "FLOAT",
+          "description": "9999px. Pills, circular avatars.",
+          "tailwind": "rounded-full",
+          "values": { "Value": 9999 }
+        }
+      ]
+    }
+  ],
+
+  "_shadows": {
+    "_note": "Figma Effect Styles (NOT variables). Create these as Effect Styles manually in Figma.",
+    "Elevation/1": {
+      "cssVar": "--shadow-elevation-1",
+      "light": "0 1px 2px 0 rgba(28, 45, 58, 0.05)",
+      "dark": "0 1px 2px 0 rgba(0, 0, 0, 0.3)",
+      "usage": "Buttons at rest, inputs, subtle depth"
+    },
+    "Elevation/2": {
+      "cssVar": "--shadow-elevation-2",
+      "light": "0 4px 6px -1px rgba(28, 45, 58, 0.1), 0 2px 4px -2px rgba(28, 45, 58, 0.1)",
+      "dark": "0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3)",
+      "usage": "Cards, tables, dropdowns"
+    },
+    "Elevation/3": {
+      "cssVar": "--shadow-elevation-3",
+      "light": "0 10px 15px -3px rgba(28, 45, 58, 0.1), 0 4px 6px -4px rgba(28, 45, 58, 0.1)",
+      "dark": "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3)",
+      "usage": "Hover cards, tooltips, popovers"
+    },
+    "Elevation/4": {
+      "cssVar": "--shadow-elevation-4",
+      "light": "0 20px 25px -5px rgba(28, 45, 58, 0.1), 0 8px 10px -6px rgba(28, 45, 58, 0.1)",
+      "dark": "0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3)",
+      "usage": "Modals, sheets, sidebars, drawers"
+    }
+  },
+
+  "_textStyles": {
+    "_note": "Figma Text Styles (NOT variables). Create these as Text Styles manually in Figma. All use Satoshi font, letter-spacing 0.025em.",
+    "Display":       { "size": 48, "weight": 700, "lineHeight": "150%", "usage": "Hero headings" },
+    "H1/Page Title": { "size": 30, "weight": 600, "lineHeight": "150%", "usage": "Page titles" },
+    "H2/Section":    { "size": 24, "weight": 600, "lineHeight": "150%", "usage": "Section titles" },
+    "H3/Subsection": { "size": 20, "weight": 500, "lineHeight": "150%", "usage": "Subsection titles" },
+    "H4/Card Title": { "size": 18, "weight": 500, "lineHeight": "150%", "usage": "Card titles, subtitles" },
+    "Body/Default":  { "size": 16, "weight": 400, "lineHeight": "150%", "usage": "Body text, inputs, buttons" },
+    "Body/Small":    { "size": 14, "weight": 400, "lineHeight": "150%", "usage": "Secondary text, descriptions" },
+    "Caption":       { "size": 12, "weight": 400, "lineHeight": "150%", "usage": "Labels, help text, captions" },
+    "Label":         { "size": 14, "weight": 500, "lineHeight": "150%", "usage": "Form labels" },
+    "Button":        { "size": 16, "weight": 500, "lineHeight": "150%", "usage": "Button text" },
+    "KPI Value":     { "size": 36, "weight": 700, "lineHeight": "125%", "usage": "Large KPI numbers" }
+  },
+
+  "_componentRadiusMap": {
+    "_note": "Quick reference: which radius token each component uses in code.",
+    "Button":            { "radius": "lg (10px)", "tailwind": "rounded-lg" },
+    "Input":             { "radius": "md (8px)",  "tailwind": "rounded-md" },
+    "Badge":             { "radius": "md (8px)",  "tailwind": "rounded-md" },
+    "Card":              { "radius": "xl (14px)", "tailwind": "rounded-xl" },
+    "Dialog":            { "radius": "xl (14px)", "tailwind": "rounded-xl" },
+    "Sheet":             { "radius": "xl (14px)", "tailwind": "rounded-xl" },
+    "Dropdown":          { "radius": "md (8px)",  "tailwind": "rounded-md" },
+    "Tooltip":           { "radius": "md (8px)",  "tailwind": "rounded-md" },
+    "Avatar":            { "radius": "full",       "tailwind": "rounded-full" },
+    "FactoringKpiCard":  { "radius": "xl (14px)", "tailwind": "rounded-xl" },
+    "Pill/Tag":          { "radius": "full",       "tailwind": "rounded-full" }
+  },
+
+  "_spacingReference": {
+    "_note": "Spacing uses Tailwind defaults (4px base unit). NOT imported as Figma variables. Use these values in Auto Layout directly.",
+    "gap-2":  "8px — Icons, badges, small elements",
+    "gap-3":  "12px — Card sections, related form fields",
+    "gap-4":  "16px — Standard gap, inputs, form groups",
+    "gap-6":  "24px — Section spacing, card padding, KPI grid",
+    "gap-8":  "32px — Large sections, page containers",
+    "p-2":    "8px — Badges, tooltips",
+    "p-3":    "12px — Button sm",
+    "px-4 py-2": "16px H / 8px V — Button default",
+    "px-6 py-3": "24px H / 12px V — Button lg",
+    "px-3 py-2": "12px H / 8px V — Inputs",
+    "p-6":    "24px — Cards, modals, sections",
+    "p-8":    "32px — Page containers"
+  }
+}
