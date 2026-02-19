@@ -15,9 +15,6 @@
 
     /* Emit */
     "noEmit": true,
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
 
     /* Interop */
     "esModuleInterop": true,
@@ -45,7 +42,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "dist-lib",
     "*.cjs"
   ]
 }

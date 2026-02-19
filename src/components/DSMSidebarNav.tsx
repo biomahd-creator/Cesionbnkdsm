@@ -1,7 +1,7 @@
 /**
  * DSMSidebarNav — Sidebar navigation for the DSM Showcase
  *
- * Renders 93 component pages organized in collapsible sections
+ * Renders 94 component pages organized in collapsible sections
  * using LayoutSidebar* sub-components from the DSM itself.
  * Search functionality filters across all items.
  */
@@ -26,6 +26,7 @@ import {
   ImageIcon,
   Box,
   Briefcase,
+  Component,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -260,6 +261,7 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
     { id: "animations", label: "Animations", icon: Clapperboard },
     { id: "animation-system", label: "Animation System", icon: Clapperboard },
     { id: "icon-gallery", label: "Icon Gallery", icon: ImageIcon },
+    { id: "widgets-library", label: "UI Widgets", icon: Component },
   ];
 
   // ═══════════════════════════════════════════════════

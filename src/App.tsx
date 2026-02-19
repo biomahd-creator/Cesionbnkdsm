@@ -241,7 +241,7 @@ function AppContent() {
                 }
                 right={
                   <div className="flex items-center gap-2 text-xs">
-                    <span>115 Components</span>
+                    <span>94 Showcase Pages</span>
                     <span>·</span>
                     <span>WCAG 2.1 AA</span>
                     <span>·</span>
