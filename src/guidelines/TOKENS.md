@@ -565,14 +565,7 @@ Definidas en `globals.css`, disponibles globalmente:
 |-------|--------|-------|
 | `hover-lift` | Transicion transform + shadow | `translateY(-2px)` + `elevation-3` |
 | `hover-scale` | Transicion transform | `scale(1.02)` |
-| `hover-glow` | Transicion box-shadow | Ring verde `rgba(0, 201, 81, 0.2)` |
 | `hover-brightness` | Transicion filter | `brightness(1.1)` |
-| `focus-ring` | Focus visible | `ring-2 ring-ring ring-offset-2` |
-| `focus-ring-inset` | Focus visible inset | `ring-2 ring-ring ring-inset` |
-| `fade-in` | Animacion de entrada | Fade + `translateY(10px)` |
-| `slide-in-right` | Slide desde derecha | `translateX(100%)` -> `0` |
-| `slide-in-left` | Slide desde izquierda | `translateX(-100%)` -> `0` |
-| `skeleton-pulse` | Pulse para skeletons | Opacity 0.6 -> 1 -> 0.6 |
 
 ---
 

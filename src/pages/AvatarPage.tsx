@@ -12,7 +12,7 @@ export function AvatarPage() {
       preview={
         <div className="flex gap-4">
           <Avatar>
-            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+            <AvatarImage src="https://i.pravatar.cc/150?u=cesionbnk" alt="@cesionbnk" />
             <AvatarFallback>CN</AvatarFallback>
           </Avatar>
           <Avatar>
@@ -30,7 +30,7 @@ export function AvatarPage() {
 export function AvatarDemo() {
   return (
     <Avatar>
-      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarImage src="https://i.pravatar.cc/150?u=cesionbnk" alt="@cesionbnk" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
   )

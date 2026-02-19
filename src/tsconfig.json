@@ -7,7 +7,7 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
 
-    /* Paths — @/* resolves to ./* (root-relative, unified across Figma Make and GitHub) */
+    /* Paths — @/* resolves to ./* (root-relative) */
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"]
@@ -44,10 +44,8 @@
   ],
   "exclude": [
     "node_modules",
+    "dist",
     "dist-lib",
-    "scripts",
-    "*.cjs",
-    "LICENSE"
-  ],
-  "references": []
+    "*.cjs"
+  ]
 }

@@ -5,7 +5,7 @@ import { Button } from "../ui/button";
 // ═══════════════════════════════════════════════════════════════════
 // Causa 17: Imports estáticos SOLO para vistas livianas.
 // Las vistas pesadas (CFinanciaFlow → OperationsList 1700+ líneas,
-// CFinanciaClientFlow 900+ líneas, PlaygroundIndex) se cargan
+// CFinanciaClientFlow 900+ líneas) se cargan
 // con React.lazy para que NO entren en el grafo de módulos inicial.
 // ═══════════════════════════════════════════════════════════════════
 
@@ -13,11 +13,7 @@ import { Button } from "../ui/button";
 import { MultiStepFormPage } from "../../pages/MultiStepFormPage";
 
 // Vistas pesadas — lazy import (NO entran en el grafo inicial)
-const PlaygroundIndexLazy = React.lazy(() =>
-  import("./playground/PlaygroundIndex").then((m) => ({
-    default: m.PlaygroundIndex,
-  }))
-);
+// removed: PlaygroundIndexLazy (playground deleted)
 
 // Causa 18: Lazy imports apuntan a /components/factoring/c-financia/
 const CFinanciaFlowLazy = React.lazy(() =>
@@ -38,7 +34,7 @@ const DashboardComercialLazy = React.lazy(() =>
   }))
 );
 
-export type View = "welcome" | "vinculacion" | "playground" | "c-financia" | "c-financia-cliente" | "dashboard-comercial";
+export type View = "welcome" | "vinculacion" | "c-financia" | "c-financia-cliente" | "dashboard-comercial";
 export type UserRole = "admin" | "client" | null;
 
 interface FactoringViewRendererProps {
@@ -79,15 +75,6 @@ export function FactoringViewRenderer({ currentView, userRole, setCurrentView, o
               <h2 className="text-2xl font-bold text-secondary">Proceso de Vinculación</h2>
            </div>
            <MultiStepFormPage />
-        </div>
-      );
-
-    case "playground":
-      return (
-        <div className="w-full">
-          <Suspense fallback={<LazyFallback />}>
-            <PlaygroundIndexLazy onBack={() => setCurrentView("welcome")} />
-          </Suspense>
         </div>
       );
 

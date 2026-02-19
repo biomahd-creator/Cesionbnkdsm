@@ -71,7 +71,7 @@ function CFinanciaViewRenderer({
         <div className="min-h-screen bg-background">
           <CFinanciaNavbar variant="full" onLogout={onExit} />
           <div className="pt-[80px] p-8">
-            <h1 className="text-2xl font-bold text-[rgb(var(--cfinancia-navy))]">Workspace: {selectedModule}</h1>
+            <h1 className="text-2xl font-bold text-[var(--color-cfinancia-navy)]">Workspace: {selectedModule}</h1>
             <p className="mt-4 text-muted-foreground">
                 Aquí se cargará el módulo seleccionado.
             </p>

@@ -65,7 +65,7 @@ const tableVariations: TableVariation[] = [
     name: "Table",
     layer: "ui",
     path: "/components/ui/table.tsx",
-    pageId: "table-new",
+    pageId: "table",
     usesMasterDataGrid: null,
     description:
       "Base Shadcn UI primitive. Wraps <table> with consistent styles. No state logic, filtering, or pagination. Foundation for all other table components.",
@@ -311,34 +311,6 @@ import { ColumnDef } from "@tanstack/react-table";`,
 <EditableTable />`,
   },
   {
-    id: "audit-log-viewer",
-    name: "AuditLogViewer",
-    layer: "patterns",
-    path: "/components/patterns/AuditLogViewer.tsx",
-    pageId: "audit-log",
-    usesMasterDataGrid: true,
-    description:
-      "Audit log viewer with event type filtering, search, action badges (CREATE, UPDATE, DELETE, READ), status badges (success, warning, error), timestamps, IP, and expandable details.",
-    bestFor: [
-      "Compliance and action tracking",
-      "Debugging and technical support",
-      "Change history for a resource",
-    ],
-    features: [
-      "Filter by action type",
-      "Search by user/resource",
-      "Action badges with icons",
-      "Status: success/warning/error",
-      "Timestamp and IP address",
-      "Example mock data",
-    ],
-    icon: ScrollText,
-    layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-    imports: `import { AuditLogViewer } from "@/components/patterns/AuditLogViewer";`,
-    usageCode: `// Self-contained with mock data
-<AuditLogViewer />`,
-  },
-  {
     id: "factoring-selection",
     name: "FactoringSelectionPage",
     layer: "patterns/factoring",
@@ -467,19 +439,47 @@ import { ColumnDef } from "@tanstack/react-table";`,
   </MasterDataGrid>
 </div>`,
   },
+  {
+    id: "factoring-invoice-table",
+    name: "FactoringInvoiceTable",
+    layer: "patterns/factoring",
+    path: "/components/patterns/factoring/FactoringInvoiceTable.tsx",
+    pageId: "factoring-invoice-table",
+    usesMasterDataGrid: false,
+    description:
+      "Invoice review table with category tabs (elegibles, pendientes, no-elegibles, descartadas), inline search, row selection with bulk actions, ProgressWithRange viability bar, and per-row actions (validate, discard, delete). Fully custom pattern — no MasterDataGrid dependency.",
+    bestFor: [
+      "Invoice review segmented by validation status",
+      "Factoring operations requiring per-row inline actions",
+      "Tables with a viability/progress indicator per row",
+    ],
+    features: [
+      "Tabs: elegibles, pendientes, no-elegibles, descartadas",
+      "Inline search by invoice number",
+      "Bulk and individual row selection",
+      "ProgressWithRange viability bar per row",
+      "Row actions: validate (Wand2), discard (FileX), delete (Trash2)",
+      "Custom card-based pagination",
+      "Semantic status badges",
+    ],
+    icon: ScrollText,
+    layerColor: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
+    imports: `import {\n  FactoringInvoiceTable,\n  type FactoringInvoice,\n  type InvoiceCategory,\n} from "@/components/patterns/factoring/FactoringInvoiceTable";`,
+    usageCode: `<FactoringInvoiceTable\n  invoices={invoices}\n  activeTab={activeTab}\n  onTabChange={setActiveTab}\n  onBulkValidate={handleBulkValidate}\n  onDelete={handleDelete}\n  onDiscard={handleDiscard}\n/>`,
+  },
 ];
 
 // ─── Composability Map ───
 const composabilityData = [
   { from: "Table", to: "MasterDataGrid", relation: "children", desc: "Table is passed as children to MasterDataGrid" },
   { from: "MasterDataGrid", to: "DataTable", relation: "composes", desc: "DataTable uses MasterDataGrid as container" },
-  { from: "MasterDataGrid", to: "TreeTable", relation: "composes", desc: "TreeTable uses MasterDataGrid as container" },
+  { from: "MasterDataGrid", to: "TreeTable V2", relation: "composes", desc: "TreeTable V2 uses MasterDataGrid as container" },
   { from: "MasterDataGrid", to: "EditableTable", relation: "composes", desc: "EditableTable uses MasterDataGrid as container" },
   { from: "MasterDataGrid", to: "DataTableAdvanced", relation: "composes", desc: "DataTableAdvanced uses MasterDataGrid as container" },
-  { from: "MasterDataGrid", to: "AuditLogViewer", relation: "composes", desc: "AuditLogViewer uses MasterDataGrid as container" },
   { from: "AdvancedFilterPanel", to: "MasterDataGrid", relation: "complements", desc: "Side panel for filters that don't fit in toolbar" },
   { from: "InfiniteScroll", to: "Table", relation: "wraps", desc: "Infinite scroll wrapper for any table" },
   { from: "VirtualizedList", to: "—", relation: "standalone", desc: "Independent list, does not compose with Table directly" },
+  { from: "FactoringInvoiceTable", to: "—", relation: "custom", desc: "Custom factoring pattern (Tabs + ProgressWithRange). No MasterDataGrid dependency." },
 ];
 
 function LayerBadge({ layer }: { layer: string }) {
@@ -722,11 +722,11 @@ function TableCatalogContent() {
                       { name: "Table", layer: "ui", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "—" },
                       { name: "MasterDataGrid", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "is it" },
                       { name: "DataTable", layer: "advanced", search: true, filters: true, sort: true, colVis: true, pagination: true, rowSelect: true, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
-                      { name: "TreeTable", layer: "advanced", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "yes" },
+                      { name: "TreeTable V2", layer: "advanced", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "yes" },
                       { name: "DataTableAdvanced", layer: "patterns", search: true, filters: true, sort: true, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
                       { name: "EditableTable", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: true, hierarchy: false, virtual: false, mdg: "yes" },
-                      { name: "AuditLogViewer", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "yes" },
                       { name: "FactoringSelection", layer: "patterns", search: true, filters: false, sort: true, colVis: false, pagination: false, rowSelect: true, edit: false, hierarchy: true, virtual: false, mdg: "no" },
+                      { name: "FactoringInvoiceTable", layer: "patterns", search: true, filters: true, sort: false, colVis: false, pagination: true, rowSelect: true, edit: false, hierarchy: false, virtual: false, mdg: "no" },
                       { name: "VirtualizedList", layer: "advanced", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: true, mdg: "—" },
                       { name: "InfiniteScroll", layer: "advanced", search: false, filters: false, sort: false, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "—" },
                       { name: "AdvancedFilterPanel", layer: "patterns", search: false, filters: true, sort: true, colVis: false, pagination: false, rowSelect: false, edit: false, hierarchy: false, virtual: false, mdg: "—" },
@@ -786,7 +786,7 @@ function TableCatalogContent() {
                       </div>
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px] bg-blue-100 dark:bg-blue-900">advanced</Badge>
-                        <span>TreeTable</span>
+                        <span>TreeTable V2</span>
                         <span className="text-muted-foreground text-xs">+ hierarchical expand/collapse</span>
                       </div>
                       <div className="flex items-center gap-2">
@@ -799,11 +799,6 @@ function TableCatalogContent() {
                         <span>EditableTable</span>
                         <span className="text-muted-foreground text-xs">+ inline editing</span>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <Badge variant="outline" className="text-[10px] bg-purple-100 dark:bg-purple-900">patterns</Badge>
-                        <span>AuditLogViewer</span>
-                        <span className="text-muted-foreground text-xs">+ audit log</span>
-                      </div>
                     </div>
                   </div>
                   <div className="ml-4 border-l-2 border-muted-foreground/20 pl-4 space-y-1 mt-2">
@@ -811,6 +806,11 @@ function TableCatalogContent() {
                       <Badge variant="outline" className="text-[10px] bg-amber-100 dark:bg-amber-900">factoring</Badge>
                       <span className="font-semibold">FactoringSelectionPage</span>
                       <span className="text-muted-foreground text-xs">← custom pattern (Accordion + Table)</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Badge variant="outline" className="text-[10px] bg-amber-100 dark:bg-amber-900">factoring</Badge>
+                      <span className="font-semibold">FactoringInvoiceTable</span>
+                      <span className="text-muted-foreground text-xs">← custom pattern (Tabs + Table + ProgressWithRange)</span>
                     </div>
                   </div>
                   <div className="mt-3 pt-3 border-t border-dashed border-muted-foreground/20 space-y-1">
@@ -897,7 +897,7 @@ function TableCatalogContent() {
                   },
                   {
                     question: "Is your data hierarchical (parent → child)?",
-                    answer: "TreeTable",
+                    answer: "TreeTable V2",
                     desc: "Expand/collapse with nodes. Ideal for portfolios.",
                   },
                   {
@@ -906,14 +906,14 @@ function TableCatalogContent() {
                     desc: "Inputs, selects, datepickers directly in the table.",
                   },
                   {
-                    question: "Is it an audit log / history?",
-                    answer: "AuditLogViewer",
-                    desc: "Action badges, timestamps, event filters.",
-                  },
-                  {
                     question: "Invoice selection grouped by debtor?",
                     answer: "FactoringSelectionPage",
                     desc: "Accordion + selection + dynamic KPIs.",
+                  },
+                  {
+                    question: "Invoice review by validation status (elegibles / pendientes / no-elegibles)?",
+                    answer: "FactoringInvoiceTable",
+                    desc: "Tabs by status + search + bulk validation + ProgressWithRange bar.",
                   },
                   {
                     question: "Have 1,000+ items and need performance?",
@@ -998,7 +998,7 @@ export function TableCatalogPage() {
   return (
     <ComponentShowcase
       title="Table Catalog"
-      description="Complete catalog of all 11 table variations in the DSM. Covers 3 layers: UI primitives (Table), Advanced components (MasterDataGrid, DataTable, TreeTable V2, VirtualizedList, InfiniteScroll), and Business Patterns (DataTableAdvanced, EditableTable, AuditLogViewer, FactoringSelectionPage, AdvancedFilterPanel). Includes visual catalog, feature comparison matrix, composability tree, and interactive decision guide."
+      description="Complete catalog of all 11 table variations available in the DSM. Covers 3 layers: UI primitives (Table), Advanced components (MasterDataGrid, DataTable, TreeTable V2, VirtualizedList, InfiniteScroll), and Business Patterns (DataTableAdvanced, EditableTable, FactoringSelectionPage, FactoringInvoiceTable, AdvancedFilterPanel). Includes visual catalog, feature comparison matrix, composability tree, and interactive decision guide."
       category="Advanced"
       preview={<TableCatalogContent />}
       code={`// UI Layer
@@ -1014,11 +1014,11 @@ import { InfiniteScroll } from "@/components/advanced/InfiniteScroll";
 // Patterns Layer
 import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";
 import { EditableTable } from "@/components/patterns/EditableTable";
-import { AuditLogViewer } from "@/components/patterns/AuditLogViewer";
 import { AdvancedFilterPanel } from "@/components/patterns/AdvancedFilterPanel";
 import { FactoringSelectionPage } from "@/components/patterns/factoring/FactoringSelectionPage";
+import { FactoringInvoiceTable } from "@/components/patterns/factoring/FactoringInvoiceTable";
 
-// Composability: Table → MasterDataGrid → DataTable/TreeTable/EditableTable`}
+// Composability: Table → MasterDataGrid → DataTable/TreeTableV2/EditableTable`}
       props={[
         { name: "(catalog)", type: "—", description: "Self-contained reference page. No external props — displays all 11 table variations with comparison data." },
       ]}

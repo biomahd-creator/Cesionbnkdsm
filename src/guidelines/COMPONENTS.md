@@ -57,7 +57,7 @@ Componentes base construidos sobre Radix UI y Tailwind CSS. Siguen los principio
 | `Skeleton` | Placeholders de carga animados. |
 | `Slider` | Selector de rango numérico. |
 | `Sonner` | Sistema de notificaciones (Toasts). |
-| `SplitButton` | Botón con acción principal y menú desplegable. |
+| `SplitButton` | Botón con acción principal y menú desplegable (`label`, `actions`, `onMainAction`). |
 | `Switch` | Toggle on/off. |
 | `Table` | Tablas básicas estilizadas. |
 | `Tabs` | Navegación por pestañas. |
@@ -77,23 +77,25 @@ Componentes complejos de lógica específica o visualización avanzada.
 | `ConditionalForm` | Formularios con lógica condicional. |
 | `DataTable` | Tabla avanzada con filtros, ordenamiento y paginación (TanStack Table). |
 | `DatePickerWithPresets` | Selector de fechas con rangos predefinidos. |
-| `ExportData` | Utilidad para exportar CSV/Excel. |
+| ~~`ExportData`~~ | *(Eliminado en v0.3.0)* |
 | `FileUploader` | Zona de carga de archivos drag & drop. |
 | `FormBuilder` | Constructor visual de formularios. |
 | `FunnelChart` | Gráfico de embudo. |
 | `GaugeChart` | Gráfico de medidor/velocímetro. |
 | `Heatmap` | Mapa de calor. |
 | `InfiniteScroll` | Lista con carga infinita. |
-| `InvoiceGenerator` | Generador de facturas PDF/Vista. |
-| `MasonryGrid` | Grid estilo Pinterest. |
+| ~~`InvoiceGenerator`~~ | *(Eliminado en v0.3.0)* |
+| ~~`MasonryGrid`~~ | *(Eliminado en v0.3.0)* |
+| `MasterDataGrid` | Grid de datos maestro con edición masiva. |
 | `MultiColumnForm` | Layout de formulario en múltiples columnas. |
-| `RatingComponent` | Input de calificación (estrellas). |
+| ~~`RatingComponent`~~ | *(Eliminado en v0.3.0)* |
 | `RichTextEditor` | Editor de texto enriquecido (WYSIWYG). |
 | `Sparkline` | Mini gráficos de línea. |
 | `StepIndicator` | Indicador de pasos para wizards. |
-| `Timeline` | Línea de tiempo vertical. |
-| `TransferList` | Lista de transferencia doble. |
+| ~~`Timeline`~~ | *(Eliminado en v0.3.0)* |
+| ~~`TransferList`~~ | *(Eliminado en v0.3.0)* |
 | `TreeTable` | Tabla jerárquica (árbol). |
+| `TreeTableV2` | Tabla jerárquica v2 con expansión mejorada. |
 | `TreemapChart` | Gráfico de mapa de árbol. |
 | `VirtualizedList` | Lista de alto rendimiento para miles de items. |
 
@@ -102,12 +104,14 @@ Soluciones completas para flujos de negocio comunes.
 
 | Componente | Descripción |
 |---|---|
-| `ActivityFeed` | Feed de actividad reciente. |
-| `AdminPortal` | Layout para paneles de administración. |
+| ~~`ActivityFeed`~~ | *(Eliminado en v0.3.0)* |
+| ~~`AdminPortal`~~ | *(Eliminado en v0.3.0)* |
 | `AdvancedFilterPanel` | Panel lateral de filtros complejos. |
-| `ApprovalFlowWizard` | Wizard para procesos de aprobación. |
-| `ApprovalTimeline` | Línea de tiempo de estados de aprobación. |
-| `CommentThread` | Sistema de comentarios anidados. |
+| ~~`ApprovalFlowWizard`~~ | *(Eliminado en v0.3.0)* |
+| ~~`ApprovalTimeline`~~ | *(Eliminado en v0.3.0)* |
+| `AppLayout` | Layout de aplicación con sidebar colapsable, header sticky y footer. |
+| ~~`CommentThread`~~ | *(Eliminado en v0.3.0)* |
+| `CupoValidator` | Validador de cupo/límite de crédito con cálculo en tiempo real. |
 | `DataTableAdvanced` | Implementación específica de DataTable. |
 | `EditableTable` | Tabla con edición en línea (Excel-like). |
 | `FactoringCalculator` | Calculadora de costos/rendimiento para operaciones de factoring. |
@@ -115,17 +119,15 @@ Soluciones completas para flujos de negocio comunes.
 | `FactoringKpiCardGroup` | Grupo de FactoringKpiCards con selección activa y navegación por tabs. |
 | `KPIShowcase` | Grid de tarjetas de indicadores clave. |
 | `KPIShowcaseExtended` | Grid de KPIs extendido con variantes avanzadas. |
-| `KpiCard` | Tarjeta individual de KPI. |
-| `MasterDataGrid` | Grid de datos maestro con edición masiva. |
 | `MultiStepWizard` | Asistente paso a paso genérico. |
 | `NotificationCenter` | Centro de notificaciones desplegable. |
 | `OnboardingWizard` | Flujo de bienvenida para usuarios. |
-| `QuickActionToolbar` | Barra de acciones rápidas contextuales. |
+| ~~`QuickActionToolbar`~~ | *(Eliminado en v0.3.0)* |
 | `ReportsConsultation` | Consulta y filtrado de reportes con paginación. |
-| `SearchResults` | Página de resultados de búsqueda. |
+| ~~`SearchResults`~~ | *(Eliminado en v0.3.0)* |
 | `StatsDashboard` | Dashboard de estadísticas generales. |
 | `UploadZone` | Zona de carga especializada. |
-| `UserProfileCard` | Tarjeta de perfil de usuario detallada. |
+| ~~`UserProfileCard`~~ | *(Eliminado en v0.3.0)* |
 
 ## 4. WIDGETS (`/components/widgets`)
 Piezas de UI especializadas, a menudo compuestas de primitivos.
@@ -133,11 +135,12 @@ Piezas de UI especializadas, a menudo compuestas de primitivos.
 | Componente | Descripción |
 |---|---|
 | `ActionButton` | Botón con estados de carga/éxito integrados. |
-| `AuditLogViewer` | Visor de logs de auditoría. |
+| `BookingCalendar` | Calendario interactivo para reservas con selección de horarios. |
+| `ColorBox` | Bloque visual de muestra de color para paletas. |
 | `ColorPresetButton` | Botón para seleccionar presets de color. |
-| `ColorSwatch` | Muestra de color estática. |
-| `ContactForm` | Widget de formulario de contacto. |
-| `ContrastPreview` | Herramienta de accesibilidad para contraste. |
+| `ColorSwatch` | Muestra individual de color con label y valor hex. |
+| `ContactForm` | Formulario de contacto completo con validación. |
+| `ContrastPreview` | Visualizador de contraste WCAG entre colores. |
 | `FilterBar` | Barra horizontal de filtros simples. |
 | `FilterChip` | Chip individual de filtro. |
 | `FormField` | Wrapper de campo de formulario (Legacy). |

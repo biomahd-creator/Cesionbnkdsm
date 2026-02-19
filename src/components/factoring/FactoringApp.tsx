@@ -12,7 +12,6 @@ import type { View, UserRole } from "./FactoringViewRenderer";
 import {
   FileText,
   UserCheck,
-  Beaker,
   LogOut,
   BookOpen,
   ChevronDown,
@@ -23,7 +22,6 @@ import {
   BarChart3,
 } from "lucide-react";
 import { Button } from "../ui/button";
-import { Badge } from "../ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -89,17 +87,6 @@ function FactoringSidebarContent({
             label="Vinculación"
             active={currentView === "vinculacion"}
             onClick={() => navigate("vinculacion")}
-          />
-          <LayoutSidebarItem
-            icon={Beaker}
-            label="Playground"
-            active={currentView === "playground"}
-            onClick={() => navigate("playground")}
-            badge={
-              <Badge className="bg-primary text-primary-foreground text-[10px] px-1.5 py-0">
-                DEV
-              </Badge>
-            }
           />
           <LayoutSidebarItem
             icon={FileText}
@@ -235,11 +222,11 @@ export function FactoringApp({ onExit }: FactoringLayoutProps) {
   const [currentView, setCurrentView] = useState<View>(() => {
     const saved = localStorage.getItem("factoring-current-view");
     const fullscreenViews: View[] = ["c-financia", "c-financia-cliente"];
-    const invalidViews = ["radian-dashboard", "client-dashboard", "operations-dashboard", "payment-tracking", "cession-flow"];
+    const invalidViews = ["radian-dashboard", "client-dashboard", "operations-dashboard", "payment-tracking", "cession-flow", "playground"];
     if (saved && !fullscreenViews.includes(saved as View) && !invalidViews.includes(saved)) {
       return saved as View;
     }
-    return "playground";
+    return "welcome";
   });
   const { hideLoading } = useLoading();
 

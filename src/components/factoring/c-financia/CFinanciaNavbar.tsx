@@ -25,19 +25,19 @@ interface CFinanciaNavbarProps {
 
 export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[rgb(var(--cfinancia-navy))] shadow-lg px-6 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[var(--color-cfinancia-navy)] shadow-lg px-6 flex items-center justify-between">
       <div className="flex items-center gap-10">
         {/* Left: Logo rendered directly */}
         <div className="flex-shrink-0">
           <div className="w-[180px] h-[34px]">
             <svg className="block w-full h-full" fill="none" viewBox="0 0 180 34.2844">
               <g id="Logo">
-                <path d={svgPaths.p336ebef0} fill="#DEFB49" id="Vector" />
-                <path d={svgPaths.pa9f4d00} fill="#43F977" id="Vector_2" />
-                <path d={svgPaths.pe00f180} fill="#1C2D3A" id="Vector_3" />
+                <path d={svgPaths.p336ebef0} fill="var(--color-cfinancia-accent)" id="Vector" />
+                <path d={svgPaths.pa9f4d00} fill="var(--color-cfinancia-accent-hover)" id="Vector_2" />
+                <path d={svgPaths.pe00f180} fill="var(--secondary)" id="Vector_3" />
                 <path d={svgPaths.p4826800} fill="white" id="Vector_4" />
                 <path d={svgPaths.p37d0bd00} fill="white" id="Vector_5" />
-                <path d={svgPaths.p1d381300} fill="#DEFB49" id="Vector_6" />
+                <path d={svgPaths.p1d381300} fill="var(--color-cfinancia-accent)" id="Vector_6" />
                 <path d={svgPaths.p1169ec00} fill="white" id="Vector_7" />
                 <path d={svgPaths.p32bbce00} fill="white" id="Vector_8" />
                 <path d={svgPaths.p2c19dd00} fill="white" id="Vector_9" />
@@ -59,7 +59,7 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
             <button
               className={cn(
                 "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 min-h-[36px]",
-                "bg-[rgb(var(--cfinancia-accent))] text-foreground"
+                "bg-[var(--color-cfinancia-accent)] text-foreground"
               )}
             >
               <TrendingUp className="w-4 h-4 text-foreground" />
@@ -80,7 +80,7 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
                   <ChevronDown className="w-3 h-3 text-white" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48 bg-[rgb(var(--cfinancia-navy))] border-white/10 text-white">
+              <DropdownMenuContent align="start" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
                 <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer" onClick={() => console.log("Eventos Radian clicked")}>
                   Eventos Radian
                 </DropdownMenuItem>
@@ -124,7 +124,7 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
                 <ChevronDown className="w-3 h-3 text-white/50" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48 bg-[rgb(var(--cfinancia-navy))] border-white/10 text-white">
+            <DropdownMenuContent align="end" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
               <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
                 Perfil
               </DropdownMenuItem>

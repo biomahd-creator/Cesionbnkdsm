@@ -76,7 +76,7 @@ interface Invoice {
   ultimoEvento: string;
   estado: string;
   observaciones: string;
-  statusColor: "success" | "warning" | "destructive" | "muted";
+  statusColor: "success" | "warning" | "destructive" | "neutral";
   invoiceNumber: string;
 }
 
@@ -130,7 +130,7 @@ export function FactoringNewOperation({ onBack, onStartOperation }: FactoringNew
         invoices = generateInvoices(4, "NOEL", "No Elegible", "destructive", "Rechazo por Riesgo");
         break;
       case 'descartadas':
-        invoices = generateInvoices(3, "DESC", "Descartada", "muted", "Descarte Manual");
+        invoices = generateInvoices(3, "DESC", "Descartada", "neutral", "Descarte Manual");
         break;
       case 'elegibles':
       default:

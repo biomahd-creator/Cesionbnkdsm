@@ -94,11 +94,11 @@ const versionHistory: VersionEntry[] = [
         title: "Props Coverage 100%",
         items: [
           "**22 Pages Updated**: Added real props documentation extracted from TypeScript interfaces to all pages missing them.",
-          "**Navigation**: MenubarPage, NavigationMenuPage with Radix primitive props.",
+          "**Navigation**: NavigationMenuPage with Radix primitive props.",
           "**Feedback**: ToastPage (Sonner API), EmptyStatePage, ErrorBoundaryPage, BottomSheetPage, LoadingStatesPage.",
           "**Layout**: SidebarShowcasePage with custom HTML props table.",
-          "**Patterns & Advanced**: ActivityFeed, AdvancedFilterPanel, ApprovalTimeline, AuditLogViewer, CommentThread, DataTableAdvanced, InfiniteScroll, MasonryGrid, FAB.",
-          "**Business Components**: ContactForm, InvoiceCard, LiquidityMeter, DocVerification, CollectionTimeline.",
+          "**Patterns & Advanced**: ActivityFeed, AdvancedFilterPanel, ApprovalTimeline, CommentThread, DataTableAdvanced, InfiniteScroll, MasonryGrid, FAB.",
+          "**Business Components**: ContactForm, LiquidityMeter, RiskIndicator, FactoringInvoiceTable.",
         ],
       },
       {
@@ -171,7 +171,7 @@ const versionHistory: VersionEntry[] = [
         items: [
           "**NPM Migration**: Began migration to `@biomahd-creator/financio-design-system`.",
           "**C-Financia Client Flow**: Implemented Endosatario, Negociacion, and Bancaria sections.",
-          "**New Components**: Added ChartLegendItem, ColorBox, and ColorPresetButton.",
+          "**New Components**: Added ChartLegendItem.",
         ],
       },
       {
@@ -343,8 +343,7 @@ const versionHistory: VersionEntry[] = [
         title: "Added - Composed Patterns",
         items: [
           "8 Business Patterns: StatsDashboard, DataTableAdvanced, MultiStepWizard.",
-          "NotificationCenter, QuickActionToolbar, UploadZone.",
-          "ApprovalTimeline, AdvancedFilterPanel.",
+          "NotificationCenter, AdvancedFilterPanel.",
         ],
       },
     ],
@@ -466,7 +465,7 @@ function DSMDashboardContent() {
       name: "Core UI",
       path: "/components/ui/",
       icon: Component,
-      count: 60,
+      count: 65,
       color: "text-primary",
       bgColor: "bg-primary/10",
       borderColor: "border-primary/30",
@@ -476,31 +475,31 @@ function DSMDashboardContent() {
       name: "Advanced",
       path: "/components/advanced/",
       icon: Puzzle,
-      count: 25,
+      count: 19,
       color: "text-yellow-500",
       bgColor: "bg-yellow-500/10",
       borderColor: "border-yellow-500/30",
-      description: "Charts, DataTable, FormBuilder, TreeTable, FileUploader, VirtualizedList.",
+      description: "Charts, DataTable, FormBuilder, TreeTableV2, FileUploader, VirtualizedList.",
     },
     {
       name: "Patterns",
       path: "/components/patterns/",
       icon: Box,
-      count: 27,
+      count: 16,
       color: "text-blue-500",
       bgColor: "bg-blue-500/10",
       borderColor: "border-blue-500/30",
-      description: "StatsDashboard, ApprovalFlow, NotificationCenter, Factoring Selection.",
+      description: "StatsDashboard, NotificationCenter, MultiStepWizard, Factoring Selection.",
     },
     {
       name: "Widgets",
       path: "/components/widgets/",
       icon: LayoutTemplate,
-      count: 19,
+      count: 15,
       color: "text-purple-500",
       bgColor: "bg-purple-500/10",
       borderColor: "border-purple-500/30",
-      description: "Atomic pieces — StatCard, FilterBar, SearchBar, ColorBox.",
+      description: "Atomic pieces — StatCard, FilterBar, SearchBar, NavigationBar.",
     },
   ];
 
@@ -509,15 +508,15 @@ function DSMDashboardContent() {
   // ── Category Breakdown ──
   const categories = [
     { name: "Actions", icon: MousePointerClick, count: 5, color: "text-blue-500", bgColor: "bg-blue-500/10", pageId: "button" },
-    { name: "Forms", icon: FileCode, count: 17, color: "text-green-500", bgColor: "bg-green-500/10", pageId: "input-new" },
-    { name: "Navigation", icon: Layers, count: 8, color: "text-purple-500", bgColor: "bg-purple-500/10", pageId: "tabs-new" },
-    { name: "Data Display", icon: Database, count: 6, color: "text-orange-500", bgColor: "bg-orange-500/10", pageId: "table-new" },
-    { name: "Feedback", icon: MessageSquare, count: 14, color: "text-pink-500", bgColor: "bg-pink-500/10", pageId: "alert-new" },
-    { name: "Layout", icon: Layout, count: 7, color: "text-indigo-500", bgColor: "bg-indigo-500/10", pageId: "accordion" },
-    { name: "Patterns", icon: TrendingUp, count: 18, color: "text-cyan-500", bgColor: "bg-cyan-500/10", pageId: "stats-dashboard" },
-    { name: "Advanced", icon: Sparkles, count: 17, color: "text-yellow-500", bgColor: "bg-yellow-500/10", pageId: "charts" },
-    { name: "Factoring", icon: Award, count: 16, color: "text-emerald-500", bgColor: "bg-emerald-500/10", pageId: "cf-dashboard" },
-    { name: "Widgets", icon: BookOpen, count: 19, color: "text-rose-500", bgColor: "bg-rose-500/10", pageId: "widgets-library" },
+    { name: "Forms", icon: FileCode, count: 17, color: "text-green-500", bgColor: "bg-green-500/10", pageId: "input" },
+    { name: "Navigation", icon: Layers, count: 7, color: "text-purple-500", bgColor: "bg-purple-500/10", pageId: "tabs" },
+    { name: "Data Display", icon: Database, count: 6, color: "text-orange-500", bgColor: "bg-orange-500/10", pageId: "table" },
+    { name: "Feedback", icon: MessageSquare, count: 15, color: "text-pink-500", bgColor: "bg-pink-500/10", pageId: "alert" },
+    { name: "Layout", icon: Layout, count: 6, color: "text-indigo-500", bgColor: "bg-indigo-500/10", pageId: "accordion" },
+    { name: "Patterns", icon: TrendingUp, count: 10, color: "text-cyan-500", bgColor: "bg-cyan-500/10", pageId: "stats-dashboard" },
+    { name: "Advanced", icon: Sparkles, count: 11, color: "text-yellow-500", bgColor: "bg-yellow-500/10", pageId: "charts" },
+    { name: "Factoring", icon: Award, count: 7, color: "text-emerald-500", bgColor: "bg-emerald-500/10", pageId: "cf-dashboard" },
+    { name: "Widgets", icon: BookOpen, count: 15, color: "text-rose-500", bgColor: "bg-rose-500/10", pageId: "widgets-library" },
   ];
 
   return (
@@ -563,7 +562,7 @@ function DSMDashboardContent() {
               <span className="text-xs text-muted-foreground">Showcase Pages</span>
               <FileText className="h-4 w-4 text-blue-500" />
             </div>
-            <div className="text-2xl text-foreground">117</div>
+            <div className="text-2xl text-foreground">92</div>
           </CardContent>
         </Card>
         <Card>
@@ -680,10 +679,10 @@ function DSMDashboardContent() {
                   <CardContent>
                     <ul className="space-y-2">
                       {[
-                        { label: "Core Components", count: 60 },
-                        { label: "Advanced Components", count: 25 },
-                        { label: "Business Patterns", count: 27 },
-                        { label: "Widgets", count: 19 },
+                        { label: "Core Components", count: 65 },
+                        { label: "Advanced Components", count: 19 },
+                        { label: "Business Patterns", count: 16 },
+                        { label: "Widgets", count: 15 },
                       ].map((row) => (
                         <li key={row.label} className="flex justify-between text-sm">
                           <span className="text-muted-foreground">{row.label}</span>

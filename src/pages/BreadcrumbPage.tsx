@@ -145,7 +145,7 @@ export function BreadcrumbDemo() {
                     <DropdownMenuContent align="start">
                       <DropdownMenuItem>Documentation</DropdownMenuItem>
                       <DropdownMenuItem>Themes</DropdownMenuItem>
-                      <DropdownMenuItem>GitHub</DropdownMenuItem>
+                      <DropdownMenuItem>Resources</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </BreadcrumbItem>
@@ -172,7 +172,9 @@ export function BreadcrumbDemo() {
           <BreadcrumbEllipsis />
         </DropdownMenuTrigger>
         <DropdownMenuContent>
-          {/* Menu items */}
+          <DropdownMenuItem>Documentation</DropdownMenuItem>
+          <DropdownMenuItem>Themes</DropdownMenuItem>
+          <DropdownMenuItem>Resources</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </BreadcrumbItem>

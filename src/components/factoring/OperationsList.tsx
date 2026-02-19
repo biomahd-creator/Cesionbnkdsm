@@ -122,12 +122,12 @@ export type CheckState = true | false | "indeterminate";
 
 const estadoOperacionConfig: Record<
   string,
-  { label: string; variant: "default" | "warning-soft-outline" | "success-soft-outline" | "info-soft-outline" | "destructive-soft-outline" }
+  { label: string; variant: "neutral-soft-outline" | "warning-soft-outline" | "success-soft-outline" | "info-soft-outline" | "secondary-soft-outline" | "destructive-soft-outline" }
 > = {
-  Creada:       { label: "Creada",       variant: "default" },
+  Creada:       { label: "Creada",       variant: "neutral-soft-outline" },
   "En Proceso": { label: "En Proceso",   variant: "warning-soft-outline" },
-  Negociada:    { label: "Negociada",    variant: "info-soft-outline" },
-  Endosada:     { label: "Endosada",     variant: "success-soft-outline" },
+  Negociada:    { label: "Negociada",    variant: "secondary-soft-outline" },
+  Endosada:     { label: "Endosada",     variant: "secondary-soft-outline" },
   Liquidada:    { label: "Liquidada",    variant: "success-soft-outline" },
   Rechazada:    { label: "Rechazada",    variant: "destructive-soft-outline" },
 };
@@ -611,7 +611,7 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                     const opCheckState = getOpCheckState(op, selectedIds);
                     const opPagadores = getUniquePagadores(op);
                     const opIsMatch = searchQuery.trim() !== "" && (op.id.includes(searchQuery) || op.cliente.nombre.toLowerCase().includes(searchQuery.toLowerCase()));
-                    const estadoCfg = estadoOperacionConfig[op.estado] || { label: op.estado, variant: "default" };
+                    const estadoCfg = estadoOperacionConfig[op.estado] || { label: op.estado, variant: "neutral-soft-outline" as const };
 
                     // ─── L1: MAIN OPERATION ROW ───
                     rows.push(

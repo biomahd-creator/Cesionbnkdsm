@@ -2,15 +2,13 @@
  * Widgets Components - Central Exports
  */
 
-export { ColorBox } from "./ColorBox";
-export { ColorPresetButton } from "./ColorPresetButton";
+// removed: ColorBox (orphan — no showcase page, no active consumer)
+// removed: ColorPresetButton (orphan — no showcase page, no active consumer)
 export { ColorSwatch } from "./ColorSwatch";
 export { StatusKPICard, type StatusKPICardProps } from "./StatusKPICard";
-// AuditLogViewer moved to /components/patterns/AuditLogViewer.tsx
-// Import from: "../components/patterns/AuditLogViewer" or "../components/patterns"
 export { ContactForm, type ContactFormData } from "./ContactForm";
-export { BookingCalendar, type BookingData } from "./BookingCalendar";
-export { ContrastPreview } from "./ContrastPreview";
+// removed: BookingCalendar (orphan — no showcase page, no active consumer)
+// removed: ContrastPreview (orphan — no showcase page, no active consumer)
 export { GridSystemPreview } from "./GridSystemPreview";
 export { SpacingPreview } from "./SpacingPreview";
 export { InvoiceTable } from "./InvoiceTable";

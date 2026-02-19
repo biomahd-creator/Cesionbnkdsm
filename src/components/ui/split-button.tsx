@@ -9,15 +9,15 @@ import {
   DropdownMenuTrigger,
 } from "./dropdown-menu";
 
-interface Action {
+export interface SplitAction {
   label: string;
   onClick: () => void;
   disabled?: boolean;
 }
 
-interface SplitButtonProps extends ButtonProps {
+export interface SplitButtonProps extends ButtonProps {
   label: string;
-  actions: Action[];
+  actions: SplitAction[];
   onMainAction: () => void;
 }
 
@@ -27,6 +27,8 @@ export function SplitButton({
   onMainAction,
   className,
   variant = "default",
+  size = "default",
+  disabled,
   ...props
 }: SplitButtonProps) {
   return (
@@ -34,7 +36,9 @@ export function SplitButton({
       <Button
         className="rounded-r-none focus:z-10"
         variant={variant}
+        size={size}
         onClick={onMainAction}
+        disabled={disabled}
         {...props}
       >
         {label}
@@ -44,7 +48,9 @@ export function SplitButton({
           <Button
             className="rounded-l-none border-l border-l-primary-foreground/20 px-2 focus:z-10"
             variant={variant}
-            {...props}
+            size={size}
+            disabled={disabled}
+            aria-label="Select action"
           >
             <ChevronDown className="h-4 w-4" />
           </Button>

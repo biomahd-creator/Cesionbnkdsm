@@ -1003,8 +1003,8 @@ export function FactoringSelectionPage({ onOperationSummaryChange }: FactoringSe
     const config = {
       eligible: { label: "Elegible", variant: "success-soft-outline" as const, icon: CheckCircle2 },
       pending: { label: "Pendiente", variant: "warning-soft-outline" as const, icon: AlertCircle },
-      "not-eligible": { label: "No Elegible", variant: "destructive-soft-outline" as const, icon: XCircle },
-      discarded: { label: "Descartada", variant: "info-soft-outline" as const, icon: FileX },
+      "not-eligible": { label: "No Elegible", variant: "neutral-soft-outline" as const, icon: XCircle },
+      discarded: { label: "Descartada", variant: "neutral-soft-outline" as const, icon: FileX },
     };
 
     const { label, variant, icon: Icon } = config[status];

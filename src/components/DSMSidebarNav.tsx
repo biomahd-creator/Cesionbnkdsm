@@ -1,7 +1,7 @@
 /**
  * DSMSidebarNav — Sidebar navigation for the DSM Showcase
  *
- * Renders 120+ component pages organized in collapsible sections
+ * Renders 93 component pages organized in collapsible sections
  * using LayoutSidebar* sub-components from the DSM itself.
  * Search functionality filters across all items.
  */
@@ -24,10 +24,8 @@ import {
   Zap,
   Clapperboard,
   ImageIcon,
-  BookOpen,
   Box,
   Briefcase,
-  Package,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -89,22 +87,22 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       icon: FormInput,
       count: 17,
       items: [
-        { id: "input-new", label: "Input" },
+        { id: "input", label: "Input" },
         { id: "input-file", label: "Input File" },
-        { id: "textarea-new", label: "Textarea" },
+        { id: "textarea", label: "Textarea" },
         { id: "textarea-autoresize", label: "Textarea Autoresize" },
-        { id: "select-new", label: "Select" },
-        { id: "checkbox-new", label: "Checkbox" },
+        { id: "select", label: "Select" },
+        { id: "checkbox", label: "Checkbox" },
         { id: "radio-group", label: "Radio Group" },
         { id: "switch", label: "Switch" },
         { id: "slider", label: "Slider" },
-        { id: "calendar-new", label: "Calendar" },
-        { id: "date-picker-new", label: "Date Picker" },
+        { id: "calendar", label: "Calendar" },
+        { id: "date-picker", label: "Date Picker" },
         { id: "date-range-picker", label: "Date Range Picker" },
-        { id: "combobox-new", label: "Combobox" },
+        { id: "combobox", label: "Combobox" },
         { id: "multi-select", label: "Multi Select" },
-        { id: "form-new", label: "Form" },
-        { id: "input-otp-new", label: "Input OTP" },
+        { id: "form", label: "Form" },
+        { id: "input-otp", label: "Input OTP" },
         { id: "label", label: "Label" },
       ],
     },
@@ -112,13 +110,12 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "navigation",
       label: "Navigation",
       icon: Compass,
-      count: 8,
+      count: 7,
       items: [
-        { id: "tabs-new", label: "Tabs" },
+        { id: "tabs", label: "Tabs" },
         { id: "breadcrumb", label: "Breadcrumb" },
         { id: "command", label: "Command" },
         { id: "dropdown-menu", label: "Dropdown Menu" },
-        { id: "menubar", label: "Menubar" },
         { id: "navigation-menu", label: "Navigation Menu" },
         { id: "pagination", label: "Pagination" },
         { id: "context-menu", label: "Context Menu" },
@@ -130,9 +127,9 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       icon: Grid3x3,
       count: 6,
       items: [
-        { id: "card-new", label: "Card" },
-        { id: "table-new", label: "Table" },
-        { id: "badge-new", label: "Badge" },
+        { id: "card", label: "Card" },
+        { id: "table", label: "Table" },
+        { id: "badge", label: "Badge" },
         { id: "avatar", label: "Avatar" },
         { id: "hover-card", label: "Hover Card" },
         { id: "separator", label: "Separator" },
@@ -144,9 +141,9 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       icon: MessageSquare,
       count: 15,
       items: [
-        { id: "alert-new", label: "Alert" },
+        { id: "alert", label: "Alert" },
         { id: "alert-dialog", label: "Alert Dialog" },
-        { id: "dialog-new", label: "Dialog" },
+        { id: "dialog", label: "Dialog" },
         { id: "toast", label: "Toast (Sonner)" },
         { id: "tooltip", label: "Tooltip" },
         { id: "progress", label: "Progress" },
@@ -165,12 +162,9 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "layout",
       label: "Layout",
       icon: LayoutGrid,
-      count: 9,
+      count: 6,
       items: [
         { id: "accordion", label: "Accordion" },
-        { id: "carousel", label: "Carousel" },
-        { id: "collapsible", label: "Collapsible" },
-        { id: "resizable", label: "Resizable" },
         { id: "scroll-area", label: "Scroll Area" },
         { id: "sidebar-showcase", label: "Sidebar" },
         { id: "grid-showcase", label: "Grid Showcase" },
@@ -188,24 +182,16 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "patterns",
       label: "Patterns",
       icon: Layers,
-      count: 18,
+      count: 10,
       items: [
         { id: "stats-dashboard", label: "Stats Dashboard" },
         { id: "data-table-advanced", label: "Data Table Advanced" },
         { id: "advanced-filter", label: "Advanced Filter Panel" },
         { id: "editable-table", label: "Editable Table" },
-        { id: "invoice-generator", label: "Invoice Generator" },
-        { id: "invoice-upload", label: "Invoice Upload" },
-        { id: "quick-action", label: "Quick Action Toolbar" },
-        { id: "approval-timeline", label: "Approval Timeline" },
         { id: "multi-step-wizard", label: "Multi-Step Wizard" },
         { id: "multi-step-form", label: "Multi-Step Form" },
         { id: "multi-step-form-vertical", label: "Multi-Step Form Vertical" },
         { id: "multi-step-wizard-vertical", label: "Multi-Step Wizard Vertical" },
-        { id: "activity-feed", label: "Activity Feed" },
-        { id: "comment-thread", label: "Comment Thread" },
-        { id: "search-results", label: "Search Results" },
-        { id: "user-profile", label: "User Profile" },
         { id: "notification-center", label: "Notification Center" },
         { id: "contact-form", label: "Contact Form" },
       ],
@@ -214,25 +200,18 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "advanced",
       label: "Advanced",
       icon: Sparkles,
-      count: 18,
+      count: 11,
       items: [
         { id: "charts", label: "Charts" },
         { id: "data-visualization", label: "Data Visualization" },
         { id: "advanced-forms", label: "Advanced Forms" },
-        { id: "business-components", label: "Business Components" },
         { id: "data-table", label: "Data Table" },
-        { id: "tree-table", label: "Tree Table" },
-        { id: "tree-table-v2", label: "Tree Table v2" },
-        { id: "export-data", label: "Export Data" },
-        { id: "rating", label: "Rating" },
+        { id: "tree-table-v2", label: "Tree Table" },
         { id: "date-range-advanced", label: "Date Range" },
         { id: "file-uploader", label: "File Uploader" },
         { id: "rich-text-editor", label: "Rich Text Editor" },
-        { id: "timeline", label: "Timeline" },
         { id: "virtualized-list", label: "Virtualized List" },
         { id: "infinite-scroll", label: "Infinite Scroll" },
-        { id: "masonry-grid", label: "Masonry Grid" },
-        { id: "transfer-list", label: "Transfer List" },
         { id: "table-catalog", label: "Table Catalog" },
       ],
     },
@@ -240,21 +219,16 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
 
   // ═══════════════════════════════════════════════════
   // 3. FACTORING
-  // ═══════════════════════════════════════════════════
+  // ══════════════════════════════════════════════════
   const factoringSections: MenuSection[] = [
     {
       id: "factoring-components",
       label: "Factoring Components",
       icon: Box,
-      count: 8,
+      count: 3,
       items: [
         { id: "liquidity-meter-component", label: "Liquidity Meter" },
         { id: "risk-indicator", label: "Risk Indicator" },
-        { id: "rate-display", label: "Rate Display" },
-        { id: "invoice-card", label: "Invoice Card" },
-        { id: "payor-card", label: "Payor Card" },
-        { id: "collection-timeline", label: "Collection Timeline" },
-        { id: "doc-verification", label: "Doc Verification" },
         { id: "factoring-invoice-table", label: "Invoice Table" },
       ],
     },
@@ -262,17 +236,12 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "factoring-pages",
       label: "Factoring Pages",
       icon: Briefcase,
-      count: 9,
+      count: 4,
       items: [
         { id: "cf-dashboard", label: "Main Dashboard" },
-        { id: "admin-portal", label: "Admin Portal" },
-        { id: "factoring-dashboard", label: "Factoring Dashboard" },
         { id: "operations-list", label: "Operations List" },
         { id: "factoring-selection", label: "Invoice Selection" },
-        { id: "approval-flow", label: "Approval Flow" },
         { id: "kpi-showcase", label: "KPI Showcase" },
-        { id: "liquidity-calculator", label: "Liquidity Calculator" },
-        { id: "onboarding", label: "Onboarding" },
       ],
     },
   ];
@@ -283,6 +252,7 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
   const designSystemPages: MenuItem[] = [
     { id: "brand-layout", label: "Brand Layout" },
     { id: "elevation", label: "Elevation & Shadows" },
+    { id: "design-tokens", label: "Design Tokens" },
   ];
 
   const resourcePages: { id: PageId; label: string; icon: LucideIcon }[] = [
@@ -290,8 +260,6 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
     { id: "animations", label: "Animations", icon: Clapperboard },
     { id: "animation-system", label: "Animation System", icon: Clapperboard },
     { id: "icon-gallery", label: "Icon Gallery", icon: ImageIcon },
-    { id: "audit-log", label: "Audit Log Viewer", icon: BookOpen },
-    { id: "npm-consumer-test", label: "NPM CSS Health Check", icon: Package },
   ];
 
   // ═══════════════════════════════════════════════════

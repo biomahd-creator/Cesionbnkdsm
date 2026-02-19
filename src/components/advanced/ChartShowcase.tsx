@@ -134,7 +134,7 @@ export function ChartShowcase() {
                     `${name}: ${(percent * 100).toFixed(0)}%`
                   }
                   outerRadius={120}
-                  fill="#8884d8"
+                  fill="var(--primary)"
                   dataKey="value"
                 >
                   {pieData.map((entry, index) => (

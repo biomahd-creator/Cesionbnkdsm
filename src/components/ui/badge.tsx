@@ -58,6 +58,22 @@ const badgeVariants = cva(
           "border-amber-300 bg-amber-100 text-amber-700 [a&]:hover:bg-amber-200 dark:border-amber-500/40 dark:bg-amber-500/15 dark:text-amber-400 dark:[a&]:hover:bg-amber-500/25",
         "info-soft-outline":
           "border-blue-300 bg-blue-100 text-blue-700 [a&]:hover:bg-blue-200 dark:border-blue-500/40 dark:bg-blue-500/15 dark:text-blue-400 dark:[a&]:hover:bg-blue-500/25",
+
+        /* ── Neutral (slate — draft, created, discarded, inactive, archived) ── */
+        "neutral-soft":
+          "border-transparent bg-slate-100 text-slate-600 [a&]:hover:bg-slate-200 dark:bg-slate-700/40 dark:text-slate-300 dark:[a&]:hover:bg-slate-700/60",
+        "neutral-soft-outline":
+          "border-slate-300 bg-slate-100 text-slate-600 [a&]:hover:bg-slate-200 dark:border-slate-600/50 dark:bg-slate-700/40 dark:text-slate-300 dark:[a&]:hover:bg-slate-700/60",
+
+        /* ── Secondary (navy brand — endorsed, negotiated, brand-flow states) ── */
+        "secondary-soft":
+          "border-transparent bg-secondary/10 text-secondary [a&]:hover:bg-secondary/20 dark:bg-secondary/25 dark:text-slate-300 dark:[a&]:hover:bg-secondary/35",
+        "secondary-soft-outline":
+          "border-secondary/30 bg-secondary/10 text-secondary [a&]:hover:bg-secondary/20 dark:border-secondary/50 dark:bg-secondary/25 dark:text-slate-300 dark:[a&]:hover:bg-secondary/35",
+
+        /* ── Purple (special / premium — placeholder hasta paleta brand) ── */
+        "purple-soft-outline":
+          "border-purple-300 bg-purple-100 text-purple-700 [a&]:hover:bg-purple-200 dark:border-purple-500/40 dark:bg-purple-500/15 dark:text-purple-400 dark:[a&]:hover:bg-purple-500/25",
       },
     },
     defaultVariants: {

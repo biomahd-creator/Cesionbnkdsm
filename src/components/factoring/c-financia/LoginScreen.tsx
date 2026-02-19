@@ -30,7 +30,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
             <g>
               <path d={svgPaths.p2b2bf200} fill="white" />
               <path d={svgPaths.p24669f00} fill="white" />
-              <path d={svgPaths.p1f0ea300} fill="rgb(var(--cfinancia-accent-hover))" />
+              <path d={svgPaths.p1f0ea300} fill="var(--color-cfinancia-accent-hover)" />
               <path d={svgPaths.p8e7b700} fill="white" />
               <path d={svgPaths.p3aba2500} fill="white" />
               <path d={svgPaths.p258fa100} fill="white" />

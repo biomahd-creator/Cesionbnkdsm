@@ -53,7 +53,7 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
       <CFinanciaNavbar variant="full" onLogout={onLogout} />
       
       {/* Background Gradient */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1C2D3A] via-[#2B6756] to-[#1C2D3A]" />
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-secondary via-[#2B6756] to-secondary" />
       
       {/* Main Grid */}
       <div className="relative z-10 w-full max-w-[1440px] mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 flex-1 items-center pt-[64px]">
@@ -76,10 +76,10 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
                             <svg className="block w-[64px] h-[58px]" fill="none" viewBox="0 0 64 58">
                                 <g>
                                     <path d={svgPaths.p1e79b00} fill="#2B6756" fillOpacity="0.1" />
-                                    <path d={svgPaths.p315c7700} fill="#171717" className="group-hover:fill-primary" />
-                                    <path d={svgPaths.p2481400} fill="#171717" className="group-hover:fill-primary" />
-                                    <path d={svgPaths.p3c0cff80} fill="#DEFB49" />
-                                    <path d={svgPaths.p4304480} fill="#DEFB49" />
+                                    <path d={svgPaths.p315c7700} fill="currentColor" className="text-foreground group-hover:text-primary" />
+                                    <path d={svgPaths.p2481400} fill="currentColor" className="text-foreground group-hover:text-primary" />
+                                    <path d={svgPaths.p3c0cff80} fill="var(--color-cfinancia-accent)" />
+                                    <path d={svgPaths.p4304480} fill="var(--color-cfinancia-accent)" />
                                 </g>
                             </svg>
                         </div>
@@ -100,12 +100,12 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
                              <svg className="block w-[52px] h-[58px]" fill="none" viewBox="0 0 52 58">
                                 <g>
                                     <path d={svgPaths.p2eea1600} fill="#2B6756" fillOpacity="0.1" />
-                                    <path d={svgPaths.p6218f80} fill="#19352D" className="group-hover:fill-primary" />
-                                    <path d={svgPaths.p134c5900} fill="#19352D" />
-                                    <path d={svgPaths.p2b9ee100} fill="#19352D" />
-                                    <path d={svgPaths.p6c0e880} fill="#19352D" />
-                                    <path d={svgPaths.p20bc7c00} fill="#DEFB49" />
-                                    <path d={svgPaths.p3daf1300} fill="#DEFB49" />
+                                    <path d={svgPaths.p6218f80} fill="currentColor" className="text-foreground group-hover:text-primary" />
+                                    <path d={svgPaths.p134c5900} fill="currentColor" className="text-foreground" />
+                                    <path d={svgPaths.p2b9ee100} fill="currentColor" className="text-foreground" />
+                                    <path d={svgPaths.p6c0e880} fill="currentColor" className="text-foreground" />
+                                    <path d={svgPaths.p20bc7c00} fill="var(--color-cfinancia-accent)" />
+                                    <path d={svgPaths.p3daf1300} fill="var(--color-cfinancia-accent)" />
                                 </g>
                             </svg>
                         </div>
@@ -126,8 +126,8 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
                             <svg className="block w-[60px] h-[60px]" fill="none" viewBox="0 0 60 60">
                                 <g>
                                     <path d={svgPaths.p4665b00} fill="#004646" fillOpacity="0.10196" />
-                                    <path d={svgPaths.pca0d100} fill="#333333" className="group-hover:fill-primary" />
-                                    <path d={svgPaths.paea0280} fill="#DEFB49" />
+                                    <path d={svgPaths.pca0d100} fill="currentColor" className="text-foreground group-hover:text-primary" />
+                                    <path d={svgPaths.paea0280} fill="var(--color-cfinancia-accent)" />
                                 </g>
                             </svg>
                         </div>
@@ -147,7 +147,7 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
                     <svg className="block w-full h-full" fill="none" viewBox="0 0 256 31">
                         <path d={svgPaths.p34620400} fill="white" />
                         <path d={svgPaths.p1b87caa0} fill="white" />
-                        <path d={svgPaths.p892ebf0} fill="#DEFB49" />
+                        <path d={svgPaths.p892ebf0} fill="var(--color-cfinancia-accent)" />
                         <path d={svgPaths.p23ad1a00} fill="white" />
                         <path d={svgPaths.pc919e00} fill="white" />
                         <path d={svgPaths.p2bbc1b80} fill="white" />
@@ -163,9 +163,9 @@ export function ModulosScreen({ onSelectModule, onLogout }: ModulosScreenProps) 
              
              <div className="mt-20 w-[487px] h-[489px]">
                 <svg className="block w-full h-full" fill="none" viewBox="0 0 487 489">
-                    <path d="M243.5 0C109.016 0 0 109.357 0 244.261C0 379.165 109.016 488.522 243.5 488.522C377.984 488.522 487 379.165 487 244.261C487 109.357 377.984 0 243.5 0Z" fill="#DEFB49" />
-                    <path d="M341.661 214.583C364.775 214.583 383.513 195.845 383.513 172.731C383.513 149.617 364.775 130.88 341.661 130.88C318.547 130.88 299.809 149.617 299.809 172.731C299.809 195.845 318.547 214.583 341.661 214.583Z" fill="#43F977" />
-                    <path d="M362.35 279.172L404.127 288.848C404.665 288.956 404.934 289.496 404.772 290.037L401.278 300.091C377.781 367.44 316.971 409.385 248.849 409.385C236.214 409.385 223.31 407.926 210.352 404.953C166.801 394.899 130.078 369.008 106.959 332.036C83.8389 295.064 76.5804 250.74 86.5273 207.174C96.3666 164.148 121.529 127.662 157.284 104.528C188.039 84.6362 224.17 76.204 261.86 80.0417C262.344 80.0417 262.667 80.4742 262.667 80.9606L262.506 104.96C262.398 122.743 249.655 138.148 232.235 140.797C195.459 146.364 160.026 172.58 148.843 221.606C143.036 247.065 146.423 274.47 158.198 296.739C167.554 314.36 186.48 337.225 223.847 345.873C276.861 358.143 316.864 329.117 335.521 292.469C340.252 282.253 351.436 276.794 362.35 279.28V279.172Z" fill="#1C2D3A" />
+                    <path d="M243.5 0C109.016 0 0 109.357 0 244.261C0 379.165 109.016 488.522 243.5 488.522C377.984 488.522 487 379.165 487 244.261C487 109.357 377.984 0 243.5 0Z" fill="var(--color-cfinancia-accent)" />
+                    <path d="M341.661 214.583C364.775 214.583 383.513 195.845 383.513 172.731C383.513 149.617 364.775 130.88 341.661 130.88C318.547 130.88 299.809 149.617 299.809 172.731C299.809 195.845 318.547 214.583 341.661 214.583Z" fill="var(--color-cfinancia-accent-hover)" />
+                    <path d="M362.35 279.172L404.127 288.848C404.665 288.956 404.934 289.496 404.772 290.037L401.278 300.091C377.781 367.44 316.971 409.385 248.849 409.385C236.214 409.385 223.31 407.926 210.352 404.953C166.801 394.899 130.078 369.008 106.959 332.036C83.8389 295.064 76.5804 250.74 86.5273 207.174C96.3666 164.148 121.529 127.662 157.284 104.528C188.039 84.6362 224.17 76.204 261.86 80.0417C262.344 80.0417 262.667 80.4742 262.667 80.9606L262.506 104.96C262.398 122.743 249.655 138.148 232.235 140.797C195.459 146.364 160.026 172.58 148.843 221.606C143.036 247.065 146.423 274.47 158.198 296.739C167.554 314.36 186.48 337.225 223.847 345.873C276.861 358.143 316.864 329.117 335.521 292.469C340.252 282.253 351.436 276.794 362.35 279.28V279.172Z" fill="var(--secondary)" />
                 </svg>
              </div>
         </div>

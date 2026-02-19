@@ -34,6 +34,61 @@ import "./styles/tour.css";
 
 type AppMode = "dsm" | "factoring";
 
+/**
+ * Lookup: PageId → human-readable label
+ * Source of truth: mirrors DSMSidebarNav labels.
+ */
+const PAGE_LABELS: Partial<Record<string, string>> = {
+  home: "Home", "dsm-dashboard": "DSM Dashboard",
+  button: "Button", toggle: "Toggle", "toggle-group": "Toggle Group",
+  "split-button": "Split Button", fab: "Floating Action Button",
+  input: "Input", "input-file": "Input File",
+  textarea: "Textarea", "textarea-autoresize": "Textarea Autoresize",
+  select: "Select", checkbox: "Checkbox",
+  "radio-group": "Radio Group", switch: "Switch", slider: "Slider",
+  calendar: "Calendar",
+  "date-picker": "Date Picker",
+  "date-range-picker": "Date Range Picker", combobox: "Combobox",
+  "multi-select": "Multi Select", form: "Form",
+  "input-otp": "Input OTP", label: "Label",
+  tabs: "Tabs", breadcrumb: "Breadcrumb", command: "Command",
+  "dropdown-menu": "Dropdown Menu",
+  "navigation-menu": "Navigation Menu", pagination: "Pagination", "context-menu": "Context Menu",
+  card: "Card", table: "Table",
+  badge: "Badge", avatar: "Avatar", "hover-card": "Hover Card", separator: "Separator",
+  alert: "Alert", "alert-dialog": "Alert Dialog",
+  dialog: "Dialog", toast: "Toast (Sonner)", tooltip: "Tooltip",
+  progress: "Progress", "progress-with-range": "Progress with Range",
+  skeleton: "Skeleton", sheet: "Sheet", drawer: "Drawer", popover: "Popover",
+  "empty-state": "Empty State", "error-boundary": "Error Boundary",
+  "bottom-sheet": "Bottom Sheet", "loading-states": "Loading States",
+  accordion: "Accordion", "scroll-area": "Scroll Area", "sidebar-showcase": "Sidebar",
+  "grid-showcase": "Grid Showcase", "layout-showcase": "Layout Showcase", "app-layout": "App Layout",
+  "stats-dashboard": "Stats Dashboard", "data-table-advanced": "Data Table Advanced",
+  "advanced-filter": "Advanced Filter Panel", "editable-table": "Editable Table",
+  "multi-step-wizard": "Multi-Step Wizard", "multi-step-form": "Multi-Step Form",
+  "multi-step-form-vertical": "Multi-Step Form Vertical", "multi-step-wizard-vertical": "Multi-Step Wizard Vertical",
+  "notification-center": "Notification Center", "contact-form": "Contact Form",
+  charts: "Charts", "data-visualization": "Data Visualization",
+  "advanced-forms": "Advanced Forms",
+  "data-table": "Data Table", "tree-table-v2": "Tree Table",
+  "date-range-advanced": "Date Range",
+  "file-uploader": "File Uploader", "rich-text-editor": "Rich Text Editor",
+  "virtualized-list": "Virtualized List",
+  "infinite-scroll": "Infinite Scroll", "table-catalog": "Table Catalog",
+  "liquidity-meter-component": "Liquidity Meter", "risk-indicator": "Risk Indicator",
+  "factoring-invoice-table": "Invoice Table",
+  "cf-dashboard": "Main Dashboard",
+  "operations-list": "Operations List",
+  "factoring-selection": "Invoice Selection",
+  "kpi-showcase": "KPI Showcase",
+  "brand-layout": "Brand Layout", elevation: "Elevation & Shadows",
+  "design-tokens": "Design Tokens",
+  "help-system-demo": "Help System", animations: "Animations", "animation-system": "Animation System",
+  "icon-gallery": "Icon Gallery",
+  "widgets-library": "UI Widgets",
+};
+
 function AppContent() {
   const { theme, toggleTheme } = useTheme();
   const [activePage, setActivePage] = useState<PageId>(() => {
@@ -121,6 +176,19 @@ function AppContent() {
                 }
                 actions={
                   <div className="flex items-center gap-2">
+                    {/* Page ID indicator — for auditing */}
+                    {activePage !== "home" && (
+                      <div className="hidden sm:flex items-center gap-1.5 rounded-md border border-border bg-muted/60 px-2.5 py-1 text-xs text-muted-foreground select-text">
+                        <span className="text-foreground font-medium">
+                          {PAGE_LABELS[activePage] ?? activePage}
+                        </span>
+                        <span className="text-muted-foreground/40">·</span>
+                        <code className="font-mono text-[11px] text-primary/80 bg-primary/8 px-1 py-0.5 rounded">
+                          {activePage}
+                        </code>
+                      </div>
+                    )}
+
                     {/* Help System */}
                     <HelpCenter variant="header" />
 
@@ -173,7 +241,7 @@ function AppContent() {
                 }
                 right={
                   <div className="flex items-center gap-2 text-xs">
-                    <span>120+ Components</span>
+                    <span>115 Components</span>
                     <span>·</span>
                     <span>WCAG 2.1 AA</span>
                     <span>·</span>

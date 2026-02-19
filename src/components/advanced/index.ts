@@ -8,24 +8,24 @@ export * from "./Combobox";
 export * from "./ConditionalForm";
 export * from "./DataTable";
 export * from "./DatePickerWithPresets";
-export * from "./ExportData";
+// removed: ExportData
 export * from "./FileUploader";
 export * from "./FormBuilder";
 export * from "./FunnelChart";
 export * from "./GaugeChart";
 export * from "./Heatmap";
 export * from "./InfiniteScroll";
-export * from "./InvoiceGenerator";
-export * from "./MasonryGrid";
+// removed: InvoiceGenerator
+// removed: MasonryGrid
 export * from "./MasterDataGrid";
 export * from "./MultiColumnForm";
-export * from "./RatingComponent";
+// removed: RatingComponent
 export * from "./RichTextEditor";
 export * from "./Sparkline";
 export * from "./StepIndicator";
-export * from "./Timeline";
-export * from "./TransferList";
-export * from "./TreeTable";
+// removed: Timeline
+// removed: TransferList
+// removed: TreeTable (v1 — superseded by TreeTableV2)
 export * from "./TreeTableV2";
 export * from "./TreemapChart";
 export * from "./VirtualizedList";

@@ -653,11 +653,6 @@ function MyPage() {
                 <p className="text-xs text-muted-foreground mt-1">Scale 1.02</p>
               </Card>
 
-              <Card className="hover-glow cursor-pointer p-6 text-center">
-                <p className="text-sm font-medium">hover-glow</p>
-                <p className="text-xs text-muted-foreground mt-1">Ring around</p>
-              </Card>
-
               <Card className="hover-brightness cursor-pointer p-6 text-center">
                 <p className="text-sm font-medium">hover-brightness</p>
                 <p className="text-xs text-muted-foreground mt-1">Brightness 1.1</p>
@@ -669,7 +664,6 @@ function MyPage() {
               code={`// Apply directly as className
 <Card className="hover-lift">...</Card>
 <Card className="hover-scale">...</Card>
-<Button className="hover-glow">...</Button>
 <img className="hover-brightness" />`}
             />
           </CardContent>
@@ -753,7 +747,7 @@ export function AnimationSystemPage() {
   return (
     <ComponentShowcase
       title="Animation System"
-      description="Global animation system with layered architecture: Components (PageTransition, FadeInView, StaggerContainer, InlineSpinner, ButtonLoading), Hooks (useLoadingState, useAsyncOperation, useGlobalLoading, useScrollToTop), Skeleton Variants (Table, Card, Form, List, KPI, Dashboard), and CSS Utilities (hover-lift, hover-scale, hover-glow, focus-ring, fade-in, slide-in-right, zoom-in)."
+      description="Global animation system with layered architecture: Components (PageTransition, FadeInView, StaggerContainer, InlineSpinner, ButtonLoading), Hooks (useLoadingState, useAsyncOperation, useGlobalLoading, useScrollToTop), Skeleton Variants (Table, Card, Form, List, KPI, Dashboard), and CSS Utilities (hover-lift, hover-scale, focus-ring, fade-in, slide-in-right, zoom-in)."
       category="Design System"
       preview={<AnimationSystemContent />}
       code={`// Components
@@ -790,7 +784,7 @@ const { isLoading, startLoading, stopLoading } = useLoadingState({
   minDuration: 500,
 });
 
-// CSS classes: hover-lift, hover-scale, hover-glow, focus-ring, fade-in`}
+// CSS classes: hover-lift, hover-scale, focus-ring, fade-in`}
       props={[
         { name: "PageTransition variant", type: "'page' | 'fade' | 'scale'", default: "'page'", description: "Animation variant for page-level transitions." },
         { name: "FadeInView delay", type: "number", default: "0", description: "Delay in seconds before the fade animation starts." },

@@ -29,14 +29,11 @@ interface TreemapChartProps {
 }
 
 const DEFAULT_COLORS = [
-  "#3b82f6", // blue-500
-  "#8b5cf6", // violet-500
-  "#ec4899", // pink-500
-  "#f59e0b", // amber-500
-  "#10b981", // emerald-500
-  "#06b6d4", // cyan-500
-  "#f97316", // orange-500
-  "#a855f7", // purple-500
+  "var(--chart-1)",
+  "var(--chart-2)",
+  "var(--chart-3)",
+  "var(--chart-4)",
+  "var(--chart-5)",
 ];
 
 interface CustomContentProps {

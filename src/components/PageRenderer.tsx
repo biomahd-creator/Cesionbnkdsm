@@ -1,14 +1,5 @@
 import { PageId } from "./types/PageId";
 
-/**
- * PageRenderer - Maps all PageIds to their page components.
- *
- * Requirements for each page:
- *   1. Import the component from ../pages barrel
- *   2. Add a case in the switch below
- *   3. Ensure PageId exists in /components/types/PageId.ts
- */
-
 import {
   HomePage,
   DSMDashboardPage,
@@ -24,8 +15,6 @@ import {
   ToastPage,
   DrawerPage,
   HoverCardPage,
-  ResizablePage,
-  MenubarPage,
   NavigationMenuPage,
   ContextMenuPage,
   InputPage,
@@ -57,31 +46,18 @@ import {
   PopoverPage,
   SheetPage,
   AccordionPage,
-  CarouselPage,
-  CollapsiblePage,
   ScrollAreaPage,
   ChartsPage,
-  RatingPage,
   DateRangePickerPage,
   FileUploaderPage,
   RichTextEditorPage,
   MultiSelectPage,
-  TimelinePage,
   DataTablePage,
-  TreeTablePage,
   TreeTableV2Page,
-  ExportDataPage,
-  InvoiceGeneratorPage,
-  InvoiceUploadPage,
   KpiShowcasePage,
   FactoringSelectionShowcasePage,
-  FactoringDashboardPage,
   OperationsListPage,
-  ApprovalFlowPage,
-  LiquidityCalculatorPage,
-  OnboardingPage,
   CFDashboardPage,
-  AdminPortalPage,
   GridShowcasePage,
   SidebarShowcasePage,
   LayoutShowcasePage,
@@ -89,7 +65,6 @@ import {
   MultiStepFormPage,
   MultiStepFormVerticalPage,
   MultiStepWizardVerticalPage,
-  BusinessComponentsPage,
   DataVisualizationPage,
   AdvancedFormsPage,
   HelpSystemDemoPage,
@@ -97,28 +72,14 @@ import {
   AnimationSystemPage,
   IconGalleryPage,
   StatsDashboardPage,
-  QuickActionToolbarPage,
   DataTableAdvancedPage,
   AdvancedFilterPanelPage,
-  ApprovalTimelinePage,
   VirtualizedListPage,
   InfiniteScrollPage,
-  MasonryGridPage,
-  TransferListPage,
   LiquidityMeterPage,
   RiskIndicatorPage,
-  RateDisplayPage,
-  InvoiceCardPage,
-  PayorCardPage,
-  CollectionTimelinePage,
-  DocVerificationPage,
-  AuditLogViewerPage,
   ContactFormPage,
   NotificationCenterPage,
-  ActivityFeedPage,
-  UserProfilePage,
-  CommentThreadPage,
-  SearchResultsPage,
   LoadingStatesPage,
   EmptyStatePage,
   ErrorBoundaryPage,
@@ -132,7 +93,7 @@ import {
   FactoringInvoiceTablePage,
   AppLayoutPage,
   EditableTablePage,
-  NpmConsumerTestPage,
+  DesignTokensPage,
 } from "../pages";
 
 interface PageRendererProps {
@@ -149,7 +110,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
 
     // COMPONENTS > Actions
     case "button":
-    case "button-new":
       return <ButtonPage />;
     case "toggle":
       return <TogglePage />;
@@ -162,20 +122,16 @@ export function PageRenderer({ pageId }: PageRendererProps) {
 
     // COMPONENTS > Forms
     case "input":
-    case "input-new":
       return <InputPage />;
     case "input-file":
       return <InputFilePage />;
     case "textarea":
-    case "textarea-new":
       return <TextareaPage />;
     case "textarea-autoresize":
       return <TextareaAutoresizePage />;
     case "select":
-    case "select-new":
       return <SelectPage />;
     case "checkbox":
-    case "checkbox-new":
       return <CheckboxPage />;
     case "radio-group":
       return <RadioGroupPage />;
@@ -184,30 +140,24 @@ export function PageRenderer({ pageId }: PageRendererProps) {
     case "slider":
       return <SliderPage />;
     case "calendar":
-    case "calendar-new":
       return <CalendarPage />;
     case "label":
       return <LabelPage />;
     case "date-picker":
-    case "date-picker-new":
       return <DatePickerPage />;
     case "date-range-picker":
       return <DateRangePickerPage />;
     case "combobox":
-    case "combobox-new":
       return <ComboboxPage />;
     case "multi-select":
       return <MultiSelectPage />;
     case "form":
-    case "form-new":
       return <FormPage />;
     case "input-otp":
-    case "input-otp-new":
       return <InputOTPPage />;
 
     // COMPONENTS > Navigation
     case "tabs":
-    case "tabs-new":
       return <TabsPage />;
     case "breadcrumb":
       return <BreadcrumbPage />;
@@ -217,8 +167,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <DropdownMenuPage />;
     case "pagination":
       return <PaginationPage />;
-    case "menubar":
-      return <MenubarPage />;
     case "navigation-menu":
       return <NavigationMenuPage />;
     case "context-menu":
@@ -226,13 +174,10 @@ export function PageRenderer({ pageId }: PageRendererProps) {
 
     // COMPONENTS > Data Display
     case "card":
-    case "card-new":
       return <CardPage />;
     case "badge":
-    case "badge-new":
       return <BadgePage />;
     case "table":
-    case "table-new":
       return <TablePage />;
     case "avatar":
       return <AvatarPage />;
@@ -243,12 +188,10 @@ export function PageRenderer({ pageId }: PageRendererProps) {
 
     // COMPONENTS > Feedback
     case "alert":
-    case "alert-new":
       return <AlertPage />;
     case "alert-dialog":
       return <AlertDialogPage />;
     case "dialog":
-    case "dialog-new":
       return <DialogPage />;
     case "tooltip":
       return <TooltipPage />;
@@ -278,14 +221,8 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <SidebarShowcasePage />;
     case "accordion":
       return <AccordionPage />;
-    case "carousel":
-      return <CarouselPage />;
-    case "collapsible":
-      return <CollapsiblePage />;
     case "scroll-area":
       return <ScrollAreaPage />;
-    case "resizable":
-      return <ResizablePage />;
     case "grid-showcase":
       return <GridShowcasePage />;
     case "layout-showcase":
@@ -302,14 +239,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <AdvancedFilterPanelPage />;
     case "editable-table":
       return <EditableTablePage />;
-    case "invoice-generator":
-      return <InvoiceGeneratorPage />;
-    case "invoice-upload":
-      return <InvoiceUploadPage />;
-    case "quick-action":
-      return <QuickActionToolbarPage />;
-    case "approval-timeline":
-      return <ApprovalTimelinePage />;
     case "multi-step-wizard":
       return <MultiStepWizardPage />;
     case "multi-step-form":
@@ -318,14 +247,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <MultiStepFormVerticalPage />;
     case "multi-step-wizard-vertical":
       return <MultiStepWizardVerticalPage />;
-    case "activity-feed":
-      return <ActivityFeedPage />;
-    case "comment-thread":
-      return <CommentThreadPage />;
-    case "search-results":
-      return <SearchResultsPage />;
-    case "user-profile":
-      return <UserProfilePage />;
     case "notification-center":
       return <NotificationCenterPage />;
     case "contact-form":
@@ -340,76 +261,42 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <AdvancedFormsPage />;
     case "data-table":
       return <DataTablePage />;
-    case "tree-table":
-      return <TreeTablePage />;
     case "tree-table-v2":
       return <TreeTableV2Page />;
-    case "export-data":
-      return <ExportDataPage />;
-    case "rating":
-      return <RatingPage />;
     case "date-range-advanced":
       return <DateRangePickerPage />;
     case "file-uploader":
       return <FileUploaderPage />;
     case "rich-text-editor":
       return <RichTextEditorPage />;
-    case "timeline":
-      return <TimelinePage />;
     case "virtualized-list":
       return <VirtualizedListPage />;
     case "infinite-scroll":
       return <InfiniteScrollPage />;
-    case "masonry-grid":
-      return <MasonryGridPage />;
-    case "transfer-list":
-      return <TransferListPage />;
-    case "business-components":
-      return <BusinessComponentsPage />;
 
     // FACTORING > Components
     case "liquidity-meter-component":
       return <LiquidityMeterPage />;
     case "risk-indicator":
       return <RiskIndicatorPage />;
-    case "rate-display":
-      return <RateDisplayPage />;
-    case "invoice-card":
-      return <InvoiceCardPage />;
-    case "payor-card":
-      return <PayorCardPage />;
-    case "collection-timeline":
-      return <CollectionTimelinePage />;
-    case "doc-verification":
-      return <DocVerificationPage />;
 
     // FACTORING > Pages
     case "cf-dashboard":
       return <CFDashboardPage />;
-    case "admin-portal":
-      return <AdminPortalPage />;
-    case "factoring-dashboard":
-      return <FactoringDashboardPage />;
-    case "operations-list":
-      return <OperationsListPage />;
     case "factoring-selection":
       return <FactoringSelectionShowcasePage />;
-    case "approval-flow":
-      return <ApprovalFlowPage />;
+    case "operations-list":
+      return <OperationsListPage />;
     case "kpi-showcase":
-    case "kpi-dashboard-advanced":
-    case "kpi-standard":
       return <KpiShowcasePage />;
-    case "liquidity-calculator":
-      return <LiquidityCalculatorPage />;
-    case "onboarding":
-      return <OnboardingPage />;
 
     // DESIGN SYSTEM & SPECIAL
     case "brand-layout":
       return <BrandLayoutPage />;
     case "elevation":
       return <ElevationPage />;
+    case "design-tokens":
+      return <DesignTokensPage />;
     case "help-system-demo":
       return <HelpSystemDemoPage />;
     case "animations":
@@ -418,26 +305,17 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <AnimationSystemPage />;
     case "icon-gallery":
       return <IconGalleryPage />;
-    case "audit-log":
-      return <AuditLogViewerPage />;
     case "table-catalog":
       return <TableCatalogPage />;
     case "progress-with-range":
       return <ProgressWithRangePage />;
     case "factoring-invoice-table":
       return <FactoringInvoiceTablePage />;
-    case "npm-consumer-test":
-      return <NpmConsumerTestPage />;
 
-    // LEGACY ALIASES (backward compat)
+    // LEGACY ALIASES (backward compat for localStorage)
     case "changelog":
       return <DSMDashboardPage />;
     case "widgets-library":
-    case "widget-stat-card":
-    case "widget-search-bar":
-    case "widget-filter-bar":
-    case "widget-navigation":
-    case "widget-timeline":
       return <WidgetsShowcasePage />;
 
     default:

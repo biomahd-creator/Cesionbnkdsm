@@ -1,14 +1,13 @@
 /**
- * CESIONBNK Design System — Local Development Stylesheet
+ * CESIONBNK Design System — Single Source of Truth
  *
- * Used by: DSM Showcase + Factoring App (local dev only, NOT published to npm)
+ * ALL design tokens, theme variables, and utilities live here.
+ * No external token files. No theme.css. Just this file.
  *
  * Architecture:
- *   tokens.css  → Single source of truth (shared tokens, @theme, base styles)
- *   globals.css → This file (Tailwind + @source + local-only utilities)
- *   theme.css   → NPM consumer version (different @source, same tokens)
+ *   globals.css → Single file (tokens + Tailwind + utilities)
  *
- * @version 0.2.4
+ * @version 0.3.0
  */
 
 @import "tailwindcss";
@@ -17,29 +16,283 @@
    @source: Tell Tailwind v4 to scan from the project root.
    Without this, automatic content detection starts from /styles/
    and may miss .tsx files in /, /components/, /pages/, etc.
-   This is critical for local development with Vite.
    ============================================================ */
 @source "../";
 
 /* ============================================================
-   Shared Design Tokens (single source of truth)
-   Contains: :root, .dark, @theme, @theme inline, @layer base
+   Font: Satoshi (exclusive typeface)
    ============================================================ */
-@import "./tokens.css";
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap');
 
 /* ============================================================
-   LOCAL-ONLY: Additional base styles for DSM Showcase
-   These are NOT shipped to npm consumers.
+   DESIGN TOKENS — Light Mode (:root)
+   ============================================================ */
+:root {
+  /* Brand */
+  --primary: #00c951;
+  --primary-foreground: #ffffff;
+  --secondary: #1C2D3A;
+  --secondary-foreground: #ffffff;
+
+  /* Surfaces */
+  --background: #ffffff;
+  --foreground: #1C2D3A;
+  --card: #ffffff;
+  --card-foreground: #1C2D3A;
+  --popover: #ffffff;
+  --popover-foreground: #1C2D3A;
+
+  /* Neutral */
+  --muted: #f4f4f5;
+  --muted-foreground: #52525b;
+  --accent: #f4f4f5;
+  --accent-foreground: #1C2D3A;
+
+  /* Semantic */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --success: #22c55e;
+  --success-foreground: #ffffff;
+  --warning: #f59e0b;
+  --warning-foreground: #ffffff;
+  --info: #3b82f6;
+  --info-foreground: #ffffff;
+
+  /* Forms */
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --input-background: #ffffff;
+  --switch-background: #cbced4;
+  --ring: #00c951;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Charts */
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+
+  /* Sidebar */
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: #1C2D3A;
+  --sidebar-primary: #1C2D3A;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: #1C2D3A;
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+
+  /* C-Financia Brand */
+  --color-cfinancia-primary:                 rgb(222, 251, 73);
+  --color-cfinancia-primary-foreground:      rgb(5, 41, 55);
+  --color-cfinancia-accent-hover:            rgb(67, 249, 119);
+  --color-cfinancia-accent-hover-foreground: rgb(5, 41, 55);
+  --color-cfinancia-navy:                    rgb(5, 41, 55);
+  --color-cfinancia-navy-foreground:         rgb(222, 251, 73);
+  /* Alias: keeps existing components using --color-cfinancia-accent working */
+  --color-cfinancia-accent: var(--color-cfinancia-primary);
+
+  /* KPI Colors */
+  --kpi-yellow: 234, 179, 8;
+  --kpi-yellow-dark: 202, 138, 4;
+  --kpi-yellow-bg: 254, 249, 195;
+  --kpi-orange: 249, 115, 22;
+  --kpi-orange-dark: 234, 88, 12;
+  --kpi-orange-bg: 255, 237, 213;
+  --kpi-blue: 59, 130, 246;
+  --kpi-blue-dark: 37, 99, 235;
+  --kpi-blue-bg: 219, 234, 254;
+  --kpi-lime: 132, 204, 22;
+  --kpi-lime-dark: 101, 163, 13;
+  --kpi-lime-bg: 247, 254, 231;
+
+  /* Shadows */
+  --shadow-elevation-1: 0 1px 2px 0 rgba(28, 45, 58, 0.05);
+  --shadow-elevation-2: 0 4px 6px -1px rgba(28, 45, 58, 0.1), 0 2px 4px -2px rgba(28, 45, 58, 0.1);
+  --shadow-elevation-3: 0 10px 15px -3px rgba(28, 45, 58, 0.1), 0 4px 6px -4px rgba(28, 45, 58, 0.1);
+  --shadow-elevation-4: 0 20px 25px -5px rgba(28, 45, 58, 0.1), 0 8px 10px -6px rgba(28, 45, 58, 0.1);
+
+  /* Typography */
+  --letter-spacing-base: 0.025em;
+}
+
+/* ============================================================
+   DESIGN TOKENS — Dark Mode (.dark)
+   ============================================================ */
+.dark {
+  /* Brand — primary stays the same in dark */
+  --primary: #00c951;
+  --primary-foreground: #ffffff;
+  --secondary: #334155;
+  --secondary-foreground: #f8fafc;
+
+  /* Surfaces */
+  --background: #0f172a;
+  --foreground: #f8fafc;
+  --card: #1e293b;
+  --card-foreground: #f8fafc;
+  --popover: #1e293b;
+  --popover-foreground: #f8fafc;
+
+  /* Neutral */
+  --muted: #334155;
+  --muted-foreground: #94a3b8;
+  --accent: #334155;
+  --accent-foreground: #f8fafc;
+
+  /* Semantic */
+  --destructive: #991b1b;
+  --destructive-foreground: #f8fafc;
+  --success: #15803d;
+  --success-foreground: #f8fafc;
+  --warning: #b45309;
+  --warning-foreground: #f8fafc;
+  --info: #1d4ed8;
+  --info-foreground: #f8fafc;
+
+  /* Forms */
+  --border: #334155;
+  --input: #334155;
+  --input-background: #334155;
+  --switch-background: #475569;
+  --ring: #00c951;
+
+  /* Charts */
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+
+  /* Sidebar */
+  --sidebar: #1e293b;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-primary: #00c951;
+  --sidebar-primary-foreground: #1C2D3A;
+  --sidebar-accent: #334155;
+  --sidebar-accent-foreground: #f8fafc;
+  --sidebar-border: #334155;
+  --sidebar-ring: #00c951;
+
+  /* Shadows */
+  --shadow-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+  --shadow-elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+  --shadow-elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+  --shadow-elevation-4: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================================
+   @theme inline: Map CSS vars → Tailwind v4 utility classes
+   This tells Tailwind to generate bg-primary, text-foreground, etc.
+   ============================================================ */
+@theme inline {
+  /* Colors */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+
+  /* Chart colors */
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  /* Sidebar */
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Border Radius */
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Font */
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* Animations */
+  --animate-accordion-down: accordion-down 0.2s ease-out;
+  --animate-accordion-up: accordion-up 0.2s ease-out;
+}
+
+/* ============================================================
+   @theme: Keyframes for Tailwind v4
+   ============================================================ */
+@theme {
+  --keyframes-accordion-down: {
+    from { height: 0; }
+    to { height: var(--radix-accordion-content-height); }
+  };
+  --keyframes-accordion-up: {
+    from { height: var(--radix-accordion-content-height); }
+    to { height: 0; }
+  };
+}
+
+/* ============================================================
+   BASE STYLES
    ============================================================ */
 @layer base {
-  /* Apply base letter-spacing to all typographic elements */
+  /* Global font & color */
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+  }
+
+  /* Letter-spacing for all typographic elements */
   p, span, label, a, button, input, textarea, select,
   h1, h2, h3, h4, h5, h6,
   div, td, th, li {
     letter-spacing: var(--letter-spacing-base);
   }
 
-  /* Base typography overrides for elements without specific Tailwind text classes */
+  /* Base typography overrides */
   :where(:not(:has([class*=' text-']), :not(:has([class^='text-'])))) {
     h1 {
       @apply text-2xl font-medium;
@@ -79,9 +332,10 @@
 }
 
 /* ============================================================
-   LOCAL-ONLY: Animation & Transition Utilities
+   UTILITIES
    ============================================================ */
 @layer utilities {
+  /* Scrollbar hiding */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
@@ -140,13 +394,6 @@
   }
   .hover-scale:hover {
     transform: scale(1.02);
-  }
-
-  .hover-glow {
-    transition: box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  .hover-glow:hover {
-    box-shadow: 0 0 0 3px color-mix(in srgb, var(--ring) 20%, transparent);
   }
 
   .hover-brightness {

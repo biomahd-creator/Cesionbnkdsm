@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "../../ui/card";
 import { Badge } from "../../ui/badge";
+import type { VariantProps } from "class-variance-authority@0.7.1";
 import { Tabs, TabsList, TabsTrigger } from "../../ui/tabs";
 import {
   originacionKpis,
@@ -26,13 +27,13 @@ function KpiOriginacion({
   value,
   subtitle,
   badgeLabel,
-  badgeColor,
+  badgeVariant = "info",
   extra,
 }: {
   value: string;
   subtitle: string;
   badgeLabel: string;
-  badgeColor: string;
+  badgeVariant?: "info" | "warning" | "destructive" | "success";
   extra?: string;
 }) {
   return (
@@ -43,10 +44,7 @@ function KpiOriginacion({
         {extra && (
           <p className="text-xs text-muted-foreground">{extra}</p>
         )}
-        <Badge
-          className="mt-2 text-[10px]"
-          style={{ backgroundColor: badgeColor, color: "white", border: "none" }}
-        >
+        <Badge variant={badgeVariant} className="mt-2 text-[10px]">
           {badgeLabel}
         </Badge>
       </CardContent>
@@ -116,19 +114,19 @@ export function TabOriginacion() {
           value={formatCurrency(kpi.totalOperacionesVigentes)}
           subtitle={`${kpi.facturasVigentes} facturas, ${kpi.operacionesVigentes} operaciones`}
           badgeLabel="Total Operaciones Vigentes"
-          badgeColor="#2563eb"
+          badgeVariant="info"
         />
         <KpiOriginacion
           value={`${formatCurrency(kpi.operaciones30_60)} (${kpi.pct30_60}%)`}
           subtitle={`${kpi.facturas30_60} facturas, ${kpi.ops30_60} operaciones`}
           badgeLabel="Total Operaciones 30-60 Días Retraso"
-          badgeColor="#f97316"
+          badgeVariant="warning"
         />
         <KpiOriginacion
           value={`${formatCurrency(kpi.operaciones60plus)} (${kpi.pct60plus}%)`}
           subtitle={`${kpi.facturas60plus} facturas, ${kpi.ops60plus} operación`}
           badgeLabel="Total Operaciones +60 Días Retraso"
-          badgeColor="#ef4444"
+          badgeVariant="destructive"
         />
       </div>
 
@@ -197,26 +195,26 @@ export function TabOriginacion() {
           value={formatCurrency(kpi.totalCartera)}
           subtitle={`${kpi.facturasVigentes} facturas, ${kpi.operacionesVigentes} operaciones`}
           badgeLabel="Total Cartera"
-          badgeColor="#2563eb"
+          badgeVariant="info"
           extra="*Total Monto Crédito"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.montoCobrarSemana)}
           subtitle={`${kpi.facturasACobrar} facturas`}
           badgeLabel="Monto a cobrar esta semana"
-          badgeColor="#f97316"
+          badgeVariant="warning"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.vencidas)}
           subtitle={`${kpi.facturasVencidas} facturas`}
           badgeLabel="Vencidas"
-          badgeColor="#f97316"
+          badgeVariant="warning"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.disponible)}
           subtitle={`${formatCurrency(kpi.disponibleMax)} (máx)`}
           badgeLabel="Disponible"
-          badgeColor="#3b82f6"
+          badgeVariant="info"
         />
       </div>
 
@@ -233,19 +231,19 @@ export function TabOriginacion() {
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div>
               <span className="text-2xl tracking-tight">$2.5MM</span>
-              <Badge className="mt-1 block w-fit text-[10px]" style={{ backgroundColor: "#22c55e", color: "white", border: "none" }}>
+              <Badge variant="success" className="mt-1 block w-fit text-[10px]">
                 Esperado esta semana
               </Badge>
             </div>
             <div>
               <span className="text-2xl tracking-tight">$8MM</span>
-              <Badge className="mt-1 block w-fit text-[10px]" style={{ backgroundColor: "#f97316", color: "white", border: "none" }}>
+              <Badge variant="warning" className="mt-1 block w-fit text-[10px]">
                 Próximos 15 días
               </Badge>
             </div>
             <div>
               <span className="text-2xl tracking-tight">$10.1MM</span>
-              <Badge className="mt-1 block w-fit text-[10px]" style={{ backgroundColor: "#3b82f6", color: "white", border: "none" }}>
+              <Badge variant="info" className="mt-1 block w-fit text-[10px]">
                 Este mes
               </Badge>
             </div>

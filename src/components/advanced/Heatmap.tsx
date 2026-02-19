@@ -45,9 +45,9 @@ export function Heatmap({
   title,
   description,
   colorScale = {
-    low: "#dbeafe",    // blue-100
-    medium: "#3b82f6", // blue-500
-    high: "#1e40af"    // blue-800
+    low: "var(--chart-2)",
+    medium: "var(--chart-1)",
+    high: "var(--chart-3)"
   },
   showValues = true,
   showLabels = true,

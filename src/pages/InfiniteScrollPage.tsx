@@ -90,7 +90,7 @@ export function InfiniteScrollPage() {
   threshold={0.5}
 >
   {invoices.map((inv) => (
-    <InvoiceCard key={inv.id} invoice={inv} />
+    <ItemCard key={inv.id} {...inv} />
   ))}
 </InfiniteScroll>`,
         },

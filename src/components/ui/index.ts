@@ -9,7 +9,7 @@ export * from "./breadcrumb";
 export * from "./button";
 export * from "./calendar";
 export * from "./card";
-export * from "./carousel";
+// unused: carousel (no consumers — file kept on disk but excluded from barrel)
 export * from "./chart";
 export * from "./checkbox";
 export * from "./code-block";
@@ -34,7 +34,7 @@ export * from "./input";
 export * from "./label";
 export * from "./loading-overlay";
 export * from "./loading-states";
-export * from "./menubar";
+// unused: menubar (no consumers — file kept on disk but excluded from barrel)
 export * from "./multi-select";
 export * from "./navigation-menu";
 export * from "./page-transition";
@@ -44,7 +44,7 @@ export * from "./popover";
 export * from "./progress";
 export * from "./progress-with-range";
 export * from "./radio-group";
-export * from "./resizable";
+// unused: resizable (no consumers — file kept on disk but excluded from barrel)
 export * from "./safe-chart-container";
 export * from "./scroll-area";
 export * from "./select";

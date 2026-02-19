@@ -49,11 +49,11 @@ export function GaugeChart({
     if (color) return color;
     
     if (percentage <= thresholds.low) {
-      return "#ef4444"; // red
+      return "var(--destructive)";
     } else if (percentage <= thresholds.medium) {
-      return "#f59e0b"; // yellow/orange
+      return "var(--warning)";
     } else {
-      return "#22c55e"; // green
+      return "var(--success)";
     }
   };
 

@@ -51,7 +51,7 @@ function NavItem({ icon: Icon, label, isActive, onClick }: NavItemProps) {
       className={cn(
         "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 min-h-[36px]",
         isActive
-          ? "bg-[rgb(var(--cfinancia-accent))] text-foreground"
+          ? "bg-[var(--color-cfinancia-accent)] text-foreground"
           : "bg-transparent text-white hover:bg-white/10"
       )}
     >
@@ -76,7 +76,7 @@ function NavItemWithDropdown({ icon: Icon, label, isActive, items }: NavItemWith
           className={cn(
             "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 min-h-[36px]",
             isActive
-              ? "bg-[rgb(var(--cfinancia-accent))] text-foreground"
+              ? "bg-[var(--color-cfinancia-accent)] text-foreground"
               : "bg-transparent text-white hover:bg-white/10"
           )}
         >
@@ -85,7 +85,7 @@ function NavItemWithDropdown({ icon: Icon, label, isActive, items }: NavItemWith
           <ChevronDown className={cn("w-3 h-3", isActive ? "text-foreground" : "text-white")} />
         </button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-48 bg-[rgb(var(--cfinancia-navy))] border-white/10 text-white">
+      <DropdownMenuContent align="start" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
         {items.map((item, index) => (
           <DropdownMenuItem 
             key={index}
@@ -107,7 +107,7 @@ interface NavigationBarProps {
 
 export function NavigationBar({ onLogout, variant = "full" }: NavigationBarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[rgb(var(--cfinancia-navy))] shadow-lg px-6 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[var(--color-cfinancia-navy)] shadow-lg px-6 flex items-center justify-between">
       <div className="flex items-center gap-10">
         {/* Left: Logo */}
         <div className="flex-shrink-0">
@@ -152,7 +152,7 @@ export function NavigationBar({ onLogout, variant = "full" }: NavigationBarProps
                       <ChevronDown className="w-3 h-3 text-white/50" />
                   </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="w-48 bg-[rgb(var(--cfinancia-navy))] border-white/10 text-white">
+              <DropdownMenuContent align="end" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
                   <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
                       Profile
                   </DropdownMenuItem>

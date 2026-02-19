@@ -3,4 +3,3 @@
 // To use cn: import { cn } from "../components/ui/utils"
 
 export * from "./animation-config";
-export * from "./theme-utils";
