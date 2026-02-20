@@ -49,12 +49,12 @@
         { "name": "Chart/Light/2", "type": "COLOR", "values": { "Value": "#2a9d8f" } },
         { "name": "Chart/Light/3", "type": "COLOR", "values": { "Value": "#264653" } },
         { "name": "Chart/Light/4", "type": "COLOR", "values": { "Value": "#e9c46a" } },
-        { "name": "Chart/Light/5", "type": "COLOR", "values": { "Value": "#f4a261" } },
-        { "name": "Chart/Dark/1", "type": "COLOR", "values": { "Value": "#6366f1" } },
-        { "name": "Chart/Dark/2", "type": "COLOR", "values": { "Value": "#34d399" } },
-        { "name": "Chart/Dark/3", "type": "COLOR", "values": { "Value": "#f4a261" } },
-        { "name": "Chart/Dark/4", "type": "COLOR", "values": { "Value": "#a855f7" } },
-        { "name": "Chart/Dark/5", "type": "COLOR", "values": { "Value": "#ef4444" } },
+        { "name": "Chart/Light/5", "type": "COLOR", "values": { "Value": "#84cc16" } },
+        { "name": "Chart/Dark/1",  "type": "COLOR", "values": { "Value": "#6366f1" } },
+        { "name": "Chart/Dark/2",  "type": "COLOR", "values": { "Value": "#4ade80" } },
+        { "name": "Chart/Dark/3",  "type": "COLOR", "values": { "Value": "#84cc16" } },
+        { "name": "Chart/Dark/4",  "type": "COLOR", "values": { "Value": "#d946ef" } },
+        { "name": "Chart/Dark/5",  "type": "COLOR", "values": { "Value": "#f97316" } },
 
         { "name": "CFinancia/Lime", "type": "COLOR", "values": { "Value": "#DEFB49" } },
         { "name": "CFinancia/Teal", "type": "COLOR", "values": { "Value": "#43F977" } },
@@ -366,28 +366,28 @@
           "type": "COLOR",
           "cssVar": "--chart-2",
           "tailwind": "bg-chart-2",
-          "values": { "Light": "#2a9d8f", "Dark": "#34d399" }
+          "values": { "Light": "#2a9d8f", "Dark": "#4ade80" }
         },
         {
           "name": "Chart/3",
           "type": "COLOR",
           "cssVar": "--chart-3",
           "tailwind": "bg-chart-3",
-          "values": { "Light": "#264653", "Dark": "#f4a261" }
+          "values": { "Light": "#264653", "Dark": "#84cc16" }
         },
         {
           "name": "Chart/4",
           "type": "COLOR",
           "cssVar": "--chart-4",
           "tailwind": "bg-chart-4",
-          "values": { "Light": "#e9c46a", "Dark": "#a855f7" }
+          "values": { "Light": "#e9c46a", "Dark": "#d946ef" }
         },
         {
           "name": "Chart/5",
           "type": "COLOR",
           "cssVar": "--chart-5",
           "tailwind": "bg-chart-5",
-          "values": { "Light": "#f4a261", "Dark": "#ef4444" }
+          "values": { "Light": "#84cc16", "Dark": "#f97316" }
         }
       ]
     },

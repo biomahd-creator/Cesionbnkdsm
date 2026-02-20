@@ -127,9 +127,9 @@ Cada variante de KPI tiene 3 niveles: base, dark y background.
 
 **CSS Variables (formato RGB para opacidad):**
 ```css
---kpi-yellow: 234 179 8;
---kpi-yellow-dark: 202 138 4;
---kpi-yellow-bg: 254 249 195;
+--kpi-yellow: 234, 179, 8;
+--kpi-yellow-dark: 202, 138, 4;
+--kpi-yellow-bg: 254, 249, 195;
 /* Idem para orange, blue, lime */
 ```
 

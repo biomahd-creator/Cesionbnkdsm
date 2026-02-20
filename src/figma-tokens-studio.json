@@ -1,0 +1,509 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$metadata": {
+    "name": "CESIONBNK Design System",
+    "version": "1.1.0",
+    "description": "Tokens Studio v2 — formato W3C DTCG. 4 sets: core / light / dark / theme. Mapea 1:1 con /styles/globals.css. Usar $value y $type con prefijo $ en todos los tokens.",
+    "source": "/styles/globals.css",
+    "standard": "W3C Design Tokens Community Group — https://tr.designtokens.org/format/",
+    "tokenSetOrder": ["core", "light", "dark", "theme"]
+  },
+
+  "$themes": [
+    {
+      "id": "light",
+      "name": "Light",
+      "$description": "core=source (referencia), light=enabled, dark=disabled, theme=enabled",
+      "selectedTokenSets": {
+        "core":  "source",
+        "light": "enabled",
+        "dark":  "disabled",
+        "theme": "enabled"
+      }
+    },
+    {
+      "id": "dark",
+      "name": "Dark",
+      "$description": "core=source (referencia), light=disabled, dark=enabled, theme=enabled",
+      "selectedTokenSets": {
+        "core":  "source",
+        "light": "disabled",
+        "dark":  "enabled",
+        "theme": "enabled"
+      }
+    }
+  ],
+
+  "core": {
+    "$description": "Primitivos — valores raw. SIN referencias. Marcados como 'source': existen en el plugin pero NO se exportan a Figma Variables. Son la fuente de verdad numérica referenciada por light/dark.",
+
+    "green": {
+      "$description": "Brand green palette",
+      "500": { "$value": "#00c951", "$type": "color", "$description": "--primary brand green" },
+      "600": { "$value": "#22c55e", "$type": "color", "$description": "success light" },
+      "800": { "$value": "#15803d", "$type": "color", "$description": "success dark" }
+    },
+
+    "navy": {
+      "$description": "CESIONBNK navy palette",
+      "900": { "$value": "#1C2D3A", "$type": "color", "$description": "--secondary navy principal" }
+    },
+
+    "slate": {
+      "$description": "Neutral dark scale — usado en dark mode surfaces",
+      "50":  { "$value": "#f8fafc", "$type": "color" },
+      "100": { "$value": "#f1f5f9", "$type": "color" },
+      "400": { "$value": "#94a3b8", "$type": "color" },
+      "600": { "$value": "#475569", "$type": "color" },
+      "700": { "$value": "#334155", "$type": "color" },
+      "800": { "$value": "#1e293b", "$type": "color" },
+      "900": { "$value": "#0f172a", "$type": "color" }
+    },
+
+    "zinc": {
+      "$description": "Neutral light scale — usado en light mode surfaces",
+      "100": { "$value": "#f4f4f5", "$type": "color" },
+      "200": { "$value": "#e4e4e7", "$type": "color" },
+      "500": { "$value": "#52525b", "$type": "color" }
+    },
+
+    "neutral": {
+      "white": { "$value": "#ffffff", "$type": "color" },
+      "gray":  { "$value": "#cbced4", "$type": "color", "$description": "Switch off background" }
+    },
+
+    "red": {
+      "500": { "$value": "#ef4444", "$type": "color" },
+      "900": { "$value": "#991b1b", "$type": "color" }
+    },
+
+    "amber": {
+      "500": { "$value": "#f59e0b", "$type": "color" },
+      "700": { "$value": "#b45309", "$type": "color" }
+    },
+
+    "blue": {
+      "500": { "$value": "#3b82f6", "$type": "color" },
+      "700": { "$value": "#1d4ed8", "$type": "color" }
+    },
+
+    "cfinancia": {
+      "$description": "C-Financia sub-brand palette",
+      "accent":       { "$value": "#DEFB49", "$type": "color" },
+      "accent-hover": { "$value": "#43F977", "$type": "color" },
+      "navy":         { "$value": "#052937", "$type": "color" }
+    },
+
+    "chart": {
+      "$description": "Chart palette — light mode. Dark mode values override in dark set.",
+      "1": { "$value": "#e76f51", "$type": "color" },
+      "2": { "$value": "#2a9d8f", "$type": "color" },
+      "3": { "$value": "#264653", "$type": "color" },
+      "4": { "$value": "#e9c46a", "$type": "color" },
+      "5": { "$value": "#84cc16", "$type": "color" }
+    },
+
+    "kpi": {
+      "$description": "KPI module colors — 4 variants × 3 levels (base/dark/bg)",
+      "yellow":      { "$value": "#eab308", "$type": "color" },
+      "yellow-dark": { "$value": "#ca8a04", "$type": "color" },
+      "yellow-bg":   { "$value": "#fef9c3", "$type": "color" },
+      "orange":      { "$value": "#f97316", "$type": "color" },
+      "orange-dark": { "$value": "#ea580c", "$type": "color" },
+      "orange-bg":   { "$value": "#ffedd5", "$type": "color" },
+      "blue":        { "$value": "#3b82f6", "$type": "color" },
+      "blue-dark":   { "$value": "#2563eb", "$type": "color" },
+      "blue-bg":     { "$value": "#dbeafe", "$type": "color" },
+      "lime":        { "$value": "#84cc16", "$type": "color" },
+      "lime-dark":   { "$value": "#65a30d", "$type": "color" },
+      "lime-bg":     { "$value": "#f7fee7", "$type": "color" }
+    }
+  },
+
+  "light": {
+    "$description": "Semánticos Light Mode — referencian core con {core.group.token}. Mapean a CSS :root en globals.css. Se exportan como Figma Variables.",
+
+    "brand": {
+      "$description": "Brand identity — primary es constante en light y dark",
+      "primary":              { "$value": "{core.green.500}",    "$type": "color", "$description": "--primary" },
+      "primary-foreground":   { "$value": "{core.neutral.white}","$type": "color", "$description": "--primary-foreground" },
+      "secondary":            { "$value": "{core.navy.900}",     "$type": "color", "$description": "--secondary" },
+      "secondary-foreground": { "$value": "{core.neutral.white}","$type": "color", "$description": "--secondary-foreground" }
+    },
+
+    "surface": {
+      "$description": "Fondos y textos principales",
+      "background":         { "$value": "{core.neutral.white}", "$type": "color", "$description": "--background" },
+      "foreground":         { "$value": "{core.navy.900}",      "$type": "color", "$description": "--foreground" },
+      "card":               { "$value": "{core.neutral.white}", "$type": "color", "$description": "--card" },
+      "card-foreground":    { "$value": "{core.navy.900}",      "$type": "color", "$description": "--card-foreground" },
+      "popover":            { "$value": "{core.neutral.white}", "$type": "color", "$description": "--popover" },
+      "popover-foreground": { "$value": "{core.navy.900}",      "$type": "color", "$description": "--popover-foreground" }
+    },
+
+    "neutral": {
+      "$description": "Fondos secundarios y textos deshabilitados",
+      "muted":             { "$value": "{core.zinc.100}",  "$type": "color", "$description": "--muted" },
+      "muted-foreground":  { "$value": "{core.zinc.500}",  "$type": "color", "$description": "--muted-foreground" },
+      "accent":            { "$value": "{core.zinc.100}",  "$type": "color", "$description": "--accent" },
+      "accent-foreground": { "$value": "{core.navy.900}",  "$type": "color", "$description": "--accent-foreground" }
+    },
+
+    "form": {
+      "$description": "Borders, inputs y focus ring",
+      "border":            { "$value": "{core.zinc.200}",      "$type": "color", "$description": "--border" },
+      "input":             { "$value": "{core.zinc.200}",      "$type": "color", "$description": "--input" },
+      "input-background":  { "$value": "{core.neutral.white}", "$type": "color", "$description": "--input-background" },
+      "switch-background": { "$value": "{core.neutral.gray}",  "$type": "color", "$description": "--switch-background" },
+      "ring":              { "$value": "{core.green.500}",     "$type": "color", "$description": "--ring (focus indicator)" }
+    },
+
+    "feedback": {
+      "$description": "Estados semánticos — error, éxito, advertencia, info",
+      "destructive":             { "$value": "{core.red.500}",       "$type": "color", "$description": "--destructive" },
+      "destructive-foreground":  { "$value": "{core.neutral.white}", "$type": "color", "$description": "--destructive-foreground" },
+      "success":                 { "$value": "{core.green.600}",     "$type": "color", "$description": "--success" },
+      "success-foreground":      { "$value": "{core.neutral.white}", "$type": "color", "$description": "--success-foreground" },
+      "warning":                 { "$value": "{core.amber.500}",     "$type": "color", "$description": "--warning" },
+      "warning-foreground":      { "$value": "{core.neutral.white}", "$type": "color", "$description": "--warning-foreground" },
+      "info":                    { "$value": "{core.blue.500}",      "$type": "color", "$description": "--info" },
+      "info-foreground":         { "$value": "{core.neutral.white}", "$type": "color", "$description": "--info-foreground" }
+    },
+
+    "sidebar": {
+      "$description": "Sidebar navigation colors",
+      "background":         { "$value": "#fafafa",           "$type": "color", "$description": "--sidebar" },
+      "foreground":         { "$value": "{core.navy.900}",   "$type": "color" },
+      "primary":            { "$value": "{core.navy.900}",   "$type": "color" },
+      "primary-foreground": { "$value": "#fafafa",           "$type": "color" },
+      "accent":             { "$value": "#f5f5f5",           "$type": "color" },
+      "accent-foreground":  { "$value": "{core.navy.900}",   "$type": "color" },
+      "border":             { "$value": "#e5e5e5",           "$type": "color" },
+      "ring":               { "$value": "#adadad",           "$type": "color" }
+    },
+
+    "chart": {
+      "$description": "Colores de charts en light mode",
+      "1": { "$value": "{core.chart.1}", "$type": "color" },
+      "2": { "$value": "{core.chart.2}", "$type": "color" },
+      "3": { "$value": "{core.chart.3}", "$type": "color" },
+      "4": { "$value": "{core.chart.4}", "$type": "color" },
+      "5": { "$value": "{core.chart.5}", "$type": "color" }
+    }
+  },
+
+  "dark": {
+    "$description": "Semánticos Dark Mode — referencian core. Mapean a CSS .dark en globals.css. REGLA: brand/primary y form/ring son idénticos al light (brand identity constante).",
+
+    "brand": {
+      "$description": "brand/primary = constante. No cambia en dark.",
+      "primary":              { "$value": "{core.green.500}",    "$type": "color", "$description": "--primary (igual que light — identidad de marca)" },
+      "primary-foreground":   { "$value": "{core.neutral.white}","$type": "color" },
+      "secondary":            { "$value": "{core.slate.700}",    "$type": "color", "$description": "--secondary dark" },
+      "secondary-foreground": { "$value": "{core.slate.50}",     "$type": "color" }
+    },
+
+    "surface": {
+      "background":         { "$value": "{core.slate.900}",  "$type": "color", "$description": "--background dark" },
+      "foreground":         { "$value": "{core.slate.50}",   "$type": "color", "$description": "--foreground dark" },
+      "card":               { "$value": "{core.slate.800}",  "$type": "color", "$description": "--card dark" },
+      "card-foreground":    { "$value": "{core.slate.50}",   "$type": "color" },
+      "popover":            { "$value": "{core.slate.800}",  "$type": "color" },
+      "popover-foreground": { "$value": "{core.slate.50}",   "$type": "color" }
+    },
+
+    "neutral": {
+      "muted":             { "$value": "{core.slate.700}", "$type": "color" },
+      "muted-foreground":  { "$value": "{core.slate.400}", "$type": "color" },
+      "accent":            { "$value": "{core.slate.700}", "$type": "color" },
+      "accent-foreground": { "$value": "{core.slate.50}",  "$type": "color" }
+    },
+
+    "form": {
+      "border":            { "$value": "{core.slate.700}", "$type": "color" },
+      "input":             { "$value": "{core.slate.700}", "$type": "color" },
+      "input-background":  { "$value": "{core.slate.700}", "$type": "color" },
+      "switch-background": { "$value": "{core.slate.600}", "$type": "color" },
+      "ring":              { "$value": "{core.green.500}", "$type": "color", "$description": "ring constante en dark" }
+    },
+
+    "feedback": {
+      "destructive":             { "$value": "{core.red.900}",   "$type": "color" },
+      "destructive-foreground":  { "$value": "{core.slate.50}",  "$type": "color" },
+      "success":                 { "$value": "{core.green.800}", "$type": "color" },
+      "success-foreground":      { "$value": "{core.slate.50}",  "$type": "color" },
+      "warning":                 { "$value": "{core.amber.700}", "$type": "color" },
+      "warning-foreground":      { "$value": "{core.slate.50}",  "$type": "color" },
+      "info":                    { "$value": "{core.blue.700}",  "$type": "color" },
+      "info-foreground":         { "$value": "{core.slate.50}",  "$type": "color" }
+    },
+
+    "sidebar": {
+      "background":         { "$value": "{core.slate.800}",  "$type": "color" },
+      "foreground":         { "$value": "{core.slate.50}",   "$type": "color" },
+      "primary":            { "$value": "{core.green.500}",  "$type": "color" },
+      "primary-foreground": { "$value": "{core.navy.900}",   "$type": "color" },
+      "accent":             { "$value": "{core.slate.700}",  "$type": "color" },
+      "accent-foreground":  { "$value": "{core.slate.50}",   "$type": "color" },
+      "border":             { "$value": "{core.slate.700}",  "$type": "color" },
+      "ring":               { "$value": "{core.green.500}",  "$type": "color" }
+    },
+
+    "chart": {
+      "$description": "Colores de charts en dark mode — diferentes al light",
+      "1": { "$value": "#6366f1", "$type": "color", "$description": "Purple" },
+      "2": { "$value": "#4ade80", "$type": "color", "$description": "Green" },
+      "3": { "$value": "{core.chart.5}", "$type": "color", "$description": "Lime" },
+      "4": { "$value": "#d946ef", "$type": "color", "$description": "Pink" },
+      "5": { "$value": "#f97316", "$type": "color", "$description": "Orange" }
+    }
+  },
+
+  "theme": {
+    "$description": "Tokens de componentes — sin modos. Compartidos entre light y dark. Radius, tipografía, sombras, spacing y animaciones.",
+
+    "radius": {
+      "$description": "Border radius — base = 10px (--radius: 0.625rem). Uso: button=base, card/modal=xl, input/badge=md, pill=full.",
+      "none": { "$value": "0px",    "$type": "dimension" },
+      "sm":   { "$value": "6px",    "$type": "dimension", "$description": "calc(--radius - 4px). Chips internos" },
+      "md":   { "$value": "8px",    "$type": "dimension", "$description": "calc(--radius - 2px). Inputs, badges" },
+      "base": { "$value": "10px",   "$type": "dimension", "$description": "--radius base. Buttons" },
+      "xl":   { "$value": "14px",   "$type": "dimension", "$description": "calc(--radius + 4px). Cards, modals" },
+      "2xl":  { "$value": "16px",   "$type": "dimension" },
+      "full": { "$value": "9999px", "$type": "dimension", "$description": "Pills, avatars, tags" }
+    },
+
+    "spacing": {
+      "$description": "Escala de 4px. Usado para padding, gap, margin.",
+      "$type": "dimension",
+      "0":  { "$value": "0px" },
+      "1":  { "$value": "4px" },
+      "2":  { "$value": "8px",  "$description": "Gap pequeño, iconos, badges" },
+      "3":  { "$value": "12px" },
+      "4":  { "$value": "16px", "$description": "Standard gap, inputs" },
+      "5":  { "$value": "20px" },
+      "6":  { "$value": "24px", "$description": "Section spacing, card padding" },
+      "8":  { "$value": "32px", "$description": "Page containers" },
+      "10": { "$value": "40px" },
+      "12": { "$value": "48px" },
+      "16": { "$value": "64px" }
+    },
+
+    "typography": {
+      "$description": "Sistema tipográfico Satoshi. Default global: 1.5 line-height, 0.025em letter-spacing.",
+
+      "fontFamily": {
+        "sans": { "$value": "Satoshi, sans-serif",          "$type": "fontFamily", "$description": "Principal — fuente geométrica" },
+        "mono": { "$value": "JetBrains Mono, monospace",    "$type": "fontFamily", "$description": "Código" }
+      },
+
+      "fontSize": {
+        "$type": "dimension",
+        "xs":   { "$value": "12px", "$description": "Labels, captions, footers" },
+        "sm":   { "$value": "14px", "$description": "Body small, labels, descripciones" },
+        "base": { "$value": "16px", "$description": "Body text, inputs, buttons — DEFAULT" },
+        "lg":   { "$value": "18px", "$description": "h4, subtítulos, body large" },
+        "xl":   { "$value": "20px", "$description": "h3, títulos de sección" },
+        "2xl":  { "$value": "24px", "$description": "h2, títulos de página" },
+        "3xl":  { "$value": "30px", "$description": "h1, page titles" },
+        "4xl":  { "$value": "36px", "$description": "KPI values destacados" },
+        "5xl":  { "$value": "48px", "$description": "Display, hero" }
+      },
+
+      "fontWeight": {
+        "$type": "fontWeight",
+        "light":    { "$value": 300, "$description": "Texto decorativo" },
+        "normal":   { "$value": 400, "$description": "Body text — SIEMPRE para párrafos" },
+        "medium":   { "$value": 500, "$description": "Labels, buttons, headings — DEFAULT" },
+        "semibold": { "$value": 600, "$description": "Headings destacados, h1–h2" },
+        "bold":     { "$value": 700, "$description": "KPI values — SIEMPRE para números grandes" }
+      },
+
+      "lineHeight": {
+        "$type": "number",
+        "none":    { "$value": 1,     "$description": "Iconos, números sueltos" },
+        "tight":   { "$value": 1.25,  "$description": "KPI values grandes" },
+        "snug":    { "$value": 1.375, "$description": "Headings compactos" },
+        "normal":  { "$value": 1.5,   "$description": "DEFAULT GLOBAL — no sobrescribir sin razón" },
+        "relaxed": { "$value": 1.625, "$description": "Texto largo, párrafos de artículo" }
+      },
+
+      "letterSpacing": {
+        "$type": "dimension",
+        "tight":  { "$value": "-0.025em", "$description": "Headings grandes" },
+        "normal": { "$value": "0em" },
+        "wide":   { "$value": "0.025em",  "$description": "DEFAULT GLOBAL — calibrado para Satoshi" },
+        "wider":  { "$value": "0.05em",   "$description": "Uppercase labels" }
+      },
+
+      "composite": {
+        "$description": "Typography composites — combinan todos los tokens tipográficos. Útiles para Figma Text Styles y Style Dictionary.",
+        "display": {
+          "$value": {
+            "fontFamily": "{theme.typography.fontFamily.sans}",
+            "fontSize":   "{theme.typography.fontSize.5xl}",
+            "fontWeight": "{theme.typography.fontWeight.bold}",
+            "lineHeight": "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "h1": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.3xl}",
+            "fontWeight":    "{theme.typography.fontWeight.semibold}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "h2": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.2xl}",
+            "fontWeight":    "{theme.typography.fontWeight.semibold}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "h3": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.xl}",
+            "fontWeight":    "{theme.typography.fontWeight.medium}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "h4": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.lg}",
+            "fontWeight":    "{theme.typography.fontWeight.medium}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "body": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.base}",
+            "fontWeight":    "{theme.typography.fontWeight.normal}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "body-small": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.sm}",
+            "fontWeight":    "{theme.typography.fontWeight.normal}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "caption": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.xs}",
+            "fontWeight":    "{theme.typography.fontWeight.normal}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "label": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.sm}",
+            "fontWeight":    "{theme.typography.fontWeight.medium}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "button": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.base}",
+            "fontWeight":    "{theme.typography.fontWeight.medium}",
+            "lineHeight":    "{theme.typography.lineHeight.normal}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        },
+        "kpi-value": {
+          "$value": {
+            "fontFamily":    "{theme.typography.fontFamily.sans}",
+            "fontSize":      "{theme.typography.fontSize.4xl}",
+            "fontWeight":    "{theme.typography.fontWeight.bold}",
+            "lineHeight":    "{theme.typography.lineHeight.tight}",
+            "letterSpacing": "{theme.typography.letterSpacing.wide}"
+          },
+          "$type": "typography"
+        }
+      }
+    },
+
+    "shadow": {
+      "$description": "Sombras brand-toned con navy rgba(28,45,58). Dark mode usa rgba(0,0,0,0.3).",
+      "$type": "shadow",
+      "elevation-1": {
+        "$value": {
+          "offsetX": "0",
+          "offsetY": "1px",
+          "blur":    "2px",
+          "spread":  "0",
+          "color":   "rgba(28, 45, 58, 0.05)"
+        },
+        "$description": "Buttons, inputs"
+      },
+      "elevation-2": {
+        "$value": [
+          { "offsetX": "0", "offsetY": "4px",  "blur": "6px",  "spread": "-1px", "color": "rgba(28, 45, 58, 0.10)" },
+          { "offsetX": "0", "offsetY": "2px",  "blur": "4px",  "spread": "-2px", "color": "rgba(28, 45, 58, 0.10)" }
+        ],
+        "$description": "Cards estáticas, tablas"
+      },
+      "elevation-3": {
+        "$value": [
+          { "offsetX": "0", "offsetY": "10px", "blur": "15px", "spread": "-3px", "color": "rgba(28, 45, 58, 0.10)" },
+          { "offsetX": "0", "offsetY": "4px",  "blur": "6px",  "spread": "-4px", "color": "rgba(28, 45, 58, 0.10)" }
+        ],
+        "$description": "Cards hover, dropdowns, tooltips"
+      },
+      "elevation-4": {
+        "$value": [
+          { "offsetX": "0", "offsetY": "20px", "blur": "25px", "spread": "-5px", "color": "rgba(28, 45, 58, 0.10)" },
+          { "offsetX": "0", "offsetY": "8px",  "blur": "10px", "spread": "-6px", "color": "rgba(28, 45, 58, 0.10)" }
+        ],
+        "$description": "Modals, sidebars, overlays"
+      }
+    },
+
+    "animation": {
+      "$description": "Duraciones y easing del sistema. Default: 300ms smooth.",
+      "duration": {
+        "$type": "duration",
+        "fast":   { "$value": "150ms", "$description": "Hover, micro-interactions" },
+        "normal": { "$value": "300ms", "$description": "DEFAULT — modals, transiciones" },
+        "slow":   { "$value": "500ms", "$description": "Page transitions" },
+        "slower": { "$value": "800ms", "$description": "Loading overlays" }
+      },
+      "easing": {
+        "$type": "cubicBezier",
+        "smooth":    { "$value": [0.25, 0.1, 0.25, 1],   "$description": "DEFAULT del sistema" },
+        "ease-out":  { "$value": [0,    0,    0.2,  1],   "$description": "Entradas de pantalla" },
+        "ease-in":   { "$value": [0.4,  0,    1,    1],   "$description": "Salidas de pantalla" },
+        "ease-both": { "$value": [0.4,  0,    0.2,  1],   "$description": "Transiciones bidireccionales" },
+        "snappy":    { "$value": [0.4,  0,    0.6,  1],   "$description": "Interacciones rápidas" }
+      }
+    }
+  }
+}

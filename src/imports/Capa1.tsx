@@ -5,8 +5,8 @@ export default function Capa() {
     <div className="relative size-full" data-name="Capa_1">
       <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 253 48">
         <g id="Group 37">
-          <path d={svgPaths.p2462d00} fill="var(--color-cfinancia-accent)" id="Vector" />
-          <path d={svgPaths.p24ac4280} fill="var(--color-cfinancia-accent-hover)" id="Vector_2" />
+          <path d={svgPaths.p2462d00} fill="var(--primary)" id="Vector" />
+          <path d={svgPaths.p24ac4280} fill="var(--primary)" id="Vector_2" />
           <path d={svgPaths.p28e4b00} fill="var(--secondary)" id="Vector_3" />
           <path d={svgPaths.p3e5e7d40} fill="var(--secondary)" id="Vector_4" />
           <path d={svgPaths.p19283600} fill="var(--secondary)" id="Vector_5" />

@@ -55,11 +55,11 @@ interface ColorGroup {
 const colorGroups: ColorGroup[] = [
   {
     title: "Brand",
-    description: "Core identity colors — primary green + secondary navy.",
+    description: "Core identity colors — primary indigo + secondary dark.",
     tokens: [
-      { name: "primary", cssVar: "--primary", twBg: "bg-primary", twText: "text-primary", light: "#00c951", dark: "#00c951", fgVar: "--primary-foreground" },
+      { name: "primary", cssVar: "--primary", twBg: "bg-primary", twText: "text-primary", light: "#374151", dark: "#374151", fgVar: "--primary-foreground" },
       { name: "primary-foreground", cssVar: "--primary-foreground", twText: "text-primary-foreground", light: "#ffffff", dark: "#ffffff" },
-      { name: "secondary", cssVar: "--secondary", twBg: "bg-secondary", twText: "text-secondary", light: "#1C2D3A", dark: "#334155", fgVar: "--secondary-foreground" },
+      { name: "secondary", cssVar: "--secondary", twBg: "bg-secondary", twText: "text-secondary", light: "#52525b", dark: "#334155", fgVar: "--secondary-foreground" },
       { name: "secondary-foreground", cssVar: "--secondary-foreground", twText: "text-secondary-foreground", light: "#ffffff", dark: "#f8fafc" },
     ],
   },
@@ -68,13 +68,15 @@ const colorGroups: ColorGroup[] = [
     description: "Background and card surfaces for page and component layers.",
     tokens: [
       { name: "background", cssVar: "--background", twBg: "bg-background", light: "#ffffff", dark: "#0f172a" },
-      { name: "foreground", cssVar: "--foreground", twText: "text-foreground", light: "#1C2D3A", dark: "#f8fafc" },
+      { name: "foreground", cssVar: "--foreground", twText: "text-foreground", light: "#222222", dark: "#f8fafc" },
       { name: "card", cssVar: "--card", twBg: "bg-card", light: "#ffffff", dark: "#1e293b", fgVar: "--card-foreground" },
-      { name: "card-foreground", cssVar: "--card-foreground", twText: "text-card-foreground", light: "#1C2D3A", dark: "#f8fafc" },
+      { name: "card-foreground", cssVar: "--card-foreground", twText: "text-card-foreground", light: "#222222", dark: "#f8fafc" },
       { name: "popover", cssVar: "--popover", twBg: "bg-popover", light: "#ffffff", dark: "#1e293b", fgVar: "--popover-foreground" },
+      { name: "popover-foreground", cssVar: "--popover-foreground", twText: "text-popover-foreground", light: "#222222", dark: "#f8fafc" },
       { name: "muted", cssVar: "--muted", twBg: "bg-muted", light: "#f4f4f5", dark: "#334155", fgVar: "--muted-foreground" },
       { name: "muted-foreground", cssVar: "--muted-foreground", twText: "text-muted-foreground", light: "#52525b", dark: "#94a3b8" },
       { name: "accent", cssVar: "--accent", twBg: "bg-accent", light: "#f4f4f5", dark: "#334155", fgVar: "--accent-foreground" },
+      { name: "accent-foreground", cssVar: "--accent-foreground", twText: "text-accent-foreground", light: "#222222", dark: "#f8fafc" },
     ],
   },
   {
@@ -82,9 +84,13 @@ const colorGroups: ColorGroup[] = [
     description: "Status and feedback signals — destructive, success, warning, info.",
     tokens: [
       { name: "destructive", cssVar: "--destructive", twBg: "bg-destructive", light: "#ef4444", dark: "#991b1b", fgVar: "--destructive-foreground" },
+      { name: "destructive-foreground", cssVar: "--destructive-foreground", twText: "text-destructive-foreground", light: "#ffffff", dark: "#f8fafc" },
       { name: "success", cssVar: "--success", twBg: "bg-success", light: "#22c55e", dark: "#15803d", fgVar: "--success-foreground" },
+      { name: "success-foreground", cssVar: "--success-foreground", twText: "text-success-foreground", light: "#ffffff", dark: "#f8fafc" },
       { name: "warning", cssVar: "--warning", twBg: "bg-warning", light: "#f59e0b", dark: "#b45309", fgVar: "--warning-foreground" },
+      { name: "warning-foreground", cssVar: "--warning-foreground", twText: "text-warning-foreground", light: "#ffffff", dark: "#f8fafc" },
       { name: "info", cssVar: "--info", twBg: "bg-info", light: "#3b82f6", dark: "#1d4ed8", fgVar: "--info-foreground" },
+      { name: "info-foreground", cssVar: "--info-foreground", twText: "text-info-foreground", light: "#ffffff", dark: "#f8fafc" },
     ],
   },
   {
@@ -95,7 +101,7 @@ const colorGroups: ColorGroup[] = [
       { name: "input", cssVar: "--input", twBorder: "border-input", light: "#e4e4e7", dark: "#334155" },
       { name: "input-background", cssVar: "--input-background", twBg: "bg-input-background", light: "#ffffff", dark: "#334155" },
       { name: "switch-background", cssVar: "--switch-background", twBg: "bg-switch-background", light: "#cbced4", dark: "#475569" },
-      { name: "ring", cssVar: "--ring", light: "#00c951", dark: "#00c951" },
+      { name: "ring", cssVar: "--ring", light: "#4F46E5", dark: "#4F46E5" },
     ],
   },
   {
@@ -103,22 +109,24 @@ const colorGroups: ColorGroup[] = [
     description: "Navigation sidebar layer tokens.",
     tokens: [
       { name: "sidebar", cssVar: "--sidebar", twBg: "bg-sidebar", light: "oklch(0.985 0 0)", dark: "#1e293b", fgVar: "--sidebar-foreground" },
-      { name: "sidebar-foreground", cssVar: "--sidebar-foreground", twText: "text-sidebar-foreground", light: "#1C2D3A", dark: "#f8fafc" },
-      { name: "sidebar-primary", cssVar: "--sidebar-primary", twBg: "bg-sidebar-primary", light: "#1C2D3A", dark: "#00c951", fgVar: "--sidebar-primary-foreground" },
+      { name: "sidebar-foreground", cssVar: "--sidebar-foreground", twText: "text-sidebar-foreground", light: "#222222", dark: "#f8fafc" },
+      { name: "sidebar-primary", cssVar: "--sidebar-primary", twBg: "bg-sidebar-primary", light: "#222222", dark: "#4F46E5", fgVar: "--sidebar-primary-foreground" },
+      { name: "sidebar-primary-foreground", cssVar: "--sidebar-primary-foreground", twText: "text-sidebar-primary-foreground", light: "oklch(0.985 0 0)", dark: "#ffffff" },
       { name: "sidebar-accent", cssVar: "--sidebar-accent", twBg: "bg-sidebar-accent", light: "oklch(0.97 0 0)", dark: "#334155", fgVar: "--sidebar-accent-foreground" },
+      { name: "sidebar-accent-foreground", cssVar: "--sidebar-accent-foreground", twText: "text-sidebar-accent-foreground", light: "#222222", dark: "#f8fafc" },
       { name: "sidebar-border", cssVar: "--sidebar-border", twBorder: "border-sidebar-border", light: "oklch(0.922 0 0)", dark: "#334155" },
-      { name: "sidebar-ring", cssVar: "--sidebar-ring", light: "oklch(0.708 0 0)", dark: "#00c951" },
+      { name: "sidebar-ring", cssVar: "--sidebar-ring", light: "oklch(0.708 0 0)", dark: "#4F46E5" },
     ],
   },
   {
     title: "Charts",
     description: "5-stop data visualization palette. Adapts between light and dark mode.",
     tokens: [
-      { name: "chart-1", cssVar: "--chart-1", twBg: "bg-chart-1", light: "oklch(0.646 0.222 41.1)", dark: "oklch(0.488 0.243 264.4)" },
-      { name: "chart-2", cssVar: "--chart-2", twBg: "bg-chart-2", light: "oklch(0.600 0.118 184.7)", dark: "oklch(0.696 0.170 162.5)" },
-      { name: "chart-3", cssVar: "--chart-3", twBg: "bg-chart-3", light: "oklch(0.398 0.070 227.4)", dark: "oklch(0.769 0.188 70.1)" },
-      { name: "chart-4", cssVar: "--chart-4", twBg: "bg-chart-4", light: "oklch(0.828 0.189 84.4)", dark: "oklch(0.627 0.265 303.9)" },
-      { name: "chart-5", cssVar: "--chart-5", twBg: "bg-chart-5", light: "oklch(0.769 0.188 70.1)", dark: "oklch(0.645 0.246 16.4)" },
+      { name: "chart-1", cssVar: "--chart-1", twBg: "bg-chart-1", light: "oklch(0.646 0.222 41.116)", dark: "oklch(0.488 0.243 264.376)" },
+      { name: "chart-2", cssVar: "--chart-2", twBg: "bg-chart-2", light: "oklch(0.6 0.118 184.704)", dark: "oklch(0.696 0.17 162.48)" },
+      { name: "chart-3", cssVar: "--chart-3", twBg: "bg-chart-3", light: "oklch(0.398 0.07 227.392)", dark: "oklch(0.769 0.188 70.08)" },
+      { name: "chart-4", cssVar: "--chart-4", twBg: "bg-chart-4", light: "oklch(0.828 0.189 84.429)", dark: "oklch(0.627 0.265 303.9)" },
+      { name: "chart-5", cssVar: "--chart-5", twBg: "bg-chart-5", light: "oklch(0.769 0.188 70.08)", dark: "oklch(0.645 0.246 16.439)" },
     ],
   },
 ];
@@ -130,46 +138,6 @@ const kpiTokens: KpiToken[] = [
   { name: "kpi-orange", cssVar: "--kpi-orange", color: "rgb(249,115,22)", dark: "rgb(234,88,12)", bg: "rgb(255,237,213)" },
   { name: "kpi-blue", cssVar: "--kpi-blue", color: "rgb(59,130,246)", dark: "rgb(37,99,235)", bg: "rgb(219,234,254)" },
   { name: "kpi-lime", cssVar: "--kpi-lime", color: "rgb(132,204,22)", dark: "rgb(101,163,13)", bg: "rgb(247,254,231)" },
-];
-
-// C-Financia brand — 3 pairs (color + foreground)
-interface CFinanciaTokenPair {
-  name: string;
-  label: string;
-  description: string;
-  bgVar: string;
-  fgVar: string;
-  bgValue: string;
-  fgValue: string;
-}
-const cfinanciaTokenPairs: CFinanciaTokenPair[] = [
-  {
-    name: "primary",
-    label: "Primary",
-    description: "Main brand accent. Buttons, active states, highlights.",
-    bgVar: "--color-cfinancia-primary",
-    fgVar: "--color-cfinancia-primary-foreground",
-    bgValue: "rgb(222, 251, 73)",
-    fgValue: "rgb(5, 41, 55)",
-  },
-  {
-    name: "accent-hover",
-    label: "Accent Hover",
-    description: "Interactive hover state over primary. Success micro-feedback.",
-    bgVar: "--color-cfinancia-accent-hover",
-    fgVar: "--color-cfinancia-accent-hover-foreground",
-    bgValue: "rgb(67, 249, 119)",
-    fgValue: "rgb(5, 41, 55)",
-  },
-  {
-    name: "navy",
-    label: "Navy",
-    description: "Primary surface. Navbar, sidebar, dark containers.",
-    bgVar: "--color-cfinancia-navy",
-    fgVar: "--color-cfinancia-navy-foreground",
-    bgValue: "rgb(5, 41, 55)",
-    fgValue: "rgb(222, 251, 73)",
-  },
 ];
 
 // Radius tokens
@@ -186,6 +154,7 @@ const shadowTokens = [
   {
     name: "elevation-1",
     cssVar: "--shadow-elevation-1",
+    twClass: "shadow-elevation-1",
     value: "0 1px 2px 0 rgba(28,45,58,0.05)",
     darkValue: "0 1px 2px 0 rgba(0,0,0,0.3)",
     usage: "Subtle. Cards at rest, default state.",
@@ -193,6 +162,7 @@ const shadowTokens = [
   {
     name: "elevation-2",
     cssVar: "--shadow-elevation-2",
+    twClass: "shadow-elevation-2",
     value: "0 4px 6px -1px rgba(28,45,58,0.1), 0 2px 4px -2px rgba(28,45,58,0.1)",
     darkValue: "0 4px 6px -1px rgba(0,0,0,0.3), 0 2px 4px -2px rgba(0,0,0,0.3)",
     usage: "Dropdowns, popovers, focused cards.",
@@ -200,6 +170,7 @@ const shadowTokens = [
   {
     name: "elevation-3",
     cssVar: "--shadow-elevation-3",
+    twClass: "shadow-elevation-3",
     value: "0 10px 15px -3px rgba(28,45,58,0.1), 0 4px 6px -4px rgba(28,45,58,0.1)",
     darkValue: "0 10px 15px -3px rgba(0,0,0,0.3), 0 4px 6px -4px rgba(0,0,0,0.3)",
     usage: "Modals, dialogs, hover lifted cards.",
@@ -207,6 +178,7 @@ const shadowTokens = [
   {
     name: "elevation-4",
     cssVar: "--shadow-elevation-4",
+    twClass: "shadow-elevation-4",
     value: "0 20px 25px -5px rgba(28,45,58,0.1), 0 8px 10px -6px rgba(28,45,58,0.1)",
     darkValue: "0 20px 25px -5px rgba(0,0,0,0.3), 0 8px 10px -6px rgba(0,0,0,0.3)",
     usage: "Sheets, drawers, top-level overlays.",
@@ -313,7 +285,7 @@ function SectionHeader({ title, description }: { title: string; description: str
   );
 }
 
-// ─────────────────────────────────────────────
+// ────────────────────────────────────────────
 // TABS CONTENT
 // ─────────────────────────────────────────────
 
@@ -368,39 +340,6 @@ function ColorsTab() {
         <Separator className="mt-8" />
       </div>
 
-      {/* C-Financia brand */}
-      <div>
-        <SectionHeader title="C-Financia Brand" description="Partner brand accent colors. Used in co-branded surfaces." />
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {cfinanciaTokenPairs.map((t) => (
-            <div key={t.name} className="space-y-2">
-              {/* Swatch with Aa preview */}
-              <div
-                className="h-14 rounded-[10px] border border-border/50 flex items-center justify-center"
-                style={{ backgroundColor: t.bgValue }}
-              >
-                <span className="text-xs select-none opacity-80" style={{ color: t.fgValue }}>Aa</span>
-              </div>
-              <p className="text-xs font-medium">{t.label}</p>
-              <p className="text-[10px] text-muted-foreground font-mono">{t.description}</p>
-              <button
-                onClick={() => copy(t.bgVar)}
-                className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground hover:text-primary"
-              >
-                <Copy className="h-3 w-3" /> {t.bgVar}
-              </button>
-              <p className="text-[10px] font-mono text-muted-foreground">{t.bgValue}</p>
-              <button
-                onClick={() => copy(t.fgVar)}
-                className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground hover:text-primary"
-              >
-                <Copy className="h-3 w-3" /> {t.fgVar}
-              </button>
-              <p className="text-[10px] font-mono text-muted-foreground">{t.fgValue}</p>
-            </div>
-          ))}
-        </div>
-      </div>
     </div>
   );
 }
@@ -640,6 +579,9 @@ function ShadowsTab() {
               <button onClick={() => copy(s.cssVar)} className="flex items-center gap-1 text-[10px] font-mono text-muted-foreground hover:text-primary">
                 <Copy className="h-3 w-3" />{s.cssVar}
               </button>
+              <button onClick={() => copy(s.twClass)} className="flex items-center gap-1 text-[10px] font-mono text-primary hover:text-primary/70">
+                <Copy className="h-3 w-3" />{s.twClass}
+              </button>
               <p className="text-[10px] text-muted-foreground">{s.usage}</p>
             </div>
           </div>
@@ -651,7 +593,7 @@ function ShadowsTab() {
         <table className="w-full text-sm">
           <thead>
             <tr className="border-b bg-muted/40">
-              {["Token", "CSS Var", "Light value", "Dark value"].map((h) => (
+              {["Token", "CSS Var", "Tailwind class", "Light value", "Dark value"].map((h) => (
                 <th key={h} className="text-left px-4 py-2 font-medium text-xs text-muted-foreground">{h}</th>
               ))}
             </tr>
@@ -665,8 +607,13 @@ function ShadowsTab() {
                     <Copy className="h-3 w-3" />{s.cssVar}
                   </button>
                 </td>
-                <td className="px-4 py-2.5 text-[10px] font-mono text-muted-foreground max-w-[220px]">{s.value}</td>
-                <td className="px-4 py-2.5 text-[10px] font-mono text-muted-foreground max-w-[220px]">{s.darkValue}</td>
+                <td className="px-4 py-2.5">
+                  <button onClick={() => copy(s.twClass)} className="flex items-center gap-1 text-[10px] font-mono text-primary hover:text-primary/70">
+                    <Copy className="h-3 w-3" />{s.twClass}
+                  </button>
+                </td>
+                <td className="px-4 py-2.5 text-[10px] font-mono text-muted-foreground max-w-[200px]">{s.value}</td>
+                <td className="px-4 py-2.5 text-[10px] font-mono text-muted-foreground max-w-[200px]">{s.darkValue}</td>
               </tr>
             ))}
           </tbody>
@@ -674,10 +621,22 @@ function ShadowsTab() {
       </div>
 
       {/* Usage note */}
-      <div className="p-4 rounded-[10px] bg-muted/30 border text-sm text-muted-foreground space-y-1">
+      <div className="p-4 rounded-[10px] bg-muted/30 border text-sm text-muted-foreground space-y-2">
         <p className="font-medium text-foreground">Usage</p>
-        <p>In Tailwind: no direct utility — apply via <code className="font-mono bg-muted px-1 rounded text-xs">style=&#123;&#123; boxShadow: "var(--shadow-elevation-2)" &#125;&#125;</code></p>
-        <p>Or via utility class: <code className="font-mono bg-muted px-1 rounded text-xs">.hover-lift</code> applies elevation-3 on hover automatically.</p>
+        <p>
+          Via Tailwind class (recommended):{" "}
+          <code className="font-mono bg-muted px-1 rounded text-xs">className="shadow-elevation-2"</code>
+          {" "}— resolves the correct value automatically for light <em>and</em> dark mode.
+        </p>
+        <p>
+          Via inline style:{" "}
+          <code className="font-mono bg-muted px-1 rounded text-xs">style=&#123;&#123; boxShadow: "var(--shadow-elevation-2)" &#125;&#125;</code>
+        </p>
+        <p>
+          Via hover utility:{" "}
+          <code className="font-mono bg-muted px-1 rounded text-xs">.hover-lift</code>
+          {" "}applies elevation-3 shadow + translateY(−2px) on :hover automatically.
+        </p>
       </div>
     </div>
   );
@@ -816,7 +775,6 @@ export function DesignTokensPage() {
   const totalTokens =
     colorGroups.reduce((acc, g) => acc + g.tokens.length, 0) +
     kpiTokens.length * 3 + // color + dark + bg
-    cfinanciaTokenPairs.length * 2 + // bg + fg
     radiusTokens.length +
     shadowTokens.length +
     animationTokens.length +
@@ -828,17 +786,18 @@ export function DesignTokensPage() {
       <div className="space-y-3">
         <div className="flex items-center gap-3 flex-wrap">
           <h1 className="text-4xl text-foreground">Design Tokens</h1>
-          <Badge variant="outline" className="text-xs">v0.3.0</Badge>
+          <Badge variant="outline" className="text-xs">v0.4.1</Badge>
           <Badge className="text-xs bg-primary text-primary-foreground">{totalTokens}+ tokens</Badge>
         </div>
         <p className="text-muted-foreground max-w-2xl">
-          Single source of truth for all CSS custom properties. Every token defined in{" "}
-          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">/styles/globals.css</code> is displayed here with its value, Tailwind class, and light/dark variants.
+          Single source of truth for all CSS custom properties. Tokens defined in{" "}
+          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">/styles/globals.css</code> (core DSM) and{" "}
+          <code className="font-mono text-xs bg-muted px-1.5 py-0.5 rounded">/styles/animations.css</code> (micro-interactions) are displayed here with their values, Tailwind classes, and light/dark variants.
         </p>
         <div className="flex gap-4 text-xs text-muted-foreground flex-wrap">
-          <span>🎨 <strong className="text-foreground">Primary:</strong> #00c951 Green</span>
-          <span>🔵 <strong className="text-foreground">Secondary:</strong> #1C2D3A Navy</span>
-          <span>🔤 <strong className="text-foreground">Font:</strong> Satoshi</span>
+          <span>🎨 <strong className="text-foreground">Primary:</strong> #4F46E5 Indigo</span>
+          <span>🔵 <strong className="text-foreground">Secondary:</strong> #222222 Dark</span>
+          <span>🔤 <strong className="text-foreground">Font:</strong> Inter</span>
           <span>📐 <strong className="text-foreground">Radius:</strong> 10px</span>
           <span>☀️🌙 <strong className="text-foreground">Modes:</strong> Light / Dark</span>
         </div>
@@ -854,7 +813,7 @@ export function DesignTokensPage() {
           <TabsTrigger value="shape">📐 Shape</TabsTrigger>
           <TabsTrigger value="shadows">🌑 Shadows</TabsTrigger>
           <TabsTrigger value="animations">✨ Animations</TabsTrigger>
-          <TabsTrigger value="utilities">🛠 Utilities</TabsTrigger>
+          <TabsTrigger value="utilities"> Utilities</TabsTrigger>
         </TabsList>
 
         <TabsContent value="colors"><ColorsTab /></TabsContent>

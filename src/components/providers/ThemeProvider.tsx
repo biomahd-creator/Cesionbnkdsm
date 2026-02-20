@@ -1,270 +1,130 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 
 /**
- * THEME PROVIDER
- * Single-theme provider for CESIONBNK Design System.
- * Manages light/dark mode toggle and runtime CSS custom property injection.
+ * THEME PROVIDER — Multi-Tenant + Dark Mode
  *
- * Theme: CESIONBNK default (Primary Green #00c951 + Secondary Navy #1C2D3A)
- * No multi-theme presets — the project uses exclusively the default CESIONBNK theme.
+ * Manages two orthogonal axes:
+ *   1. Tenant (brand):  data-theme attribute on <html>  → drives CSS overrides from themes.css
+ *   2. Color mode:      .dark class on <html>           → drives light/dark tokens from globals.css
+ *
+ * No style.setProperty() — all theming is pure CSS cascade.
+ *
+ * @version 0.5.0
  */
 
-interface ThemeConfig {
-  // Brand Colors
+/* ── Tenant definitions ── */
+
+export type TenantId = "default" | "c-financia" | "eurocapital" | "iris" | "lulo-empresas";
+export type ColorMode = "light" | "dark";
+
+export interface TenantInfo {
+  id: TenantId;
+  name: string;
   primary: string;
-  primaryForeground: string;
   secondary: string;
-  secondaryForeground: string;
-
-  // Chart Colors
-  chart1: string;
-  chart2: string;
-  chart3: string;
-  chart4: string;
-  chart5: string;
-
-  // UI Colors
-  destructive: string;
-  accent: string;
-  muted: string;
-
-  // Link Colors
-  link: string;
-  linkHover: string;
-  linkVisited: string;
-
-  // Additional UI Elements
-  success: string;
-  warning: string;
-  info: string;
-
-  // Focus/Selection
-  focusRing: string;
-  selection: string;
-
-  // Input Colors
-  inputBackgroundLight: string;
-  inputBackgroundDark: string;
-  inputBorderLight: string;
-  inputBorderDark: string;
-  inputBorderWidth: string;
-
-  // Layout
-  radius: string;
-
-  // Typography
-  fontSize: string;
-  fontWeightLight: string;
-  fontWeightNormal: string;
-  fontWeightMedium: string;
-  fontWeightSemibold: string;
-  fontWeightBold: string;
-
-  // Branding
-  logoUrl?: string;
+  font: string;
 }
+
+export const TENANTS: TenantInfo[] = [
+  { id: "default",        name: "CESIONBNK",      primary: "#374151", secondary: "#52525b",  font: "Inter" },
+  { id: "c-financia",     name: "C-Financia",     primary: "#DEFB49", secondary: "#1C2D3A",  font: "Satoshi" },
+  { id: "eurocapital",    name: "Eurocapital",    primary: "#1A7FD9", secondary: "#9FB3BC",  font: "Montserrat" },
+  { id: "iris",           name: "IRIS",           primary: "#00B388", secondary: "#004646",  font: "System sans-serif" },
+  { id: "lulo-empresas",  name: "Lulo Empresas",  primary: "#00C4FF", secondary: "#1C2A49",  font: "Poppins" },
+];
+
+/* ── Context type ── */
 
 interface ThemeContextType {
-  config: ThemeConfig;
-  theme: "light" | "dark";
-  updateConfig: (updates: Partial<ThemeConfig>) => void;
-  resetToDefaults: () => void;
-  exportConfig: () => string;
-  importConfig: (jsonString: string) => void;
-  toggleTheme: () => void;
-}
+  /** Current tenant brand */
+  tenant: TenantId;
+  /** Switch tenant */
+  setTenant: (id: TenantId) => void;
+  /** Available tenants registry */
+  tenants: TenantInfo[];
 
-const defaultConfig: ThemeConfig = {
-  primary: "#00c951",
-  primaryForeground: "#ffffff",
-  secondary: "#1C2D3A",
-  secondaryForeground: "#ffffff",
-  chart1: "#FF6B6B",
-  chart2: "#4ECDC4",
-  chart3: "#45B7D1",
-  chart4: "#FFA07A",
-  chart5: "#98D8C8",
-  destructive: "#ef4444",
-  accent: "#f4f4f5",
-  muted: "#f4f4f5",
-  link: "#0E7490",
-  linkHover: "#00c951",
-  linkVisited: "#164E63",
-  success: "#22C55E",
-  warning: "#F59E0B",
-  info: "#06B6D4",
-  focusRing: "#00c951",
-  selection: "#00c951",
-  inputBackgroundLight: "#ffffff",
-  inputBackgroundDark: "#334155",
-  inputBorderLight: "#e4e4e7",
-  inputBorderDark: "#334155",
-  inputBorderWidth: "1px",
-  radius: "0.625rem",
-  fontSize: "16px",
-  fontWeightLight: "300",
-  fontWeightNormal: "400",
-  fontWeightMedium: "500",
-  fontWeightSemibold: "600",
-  fontWeightBold: "700",
-  logoUrl: "",
-};
+  /** Current color mode — backward compat alias */
+  theme: ColorMode;
+  /** Toggle light ↔ dark — backward compat alias */
+  toggleTheme: () => void;
+
+  /** Color mode (canonical name) */
+  colorMode: ColorMode;
+  /** Toggle color mode (canonical name) */
+  toggleColorMode: () => void;
+}
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
+/* ── Provider ── */
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [config, setConfig] = useState<ThemeConfig>(() => {
-    const saved = localStorage.getItem("theme-config");
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      // Migration: update old default colors to current green
-      if (parsed.primary === "#DEFB49" || parsed.primary === "#84CC16") {
-        return {
-          ...parsed,
-          primary: "#00c951",
-          primaryForeground: "#ffffff",
-          focusRing: "#00c951",
-          selection: "#00c951",
-          linkHover: "#00c951",
-        };
-      }
-      if (parsed.primary === "#00c951" && parsed.primaryForeground !== "#ffffff") {
-        return { ...parsed, primaryForeground: "#ffffff" };
-      }
-      return parsed;
-    }
-    return defaultConfig;
+  const [tenant, setTenantState] = useState<TenantId>(() => {
+    const saved = localStorage.getItem("tenant");
+    return (saved as TenantId) || "default";
   });
 
-  const [theme, setTheme] = useState<"light" | "dark">(() => {
-    const savedTheme = localStorage.getItem("theme");
-    return savedTheme ? (savedTheme as "light" | "dark") : "light";
+  const [colorMode, setColorMode] = useState<ColorMode>(() => {
+    const saved = localStorage.getItem("theme");
+    return saved === "dark" ? "dark" : "light";
   });
 
-  // Clean up any leftover style-theme data from previous versions
+  /* ── Sync tenant → <html data-theme> ── */
   useEffect(() => {
-    localStorage.removeItem("style-theme");
-    document.documentElement.removeAttribute("data-theme");
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("theme-config", JSON.stringify(config));
-    applyThemeToDOM(config, theme);
-  }, [config]);
-
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-    applyThemeToDOM(config, theme);
-  }, [theme, config]);
-
-  /**
-   * applyThemeToDOM - Sets CSS custom properties on <html>.
-   *
-   * Mode-independent properties are always set inline.
-   * Mode-dependent properties are set only in light mode;
-   * in dark mode they are removed so CSS .dark {} values take effect.
-   */
-  const applyThemeToDOM = (themeConfig: ThemeConfig, currentTheme: "light" | "dark") => {
+    localStorage.setItem("tenant", tenant);
     const root = document.documentElement;
 
-    // Mode-independent: safe to always set inline
-    root.style.setProperty("--primary", themeConfig.primary);
-    root.style.setProperty("--primary-foreground", themeConfig.primaryForeground);
-    root.style.setProperty("--font-size", themeConfig.fontSize);
-    root.style.setProperty("--font-weight-light", themeConfig.fontWeightLight);
-    root.style.setProperty("--font-weight-normal", themeConfig.fontWeightNormal);
-    root.style.setProperty("--font-weight-medium", themeConfig.fontWeightMedium);
-    root.style.setProperty("--font-weight-semibold", themeConfig.fontWeightSemibold);
-    root.style.setProperty("--font-weight-bold", themeConfig.fontWeightBold);
-    root.style.setProperty("--ring", themeConfig.focusRing);
-    root.style.setProperty("--radius", themeConfig.radius);
-
-    // Input SOURCE variables
-    root.style.setProperty("--input-background-light", themeConfig.inputBackgroundLight);
-    root.style.setProperty("--input-background-dark", themeConfig.inputBackgroundDark);
-    root.style.setProperty("--input-border-light", themeConfig.inputBorderLight);
-    root.style.setProperty("--input-border-dark", themeConfig.inputBorderDark);
-    root.style.setProperty("--input-border-width", themeConfig.inputBorderWidth);
-
-    // Mode-dependent: set in light, REMOVE in dark so CSS .dark {} values take effect
-    const modeDependentProps = [
-      ["--secondary", themeConfig.secondary],
-      ["--secondary-foreground", themeConfig.secondaryForeground],
-      ["--destructive", themeConfig.destructive],
-      ["--accent", themeConfig.accent],
-      ["--muted", themeConfig.muted],
-      ["--chart-1", themeConfig.chart1],
-      ["--chart-2", themeConfig.chart2],
-      ["--chart-3", themeConfig.chart3],
-      ["--chart-4", themeConfig.chart4],
-      ["--chart-5", themeConfig.chart5],
-      ["--success", themeConfig.success],
-      ["--warning", themeConfig.warning],
-      ["--info", themeConfig.info],
-      ["--link", themeConfig.link],
-      ["--link-hover", themeConfig.linkHover],
-      ["--link-visited", themeConfig.linkVisited],
-      ["--focus-ring", themeConfig.focusRing],
-      ["--selection", themeConfig.selection],
-    ] as const;
-
-    if (currentTheme === "light") {
-      for (const [prop, value] of modeDependentProps) {
-        root.style.setProperty(prop, value);
-      }
+    if (tenant === "default") {
+      root.removeAttribute("data-theme");
     } else {
-      for (const [prop] of modeDependentProps) {
-        root.style.removeProperty(prop);
-      }
+      root.setAttribute("data-theme", tenant);
     }
-  };
+  }, [tenant]);
 
-  const updateConfig = (updates: Partial<ThemeConfig>) => {
-    setConfig((prev) => ({ ...prev, ...updates }));
-  };
+  /* ── Sync color mode → <html class="dark"> ── */
+  useEffect(() => {
+    localStorage.setItem("theme", colorMode);
+    const root = document.documentElement;
 
-  const resetToDefaults = () => {
-    setConfig(defaultConfig);
-  };
-
-  const exportConfig = () => {
-    return JSON.stringify(config, null, 2);
-  };
-
-  const importConfig = (jsonString: string) => {
-    try {
-      const imported = JSON.parse(jsonString);
-      setConfig(imported);
-    } catch (error) {
-      console.error("Invalid JSON configuration", error);
+    if (colorMode === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
     }
+  }, [colorMode]);
+
+  /* ── Clean up legacy keys from old ThemeProvider ── */
+  useEffect(() => {
+    localStorage.removeItem("theme-config");
+    localStorage.removeItem("style-theme");
+  }, []);
+
+  const setTenant = (id: TenantId) => {
+    setTenantState(id);
   };
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  const toggleColorMode = () => {
+    setColorMode((prev) => (prev === "light" ? "dark" : "light"));
   };
 
   return (
     <ThemeContext.Provider
       value={{
-        config,
-        theme,
-        updateConfig,
-        resetToDefaults,
-        exportConfig,
-        importConfig,
-        toggleTheme,
+        tenant,
+        setTenant,
+        tenants: TENANTS,
+        theme: colorMode,
+        toggleTheme: toggleColorMode,
+        colorMode,
+        toggleColorMode,
       }}
     >
       {children}
     </ThemeContext.Provider>
   );
 }
+
+/* ── Hook ── */
 
 export function useTheme() {
   const context = useContext(ThemeContext);

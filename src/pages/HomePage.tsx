@@ -2,12 +2,12 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../co
 import { Badge } from "../components/ui/badge";
 import { Progress } from "../components/ui/progress";
 import { Separator } from "../components/ui/separator";
-import { 
-  CheckCircle2, 
-  Package, 
-  Palette, 
-  Layers, 
-  Accessibility, 
+import {
+  CheckCircle2,
+  Package,
+  Palette,
+  Layers,
+  Accessibility,
   Code2,
   Zap,
   Shield,
@@ -15,123 +15,116 @@ import {
   Users,
   TrendingUp,
   Activity,
-  Grid3x3,
-  Scale
 } from "lucide-react";
 import { Logo } from "../components/Logo";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 
 export function HomePageContent() {
   const stats = [
-    { label: "Total Components", value: "125+", icon: Package, color: "text-primary" },
-    { label: "DSM Migration", value: "100%", icon: Sparkles, color: "text-green-500" },
-    { label: "Official Components", value: "48", icon: CheckCircle2, color: "text-success" },
-    { label: "WCAG AA Compliance", value: "98%", icon: Accessibility, color: "text-warning" },
+    { label: "Total Components", value: "115",  icon: Package,     color: "text-primary"  },
+    { label: "DSM Migration",     value: "100%", icon: Sparkles,    color: "text-green-500" },
+    { label: "Showcase Pages",    value: "93",   icon: CheckCircle2,color: "text-success"   },
+    { label: "WCAG AA",           value: "98%",  icon: Accessibility,color: "text-warning"  },
   ];
 
   const features = [
     {
       icon: Palette,
       title: "Design Tokens",
-      description: "CSS token-based design system with corporate colors #00c951 (Lime Green) and #1C2D3A (Dark Blue)",
-      badge: "Active"
+      description: "W3C DTCG-compliant token system with CESIONBNK brand colors #374151 (Slate) and #52525b (Zinc). Single Source of Truth in globals.css.",
+      badge: "Active",
     },
     {
       icon: Accessibility,
       title: "WCAG 2.1 AA Compliant",
-      description: "98% compliance with optimized contrast ratios for accessibility",
-      badge: "Verified"
+      description: "98% compliance with optimized contrast ratios. All interactive components support keyboard navigation and screen readers.",
+      badge: "Verified",
     },
     {
       icon: Layers,
       title: "Atomic Design",
-      description: "Hierarchical architecture with Atoms, Molecules, Organisms, Templates, and Pages",
-      badge: "Implemented"
+      description: "4-layer architecture: Core UI (65) · Advanced (19) · Patterns (16) · Widgets (15). Each layer builds on the previous.",
+      badge: "Implemented",
     },
     {
       icon: Code2,
       title: "shadcn/ui Base",
-      description: "Built on top of official shadcn/ui components with Radix UI primitives",
-      badge: "Stable"
+      description: "48 official shadcn/ui components extended with CESIONBNK-specific variants, custom props and factoring business patterns.",
+      badge: "Stable",
     },
     {
       icon: Zap,
-      title: "Reactive & Dynamic",
-      description: "Real-time Theme Customizer with light/dark mode support",
-      badge: "Live"
+      title: "Light / Dark Mode",
+      description: "Full theme support via CSS custom properties. Primary (#374151) and ring remain constant — only surfaces and neutral tones shift.",
+      badge: "Live",
     },
     {
       icon: Shield,
       title: "Satoshi Typography",
-      description: "Unique typographic system with predefined scales and consistent weights",
-      badge: "System"
+      description: "Exclusive Satoshi typeface with 0.025em global letter-spacing, 1.5 line-height default and 11 predefined type scales.",
+      badge: "System",
     },
   ];
 
   const techStack = [
-    { name: "React 18", version: "18.x" },
-    { name: "TypeScript", version: "5.x" },
-    { name: "Tailwind CSS", version: "4.0" },
-    { name: "shadcn/ui", version: "Latest" },
-    { name: "Radix UI", version: "Latest" },
-    { name: "Recharts", version: "2.x" },
+    { name: "React 18",      version: "18.x"   },
+    { name: "TypeScript",    version: "5.x"    },
+    { name: "Tailwind CSS",  version: "4.0"    },
+    { name: "shadcn/ui",     version: "Latest" },
+    { name: "Radix UI",      version: "Latest" },
+    { name: "Recharts",      version: "2.x"    },
+    { name: "Motion",        version: "Latest" },
   ];
 
   const progress = {
-    components: 100, // 48/48 official shadcn/ui components
-    patterns: 100, // 21/21 complete patterns
-    business: 100, // 15/15 business components
-    advanced: 100, // 25/25 advanced components
-    accessibility: 98, // WCAG compliance
+    shadcn:        100, // 48/48 official shadcn/ui
+    patterns:      100, // 20/20 patterns (16 core + 4 factoring)
+    widgets:       100, // 15/15 widgets
+    advanced:      100, // 19/19 advanced
+    accessibility:  98, // WCAG AA
   };
 
   return (
     <div className="space-y-8 pb-16">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 md:p-12 elevation-2">
+      {/* ── Hero ── */}
+      <div className="relative overflow-hidden rounded-xl bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 md:p-12">
         <div className="relative z-10">
           <div className="flex items-center gap-4 mb-4">
             <Logo size="lg" variant="light" />
-            <Badge variant="default" className="text-xs px-3 py-1">
-              v1.0.0
-            </Badge>
+            <Badge variant="default" className="text-xs px-3 py-1">v0.3.1</Badge>
             <Badge className="text-xs px-3 py-1 bg-green-500 hover:bg-green-600 gap-1">
               <Sparkles className="h-3 w-3" />
               DSM 100%
             </Badge>
           </div>
-          <h1 className="mb-4">
-            Design System Manager
-          </h1>
+          <h1 className="mb-4">Design System Manager</h1>
           <p className="text-lg text-muted-foreground max-w-2xl mb-6 font-light">
-            Complete design system for Factoring applications, built with React, 
-            Tailwind CSS, and shadcn/ui. Focused on accessibility, consistency, and scalability.
+            Complete design system for CESIONBNK Factoring platform — built with React,
+            Tailwind CSS v4 and shadcn/ui. Focused on accessibility, consistency and scalability.
           </p>
           <div className="flex flex-wrap gap-3">
             <Badge variant="outline" className="gap-2">
               <Activity className="h-3 w-3" />
-              Last updated: January 2026
+              Last updated: February 2026
             </Badge>
             <Badge variant="outline" className="gap-2">
               <Users className="h-3 w-3" />
-              Atomic Design Methodology
+              Atomic Design · 4 Layers
             </Badge>
             <Badge variant="outline" className="gap-2">
               <TrendingUp className="h-3 w-3" />
-              125+ Components
+              115 Components · 93 Pages
             </Badge>
           </div>
         </div>
-        
-        {/* Background decoration */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -z-0" />
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/5 rounded-full blur-3xl -z-0" />
       </div>
 
-      {/* Stats Grid */}
+      {/* ── Stats ── */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         {stats.map((stat, index) => (
-          <Card key={index} className="elevation-1 hover:elevation-2 transition-shadow">
+          <Card key={index} className="shadow-elevation-1 hover:shadow-elevation-2 transition-shadow">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
               <CardTitle className="text-sm">{stat.label}</CardTitle>
               <stat.icon className={`h-4 w-4 ${stat.color}`} />
@@ -143,84 +136,74 @@ export function HomePageContent() {
         ))}
       </div>
 
-      {/* Progress Section */}
-      <Card className="elevation-1 col-span-6">
+      {/* ── Implementation Status ── */}
+      <Card className="shadow-elevation-1">
         <CardHeader>
           <div className="flex items-center gap-2">
             <Sparkles className="h-5 w-5 text-primary" />
             <CardTitle>Implementation Status</CardTitle>
           </div>
-          <CardDescription>
-            Current progress of the Design System development
-          </CardDescription>
+          <CardDescription>Current progress across all architecture layers</CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Official shadcn/ui Components</span>
-              <span className="font-semibold">{progress.components}%</span>
+              <span className="font-semibold">{progress.shadcn}%</span>
             </div>
-            <Progress value={progress.components} className="h-2" />
+            <Progress value={progress.shadcn} className="h-2" />
             <p className="text-xs text-muted-foreground">48/48 components implemented</p>
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Composite Patterns</span>
               <span className="font-semibold">{progress.patterns}%</span>
             </div>
             <Progress value={progress.patterns} className="h-2" />
-            <p className="text-xs text-muted-foreground">21/21 UX patterns complete</p>
+            <p className="text-xs text-muted-foreground">20/20 patterns complete (16 core + 4 factoring)</p>
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
-              <span className="text-muted-foreground">Business Components</span>
-              <span className="font-semibold">{progress.business}%</span>
+              <span className="text-muted-foreground">Widgets</span>
+              <span className="font-semibold">{progress.widgets}%</span>
             </div>
-            <Progress value={progress.business} className="h-2" />
-            <p className="text-xs text-muted-foreground">15/15 business components implemented</p>
+            <Progress value={progress.widgets} className="h-2" />
+            <p className="text-xs text-muted-foreground">15/15 widgets implemented</p>
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">Advanced Components</span>
               <span className="font-semibold">{progress.advanced}%</span>
             </div>
             <Progress value={progress.advanced} className="h-2" />
-            <p className="text-xs text-muted-foreground">25/25 advanced components implemented</p>
+            <p className="text-xs text-muted-foreground">19/19 advanced components implemented</p>
           </div>
-
           <div className="space-y-2">
             <div className="flex items-center justify-between text-sm">
               <span className="text-muted-foreground">WCAG 2.1 AA Accessibility</span>
               <span className="font-semibold">{progress.accessibility}%</span>
             </div>
             <Progress value={progress.accessibility} className="h-2" />
-            <p className="text-xs text-muted-foreground">Optimized contrast ratios</p>
+            <p className="text-xs text-muted-foreground">Optimized contrast ratios — 18/18 criteria met</p>
           </div>
         </CardContent>
       </Card>
 
-      {/* Features Grid */}
+      {/* ── Features ── */}
       <div>
         <div className="mb-6">
           <h2 className="mb-2">Key Features</h2>
-          <p className="text-muted-foreground">
-            Foundations and pillars of the Design System
-          </p>
+          <p className="text-muted-foreground">Foundations and pillars of the Design System</p>
         </div>
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {features.map((feature, index) => (
-            <Card key={index} className="elevation-1 hover:elevation-2 transition-shadow">
+            <Card key={index} className="shadow-elevation-1 hover:shadow-elevation-2 transition-shadow">
               <CardHeader>
                 <div className="flex items-center justify-between mb-2">
                   <div className="p-2 rounded-lg bg-primary/10">
                     <feature.icon className="h-5 w-5 text-primary" />
                   </div>
-                  <Badge variant="secondary" className="text-xs">
-                    {feature.badge}
-                  </Badge>
+                  <Badge variant="secondary" className="text-xs">{feature.badge}</Badge>
                 </div>
                 <CardTitle className="text-lg">{feature.title}</CardTitle>
               </CardHeader>
@@ -234,9 +217,9 @@ export function HomePageContent() {
 
       <Separator />
 
-      {/* Tech Stack */}
+      {/* ── Tech Stack + WCAG ── */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="elevation-1">
+        <Card className="shadow-elevation-1">
           <CardHeader>
             <div className="flex items-center gap-2">
               <Code2 className="h-5 w-5 text-chart-2" />
@@ -249,16 +232,14 @@ export function HomePageContent() {
               {techStack.map((tech, index) => (
                 <div key={index} className="flex items-center justify-between">
                   <span className="text-sm font-medium">{tech.name}</span>
-                  <Badge variant="outline" className="text-xs">
-                    {tech.version}
-                  </Badge>
+                  <Badge variant="outline" className="text-xs">{tech.version}</Badge>
                 </div>
               ))}
             </div>
           </CardContent>
         </Card>
 
-        <Card className="elevation-1">
+        <Card className="shadow-elevation-1">
           <CardHeader>
             <div className="flex items-center gap-2">
               <Shield className="h-5 w-5 text-success" />
@@ -267,67 +248,23 @@ export function HomePageContent() {
             <CardDescription>Accessibility standards compliance</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
-              <div>
-                <p className="text-sm font-medium">Color Contrast</p>
-                <p className="text-xs text-muted-foreground">
-                  Ratios above 4.5:1 for normal text and 3:1 for large text
-                </p>
+            {[
+              { title: "Color Contrast", desc: "Ratios above 4.5:1 for normal text and 3:1 for large text" },
+              { title: "Keyboard Navigation", desc: "All interactive components accessible via Tab/Enter/Escape" },
+              { title: "Screen Readers", desc: "ARIA labels and semantic roles in all components" },
+              { title: "Focus Visible", desc: "Focus ring (#374151) clearly visible in light and dark mode" },
+            ].map((item, i) => (
+              <div key={i} className="flex items-start gap-3">
+                <CheckCircle2 className="h-5 w-5 text-success mt-0.5 shrink-0" />
+                <div>
+                  <p className="text-sm font-medium">{item.title}</p>
+                  <p className="text-xs text-muted-foreground">{item.desc}</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
-              <div>
-                <p className="text-sm font-medium">Keyboard Navigation</p>
-                <p className="text-xs text-muted-foreground">
-                  All interactive components are accessible via Tab/Enter/Escape
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
-              <div>
-                <p className="text-sm font-medium">Screen Readers</p>
-                <p className="text-xs text-muted-foreground">
-                  ARIA labels and semantic roles in all components
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start gap-3">
-              <CheckCircle2 className="h-5 w-5 text-success mt-0.5" />
-              <div>
-                <p className="text-sm font-medium">Focus Visible</p>
-                <p className="text-xs text-muted-foreground">
-                  Focus ring (#00c951) clearly visible in light and dark mode
-                </p>
-              </div>
-            </div>
+            ))}
           </CardContent>
         </Card>
       </div>
-
-      {/* Footer Note */}
-      <Card className="bg-muted/30 elevation-1">
-        <CardContent className="pt-6">
-          <div className="flex items-start gap-4">
-            <div className="p-2 rounded-lg bg-warning/10">
-              <Activity className="h-5 w-5 text-warning" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-semibold mb-2">🧪 NON-DESTRUCTIVE TEST - New /pages structure</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                This file is located at <code>/pages/HomePage.tsx</code> (root) instead of 
-                <code>/components/pages/HomePage.tsx</code>. This is a proof of concept to validate 
-                the new architecture before performing the complete migration.
-              </p>
-              <p className="text-xs text-muted-foreground">
-                <strong>Updated imports:</strong> Now uses relative paths from /pages to /components
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
@@ -336,11 +273,10 @@ export function HomePage() {
   return (
     <ComponentShowcase
       title="CESIONBNK Design System"
-      description="Design System overview and quick navigation. Browse 120+ components organized by category: UI Primitives, Advanced Components, Business Patterns, Widgets, and Factoring-specific screens."
+      description="115 components · 93 showcase pages · UI Primitives, Advanced, Patterns, Widgets and Factoring screens."
       category="Home"
       preview={<HomePageContent />}
-      code={`// This is the DSM home/landing page
-// Navigate using the sidebar to explore components`}
+      code={`// DSM Home — navigate using the sidebar to explore all 115 components across 93 pages`}
       props={[]}
       examples={[]}
     />

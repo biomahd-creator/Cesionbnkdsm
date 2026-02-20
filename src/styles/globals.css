@@ -1,13 +1,19 @@
 /**
  * CESIONBNK Design System — Single Source of Truth
  *
- * ALL design tokens, theme variables, and utilities live here.
- * No external token files. No theme.css. Just this file.
+ * Core design tokens, theme variables, and standard utilities.
+ * Only DSM-standard primitives live here.
+ *
+ * Extension layers (imported separately in main.tsx):
+ *   themes.css     → Multi-tenant white-label overrides
+ *   animations.css → Custom animations & micro-interactions
  *
  * Architecture:
- *   globals.css → Single file (tokens + Tailwind + utilities)
+ *   globals.css    → Core DSM (tokens + Tailwind + standard utilities)
+ *   themes.css     → Tenant brand overrides via [data-theme]
+ *   animations.css → Non-standard animations & hover effects
  *
- * @version 0.3.0
+ * @version 0.5.0
  */
 
 @import "tailwindcss";
@@ -20,33 +26,35 @@
 @source "../";
 
 /* ============================================================
-   Font: Satoshi (exclusive typeface)
+   Fonts: Inter (base) + extras kept for tenant themes
    ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap');
 
 /* ============================================================
    DESIGN TOKENS — Light Mode (:root)
+   Base theme: CESIONBNK (Indigo + Inter)
    ============================================================ */
 :root {
   /* Brand */
-  --primary: #00c951;
+  --primary: #374151;
   --primary-foreground: #ffffff;
-  --secondary: #1C2D3A;
+  --secondary: #52525b;
   --secondary-foreground: #ffffff;
 
   /* Surfaces */
   --background: #ffffff;
-  --foreground: #1C2D3A;
+  --foreground: #222222;
   --card: #ffffff;
-  --card-foreground: #1C2D3A;
+  --card-foreground: #222222;
   --popover: #ffffff;
-  --popover-foreground: #1C2D3A;
+  --popover-foreground: #222222;
 
   /* Neutral */
   --muted: #f4f4f5;
   --muted-foreground: #52525b;
   --accent: #f4f4f5;
-  --accent-foreground: #1C2D3A;
+  --accent-foreground: #222222;
 
   /* Semantic */
   --destructive: #ef4444;
@@ -63,10 +71,10 @@
   --input: #e4e4e7;
   --input-background: #ffffff;
   --switch-background: #cbced4;
-  --ring: #00c951;
+  --ring: #374151;
 
-  /* Radius */
-  --radius: 0.625rem;
+  /* Radius — CESIONBNK default */
+  --radius: 0.25rem;
 
   /* Charts */
   --chart-1: oklch(0.646 0.222 41.116);
@@ -77,25 +85,15 @@
 
   /* Sidebar */
   --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: #1C2D3A;
-  --sidebar-primary: #1C2D3A;
+  --sidebar-foreground: #222222;
+  --sidebar-primary: #222222;
   --sidebar-primary-foreground: oklch(0.985 0 0);
   --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: #1C2D3A;
+  --sidebar-accent-foreground: #222222;
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
 
-  /* C-Financia Brand */
-  --color-cfinancia-primary:                 rgb(222, 251, 73);
-  --color-cfinancia-primary-foreground:      rgb(5, 41, 55);
-  --color-cfinancia-accent-hover:            rgb(67, 249, 119);
-  --color-cfinancia-accent-hover-foreground: rgb(5, 41, 55);
-  --color-cfinancia-navy:                    rgb(5, 41, 55);
-  --color-cfinancia-navy-foreground:         rgb(222, 251, 73);
-  /* Alias: keeps existing components using --color-cfinancia-accent working */
-  --color-cfinancia-accent: var(--color-cfinancia-primary);
-
-  /* KPI Colors */
+  /* KPI Colors — stored as comma-separated RGB channels for rgb(var(--kpi-*)) usage */
   --kpi-yellow: 234, 179, 8;
   --kpi-yellow-dark: 202, 138, 4;
   --kpi-yellow-bg: 254, 249, 195;
@@ -109,11 +107,11 @@
   --kpi-lime-dark: 101, 163, 13;
   --kpi-lime-bg: 247, 254, 231;
 
-  /* Shadows */
-  --shadow-elevation-1: 0 1px 2px 0 rgba(28, 45, 58, 0.05);
-  --shadow-elevation-2: 0 4px 6px -1px rgba(28, 45, 58, 0.1), 0 2px 4px -2px rgba(28, 45, 58, 0.1);
-  --shadow-elevation-3: 0 10px 15px -3px rgba(28, 45, 58, 0.1), 0 4px 6px -4px rgba(28, 45, 58, 0.1);
-  --shadow-elevation-4: 0 20px 25px -5px rgba(28, 45, 58, 0.1), 0 8px 10px -6px rgba(28, 45, 58, 0.1);
+  /* Shadows — light mode (neutral rgba) */
+  --shadow-elevation-1: 0 1px 2px 0 rgba(34, 34, 34, 0.05);
+  --shadow-elevation-2: 0 4px 6px -1px rgba(34, 34, 34, 0.1), 0 2px 4px -2px rgba(34, 34, 34, 0.1);
+  --shadow-elevation-3: 0 10px 15px -3px rgba(34, 34, 34, 0.1), 0 4px 6px -4px rgba(34, 34, 34, 0.1);
+  --shadow-elevation-4: 0 20px 25px -5px rgba(34, 34, 34, 0.1), 0 8px 10px -6px rgba(34, 34, 34, 0.1);
 
   /* Typography */
   --letter-spacing-base: 0.025em;
@@ -124,7 +122,7 @@
    ============================================================ */
 .dark {
   /* Brand — primary stays the same in dark */
-  --primary: #00c951;
+  --primary: #374151;
   --primary-foreground: #ffffff;
   --secondary: #334155;
   --secondary-foreground: #f8fafc;
@@ -158,7 +156,7 @@
   --input: #334155;
   --input-background: #334155;
   --switch-background: #475569;
-  --ring: #00c951;
+  --ring: #374151;
 
   /* Charts */
   --chart-1: oklch(0.488 0.243 264.376);
@@ -170,14 +168,14 @@
   /* Sidebar */
   --sidebar: #1e293b;
   --sidebar-foreground: #f8fafc;
-  --sidebar-primary: #00c951;
-  --sidebar-primary-foreground: #1C2D3A;
+  --sidebar-primary: #4F46E5;
+  --sidebar-primary-foreground: #ffffff;
   --sidebar-accent: #334155;
   --sidebar-accent-foreground: #f8fafc;
   --sidebar-border: #334155;
-  --sidebar-ring: #00c951;
+  --sidebar-ring: #4F46E5;
 
-  /* Shadows */
+  /* Shadows — dark mode (stronger black rgba) */
   --shadow-elevation-1: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
   --shadow-elevation-2: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
   --shadow-elevation-3: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
@@ -186,71 +184,86 @@
 
 /* ============================================================
    @theme inline: Map CSS vars → Tailwind v4 utility classes
-   This tells Tailwind to generate bg-primary, text-foreground, etc.
+   Generates: bg-primary, text-foreground, border-border, etc.
    ============================================================ */
 @theme inline {
-  /* Colors */
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
+  /* ── Semantic colors ── */
+  --color-background:          var(--background);
+  --color-foreground:          var(--foreground);
+  --color-card:                var(--card);
+  --color-card-foreground:     var(--card-foreground);
+  --color-popover:             var(--popover);
+  --color-popover-foreground:  var(--popover-foreground);
+  --color-primary:             var(--primary);
+  --color-primary-foreground:  var(--primary-foreground);
+  --color-secondary:           var(--secondary);
+  --color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:               var(--muted);
+  --color-muted-foreground:    var(--muted-foreground);
+  --color-accent:              var(--accent);
+  --color-accent-foreground:   var(--accent-foreground);
+  --color-destructive:         var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-border: var(--border);
-  --color-input: var(--input);
-  --color-input-background: var(--input-background);
-  --color-switch-background: var(--switch-background);
-  --color-ring: var(--ring);
+  --color-success:             var(--success);
+  --color-success-foreground:  var(--success-foreground);
+  --color-warning:             var(--warning);
+  --color-warning-foreground:  var(--warning-foreground);
+  --color-info:                var(--info);
+  --color-info-foreground:     var(--info-foreground);
+  --color-border:              var(--border);
+  --color-input:               var(--input);
+  --color-input-background:    var(--input-background);
+  --color-switch-background:   var(--switch-background);
+  --color-ring:                var(--ring);
 
-  /* Chart colors */
+  /* ── Chart colors ── */
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
 
-  /* Sidebar */
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
+  /* ── Sidebar colors ── */
+  --color-sidebar:                     var(--sidebar);
+  --color-sidebar-foreground:          var(--sidebar-foreground);
+  --color-sidebar-primary:             var(--sidebar-primary);
+  --color-sidebar-primary-foreground:  var(--sidebar-primary-foreground);
+  --color-sidebar-accent:              var(--sidebar-accent);
+  --color-sidebar-accent-foreground:   var(--sidebar-accent-foreground);
+  --color-sidebar-border:              var(--sidebar-border);
+  --color-sidebar-ring:                var(--sidebar-ring);
 
-  /* Border Radius */
+  /* ── KPI colors (static — no dark mode override) ──
+     Generates: bg-kpi-yellow, text-kpi-yellow-dark, bg-kpi-yellow-bg, etc. */
+  --color-kpi-yellow:      #eab308;
+  --color-kpi-yellow-dark: #ca8a04;
+  --color-kpi-yellow-bg:   #fef9c3;
+  --color-kpi-orange:      #f97316;
+  --color-kpi-orange-dark: #ea580c;
+  --color-kpi-orange-bg:   #ffedd5;
+  --color-kpi-blue:        #3b82f6;
+  --color-kpi-blue-dark:   #2563eb;
+  --color-kpi-blue-bg:     #dbeafe;
+  --color-kpi-lime:        #84cc16;
+  --color-kpi-lime-dark:   #65a30d;
+  --color-kpi-lime-bg:     #f7fee7;
+
+  /* ── Border Radius ── */
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
 
-  /* Font */
-  --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* ── Font ── */
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
-  /* Animations */
+  /* ── Animations (standard — shadcn/ui accordion) ── */
   --animate-accordion-down: accordion-down 0.2s ease-out;
   --animate-accordion-up: accordion-up 0.2s ease-out;
 }
 
 /* ============================================================
-   @theme: Keyframes for Tailwind v4
+   @theme: Keyframes for Tailwind v4 (standard shadcn/ui)
    ============================================================ */
 @theme {
   --keyframes-accordion-down: {
@@ -275,7 +288,7 @@
   }
 
   html {
-    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+    font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -332,7 +345,7 @@
 }
 
 /* ============================================================
-   UTILITIES
+   STANDARD UTILITIES
    ============================================================ */
 @layer utilities {
   /* Scrollbar hiding */
@@ -377,31 +390,15 @@
   }
 
   /* ========================================== */
-  /* HOVER EFFECTS                              */
+  /* SHADOW ELEVATION UTILITIES                 */
+  /* box-shadow referencia CSS vars → respeta dark mode automáticamente */
+  /* Uso: className="shadow-elevation-2 hover:shadow-elevation-3" */
   /* ========================================== */
 
-  .hover-lift {
-    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-                box-shadow 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-elevation-3);
-  }
-
-  .hover-scale {
-    transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  .hover-scale:hover {
-    transform: scale(1.02);
-  }
-
-  .hover-brightness {
-    transition: filter 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-  .hover-brightness:hover {
-    filter: brightness(1.1);
-  }
+  .shadow-elevation-1 { box-shadow: var(--shadow-elevation-1); }
+  .shadow-elevation-2 { box-shadow: var(--shadow-elevation-2); }
+  .shadow-elevation-3 { box-shadow: var(--shadow-elevation-3); }
+  .shadow-elevation-4 { box-shadow: var(--shadow-elevation-4); }
 
   /* Focus States */
   .focus-ring {
@@ -423,117 +420,5 @@
   }
   .hide-scrollbar::-webkit-scrollbar {
     display: none;
-  }
-
-  /* Smooth color transitions */
-  .transition-colors-smooth {
-    transition: color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-                background-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1),
-                border-color 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
-  }
-
-  /* Glassmorphism Effect */
-  .glass-effect {
-    background: color-mix(in srgb, var(--background) 70%, transparent);
-    backdrop-filter: blur(12px);
-    border: 1px solid color-mix(in srgb, var(--border) 30%, transparent);
-  }
-
-  /* ========================================== */
-  /* ANIMATIONS                                 */
-  /* ========================================== */
-
-  .skeleton-pulse {
-    animation: skeleton-pulse 1.5s ease-in-out infinite;
-  }
-
-  @keyframes skeleton-pulse {
-    0%, 100% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-    }
-  }
-
-  .fade-in {
-    animation: fade-in 0.3s ease-out;
-  }
-
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .slide-in-right {
-    animation: slide-in-right 0.3s ease-out;
-  }
-
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  .slide-in-left {
-    animation: slide-in-left 0.3s ease-out;
-  }
-
-  @keyframes slide-in-left {
-    from {
-      transform: translateX(-100%);
-    }
-    to {
-      transform: translateX(0);
-    }
-  }
-
-  .loading-dots span {
-    animation: loading-dots 1.4s infinite;
-    animation-fill-mode: both;
-  }
-  .loading-dots span:nth-child(2) {
-    animation-delay: 0.2s;
-  }
-  .loading-dots span:nth-child(3) {
-    animation-delay: 0.4s;
-  }
-
-  @keyframes loading-dots {
-    0%, 80%, 100% {
-      opacity: 0.3;
-    }
-    40% {
-      opacity: 1;
-    }
-  }
-
-  /* Respect prefers-reduced-motion */
-  @media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-
-    .hover-lift:hover {
-      transform: none;
-    }
-
-    .hover-scale:hover {
-      transform: none;
-    }
   }
 }

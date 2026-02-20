@@ -14,6 +14,7 @@ import { HelpCenter } from "./components/help/HelpCenter";
 import { LoadingProvider } from "./components/providers/LoadingProvider";
 import { TransitionProvider } from "./components/providers/TransitionProvider";
 import { LoadingOverlay } from "./components/ui/loading-overlay";
+import { TenantSelector } from "./components/widgets/TenantSelector";
 import {
   AdminLayout,
   LayoutHeader,
@@ -191,6 +192,9 @@ function AppContent() {
 
                     {/* Help System */}
                     <HelpCenter variant="header" />
+
+                    {/* Tenant/Brand Selector */}
+                    <TenantSelector />
 
                     {/* Go to Factoring */}
                     <Button

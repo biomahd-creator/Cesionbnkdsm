@@ -30,7 +30,7 @@ Base de toda la librería. Sin esto, nada escala.
 ```
 globals.css                    →  Figma Variable
 ─────────────────────────────────────────────────
---primary: #00c951             ���  Primitives/Green/500
+--primary: #00c951               Primitives/Green/500
 --secondary: #1C2D3A           →  Primitives/Navy/900
 --background: #ffffff  (:root) →  Semantic/Surface/Background (Light)
 --background: #0f172a  (.dark) →  Semantic/Surface/Background (Dark)

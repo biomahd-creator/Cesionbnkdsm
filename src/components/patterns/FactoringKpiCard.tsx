@@ -61,7 +61,7 @@ export function FactoringKpiCard({
   return (
     <Card
       className={cn(
-        "relative bg-card border-0 border-b-4 rounded-2xl transition-all duration-300 overflow-hidden",
+        "relative bg-card border-0 border-b-4 rounded-[var(--radius)] transition-all duration-300 overflow-hidden",
         onClick && "cursor-pointer",
         classes.border,
         shadowClass,

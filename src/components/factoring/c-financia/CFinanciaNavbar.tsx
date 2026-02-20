@@ -5,18 +5,19 @@
  * Se han eliminado los sub-componentes (NavItem, NavItemWithDropdown) y se ha
  * implementado un renderizado directo en el componente principal.
  * Esto asegura que cada botón de navegación sea identificable por el inspector.
+ *
+ * v1.1.0 — Logo now uses shared tenant-aware <Logo> component (variant="dark").
  */
 import React from "react";
 import { TrendingUp, FileText, Users, User, ChevronDown } from "lucide-react";
 import { cn } from "../../../lib/utils";
-import { Button } from "../../ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "../../ui/dropdown-menu";
-import svgPaths from "../../../imports/svg-r8l6shtkw1";
+import { Logo } from "../../Logo";
 
 interface CFinanciaNavbarProps {
   onLogout?: () => void;
@@ -25,31 +26,11 @@ interface CFinanciaNavbarProps {
 
 export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-[var(--color-cfinancia-navy)] shadow-lg px-6 flex items-center justify-between">
+    <nav className="fixed top-0 left-0 right-0 z-50 h-[64px] bg-secondary shadow-lg px-6 flex items-center justify-between">
       <div className="flex items-center gap-10">
-        {/* Left: Logo rendered directly */}
-        <div className="flex-shrink-0">
-          <div className="w-[180px] h-[34px]">
-            <svg className="block w-full h-full" fill="none" viewBox="0 0 180 34.2844">
-              <g id="Logo">
-                <path d={svgPaths.p336ebef0} fill="var(--color-cfinancia-accent)" id="Vector" />
-                <path d={svgPaths.pa9f4d00} fill="var(--color-cfinancia-accent-hover)" id="Vector_2" />
-                <path d={svgPaths.pe00f180} fill="var(--secondary)" id="Vector_3" />
-                <path d={svgPaths.p4826800} fill="white" id="Vector_4" />
-                <path d={svgPaths.p37d0bd00} fill="white" id="Vector_5" />
-                <path d={svgPaths.p1d381300} fill="var(--color-cfinancia-accent)" id="Vector_6" />
-                <path d={svgPaths.p1169ec00} fill="white" id="Vector_7" />
-                <path d={svgPaths.p32bbce00} fill="white" id="Vector_8" />
-                <path d={svgPaths.p2c19dd00} fill="white" id="Vector_9" />
-                <path d={svgPaths.p27d17a00} fill="white" id="Vector_10" />
-                <path d={svgPaths.p1a894980} fill="white" id="Vector_11" />
-                <g id="Group">
-                  <path d={svgPaths.p881ca00} fill="white" id="Vector_12" />
-                  <path d={svgPaths.p1fe13f80} fill="white" id="Vector_13" />
-                </g>
-              </g>
-            </svg>
-          </div>
+        {/* Left: Logo — tenant-aware, dark variant (bg-secondary is always dark) */}
+        <div className="flex-shrink-0 h-[34px] flex items-center">
+          <Logo size="md" variant="dark" />
         </div>
 
         {/* Navigation Items rendered directly */}
@@ -59,10 +40,10 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
             <button
               className={cn(
                 "flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-200 min-h-[36px]",
-                "bg-[var(--color-cfinancia-accent)] text-foreground"
+                "bg-primary text-primary-foreground"
               )}
             >
-              <TrendingUp className="w-4 h-4 text-foreground" />
+              <TrendingUp className="w-4 h-4 text-primary-foreground" />
               <span className="text-sm font-medium leading-none tracking-wide">Factoring</span>
             </button>
 
@@ -80,11 +61,17 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
                   <ChevronDown className="w-3 h-3 text-white" />
                 </button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
-                <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer" onClick={() => console.log("Eventos Radian clicked")}>
+              <DropdownMenuContent align="start" className="w-48 bg-secondary border-white/10 text-white">
+                <DropdownMenuItem
+                  className="focus:bg-white/10 focus:text-white cursor-pointer"
+                  onClick={() => console.log("Eventos Radian clicked")}
+                >
                   Eventos Radian
                 </DropdownMenuItem>
-                <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer" onClick={() => console.log("Mandatos clicked")}>
+                <DropdownMenuItem
+                  className="focus:bg-white/10 focus:text-white cursor-pointer"
+                  onClick={() => console.log("Mandatos clicked")}
+                >
                   Mandatos
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -124,14 +111,17 @@ export function CFinanciaNavbar({ onLogout, variant = "full" }: CFinanciaNavbarP
                 <ChevronDown className="w-3 h-3 text-white/50" />
               </button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-48 bg-[var(--color-cfinancia-navy)] border-white/10 text-white">
+            <DropdownMenuContent align="end" className="w-48 bg-secondary border-white/10 text-white">
               <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
                 Perfil
               </DropdownMenuItem>
               <DropdownMenuItem className="focus:bg-white/10 focus:text-white cursor-pointer">
                 Configuración
               </DropdownMenuItem>
-              <DropdownMenuItem onClick={onLogout} className="focus:bg-white/10 focus:text-destructive text-destructive cursor-pointer">
+              <DropdownMenuItem
+                onClick={onLogout}
+                className="focus:bg-white/10 focus:text-destructive text-destructive cursor-pointer"
+              >
                 Cerrar Sesión
               </DropdownMenuItem>
             </DropdownMenuContent>

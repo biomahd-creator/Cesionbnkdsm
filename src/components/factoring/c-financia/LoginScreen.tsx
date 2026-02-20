@@ -1,11 +1,12 @@
 // Causa 18: Movido de /factoring/c-financia/ a /components/factoring/c-financia/
+// v1.1.0 — Logo now uses shared tenant-aware <Logo> component
 import React, { useState } from "react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../../ui/card";
 import { Input } from "../../ui/input";
 import { Label } from "../../ui/label";
 import { Button } from "../../ui/button";
 import { ArrowRight } from "lucide-react";
-import svgPaths from "../../../imports/svg-7nnkcr2v8m";
+import { Logo } from "../../Logo";
 
 interface LoginScreenProps {
   onLogin: () => void;
@@ -21,26 +22,12 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-primary via-success to-secondary relative size-full min-h-screen">
-      
-      {/* Logo CESIONBNK - Left Side */}
+    <div className="bg-gradient-to-br from-primary via-primary/60 to-secondary relative size-full min-h-screen">
+
+      {/* Tenant Logo — Left Side (on gradient/dark bg → dark variant) */}
       <div className="absolute left-[16.67%] top-1/2 -translate-y-1/2 z-10">
-        <div className="relative w-64 h-8 mb-4">
-          <svg className="block size-full" fill="none" preserveAspectRatio="none" viewBox="0 0 256 30.7574">
-            <g>
-              <path d={svgPaths.p2b2bf200} fill="white" />
-              <path d={svgPaths.p24669f00} fill="white" />
-              <path d={svgPaths.p1f0ea300} fill="var(--color-cfinancia-accent-hover)" />
-              <path d={svgPaths.p8e7b700} fill="white" />
-              <path d={svgPaths.p3aba2500} fill="white" />
-              <path d={svgPaths.p258fa100} fill="white" />
-              <path d={svgPaths.p483ec00} fill="white" />
-              <path d={svgPaths.p9857700} fill="white" />
-              <path d={svgPaths.p21e2b700} fill="white" />
-              <path d={svgPaths.p1ce3500} fill="white" />
-              <path d={svgPaths.p1a848c00} fill="white" />
-            </g>
-          </svg>
+        <div className="mb-4">
+          <Logo size="xl" variant="dark" />
         </div>
         <p className="text-xl text-white font-normal tracking-tight">
           Factoring Electrónico
@@ -56,7 +43,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
               Completa los datos a continuación para ingresar
             </CardDescription>
           </CardHeader>
-          
+
           <CardContent>
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Email Field */}
@@ -91,7 +78,7 @@ export function LoginScreen({ onLogin }: LoginScreenProps) {
                 className="w-full"
                 variant="secondary"
                 size="default"
-                >
+              >
                 Entrar
                 <ArrowRight className="w-4 h-4" />
               </Button>

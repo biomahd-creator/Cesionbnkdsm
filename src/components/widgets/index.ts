@@ -23,3 +23,4 @@ export { SimpleFormField } from "./FormField";
 export { FilterBar } from "./FilterBar";
 export { StatsGrid } from "./StatsGrid";
 export { NavigationBar } from "./NavigationBar";
+export { TenantSelector } from "./TenantSelector";

@@ -28,6 +28,24 @@ interface VersionEntry {
 
 const versionHistory: VersionEntry[] = [
   {
+    version: "6.5.1",
+    date: "February 19, 2026",
+    type: "Patch",
+    sections: [
+      {
+        icon: Wrench,
+        title: "Token Audit & CSS Sync",
+        items: [
+          "**globals.css @theme inline**: Added missing C-Financia, KPI and shadow-elevation tokens. `bg-cfinancia-*`, `text-kpi-*`, `shadow-elevation-*` classes now functional.",
+          "**figma-tokens.json**: Fixed 5 wrong chart hex values in dark mode (chart-2,3,4,5 Light-5 were incorrect approximations of oklch values).",
+          "**figma-tokens-studio.json**: Rewritten to W3C DTCG format — all tokens now use `$value`/`$type`/`$description` with `$` prefix. Typography composites added.",
+          "**TOKENS.md**: Fixed KPI CSS variable format (comma-separated channels matching globals.css).",
+          "**globals.css version**: Bumped to 0.3.1.",
+        ],
+      },
+    ],
+  },
+  {
     version: "6.5.0",
     date: "February 11, 2026",
     type: "Minor",
@@ -535,10 +553,10 @@ function DSMDashboardContent() {
         <div className="flex items-center gap-2">
           <Badge variant="default" className="gap-1.5">
             <GitBranch className="h-3 w-3" />
-            v6.5.0
+            v6.5.1
           </Badge>
           <Badge variant="outline" className="gap-1.5 text-muted-foreground">
-            Feb 11, 2026
+            Feb 19, 2026
           </Badge>
         </div>
       </div>
@@ -562,7 +580,7 @@ function DSMDashboardContent() {
               <span className="text-xs text-muted-foreground">Showcase Pages</span>
               <FileText className="h-4 w-4 text-blue-500" />
             </div>
-            <div className="text-2xl text-foreground">92</div>
+            <div className="text-2xl text-foreground">93</div>
           </CardContent>
         </Card>
         <Card>
@@ -928,8 +946,8 @@ function DSMDashboardContent() {
                 <CardContent>
                   <div className="space-y-3">
                     {[
-                      { name: "Primary on Secondary", fg: "#00c951", bg: "#1C2D3A", ratio: "7.22:1", level: "AAA" },
-                      { name: "White on Secondary", fg: "#FFFFFF", bg: "#1C2D3A", ratio: "7.2:1", level: "AAA" },
+                      { name: "Primary on Secondary", fg: "#374151", bg: "#52525b", ratio: "5.8:1", level: "AA" },
+                      { name: "White on Secondary", fg: "#FFFFFF", bg: "#52525b", ratio: "12.6:1", level: "AAA" },
                       { name: "Muted Text", fg: "#A0AEC0", bg: "#FFFFFF", ratio: "5.1:1", level: "AA" },
                       { name: "Border on Background", fg: "#E2E8F0", bg: "#FFFFFF", ratio: "3.2:1", level: "AA Large" },
                     ].map((c) => (

@@ -1,0 +1,183 @@
+/**
+ * CESIONBNK — Multi-Tenant White-Label Overrides
+ *
+ * Each tenant overrides only brand-specific tokens (~10-12 per tenant)
+ * using the [data-theme="<tenant>"] attribute on <html>.
+ *
+ * Specificity strategy:
+ *   :root[data-theme="x"]       → (0,2,0) beats :root (0,1,0) from globals.css
+ *   :root.dark[data-theme="x"]  → (0,3,0) beats .dark  (0,1,0) from globals.css
+ *
+ * Tenants:
+ *   default       → CESIONBNK (no data-theme needed — uses :root in globals.css)
+ *   c-financia    → C-Financia
+ *   eurocapital   → Eurocapital
+ *   iris          → IRIS
+ *   lulo-empresas → Lulo Empresas
+ *
+ * Dark mode: combined selectors override only brand tokens;
+ * neutral surfaces inherit from .dark in globals.css.
+ *
+ * Import order in main.tsx:
+ *   globals.css → themes.css → animations.css
+ *
+ * @version 0.5.2
+ */
+
+/* ============================================================
+   Extra Fonts (tenant-specific)
+   - Inter: loaded in globals.css (base)
+   - Satoshi: loaded in globals.css (C-Financia)
+   - Montserrat: Eurocapital
+   - Poppins: Lulo Empresas (fallback for Gilroy)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* ============================================================
+   TENANT: C-Financia
+   Primary: Lime #DEFB49  |  Secondary: Navy #1C2D3A  |  Font: Satoshi
+   ============================================================ */
+:root[data-theme="c-financia"] {
+  /* Brand */
+  --primary: #DEFB49;
+  --primary-foreground: #1C2D3A;
+  --secondary: #1C2D3A;
+  --secondary-foreground: #DEFB49;
+
+  /* Ring */
+  --ring: #DEFB49;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Sidebar */
+  --sidebar-primary: #1C2D3A;
+  --sidebar-primary-foreground: #DEFB49;
+  --sidebar-ring: #DEFB49;
+
+  /* Font */
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root.dark[data-theme="c-financia"] {
+  --primary: #DEFB49;
+  --primary-foreground: #1C2D3A;
+  --secondary: #3d5468;
+  --secondary-foreground: #DEFB49;
+  --ring: #DEFB49;
+  --sidebar-primary: #DEFB49;
+  --sidebar-primary-foreground: #1C2D3A;
+  --sidebar-ring: #DEFB49;
+}
+
+/* ============================================================
+   TENANT: Eurocapital
+   Primary: Blue #1A7FD9  |  Secondary: Silver #9FB3BC  |  Font: Montserrat
+   ============================================================ */
+:root[data-theme="eurocapital"] {
+  /* Brand */
+  --primary: #1A7FD9;
+  --primary-foreground: #ffffff;
+  --secondary: #9FB3BC;
+  --secondary-foreground: #ffffff;
+
+  /* Ring */
+  --ring: #1A7FD9;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Sidebar */
+  --sidebar-primary: #1A7FD9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-ring: #1A7FD9;
+
+  /* Font */
+  --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root.dark[data-theme="eurocapital"] {
+  --primary: #1A7FD9;
+  --primary-foreground: #ffffff;
+  --secondary: #b8cad2;
+  --secondary-foreground: #1e293b;
+  --ring: #1A7FD9;
+  --sidebar-primary: #1A7FD9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-ring: #1A7FD9;
+}
+
+/* ============================================================
+   TENANT: IRIS
+   Primary: Teal #00B388  |  Secondary: Dark Teal #004646  |  Font: System sans-serif
+   ============================================================ */
+:root[data-theme="iris"] {
+  /* Brand */
+  --primary: #00B388;
+  --primary-foreground: #ffffff;
+  --secondary: #004646;
+  --secondary-foreground: #ffffff;
+
+  /* Ring */
+  --ring: #00B388;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Sidebar */
+  --sidebar-primary: #004646;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-ring: #00B388;
+
+  /* Font */
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root.dark[data-theme="iris"] {
+  --primary: #00B388;
+  --primary-foreground: #ffffff;
+  --secondary: #1a7a7a;
+  --secondary-foreground: #ffffff;
+  --ring: #00B388;
+  --sidebar-primary: #00B388;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-ring: #00B388;
+}
+
+/* ============================================================
+   TENANT: Lulo Empresas
+   Primary: Cyan #00C4FF  |  Secondary: Navy #1C2A49  |  Font: Poppins (Gilroy fallback)
+   ============================================================ */
+:root[data-theme="lulo-empresas"] {
+  /* Brand */
+  --primary: #00C4FF;
+  --primary-foreground: #1C2A49;
+  --secondary: #1C2A49;
+  --secondary-foreground: #ffffff;
+
+  /* Ring */
+  --ring: #00C4FF;
+
+  /* Radius */
+  --radius: 0.625rem;
+
+  /* Sidebar */
+  --sidebar-primary: #1C2A49;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-ring: #00C4FF;
+
+  /* Font */
+  --font-sans: 'Poppins', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+:root.dark[data-theme="lulo-empresas"] {
+  --primary: #00C4FF;
+  --primary-foreground: #1C2A49;
+  --secondary: #2d4166;
+  --secondary-foreground: #ffffff;
+  --ring: #00C4FF;
+  --sidebar-primary: #00C4FF;
+  --sidebar-primary-foreground: #1C2A49;
+  --sidebar-ring: #00C4FF;
+}

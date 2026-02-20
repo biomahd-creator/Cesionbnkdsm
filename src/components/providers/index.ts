@@ -7,7 +7,8 @@
  */
 
 // Core Infrastructure Providers
-export { ThemeProvider, useTheme } from "./ThemeProvider";
+export { ThemeProvider, useTheme, TENANTS } from "./ThemeProvider";
+export type { TenantId, ColorMode, TenantInfo } from "./ThemeProvider";
 export { LoadingProvider, useLoading } from "./LoadingProvider";
 export { TransitionProvider, useTransition } from "./TransitionProvider";
 

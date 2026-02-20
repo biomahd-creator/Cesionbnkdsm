@@ -141,3 +141,9 @@ Este proyecto utiliza **exclusivamente**:
 
  Some of the base components you are using may have styling(eg. gap/typography) baked in as defaults.
 So make sure you explicitly set any styling information from the guidelines in the generated react to override the defaults.
+
+---
+
+## SHOWCASE PAGES
+
+El proyecto cuenta con 93 showcase pages activas y se debe respetar la arquitectura documentada en `/guidelines/Guidelines.md`.
