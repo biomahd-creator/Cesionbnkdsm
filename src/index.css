@@ -10717,27 +10717,27 @@
 
 
 :root[data-theme="c-financia"] {
-  --primary: #defb49;
-  --primary-foreground: #1c2d3a;
+  --primary: #00c951;
+  --primary-foreground: #fff;
   --secondary: #1c2d3a;
-  --secondary-foreground: #defb49;
-  --ring: #defb49;
+  --secondary-foreground: #00c951;
+  --ring: #00c951;
   --radius: .625rem;
   --sidebar-primary: #1c2d3a;
-  --sidebar-primary-foreground: #defb49;
-  --sidebar-ring: #defb49;
+  --sidebar-primary-foreground: #00c951;
+  --sidebar-ring: #00c951;
   --font-sans: "Satoshi", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
 :root.dark[data-theme="c-financia"] {
-  --primary: #defb49;
-  --primary-foreground: #1c2d3a;
+  --primary: #00c951;
+  --primary-foreground: #fff;
   --secondary: #3d5468;
-  --secondary-foreground: #defb49;
-  --ring: #defb49;
-  --sidebar-primary: #defb49;
+  --secondary-foreground: #00c951;
+  --ring: #00c951;
+  --sidebar-primary: #00c951;
   --sidebar-primary-foreground: #1c2d3a;
-  --sidebar-ring: #defb49;
+  --sidebar-ring: #00c951;
 }
 
 :root[data-theme="eurocapital"] {

@@ -27,7 +27,7 @@ export interface TenantInfo {
 
 export const TENANTS: TenantInfo[] = [
   { id: "default",        name: "CESIONBNK",      primary: "#374151", secondary: "#52525b",  font: "Inter" },
-  { id: "c-financia",     name: "C-Financia",     primary: "#DEFB49", secondary: "#1C2D3A",  font: "Satoshi" },
+  { id: "c-financia",     name: "C-Financia",     primary: "#00C951", secondary: "#1C2D3A",  font: "Satoshi" },
   { id: "eurocapital",    name: "Eurocapital",    primary: "#1A7FD9", secondary: "#9FB3BC",  font: "Montserrat" },
   { id: "iris",           name: "IRIS",           primary: "#00B388", secondary: "#004646",  font: "System sans-serif" },
   { id: "lulo-empresas",  name: "Lulo Empresas",  primary: "#00C4FF", secondary: "#1C2A49",  font: "Poppins" },

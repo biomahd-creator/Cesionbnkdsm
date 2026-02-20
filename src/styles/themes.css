@@ -36,39 +36,39 @@
 
 /* ============================================================
    TENANT: C-Financia
-   Primary: Lime #DEFB49  |  Secondary: Navy #1C2D3A  |  Font: Satoshi
+   Primary: Green #00C951  |  Secondary: Navy #1C2D3A  |  Font: Satoshi
    ============================================================ */
 :root[data-theme="c-financia"] {
   /* Brand */
-  --primary: #DEFB49;
-  --primary-foreground: #1C2D3A;
+  --primary: #00C951;
+  --primary-foreground: #ffffff;
   --secondary: #1C2D3A;
-  --secondary-foreground: #DEFB49;
+  --secondary-foreground: #00C951;
 
   /* Ring */
-  --ring: #DEFB49;
+  --ring: #00C951;
 
   /* Radius */
   --radius: 0.625rem;
 
   /* Sidebar */
   --sidebar-primary: #1C2D3A;
-  --sidebar-primary-foreground: #DEFB49;
-  --sidebar-ring: #DEFB49;
+  --sidebar-primary-foreground: #00C951;
+  --sidebar-ring: #00C951;
 
   /* Font */
   --font-sans: 'Satoshi', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 :root.dark[data-theme="c-financia"] {
-  --primary: #DEFB49;
-  --primary-foreground: #1C2D3A;
+  --primary: #00C951;
+  --primary-foreground: #ffffff;
   --secondary: #3d5468;
-  --secondary-foreground: #DEFB49;
-  --ring: #DEFB49;
-  --sidebar-primary: #DEFB49;
+  --secondary-foreground: #00C951;
+  --ring: #00C951;
+  --sidebar-primary: #00C951;
   --sidebar-primary-foreground: #1C2D3A;
-  --sidebar-ring: #DEFB49;
+  --sidebar-ring: #00C951;
 }
 
 /* ============================================================

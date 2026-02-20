@@ -82,7 +82,7 @@ function CesionBnkLogoSVG({ variant }: { variant: "light" | "dark" }) {
  * ViewBox 0 0 256 49 — circle icon + "Financia" wordmark.
  *
  * Color rules:
- *   Circle bg  → var(--primary)   always  (#DEFB49 yellow-green)
+ *   Circle bg  → #DEFB49 hardcoded (brand yellow, independent of --primary token)
  *   Green dot  → #95F87F          always  (brand accent)
  *   C shape    → var(--secondary) always  (dark on yellow circle)
  *   Wordmark   → var(--secondary) light / white dark
@@ -100,8 +100,8 @@ function CFinanciaLogoSVG({ variant }: { variant: "light" | "dark" }) {
       aria-label="C-Financia"
     >
       <g clipPath="url(#cfinancia-clip)">
-        {/* Circle background — primary color */}
-        <path d={svgCFinancia.p8fb5ef1}  fill="var(--primary)" />
+        {/* Circle background — brand yellow, always fixed regardless of primary token */}
+        <path d={svgCFinancia.p8fb5ef1}  fill="#DEFB49" />
         {/* Green dot — brand accent, always green */}
         <path d={svgCFinancia.pd4eaf00}  fill="#95F87F" />
         {/* C crescent cutout — always dark secondary (on yellow bg) */}
