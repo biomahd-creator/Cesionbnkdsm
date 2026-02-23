@@ -3,24 +3,22 @@
  * Organismos reutilizables sin lógica de negocio específica
  */
 
-export * from "./AdvancedFilterPanel";
+export * from "./advanced-filter-panel";
 // removed: CupoValidator (orphan — no showcase page, no active consumer)
-export * from "./DataTableAdvanced";
-export * from "./EditableTable";
-// removed: FactoringCalculator (orphan — no showcase page, no active consumer)
-export * from "./FactoringKpiCard";
-export * from "./FactoringKpiCardGroup";
-export * from "./KPIShowcase";
-export * from "./KPIShowcaseExtended";
-// MasterDataGrid migrado a /components/advanced/MasterDataGrid.tsx (v0.0.3)
-export * from "./MultiStepWizard";
-export * from "./NotificationCenter";
+export * from "./data-table-advanced";
+export * from "./editable-table";
+// FactoringKpiCard / FactoringKpiCardGroup → moved to /factoring/components/ (Phase 3)
+export * from "./kpi-showcase";
+export * from "./kpi-showcase-extended";
+// MasterDataGrid migrado a /components/advanced/master-data-grid.tsx (v0.0.3)
+export * from "./multi-step-wizard";
+export * from "./notification-center";
 // removed: OnboardingWizard (orphan — no showcase page, no active consumer)
-export * from "./ReportsConsultation";
-export * from "./StatsDashboard";
+export * from "./reports-consultation";
+export * from "./stats-dashboard";
 // removed: UploadZone (orphan — no showcase page, no active consumer)
-export * from "./AppLayout";
+export * from "./app-layout";
 
 // NOTA: ./factoring/ (FactoringSelectionPage, OperationSummary)
 // se importan directamente desde sus respectivas rutas
-// NOTA: ./factoring/FactoringInvoiceTable también disponible como import directo
+// NOTA: ./factoring/factoring-invoice-table también disponible como import directo

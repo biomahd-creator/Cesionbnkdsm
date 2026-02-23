@@ -11,7 +11,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "../components/ui/dropdown-menu";
-import { DataTable } from "../components/advanced/DataTable";
+import { DataTable } from "../components/advanced/data-table";
 import { MoreHorizontal, ArrowUpDown, CheckCircle, Clock, AlertCircle, XCircle, Circle } from "lucide-react";
 import { Progress } from "../components/ui/progress";
 import { toast } from "sonner@2.0.3";

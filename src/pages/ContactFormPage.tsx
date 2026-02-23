@@ -1,7 +1,7 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { ContactForm } from "../components/widgets/ContactForm";
+import { ContactForm } from "../components/widgets/contact-form";
 
-const contactFormCode = `import { ContactForm } from "@/components/widgets/ContactForm";
+const contactFormCode = `import { ContactForm } from "@/components/widgets/contact-form";
 
 export function ContactFormDemo() {
   return <ContactForm />;

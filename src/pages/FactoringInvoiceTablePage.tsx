@@ -5,7 +5,7 @@ import {
   FactoringInvoiceTable,
   type FactoringInvoice,
   type InvoiceCategory,
-} from "../components/patterns/factoring/FactoringInvoiceTable";
+} from "../components/patterns/factoring/factoring-invoice-table";
 
 // ── Mock Data ────────────────────────────────────────────────────────
 const MOCK_INVOICES: FactoringInvoice[] = [
@@ -243,8 +243,8 @@ export function FactoringInvoiceTablePage() {
       preview={<InvoiceTableDemo />}
 
       // Main Code
-      code={`import { FactoringInvoiceTable } from "@/components/patterns/factoring/FactoringInvoiceTable"
-import type { FactoringInvoice, InvoiceCategory } from "@/components/patterns/factoring/FactoringInvoiceTable"
+      code={`import { FactoringInvoiceTable } from "@/components/patterns/factoring/factoring-invoice-table"
+import type { FactoringInvoice, InvoiceCategory } from "@/components/patterns/factoring/factoring-invoice-table"
 
 const [activeTab, setActiveTab] = useState<InvoiceCategory>("elegibles");
 const [selectedInvoices, setSelectedInvoices] = useState<string[]>([]);

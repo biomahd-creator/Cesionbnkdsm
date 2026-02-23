@@ -1,7 +1,7 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { StatsDashboard } from "../components/patterns/StatsDashboard";
+import { StatsDashboard } from "../components/patterns/stats-dashboard";
 
-const statsDashboardCode = `import { StatsDashboard } from "@/components/patterns/StatsDashboard";
+const statsDashboardCode = `import { StatsDashboard } from "@/components/patterns/stats-dashboard";
 
 export function StatsDashboardDemo() {
   return <StatsDashboard />;

@@ -12,7 +12,8 @@ import {
   LayoutSidebarNav,
   LayoutSidebarGroup,
   LayoutSidebarItem,
-} from "../components/patterns/AppLayout";
+  useAdminLayout,
+} from "../components/patterns/app-layout";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
 import { Separator } from "../components/ui/separator";
@@ -28,6 +29,8 @@ import {
   LogOut,
   Shield,
   Database,
+  PanelLeftClose,
+  PanelLeftOpen,
 } from "lucide-react";
 
 /* ── Demo: Client Layout ── */
@@ -131,9 +134,6 @@ function AdminLayoutDemo() {
                 <Button variant="ghost" size="sm">
                   <Bell className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="sm">
-                  <HelpCircle className="h-4 w-4" />
-                </Button>
                 <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-xs text-primary">
                   JD
                 </div>
@@ -230,12 +230,185 @@ function AdminLayoutDemo() {
   );
 }
 
+/* ── Demo: Admin Layout without Sidebar ── */
+function AdminNoSidebarDemo() {
+  return (
+    <div className="border border-border rounded-[var(--radius)] overflow-hidden h-[320px] w-full">
+      <AdminLayout
+        stickyHeader
+        header={
+          <LayoutHeader
+            logo={
+              <div className="flex items-center gap-3">
+                <div className="w-7 h-7 rounded bg-primary flex items-center justify-center">
+                  <span className="text-primary-foreground text-xs">C</span>
+                </div>
+                <span className="text-foreground font-medium">CESIONBNK</span>
+              </div>
+            }
+            nav={
+              <>
+                <a href="#" className="px-3 py-2 text-sm text-primary transition-colors rounded-[var(--radius)] bg-primary/10">
+                  Overview
+                </a>
+                <a href="#" className="px-3 py-2 text-sm text-foreground/70 hover:text-foreground transition-colors rounded-[var(--radius)] hover:bg-accent">
+                  Analytics
+                </a>
+                <a href="#" className="px-3 py-2 text-sm text-foreground/70 hover:text-foreground transition-colors rounded-[var(--radius)] hover:bg-accent">
+                  Settings
+                </a>
+              </>
+            }
+            actions={
+              <div className="flex items-center gap-2">
+                <Button variant="ghost" size="sm">
+                  <Bell className="h-4 w-4" />
+                </Button>
+                <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-xs text-primary">
+                  JD
+                </div>
+              </div>
+            }
+          />
+        }
+        footer={
+          <LayoutFooter
+            left={<span>CESIONBNK Admin v0.3.0</span>}
+            right={<span>No sidebar mode</span>}
+          />
+        }
+        bodyClassName="p-6"
+      >
+        <div className="space-y-4">
+          <h2 className="text-foreground">Admin without Sidebar</h2>
+          <p className="text-sm text-muted-foreground">
+            Full-width content area with header navigation. No hamburger menu on mobile.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[1, 2, 3].map((i) => (
+              <div
+                key={i}
+                className="rounded-[var(--radius)] border border-border bg-card p-4"
+              >
+                <div className="h-3 w-24 rounded bg-muted mb-2" />
+                <div className="h-2 w-full rounded bg-muted/60" />
+                <div className="h-2 w-3/4 rounded bg-muted/40 mt-1" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </AdminLayout>
+    </div>
+  );
+}
+
+/* ── Demo: Admin Layout with hideSidebar toggle ── */
+function AdminToggleSidebarDemo() {
+  const [hidden, setHidden] = useState(false);
+  const [activePage, setActivePage] = useState("dashboard");
+
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center gap-2">
+        <Button
+          variant={hidden ? "default" : "outline"}
+          size="sm"
+          onClick={() => setHidden((p) => !p)}
+          className="gap-2"
+        >
+          {hidden ? <PanelLeftOpen className="h-4 w-4" /> : <PanelLeftClose className="h-4 w-4" />}
+          {hidden ? "Show Sidebar" : "Hide Sidebar"}
+        </Button>
+        <span className="text-xs text-muted-foreground">
+          hideSidebar={String(hidden)}
+        </span>
+      </div>
+      <div className="border border-border rounded-[var(--radius)] overflow-hidden h-[400px] w-full">
+        <AdminLayout
+          stickyHeader
+          collapsible
+          hideSidebar={hidden}
+          sidebarWidth={200}
+          sidebarCollapsedWidth={56}
+          sidebarHeader={
+            <span className="text-primary font-medium text-sm truncate">CESIONBNK</span>
+          }
+          header={
+            <LayoutHeader
+              logo={<span className="text-primary font-medium pl-10 md:pl-0">Dashboard</span>}
+              actions={
+                <div className="flex items-center gap-2">
+                  <Button variant="ghost" size="sm">
+                    <Bell className="h-4 w-4" />
+                  </Button>
+                  <div className="h-8 w-8 rounded-full bg-primary/20 flex items-center justify-center text-xs text-primary">
+                    JD
+                  </div>
+                </div>
+              }
+            />
+          }
+          sidebar={
+            <LayoutSidebarNav>
+              <LayoutSidebarGroup label="Main">
+                <LayoutSidebarItem
+                  icon={Home}
+                  label="Dashboard"
+                  active={activePage === "dashboard"}
+                  onClick={() => setActivePage("dashboard")}
+                />
+                <LayoutSidebarItem
+                  icon={FileText}
+                  label="Invoices"
+                  active={activePage === "invoices"}
+                  onClick={() => setActivePage("invoices")}
+                />
+                <LayoutSidebarItem
+                  icon={Users}
+                  label="Clients"
+                  active={activePage === "clients"}
+                  onClick={() => setActivePage("clients")}
+                />
+              </LayoutSidebarGroup>
+            </LayoutSidebarNav>
+          }
+          footer={
+            <LayoutFooter
+              left={<span>v0.3.0</span>}
+              right={<span>{hidden ? "No sidebar" : "With sidebar"}</span>}
+            />
+          }
+          bodyClassName="p-6"
+        >
+          <div className="space-y-4">
+            <h2 className="text-foreground capitalize">{activePage}</h2>
+            <p className="text-sm text-muted-foreground">
+              Toggle the sidebar on/off using the <code className="bg-muted px-1 py-0.5 rounded text-xs">hideSidebar</code> prop.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="rounded-[var(--radius)] border border-border bg-card p-4"
+                >
+                  <div className="h-3 w-24 rounded bg-muted mb-2" />
+                  <div className="h-2 w-full rounded bg-muted/60" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </AdminLayout>
+      </div>
+    </div>
+  );
+}
+
 /* ── Main Page ── */
 export function AppLayoutPage() {
   return (
     <ComponentShowcase
       title="App Layouts"
-      description="Full-page shell layouts for client-facing and admin interfaces. ClientLayout provides Header + Body + Footer. AdminLayout adds a collapsible sidebar with responsive mobile drawer."
+      description="Full-page shell layouts for client-facing and admin interfaces. ClientLayout provides Header + Body + Footer. AdminLayout adds a collapsible sidebar with responsive mobile drawer, and supports a no-sidebar mode."
       category="Layout"
       preview={
         <div className="w-full space-y-8">
@@ -254,6 +427,24 @@ export function AppLayoutPage() {
             <p className="text-sm text-muted-foreground">Header + Sidebar + Body + Footer (admin). Sidebar collapses on toggle and becomes a drawer on mobile.</p>
             <AdminLayoutDemo />
           </div>
+
+          <Separator />
+
+          {/* AdminLayout No Sidebar Demo */}
+          <div className="space-y-2">
+            <h3 className="text-foreground">AdminLayout — No Sidebar</h3>
+            <p className="text-sm text-muted-foreground">Admin layout without sidebar. Omit the sidebar prop or use hideSidebar for full-width content.</p>
+            <AdminNoSidebarDemo />
+          </div>
+
+          <Separator />
+
+          {/* AdminLayout Toggle Sidebar Demo */}
+          <div className="space-y-2">
+            <h3 className="text-foreground">AdminLayout — Toggle hideSidebar</h3>
+            <p className="text-sm text-muted-foreground">Dynamically show/hide the sidebar using the hideSidebar prop. Sidebar content is preserved when hidden.</p>
+            <AdminToggleSidebarDemo />
+          </div>
         </div>
       }
       code={`import {
@@ -267,47 +458,40 @@ export function AppLayoutPage() {
   useAdminLayout,
 } from "@biomahd-creator/financio-design-system/patterns";
 
-// ── Client Layout ──
-<ClientLayout
-  stickyHeader
-  header={
-    <LayoutHeader
-      logo={<Logo />}
-      nav={<NavLinks />}
-      actions={<UserMenu />}
-    />
-  }
-  footer={
-    <LayoutFooter
-      left={<span>© 2026 CESIONBNK</span>}
-      right={<a href="/privacy">Privacy</a>}
-    />
-  }
->
-  {/* Body content */}
-</ClientLayout>
-
-// ── Admin Layout ──
+// ── Admin Layout with Sidebar ──
 <AdminLayout
   stickyHeader
   collapsible
-  sidebarWidth={260}
-  sidebarCollapsedWidth={64}
   sidebarHeader={<Logo />}
-  header={<LayoutHeader logo={<span>Admin</span>} actions={<UserMenu />} />}
+  header={<LayoutHeader logo={<span>Admin</span>} />}
   sidebar={
     <LayoutSidebarNav>
       <LayoutSidebarGroup label="Main">
         <LayoutSidebarItem icon={Home} label="Dashboard" active />
-        <LayoutSidebarItem icon={FileText} label="Invoices" badge={<Badge>12</Badge>} />
-        <LayoutSidebarItem icon={Users} label="Clients" />
       </LayoutSidebarGroup>
     </LayoutSidebarNav>
   }
-  sidebarFooter={<LogoutButton />}
-  footer={<LayoutFooter left={<span>v0.2.0</span>} />}
 >
   {/* Body content */}
+</AdminLayout>
+
+// ── Admin Layout without Sidebar ──
+<AdminLayout
+  stickyHeader
+  header={<LayoutHeader logo={<span>Admin</span>} nav={<NavLinks />} />}
+  footer={<LayoutFooter left={<span>v0.3.0</span>} />}
+>
+  {/* Full-width body content */}
+</AdminLayout>
+
+// ── Dynamic toggle ──
+<AdminLayout
+  stickyHeader
+  hideSidebar={isFullscreen}
+  sidebar={<MySidebar />}
+  header={<MyHeader />}
+>
+  {children}
 </AdminLayout>`}
       props={[
         { name: "header", type: "ReactNode", description: "Header element (use LayoutHeader or custom)" },
@@ -315,12 +499,14 @@ export function AppLayoutPage() {
         { name: "stickyHeader", type: "boolean", default: "true", description: "Stick header to top on scroll" },
         { name: "stickyFooter", type: "boolean", default: "false", description: "Stick footer to bottom" },
         { name: "bodyClassName", type: "string", description: "Additional classes for body wrapper" },
-        { name: "sidebar", type: "ReactNode", description: "AdminLayout only — sidebar content" },
+        { name: "sidebar", type: "ReactNode", description: "AdminLayout only — sidebar content. Omit for no-sidebar mode" },
         { name: "sidebarHeader", type: "ReactNode", description: "AdminLayout only — logo/brand at top of sidebar" },
         { name: "sidebarFooter", type: "ReactNode", description: "AdminLayout only — content at bottom of sidebar" },
         { name: "sidebarWidth", type: "number", default: "260", description: "AdminLayout only — expanded sidebar width in px" },
         { name: "sidebarCollapsedWidth", type: "number", default: "64", description: "AdminLayout only — collapsed sidebar width in px" },
         { name: "collapsible", type: "boolean", default: "true", description: "AdminLayout only — allow icon-only collapse" },
+        { name: "defaultCollapsed", type: "boolean", default: "false", description: "AdminLayout only — start sidebar collapsed" },
+        { name: "hideSidebar", type: "boolean", default: "false", description: "AdminLayout only — explicitly hide sidebar even when content is provided" },
         { name: "sidebarPosition", type: '"left" | "right"', default: '"left"', description: "AdminLayout only — sidebar position" },
       ]}
       examples={[

@@ -179,15 +179,15 @@ Cada variante de KPI tiene 3 niveles: base, dark y background.
 
 | Tipo | Fuente | Fallback |
 |------|--------|----------|
-| **Sans** (principal) | `Satoshi` | `sans-serif` |
+| **Sans** (principal) | `Gotham` | `'Montserrat', sans-serif` |
 | **Mono** (codigo) | `JetBrains Mono` | `monospace` |
 
-**CDN Import:**
+**CDN / Licencia:**
 ```css
-@import url('https://fonts.cdnfonts.com/css/satoshi');
+@import url('https://cdn.jsdelivr.net/npm/gotham-fonts@1.0.1/css/gotham.css');
 ```
 
-> Satoshi es una fuente geometrica. Requiere `letter-spacing: 0.025em` global para legibilidad optima.
+> Gotham es una fuente geométrica. Requiere `letter-spacing: 0.025em` global para legibilidad óptima.
 
 ---
 
@@ -256,11 +256,11 @@ Minimo 2 pasos de diferencia entre niveles jerarquicos.
 | `tighter` | -0.05em | Display grande (48px+) |
 | `tight` | -0.025em | Headings grandes |
 | `normal` | 0em | -- |
-| `wide` | **0.025em** | **Default global (Satoshi)** |
+| `wide` | **0.025em** | **Default global (Gotham / Montserrat)** |
 | `wider` | 0.05em | Uppercase labels |
 | `widest` | 0.1em | Tracking extremo |
 
-> **Default global: 0.025em** - Calibrado para Satoshi (fuente geometrica).
+> **Default global: 0.025em** - Calibrado para Gotham (fuente geométrica).
 > Aplicado automaticamente via `globals.css` a todos los elementos tipograficos.
 
 ---

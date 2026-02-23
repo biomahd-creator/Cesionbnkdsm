@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { CFDashboard } from "../components/factoring/components/CFDashboard";
+import { CFDashboard } from "../factoring/components/cf-dashboard";
 
 export function CFDashboardPage() {
   return (
@@ -8,7 +8,7 @@ export function CFDashboardPage() {
       description="Full business dashboard for managing liquidity and monitoring factoring operations in real-time. Includes KPI cards, portfolio overview, recent transactions, quick actions, and chart visualizations for financial metrics."
       category="Factoring"
       preview={<CFDashboard />}
-      code={`import { CFDashboard } from "@/components/factoring/components/CFDashboard";
+      code={`import { CFDashboard } from "@/factoring/components/cf-dashboard";
 
 <CFDashboard />`}
       props={[

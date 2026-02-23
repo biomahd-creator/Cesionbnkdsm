@@ -278,7 +278,7 @@ import { ColumnDef } from "@tanstack/react-table";`,
     ],
     icon: FileText,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-    imports: `import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";`,
+    imports: `import { DataTableAdvanced } from "@/components/patterns/data-table-advanced";`,
     usageCode: `// Self-contained, no props required
 <DataTableAdvanced />`,
   },
@@ -306,7 +306,7 @@ import { ColumnDef } from "@tanstack/react-table";`,
     ],
     icon: Edit,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-    imports: `import { EditableTable } from "@/components/patterns/EditableTable";`,
+    imports: `import { EditableTable } from "@/components/patterns/editable-table";`,
     usageCode: `// Self-contained with mock data
 <EditableTable />`,
   },
@@ -314,7 +314,7 @@ import { ColumnDef } from "@tanstack/react-table";`,
     id: "factoring-selection",
     name: "FactoringSelectionPage",
     layer: "patterns/factoring",
-    path: "/components/patterns/factoring/FactoringSelectionPage.tsx",
+    path: "/components/patterns/factoring/factoring-selection-page.tsx",
     pageId: "factoring-selection",
     usesMasterDataGrid: false,
     description:
@@ -335,8 +335,36 @@ import { ColumnDef } from "@tanstack/react-table";`,
     ],
     icon: CheckSquare,
     layerColor: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
-    imports: `import { FactoringSelectionPage } from "@/components/patterns/factoring/FactoringSelectionPage";`,
+    imports: `import { FactoringSelectionPage } from "@/components/patterns/factoring/factoring-selection-page";`,
     usageCode: `<FactoringSelectionPage />`,
+  },
+  {
+    id: "factoring-invoice-table",
+    name: "FactoringInvoiceTable",
+    layer: "patterns/factoring",
+    path: "/components/patterns/factoring/factoring-invoice-table.tsx",
+    pageId: "factoring-invoice-table",
+    usesMasterDataGrid: false,
+    description:
+      "Invoice review table with category tabs (elegibles, pendientes, no-elegibles, descartadas), inline search, row selection with bulk actions, ProgressWithRange viability bar, and per-row actions (validate, discard, delete). Fully custom pattern — no MasterDataGrid dependency.",
+    bestFor: [
+      "Invoice review segmented by validation status",
+      "Factoring operations requiring per-row inline actions",
+      "Tables with a viability/progress indicator per row",
+    ],
+    features: [
+      "Tabs: elegibles, pendientes, no-elegibles, descartadas",
+      "Inline search by invoice number",
+      "Bulk and individual row selection",
+      "ProgressWithRange viability bar per row",
+      "Row actions: validate (Wand2), discard (FileX), delete (Trash2)",
+      "Custom card-based pagination",
+      "Semantic status badges",
+    ],
+    icon: ScrollText,
+    layerColor: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
+    imports: `import {\n  FactoringInvoiceTable,\n  type FactoringInvoice,\n  type InvoiceCategory,\n} from "@/components/patterns/factoring/factoring-invoice-table";`,
+    usageCode: `<FactoringInvoiceTable\n  invoices={invoices}\n  activeTab={activeTab}\n  onTabChange={setActiveTab}\n  onBulkValidate={handleBulkValidate}\n  onDelete={handleDelete}\n  onDiscard={handleDiscard}\n/>`,
   },
   {
     id: "virtualized-list",
@@ -430,7 +458,7 @@ import { ColumnDef } from "@tanstack/react-table";`,
     ],
     icon: Filter,
     layerColor: "bg-purple-100 text-purple-700 dark:bg-purple-900 dark:text-purple-300",
-    imports: `import { AdvancedFilterPanel } from "@/components/patterns/AdvancedFilterPanel";`,
+    imports: `import { AdvancedFilterPanel } from "@/components/patterns/advanced-filter-panel";`,
     usageCode: `{/* Alongside your table */}
 <div className="flex gap-4">
   <AdvancedFilterPanel />
@@ -438,34 +466,6 @@ import { ColumnDef } from "@tanstack/react-table";`,
     <Table>...</Table>
   </MasterDataGrid>
 </div>`,
-  },
-  {
-    id: "factoring-invoice-table",
-    name: "FactoringInvoiceTable",
-    layer: "patterns/factoring",
-    path: "/components/patterns/factoring/FactoringInvoiceTable.tsx",
-    pageId: "factoring-invoice-table",
-    usesMasterDataGrid: false,
-    description:
-      "Invoice review table with category tabs (elegibles, pendientes, no-elegibles, descartadas), inline search, row selection with bulk actions, ProgressWithRange viability bar, and per-row actions (validate, discard, delete). Fully custom pattern — no MasterDataGrid dependency.",
-    bestFor: [
-      "Invoice review segmented by validation status",
-      "Factoring operations requiring per-row inline actions",
-      "Tables with a viability/progress indicator per row",
-    ],
-    features: [
-      "Tabs: elegibles, pendientes, no-elegibles, descartadas",
-      "Inline search by invoice number",
-      "Bulk and individual row selection",
-      "ProgressWithRange viability bar per row",
-      "Row actions: validate (Wand2), discard (FileX), delete (Trash2)",
-      "Custom card-based pagination",
-      "Semantic status badges",
-    ],
-    icon: ScrollText,
-    layerColor: "bg-amber-100 text-amber-700 dark:bg-amber-900 dark:text-amber-300",
-    imports: `import {\n  FactoringInvoiceTable,\n  type FactoringInvoice,\n  type InvoiceCategory,\n} from "@/components/patterns/factoring/FactoringInvoiceTable";`,
-    usageCode: `<FactoringInvoiceTable\n  invoices={invoices}\n  activeTab={activeTab}\n  onTabChange={setActiveTab}\n  onBulkValidate={handleBulkValidate}\n  onDelete={handleDelete}\n  onDiscard={handleDiscard}\n/>`,
   },
 ];
 
@@ -1005,18 +1005,18 @@ export function TableCatalogPage() {
 import { Table } from "@/components/ui/table";
 
 // Advanced Layer
-import { MasterDataGrid } from "@/components/advanced/MasterDataGrid";
-import { DataTable } from "@/components/advanced/DataTable";
-import { TreeTableV2 } from "@/components/advanced/TreeTableV2";
-import { VirtualizedList } from "@/components/advanced/VirtualizedList";
-import { InfiniteScroll } from "@/components/advanced/InfiniteScroll";
+import { MasterDataGrid } from "@/components/advanced/master-data-grid";
+import { DataTable } from "@/components/advanced/data-table";
+import { TreeTableV2 } from "@/components/advanced/tree-table-v2";
+import { VirtualizedList } from "@/components/advanced/virtualized-list";
+import { InfiniteScroll } from "@/components/advanced/infinite-scroll";
 
 // Patterns Layer
-import { DataTableAdvanced } from "@/components/patterns/DataTableAdvanced";
-import { EditableTable } from "@/components/patterns/EditableTable";
-import { AdvancedFilterPanel } from "@/components/patterns/AdvancedFilterPanel";
-import { FactoringSelectionPage } from "@/components/patterns/factoring/FactoringSelectionPage";
-import { FactoringInvoiceTable } from "@/components/patterns/factoring/FactoringInvoiceTable";
+import { DataTableAdvanced } from "@/components/patterns/data-table-advanced";
+import { EditableTable } from "@/components/patterns/editable-table";
+import { AdvancedFilterPanel } from "@/components/patterns/advanced-filter-panel";
+import { FactoringSelectionPage } from "@/components/patterns/factoring/factoring-selection-page";
+import { FactoringInvoiceTable } from "@/components/patterns/factoring/factoring-invoice-table";
 
 // Composability: Table → MasterDataGrid → DataTable/TreeTableV2/EditableTable`}
       props={[

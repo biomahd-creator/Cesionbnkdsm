@@ -1,10 +1,10 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";
 import {
-  TreeTableV2,
+  TreeTable,
   type OperacionFactoring,
   type BatchAction,
-} from "../components/advanced/TreeTableV2";
+} from "../components/advanced/tree-table";
 import { toast } from "sonner@2.0.3";
 
 /* ═══════════════════════════════════════════
@@ -101,7 +101,7 @@ export function TreeTableV2Page() {
       description="3-level hierarchical table: Operation (client) → Payor → Invoices. Each operation shows client info, payors, amounts, status, and direct actions. Expanding reveals payors grouped by NIT, and expanding each payor shows its invoices with status badges. Supports batch selection, search, sorting, and Excel export."
       category="Advanced"
       preview={
-        <TreeTableV2
+        <TreeTable
           data={operaciones}
           title="Factoring Portfolio"
           description={`${operaciones.length} operations - ${operaciones.reduce((s, o) => s + o.facturas.length, 0)} invoices - ${formatPesos(operaciones.reduce((s, o) => s + o.valorFacturas, 0))} total`}
@@ -112,7 +112,7 @@ export function TreeTableV2Page() {
           onDescargarExcel={(op) => toast.success(`Download Excel — ${op.id}`)}
         />
       }
-      code={`import { TreeTableV2, OperacionFactoring, BatchAction } from "@/components/advanced/TreeTableV2";
+      code={`import { TreeTable, OperacionFactoring, BatchAction } from "@/components/advanced/tree-table";
 
 const operaciones: OperacionFactoring[] = [
   {
@@ -136,7 +136,7 @@ const operaciones: OperacionFactoring[] = [
   },
 ];
 
-<TreeTableV2
+<TreeTable
   data={operaciones}
   title="Portfolio"
   onBatchAction={(action, ids) => console.log(action, ids)}

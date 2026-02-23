@@ -1,57 +1,57 @@
-import { createContext, useContext, useState, useEffect, ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, ReactNode } from "react";
 
 /**
- * THEME PROVIDER — Multi-Tenant + Dark Mode
+ * THEME PROVIDER — Multi-tenant + Dark Mode  v2.0.0
  *
- * Manages two orthogonal axes:
- *   1. Tenant (brand):  data-theme attribute on <html>  → drives CSS overrides from themes.css
- *   2. Color mode:      .dark class on <html>           → drives light/dark tokens from globals.css
+ * Two axes:
+ *   1. Tenant (brand): default | c-financia | eurocapital | iris | lulo-empresas
+ *   2. Color mode: light | dark
  *
- * No style.setProperty() — all theming is pure CSS cascade.
+ * Mechanism (v2.0.0 — pure CSS):
+ *   - Sets data-theme="<tenant-id>" on <html> (or removes it for "default")
+ *   - Toggles .dark class on <html> for dark mode
+ *   - Token values live in /styles/themes/*.css using [data-theme] selectors
+ *   - No more style.setProperty() — pure CSS cascade handles everything
  *
- * @version 0.5.0
+ * CSS Specificity:
+ *   :root (CESIONBNK default) < html[data-theme="x"] (tenant override)
+ *   .dark (CESIONBNK dark)    < html[data-theme="x"].dark (tenant dark)
  */
 
-/* ── Tenant definitions ── */
+/* ── Types ── */
 
 export type TenantId = "default" | "c-financia" | "eurocapital" | "iris" | "lulo-empresas";
 export type ColorMode = "light" | "dark";
 
 export interface TenantInfo {
-  id: TenantId;
-  name: string;
-  primary: string;
+  id:        TenantId;
+  name:      string;
+  primary:   string;
   secondary: string;
-  font: string;
+  font:      string;
 }
 
+/* ── Tenant registry ── */
+
 export const TENANTS: TenantInfo[] = [
-  { id: "default",        name: "CESIONBNK",      primary: "#374151", secondary: "#52525b",  font: "Inter" },
-  { id: "c-financia",     name: "C-Financia",     primary: "#00C951", secondary: "#1C2D3A",  font: "Satoshi" },
+  { id: "default",        name: "CESIONBNK",      primary: "#374151", secondary: "#52525b",  font: "Gotham" },
+  { id: "c-financia",     name: "C-Financia",     primary: "#22c55e", secondary: "#0f172a",  font: "Satoshi" },
   { id: "eurocapital",    name: "Eurocapital",    primary: "#1A7FD9", secondary: "#9FB3BC",  font: "Montserrat" },
-  { id: "iris",           name: "IRIS",           primary: "#00B388", secondary: "#004646",  font: "System sans-serif" },
+  { id: "iris",           name: "IRIS",           primary: "#00B388", secondary: "#004646",  font: "System" },
   { id: "lulo-empresas",  name: "Lulo Empresas",  primary: "#00C4FF", secondary: "#1C2A49",  font: "Poppins" },
 ];
 
-/* ── Context type ── */
+/* ── Context ── */
 
 interface ThemeContextType {
-  /** Current tenant brand */
-  tenant: TenantId;
-  /** Switch tenant */
-  setTenant: (id: TenantId) => void;
-  /** Available tenants registry */
-  tenants: TenantInfo[];
-
-  /** Current color mode — backward compat alias */
-  theme: ColorMode;
-  /** Toggle light ↔ dark — backward compat alias */
-  toggleTheme: () => void;
-
-  /** Color mode (canonical name) */
-  colorMode: ColorMode;
-  /** Toggle color mode (canonical name) */
+  tenant:          TenantId;
+  setTenant:       (id: TenantId) => void;
+  tenants:         TenantInfo[];
+  colorMode:       ColorMode;
   toggleColorMode: () => void;
+  /** Aliases for backward compat */
+  theme:           ColorMode;
+  toggleTheme:     () => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -61,7 +61,8 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [tenant, setTenantState] = useState<TenantId>(() => {
     const saved = localStorage.getItem("tenant");
-    return (saved as TenantId) || "default";
+    if (saved && TENANTS.some((t) => t.id === saved)) return saved as TenantId;
+    return "default";
   });
 
   const [colorMode, setColorMode] = useState<ColorMode>(() => {
@@ -69,11 +70,21 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     return saved === "dark" ? "dark" : "light";
   });
 
-  /* ── Sync tenant → <html data-theme> ── */
-  useEffect(() => {
-    localStorage.setItem("tenant", tenant);
-    const root = document.documentElement;
+  /* ── Persist tenant ── */
+  const setTenant = useCallback((id: TenantId) => {
+    localStorage.setItem("tenant", id);
+    setTenantState(id);
+  }, []);
 
+  /* ── Sync color mode → <html class="dark"> ── */
+  useEffect(() => {
+    localStorage.setItem("theme", colorMode);
+    document.documentElement.classList.toggle("dark", colorMode === "dark");
+  }, [colorMode]);
+
+  /* ── Sync tenant → <html data-theme="..."> ── */
+  useEffect(() => {
+    const root = document.documentElement;
     if (tenant === "default") {
       root.removeAttribute("data-theme");
     } else {
@@ -81,42 +92,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }
   }, [tenant]);
 
-  /* ── Sync color mode → <html class="dark"> ── */
-  useEffect(() => {
-    localStorage.setItem("theme", colorMode);
-    const root = document.documentElement;
-
-    if (colorMode === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-  }, [colorMode]);
-
-  /* ── Clean up legacy keys from old ThemeProvider ── */
-  useEffect(() => {
-    localStorage.removeItem("theme-config");
-    localStorage.removeItem("style-theme");
-  }, []);
-
-  const setTenant = (id: TenantId) => {
-    setTenantState(id);
-  };
-
-  const toggleColorMode = () => {
-    setColorMode((prev) => (prev === "light" ? "dark" : "light"));
-  };
+  const toggleColorMode = useCallback(() =>
+    setColorMode((prev) => (prev === "light" ? "dark" : "light")),
+  []);
 
   return (
     <ThemeContext.Provider
       value={{
         tenant,
         setTenant,
-        tenants: TENANTS,
-        theme: colorMode,
-        toggleTheme: toggleColorMode,
+        tenants:         TENANTS,
         colorMode,
         toggleColorMode,
+        theme:           colorMode,
+        toggleTheme:     toggleColorMode,
       }}
     >
       {children}
@@ -128,8 +117,6 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
 
 export function useTheme() {
   const context = useContext(ThemeContext);
-  if (!context) {
-    throw new Error("useTheme must be used within ThemeProvider");
-  }
+  if (!context) throw new Error("useTheme must be used within ThemeProvider");
   return context;
 }

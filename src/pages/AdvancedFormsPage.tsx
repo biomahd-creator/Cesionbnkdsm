@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { StepIndicator, Step } from "../components/advanced/StepIndicator";
-import { FormBuilder } from "../components/advanced/FormBuilder";
-import { ConditionalForm } from "../components/advanced/ConditionalForm";
-import { MultiColumnForm } from "../components/advanced/MultiColumnForm";
+import { StepIndicator, Step } from "../components/advanced/step-indicator";
+import { FormBuilder } from "../components/advanced/form-builder";
+import { ConditionalForm } from "../components/advanced/conditional-form";
+import { MultiColumnForm } from "../components/advanced/multi-column-form";
 import { User, Building2, CreditCard, CheckCircle } from "lucide-react";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";
@@ -329,22 +329,22 @@ function AdvancedFormsDemo() {
           <ul className="list-disc list-inside space-y-1 text-muted-foreground ml-4">
             <li>
               <code className="bg-muted px-2 py-1 rounded">
-                import {"{ StepIndicator }"} from "./components/advanced/StepIndicator"
+                import {"{ StepIndicator }"} from "./components/advanced/step-indicator"
               </code>
             </li>
             <li>
               <code className="bg-muted px-2 py-1 rounded">
-                import {"{ FormBuilder }"} from "./components/advanced/FormBuilder"
+                import {"{ FormBuilder }"} from "./components/advanced/form-builder"
               </code>
             </li>
             <li>
               <code className="bg-muted px-2 py-1 rounded">
-                import {"{ ConditionalForm }"} from "./components/advanced/ConditionalForm"
+                import {"{ ConditionalForm }"} from "./components/advanced/conditional-form"
               </code>
             </li>
             <li>
               <code className="bg-muted px-2 py-1 rounded">
-                import {"{ MultiColumnForm }"} from "./components/advanced/MultiColumnForm"
+                import {"{ MultiColumnForm }"} from "./components/advanced/multi-column-form"
               </code>
             </li>
           </ul>
@@ -378,10 +378,10 @@ export function AdvancedFormsPage() {
       description="Showcase of advanced form components: StepIndicator for multi-step progress, FormBuilder for dynamic field generation, ConditionalForm for logic-driven fields, and MultiColumnForm for complex layouts."
       category="Advanced"
       preview={<AdvancedFormsDemo />}
-      code={`import { StepIndicator } from "@/components/advanced/StepIndicator";
-import { FormBuilder } from "@/components/advanced/FormBuilder";
-import { ConditionalForm } from "@/components/advanced/ConditionalForm";
-import { MultiColumnForm } from "@/components/advanced/MultiColumnForm";
+      code={`import { StepIndicator } from "@/components/advanced/step-indicator";
+import { FormBuilder } from "@/components/advanced/form-builder";
+import { ConditionalForm } from "@/components/advanced/conditional-form";
+import { MultiColumnForm } from "@/components/advanced/multi-column-form";
 
 <StepIndicator steps={steps} currentStep={2} />
 <FormBuilder schema={schema} />

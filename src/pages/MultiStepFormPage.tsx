@@ -11,7 +11,7 @@ import { Progress } from "../components/ui/progress";
 import { Checkbox } from "../components/ui/checkbox";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "../components/ui/dialog";
 import { Upload, FileText, Pencil, Trash2, Plus, CheckCircle2, AlertCircle, Search, Building2, FileCheck, Users, Lock, Loader2, Info, Eye, HelpCircle, Wallet, ShieldAlert } from "lucide-react";
-import { StepIndicator, Step } from "../components/advanced/StepIndicator";
+import { StepIndicator, Step } from "../components/advanced/step-indicator";
 import { Textarea } from "../components/ui/textarea";
 import { Switch } from "../components/ui/switch";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "../components/ui/tooltip";

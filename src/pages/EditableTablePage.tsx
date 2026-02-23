@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { EditableTable } from "../components/patterns/EditableTable";
+import { EditableTable } from "../components/patterns/editable-table";
 
 const usageCode = `import { EditableTable } from "@biomahd-creator/financio-design-system/patterns";
 

@@ -1,0 +1,147 @@
+/**
+ * TENANT: IRIS
+ *
+ * Overrides default tokens when html[data-theme="iris"] is set.
+ * ThemeProvider toggles the data-theme attribute on <html>.
+ *
+ * Primary: #00B388  |  Secondary: #004646  |  Radius: 0.625rem  |  Font: System UI
+ *
+ * @version 1.1.0 — Pure CSS selectors (replaces setProperty approach)
+ */
+
+/* ── Light Mode ── */
+html[data-theme="iris"] {
+  /* Brand */
+  --primary:                    #00B388;
+  --primary-foreground:         #ffffff;
+  --secondary:                  #004646;
+  --secondary-foreground:       #ffffff;
+
+  /* Surfaces */
+  --background:                 #ffffff;
+  --foreground:                 #1a2e2e;
+  --card:                       #ffffff;
+  --card-foreground:            #1a2e2e;
+  --popover:                    #ffffff;
+  --popover-foreground:         #1a2e2e;
+
+  /* Neutral */
+  --muted:                      #f0f7f5;
+  --muted-foreground:           #5a7a72;
+  --accent:                     #edf5f3;
+  --accent-foreground:          #1a2e2e;
+
+  /* Semantic */
+  --destructive:                #ef4444;
+  --destructive-foreground:     #ffffff;
+  --success:                    #00B388;
+  --success-foreground:         #ffffff;
+  --warning:                    #f59e0b;
+  --warning-foreground:         #ffffff;
+  --info:                       #3b82f6;
+  --info-foreground:            #ffffff;
+
+  /* Forms */
+  --border:                     #d9e8e4;
+  --input:                      #d9e8e4;
+  --input-background:           #ffffff;
+  --switch-background:          #c4d6d0;
+  --ring:                       #00B388;
+
+  /* Radius */
+  --radius:                     0.625rem;
+
+  /* Charts */
+  --chart-1:                    #00B388;
+  --chart-2:                    #004646;
+  --chart-3:                    #f59e0b;
+  --chart-4:                    #3b82f6;
+  --chart-5:                    #ef4444;
+
+  /* Sidebar */
+  --sidebar:                    #f8fbfa;
+  --sidebar-foreground:         #1a2e2e;
+  --sidebar-primary:            #004646;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #f0f7f5;
+  --sidebar-accent-foreground:  #1a2e2e;
+  --sidebar-border:             #d9e8e4;
+  --sidebar-ring:               #00B388;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(26, 46, 46, 0.05);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(26, 46, 46, 0.1), 0 2px 4px -2px rgba(26, 46, 46, 0.1);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(26, 46, 46, 0.1), 0 4px 6px -4px rgba(26, 46, 46, 0.1);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(26, 46, 46, 0.1), 0 8px 10px -6px rgba(26, 46, 46, 0.1);
+
+  /* Typography */
+  --letter-spacing-base:        0.025em;
+  --font-sans:                  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ── Dark Mode ── */
+html[data-theme="iris"].dark {
+  /* Brand */
+  --primary:                    #00B388;
+  --primary-foreground:         #ffffff;
+  --secondary:                  #1a7a7a;
+  --secondary-foreground:       #f0fdfa;
+
+  /* Surfaces */
+  --background:                 #0a1a1a;
+  --foreground:                 #f0fdfa;
+  --card:                       #122a2a;
+  --card-foreground:            #f0fdfa;
+  --popover:                    #122a2a;
+  --popover-foreground:         #f0fdfa;
+
+  /* Neutral */
+  --muted:                      #1a3a3a;
+  --muted-foreground:           #86b5a8;
+  --accent:                     #1a3a3a;
+  --accent-foreground:          #f0fdfa;
+
+  /* Semantic */
+  --destructive:                #991b1b;
+  --destructive-foreground:     #f8fafc;
+  --success:                    #00B388;
+  --success-foreground:         #f8fafc;
+  --warning:                    #b45309;
+  --warning-foreground:         #f8fafc;
+  --info:                       #1d4ed8;
+  --info-foreground:            #f8fafc;
+
+  /* Forms */
+  --border:                     #1a3a3a;
+  --input:                      #1a3a3a;
+  --input-background:           #1a3a3a;
+  --switch-background:          #2a5050;
+  --ring:                       #00B388;
+
+  /* Charts */
+  --chart-1:                    #34d399;
+  --chart-2:                    #2dd4bf;
+  --chart-3:                    #fbbf24;
+  --chart-4:                    #60a5fa;
+  --chart-5:                    #f87171;
+
+  /* Sidebar */
+  --sidebar:                    #0a1a1a;
+  --sidebar-foreground:         #f0fdfa;
+  --sidebar-primary:            #00B388;
+  --sidebar-primary-foreground: #0a1a1a;
+  --sidebar-accent:             #1a3a3a;
+  --sidebar-accent-foreground:  #f0fdfa;
+  --sidebar-border:             #1a3a3a;
+  --sidebar-ring:               #00B388;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Typography */
+  --letter-spacing-base:        0.025em;
+  --font-sans:                  ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}

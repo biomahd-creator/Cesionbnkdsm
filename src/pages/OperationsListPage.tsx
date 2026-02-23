@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { OperationsList } from "../components/factoring/OperationsList";
+import { OperationsList } from "../factoring/operations-list";
 
 export function OperationsListPage() {
   return (
@@ -8,7 +8,7 @@ export function OperationsListPage() {
       description="Complete factoring operations table with real-time search, status filters (Creada, En Proceso, Negociada, Endosada, Liquidada, Rechazada), pagination (5 per page), per-row conditional action dropdowns, and auto-calculated stats cards. Responsive with horizontal scroll on mobile and optimized filtering."
       category="Factoring"
       preview={<OperationsList />}
-      code={`import { OperationsList } from "@/components/factoring/OperationsList";
+      code={`import { OperationsList } from "@/factoring/operations-list";
 
 <OperationsList />`}
       props={[

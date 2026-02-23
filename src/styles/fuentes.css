@@ -1,0 +1,28 @@
+/**
+ * CESIONBNK Design System — Font Declarations
+ *
+ * All tenant font families loaded here.
+ * Each tenant's --font-sans variable selects the correct family.
+ *
+ * Tenant         | Font       | Source
+ * ---------------|------------|------------------
+ * CESIONBNK      | Gotham     | jsDelivr CDN
+ * C-Financia     | Satoshi    | Fontshare
+ * Eurocapital    | Montserrat | Google Fonts
+ * IRIS           | System UI  | (no import needed)
+ * Lulo Empresas  | Poppins    | Google Fonts
+ *
+ * @version 1.0.0
+ */
+
+/* Gotham (CESIONBNK) */
+@import url('https://cdn.jsdelivr.net/npm/gotham-fonts@1.0.1/css/gotham.css');
+
+/* Satoshi (C-Financia) */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap');
+
+/* Montserrat (Eurocapital) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+
+/* Poppins (Lulo Empresas) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

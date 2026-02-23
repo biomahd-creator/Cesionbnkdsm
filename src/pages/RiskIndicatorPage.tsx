@@ -1,8 +1,8 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { RiskIndicator } from "../components/factoring/RiskIndicator";
+import { RiskIndicator } from "../factoring/risk-indicator";
 import { Separator } from "../components/ui/separator";
 
-const riskIndicatorCode = `import { RiskIndicator } from "@/factoring/RiskIndicator";
+const riskIndicatorCode = `import { RiskIndicator } from "@/factoring/risk-indicator";
 
 export function RiskIndicatorDemo() {
   return (

@@ -1,8 +1,8 @@
-import { Sparkline } from "../components/advanced/Sparkline";
-import { GaugeChart } from "../components/advanced/GaugeChart";
-import { Heatmap } from "../components/advanced/Heatmap";
-import { TreemapChart } from "../components/advanced/TreemapChart";
-import { FunnelChart } from "../components/advanced/FunnelChart";
+import { Sparkline } from "../components/advanced/sparkline";
+import { GaugeChart } from "../components/advanced/gauge-chart";
+import { Heatmap } from "../components/advanced/heatmap";
+import { TreemapChart } from "../components/advanced/treemap-chart";
+import { FunnelChart } from "../components/advanced/funnel-chart";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";

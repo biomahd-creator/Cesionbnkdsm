@@ -1,7 +1,7 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { LiquidityMeter } from "../components/factoring/LiquidityMeter";
+import { LiquidityMeter } from "../factoring/liquidity-meter";
 
-const liquidityMeterCode = `import { LiquidityMeter } from "@/components/factoring/LiquidityMeter";
+const liquidityMeterCode = `import { LiquidityMeter } from "@/factoring/liquidity-meter";
 
 export function LiquidityMeterDemo() {
   return (

@@ -4,9 +4,9 @@ import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
 import { Logo } from "../components/Logo";
 import { useState } from "react";
-import { ColorSwatch } from "../components/widgets/ColorSwatch";
-import { GridSystemPreview } from "../components/widgets/GridSystemPreview";
-import { SpacingPreview } from "../components/widgets/SpacingPreview";
+import { ColorSwatch } from "../components/widgets/color-swatch";
+import { GridSystemPreview } from "../components/widgets/grid-system-preview";
+import { SpacingPreview } from "../components/widgets/spacing-preview";
 
 function BrandLayoutContent() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
@@ -121,9 +121,9 @@ export function BrandLayoutPage() {
       category="Design System"
       preview={<BrandLayoutContent />}
       code={`import { Logo } from "@/components/Logo";
-import { ColorSwatch } from "@/components/widgets/ColorSwatch";
-import { GridSystemPreview } from "@/components/widgets/GridSystemPreview";
-import { SpacingPreview } from "@/components/widgets/SpacingPreview";
+import { ColorSwatch } from "@/components/widgets/color-swatch";
+import { GridSystemPreview } from "@/components/widgets/grid-system-preview";
+import { SpacingPreview } from "@/components/widgets/spacing-preview";
 
 // Logo with variants
 <Logo size="xl" variant="light" />  // xl, lg, md, sm

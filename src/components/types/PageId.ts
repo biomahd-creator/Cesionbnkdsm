@@ -22,7 +22,7 @@ export type PageId =
   | "combobox" | "multi-select" | "date-picker" | "date-range-picker"
   // Navigation
   | "tabs" | "breadcrumb" | "command" | "dropdown-menu"
-  | "navigation-menu" | "pagination" | "context-menu"
+  | "navigation-menu" | "pagination" | "context-menu" | "menubar"
   // Data Display
   | "card" | "table" | "badge" | "avatar" | "hover-card" | "separator"
   // Feedback
@@ -30,7 +30,7 @@ export type PageId =
   | "skeleton" | "sheet" | "drawer" | "popover" | "empty-state" | "error-boundary" | "bottom-sheet" | "loading-states"
   // Layout
   | "accordion" | "scroll-area" | "sidebar-showcase" | "grid-showcase"
-  | "layout-showcase" | "app-layout"
+  | "layout-showcase" | "app-layout" | "carousel" | "collapsible"
 
   // ── PATTERNS ──
   | "editable-table"

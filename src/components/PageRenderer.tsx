@@ -94,6 +94,9 @@ import {
   AppLayoutPage,
   EditableTablePage,
   DesignTokensPage,
+  CarouselPage,
+  CollapsiblePage,
+  MenubarPage,
 } from "../pages";
 
 interface PageRendererProps {
@@ -171,6 +174,8 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <NavigationMenuPage />;
     case "context-menu":
       return <ContextMenuPage />;
+    case "menubar":
+      return <MenubarPage />;
 
     // COMPONENTS > Data Display
     case "card":
@@ -229,6 +234,10 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <LayoutShowcasePage />;
     case "app-layout":
       return <AppLayoutPage />;
+    case "carousel":
+      return <CarouselPage />;
+    case "collapsible":
+      return <CollapsiblePage />;
 
     // PATTERNS
     case "stats-dashboard":

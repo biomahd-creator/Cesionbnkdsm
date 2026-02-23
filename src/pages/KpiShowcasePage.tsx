@@ -1,5 +1,5 @@
-import { KPIShowcase } from "../components/patterns/KPIShowcase";
-import { KPIShowcaseExtended } from "../components/patterns/KPIShowcaseExtended";
+import { KPIShowcase } from "../components/patterns/kpi-showcase";
+import { KPIShowcaseExtended } from "../components/patterns/kpi-showcase-extended";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../components/ui/tabs";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 
@@ -41,8 +41,8 @@ export function KpiShowcasePage() {
       description="Complete KPI system: advanced dashboard with interactive charts, standard metrics, and Factoring KPI Cards. Includes KPIShowcase and KPIShowcaseExtended patterns with tabs to switch between views."
       category="Patterns"
       preview={<KpiShowcaseDemo />}
-      code={`import { KPIShowcase } from "@/components/patterns/KPIShowcase";
-import { KPIShowcaseExtended } from "@/components/patterns/KPIShowcaseExtended";
+      code={`import { KPIShowcase } from "@/components/patterns/kpi-showcase";
+import { KPIShowcaseExtended } from "@/components/patterns/kpi-showcase-extended";
 
 <KPIShowcase />
 <KPIShowcaseExtended />`}

@@ -1,8 +1,9 @@
 # NAMING CONVENTION — Triple Alignment
 
-> **Status**: Planned (not yet executed)
+> **Status**: ✅ Completed (v0.3.2)
 > **Created**: 2026-02-17
-> **Affects**: `components/ui/`, `components/patterns/`, `components/advanced/`, `components/widgets/`, `components/factoring/`, Figma Design
+> **Completed**: 2026-02-22
+> **Affects**: `components/ui/`, `components/patterns/`, `components/advanced/`, `components/widgets/`, `factoring/`, Figma Design
 
 ---
 
@@ -132,51 +133,63 @@ export * from "./admin-portal";
 
 ## Migration Plan
 
-### Phase 1 — Rename files to kebab-case (~74 files)
+### Phase 1 — Rename files to kebab-case (~74 files) ✅ DONE
 
 Rename all PascalCase files in `patterns/`, `advanced/`, `widgets/` to kebab-case.
 Update all barrel `index.ts` files and imports across the codebase.
 
 **Method**: Node script (`scripts/rename-to-kebab.mjs`) — bulk rename + auto-update imports.
 
-### Phase 2 — Fix export-file mismatches (2-3 files)
+### Phase 2 — Fix export-file mismatches (2-3 files) ✅ DONE
 
-| Current File | Current Export | New File | Export (unchanged) |
+| Old File | Export | New File | Status |
 |---|---|---|---|
-| `widgets/TimelineItem.tsx` | `ApprovalTimelineItem` | `widgets/approval-timeline-item.tsx` | `ApprovalTimelineItem` |
-| `widgets/FormField.tsx` | `SimpleFormField` | `widgets/simple-form-field.tsx` | `SimpleFormField` |
+| `widgets/timeline-item.tsx` | `ApprovalTimelineItem` | `widgets/approval-timeline-item.tsx` | ✅ Renamed |
+| `widgets/form-field.tsx` | `SimpleFormField` | `widgets/simple-form-field.tsx` | ✅ Renamed |
 
-### Phase 3 — Reclassify domain-specific components (3-5 files)
+### Phase 3 — Reclassify domain-specific components ✅ DONE
 
-| Current Location | Action | New Location |
+| Old Location | Action | New Location | Status |
+|---|---|---|---|
+| `patterns/factoring-kpi-card.tsx` | Moved | `factoring/components/factoring-kpi-card.tsx` | ✅ Done |
+| `patterns/factoring-kpi-card-group.tsx` | Moved | `factoring/components/factoring-kpi-card-group.tsx` | ✅ Done |
+
+Removed from `patterns/index.ts`. All 4 consumers updated.
+
+> **Note**: `FactoringCalculator` and `CupoValidator` were orphans with no consumers — already removed in v0.3.0.
+
+### Phase 4 — Resolve duplicates ✅ DONE
+
+| Pair | Decision | Status |
 |---|---|---|
-| `patterns/FactoringCalculator.tsx` | Move to factoring | `factoring/components/factoring-calculator.tsx` |
-| `patterns/FactoringKpiCard.tsx` | Move to factoring | `factoring/components/factoring-kpi-card.tsx` |
-| `patterns/FactoringKpiCardGroup.tsx` | Move to factoring | `factoring/components/factoring-kpi-card-group.tsx` |
-| `patterns/CupoValidator.tsx` | Move to factoring | `factoring/components/cupo-validator.tsx` |
+| `advanced/data-table.tsx` vs `patterns/data-table-advanced.tsx` | **Keep both** — `DataTable` is a generic TanStack Table wrapper; `DataTableAdvanced` is a self-contained demo pattern with mock data | ✅ Documented |
+| `widgets/invoice-table.tsx` vs `patterns/factoring/factoring-invoice-table.tsx` | **Keep both** — `InvoiceTable` is a simple generic widget demo; `FactoringInvoiceTable` is a full-featured domain-specific component | ✅ Documented |
+| `patterns/kpi-showcase.tsx` vs `patterns/kpi-showcase-extended.tsx` | **Rebuilt** — both were broken stubs (re-exports of deleted PascalCase files). Rebuilt with full implementations | ✅ Fixed |
+| `advanced/tree-table.tsx` vs `advanced/tree-table-v2.tsx` | **R4 compliance** — V1 never existed; renamed `tree-table-v2.tsx` → `tree-table.tsx`, export `TreeTableV2` → `TreeTable`, all consumers updated | ✅ Done |
 
-Remove these from `patterns/index.ts` (they should not be part of the npm library).
+### Phase 5b — Collapse stubs into real files ✅ DONE
 
-### Phase 4 — Resolve duplicates (3-4 evaluations)
+Convert the 3 remaining kebab-case stub files into the real implementations,
+inlining the content from their PascalCase backing files, and deleting the PascalCase originals.
 
-| Duplicate A | Duplicate B | Decision needed |
-|---|---|---|
-| `advanced/DataTable.tsx` | `patterns/DataTableAdvanced.tsx` | Merge or differentiate? |
-| `widgets/InvoiceTable.tsx` | `patterns/factoring/FactoringInvoiceTable.tsx` | Keep widget generic, move factoring one? |
-| `patterns/KPIShowcase.tsx` | `patterns/KPIShowcaseExtended.tsx` | Merge into one? |
-| `advanced/TreeTable.tsx` | `advanced/TreeTableV2.tsx` | Deprecate V1? |
+| Stub File | Backing File (deleted) | Direct-import consumers fixed | Status |
+|---|---|---|---|
+| `factoring/operations-list.tsx` | `factoring/OperationsList.tsx` | `pages/OperationsListPage.tsx` | ✅ Done |
+| `factoring/c-financia/c-financia-client-flow.tsx` | `c-financia/CFinanciaClientFlow.tsx` | `FactoringApp.tsx` (lazy import) | ✅ Done |
+| `factoring/dashboard-comercial/dashboard-comercial.tsx` | `dashboard-comercial/DashboardComercial.tsx` | None (already via stub) | ✅ Done |
 
 ---
 
 ## Estimated Effort
 
-| Phase | Files | Method | Time |
-|---|---|---|---|
-| F1 — Rename to kebab-case | ~74 | Script (`rename-to-kebab.mjs`) | ~1 hour |
-| F2 — Fix mismatches | 2-3 | Manual | ~10 min |
-| F3 — Reclassify domain | 3-5 | Manual | ~15 min |
-| F4 — Resolve duplicates | 3-4 | Analysis + manual | ~30 min |
-| **Total** | | | **~2 hours** |
+| Phase | Files | Method | Time | Status |
+|---|---|---|---|---|
+| F1 — Rename to kebab-case | ~74 | Script (`rename-to-kebab.mjs`) | ~1 hour | ✅ Done |
+| F2 — Fix mismatches | 2 | Manual | ~10 min | ✅ Done |
+| F3 — Reclassify domain | 2 | Manual | ~15 min | ✅ Done |
+| F4 — Resolve duplicates | 4 pairs | Analysis + manual | ~30 min | ✅ Done |
+| **F5b — Collapse stubs** | **3 files** | **Manual** | **~20 min** | **✅ Done** |
+| **Total** | | | **~2h 20min** | **✅ 100% Complete** |
 
 ---
 

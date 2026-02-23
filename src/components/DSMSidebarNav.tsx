@@ -35,7 +35,7 @@ import {
   LayoutSidebarCollapsibleGroup,
   LayoutSidebarItem,
   useAdminLayout,
-} from "./patterns/AppLayout";
+} from "./patterns/app-layout";
 import type { PageId } from "./types/PageId";
 
 interface DSMSidebarNavProps {
@@ -111,7 +111,7 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "navigation",
       label: "Navigation",
       icon: Compass,
-      count: 7,
+      count: 8,
       items: [
         { id: "tabs", label: "Tabs" },
         { id: "breadcrumb", label: "Breadcrumb" },
@@ -120,6 +120,7 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
         { id: "navigation-menu", label: "Navigation Menu" },
         { id: "pagination", label: "Pagination" },
         { id: "context-menu", label: "Context Menu" },
+        { id: "menubar", label: "Menubar" },
       ],
     },
     {
@@ -163,9 +164,11 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "layout",
       label: "Layout",
       icon: LayoutGrid,
-      count: 6,
+      count: 8,
       items: [
         { id: "accordion", label: "Accordion" },
+        { id: "collapsible", label: "Collapsible" },
+        { id: "carousel", label: "Carousel" },
         { id: "scroll-area", label: "Scroll Area" },
         { id: "sidebar-showcase", label: "Sidebar" },
         { id: "grid-showcase", label: "Grid Showcase" },

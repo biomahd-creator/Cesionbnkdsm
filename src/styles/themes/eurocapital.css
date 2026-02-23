@@ -1,0 +1,147 @@
+/**
+ * TENANT: Eurocapital
+ *
+ * Overrides default tokens when html[data-theme="eurocapital"] is set.
+ * ThemeProvider toggles the data-theme attribute on <html>.
+ *
+ * Primary: #1A7FD9  |  Secondary: #9FB3BC  |  Radius: 0.625rem  |  Font: Montserrat
+ *
+ * @version 1.1.0 — Pure CSS selectors (replaces setProperty approach)
+ */
+
+/* ── Light Mode ── */
+html[data-theme="eurocapital"] {
+  /* Brand */
+  --primary:                    #1A7FD9;
+  --primary-foreground:         #ffffff;
+  --secondary:                  #9FB3BC;
+  --secondary-foreground:       #ffffff;
+
+  /* Surfaces */
+  --background:                 #ffffff;
+  --foreground:                 #1e293b;
+  --card:                       #ffffff;
+  --card-foreground:            #1e293b;
+  --popover:                    #ffffff;
+  --popover-foreground:         #1e293b;
+
+  /* Neutral */
+  --muted:                      #f1f5f9;
+  --muted-foreground:           #64748b;
+  --accent:                     #f0f4f8;
+  --accent-foreground:          #1e293b;
+
+  /* Semantic */
+  --destructive:                #ef4444;
+  --destructive-foreground:     #ffffff;
+  --success:                    #22c55e;
+  --success-foreground:         #ffffff;
+  --warning:                    #f59e0b;
+  --warning-foreground:         #ffffff;
+  --info:                       #1A7FD9;
+  --info-foreground:            #ffffff;
+
+  /* Forms */
+  --border:                     #e2e8f0;
+  --input:                      #e2e8f0;
+  --input-background:           #ffffff;
+  --switch-background:          #cbd5e1;
+  --ring:                       #1A7FD9;
+
+  /* Radius */
+  --radius:                     0.625rem;
+
+  /* Charts */
+  --chart-1:                    #1A7FD9;
+  --chart-2:                    #9FB3BC;
+  --chart-3:                    #f59e0b;
+  --chart-4:                    #22c55e;
+  --chart-5:                    #ef4444;
+
+  /* Sidebar */
+  --sidebar:                    #f8fafc;
+  --sidebar-foreground:         #1e293b;
+  --sidebar-primary:            #1A7FD9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #f1f5f9;
+  --sidebar-accent-foreground:  #1e293b;
+  --sidebar-border:             #e2e8f0;
+  --sidebar-ring:               #1A7FD9;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(30, 41, 59, 0.05);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(30, 41, 59, 0.1), 0 2px 4px -2px rgba(30, 41, 59, 0.1);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(30, 41, 59, 0.1), 0 4px 6px -4px rgba(30, 41, 59, 0.1);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(30, 41, 59, 0.1), 0 8px 10px -6px rgba(30, 41, 59, 0.1);
+
+  /* Typography */
+  --letter-spacing-base:        0.02em;
+  --font-sans:                  'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ── Dark Mode ── */
+html[data-theme="eurocapital"].dark {
+  /* Brand */
+  --primary:                    #1A7FD9;
+  --primary-foreground:         #ffffff;
+  --secondary:                  #b8cad2;
+  --secondary-foreground:       #1e293b;
+
+  /* Surfaces */
+  --background:                 #0c1524;
+  --foreground:                 #f1f5f9;
+  --card:                       #162032;
+  --card-foreground:            #f1f5f9;
+  --popover:                    #162032;
+  --popover-foreground:         #f1f5f9;
+
+  /* Neutral */
+  --muted:                      #1e3048;
+  --muted-foreground:           #94a3b8;
+  --accent:                     #1e3048;
+  --accent-foreground:          #f1f5f9;
+
+  /* Semantic */
+  --destructive:                #991b1b;
+  --destructive-foreground:     #f8fafc;
+  --success:                    #15803d;
+  --success-foreground:         #f8fafc;
+  --warning:                    #b45309;
+  --warning-foreground:         #f8fafc;
+  --info:                       #1A7FD9;
+  --info-foreground:            #f8fafc;
+
+  /* Forms */
+  --border:                     #1e3048;
+  --input:                      #1e3048;
+  --input-background:           #1e3048;
+  --switch-background:          #334155;
+  --ring:                       #1A7FD9;
+
+  /* Charts */
+  --chart-1:                    #3b9eed;
+  --chart-2:                    #b8cad2;
+  --chart-3:                    #fbbf24;
+  --chart-4:                    #4ade80;
+  --chart-5:                    #f87171;
+
+  /* Sidebar */
+  --sidebar:                    #0c1524;
+  --sidebar-foreground:         #f1f5f9;
+  --sidebar-primary:            #1A7FD9;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #1e3048;
+  --sidebar-accent-foreground:  #f1f5f9;
+  --sidebar-border:             #1e3048;
+  --sidebar-ring:               #1A7FD9;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Typography */
+  --letter-spacing-base:        0.02em;
+  --font-sans:                  'Montserrat', ui-sans-serif, system-ui, sans-serif;
+}

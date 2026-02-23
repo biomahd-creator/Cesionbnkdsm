@@ -3,29 +3,22 @@
  * Componentes complejos con lógica sofisticada (Charts, Tables, Editors, etc.)
  */
 
-export * from "./ChartShowcase";
-export * from "./Combobox";
-export * from "./ConditionalForm";
-export * from "./DataTable";
-export * from "./DatePickerWithPresets";
-// removed: ExportData
-export * from "./FileUploader";
-export * from "./FormBuilder";
-export * from "./FunnelChart";
-export * from "./GaugeChart";
-export * from "./Heatmap";
-export * from "./InfiniteScroll";
-// removed: InvoiceGenerator
-// removed: MasonryGrid
-export * from "./MasterDataGrid";
-export * from "./MultiColumnForm";
-// removed: RatingComponent
-export * from "./RichTextEditor";
-export * from "./Sparkline";
-export * from "./StepIndicator";
-// removed: Timeline
-// removed: TransferList
-// removed: TreeTable (v1 — superseded by TreeTableV2)
-export * from "./TreeTableV2";
-export * from "./TreemapChart";
-export * from "./VirtualizedList";
+export * from "./chart-showcase";
+export * from "./combobox";
+export * from "./conditional-form";
+export * from "./data-table";
+export * from "./date-picker-with-presets";
+export * from "./file-uploader";
+export * from "./form-builder";
+export * from "./funnel-chart";
+export * from "./gauge-chart";
+export * from "./heatmap";
+export * from "./infinite-scroll";
+export * from "./master-data-grid";
+export * from "./multi-column-form";
+export * from "./rich-text-editor";
+export * from "./sparkline";
+export * from "./step-indicator";
+export * from "./tree-table";
+export * from "./treemap-chart";
+export * from "./virtualized-list";

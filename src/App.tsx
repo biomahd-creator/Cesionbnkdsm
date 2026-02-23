@@ -5,21 +5,21 @@ import { DSMSidebarNav } from "./components/DSMSidebarNav";
 import { Button } from "./components/ui/button";
 import { Logo } from "./components/Logo";
 import { Moon, Sun, ArrowRight, LayoutTemplate } from "lucide-react";
-import { SkipLink } from "./components/accessibility/SkipLink";
 import { ThemeProvider, useTheme } from "./components/providers/ThemeProvider";
 import { Toaster } from "./components/ui/sonner";
-import { FactoringApp } from "./components/factoring/FactoringApp";
+import { FactoringApp } from "./factoring/FactoringApp";
 import { HelpProvider } from "./components/help/HelpProvider";
 import { HelpCenter } from "./components/help/HelpCenter";
+import { HelpButton } from "./components/help/HelpButton";
+import { TenantSelector } from "./components/tenant-selector";
 import { LoadingProvider } from "./components/providers/LoadingProvider";
 import { TransitionProvider } from "./components/providers/TransitionProvider";
 import { LoadingOverlay } from "./components/ui/loading-overlay";
-import { TenantSelector } from "./components/widgets/TenantSelector";
 import {
   AdminLayout,
   LayoutHeader,
   LayoutFooter,
-} from "./components/patterns/AppLayout";
+} from "./components/patterns/app-layout";
 import "./styles/tour.css";
 
 /**
@@ -54,7 +54,7 @@ const PAGE_LABELS: Partial<Record<string, string>> = {
   "input-otp": "Input OTP", label: "Label",
   tabs: "Tabs", breadcrumb: "Breadcrumb", command: "Command",
   "dropdown-menu": "Dropdown Menu",
-  "navigation-menu": "Navigation Menu", pagination: "Pagination", "context-menu": "Context Menu",
+  "navigation-menu": "Navigation Menu", pagination: "Pagination", "context-menu": "Context Menu", menubar: "Menubar",
   card: "Card", table: "Table",
   badge: "Badge", avatar: "Avatar", "hover-card": "Hover Card", separator: "Separator",
   alert: "Alert", "alert-dialog": "Alert Dialog",
@@ -65,7 +65,9 @@ const PAGE_LABELS: Partial<Record<string, string>> = {
   "bottom-sheet": "Bottom Sheet", "loading-states": "Loading States",
   accordion: "Accordion", "scroll-area": "Scroll Area", "sidebar-showcase": "Sidebar",
   "grid-showcase": "Grid Showcase", "layout-showcase": "Layout Showcase", "app-layout": "App Layout",
-  "stats-dashboard": "Stats Dashboard", "data-table-advanced": "Data Table Advanced",
+  carousel: "Carousel", collapsible: "Collapsible",
+  "stats-dashboard": "Stats Dashboard",
+  "data-table-advanced": "Data Table Advanced",
   "advanced-filter": "Advanced Filter Panel", "editable-table": "Editable Table",
   "multi-step-wizard": "Multi-Step Wizard", "multi-step-form": "Multi-Step Form",
   "multi-step-form-vertical": "Multi-Step Form Vertical", "multi-step-wizard-vertical": "Multi-Step Wizard Vertical",
@@ -134,9 +136,6 @@ function AppContent() {
         <FactoringApp key="factoring-app" onExit={() => setAppMode("dsm")} />
       ) : (
         <>
-          {/* Accessibility: Skip Link */}
-          <SkipLink />
-
           {/* Accessibility: Live Regions */}
           <div
             id="live-region-polite"
@@ -193,7 +192,7 @@ function AppContent() {
                     {/* Help System */}
                     <HelpCenter variant="header" />
 
-                    {/* Tenant/Brand Selector */}
+                    {/* Tenant Selector */}
                     <TenantSelector />
 
                     {/* Go to Factoring */}
@@ -245,7 +244,7 @@ function AppContent() {
                 }
                 right={
                   <div className="flex items-center gap-2 text-xs">
-                    <span>94 Showcase Pages</span>
+                    <span>97 Showcase Pages</span>
                     <span>·</span>
                     <span>WCAG 2.1 AA</span>
                     <span>·</span>
@@ -256,7 +255,7 @@ function AppContent() {
             }
             bodyClassName="flex flex-col gap-4 p-4 pt-0 md:p-8 md:pt-6"
           >
-            <div id="main-content" role="main" tabIndex={-1}>
+            <div id="main-content" role="main">
               <PageRenderer pageId={activePage} />
             </div>
           </AdminLayout>
@@ -276,6 +275,7 @@ export default function App() {
               <Toaster />
               <AppContent />
               <LoadingOverlay />
+              <HelpButton />
             </div>
           </TransitionProvider>
         </LoadingProvider>

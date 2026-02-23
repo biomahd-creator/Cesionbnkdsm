@@ -1,0 +1,147 @@
+/**
+ * TENANT: Lulo Empresas
+ *
+ * Overrides default tokens when html[data-theme="lulo-empresas"] is set.
+ * ThemeProvider toggles the data-theme attribute on <html>.
+ *
+ * Primary: #00C4FF  |  Secondary: #1C2A49  |  Radius: 0.625rem  |  Font: Poppins
+ *
+ * @version 1.1.0 — Pure CSS selectors (replaces setProperty approach)
+ */
+
+/* ── Light Mode ── */
+html[data-theme="lulo-empresas"] {
+  /* Brand */
+  --primary:                    #00C4FF;
+  --primary-foreground:         #1C2A49;
+  --secondary:                  #1C2A49;
+  --secondary-foreground:       #ffffff;
+
+  /* Surfaces */
+  --background:                 #ffffff;
+  --foreground:                 #1C2A49;
+  --card:                       #ffffff;
+  --card-foreground:            #1C2A49;
+  --popover:                    #ffffff;
+  --popover-foreground:         #1C2A49;
+
+  /* Neutral */
+  --muted:                      #f0f4fa;
+  --muted-foreground:           #5a6b82;
+  --accent:                     #edf2fa;
+  --accent-foreground:          #1C2A49;
+
+  /* Semantic */
+  --destructive:                #ef4444;
+  --destructive-foreground:     #ffffff;
+  --success:                    #22c55e;
+  --success-foreground:         #ffffff;
+  --warning:                    #f59e0b;
+  --warning-foreground:         #ffffff;
+  --info:                       #00C4FF;
+  --info-foreground:            #1C2A49;
+
+  /* Forms */
+  --border:                     #dce4f0;
+  --input:                      #dce4f0;
+  --input-background:           #ffffff;
+  --switch-background:          #c4cfe0;
+  --ring:                       #00C4FF;
+
+  /* Radius */
+  --radius:                     0.625rem;
+
+  /* Charts */
+  --chart-1:                    #00C4FF;
+  --chart-2:                    #1C2A49;
+  --chart-3:                    #f59e0b;
+  --chart-4:                    #22c55e;
+  --chart-5:                    #ef4444;
+
+  /* Sidebar */
+  --sidebar:                    #f5f8fc;
+  --sidebar-foreground:         #1C2A49;
+  --sidebar-primary:            #1C2A49;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent:             #edf2fa;
+  --sidebar-accent-foreground:  #1C2A49;
+  --sidebar-border:             #dce4f0;
+  --sidebar-ring:               #00C4FF;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(28, 42, 73, 0.05);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(28, 42, 73, 0.1), 0 2px 4px -2px rgba(28, 42, 73, 0.1);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(28, 42, 73, 0.1), 0 4px 6px -4px rgba(28, 42, 73, 0.1);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(28, 42, 73, 0.1), 0 8px 10px -6px rgba(28, 42, 73, 0.1);
+
+  /* Typography */
+  --letter-spacing-base:        0.02em;
+  --font-sans:                  'Poppins', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ── Dark Mode ── */
+html[data-theme="lulo-empresas"].dark {
+  /* Brand */
+  --primary:                    #00C4FF;
+  --primary-foreground:         #1C2A49;
+  --secondary:                  #2d4166;
+  --secondary-foreground:       #f0f4fa;
+
+  /* Surfaces */
+  --background:                 #0c1425;
+  --foreground:                 #f0f4fa;
+  --card:                       #142038;
+  --card-foreground:            #f0f4fa;
+  --popover:                    #142038;
+  --popover-foreground:         #f0f4fa;
+
+  /* Neutral */
+  --muted:                      #1e3050;
+  --muted-foreground:           #8a9cb8;
+  --accent:                     #1e3050;
+  --accent-foreground:          #f0f4fa;
+
+  /* Semantic */
+  --destructive:                #991b1b;
+  --destructive-foreground:     #f8fafc;
+  --success:                    #15803d;
+  --success-foreground:         #f8fafc;
+  --warning:                    #b45309;
+  --warning-foreground:         #f8fafc;
+  --info:                       #00C4FF;
+  --info-foreground:            #1C2A49;
+
+  /* Forms */
+  --border:                     #1e3050;
+  --input:                      #1e3050;
+  --input-background:           #1e3050;
+  --switch-background:          #2d4166;
+  --ring:                       #00C4FF;
+
+  /* Charts */
+  --chart-1:                    #33d4ff;
+  --chart-2:                    #4a6080;
+  --chart-3:                    #fbbf24;
+  --chart-4:                    #4ade80;
+  --chart-5:                    #f87171;
+
+  /* Sidebar */
+  --sidebar:                    #0c1425;
+  --sidebar-foreground:         #f0f4fa;
+  --sidebar-primary:            #00C4FF;
+  --sidebar-primary-foreground: #1C2A49;
+  --sidebar-accent:             #1e3050;
+  --sidebar-accent-foreground:  #f0f4fa;
+  --sidebar-border:             #1e3050;
+  --sidebar-ring:               #00C4FF;
+
+  /* Shadows */
+  --shadow-elevation-1:         0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-elevation-2:         0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-3:         0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
+  --shadow-elevation-4:         0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Typography */
+  --letter-spacing-base:        0.02em;
+  --font-sans:                  'Poppins', ui-sans-serif, system-ui, sans-serif;
+}

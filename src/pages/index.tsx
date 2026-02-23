@@ -23,10 +23,10 @@ export * from "./ButtonPage";
 export * from "./CFDashboardPage";
 export * from "./CalendarPage";
 export * from "./CardPage";
-// removed: CarouselPage
+export * from "./CarouselPage";
 export * from "./ChartsPage";
 export * from "./CheckboxPage";
-// removed: CollapsiblePage
+export * from "./CollapsiblePage";
 export * from "./ComboboxPage";
 export * from "./CommandPage";
 // removed: CommentThreadPage
@@ -69,8 +69,7 @@ export * from "./LabelPage";
 export * from "./LayoutShowcasePage";
 export * from "./LiquidityMeterPage";
 export * from "./LoadingStatesPage";
-// removed: MasonryGridPage
-// removed: MenubarPage
+export * from "./MenubarPage";
 export * from "./MultiSelectPage";
 export * from "./MultiStepFormPage";
 export * from "./MultiStepFormVerticalPage";

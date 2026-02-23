@@ -58,19 +58,19 @@ Fuente: `TOKENS.md` sección 2.6 — Jerarquía Tipográfica Completa.
 
 | Style Name | Font | Size | Weight | Line Height | Letter Spacing |
 |---|---|---|---|---|---|
-| `Display` | Satoshi | 48px | Bold (700) | 150% | 0.025em |
-| `H1 / Page Title` | Satoshi | 30px | Semibold (600) | 150% | 0.025em |
-| `H2 / Section Title` | Satoshi | 24px | Semibold (600) | 150% | 0.025em |
-| `H3 / Subsection` | Satoshi | 20px | Medium (500) | 150% | 0.025em |
-| `H4 / Card Title` | Satoshi | 18px | Medium (500) | 150% | 0.025em |
-| `Body / Default` | Satoshi | 16px | Regular (400) | 150% | 0.025em |
-| `Body Small` | Satoshi | 14px | Regular (400) | 150% | 0.025em |
-| `Caption` | Satoshi | 12px | Regular (400) | 150% | 0.025em |
-| `Label` | Satoshi | 14px | Medium (500) | 150% | 0.025em |
-| `Button` | Satoshi | 16px | Medium (500) | 150% | 0.025em |
-| `KPI Value` | Satoshi | 36px | Bold (700) | 125% | 0.025em |
+| `Display` | Gotham | 48px | Bold (700) | 150% | 0.025em |
+| `H1 / Page Title` | Gotham | 30px | Semibold (600) | 150% | 0.025em |
+| `H2 / Section Title` | Gotham | 24px | Semibold (600) | 150% | 0.025em |
+| `H3 / Subsection` | Gotham | 20px | Medium (500) | 150% | 0.025em |
+| `H4 / Card Title` | Gotham | 18px | Medium (500) | 150% | 0.025em |
+| `Body / Default` | Gotham | 16px | Regular (400) | 150% | 0.025em |
+| `Body Small` | Gotham | 14px | Regular (400) | 150% | 0.025em |
+| `Caption` | Gotham | 12px | Regular (400) | 150% | 0.025em |
+| `Label` | Gotham | 14px | Medium (500) | 150% | 0.025em |
+| `Button` | Gotham | 16px | Medium (500) | 150% | 0.025em |
+| `KPI Value` | Gotham | 36px | Bold (700) | 125% | 0.025em |
 
-> **Importante:** Instalar Satoshi localmente o usar el plugin Figma Fonts. El CDN de Fontshare (CSS) no aplica en Figma Design.
+> **Importante:** Gotham es una tipografía comercial (Hoefler & Co.). Instalar localmente vía Adobe Fonts o con archivos `.woff2` licenciados para que aparezca en Figma. El fallback web (Montserrat) NO aplica en Figma Design — se debe instalar Gotham como fuente del sistema.
 
 ---
 

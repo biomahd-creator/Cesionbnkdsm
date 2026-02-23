@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { RichTextEditor } from "../components/advanced/RichTextEditor";
+import { RichTextEditor } from "../components/advanced/rich-text-editor";
 import { Label } from "../components/ui/label";
 import { Button } from "../components/ui/button";
 import { toast } from "sonner@2.0.3";

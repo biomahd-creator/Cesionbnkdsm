@@ -1,5 +1,5 @@
 import { ComponentShowcase } from "../components/ui/component-showcase";
-import { FactoringSelectionPage } from "../components/patterns/factoring/FactoringSelectionPage";
+import { FactoringSelectionPage } from "../components/patterns/factoring/factoring-selection-page";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
 export function FactoringSelectionShowcasePage() {
@@ -9,7 +9,7 @@ export function FactoringSelectionShowcasePage() {
       description="Complete invoice selection flow with credit limit validation, real-time advance calculation, and interactive KPIs. Features filterable KPI tabs by invoice status, smart selection algorithm that maximizes credit utilization, real-time visual blocking when credit is exceeded, and master-detail accordions by payor for large datasets. Optimized for 500+ invoices with memoized calculations."
       category="Factoring"
       preview={<FactoringSelectionPage />}
-      code={`import { FactoringSelectionPage } from "@/components/patterns/factoring/FactoringSelectionPage";
+      code={`import { FactoringSelectionPage } from "@/components/patterns/factoring/factoring-selection-page";
 
 // Render as full page
 <FactoringSelectionPage />
