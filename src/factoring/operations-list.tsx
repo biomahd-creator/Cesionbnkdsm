@@ -877,7 +877,7 @@ export function OperationsList({ onNewOperation }: OperationsListProps = {}) {
                             <p className="text-muted-foreground font-satoshi">{selectedOpDetail}</p>
                         </div>
                     </div>
-                    <Badge className="px-3 py-1 font-satoshi">En Revisión</Badge>
+                    <Badge variant="warning-soft-outline" className="px-3 py-1 font-satoshi">En Revisión</Badge>
                 </div>
 
                 <div className="grid gap-6">

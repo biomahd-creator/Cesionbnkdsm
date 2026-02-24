@@ -76,7 +76,7 @@ Componentes complejos de lógica específica o visualización avanzada.
 | `Combobox` | Select con búsqueda (Autocomplete). |
 | `ConditionalForm` | Formularios con lógica condicional. |
 | `DataTable` | Tabla avanzada con filtros, ordenamiento y paginación (TanStack Table). |
-| `DatePickerWithPresets` | Selector de fechas con rangos predefinidos. |
+| ~~`DatePickerWithPresets`~~ | *(Orphan, eliminado en v0.5.3 — 0 consumidores directos)* |
 | ~~`ExportData`~~ | *(Eliminado en v0.3.0)* |
 | `FileUploader` | Zona de carga de archivos drag & drop. |
 | `FormBuilder` | Constructor visual de formularios. |
@@ -136,8 +136,8 @@ Componentes de flujo específicos de la app CESIONBNK.
 |---|---|---|
 | `FactoringSelectionPage` | `factoring-selection-page.tsx` | Flujo de selección de facturas con tabs: elegibles, pendientes, no elegibles, descartadas. |
 | `FactoringInvoiceTable` | `factoring-invoice-table.tsx` | Tabla de facturas con validación bulk y descarte. |
-| `InvoiceValidationPanel` | `invoice-validation-panel.tsx` | Panel lateral de validación de facturas. |
-| `OperationSummary` | `operation-summary.tsx` | Resumen de operacin de factoring. |
+| ~~`InvoiceValidationPanel`~~ | ~~`invoice-validation-panel.tsx`~~ | *(Orphan, eliminado en v0.5.3 — 0 consumidores directos)* |
+| ~~`OperationSummary`~~ | ~~`operation-summary.tsx`~~ | *(Orphan, eliminado en v0.5.3 — 0 consumidores directos)* |
 
 ## 4. WIDGETS (`/components/widgets`)
 Piezas de UI especializadas, a menudo compuestas de primitivos.
@@ -151,7 +151,7 @@ Piezas de UI especializadas, a menudo compuestas de primitivos.
 | `FilterBar` | `filter-bar.tsx` | Barra horizontal de filtros simples. |
 | `FilterChip` | `filter-chip.tsx` | Chip individual de filtro. |
 | `GridSystemPreview` | `grid-system-preview.tsx` | Visualizador de grid layout. |
-| `InvoiceTable` | `invoice-table.tsx` | Tabla específica de facturas. |
+| ~~`InvoiceTable`~~ | ~~`invoice-table.tsx`~~ | *(Orphan, eliminado en v0.5.3 — 0 consumidores funcionales)* |
 | `NavigationBar` | `navigation-bar.tsx` | Barra de navegación secundaria. |
 | `SearchBar` | `search-bar.tsx` | Barra de búsqueda expandible. |
 | `SimpleFormField` | `simple-form-field.tsx` | Wrapper de campo de formulario (Legacy). |
@@ -240,3 +240,8 @@ Portfolio Cockpit integrado en la app Factoring. Contiene 5 tabs (Dashboard, Ori
 - Para agregar un componente nuevo, ubícalo en la carpeta correspondiente según su complejidad.
 - Actualiza este archivo al crear nuevos componentes.
 - Evita la duplicidad: revisa si existe un componente similar en `/ui` antes de crear uno en `/widgets`.
+
+### Barrel Files
+
+> **v0.5.3**: Se eliminaron 8 barrel files muertos (0 consumidores): `components/index.ts`, `ui/index.ts`, `patterns/index.ts`, `advanced/index.ts`, `providers/index.ts`, `help/index.ts`, `hooks/index.ts`, `lib/index.ts`. También se eliminaron `ui/sidebar-button.tsx` y `ui/icon-grid.tsx` (no listados en este catálogo, 0 consumidores).
+> El único barrel activo es `widgets/index.ts` (consumido por `WidgetsShowcasePage`).

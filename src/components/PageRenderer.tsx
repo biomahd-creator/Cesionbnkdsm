@@ -272,8 +272,6 @@ export function PageRenderer({ pageId }: PageRendererProps) {
       return <DataTablePage />;
     case "tree-table-v2":
       return <TreeTableV2Page />;
-    case "date-range-advanced":
-      return <DateRangePickerPage />;
     case "file-uploader":
       return <FileUploaderPage />;
     case "rich-text-editor":

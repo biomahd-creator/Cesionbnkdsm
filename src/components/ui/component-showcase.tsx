@@ -66,7 +66,7 @@ export function ComponentShowcase({
             </TabsList>
 
             <TabsContent value="preview" className="space-y-4">
-              <div className="flex items-center justify-center min-h-[200px] rounded-lg border bg-muted/20 p-8">
+              <div className="min-h-[200px] rounded-lg border bg-muted/20 p-8">
                 {preview}
               </div>
             </TabsContent>
@@ -155,7 +155,7 @@ export function ComponentShowcase({
                   </TabsList>
 
                   <TabsContent value="preview" className="space-y-4">
-                    <div className="flex items-center justify-center min-h-[150px] rounded-lg border bg-muted/20 p-6">
+                    <div className="min-h-[150px] rounded-lg border bg-muted/20 p-6">
                       {example.preview}
                     </div>
                   </TabsContent>

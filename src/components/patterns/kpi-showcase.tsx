@@ -187,7 +187,7 @@ export function KPIShowcase() {
             {recentOps.map((op) => (
               <div key={op.id} className="flex items-center justify-between px-6 py-3 hover:bg-muted/40 transition-colors">
                 <div className="flex items-center gap-3">
-                  <span className="text-xs text-muted-foreground font-mono w-16">{op.id}</span>
+                  <span className="text-xs text-muted-foreground tabular-nums w-16">{op.id}</span>
                   <span className="text-sm">{op.client}</span>
                 </div>
                 <div className="flex items-center gap-4">

@@ -74,6 +74,10 @@ html[data-theme="eurocapital"] {
   --shadow-elevation-3:         0 10px 15px -3px rgba(30, 41, 59, 0.1), 0 4px 6px -4px rgba(30, 41, 59, 0.1);
   --shadow-elevation-4:         0 20px 25px -5px rgba(30, 41, 59, 0.1), 0 8px 10px -6px rgba(30, 41, 59, 0.1);
 
+  /* Gradient (Login / Módulos background) */
+  --gradient-from:              #bfdbfe;
+  --gradient-to:                #93c5fd;
+
   /* Typography */
   --letter-spacing-base:        0.02em;
   --font-sans:                  'Montserrat', ui-sans-serif, system-ui, sans-serif;
@@ -140,6 +144,10 @@ html[data-theme="eurocapital"].dark {
   --shadow-elevation-2:         0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.4);
   --shadow-elevation-3:         0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.4);
   --shadow-elevation-4:         0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  /* Gradient (Login / Módulos background) */
+  --gradient-from:              #0c1524;
+  --gradient-to:                #172554;
 
   /* Typography */
   --letter-spacing-base:        0.02em;

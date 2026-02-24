@@ -30,13 +30,13 @@ function AlertIcon({ type }: { type: Alert["type"] }) {
 
 function TypeBadge({ type }: { type: Alert["type"] }) {
   const map = {
-    critical: { label: "Crítico", className: "bg-red-100 text-red-700 border-red-200" },
-    warning: { label: "Atención", className: "bg-yellow-100 text-yellow-700 border-yellow-200" },
-    info: { label: "Info", className: "bg-blue-100 text-blue-700 border-blue-200" },
+    critical: { label: "Crítico", variant: "destructive-soft-outline" as const },
+    warning: { label: "Atención", variant: "warning-soft-outline" as const },
+    info: { label: "Info", variant: "info-soft-outline" as const },
   };
   const config = map[type];
   return (
-    <Badge variant="outline" className={config.className}>
+    <Badge variant={config.variant}>
       {config.label}
     </Badge>
   );

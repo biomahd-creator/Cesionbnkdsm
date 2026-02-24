@@ -308,7 +308,7 @@ export function FactoringInvoiceTable({
                     );
                     if (key === "discardReason") return (
                         <TableCell key={key}>
-                            <Badge variant="outline" className="border-gray-300 bg-gray-100 text-gray-700 dark:border-gray-500/40 dark:bg-gray-500/15 dark:text-gray-400">
+                            <Badge variant="neutral-soft-outline">
                                 {invoice.discardReason}
                             </Badge>
                         </TableCell>

@@ -6,8 +6,7 @@ export { ColorSwatch } from "./color-swatch";
 export { StatusKPICard, type StatusKPICardProps } from "./status-kpi-card";
 export { ContactForm, type ContactFormData } from "./contact-form";
 export { GridSystemPreview } from "./grid-system-preview";
-export { SpacingPreview } from "./spacing-preview";
-export { InvoiceTable } from "./invoice-table";
+// removed: invoice-table (orphan — 0 direct consumers, not used by WidgetsShowcasePage)
 export { StatCard } from "./stat-card";
 export { SearchBar } from "./search-bar";
 export { FilterChip } from "./filter-chip";

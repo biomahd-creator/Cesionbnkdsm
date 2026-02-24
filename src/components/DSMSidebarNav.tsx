@@ -1,7 +1,7 @@
 /**
  * DSMSidebarNav — Sidebar navigation for the DSM Showcase
  *
- * Renders 94 component pages organized in collapsible sections
+ * Renders 96 component pages organized in collapsible sections
  * using LayoutSidebar* sub-components from the DSM itself.
  * Search functionality filters across all items.
  */
@@ -204,14 +204,13 @@ export function DSMSidebarNav({ activePage, onPageChange }: DSMSidebarNavProps) 
       id: "advanced",
       label: "Advanced",
       icon: Sparkles,
-      count: 11,
+      count: 10,
       items: [
         { id: "charts", label: "Charts" },
         { id: "data-visualization", label: "Data Visualization" },
         { id: "advanced-forms", label: "Advanced Forms" },
         { id: "data-table", label: "Data Table" },
         { id: "tree-table-v2", label: "Tree Table" },
-        { id: "date-range-advanced", label: "Date Range" },
         { id: "file-uploader", label: "File Uploader" },
         { id: "rich-text-editor", label: "Rich Text Editor" },
         { id: "virtualized-list", label: "Virtualized List" },

@@ -73,11 +73,11 @@ const INITIAL_DATA: EditableRow[] = [
   { id: "row-12", number: "FE-20241012", payor: "Proveedora Delta Inc.", amount: 7200000, rate: 2.3, dueDate: "2024-04-28", status: "rechazada", observations: "Deudor con mora registrada" },
 ];
 
-const STATUS_CONFIG: Record<InvoiceStatus, { label: string; variant: "default" | "secondary" | "destructive" | "outline" }> = {
-  aprobada:    { label: "Aprobada",    variant: "default" },
-  pendiente:   { label: "Pendiente",   variant: "secondary" },
-  en_revision: { label: "En Revisión", variant: "outline" },
-  rechazada:   { label: "Rechazada",   variant: "destructive" },
+const STATUS_CONFIG: Record<InvoiceStatus, { label: string; variant: "success-soft-outline" | "warning-soft-outline" | "info-soft-outline" | "destructive-soft-outline" }> = {
+  aprobada:    { label: "Aprobada",    variant: "success-soft-outline" },
+  pendiente:   { label: "Pendiente",   variant: "warning-soft-outline" },
+  en_revision: { label: "En Revisión", variant: "info-soft-outline" },
+  rechazada:   { label: "Rechazada",   variant: "destructive-soft-outline" },
 };
 
 const ITEMS_PER_PAGE = 8;
@@ -143,7 +143,7 @@ export function EditableTable() {
     }
   };
 
-  // ── Edit ──────────────────────────────────────────────────────────
+  // ── Edit ─────────────────────────────────────────────────────────
   const startEdit = (row: EditableRow) => {
     setEditingId(row.id);
     setEditDraft({ ...row });
@@ -262,7 +262,7 @@ export function EditableTable() {
                       </TableCell>
 
                       {/* Number */}
-                      <TableCell className="text-xs font-mono">
+                      <TableCell className="text-xs tabular-nums">
                         {isEditing ? (
                           <Input
                             value={editDraft.number ?? ""}
@@ -289,7 +289,7 @@ export function EditableTable() {
                       </TableCell>
 
                       {/* Amount */}
-                      <TableCell className="text-xs text-right">
+                      <TableCell className="text-xs text-right tabular-nums">
                         {isEditing ? (
                           <Input
                             type="number"

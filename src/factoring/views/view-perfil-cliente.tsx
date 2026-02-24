@@ -183,10 +183,10 @@ const clientes = [
 const DEBTOR_COLORS = ["#3b82f6", "#6366f1", "#8b5cf6", "#ec4899"];
 
 const estadoBadge = (estado: string) => {
-  if (estado === "Vigente") return <Badge variant="outline" className="text-[10px] border-emerald-500 text-emerald-600 bg-emerald-50 dark:bg-emerald-950/30">Vigente</Badge>;
-  if (estado === "Vencida 1-30d") return <Badge variant="outline" className="text-[10px] border-yellow-500 text-yellow-600 bg-yellow-50 dark:bg-yellow-950/30">Venc. 1-30d</Badge>;
-  if (estado === "Vencida 31-60d") return <Badge variant="outline" className="text-[10px] border-orange-500 text-orange-600 bg-orange-50 dark:bg-orange-950/30">Venc. 31-60d</Badge>;
-  return <Badge variant="destructive" className="text-[10px]">Venc. 61-90d</Badge>;
+  if (estado === "Vigente") return <Badge variant="success-soft-outline" className="text-[10px]">Vigente</Badge>;
+  if (estado === "Vencida 1-30d") return <Badge variant="warning-soft-outline" className="text-[10px]">Venc. 1-30d</Badge>;
+  if (estado === "Vencida 31-60d") return <Badge variant="warning-soft-outline" className="text-[10px]">Venc. 31-60d</Badge>;
+  return <Badge variant="destructive-soft-outline" className="text-[10px]">Venc. 61-90d</Badge>;
 };
 
 // ── Vista principal ────────────────────────────────────────────────────────
@@ -242,7 +242,7 @@ export function ViewPerfilCliente() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <Card className="lg:col-span-2"><CardHeader className="pb-3"><div className="flex items-center justify-between"><div><CardTitle>Operaciones Activas</CardTitle><CardDescription>{cliente.operacionesActivas.length} operaciones vigentes o con mora</CardDescription></div></div></CardHeader><CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>ID Operación</TableHead><TableHead>Pagador</TableHead><TableHead className="text-right">Monto</TableHead><TableHead>Vencimiento</TableHead><TableHead>Estado</TableHead></TableRow></TableHeader><TableBody>{cliente.operacionesActivas.map((op) => (<TableRow key={op.id}><TableCell className="font-mono text-xs">{op.id}</TableCell><TableCell className="text-sm">{op.pagador}</TableCell><TableCell className="text-right text-sm">{formatCurrency(op.monto)}</TableCell><TableCell className="text-xs text-muted-foreground">{op.vencimiento}</TableCell><TableCell>{estadoBadge(op.estado)}</TableCell></TableRow>))}</TableBody></Table></CardContent></Card>
+          <Card className="lg:col-span-2"><CardHeader className="pb-3"><div className="flex items-center justify-between"><div><CardTitle>Operaciones Activas</CardTitle><CardDescription>{cliente.operacionesActivas.length} operaciones vigentes o con mora</CardDescription></div></div></CardHeader><CardContent className="p-0"><Table><TableHeader><TableRow><TableHead>ID Operación</TableHead><TableHead>Pagador</TableHead><TableHead className="text-right">Monto</TableHead><TableHead>Vencimiento</TableHead><TableHead>Estado</TableHead></TableRow></TableHeader><TableBody>{cliente.operacionesActivas.map((op) => (<TableRow key={op.id}><TableCell className="tabular-nums text-xs">{op.id}</TableCell><TableCell className="text-sm">{op.pagador}</TableCell><TableCell className="text-right text-sm">{formatCurrency(op.monto)}</TableCell><TableCell className="text-xs text-muted-foreground">{op.vencimiento}</TableCell><TableCell>{estadoBadge(op.estado)}</TableCell></TableRow>))}</TableBody></Table></CardContent></Card>
 
           <Card><CardHeader className="pb-2"><CardTitle>Concentración de Deudores</CardTitle><CardDescription>Por monto operativo</CardDescription></CardHeader><CardContent>
             <div className="flex justify-center"><PieChart width={160} height={160}><Pie data={cliente.deudores} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="monto" nameKey="nombre" strokeWidth={2} stroke="var(--color-card)">{cliente.deudores.map((_, i) => (<Cell key={`cell-${i}`} fill={DEBTOR_COLORS[i % DEBTOR_COLORS.length]} />))}</Pie><Tooltip content={({ active, payload }) => { if (!active || !payload?.length) return null; const d = payload[0].payload; return (<div className="bg-popover border border-border rounded-lg shadow-lg p-3 text-sm"><p className="text-foreground mb-1">{d.nombre}</p><p className="text-muted-foreground text-xs">{formatCurrencyFull(d.monto)}</p></div>); }} /></PieChart></div>

@@ -63,12 +63,12 @@ const mockInvoices = [
   },
 ];
 
-const statusConfig: Record<string, { label: string; variant: "default" | "secondary" | "outline" | "destructive" }> = {
-  approved: { label: "Approved", variant: "default" },
-  pending: { label: "Pending", variant: "secondary" },
-  review: { label: "In Review", variant: "outline" },
-  rejected: { label: "Rejected", variant: "destructive" },
-  paid: { label: "Paid", variant: "default" },
+const statusConfig: Record<string, { label: string; variant: "success-soft-outline" | "warning-soft-outline" | "info-soft-outline" | "destructive-soft-outline" }> = {
+  approved: { label: "Approved", variant: "success-soft-outline" },
+  pending: { label: "Pending", variant: "warning-soft-outline" },
+  review: { label: "In Review", variant: "info-soft-outline" },
+  rejected: { label: "Rejected", variant: "destructive-soft-outline" },
+  paid: { label: "Paid", variant: "success-soft-outline" },
 };
 
 export function DataTableAdvanced() {

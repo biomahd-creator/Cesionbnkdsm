@@ -240,7 +240,7 @@ export function TabCartera() {
             <div className="flex items-center gap-3">
               <Clock className="size-4 text-emerald-500" />
               <span className="text-sm">1. Por vencer este mes</span>
-              <Badge variant="outline" className="bg-emerald-100 text-emerald-700 border-emerald-200 text-[10px]">
+              <Badge variant="success-soft-outline" className="text-[10px]">
                 {formatCurrency(carteraPorVencer.reduce((s, d) => s + d.monto, 0))}
               </Badge>
               <span className="text-xs text-muted-foreground">
@@ -259,7 +259,7 @@ export function TabCartera() {
             <div className="flex items-center gap-3">
               <AlertTriangle className="size-4 text-yellow-500" />
               <span className="text-sm">2. Vencido &lt;30 días</span>
-              <Badge variant="outline" className="bg-yellow-100 text-yellow-700 border-yellow-200 text-[10px]">
+              <Badge variant="warning-soft-outline" className="text-[10px]">
                 {formatCurrency(carteraVencida30.reduce((s, d) => s + d.monto, 0))}
               </Badge>
               <span className="text-xs text-muted-foreground">
@@ -278,7 +278,7 @@ export function TabCartera() {
             <div className="flex items-center gap-3">
               <AlertTriangle className="size-4 text-orange-500" />
               <span className="text-sm">3. Vencido 31-60 días</span>
-              <Badge variant="outline" className="bg-orange-100 text-orange-700 border-orange-200 text-[10px]">
+              <Badge variant="warning-soft-outline" className="text-[10px]">
                 {formatCurrency(carteraVencida31_60.reduce((s, d) => s + d.monto, 0))}
               </Badge>
               <span className="text-xs text-muted-foreground">
@@ -297,7 +297,7 @@ export function TabCartera() {
             <div className="flex items-center gap-3">
               <AlertTriangle className="size-4 text-red-500" />
               <span className="text-sm">4. Vencido +60 días</span>
-              <Badge variant="outline" className="bg-red-100 text-red-700 border-red-200 text-[10px]">
+              <Badge variant="destructive-soft-outline" className="text-[10px]">
                 {formatCurrency(carteraVencida60plus.reduce((s, d) => s + d.monto, 0))}
               </Badge>
               <span className="text-xs text-muted-foreground">

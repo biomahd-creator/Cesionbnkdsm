@@ -148,7 +148,7 @@ function FundRow({ inv, color, index }: {
                 {movimientos.map((m, i) => (
                   <div key={i} className="flex items-center justify-between text-sm py-1.5 border-b border-border last:border-0">
                     <div className="flex items-center gap-3">
-                      <Badge variant={m.tipo === "Colocación" ? "destructive" : m.tipo === "Ingreso" ? "secondary" : "outline"} className="text-[10px] h-5">{m.tipo}</Badge>
+                      <Badge variant={m.tipo === "Colocación" ? "destructive-soft-outline" : m.tipo === "Ingreso" ? "success-soft-outline" : "neutral-soft-outline"} className="text-[10px] h-5">{m.tipo}</Badge>
                       <span className="text-muted-foreground text-xs">{m.fecha}</span>
                     </div>
                     <span className={m.monto < 0 ? "text-red-500" : "text-emerald-600"}>{m.monto < 0 ? "-" : "+"}{formatCurrencyFull(Math.abs(m.monto))}</span>

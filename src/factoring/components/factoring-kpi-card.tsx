@@ -51,7 +51,7 @@ export function FactoringKpiCard({
 
   const descClass  = showColor ? "text-muted-foreground" : "text-muted-foreground/50";
   const valueClass = showColor ? "text-foreground"       : "text-muted-foreground";
-  const shadowClass = isActive ? "shadow-md" : "shadow-sm";
+  const shadowClass = isActive ? "shadow-elevation-4" : "shadow-elevation-1";
 
   return (
     <Card

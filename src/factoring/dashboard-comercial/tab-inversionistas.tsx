@@ -77,7 +77,7 @@ export function TabInversionistas() {
           <p className="text-xs text-muted-foreground">
             {total.facturas} facturas, {total.operaciones} operaciones
           </p>
-          <Badge className="mt-2 text-[10px] bg-info text-info-foreground border-transparent">
+          <Badge variant="info-soft-outline" className="mt-2 text-[10px]">
             Total Operaciones Vigentes
           </Badge>
         </CardContent>

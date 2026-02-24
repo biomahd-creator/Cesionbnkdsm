@@ -4,13 +4,13 @@ import { topDebtors, formatCurrency, type Debtor } from "./mock-data";
 
 function StatusBadge({ status }: { status: Debtor["status"] }) {
   const map = {
-    on_track: { label: "En Línea", className: "bg-emerald-100 text-emerald-700 border-emerald-200" },
-    watch: { label: "Vigilar", className: "bg-yellow-100 text-yellow-700 border-yellow-200" },
-    at_risk: { label: "En Riesgo", className: "bg-red-100 text-red-700 border-red-200" },
+    on_track: { label: "En Línea", variant: "success-soft-outline" as const },
+    watch: { label: "Vigilar", variant: "warning-soft-outline" as const },
+    at_risk: { label: "En Riesgo", variant: "destructive-soft-outline" as const },
   };
   const config = map[status];
   return (
-    <Badge variant="outline" className={config.className}>
+    <Badge variant={config.variant}>
       {config.label}
     </Badge>
   );

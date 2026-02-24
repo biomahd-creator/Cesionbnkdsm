@@ -69,16 +69,16 @@ const columns: ColumnDef<Invoice>[] = [
     cell: ({ row }: { row: Row<Invoice> }) => {
       const status = row.getValue("status") as string;
       const config = {
-        success: { color: "text-green-500 bg-green-500/10", icon: CheckCircle, label: "Paid" },
-        pending: { color: "text-yellow-500 bg-yellow-500/10", icon: Clock, label: "Pending" },
-        processing: { color: "text-blue-500 bg-blue-500/10", icon: AlertCircle, label: "Processing" },
-        failed: { color: "text-red-500 bg-red-500/10", icon: XCircle, label: "Failed" },
-      }[status] || { color: "text-muted-foreground", icon: Circle, label: status };
+        success: { variant: "success-soft-outline" as const, icon: CheckCircle, label: "Paid" },
+        pending: { variant: "warning-soft-outline" as const, icon: Clock, label: "Pending" },
+        processing: { variant: "info-soft-outline" as const, icon: AlertCircle, label: "Processing" },
+        failed: { variant: "destructive-soft-outline" as const, icon: XCircle, label: "Failed" },
+      }[status] || { variant: "neutral-soft-outline" as const, icon: Circle, label: status };
 
       const Icon = config.icon;
 
       return (
-        <Badge variant="outline" className={`${config.color} border-0 flex w-fit items-center gap-1`}>
+        <Badge variant={config.variant} className="flex w-fit items-center gap-1">
           <Icon className="h-3 w-3" />
           {config.label}
         </Badge>

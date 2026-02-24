@@ -75,7 +75,6 @@ const PAGE_LABELS: Partial<Record<string, string>> = {
   charts: "Charts", "data-visualization": "Data Visualization",
   "advanced-forms": "Advanced Forms",
   "data-table": "Data Table", "tree-table-v2": "Tree Table",
-  "date-range-advanced": "Date Range",
   "file-uploader": "File Uploader", "rich-text-editor": "Rich Text Editor",
   "virtualized-list": "Virtualized List",
   "infinite-scroll": "Infinite Scroll", "table-catalog": "Table Catalog",
@@ -244,7 +243,7 @@ function AppContent() {
                 }
                 right={
                   <div className="flex items-center gap-2 text-xs">
-                    <span>97 Showcase Pages</span>
+                    <span>96 Showcase Pages</span>
                     <span>·</span>
                     <span>WCAG 2.1 AA</span>
                     <span>·</span>

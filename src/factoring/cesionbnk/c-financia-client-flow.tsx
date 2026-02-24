@@ -368,8 +368,8 @@ export function CFinanciaClientFlow({ onExit }: { onExit?: () => void }) {
                 <Card
                   key={kpi.key}
                   className={cn(
-                    "cursor-pointer transition-all duration-300 hover:shadow-md",
-                    isActive && "ring-2 ring-primary border-primary"
+                    "cursor-pointer transition-all duration-300 shadow-elevation-1",
+                    isActive ? "ring-2 ring-primary border-primary shadow-elevation-4" : "hover:shadow-elevation-2"
                   )}
                   onClick={() => setActiveTab(kpi.key)}
                 >

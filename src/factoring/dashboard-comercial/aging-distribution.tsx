@@ -53,14 +53,14 @@ function CustomTooltip({ active, payload }: any) {
 
 function RiskBadge({ risk }: { risk: Invoice["risk"] }) {
   const map = {
-    low: { label: "Bajo", className: "bg-emerald-100 text-emerald-700 border-emerald-200" },
-    medium: { label: "Medio", className: "bg-yellow-100 text-yellow-700 border-yellow-200" },
-    high: { label: "Alto", className: "bg-orange-100 text-orange-700 border-orange-200" },
-    critical: { label: "Crítico", className: "bg-red-100 text-red-700 border-red-200" },
+    low: { label: "Bajo", variant: "success-soft-outline" as const },
+    medium: { label: "Medio", variant: "warning-soft-outline" as const },
+    high: { label: "Alto", variant: "warning-soft-outline" as const },
+    critical: { label: "Crítico", variant: "destructive-soft-outline" as const },
   };
   const config = map[risk];
   return (
-    <Badge variant="outline" className={config.className}>
+    <Badge variant={config.variant}>
       {config.label}
     </Badge>
   );

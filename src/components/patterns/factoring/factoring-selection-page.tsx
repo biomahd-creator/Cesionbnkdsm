@@ -44,6 +44,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 import { cn } from "../../ui/utils";
+import { FactoringKpiCardGroup } from "../../../factoring/components/factoring-kpi-card-group";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -101,11 +102,11 @@ function formatCLP(value: number): string {
   return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(value);
 }
 
-const TAB_CONFIG: { id: InvoiceCategory; label: string; icon: React.ElementType; color: string }[] = [
-  { id: "elegibles", label: "Elegibles", icon: CheckCircle2, color: "text-emerald-600 dark:text-emerald-400" },
-  { id: "pendientes", label: "Pendientes", icon: Clock, color: "text-amber-600 dark:text-amber-400" },
-  { id: "no-elegibles", label: "No Elegibles", icon: XCircle, color: "text-rose-600 dark:text-rose-400" },
-  { id: "descartadas", label: "Descartadas", icon: Trash2, color: "text-muted-foreground" },
+const TAB_CONFIG: { id: InvoiceCategory; label: string; icon: React.ElementType; color: string; variant: "green" | "yellow" | "orange" | "darkgray" }[] = [
+  { id: "elegibles", label: "Elegibles", icon: CheckCircle2, color: "text-emerald-600 dark:text-emerald-400", variant: "green" },
+  { id: "pendientes", label: "Pendientes", icon: Clock, color: "text-amber-600 dark:text-amber-400", variant: "yellow" },
+  { id: "no-elegibles", label: "No Elegibles", icon: XCircle, color: "text-rose-600 dark:text-rose-400", variant: "orange" },
+  { id: "descartadas", label: "Descartadas", icon: Trash2, color: "text-muted-foreground", variant: "darkgray" },
 ];
 
 // ── Main Component ────────────────────────────────────────────────────
@@ -241,33 +242,19 @@ export function FactoringSelectionPage({
       </Card>
 
       {/* KPI Tabs */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        {TAB_CONFIG.map(({ id, label, icon: Icon, color }) => {
-          const kpi = kpis[id];
-          const isActive = activeTab === id;
-          return (
-            <button
-              key={id}
-              onClick={() => handleTabChange(id)}
-              className={cn(
-                "rounded-[10px] border p-3 text-left transition-all",
-                isActive
-                  ? "border-primary bg-primary/5 shadow-sm"
-                  : "border-border bg-card hover:bg-muted/50"
-              )}
-            >
-              <div className="flex items-center gap-2 mb-1">
-                <Icon className={cn("h-3.5 w-3.5", isActive ? "text-primary" : color)} />
-                <span className={cn("text-xs font-medium", isActive ? "text-primary" : "text-muted-foreground")}>
-                  {label}
-                </span>
-              </div>
-              <div className="text-lg font-semibold text-foreground">{kpi.count}</div>
-              <div className="text-xs text-muted-foreground">{formatCLP(kpi.amount)}</div>
-            </button>
-          );
-        })}
-      </div>
+      <FactoringKpiCardGroup
+        cards={TAB_CONFIG.map(({ id, label, icon: Icon, variant }) => ({
+          id,
+          label,
+          description: formatCLP(kpis[id].amount),
+          value: `${kpis[id].count} facturas`,
+          count: kpis[id].count,
+          variant,
+          icon: <Icon className="h-5 w-5" />,
+        }))}
+        activeId={activeTab}
+        onCardClick={(id) => handleTabChange(id as InvoiceCategory)}
+      />
 
       {/* Selection Summary */}
       {selectedIds.size > 0 && (
@@ -385,7 +372,7 @@ export function FactoringSelectionPage({
                                     />
                                   )}
                                 </TableCell>
-                                <TableCell className="text-xs font-mono">{inv.number}</TableCell>
+                                <TableCell className="text-xs tabular-nums">{inv.number}</TableCell>
                                 <TableCell className="text-xs text-right font-medium">{formatCLP(inv.amount)}</TableCell>
                                 <TableCell className="text-xs text-right text-primary font-medium">{formatCLP(inv.amount * inv.advanceRate)}</TableCell>
                                 <TableCell className="text-xs text-right">{(inv.advanceRate * 100).toFixed(0)}%</TableCell>

@@ -27,13 +27,13 @@ function KpiOriginacion({
   value,
   subtitle,
   badgeLabel,
-  badgeVariant = "info",
+  badgeVariant = "info-soft-outline",
   extra,
 }: {
   value: string;
   subtitle: string;
   badgeLabel: string;
-  badgeVariant?: "info" | "warning" | "destructive" | "success";
+  badgeVariant?: "info-soft-outline" | "warning-soft-outline" | "destructive-soft-outline" | "success-soft-outline";
   extra?: string;
 }) {
   return (
@@ -114,19 +114,19 @@ export function TabOriginacion() {
           value={formatCurrency(kpi.totalOperacionesVigentes)}
           subtitle={`${kpi.facturasVigentes} facturas, ${kpi.operacionesVigentes} operaciones`}
           badgeLabel="Total Operaciones Vigentes"
-          badgeVariant="info"
+          badgeVariant="info-soft-outline"
         />
         <KpiOriginacion
           value={`${formatCurrency(kpi.operaciones30_60)} (${kpi.pct30_60}%)`}
           subtitle={`${kpi.facturas30_60} facturas, ${kpi.ops30_60} operaciones`}
           badgeLabel="Total Operaciones 30-60 Días Retraso"
-          badgeVariant="warning"
+          badgeVariant="warning-soft-outline"
         />
         <KpiOriginacion
           value={`${formatCurrency(kpi.operaciones60plus)} (${kpi.pct60plus}%)`}
           subtitle={`${kpi.facturas60plus} facturas, ${kpi.ops60plus} operación`}
           badgeLabel="Total Operaciones +60 Días Retraso"
-          badgeVariant="destructive"
+          badgeVariant="destructive-soft-outline"
         />
       </div>
 
@@ -195,26 +195,26 @@ export function TabOriginacion() {
           value={formatCurrency(kpi.totalCartera)}
           subtitle={`${kpi.facturasVigentes} facturas, ${kpi.operacionesVigentes} operaciones`}
           badgeLabel="Total Cartera"
-          badgeVariant="info"
+          badgeVariant="info-soft-outline"
           extra="*Total Monto Crédito"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.montoCobrarSemana)}
           subtitle={`${kpi.facturasACobrar} facturas`}
           badgeLabel="Monto a cobrar esta semana"
-          badgeVariant="warning"
+          badgeVariant="warning-soft-outline"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.vencidas)}
           subtitle={`${kpi.facturasVencidas} facturas`}
           badgeLabel="Vencidas"
-          badgeVariant="warning"
+          badgeVariant="warning-soft-outline"
         />
         <KpiOriginacion
           value={formatCurrency(kpi.disponible)}
           subtitle={`${formatCurrency(kpi.disponibleMax)} (máx)`}
           badgeLabel="Disponible"
-          badgeVariant="info"
+          badgeVariant="info-soft-outline"
         />
       </div>
 
@@ -231,19 +231,19 @@ export function TabOriginacion() {
           <div className="grid grid-cols-3 gap-4 mb-6">
             <div>
               <span className="text-2xl tracking-tight">$2.5MM</span>
-              <Badge variant="success" className="mt-1 block w-fit text-[10px]">
+              <Badge variant="success-soft-outline" className="mt-1 block w-fit text-[10px]">
                 Esperado esta semana
               </Badge>
             </div>
             <div>
               <span className="text-2xl tracking-tight">$8MM</span>
-              <Badge variant="warning" className="mt-1 block w-fit text-[10px]">
+              <Badge variant="warning-soft-outline" className="mt-1 block w-fit text-[10px]">
                 Próximos 15 días
               </Badge>
             </div>
             <div>
               <span className="text-2xl tracking-tight">$10.1MM</span>
-              <Badge variant="info" className="mt-1 block w-fit text-[10px]">
+              <Badge variant="info-soft-outline" className="mt-1 block w-fit text-[10px]">
                 Este mes
               </Badge>
             </div>

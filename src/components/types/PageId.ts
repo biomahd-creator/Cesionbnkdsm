@@ -41,7 +41,7 @@ export type PageId =
   | "contact-form"
 
   // ── ADVANCED ──
-  | "charts" | "date-range-advanced"
+  | "charts"
   | "file-uploader" | "rich-text-editor" | "data-table"
   | "tree-table-v2"
   | "data-visualization" | "advanced-forms"
