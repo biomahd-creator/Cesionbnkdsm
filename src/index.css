@@ -1841,6 +1841,10 @@
     width: 150px;
   }
 
+  .w-\[152px\] {
+    width: 152px;
+  }
+
   .w-\[154px\] {
     width: 154px;
   }
@@ -1969,6 +1973,10 @@
     max-width: 200px;
   }
 
+  .max-w-\[260px\] {
+    max-width: 260px;
+  }
+
   .max-w-\[280px\] {
     max-width: 280px;
   }
@@ -2077,6 +2085,10 @@
     min-width: 80px;
   }
 
+  .min-w-\[100px\] {
+    min-width: 100px;
+  }
+
   .min-w-\[110px\] {
     min-width: 110px;
   }
@@ -2085,12 +2097,20 @@
     min-width: 120px;
   }
 
+  .min-w-\[128px\] {
+    min-width: 128px;
+  }
+
   .min-w-\[130px\] {
     min-width: 130px;
   }
 
   .min-w-\[140px\] {
     min-width: 140px;
+  }
+
+  .min-w-\[152px\] {
+    min-width: 152px;
   }
 
   .min-w-\[160px\] {
@@ -2326,6 +2346,10 @@
 
   .scroll-my-1 {
     scroll-margin-block: calc(var(--spacing) * 1);
+  }
+
+  .scroll-mt-4 {
+    scroll-margin-top: calc(var(--spacing) * 4);
   }
 
   .scroll-py-1 {
@@ -2904,6 +2928,26 @@
     border-color: var(--border);
   }
 
+  .border-border\/25 {
+    border-color: var(--border);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-border\/25 {
+      border-color: color-mix(in oklab, var(--border) 25%, transparent);
+    }
+  }
+
+  .border-border\/30 {
+    border-color: var(--border);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .border-border\/30 {
+      border-color: color-mix(in oklab, var(--border) 30%, transparent);
+    }
+  }
+
   .border-border\/40 {
     border-color: var(--border);
   }
@@ -3470,6 +3514,26 @@
 
   .bg-border {
     background-color: var(--border);
+  }
+
+  .bg-border\/20 {
+    background-color: var(--border);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-border\/20 {
+      background-color: color-mix(in oklab, var(--border) 20%, transparent);
+    }
+  }
+
+  .bg-border\/40 {
+    background-color: var(--border);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .bg-border\/40 {
+      background-color: color-mix(in oklab, var(--border) 40%, transparent);
+    }
   }
 
   .bg-card {
@@ -4385,6 +4449,10 @@
     padding-right: calc(var(--spacing) * 4);
   }
 
+  .pr-5 {
+    padding-right: calc(var(--spacing) * 5);
+  }
+
   .pr-8 {
     padding-right: calc(var(--spacing) * 8);
   }
@@ -4395,6 +4463,10 @@
 
   .pb-0 {
     padding-bottom: calc(var(--spacing) * 0);
+  }
+
+  .pb-1\.5 {
+    padding-bottom: calc(var(--spacing) * 1.5);
   }
 
   .pb-2 {
@@ -4485,6 +4557,10 @@
     vertical-align: middle;
   }
 
+  .align-top {
+    vertical-align: top;
+  }
+
   .font-mono {
     font-family: var(--font-mono);
   }
@@ -4540,6 +4616,10 @@
 
   .text-\[0\.8rem\] {
     font-size: .8rem;
+  }
+
+  .text-\[9px\] {
+    font-size: 9px;
   }
 
   .text-\[10px\] {
@@ -4863,6 +4943,16 @@
     color: var(--muted-foreground);
   }
 
+  .text-muted-foreground\/25 {
+    color: var(--muted-foreground);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-muted-foreground\/25 {
+      color: color-mix(in oklab, var(--muted-foreground) 25%, transparent);
+    }
+  }
+
   .text-muted-foreground\/30 {
     color: var(--muted-foreground);
   }
@@ -4870,6 +4960,16 @@
   @supports (color: color-mix(in lab, red, red)) {
     .text-muted-foreground\/30 {
       color: color-mix(in oklab, var(--muted-foreground) 30%, transparent);
+    }
+  }
+
+  .text-muted-foreground\/35 {
+    color: var(--muted-foreground);
+  }
+
+  @supports (color: color-mix(in lab, red, red)) {
+    .text-muted-foreground\/35 {
+      color: color-mix(in oklab, var(--muted-foreground) 35%, transparent);
     }
   }
 
@@ -6294,6 +6394,18 @@
   @media (hover: hover) {
     .hover\:bg-muted:hover {
       background-color: var(--muted);
+    }
+  }
+
+  @media (hover: hover) {
+    .hover\:bg-muted\/15:hover {
+      background-color: var(--muted);
+    }
+
+    @supports (color: color-mix(in lab, red, red)) {
+      .hover\:bg-muted\/15:hover {
+        background-color: color-mix(in oklab, var(--muted) 15%, transparent);
+      }
     }
   }
 
@@ -10373,7 +10485,7 @@ html[data-theme="c-financia"].dark {
 :root {
   --primary: #374151;
   --primary-foreground: #fff;
-  --secondary: #52525b;
+  --secondary: #796eff;
   --secondary-foreground: #fff;
   --background: #fff;
   --foreground: #222;
@@ -10437,7 +10549,7 @@ html[data-theme="c-financia"].dark {
 .dark {
   --primary: #374151;
   --primary-foreground: #fff;
-  --secondary: #334155;
+  --secondary: #796eff;
   --secondary-foreground: #f8fafc;
   --background: #0f172a;
   --foreground: #f8fafc;

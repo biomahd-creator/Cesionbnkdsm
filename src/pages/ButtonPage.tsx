@@ -1,620 +1,518 @@
-import { ComponentShowcase } from "../components/ui/component-showcase";
-import { Button } from "../components/ui/button";
+import * as React from "react";
+import { Button, type ButtonProps } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
 import { Separator } from "../components/ui/separator";
 import {
-  Mail, Loader2, ChevronRight, Download,
-  Check, CheckCircle, Save, Send,
-  AlertTriangle, Trash2, XCircle, Ban,
+  Download, ChevronRight, Search, Settings, MoreHorizontal, Pencil,
+  Check, Save, ArrowRight,
+  AlertTriangle, Trash2, XCircle, Ban, ShieldAlert,
   Info, HelpCircle, Eye,
-  ShieldAlert, Clock, Bell,
-  Plus, ArrowRight, Heart,
-  Pencil, Settings, Search, Star, MoreHorizontal,
+  Loader2, Clock,
 } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+type BtnVariant = NonNullable<ButtonProps["variant"]>;
+type BtnSize    = NonNullable<ButtonProps["size"]>;
+type BtnShape   = NonNullable<ButtonProps["shape"]>;
+
+interface VariantRow {
+  variant:   BtnVariant;
+  label:     string;
+  group:     string;
+  iconLeft:  LucideIcon;
+  iconRight: LucideIcon;
+  iconOnly:  LucideIcon | null;
+}
+
+// ─── Data ─────────────────────────────────────────────────────────────────────
+
+const ALL_ROWS: VariantRow[] = [
+  { variant: "default",             label: "Primary",   group: "Base",                  iconLeft: Download,       iconRight: ChevronRight, iconOnly: Search        },
+  { variant: "secondary",           label: "Secondary", group: "Base",                  iconLeft: Settings,       iconRight: ChevronRight, iconOnly: Settings      },
+  { variant: "outline",             label: "Outline",   group: "Base",                  iconLeft: Pencil,         iconRight: ChevronRight, iconOnly: Pencil        },
+  { variant: "ghost",               label: "Ghost",     group: "Base",                  iconLeft: MoreHorizontal, iconRight: ChevronRight, iconOnly: MoreHorizontal},
+  { variant: "link",                label: "Link",      group: "Base",                  iconLeft: ArrowRight,     iconRight: ArrowRight,   iconOnly: null          },
+  { variant: "success",             label: "Approve",   group: "Semantic · Success",    iconLeft: Check,          iconRight: ChevronRight, iconOnly: Check         },
+  { variant: "success-outline",     label: "Approve",   group: "Semantic · Success",    iconLeft: Check,          iconRight: ChevronRight, iconOnly: Check         },
+  { variant: "success-ghost",       label: "Save",      group: "Semantic · Success",    iconLeft: Save,           iconRight: ChevronRight, iconOnly: Save          },
+  { variant: "destructive",         label: "Delete",    group: "Semantic · Destructive",iconLeft: Trash2,         iconRight: XCircle,      iconOnly: Trash2        },
+  { variant: "destructive-outline", label: "Reject",    group: "Semantic · Destructive",iconLeft: XCircle,        iconRight: XCircle,      iconOnly: XCircle       },
+  { variant: "destructive-ghost",   label: "Cancel",    group: "Semantic · Destructive",iconLeft: Ban,            iconRight: XCircle,      iconOnly: Ban           },
+  { variant: "warning",             label: "Warning",   group: "Semantic · Warning",    iconLeft: AlertTriangle,  iconRight: ChevronRight, iconOnly: AlertTriangle },
+  { variant: "warning-outline",     label: "Pause",     group: "Semantic · Warning",    iconLeft: Clock,          iconRight: ChevronRight, iconOnly: Clock         },
+  { variant: "warning-ghost",       label: "Review",    group: "Semantic · Warning",    iconLeft: ShieldAlert,    iconRight: ChevronRight, iconOnly: ShieldAlert   },
+  { variant: "info",                label: "Info",      group: "Semantic · Info",       iconLeft: Info,           iconRight: ChevronRight, iconOnly: Info          },
+  { variant: "info-outline",        label: "Detail",    group: "Semantic · Info",       iconLeft: Eye,            iconRight: ChevronRight, iconOnly: Eye           },
+  { variant: "info-ghost",          label: "Help",      group: "Semantic · Info",       iconLeft: HelpCircle,     iconRight: ChevronRight, iconOnly: HelpCircle    },
+];
+
+const SIZE_VARIANTS: BtnVariant[]  = ["default","secondary","outline","ghost","success","destructive","warning","info"];
+const PILL_VARIANTS: BtnVariant[]  = ["default","secondary","outline","ghost","success","success-outline","destructive","destructive-outline","warning","info"];
+const ICON_VARIANTS: BtnVariant[]  = ["default","secondary","outline","ghost","success","success-outline","success-ghost","destructive","destructive-outline","destructive-ghost","warning","warning-outline","warning-ghost","info","info-outline","info-ghost"];
+
+// ─── Flat-row builder — avoids React.Fragment inside <tbody> ──────────────────
+// Figma Make's inspector injects data-* props onto Fragment which React rejects.
+// Solution: pre-build a flat array that includes group-header sentinel objects.
+
+type FlatItem<T> =
+  | { kind: "group"; label: string; colSpan: number; key: string }
+  | { kind: "row";   data: T; key: string };
+
+function flattenWithGroups<T extends { group: string; variant: string }>(
+  items: T[],
+  colSpan: number,
+): FlatItem<T>[] {
+  const out: FlatItem<T>[] = [];
+  items.forEach((item, i) => {
+    if (i === 0 || item.group !== items[i - 1].group) {
+      out.push({ kind: "group", label: item.group, colSpan, key: `grp-${item.group}` });
+    }
+    out.push({ kind: "row", data: item, key: item.variant });
+  });
+  return out;
+}
+
+// ─── Primitives ───────────────────────────────────────────────────────────────
+
+function Canvas({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="rounded-xl border border-border bg-muted/10 overflow-x-auto">
+      {children}
+    </div>
+  );
+}
+
+function Section({ id, title, description, meta, children }: {
+  id: string; title: string; description?: string; meta?: string; children: React.ReactNode;
+}) {
+  return (
+    <section id={id} className="space-y-3 scroll-mt-4">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <h3 className="text-foreground">{title}</h3>
+          {description && <p className="text-sm text-muted-foreground mt-0.5">{description}</p>}
+        </div>
+        {meta && <span className="shrink-0 text-[11px] text-muted-foreground/50 mt-1 font-mono">{meta}</span>}
+      </div>
+      {children}
+    </section>
+  );
+}
+
+function GroupHeaderRow({ label, colSpan }: { label: string; colSpan: number }) {
+  return (
+    <tr>
+      <td colSpan={colSpan} className="bg-muted/30 px-4 pt-4 pb-1.5">
+        <span className="text-[10px] uppercase tracking-widest text-muted-foreground/60 select-none">
+          {label}
+        </span>
+      </td>
+    </tr>
+  );
+}
+
+function THead({ cols }: { cols: Array<{ label: string; sub?: string }> }) {
+  return (
+    <thead>
+      <tr className="border-b border-border bg-muted/20">
+        <th className="w-[152px] min-w-[152px] py-2 px-4 text-left">
+          <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50">Variant</span>
+        </th>
+        {cols.map((c, i) => (
+          <th key={i} className="px-4 py-2 text-center min-w-[128px]">
+            <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 block">{c.label}</span>
+            {c.sub && <span className="text-[9px] text-muted-foreground/35 block mt-0.5">{c.sub}</span>}
+          </th>
+        ))}
+      </tr>
+    </thead>
+  );
+}
+
+function RowLabel({ label, code }: { label: string; code: string }) {
+  return (
+    <td className="pl-4 pr-5 py-3 align-middle whitespace-nowrap sticky left-0 z-10 bg-background/95 border-r border-border/30">
+      <span className="text-xs text-foreground block">{label}</span>
+      <code className="text-[10px] text-muted-foreground/60">{code}</code>
+    </td>
+  );
+}
+
+function Cell({ children }: { children: React.ReactNode }) {
+  return (
+    <td className="px-4 py-3 align-middle text-center">
+      <div className="flex items-center justify-center">{children}</div>
+    </td>
+  );
+}
+
+function Dash() {
+  return <span className="text-muted-foreground/25 select-none text-sm">—</span>;
+}
+
+// ─── Section 1: Variants × States matrix ─────────────────────────────────────
+
+function VariantMatrix() {
+  const COLS = [
+    { label: "No icon" },
+    { label: "Icon left" },
+    { label: "Icon right" },
+    { label: "Icon only",  sub: "size=icon · 36px" },
+    { label: "Loading",    sub: "disabled" },
+    { label: "Disabled" },
+  ];
+  const flat = flattenWithGroups(ALL_ROWS, COLS.length + 1);
+
+  return (
+    <Canvas>
+      <table className="w-full border-collapse">
+        <THead cols={COLS} />
+        <tbody>
+          {flat.map((item) => {
+            if (item.kind === "group") {
+              return <GroupHeaderRow key={item.key} label={item.label} colSpan={item.colSpan} />;
+            }
+            const r = item.data;
+            const IL = r.iconLeft;
+            const IR = r.iconRight;
+            const IO = r.iconOnly;
+            return (
+              <tr key={item.key} className="border-t border-border/25 hover:bg-muted/15 transition-colors">
+                <RowLabel label={r.label} code={r.variant} />
+                <Cell><Button variant={r.variant}>{r.label}</Button></Cell>
+                <Cell><Button variant={r.variant}><IL />{r.label}</Button></Cell>
+                <Cell><Button variant={r.variant}>{r.label}<IR /></Button></Cell>
+                <Cell>
+                  {IO ? <Button variant={r.variant} size="icon"><IO /></Button> : <Dash />}
+                </Cell>
+                <Cell>
+                  <Button variant={r.variant} disabled><Loader2 className="animate-spin" />{r.label}</Button>
+                </Cell>
+                <Cell><Button variant={r.variant} disabled>{r.label}</Button></Cell>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Canvas>
+  );
+}
+
+// ─── Section 2: Sizes ─────────────────────────────────────────────────────────
+
+function SizesGrid() {
+  const TEXT_SIZES: Array<{ size: BtnSize; label: string; sub: string }> = [
+    { size: "sm",      label: "sm",      sub: "h-8" },
+    { size: "default", label: "md",      sub: "h-9" },
+    { size: "lg",      label: "lg",      sub: "h-10" },
+  ];
+  const ICON_SIZES: Array<{ size: BtnSize; label: string; sub: string }> = [
+    { size: "icon-sm", label: "icon-sm", sub: "28px □" },
+    { size: "icon",    label: "icon",    sub: "36px □" },
+    { size: "icon-lg", label: "icon-lg", sub: "44px □" },
+  ];
+  const allCols = [...TEXT_SIZES, ...ICON_SIZES];
+
+  return (
+    <Canvas>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="border-b border-border bg-muted/20">
+            <th className="w-[152px] min-w-[152px] py-2 px-4 text-left">
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50">Variant</span>
+            </th>
+            {/* text sizes header group */}
+            {TEXT_SIZES.map(c => (
+              <th key={c.size} className="px-4 py-2 text-center min-w-[110px]">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 block">{c.label}</span>
+                <span className="text-[9px] text-muted-foreground/35 block">{c.sub}</span>
+              </th>
+            ))}
+            {/* divider col */}
+            <th className="w-px bg-border/40" />
+            {/* icon sizes header group */}
+            {ICON_SIZES.map(c => (
+              <th key={c.size} className="px-4 py-2 text-center min-w-[100px]">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 block">{c.label}</span>
+                <span className="text-[9px] text-muted-foreground/35 block">{c.sub}</span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {SIZE_VARIANTS.map((variant) => {
+            const row = ALL_ROWS.find(r => r.variant === variant)!;
+            const IO = row?.iconOnly;
+            return (
+              <tr key={variant} className="border-t border-border/25 hover:bg-muted/15 transition-colors">
+                <RowLabel label={row.label} code={variant} />
+                {TEXT_SIZES.map(c => (
+                  <Cell key={c.size}><Button variant={variant} size={c.size}>{row.label}</Button></Cell>
+                ))}
+                <td className="w-px bg-border/20" />
+                {ICON_SIZES.map(c => (
+                  <Cell key={c.size}>
+                    {IO ? <Button variant={variant} size={c.size}><IO /></Button> : <Dash />}
+                  </Cell>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Canvas>
+  );
+}
+
+// ─── Section 3: Shape — Pill ──────────────────────────────────────────────────
+
+function PillGrid() {
+  const COLS = [
+    { label: "No icon" },
+    { label: "Icon left" },
+    { label: "Icon right" },
+    { label: "Icon only ○", sub: "size=icon" },
+  ];
+  const pillRows = PILL_VARIANTS.map(v => ALL_ROWS.find(r => r.variant === v)!).filter(Boolean);
+  const flat     = flattenWithGroups(pillRows, COLS.length + 1);
+
+  return (
+    <Canvas>
+      <table className="w-full border-collapse">
+        <THead cols={COLS} />
+        <tbody>
+          {flat.map((item) => {
+            if (item.kind === "group") {
+              return <GroupHeaderRow key={item.key} label={item.label} colSpan={item.colSpan} />;
+            }
+            const r = item.data;
+            const IL = r.iconLeft;
+            const IR = r.iconRight;
+            const IO = r.iconOnly;
+            return (
+              <tr key={item.key} className="border-t border-border/25 hover:bg-muted/15 transition-colors">
+                <RowLabel label={r.label} code={r.variant} />
+                <Cell><Button variant={r.variant} shape="pill">{r.label}</Button></Cell>
+                <Cell><Button variant={r.variant} shape="pill"><IL />{r.label}</Button></Cell>
+                <Cell><Button variant={r.variant} shape="pill">{r.label}<IR /></Button></Cell>
+                <Cell>
+                  {IO ? <Button variant={r.variant} size="icon" shape="pill"><IO /></Button> : <Dash />}
+                </Cell>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Canvas>
+  );
+}
+
+// ─── Section 4 & 5: Icon buttons ─────────────────────────────────────────────
+
+function IconButtonsGrid({ shape }: { shape: BtnShape }) {
+  const COLS: Array<{ size: BtnSize; label: string; sub: string }> = [
+    { size: "icon-sm", label: "icon-sm", sub: "28px" },
+    { size: "icon",    label: "icon",    sub: "36px" },
+    { size: "icon-lg", label: "icon-lg", sub: "44px" },
+  ];
+  const iconRows = ICON_VARIANTS.map(v => ALL_ROWS.find(r => r.variant === v)!).filter(Boolean);
+  const flat     = flattenWithGroups(iconRows, COLS.length + 1);
+
+  return (
+    <Canvas>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="border-b border-border bg-muted/20">
+            <th className="w-[152px] min-w-[152px] py-2 px-4 text-left">
+              <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50">Variant</span>
+            </th>
+            {COLS.map(c => (
+              <th key={c.size} className="px-4 py-2 text-center min-w-[100px]">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50 block">{c.label}</span>
+                <span className="text-[9px] text-muted-foreground/35 block">{c.sub}</span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {flat.map((item) => {
+            if (item.kind === "group") {
+              return <GroupHeaderRow key={item.key} label={item.label} colSpan={COLS.length + 1} />;
+            }
+            const r  = item.data;
+            const IC = r.iconOnly ?? r.iconLeft;
+            return (
+              <tr key={item.key} className="border-t border-border/25 hover:bg-muted/15 transition-colors">
+                <RowLabel label={r.label} code={r.variant} />
+                {COLS.map(c => (
+                  <Cell key={c.size}>
+                    <Button variant={r.variant} size={c.size} shape={shape}><IC /></Button>
+                  </Cell>
+                ))}
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </Canvas>
+  );
+}
+
+// ─── Section 6: Props ─────────────────────────────────────────────────────────
+
+const PROPS_DATA = [
+  { name: "variant",  type: '"default"|"secondary"|"outline"|"ghost"|"link"|"success"|"warning"|"info"|"destructive"|"*-outline"|"*-ghost"', default: '"default"', desc: "Visual style. Semantic variants use explicit color tokens compatible with light/dark." },
+  { name: "size",     type: '"sm"|"default"|"lg"|"icon-sm"|"icon"|"icon-lg"',                                                              default: '"default"', desc: "Height scale. icon-* produce square icon-only buttons (28 / 36 / 44 px)." },
+  { name: "shape",    type: '"default"|"pill"',                                                                                             default: '"default"', desc: "Border radius: rounded-md (10 px) or rounded-full (pill). Applies to all variants." },
+  { name: "disabled", type: "boolean",                                                                                                      default: "false",     desc: "Disabled state. Combine with Loader2 animate-spin as first child for loading." },
+  { name: "asChild",  type: "boolean",                                                                                                      default: "false",     desc: "Merges props onto its direct child via Radix Slot (Link, anchor, etc.)." },
+];
+
+function PropsTable() {
+  return (
+    <Canvas>
+      <table className="w-full border-collapse">
+        <thead>
+          <tr className="border-b border-border bg-muted/20">
+            {["Prop", "Type", "Default", "Description"].map(h => (
+              <th key={h} className="px-4 py-2 text-left">
+                <span className="text-[10px] uppercase tracking-widest text-muted-foreground/50">{h}</span>
+              </th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {PROPS_DATA.map(p => (
+            <tr key={p.name} className="border-t border-border/25 hover:bg-muted/15 transition-colors">
+              <td className="px-4 py-3 align-top whitespace-nowrap">
+                <code className="text-xs bg-secondary/10 border border-border/50 px-1.5 py-0.5 rounded text-foreground">
+                  {p.name}
+                </code>
+              </td>
+              <td className="px-4 py-3 align-top max-w-[260px]">
+                <code className="text-xs text-muted-foreground break-words">{p.type}</code>
+              </td>
+              <td className="px-4 py-3 align-top whitespace-nowrap">
+                <code className="text-xs bg-muted/40 border border-border/50 px-1.5 py-0.5 rounded text-muted-foreground">
+                  {p.default}
+                </code>
+              </td>
+              <td className="px-4 py-3 align-top text-sm text-muted-foreground">{p.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </Canvas>
+  );
+}
+
+// ─── Quick nav ────────────────────────────────────────────────────────────────
+
+const NAV = [
+  { id: "s-variants", label: "Variants & States" },
+  { id: "s-sizes",    label: "Sizes" },
+  { id: "s-pill",     label: "Pill Shape" },
+  { id: "s-icon-sq",  label: "Icon Buttons · Square" },
+  { id: "s-icon-rd",  label: "Icon Buttons · Round" },
+  { id: "s-props",    label: "Props" },
+];
+
+// ─── Page ─────────────────────────────────────────────────────────────────────
 
 export function ButtonPage() {
   return (
-    <ComponentShowcase
-      title="Button"
-      description="Displays a button or a component that looks like a button. Includes base and semantic variants for each action type."
-      category="Actions"
-      
-      // Main Preview
-      preview={
-        <div className="flex flex-col gap-6">
-          {/* ── Base Variants ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Base Variants</p>
-            <div className="flex flex-wrap gap-3">
-              <Button>Primary</Button>
-              <Button variant="secondary">Secondary</Button>
-              <Button variant="outline">Outline</Button>
-              <Button variant="ghost">Ghost</Button>
-              <Button variant="link">Link</Button>
-            </div>
-          </div>
+    <div className="space-y-12 pb-16">
 
-          <Separator />
-
-          {/* ── Semantic Solid ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Semantic — Solid</p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="success">
-                <CheckCircle className="h-4 w-4" />
-                Success
-              </Button>
-              <Button variant="destructive">
-                <Trash2 className="h-4 w-4" />
-                Destructive
-              </Button>
-              <Button variant="warning">
-                <AlertTriangle className="h-4 w-4" />
-                Warning
-              </Button>
-              <Button variant="info">
-                <Info className="h-4 w-4" />
-                Info
-              </Button>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* ── Semantic Outline ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Semantic — Outline</p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="success-outline">
-                <Check className="h-4 w-4" />
-                Approve
-              </Button>
-              <Button variant="destructive-outline">
-                <XCircle className="h-4 w-4" />
-                Reject
-              </Button>
-              <Button variant="warning-outline">
-                <Clock className="h-4 w-4" />
-                Pause
-              </Button>
-              <Button variant="info-outline">
-                <Eye className="h-4 w-4" />
-                View Detail
-              </Button>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* ── Semantic Ghost ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Semantic — Ghost</p>
-            <div className="flex flex-wrap gap-3">
-              <Button variant="success-ghost">
-                <Save className="h-4 w-4" />
-                Save
-              </Button>
-              <Button variant="destructive-ghost">
-                <Ban className="h-4 w-4" />
-                Cancel
-              </Button>
-              <Button variant="warning-ghost">
-                <ShieldAlert className="h-4 w-4" />
-                Review
-              </Button>
-              <Button variant="info-ghost">
-                <HelpCircle className="h-4 w-4" />
-                Help
-              </Button>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* ── Pill Shape ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Pill Shape — Rounded</p>
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-wrap gap-3">
-                <Button shape="pill">Primary</Button>
-                <Button variant="secondary" shape="pill">Secondary</Button>
-                <Button variant="outline" shape="pill">Outline</Button>
-                <Button variant="ghost" shape="pill">Ghost</Button>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="success" shape="pill">
-                  <CheckCircle className="h-4 w-4" />
-                  Approve
-                </Button>
-                <Button variant="destructive" shape="pill">
-                  <Trash2 className="h-4 w-4" />
-                  Delete
-                </Button>
-                <Button variant="warning" shape="pill">
-                  <AlertTriangle className="h-4 w-4" />
-                  Warning
-                </Button>
-                <Button variant="info" shape="pill">
-                  <Info className="h-4 w-4" />
-                  Info
-                </Button>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="success-outline" shape="pill">
-                  <Check className="h-4 w-4" />
-                  Approve
-                </Button>
-                <Button variant="destructive-outline" shape="pill">
-                  <XCircle className="h-4 w-4" />
-                  Reject
-                </Button>
-                <Button variant="warning-outline" shape="pill">
-                  <Clock className="h-4 w-4" />
-                  Pause
-                </Button>
-                <Button variant="info-outline" shape="pill">
-                  <Eye className="h-4 w-4" />
-                  Detail
-                </Button>
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Button shape="pill" size="sm">Small Pill</Button>
-                <Button shape="pill" size="default">Default Pill</Button>
-                <Button shape="pill" size="lg">Large Pill</Button>
-                <Button shape="pill" size="icon">
-                  <Plus className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* ── Icon Buttons ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Icon Buttons — Square</p>
-            <div className="flex flex-col gap-4">
-              {/* Base variants */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button size="icon-sm"><Search /></Button>
-                <Button size="icon"><Search /></Button>
-                <Button size="icon-lg"><Search /></Button>
-                <Button variant="secondary" size="icon-sm"><Settings /></Button>
-                <Button variant="secondary" size="icon"><Settings /></Button>
-                <Button variant="secondary" size="icon-lg"><Settings /></Button>
-                <Button variant="outline" size="icon-sm"><Pencil /></Button>
-                <Button variant="outline" size="icon"><Pencil /></Button>
-                <Button variant="outline" size="icon-lg"><Pencil /></Button>
-                <Button variant="ghost" size="icon-sm"><MoreHorizontal /></Button>
-                <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
-                <Button variant="ghost" size="icon-lg"><MoreHorizontal /></Button>
-              </div>
-              {/* Semantic solid */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success" size="icon-sm"><Check /></Button>
-                <Button variant="success" size="icon"><Check /></Button>
-                <Button variant="success" size="icon-lg"><Check /></Button>
-                <Button variant="destructive" size="icon-sm"><Trash2 /></Button>
-                <Button variant="destructive" size="icon"><Trash2 /></Button>
-                <Button variant="destructive" size="icon-lg"><Trash2 /></Button>
-                <Button variant="warning" size="icon-sm"><AlertTriangle /></Button>
-                <Button variant="warning" size="icon"><AlertTriangle /></Button>
-                <Button variant="warning" size="icon-lg"><AlertTriangle /></Button>
-                <Button variant="info" size="icon-sm"><Info /></Button>
-                <Button variant="info" size="icon"><Info /></Button>
-                <Button variant="info" size="icon-lg"><Info /></Button>
-              </div>
-              {/* Semantic outline */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success-outline" size="icon-sm"><Check /></Button>
-                <Button variant="success-outline" size="icon"><Check /></Button>
-                <Button variant="success-outline" size="icon-lg"><Check /></Button>
-                <Button variant="destructive-outline" size="icon-sm"><XCircle /></Button>
-                <Button variant="destructive-outline" size="icon"><XCircle /></Button>
-                <Button variant="destructive-outline" size="icon-lg"><XCircle /></Button>
-                <Button variant="warning-outline" size="icon-sm"><Clock /></Button>
-                <Button variant="warning-outline" size="icon"><Clock /></Button>
-                <Button variant="warning-outline" size="icon-lg"><Clock /></Button>
-                <Button variant="info-outline" size="icon-sm"><Eye /></Button>
-                <Button variant="info-outline" size="icon"><Eye /></Button>
-                <Button variant="info-outline" size="icon-lg"><Eye /></Button>
-              </div>
-              {/* Semantic ghost */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success-ghost" size="icon-sm"><Save /></Button>
-                <Button variant="success-ghost" size="icon"><Save /></Button>
-                <Button variant="success-ghost" size="icon-lg"><Save /></Button>
-                <Button variant="destructive-ghost" size="icon-sm"><Ban /></Button>
-                <Button variant="destructive-ghost" size="icon"><Ban /></Button>
-                <Button variant="destructive-ghost" size="icon-lg"><Ban /></Button>
-                <Button variant="warning-ghost" size="icon-sm"><ShieldAlert /></Button>
-                <Button variant="warning-ghost" size="icon"><ShieldAlert /></Button>
-                <Button variant="warning-ghost" size="icon-lg"><ShieldAlert /></Button>
-                <Button variant="info-ghost" size="icon-sm"><HelpCircle /></Button>
-                <Button variant="info-ghost" size="icon"><HelpCircle /></Button>
-                <Button variant="info-ghost" size="icon-lg"><HelpCircle /></Button>
-              </div>
-            </div>
-          </div>
-
-          <Separator />
-
-          {/* ── Icon Buttons Round ── */}
-          <div>
-            <p className="text-xs text-muted-foreground mb-3">Icon Buttons — Round (shape="pill")</p>
-            <div className="flex flex-col gap-4">
-              {/* Base variants round */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button size="icon-sm" shape="pill"><Search /></Button>
-                <Button size="icon" shape="pill"><Search /></Button>
-                <Button size="icon-lg" shape="pill"><Search /></Button>
-                <Button variant="secondary" size="icon-sm" shape="pill"><Settings /></Button>
-                <Button variant="secondary" size="icon" shape="pill"><Settings /></Button>
-                <Button variant="secondary" size="icon-lg" shape="pill"><Settings /></Button>
-                <Button variant="outline" size="icon-sm" shape="pill"><Pencil /></Button>
-                <Button variant="outline" size="icon" shape="pill"><Pencil /></Button>
-                <Button variant="outline" size="icon-lg" shape="pill"><Pencil /></Button>
-                <Button variant="ghost" size="icon-sm" shape="pill"><MoreHorizontal /></Button>
-                <Button variant="ghost" size="icon" shape="pill"><MoreHorizontal /></Button>
-                <Button variant="ghost" size="icon-lg" shape="pill"><MoreHorizontal /></Button>
-              </div>
-              {/* Semantic solid round */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success" size="icon-sm" shape="pill"><Check /></Button>
-                <Button variant="success" size="icon" shape="pill"><Check /></Button>
-                <Button variant="success" size="icon-lg" shape="pill"><Check /></Button>
-                <Button variant="destructive" size="icon-sm" shape="pill"><Trash2 /></Button>
-                <Button variant="destructive" size="icon" shape="pill"><Trash2 /></Button>
-                <Button variant="destructive" size="icon-lg" shape="pill"><Trash2 /></Button>
-                <Button variant="warning" size="icon-sm" shape="pill"><AlertTriangle /></Button>
-                <Button variant="warning" size="icon" shape="pill"><AlertTriangle /></Button>
-                <Button variant="warning" size="icon-lg" shape="pill"><AlertTriangle /></Button>
-                <Button variant="info" size="icon-sm" shape="pill"><Info /></Button>
-                <Button variant="info" size="icon" shape="pill"><Info /></Button>
-                <Button variant="info" size="icon-lg" shape="pill"><Info /></Button>
-              </div>
-              {/* Semantic outline round */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success-outline" size="icon-sm" shape="pill"><Check /></Button>
-                <Button variant="success-outline" size="icon" shape="pill"><Check /></Button>
-                <Button variant="success-outline" size="icon-lg" shape="pill"><Check /></Button>
-                <Button variant="destructive-outline" size="icon-sm" shape="pill"><XCircle /></Button>
-                <Button variant="destructive-outline" size="icon" shape="pill"><XCircle /></Button>
-                <Button variant="destructive-outline" size="icon-lg" shape="pill"><XCircle /></Button>
-                <Button variant="warning-outline" size="icon-sm" shape="pill"><Clock /></Button>
-                <Button variant="warning-outline" size="icon" shape="pill"><Clock /></Button>
-                <Button variant="warning-outline" size="icon-lg" shape="pill"><Clock /></Button>
-                <Button variant="info-outline" size="icon-sm" shape="pill"><Eye /></Button>
-                <Button variant="info-outline" size="icon" shape="pill"><Eye /></Button>
-                <Button variant="info-outline" size="icon-lg" shape="pill"><Eye /></Button>
-              </div>
-              {/* Semantic ghost round */}
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success-ghost" size="icon-sm" shape="pill"><Save /></Button>
-                <Button variant="success-ghost" size="icon" shape="pill"><Save /></Button>
-                <Button variant="success-ghost" size="icon-lg" shape="pill"><Save /></Button>
-                <Button variant="destructive-ghost" size="icon-sm" shape="pill"><Ban /></Button>
-                <Button variant="destructive-ghost" size="icon" shape="pill"><Ban /></Button>
-                <Button variant="destructive-ghost" size="icon-lg" shape="pill"><Ban /></Button>
-                <Button variant="warning-ghost" size="icon-sm" shape="pill"><ShieldAlert /></Button>
-                <Button variant="warning-ghost" size="icon" shape="pill"><ShieldAlert /></Button>
-                <Button variant="warning-ghost" size="icon-lg" shape="pill"><ShieldAlert /></Button>
-                <Button variant="info-ghost" size="icon-sm" shape="pill"><HelpCircle /></Button>
-                <Button variant="info-ghost" size="icon" shape="pill"><HelpCircle /></Button>
-                <Button variant="info-ghost" size="icon-lg" shape="pill"><HelpCircle /></Button>
-              </div>
-            </div>
-          </div>
+      {/* Header */}
+      <div className="space-y-4">
+        <div className="flex flex-wrap items-center gap-2">
+          <Badge variant="neutral-soft-outline">Actions</Badge>
+          <Badge variant="secondary-soft-outline">DSM v1.0</Badge>
+          <Badge variant="info-soft-outline">Atom</Badge>
         </div>
-      }
-      
-      // Main Code
-      code={`import { Button } from "@/components/ui/button";
-import { CheckCircle, Trash2, AlertTriangle, Info } from "lucide-react";
+        <div>
+          <h2 className="text-foreground">Button</h2>
+          <p className="text-muted-foreground mt-1">
+            Interactive trigger for actions and commands. 17 variants across 5 semantic families, 3 text sizes,
+            3 icon sizes, 2 shapes, and all standard interaction states (default · loading · disabled).
+          </p>
+        </div>
+        {/* Quick nav */}
+        <div className="flex flex-wrap gap-1.5">
+          {NAV.map(n => (
+            <a
+              key={n.id}
+              href={`#${n.id}`}
+              className="inline-flex items-center rounded-md border border-border bg-muted/20 hover:bg-muted/50 px-2.5 py-1 text-xs text-muted-foreground hover:text-foreground transition-colors"
+            >
+              {n.label}
+            </a>
+          ))}
+        </div>
+        <Separator />
+      </div>
 
-export function ButtonSemanticDemo() {
-  return (
-    <div className="flex flex-col gap-4">
-      {/* Solid */}
-      <div className="flex gap-3">
-        <Button variant="success"><CheckCircle /> Approve</Button>
-        <Button variant="destructive"><Trash2 /> Delete</Button>
-        <Button variant="warning"><AlertTriangle /> Warning</Button>
-        <Button variant="info"><Info /> Information</Button>
-      </div>
-      {/* Outline */}
-      <div className="flex gap-3">
-        <Button variant="success-outline">Approve</Button>
-        <Button variant="destructive-outline">Reject</Button>
-        <Button variant="warning-outline">Pause</Button>
-        <Button variant="info-outline">Detail</Button>
-      </div>
-      {/* Ghost */}
-      <div className="flex gap-3">
-        <Button variant="success-ghost">Save</Button>
-        <Button variant="destructive-ghost">Cancel</Button>
-        <Button variant="warning-ghost">Review</Button>
-        <Button variant="info-ghost">Help</Button>
-      </div>
-      {/* Pill Shape */}
-      <div className="flex gap-3">
-        <Button shape="pill">Primary Pill</Button>
-        <Button variant="success" shape="pill">Success Pill</Button>
-        <Button variant="destructive-outline" shape="pill">Reject Pill</Button>
-        <Button variant="info-ghost" shape="pill">Info Pill</Button>
-      </div>
+      {/* S1 */}
+      <Section
+        id="s-variants"
+        title="Variants & States"
+        description="17 variants × 6 property/state columns. Rows grouped by semantic family."
+        meta="size=default · shape=default"
+      >
+        <VariantMatrix />
+      </Section>
+
+      {/* S2 */}
+      <Section
+        id="s-sizes"
+        title="Sizes"
+        description="Text sizes (sm / md / lg) + icon-only sizes (icon-sm / icon / icon-lg) for key variants."
+        meta="shape=default"
+      >
+        <SizesGrid />
+      </Section>
+
+      {/* S3 */}
+      <Section
+        id="s-pill"
+        title="Pill Shape"
+        description="shape=pill applies rounded-full. Combinable with any variant and size."
+        meta="shape=pill · size=default"
+      >
+        <PillGrid />
+      </Section>
+
+      {/* S4 */}
+      <Section
+        id="s-icon-sq"
+        title="Icon Buttons — Square"
+        description="Icon-only buttons, square corners. Three sizes: icon-sm (28 px) · icon (36 px) · icon-lg (44 px)."
+        meta="shape=default"
+      >
+        <IconButtonsGrid shape="default" />
+      </Section>
+
+      {/* S5 */}
+      <Section
+        id="s-icon-rd"
+        title="Icon Buttons — Round"
+        description="Icon-only buttons, pill shape. Same size scale as square variant."
+        meta="shape=pill"
+      >
+        <IconButtonsGrid shape="pill" />
+      </Section>
+
+      {/* S6 */}
+      <Section
+        id="s-props"
+        title="Props"
+        description="Complete API reference."
+      >
+        <PropsTable />
+      </Section>
+
     </div>
-  );
-}`}
-      
-      // Props Documentation
-      props={[
-        {
-          name: "variant",
-          type: '"default" | "secondary" | "destructive" | "outline" | "ghost" | "link" | "success" | "warning" | "info" | "destructive-outline" | "success-outline" | "warning-outline" | "info-outline" | "destructive-ghost" | "success-ghost" | "warning-ghost" | "info-ghost"',
-          default: '"default"',
-          description: "Visual style of the button. Semantic variants use explicit colors compatible with light/dark mode.",
-        },
-        {
-          name: "size",
-          type: '"default" | "sm" | "lg" | "icon" | "icon-sm" | "icon-lg"',
-          default: '"default"',
-          description: "Button size. icon, icon-sm and icon-lg produce square/circular buttons for icon-only usage (36px / 28px / 44px respectively).",
-        },
-        {
-          name: "shape",
-          type: '"default" | "pill"',
-          default: '"default"',
-          description: "Border radius shape. 'default' uses rounded-md, 'pill' uses rounded-full for a fully rounded button. Combinable with any variant and size.",
-        },
-        {
-          name: "asChild",
-          type: "boolean",
-          default: "false",
-          description: "Merge props with direct child via Radix Slot (useful for Link, anchor, etc.)",
-        },
-      ]}
-      
-      // Examples
-      examples={[
-        {
-          title: "Operation Actions (Factoring)",
-          description: "Example of using semantic variants in an operation approval flow.",
-          preview: (
-            <div className="flex flex-col gap-4 p-4 border rounded-lg bg-card">
-              <p className="text-sm text-muted-foreground">Operation OP-2024-001 — Cencosud S.A. — $45,200,000</p>
-              <div className="flex flex-wrap gap-2">
-                <Button variant="success" size="sm">
-                  <Check className="h-4 w-4" />
-                  Approve
-                </Button>
-                <Button variant="warning-outline" size="sm">
-                  <Clock className="h-4 w-4" />
-                  Request Review
-                </Button>
-                <Button variant="destructive-outline" size="sm">
-                  <XCircle className="h-4 w-4" />
-                  Reject
-                </Button>
-                <Button variant="info-ghost" size="sm">
-                  <Eye className="h-4 w-4" />
-                  View Detail
-                </Button>
-              </div>
-            </div>
-          ),
-          code: `<div className="flex gap-2">
-  <Button variant="success" size="sm">
-    <Check /> Approve
-  </Button>
-  <Button variant="warning-outline" size="sm">
-    <Clock /> Request Review
-  </Button>
-  <Button variant="destructive-outline" size="sm">
-    <XCircle /> Reject
-  </Button>
-  <Button variant="info-ghost" size="sm">
-    <Eye /> View Detail
-  </Button>
-</div>`,
-        },
-        {
-          title: "With Icon",
-          description: "Buttons with Lucide React icons",
-          preview: (
-            <div className="flex flex-wrap gap-3">
-              <Button>
-                <Mail className="h-4 w-4" />
-                Send Email
-              </Button>
-              <Button variant="outline">
-                <Download className="h-4 w-4" />
-                Download
-              </Button>
-              <Button variant="success">
-                <Send className="h-4 w-4" />
-                Send
-              </Button>
-            </div>
-          ),
-          code: `import { Button } from "@/components/ui/button";
-import { Mail, Download, Send } from "lucide-react";
-
-export function ButtonWithIcon() {
-  return (
-    <div className="flex gap-3">
-      <Button><Mail /> Send Email</Button>
-      <Button variant="outline"><Download /> Download</Button>
-      <Button variant="success"><Send /> Send</Button>
-    </div>
-  );
-}`,
-        },
-        {
-          title: "Loading State",
-          description: "Button with loading state using the Loader2 icon",
-          preview: (
-            <div className="flex flex-wrap gap-3">
-              <Button disabled>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Please wait
-              </Button>
-              <Button variant="success" disabled>
-                <Loader2 className="h-4 w-4 animate-spin" />
-                Saving...
-              </Button>
-            </div>
-          ),
-          code: `import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-
-export function ButtonLoading() {
-  return (
-    <Button disabled>
-      <Loader2 className="animate-spin" />
-      Please wait
-    </Button>
-  );
-}`,
-        },
-        {
-          title: "Sizes",
-          description: "All semantic variants in the different available sizes.",
-          preview: (
-            <div className="flex flex-col gap-4">
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="success" size="sm">Small</Button>
-                <Button variant="success" size="default">Default</Button>
-                <Button variant="success" size="lg">Large</Button>
-                <Button variant="success" size="icon">
-                  <Check className="h-4 w-4" />
-                </Button>
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="destructive" size="sm">Small</Button>
-                <Button variant="destructive" size="default">Default</Button>
-                <Button variant="destructive" size="lg">Large</Button>
-                <Button variant="destructive" size="icon">
-                  <Trash2 className="h-4 w-4" />
-                </Button>
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="warning" size="sm">Small</Button>
-                <Button variant="warning" size="default">Default</Button>
-                <Button variant="warning" size="lg">Large</Button>
-                <Button variant="warning" size="icon">
-                  <AlertTriangle className="h-4 w-4" />
-                </Button>
-              </div>
-              <div className="flex flex-wrap items-center gap-3">
-                <Button variant="info" size="sm">Small</Button>
-                <Button variant="info" size="default">Default</Button>
-                <Button variant="info" size="lg">Large</Button>
-                <Button variant="info" size="icon">
-                  <Info className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
-          ),
-          code: `import { Button } from "@/components/ui/button";
-
-export function ButtonSizes() {
-  return (
-    <div className="flex items-center gap-3">
-      <Button variant="success" size="sm">Small</Button>
-      <Button variant="success" size="default">Default</Button>
-      <Button variant="success" size="lg">Large</Button>
-      <Button variant="success" size="icon"><Check /></Button>
-    </div>
-  );
-}`,
-        },
-        {
-          title: "Disabled States",
-          description: "All semantic buttons in disabled state.",
-          preview: (
-            <div className="flex flex-col gap-3">
-              <div className="flex flex-wrap gap-3">
-                <Button variant="success" disabled>Success</Button>
-                <Button variant="destructive" disabled>Destructive</Button>
-                <Button variant="warning" disabled>Warning</Button>
-                <Button variant="info" disabled>Info</Button>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                <Button variant="success-outline" disabled>Success</Button>
-                <Button variant="destructive-outline" disabled>Destructive</Button>
-                <Button variant="warning-outline" disabled>Warning</Button>
-                <Button variant="info-outline" disabled>Info</Button>
-              </div>
-            </div>
-          ),
-          code: `<Button variant="success" disabled>Success</Button>
-<Button variant="destructive" disabled>Destructive</Button>
-<Button variant="warning" disabled>Warning</Button>
-<Button variant="info" disabled>Info</Button>`,
-        },
-        {
-          title: "Icon Buttons",
-          description: "Square and circular icon-only buttons across all sizes and semantic variants.",
-          preview: (
-            <div className="flex flex-col gap-4">
-              <div>
-                <p className="text-xs text-muted-foreground mb-2">Square — sizes icon-sm / icon / icon-lg</p>
-                <div className="flex flex-wrap items-center gap-2">
-                  <Button size="icon-sm"><Search /></Button>
-                  <Button size="icon"><Search /></Button>
-                  <Button size="icon-lg"><Search /></Button>
-                  <Button variant="outline" size="icon-sm"><Pencil /></Button>
-                  <Button variant="outline" size="icon"><Pencil /></Button>
-                  <Button variant="outline" size="icon-lg"><Pencil /></Button>
-                  <Button variant="ghost" size="icon-sm"><MoreHorizontal /></Button>
-                  <Button variant="ghost" size="icon"><MoreHorizontal /></Button>
-                  <Button variant="ghost" size="icon-lg"><MoreHorizontal /></Button>
-                </div>
-              </div>
-              <div>
-                <p className="text-xs text-muted-foreground mb-2">Round (shape="pill") — semantic variants</p>
-                <div className="flex flex-wrap items-center gap-2">
-                  <Button variant="success" size="icon" shape="pill"><Check /></Button>
-                  <Button variant="destructive" size="icon" shape="pill"><Trash2 /></Button>
-                  <Button variant="warning" size="icon" shape="pill"><AlertTriangle /></Button>
-                  <Button variant="info" size="icon" shape="pill"><Info /></Button>
-                  <Button variant="info" size="icon-lg" shape="pill"><Info /></Button>
-                  <Button variant="success-outline" size="icon" shape="pill"><Check /></Button>
-                  <Button variant="destructive-outline" size="icon" shape="pill"><XCircle /></Button>
-                  <Button variant="warning-ghost" size="icon" shape="pill"><ShieldAlert /></Button>
-                  <Button variant="info-ghost" size="icon" shape="pill"><HelpCircle /></Button>
-                </div>
-              </div>
-            </div>
-          ),
-          code: `import { Button } from "@/components/ui/button";
-import { Search, Pencil, MoreHorizontal, Check, Trash2 } from "lucide-react";
-
-export function IconButtonsDemo() {
-  return (
-    <div className="flex flex-col gap-4">
-      {/* Square — 3 sizes */}
-      <div className="flex items-center gap-2">
-        <Button size="icon-sm"><Search /></Button>
-        <Button size="icon"><Search /></Button>
-        <Button size="icon-lg"><Search /></Button>
-      </div>
-      {/* Square outline */}
-      <div className="flex items-center gap-2">
-        <Button variant="outline" size="icon-sm"><Pencil /></Button>
-        <Button variant="outline" size="icon"><Pencil /></Button>
-        <Button variant="outline" size="icon-lg"><Pencil /></Button>
-      </div>
-      {/* Round — shape="pill" */}
-      <div className="flex items-center gap-2">
-        <Button variant="success" size="icon" shape="pill"><Check /></Button>
-        <Button variant="destructive" size="icon" shape="pill"><Trash2 /></Button>
-      </div>
-    </div>
-  );
-}`,
-        },
-      ]}
-    />
   );
 }

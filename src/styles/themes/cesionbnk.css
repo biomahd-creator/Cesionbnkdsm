@@ -4,7 +4,7 @@
  * Default tenant — uses :root / .dark selectors (base cascade).
  * When no [data-theme] is set, these values apply automatically.
  *
- * Primary: #374151 (Gray)  |  Secondary: #52525b (Zinc)  |  Radius: 0.625rem  |  Font: Gotham
+ * Primary: #374151 (Gray)  |  Secondary: #796eff (Purple)  |  Radius: 0.625rem  |  Font: Gotham
  *
  * @version 1.1.0 — Now actively loaded via globals.css (no longer documentation-only)
  */
@@ -14,7 +14,7 @@
   /* Brand */
   --primary:                    #374151;
   --primary-foreground:         #ffffff;
-  --secondary:                  #52525b;
+  --secondary:                  #796eff;
   --secondary-foreground:       #ffffff;
 
   /* Surfaces */
@@ -102,7 +102,7 @@
   /* Brand */
   --primary:                    #374151;
   --primary-foreground:         #ffffff;
-  --secondary:                  #334155;
+  --secondary:                  #796eff;
   --secondary-foreground:       #f8fafc;
 
   /* Surfaces */
