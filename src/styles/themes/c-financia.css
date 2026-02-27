@@ -4,7 +4,7 @@
  * Overrides default tokens when html[data-theme="c-financia"] is set.
  * ThemeProvider toggles the data-theme attribute on <html>.
  *
- * Primary: #22c55e  |  Secondary: #0f172a  |  Radius: 1.125rem  |  Font: Satoshi
+ * Primary: #22c55e  |  Secondary: #0f172a  |  Radius: 0.625rem  |  Font: Satoshi
  *
  * @version 1.1.0 — Pure CSS selectors (replaces setProperty approach)
  */
@@ -48,8 +48,22 @@ html[data-theme="c-financia"] {
   --switch-background:          #cbd5e1;
   --ring:                       #22c55e;
 
+  /* KPI Colors */
+  --kpi-yellow:                 #eab308;
+  --kpi-yellow-dark:            #ca8a04;
+  --kpi-yellow-bg:              #fef9c3;
+  --kpi-orange:                 #f97316;
+  --kpi-orange-dark:            #ea580c;
+  --kpi-orange-bg:              #ffedd5;
+  --kpi-blue:                   #3b82f6;
+  --kpi-blue-dark:              #2563eb;
+  --kpi-blue-bg:                #dbeafe;
+  --kpi-lime:                   #84cc16;
+  --kpi-lime-dark:              #65a30d;
+  --kpi-lime-bg:                #f7fee7;
+
   /* Radius */
-  --radius:                     1.125rem;
+  --radius:                     0.625rem;
 
   /* Charts */
   --chart-1:                    #22c55e;
@@ -121,6 +135,20 @@ html[data-theme="c-financia"].dark {
   --input-background:           #1e293b;
   --switch-background:          #334155;
   --ring:                       #22c55e;
+
+  /* KPI Colors (dark) */
+  --kpi-yellow:                 #facc15;
+  --kpi-yellow-dark:            #eab308;
+  --kpi-yellow-bg:              #422006;
+  --kpi-orange:                 #fb923c;
+  --kpi-orange-dark:            #f97316;
+  --kpi-orange-bg:              #431407;
+  --kpi-blue:                   #60a5fa;
+  --kpi-blue-dark:              #3b82f6;
+  --kpi-blue-bg:                #172554;
+  --kpi-lime:                   #a3e635;
+  --kpi-lime-dark:              #84cc16;
+  --kpi-lime-bg:                #1a2e05;
 
   /* Charts */
   --chart-1:                    #4ade80;

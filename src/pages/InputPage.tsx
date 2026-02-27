@@ -7,36 +7,69 @@ export function InputPage() {
   return (
     <ComponentShowcase
       title="Input"
-      description="Displays a form input field or a component that looks like an input field."
+      description="Displays a form input field or a component that looks like an input field. Supports four size variants: sm, default, lg, and xl."
       category="Forms"
       
       preview={
-        <div className="grid gap-4 max-w-sm">
-          <Input type="text" placeholder="Text input" />
-          <Input type="email" placeholder="Email" />
-          <Input type="password" placeholder="Password" />
-          <Input type="number" placeholder="Number" />
-          <Input type="tel" placeholder="Phone" />
-          <Input type="url" placeholder="URL" />
+        <div className="grid gap-6 max-w-md">
+          {/* Size Variants */}
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Size Variants</p>
+            <div className="grid gap-3">
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">sm</span>
+                <Input size="sm" placeholder="Small input" />
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">default</span>
+                <Input size="default" placeholder="Default input" />
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">lg</span>
+                <Input size="lg" placeholder="Large input" />
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">xl</span>
+                <Input size="xl" placeholder="Extra large input" />
+              </div>
+            </div>
+          </div>
+
+          {/* Types */}
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Input Types</p>
+            <div className="grid gap-3">
+              <Input type="text" placeholder="Text input" />
+              <Input type="email" placeholder="Email" />
+              <Input type="password" placeholder="Password" />
+              <Input type="number" placeholder="Number" />
+              <Input type="tel" placeholder="Phone" />
+              <Input type="url" placeholder="URL" />
+            </div>
+          </div>
         </div>
       }
       
       code={`import { Input } from "@/components/ui/input";
 
-export function InputDemo() {
-  return (
-    <div className="grid gap-4 max-w-sm">
-      <Input type="text" placeholder="Text input" />
-      <Input type="email" placeholder="Email" />
-      <Input type="password" placeholder="Password" />
-      <Input type="number" placeholder="Number" />
-      <Input type="tel" placeholder="Phone" />
-      <Input type="url" placeholder="URL" />
-    </div>
-  );
-}`}
+// Size variants
+<Input size="sm" placeholder="Small" />
+<Input size="default" placeholder="Default" />
+<Input size="lg" placeholder="Large" />
+<Input size="xl" placeholder="Extra large" />
+
+// Types
+<Input type="email" placeholder="Email" />
+<Input type="password" placeholder="Password" />
+<Input type="number" placeholder="Number" />`}
       
       props={[
+        {
+          name: "size",
+          type: '"sm" | "default" | "lg" | "xl"',
+          default: '"default"',
+          description: "Controls the height, padding, and font size of the input",
+        },
         {
           name: "type",
           type: '"text" | "email" | "password" | "number" | "tel" | "url" | "date" | "time" | "file" | ...',
@@ -94,6 +127,34 @@ export function InputDemo() {
       
       examples={[
         {
+          title: "Sizes Comparison",
+          description: "Side-by-side comparison of all four input sizes",
+          preview: (
+            <div className="flex flex-wrap items-end gap-3 max-w-2xl">
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Small</Label>
+                <Input size="sm" placeholder="sm" className="w-40" />
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Default</Label>
+                <Input size="default" placeholder="default" className="w-40" />
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Large</Label>
+                <Input size="lg" placeholder="lg" className="w-40" />
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Extra Large</Label>
+                <Input size="xl" placeholder="xl" className="w-40" />
+              </div>
+            </div>
+          ),
+          code: `<Input size="sm" placeholder="sm" />
+<Input size="default" placeholder="default" />
+<Input size="lg" placeholder="lg" />
+<Input size="xl" placeholder="xl" />`,
+        },
+        {
           title: "With Label",
           description: "Input with label and helper text",
           preview: (
@@ -128,25 +189,50 @@ import { Label } from "@/components/ui/label";
           code: `<Input disabled placeholder="Disabled input" />`
         },
         {
-          title: "With Icon Prefix",
-          description: "Input with leading icon using relative positioning",
+          title: "With Icon Prefix (all sizes)",
+          description: "Input with leading icon adapts icon position per size",
           preview: (
             <div className="grid gap-4 max-w-sm">
               <div className="relative">
-                <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Email" className="pl-10" type="email" />
+                <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+                <Input size="sm" placeholder="Small with icon" className="pl-8" type="email" />
               </div>
               <div className="relative">
-                <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                <Input placeholder="Password" className="pl-10" type="password" />
+                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input size="default" placeholder="Default with icon" className="pl-10" type="email" />
+              </div>
+              <div className="relative">
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                <Input size="lg" placeholder="Large with icon" className="pl-10" type="email" />
+              </div>
+              <div className="relative">
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                <Input size="xl" placeholder="XL with icon" className="pl-12" type="email" />
               </div>
             </div>
           ),
-          code: `import { Mail, Lock } from "lucide-react";
-
+          code: `// Small
 <div className="relative">
-  <Mail className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-  <Input placeholder="Email" className="pl-10" type="email" />
+  <Mail className="absolute left-2.5 top-1/2 -translate-y-1/2 h-3.5 w-3.5 text-muted-foreground" />
+  <Input size="sm" placeholder="Small" className="pl-8" />
+</div>
+
+// Default
+<div className="relative">
+  <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+  <Input placeholder="Default" className="pl-10" />
+</div>
+
+// Large
+<div className="relative">
+  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+  <Input size="lg" placeholder="Large" className="pl-10" />
+</div>
+
+// XL
+<div className="relative">
+  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+  <Input size="xl" placeholder="XL" className="pl-12" />
 </div>`
         },
         {
@@ -156,11 +242,11 @@ import { Label } from "@/components/ui/label";
             <div className="grid gap-4 max-w-sm">
               <div className="relative">
                 <Input placeholder="Search..." className="pr-10" />
-                <Search className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+                <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               </div>
               <div className="relative">
                 <Input placeholder="Username" className="pr-10" />
-                <User className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+                <User className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
               </div>
             </div>
           ),
@@ -168,7 +254,7 @@ import { Label } from "@/components/ui/label";
 
 <div className="relative">
   <Input placeholder="Search..." className="pr-10" />
-  <Search className="absolute right-3 top-3 h-4 w-4 text-muted-foreground" />
+  <Search className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
 </div>`
         },
         {
@@ -213,7 +299,7 @@ import { Label } from "@/components/ui/label";
                 defaultValue="user@example.com"
               />
               <p className="text-sm text-primary">
-                Email is valid ✓
+                Email is valid
               </p>
             </div>
           ),
@@ -276,7 +362,7 @@ import { Label } from "@/components/ui/label";
               <div className="grid gap-2">
                 <Label htmlFor="card">Credit Card</Label>
                 <div className="relative">
-                  <CreditCard className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+                  <CreditCard className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   <Input 
                     id="card" 
                     type="text" 

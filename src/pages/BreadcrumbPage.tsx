@@ -1,3 +1,5 @@
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
+import { Home } from "lucide-react";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { 
   Breadcrumb, 
@@ -8,7 +10,6 @@ import {
   BreadcrumbSeparator,
   BreadcrumbEllipsis
 } from "../components/ui/breadcrumb";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "../components/ui/dropdown-menu";
 
 export function BreadcrumbPage() {
   return (
@@ -82,6 +83,50 @@ export function BreadcrumbDemo() {
       
       // Examples
       examples={[
+        {
+          title: "With Home Icon",
+          description: "Replace the 'Home' text with a Home icon for a cleaner, more compact look.",
+          preview: (
+            <Breadcrumb>
+              <BreadcrumbList>
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#" onClick={(e: React.MouseEvent) => e.preventDefault()} className="flex items-center">
+                    <Home className="size-4" />
+                    <span className="sr-only">Home</span>
+                  </BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbLink href="#" onClick={(e: React.MouseEvent) => e.preventDefault()}>Components</BreadcrumbLink>
+                </BreadcrumbItem>
+                <BreadcrumbSeparator />
+                <BreadcrumbItem>
+                  <BreadcrumbPageItem>Breadcrumb</BreadcrumbPageItem>
+                </BreadcrumbItem>
+              </BreadcrumbList>
+            </Breadcrumb>
+          ),
+          code: `import { Home } from "lucide-react"
+
+<Breadcrumb>
+  <BreadcrumbList>
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/" className="flex items-center">
+        <Home className="size-4" />
+        <span className="sr-only">Home</span>
+      </BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbLink href="/components">Components</BreadcrumbLink>
+    </BreadcrumbItem>
+    <BreadcrumbSeparator />
+    <BreadcrumbItem>
+      <BreadcrumbPage>Breadcrumb</BreadcrumbPage>
+    </BreadcrumbItem>
+  </BreadcrumbList>
+</Breadcrumb>`
+        },
         {
           title: "Multi-level",
           description: "Breadcrumb with deeper hierarchy.",

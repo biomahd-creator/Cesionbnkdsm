@@ -7,9 +7,9 @@ Para facilitar la lectura por IAs y humanos, la documentación se ha dividido en
 
 ### 1. [TOKENS.md](./TOKENS.md)
 **Diseño Visual**. Definiciones de estilos, colores, tipografía y accesibilidad.
-- Colores: Primary (Green), Secondary (Dark Blue).
-- Tipografía: Gotham.
-- Modo Claro / Oscuro.
+- Colores: Per-tenant (CESIONBNK, C-Financia, Eurocapital, IRIS, Lulo Empresas).
+- Tipografía: Per-tenant (Gotham, Satoshi, Montserrat, System UI, Poppins).
+- Modo Claro / Oscuro por tenant.
 
 ### 2. [COMPONENTS.md](./COMPONENTS.md)
 **Catálogo**. Lista completa de componentes disponibles para evitar duplicidad.
@@ -36,24 +36,30 @@ Para facilitar la lectura por IAs y humanos, la documentación se ha dividido en
 
 ## SISTEMA DE TEMAS
 
-El proyecto usa **exclusivamente el tema default CESIONBNK** con soporte para modo claro y oscuro.
+El proyecto soporta **5 tenants white-label** con modo claro y oscuro cada uno.
 
-### Tema Único
+### Tenants
 
-- **ID**: `default` (CESIONBNK)
-- **Colores**: Primary Green (`#00c951`) + Secondary Navy (`#1C2D3A`)
-- **Tipografía**: Gotham (exclusiva) — fallback web: Montserrat (Google Fonts)
-- **Border Radius**: 10px
-- **Modos**: Light / Dark
+| ID | Name | Primary | Secondary | Font |
+|---|---|---|---|---|
+| `default` | CESIONBNK | `#374151` (Gray) | `#52525b` (Zinc) | Gotham |
+| `c-financia` | C-Financia | `#22c55e` (Green) | `#0f172a` (Navy) | Satoshi |
+| `eurocapital` | Eurocapital | `#1A7FD9` (Blue) | `#9FB3BC` (Silver) | Montserrat |
+| `iris` | IRIS | `#00B388` (Teal) | `#004646` (Dark Teal) | System UI |
+| `lulo-empresas` | Lulo Empresas | `#00C4FF` (Cyan) | `#1C2A49` (Navy) | Poppins |
+
+- **Border Radius**: 10px (0.625rem) — todos los tenants
+- **Modos**: Light / Dark (cada tenant tiene ambos)
 
 ### Arquitectura de Tokens — Single Source of Truth
 
-- **Archivo único**: `/styles/globals.css` contiene TODO: tokens, variables CSS, Tailwind config, utilidades
-- **No hay** `tokens.css`, `theme.css` ni archivos de tokens separados
-- **Light mode**: Variables definidas en `:root`
-- **Dark mode**: Variables definidas en `.dark` selector
-- **Tailwind v4**: Mapeo via `@theme inline` dentro de `globals.css`
-- **Provider**: `ThemeProvider.tsx` gestiona solo el toggle light/dark
+- **Entry point**: `/styles/globals.css` importa todo en orden correcto
+- **Tokens por tenant**: `/styles/themes/*.css` (un archivo por tenant, light + dark)
+- **Config compartida**: `/styles/config.css` (Tailwind v4 `@theme inline` mapping, tenant-agnostic)
+- **Fonts**: `/styles/fuentes.css` (CDN imports para todos los tenants)
+- **CESIONBNK default**: Tokens en `:root` / `.dark` (sin `data-theme`)
+- **Otros tenants**: Tokens en `html[data-theme="<id>"]` / `html[data-theme="<id>"].dark`
+- **Provider**: `ThemeProvider.tsx` gestiona tenant selection + toggle light/dark
 
 > **Nota**: No existe `LanguageProvider` ni sistema de traducciones. Todos los textos están hardcodeados directamente en los componentes.
 

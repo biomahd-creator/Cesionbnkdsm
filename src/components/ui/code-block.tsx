@@ -19,7 +19,7 @@ export function CodeBlock({
   const safeCode = code ?? "";
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(safeCode);
+    await copyToClipboard(safeCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };

@@ -1,4 +1,5 @@
 import { ColumnDef, type Table, type Row, type Column } from "@tanstack/react-table";
+import { copyToClipboard } from "../lib/utils";
 import { ComponentShowcase } from "../components/ui/component-showcase";
 import { Badge } from "../components/ui/badge";
 import { Button } from "../components/ui/button";
@@ -159,7 +160,7 @@ const columns: ColumnDef<Invoice>[] = [
             <DropdownMenuItem
               onClick={() => {
                 try {
-                  navigator.clipboard.writeText(payment.id)
+                  copyToClipboard(payment.id)
                     .then(() => toast.success("Invoice ID copied to clipboard"))
                     .catch(() => toast.error("Failed to copy Invoice ID"));
                 } catch {

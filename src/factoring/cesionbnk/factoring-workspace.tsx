@@ -41,10 +41,7 @@ export function FactoringWorkspace({ onLogout }: FactoringWorkspaceProps) {
             className="absolute top-[-15%] right-[-10%] w-[500px] h-[500px] rounded-full opacity-5 blur-[120px] pointer-events-none"
             style={{ background: "radial-gradient(circle, var(--primary) 0%, transparent 70%)" }}
           />
-          <div
-            className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] rounded-full opacity-5 blur-[100px] pointer-events-none"
-            style={{ background: "radial-gradient(circle, var(--secondary) 0%, transparent 70%)" }}
-          />
+          
 
           {/* Navbar */}
           <CFinanciaNavbar variant="full" onLogout={onLogout} />

@@ -7,67 +7,124 @@ export function SelectPage() {
   return (
     <ComponentShowcase
       title="Select"
-      description="Displays a list of options for the user to pick from—triggered by a button."
+      description="Displays a list of options for the user to pick from—triggered by a button. Supports four size variants on the trigger: sm, default, lg, and xl."
       category="Forms"
       
       // Main Preview
       preview={
         <div className="grid gap-6 max-w-md">
-          <Select>
-            <SelectTrigger>
-              <SelectValue placeholder="Select an option" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="option1">Option 1</SelectItem>
-              <SelectItem value="option2">Option 2</SelectItem>
-              <SelectItem value="option3">Option 3</SelectItem>
-              <SelectItem value="option4">Option 4</SelectItem>
-            </SelectContent>
-          </Select>
+          {/* Size Variants */}
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Size Variants</p>
+            <div className="grid gap-3">
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">sm</span>
+                <Select>
+                  <SelectTrigger size="sm">
+                    <SelectValue placeholder="Small select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">default</span>
+                <Select>
+                  <SelectTrigger size="default">
+                    <SelectValue placeholder="Default select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">lg</span>
+                <Select>
+                  <SelectTrigger size="lg">
+                    <SelectValue placeholder="Large select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-muted-foreground w-16 shrink-0 text-right">xl</span>
+                <Select>
+                  <SelectTrigger size="xl">
+                    <SelectValue placeholder="Extra large select" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          </div>
 
-          <Select defaultValue="us">
-            <SelectTrigger>
-              <SelectValue placeholder="Select country" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="us">United States</SelectItem>
-              <SelectItem value="uk">United Kingdom</SelectItem>
-              <SelectItem value="ca">Canada</SelectItem>
-              <SelectItem value="au">Australia</SelectItem>
-            </SelectContent>
-          </Select>
+          {/* Basic Examples */}
+          <div className="space-y-3">
+            <p className="text-sm text-muted-foreground">Basic</p>
+            <div className="grid gap-3">
+              <Select defaultValue="us">
+                <SelectTrigger>
+                  <SelectValue placeholder="Select country" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="us">United States</SelectItem>
+                  <SelectItem value="uk">United Kingdom</SelectItem>
+                  <SelectItem value="ca">Canada</SelectItem>
+                  <SelectItem value="au">Australia</SelectItem>
+                </SelectContent>
+              </Select>
 
-          <Select disabled>
-            <SelectTrigger>
-              <SelectValue placeholder="Disabled select" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="1">Option 1</SelectItem>
-            </SelectContent>
-          </Select>
+              <Select disabled>
+                <SelectTrigger>
+                  <SelectValue placeholder="Disabled select" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="1">Option 1</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+          </div>
         </div>
       }
       
       // Main Code
       code={`import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-export function SelectDemo() {
-  return (
-    <Select>
-      <SelectTrigger>
-        <SelectValue placeholder="Select an option" />
-      </SelectTrigger>
-      <SelectContent>
-        <SelectItem value="option1">Option 1</SelectItem>
-        <SelectItem value="option2">Option 2</SelectItem>
-        <SelectItem value="option3">Option 3</SelectItem>
-      </SelectContent>
-    </Select>
-  );
-}`}
+// Size variants
+<SelectTrigger size="sm">...</SelectTrigger>
+<SelectTrigger size="default">...</SelectTrigger>
+<SelectTrigger size="lg">...</SelectTrigger>
+<SelectTrigger size="xl">...</SelectTrigger>
+
+// Basic usage
+<Select>
+  <SelectTrigger>
+    <SelectValue placeholder="Select an option" />
+  </SelectTrigger>
+  <SelectContent>
+    <SelectItem value="option1">Option 1</SelectItem>
+    <SelectItem value="option2">Option 2</SelectItem>
+  </SelectContent>
+</Select>`}
       
       // Props Documentation
       props={[
+        {
+          name: "size",
+          type: '"sm" | "default" | "lg" | "xl"',
+          default: '"default"',
+          description: "Controls the height, padding, and font size of the SelectTrigger",
+        },
         {
           name: "defaultValue",
           type: "string",
@@ -110,6 +167,66 @@ export function SelectDemo() {
       
       // Examples
       examples={[
+        {
+          title: "Sizes Comparison",
+          description: "Side-by-side comparison of all four SelectTrigger sizes",
+          preview: (
+            <div className="flex flex-wrap items-end gap-3 max-w-2xl">
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Small</Label>
+                <Select>
+                  <SelectTrigger size="sm" className="w-40">
+                    <SelectValue placeholder="sm" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Default</Label>
+                <Select>
+                  <SelectTrigger size="default" className="w-40">
+                    <SelectValue placeholder="default" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Large</Label>
+                <Select>
+                  <SelectTrigger size="lg" className="w-40">
+                    <SelectValue placeholder="lg" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              <div className="grid gap-1.5">
+                <Label className="text-xs">Extra Large</Label>
+                <Select>
+                  <SelectTrigger size="xl" className="w-40">
+                    <SelectValue placeholder="xl" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="a">Option A</SelectItem>
+                    <SelectItem value="b">Option B</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+            </div>
+          ),
+          code: `<SelectTrigger size="sm">...</SelectTrigger>
+<SelectTrigger size="default">...</SelectTrigger>
+<SelectTrigger size="lg">...</SelectTrigger>
+<SelectTrigger size="xl">...</SelectTrigger>`,
+        },
         {
           title: "With Label",
           description: "Select with descriptive label and helper text",

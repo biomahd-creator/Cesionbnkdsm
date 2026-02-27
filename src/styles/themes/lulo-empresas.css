@@ -48,6 +48,20 @@ html[data-theme="lulo-empresas"] {
   --switch-background:          #c4cfe0;
   --ring:                       #00C4FF;
 
+  /* KPI Colors */
+  --kpi-yellow:                 #eab308;
+  --kpi-yellow-dark:            #ca8a04;
+  --kpi-yellow-bg:              #fef9c3;
+  --kpi-orange:                 #f97316;
+  --kpi-orange-dark:            #ea580c;
+  --kpi-orange-bg:              #ffedd5;
+  --kpi-blue:                   #3b82f6;
+  --kpi-blue-dark:              #2563eb;
+  --kpi-blue-bg:                #dbeafe;
+  --kpi-lime:                   #84cc16;
+  --kpi-lime-dark:              #65a30d;
+  --kpi-lime-bg:                #f7fee7;
+
   /* Radius */
   --radius:                     0.625rem;
 
@@ -121,6 +135,20 @@ html[data-theme="lulo-empresas"].dark {
   --input-background:           #1e3050;
   --switch-background:          #2d4166;
   --ring:                       #00C4FF;
+
+  /* KPI Colors (dark) */
+  --kpi-yellow:                 #facc15;
+  --kpi-yellow-dark:            #eab308;
+  --kpi-yellow-bg:              #422006;
+  --kpi-orange:                 #fb923c;
+  --kpi-orange-dark:            #f97316;
+  --kpi-orange-bg:              #431407;
+  --kpi-blue:                   #60a5fa;
+  --kpi-blue-dark:              #3b82f6;
+  --kpi-blue-bg:                #172554;
+  --kpi-lime:                   #a3e635;
+  --kpi-lime-dark:              #84cc16;
+  --kpi-lime-bg:                #1a2e05;
 
   /* Charts */
   --chart-1:                    #33d4ff;

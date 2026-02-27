@@ -42,9 +42,11 @@ import {
   ChevronLeft,
   ChevronRight,
   TrendingUp,
+  ChevronRight as ChevronRightIcon,
 } from "lucide-react";
 import { cn } from "../../ui/utils";
 import { FactoringKpiCardGroup } from "../../../factoring/components/factoring-kpi-card-group";
+import { OperationConfirmDialog } from "./operation-confirm-dialog";
 
 // ── Types ────────────────────────────────────────────────────────────
 
@@ -102,11 +104,11 @@ function formatCLP(value: number): string {
   return new Intl.NumberFormat("es-CL", { style: "currency", currency: "CLP", maximumFractionDigits: 0 }).format(value);
 }
 
-const TAB_CONFIG: { id: InvoiceCategory; label: string; icon: React.ElementType; color: string; variant: "green" | "yellow" | "orange" | "darkgray" }[] = [
-  { id: "elegibles", label: "Elegibles", icon: CheckCircle2, color: "text-emerald-600 dark:text-emerald-400", variant: "green" },
-  { id: "pendientes", label: "Pendientes", icon: Clock, color: "text-amber-600 dark:text-amber-400", variant: "yellow" },
-  { id: "no-elegibles", label: "No Elegibles", icon: XCircle, color: "text-rose-600 dark:text-rose-400", variant: "orange" },
-  { id: "descartadas", label: "Descartadas", icon: Trash2, color: "text-muted-foreground", variant: "darkgray" },
+const TAB_CONFIG: { id: InvoiceCategory; label: string; description: string; icon: React.ElementType; color: string; variant: "green" | "yellow" | "orange" | "darkgray" }[] = [
+  { id: "elegibles", label: "Elegibles", description: "Facturas aptas para operación", icon: CheckCircle2, color: "text-emerald-600 dark:text-emerald-400", variant: "green" },
+  { id: "pendientes", label: "Pendientes", description: "En revisión o verificación", icon: Clock, color: "text-amber-600 dark:text-amber-400", variant: "yellow" },
+  { id: "no-elegibles", label: "No Elegibles", description: "Rechazadas por incumplimiento", icon: XCircle, color: "text-rose-600 dark:text-rose-400", variant: "orange" },
+  { id: "descartadas", label: "Descartadas", description: "Excluidas por el usuario", icon: Trash2, color: "text-muted-foreground", variant: "darkgray" },
 ];
 
 // ── Main Component ────────────────────────────────────────────────────
@@ -120,6 +122,7 @@ export function FactoringSelectionPage({
   const [selectedIds, setSelectedIds] = useState<Set<string>>(new Set());
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
+  const [confirmDialogOpen, setConfirmDialogOpen] = useState(false);
 
   // ── KPI counts ───────────────────────────────────────────────────
   const kpis = useMemo(() => {
@@ -211,6 +214,24 @@ export function FactoringSelectionPage({
     setSearch("");
   }, []);
 
+  const handleConfirmOperation = useCallback(() => {
+    setConfirmDialogOpen(true);
+    onOperationSummaryChange?.(true);
+  }, [onOperationSummaryChange]);
+
+  const handleCloseConfirm = useCallback(() => {
+    setConfirmDialogOpen(false);
+    onOperationSummaryChange?.(false);
+  }, [onOperationSummaryChange]);
+
+  const selectedInvoices = MOCK_INVOICES.filter((inv) => selectedIds.has(inv.id));
+
+  // Unique payors from selection
+  const uniquePayors = useMemo(
+    () => new Set(selectedInvoices.map((inv) => inv.payor)).size,
+    [selectedInvoices]
+  );
+
   return (
     <div className="space-y-4">
       {/* Credit Limit Bar */}
@@ -243,11 +264,11 @@ export function FactoringSelectionPage({
 
       {/* KPI Tabs */}
       <FactoringKpiCardGroup
-        cards={TAB_CONFIG.map(({ id, label, icon: Icon, variant }) => ({
+        cards={TAB_CONFIG.map(({ id, label, description, icon: Icon, variant }) => ({
           id,
           label,
-          description: formatCLP(kpis[id].amount),
-          value: `${kpis[id].count} facturas`,
+          description,
+          value: formatCLP(kpis[id].amount),
           count: kpis[id].count,
           variant,
           icon: <Icon className="h-5 w-5" />,
@@ -255,44 +276,6 @@ export function FactoringSelectionPage({
         activeId={activeTab}
         onCardClick={(id) => handleTabChange(id as InvoiceCategory)}
       />
-
-      {/* Selection Summary */}
-      {selectedIds.size > 0 && (
-        <Card className={cn("border shadow-sm", selectionMetrics.exceeded ? "border-destructive/40 bg-destructive/5" : "border-primary/30 bg-primary/5")}>
-          <CardContent className="p-4">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-              <div className="flex items-center gap-4">
-                <Badge variant="secondary" className="text-sm px-3 py-1">
-                  {selectedIds.size} factura{selectedIds.size !== 1 ? "s" : ""} seleccionada{selectedIds.size !== 1 ? "s" : ""}
-                </Badge>
-                <Separator orientation="vertical" className="h-5 hidden sm:block" />
-                <div className="text-sm text-muted-foreground">
-                  Total: <span className="font-medium text-foreground">{formatCLP(selectionMetrics.totalAmount)}</span>
-                </div>
-                <div className="text-sm text-muted-foreground hidden md:block">
-                  Adelanto neto: <span className={cn("font-medium", selectionMetrics.exceeded ? "text-destructive" : "text-primary")}>{formatCLP(selectionMetrics.netAdvance)}</span>
-                </div>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button variant="outline" size="sm" onClick={handleDeselectAll}>
-                  <XSquare className="h-3.5 w-3.5 mr-1.5" />
-                  Deseleccionar
-                </Button>
-                {!selectionMetrics.exceeded && (
-                  <Button
-                    size="sm"
-                    onClick={() => onOperationSummaryChange?.(true)}
-                    className="bg-primary hover:bg-primary/90"
-                  >
-                    <CheckCircle2 className="h-3.5 w-3.5 mr-1.5" />
-                    Confirmar selección
-                  </Button>
-                )}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-      )}
 
       {/* Table */}
       <Card className="border-border shadow-sm bg-card overflow-hidden">
@@ -415,6 +398,107 @@ export function FactoringSelectionPage({
           </div>
         )}
       </Card>
+
+      {/* Floating Operation Summary Panel */}
+      {selectedIds.size > 0 && (
+        <div className="fixed bottom-6 right-8 z-50 w-[487px] max-w-[calc(100vw-32px)]">
+          <div className="bg-white dark:bg-card rounded-[14px] shadow-[0px_25px_50px_-12px_rgba(0,0,0,0.25)] border border-border/40 overflow-hidden">
+            <div className="flex flex-col gap-5 p-5">
+
+              {/* Row 1: Badges + Limpiar */}
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  {/* Facturas badge */}
+                  <div className="flex items-center gap-1.5 bg-primary rounded-[8px] px-2.5 h-[22px]">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <g clipPath="url(#fp-clip1)">
+                        <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M4.5 6L5.5 7L7.5 5" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                      </g>
+                      <defs><clipPath id="fp-clip1"><rect width="12" height="12" fill="white"/></clipPath></defs>
+                    </svg>
+                    <span className="text-white text-[12px] tracking-[0.3px] leading-none">{selectedIds.size} facturas</span>
+                  </div>
+                  {/* Pagadores badge */}
+                  <div className="flex items-center gap-1.5 bg-primary rounded-[8px] px-2.5 h-[22px]">
+                    <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                      <g clipPath="url(#fp-clip2)">
+                        <path d="M6 11C8.76142 11 11 8.76142 11 6C11 3.23858 8.76142 1 6 1C3.23858 1 1 3.23858 1 6C1 8.76142 3.23858 11 6 11Z" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 8V6" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                        <path d="M6 4H6.005" stroke="white" strokeLinecap="round" strokeLinejoin="round"/>
+                      </g>
+                      <defs><clipPath id="fp-clip2"><rect width="12" height="12" fill="white"/></clipPath></defs>
+                    </svg>
+                    <span className="text-white text-[12px] tracking-[0.3px] leading-none">{uniquePayors} pagadores</span>
+                  </div>
+                </div>
+                <button
+                  onClick={handleDeselectAll}
+                  className="text-primary text-[12px] tracking-[0.3px] leading-none hover:opacity-80 transition-opacity"
+                >
+                  Limpiar selección
+                </button>
+              </div>
+
+              {/* Row 2: Amounts */}
+              <div className="flex flex-col gap-1">
+                {/* Monto Nominal */}
+                <div className="flex items-center justify-between h-5">
+                  <span className="text-[14px] text-muted-foreground tracking-[0.35px] leading-5">Monto Nominal</span>
+                  <span className="text-[14px] text-muted-foreground tracking-[0.35px] leading-5">{formatCLP(selectionMetrics.totalAmount)}</span>
+                </div>
+                {/* A Recibir */}
+                <div className="flex items-end justify-between pt-1 border-t border-border">
+                  <div className="flex flex-col items-start">
+                    <span className="text-[14px] text-muted-foreground tracking-[0.35px] leading-5">A Recibir (Aprox)</span>
+                    <span className="text-[10px] text-muted-foreground tracking-[0.25px] leading-[14px]">Luego de descuentos</span>
+                  </div>
+                  <span className={cn(
+                    "text-[24px] tracking-[-0.6px] leading-8",
+                    selectionMetrics.exceeded ? "text-destructive" : "text-primary"
+                  )}>
+                    {formatCLP(selectionMetrics.netAdvance)}
+                  </span>
+                </div>
+              </div>
+
+              {/* Row 3: Confirm Button */}
+              <button
+                onClick={handleConfirmOperation}
+                disabled={selectionMetrics.exceeded}
+                className={cn(
+                  "w-full h-10 rounded-[8px] flex items-center justify-center relative transition-opacity",
+                  selectionMetrics.exceeded
+                    ? "bg-muted text-muted-foreground cursor-not-allowed opacity-60"
+                    : "bg-primary text-white shadow-elevation-3 hover:opacity-90"
+                )}
+              >
+                <span className="text-[14px] tracking-[0.35px] leading-5">Continuar</span>
+                <svg className="absolute right-3 w-4 h-4" fill="none" viewBox="0 0 16 16">
+                  <path d="M6 12L10 8L6 4" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.33333"/>
+                </svg>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Operation Confirm Dialog */}
+      <OperationConfirmDialog
+        open={confirmDialogOpen}
+        onClose={handleCloseConfirm}
+        onConfirm={() => {
+          handleCloseConfirm();
+        }}
+        selectedInvoices={selectedInvoices}
+        metrics={selectionMetrics}
+        uniquePayors={uniquePayors}
+        onDeselectAll={() => {
+          handleDeselectAll();
+          handleCloseConfirm();
+        }}
+      />
     </div>
   );
 }

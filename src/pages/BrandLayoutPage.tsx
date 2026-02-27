@@ -7,12 +7,13 @@ import { useState } from "react";
 import { ColorSwatch } from "../components/widgets/color-swatch";
 import { GridSystemPreview } from "../components/widgets/grid-system-preview";
 import { SpacingPreview } from "../components/widgets/spacing-preview";
+import { copyToClipboard as copyText } from "../lib/utils";
 
 function BrandLayoutContent() {
   const [copiedColor, setCopiedColor] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
+    copyText(text);
     setCopiedColor(id);
     setTimeout(() => setCopiedColor(null), 2000);
   };
@@ -124,6 +125,7 @@ export function BrandLayoutPage() {
 import { ColorSwatch } from "@/components/widgets/color-swatch";
 import { GridSystemPreview } from "@/components/widgets/grid-system-preview";
 import { SpacingPreview } from "@/components/widgets/spacing-preview";
+import { copyToClipboard as copyText } from "@/lib/utils";
 
 // Logo with variants
 <Logo size="xl" variant="light" />  // xl, lg, md, sm

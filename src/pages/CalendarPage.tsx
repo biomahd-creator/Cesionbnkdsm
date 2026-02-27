@@ -22,7 +22,7 @@ export function CalendarPage() {
           mode="single"
           selected={date}
           onSelect={setDate}
-          className="rounded-md border shadow"
+          className="w-fit rounded-md border shadow"
         />
       }
       code={`import { Calendar } from "@/components/ui/calendar"
@@ -36,7 +36,7 @@ export function CalendarDemo() {
       mode="single"
       selected={date}
       onSelect={setDate}
-      className="rounded-md border shadow"
+      className="w-fit rounded-md border shadow"
     />
   )
 }`}
@@ -81,7 +81,7 @@ export function CalendarDemo() {
               mode="range"
               selected={range}
               onSelect={setRange}
-              className="rounded-md border shadow"
+              className="w-fit rounded-md border shadow"
             />
           ),
           code: `import { Calendar } from "@/components/ui/calendar"
@@ -100,7 +100,7 @@ export function CalendarRangeDemo() {
       mode="range"
       selected={range}
       onSelect={setRange}
-      className="rounded-md border"
+      className="w-fit rounded-md border"
     />
   )
 }`
@@ -113,7 +113,7 @@ export function CalendarRangeDemo() {
               mode="multiple"
               selected={multiple}
               onSelect={setMultiple}
-              className="rounded-md border shadow"
+              className="w-fit rounded-md border shadow"
             />
           ),
           code: `import { Calendar } from "@/components/ui/calendar"
@@ -127,7 +127,7 @@ export function CalendarMultipleDemo() {
       mode="multiple"
       selected={dates}
       onSelect={setDates}
-      className="rounded-md border"
+      className="w-fit rounded-md border"
     />
   )
 }`
@@ -139,13 +139,13 @@ export function CalendarMultipleDemo() {
             <Calendar
               mode="single"
               disabled={(date) => date < new Date()}
-              className="rounded-md border shadow"
+              className="w-fit rounded-md border shadow"
             />
           ),
           code: `<Calendar
   mode="single"
   disabled={(date) => date < new Date()}
-  className="rounded-md border"
+  className="w-fit rounded-md border"
 />`
         }
       ]}

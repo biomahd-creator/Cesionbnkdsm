@@ -3,6 +3,7 @@ import { Badge } from "../components/ui/badge";
 import { Alert, AlertDescription, AlertTitle } from "../components/ui/alert";
 import { useState } from "react";
 import { ComponentShowcase } from "../components/ui/component-showcase";
+import { copyToClipboard } from "../lib/utils";
 
 // Representative sample: ~20 icons covering the most common use cases
 import {
@@ -80,7 +81,7 @@ function IconGalleryContent() {
   const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
 
   const handleCopy = (importName: string) => {
-    navigator.clipboard.writeText(importName);
+    copyToClipboard(importName);
     setCopiedIcon(importName);
     setTimeout(() => setCopiedIcon(null), 2000);
   };

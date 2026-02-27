@@ -65,19 +65,19 @@
   --color-sidebar-border:              var(--sidebar-border);
   --color-sidebar-ring:                var(--sidebar-ring);
 
-  /* -- KPI colors (static -- no tenant override) -- */
-  --color-kpi-yellow:                  #eab308;
-  --color-kpi-yellow-dark:             #ca8a04;
-  --color-kpi-yellow-bg:               #fef9c3;
-  --color-kpi-orange:                  #f97316;
-  --color-kpi-orange-dark:             #ea580c;
-  --color-kpi-orange-bg:               #ffedd5;
-  --color-kpi-blue:                    #3b82f6;
-  --color-kpi-blue-dark:               #2563eb;
-  --color-kpi-blue-bg:                 #dbeafe;
-  --color-kpi-lime:                    #84cc16;
-  --color-kpi-lime-dark:               #65a30d;
-  --color-kpi-lime-bg:                 #f7fee7;
+  /* -- KPI colors (tenant-aware via CSS vars) -- */
+  --color-kpi-yellow:                  var(--kpi-yellow);
+  --color-kpi-yellow-dark:             var(--kpi-yellow-dark);
+  --color-kpi-yellow-bg:               var(--kpi-yellow-bg);
+  --color-kpi-orange:                  var(--kpi-orange);
+  --color-kpi-orange-dark:             var(--kpi-orange-dark);
+  --color-kpi-orange-bg:               var(--kpi-orange-bg);
+  --color-kpi-blue:                    var(--kpi-blue);
+  --color-kpi-blue-dark:               var(--kpi-blue-dark);
+  --color-kpi-blue-bg:                 var(--kpi-blue-bg);
+  --color-kpi-lime:                    var(--kpi-lime);
+  --color-kpi-lime-dark:               var(--kpi-lime-dark);
+  --color-kpi-lime-bg:                 var(--kpi-lime-bg);
 
   /* -- Border Radius -- */
   --radius-sm:  calc(var(--radius) - 4px);
