@@ -1,0 +1,58 @@
+{
+  "$description": "CESIONBNK — Marca maestra. Dark mode overrides.",
+
+  "brand": {
+    "primary":            { "value": "#374151", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#796eff", "type": "color" },
+    "secondaryForeground":{ "value": "#f8fafc", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#0f172a", "type": "color" },
+    "foreground":         { "value": "#f8fafc", "type": "color" },
+    "card":               { "value": "#1e293b", "type": "color" },
+    "cardForeground":     { "value": "#f8fafc", "type": "color" },
+    "popover":            { "value": "#1e293b", "type": "color" },
+    "popoverForeground":  { "value": "#f8fafc", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#334155", "type": "color" },
+    "mutedForeground":    { "value": "#94a3b8", "type": "color" },
+    "accent":             { "value": "#334155", "type": "color" },
+    "accentForeground":   { "value": "#f8fafc", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#334155", "type": "color" },
+    "input":              { "value": "#334155", "type": "color" },
+    "inputBackground":    { "value": "#334155", "type": "color" },
+    "switchBackground":   { "value": "#475569", "type": "color" },
+    "ring":               { "value": "#374151", "type": "color" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#1e293b", "type": "color" },
+    "foreground":         { "value": "#f8fafc", "type": "color" },
+    "primary":            { "value": "#4F46E5", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "accent":             { "value": "#334155", "type": "color" },
+    "accentForeground":   { "value": "#f8fafc", "type": "color" },
+    "border":             { "value": "#334155", "type": "color" },
+    "ring":               { "value": "#4F46E5", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#6366f1", "type": "color" },
+    "2": { "value": "#22c55e", "type": "color" },
+    "3": { "value": "#eab308", "type": "color" },
+    "4": { "value": "#a855f7", "type": "color" },
+    "5": { "value": "#ef4444", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#1e2533", "type": "color" },
+    "to":   { "value": "#0d1117", "type": "color" }
+  }
+}

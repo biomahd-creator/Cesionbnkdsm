@@ -1,0 +1,108 @@
+/**
+ * TENANT: IRIS
+ *
+ * AUTO-GENERATED — do not edit manually.
+ * Source of truth: tokens/brands/iris.json
+ *
+ * To update: edit the JSON files, then run:
+ *   npm run tokens:build
+ */
+
+html[data-theme="iris"] {
+  --primary                       : #00B388;
+  --primary-foreground            : #ffffff;
+  --secondary                     : #004646;
+  --secondary-foreground          : #ffffff;
+  --background                    : #ffffff;
+  --foreground                    : #1a2e2e;
+  --card                          : #ffffff;
+  --card-foreground               : #1a2e2e;
+  --popover                       : #ffffff;
+  --popover-foreground            : #1a2e2e;
+  --muted                         : #f0f7f5;
+  --muted-foreground              : #5a7a72;
+  --accent                        : #edf5f3;
+  --accent-foreground             : #1a2e2e;
+  --destructive                   : #ef4444;
+  --destructive-foreground        : #ffffff;
+  --success                       : #22c55e;
+  --success-foreground            : #ffffff;
+  --warning                       : #f59e0b;
+  --warning-foreground            : #ffffff;
+  --info                          : #3b82f6;
+  --info-foreground               : #ffffff;
+  --border                        : #d9e8e4;
+  --input                         : #d9e8e4;
+  --input-background              : #ffffff;
+  --switch-background             : #c4d6d0;
+  --ring                          : #00B388;
+  --radius                        : 0.625rem;
+  --button-radius                 : 0.625rem;
+  --sidebar                       : #f8fbfa;
+  --sidebar-foreground            : #1a2e2e;
+  --sidebar-primary               : #004646;
+  --sidebar-primary-foreground    : #ffffff;
+  --sidebar-accent                : #f0f7f5;
+  --sidebar-accent-foreground     : #1a2e2e;
+  --sidebar-border                : #d9e8e4;
+  --sidebar-ring                  : #00B388;
+  --chart-1                       : #00B388;
+  --chart-2                       : #004646;
+  --chart-3                       : #f59e0b;
+  --chart-4                       : #3b82f6;
+  --chart-5                       : #ef4444;
+  --gradient-from                 : #99F6E4;
+  --gradient-to                   : #10362F;
+  --font-sans                     : ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --letter-spacing-base           : 0.025em;
+  --kpi-yellow                    : #eab308;
+  --kpi-yellow-dark               : #ca8a04;
+  --kpi-yellow-bg                 : #fef9c3;
+  --kpi-orange                    : #f97316;
+  --kpi-orange-dark               : #ea580c;
+  --kpi-orange-bg                 : #ffedd5;
+  --kpi-blue                      : #3b82f6;
+  --kpi-blue-dark                 : #2563eb;
+  --kpi-blue-bg                   : #dbeafe;
+  --kpi-lime                      : #84cc16;
+  --kpi-lime-dark                 : #65a30d;
+  --kpi-lime-bg                   : #f7fee7;
+}
+
+/* ── Dark Mode ── */
+html[data-theme="iris"].dark {
+  --primary                       : #00B388;
+  --primary-foreground            : #ffffff;
+  --secondary                     : #1a7a7a;
+  --secondary-foreground          : #f0fdfa;
+  --background                    : #0a1a1a;
+  --foreground                    : #f0fdfa;
+  --card                          : #122a2a;
+  --card-foreground               : #f0fdfa;
+  --popover                       : #122a2a;
+  --popover-foreground            : #f0fdfa;
+  --muted                         : #1a3a3a;
+  --muted-foreground              : #86b5a8;
+  --accent                        : #1a3a3a;
+  --accent-foreground             : #f0fdfa;
+  --border                        : #1a3a3a;
+  --input                         : #1a3a3a;
+  --input-background              : #1a3a3a;
+  --switch-background             : #2a5050;
+  --ring                          : #00B388;
+  --sidebar                       : #0a1a1a;
+  --sidebar-foreground            : #f0fdfa;
+  --sidebar-primary               : #00B388;
+  --sidebar-primary-foreground    : #0a1a1a;
+  --sidebar-accent                : #1a3a3a;
+  --sidebar-accent-foreground     : #f0fdfa;
+  --sidebar-border                : #1a3a3a;
+  --sidebar-ring                  : #00B388;
+  --chart-1                       : #34d399;
+  --chart-2                       : #2dd4bf;
+  --chart-3                       : #fbbf24;
+  --chart-4                       : #60a5fa;
+  --chart-5                       : #f87171;
+  --gradient-from                 : #0c2922;
+  --gradient-to                   : #051511;
+}

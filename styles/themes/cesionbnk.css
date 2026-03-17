@@ -1,0 +1,108 @@
+/**
+ * TENANT: CESIONBNK
+ *
+ * AUTO-GENERATED — do not edit manually.
+ * Source of truth: tokens/brands/cesionbnk.json
+ *
+ * To update: edit the JSON files, then run:
+ *   npm run tokens:build
+ */
+
+:root {
+  --primary                       : #374151;
+  --primary-foreground            : #ffffff;
+  --secondary                     : #796eff;
+  --secondary-foreground          : #ffffff;
+  --background                    : #ffffff;
+  --foreground                    : #222222;
+  --card                          : #ffffff;
+  --card-foreground               : #222222;
+  --popover                       : #ffffff;
+  --popover-foreground            : #222222;
+  --muted                         : #f4f4f5;
+  --muted-foreground              : #52525b;
+  --accent                        : #f4f4f5;
+  --accent-foreground             : #222222;
+  --destructive                   : #ef4444;
+  --destructive-foreground        : #ffffff;
+  --success                       : #22c55e;
+  --success-foreground            : #ffffff;
+  --warning                       : #f59e0b;
+  --warning-foreground            : #ffffff;
+  --info                          : #3b82f6;
+  --info-foreground               : #ffffff;
+  --border                        : #e4e4e7;
+  --input                         : #e4e4e7;
+  --input-background              : #ffffff;
+  --switch-background             : #cbced4;
+  --ring                          : #374151;
+  --radius                        : 0.625rem;
+  --button-radius                 : 0.625rem;
+  --sidebar                       : #f9f9f9;
+  --sidebar-foreground            : #222222;
+  --sidebar-primary               : #222222;
+  --sidebar-primary-foreground    : #f9f9f9;
+  --sidebar-accent                : #f3f3f3;
+  --sidebar-accent-foreground     : #222222;
+  --sidebar-border                : #e8e8e8;
+  --sidebar-ring                  : #b3b3b3;
+  --chart-1                       : #e8855c;
+  --chart-2                       : #4fa89a;
+  --chart-3                       : #3a5e7a;
+  --chart-4                       : #d4b35a;
+  --chart-5                       : #c8a86e;
+  --gradient-from                 : #E5E7EB;
+  --gradient-to                   : #323D4E;
+  --font-sans                     : 'DM Sans', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --letter-spacing-base           : 0.025em;
+  --kpi-yellow                    : #eab308;
+  --kpi-yellow-dark               : #ca8a04;
+  --kpi-yellow-bg                 : #fef9c3;
+  --kpi-orange                    : #f97316;
+  --kpi-orange-dark               : #ea580c;
+  --kpi-orange-bg                 : #ffedd5;
+  --kpi-blue                      : #3b82f6;
+  --kpi-blue-dark                 : #2563eb;
+  --kpi-blue-bg                   : #dbeafe;
+  --kpi-lime                      : #84cc16;
+  --kpi-lime-dark                 : #65a30d;
+  --kpi-lime-bg                   : #f7fee7;
+}
+
+/* ── Dark Mode ── */
+.dark {
+  --primary                       : #374151;
+  --primary-foreground            : #ffffff;
+  --secondary                     : #796eff;
+  --secondary-foreground          : #f8fafc;
+  --background                    : #0f172a;
+  --foreground                    : #f8fafc;
+  --card                          : #1e293b;
+  --card-foreground               : #f8fafc;
+  --popover                       : #1e293b;
+  --popover-foreground            : #f8fafc;
+  --muted                         : #334155;
+  --muted-foreground              : #94a3b8;
+  --accent                        : #334155;
+  --accent-foreground             : #f8fafc;
+  --border                        : #334155;
+  --input                         : #334155;
+  --input-background              : #334155;
+  --switch-background             : #475569;
+  --ring                          : #374151;
+  --sidebar                       : #1e293b;
+  --sidebar-foreground            : #f8fafc;
+  --sidebar-primary               : #4F46E5;
+  --sidebar-primary-foreground    : #ffffff;
+  --sidebar-accent                : #334155;
+  --sidebar-accent-foreground     : #f8fafc;
+  --sidebar-border                : #334155;
+  --sidebar-ring                  : #4F46E5;
+  --chart-1                       : #6366f1;
+  --chart-2                       : #22c55e;
+  --chart-3                       : #eab308;
+  --chart-4                       : #a855f7;
+  --chart-5                       : #ef4444;
+  --gradient-from                 : #1e2533;
+  --gradient-to                   : #0d1117;
+}

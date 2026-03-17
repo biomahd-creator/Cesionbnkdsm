@@ -1,0 +1,68 @@
+{
+  "$description": "CESIONBNK — Marca maestra (default tenant). Light mode.",
+
+  "brand": {
+    "primary":            { "value": "#374151", "type": "color", "description": "Gray — acción principal" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#796eff", "type": "color", "description": "Purple — acento" },
+    "secondaryForeground":{ "value": "#ffffff", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#ffffff", "type": "color" },
+    "foreground":         { "value": "#222222", "type": "color" },
+    "card":               { "value": "#ffffff", "type": "color" },
+    "cardForeground":     { "value": "#222222", "type": "color" },
+    "popover":            { "value": "#ffffff", "type": "color" },
+    "popoverForeground":  { "value": "#222222", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#f4f4f5", "type": "color" },
+    "mutedForeground":    { "value": "#52525b", "type": "color" },
+    "accent":             { "value": "#f4f4f5", "type": "color" },
+    "accentForeground":   { "value": "#222222", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#e4e4e7", "type": "color" },
+    "input":              { "value": "#e4e4e7", "type": "color" },
+    "inputBackground":    { "value": "#ffffff", "type": "color" },
+    "switchBackground":   { "value": "#cbced4", "type": "color" },
+    "ring":               { "value": "#374151", "type": "color" }
+  },
+
+  "radius": {
+    "base":   { "value": "0.625rem", "type": "borderRadius", "description": "10px — radio base de componentes" },
+    "button": { "value": "0.625rem", "type": "borderRadius" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#f9f9f9", "type": "color" },
+    "foreground":         { "value": "#222222", "type": "color" },
+    "primary":            { "value": "#222222", "type": "color" },
+    "primaryForeground":  { "value": "#f9f9f9", "type": "color" },
+    "accent":             { "value": "#f3f3f3", "type": "color" },
+    "accentForeground":   { "value": "#222222", "type": "color" },
+    "border":             { "value": "#e8e8e8", "type": "color" },
+    "ring":               { "value": "#b3b3b3", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#e8855c", "type": "color" },
+    "2": { "value": "#4fa89a", "type": "color" },
+    "3": { "value": "#3a5e7a", "type": "color" },
+    "4": { "value": "#d4b35a", "type": "color" },
+    "5": { "value": "#c8a86e", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#E5E7EB", "type": "color" },
+    "to":   { "value": "#323D4E", "type": "color" }
+  },
+
+  "typography": {
+    "fontSans":           { "value": "DM Sans", "type": "fontFamilies" },
+    "letterSpacingBase":  { "value": "0.025em", "type": "letterSpacing" }
+  }
+}

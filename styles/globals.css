@@ -1,0 +1,41 @@
+/**
+ * CESIONBNK Design System — Entry Point
+ *
+ * Barrel import that loads all CSS layers in the correct order:
+ *   1. Font @imports (MUST be first per CSS spec)
+ *   2. Tailwind CSS engine
+ *   3. Shared configuration (@theme inline, @layer base, utilities)
+ *   4. Tenant token files (default + overrides via [data-theme])
+ *   5. Custom animations & micro-interactions
+ *
+ * @version 1.0.0
+ */
+
+/* 1. Font @imports — MUST precede all other statements (CSS spec) */
+/* DM Sans (CESIONBNK — Gotham alternative) */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap');
+/* Satoshi (C-Financia) */
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&display=swap');
+/* Montserrat (Eurocapital) */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+/* Poppins (Lulo Empresas) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* 2. Tailwind CSS engine */
+@import "tailwindcss";
+
+/* 3. Shared Tailwind v4 configuration */
+@import "./config.css";
+
+/* 4. Tenant tokens — default (CESIONBNK) + overrides per tenant */
+@import "./themes/cesionbnk.css";
+@import "./themes/c-financia.css";
+@import "./themes/eurocapital.css";
+@import "./themes/iris.css";
+@import "./themes/lulo-empresas.css";
+
+/* 5. Custom animations & micro-interactions */
+@import "./animations.css";
+
+/* 6. Content detection — scan project root for Tailwind classes */
+@source "../";

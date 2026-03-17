@@ -1,0 +1,68 @@
+{
+  "$description": "IRIS — Tenant. Light mode. Primary: #00B388 (Teal) | Font: System UI",
+
+  "brand": {
+    "primary":            { "value": "#00B388", "type": "color", "description": "Teal — acción principal" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#004646", "type": "color", "description": "Deep teal — acento oscuro" },
+    "secondaryForeground":{ "value": "#ffffff", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#ffffff", "type": "color" },
+    "foreground":         { "value": "#1a2e2e", "type": "color" },
+    "card":               { "value": "#ffffff", "type": "color" },
+    "cardForeground":     { "value": "#1a2e2e", "type": "color" },
+    "popover":            { "value": "#ffffff", "type": "color" },
+    "popoverForeground":  { "value": "#1a2e2e", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#f0f7f5", "type": "color" },
+    "mutedForeground":    { "value": "#5a7a72", "type": "color" },
+    "accent":             { "value": "#edf5f3", "type": "color" },
+    "accentForeground":   { "value": "#1a2e2e", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#d9e8e4", "type": "color" },
+    "input":              { "value": "#d9e8e4", "type": "color" },
+    "inputBackground":    { "value": "#ffffff", "type": "color" },
+    "switchBackground":   { "value": "#c4d6d0", "type": "color" },
+    "ring":               { "value": "#00B388", "type": "color" }
+  },
+
+  "radius": {
+    "base":   { "value": "0.625rem", "type": "borderRadius" },
+    "button": { "value": "0.625rem", "type": "borderRadius" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#f8fbfa", "type": "color" },
+    "foreground":         { "value": "#1a2e2e", "type": "color" },
+    "primary":            { "value": "#004646", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "accent":             { "value": "#f0f7f5", "type": "color" },
+    "accentForeground":   { "value": "#1a2e2e", "type": "color" },
+    "border":             { "value": "#d9e8e4", "type": "color" },
+    "ring":               { "value": "#00B388", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#00B388", "type": "color" },
+    "2": { "value": "#004646", "type": "color" },
+    "3": { "value": "#f59e0b", "type": "color" },
+    "4": { "value": "#3b82f6", "type": "color" },
+    "5": { "value": "#ef4444", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#99F6E4", "type": "color" },
+    "to":   { "value": "#10362F", "type": "color" }
+  },
+
+  "typography": {
+    "fontSans":           { "value": "system-ui", "type": "fontFamilies" },
+    "letterSpacingBase":  { "value": "0.025em", "type": "letterSpacing" }
+  }
+}

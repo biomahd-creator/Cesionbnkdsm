@@ -1,0 +1,68 @@
+{
+  "$description": "C-Financia — Tenant. Light mode. Primary: #22c55e (Green) | Font: Satoshi",
+
+  "brand": {
+    "primary":            { "value": "#22c55e", "type": "color", "description": "Green — acción principal" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#0f172a", "type": "color", "description": "Navy — acento oscuro" },
+    "secondaryForeground":{ "value": "#ffffff", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#ffffff", "type": "color" },
+    "foreground":         { "value": "#0f172a", "type": "color" },
+    "card":               { "value": "#ffffff", "type": "color" },
+    "cardForeground":     { "value": "#0f172a", "type": "color" },
+    "popover":            { "value": "#ffffff", "type": "color" },
+    "popoverForeground":  { "value": "#0f172a", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#f1f5f9", "type": "color" },
+    "mutedForeground":    { "value": "#475569", "type": "color" },
+    "accent":             { "value": "#f1f5f9", "type": "color" },
+    "accentForeground":   { "value": "#0f172a", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#e2e8f0", "type": "color" },
+    "input":              { "value": "#e2e8f0", "type": "color" },
+    "inputBackground":    { "value": "#ffffff", "type": "color" },
+    "switchBackground":   { "value": "#cbd5e1", "type": "color" },
+    "ring":               { "value": "#22c55e", "type": "color" }
+  },
+
+  "radius": {
+    "base":   { "value": "0.625rem", "type": "borderRadius" },
+    "button": { "value": "0.625rem", "type": "borderRadius" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#f8fafc", "type": "color" },
+    "foreground":         { "value": "#0f172a", "type": "color" },
+    "primary":            { "value": "#22c55e", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "accent":             { "value": "#f1f5f9", "type": "color" },
+    "accentForeground":   { "value": "#0f172a", "type": "color" },
+    "border":             { "value": "#e2e8f0", "type": "color" },
+    "ring":               { "value": "#22c55e", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#22c55e", "type": "color" },
+    "2": { "value": "#0ea5e9", "type": "color" },
+    "3": { "value": "#8b5cf6", "type": "color" },
+    "4": { "value": "#f59e0b", "type": "color" },
+    "5": { "value": "#ef4444", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#D4FC79", "type": "color" },
+    "to":   { "value": "#003112", "type": "color" }
+  },
+
+  "typography": {
+    "fontSans":           { "value": "Satoshi", "type": "fontFamilies" },
+    "letterSpacingBase":  { "value": "0.025em", "type": "letterSpacing" }
+  }
+}

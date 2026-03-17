@@ -1,0 +1,58 @@
+{
+  "$description": "C-Financia — Tenant. Dark mode overrides.",
+
+  "brand": {
+    "primary":            { "value": "#22c55e", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#1e293b", "type": "color" },
+    "secondaryForeground":{ "value": "#f8fafc", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#020617", "type": "color" },
+    "foreground":         { "value": "#f8fafc", "type": "color" },
+    "card":               { "value": "#0f172a", "type": "color" },
+    "cardForeground":     { "value": "#f8fafc", "type": "color" },
+    "popover":            { "value": "#0f172a", "type": "color" },
+    "popoverForeground":  { "value": "#f8fafc", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#1e293b", "type": "color" },
+    "mutedForeground":    { "value": "#94a3b8", "type": "color" },
+    "accent":             { "value": "#1e293b", "type": "color" },
+    "accentForeground":   { "value": "#f8fafc", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#1e293b", "type": "color" },
+    "input":              { "value": "#1e293b", "type": "color" },
+    "inputBackground":    { "value": "#1e293b", "type": "color" },
+    "switchBackground":   { "value": "#334155", "type": "color" },
+    "ring":               { "value": "#22c55e", "type": "color" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#0f172a", "type": "color" },
+    "foreground":         { "value": "#f8fafc", "type": "color" },
+    "primary":            { "value": "#22c55e", "type": "color" },
+    "primaryForeground":  { "value": "#0f172a", "type": "color" },
+    "accent":             { "value": "#1e293b", "type": "color" },
+    "accentForeground":   { "value": "#f8fafc", "type": "color" },
+    "border":             { "value": "#1e293b", "type": "color" },
+    "ring":               { "value": "#22c55e", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#4ade80", "type": "color" },
+    "2": { "value": "#38bdf8", "type": "color" },
+    "3": { "value": "#a78bfa", "type": "color" },
+    "4": { "value": "#fbbf24", "type": "color" },
+    "5": { "value": "#f87171", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#0a2912", "type": "color" },
+    "to":   { "value": "#001208", "type": "color" }
+  }
+}

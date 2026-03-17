@@ -1,0 +1,68 @@
+{
+  "$description": "Eurocapital — Tenant. Light mode. Primary: #1A7FD9 (Blue) | Font: Montserrat",
+
+  "brand": {
+    "primary":            { "value": "#1A7FD9", "type": "color", "description": "Blue corporativo" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#9FB3BC", "type": "color", "description": "Steel blue — acento suave" },
+    "secondaryForeground":{ "value": "#ffffff", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#ffffff", "type": "color" },
+    "foreground":         { "value": "#1e293b", "type": "color" },
+    "card":               { "value": "#ffffff", "type": "color" },
+    "cardForeground":     { "value": "#1e293b", "type": "color" },
+    "popover":            { "value": "#ffffff", "type": "color" },
+    "popoverForeground":  { "value": "#1e293b", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#f1f5f9", "type": "color" },
+    "mutedForeground":    { "value": "#64748b", "type": "color" },
+    "accent":             { "value": "#f0f4f8", "type": "color" },
+    "accentForeground":   { "value": "#1e293b", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#e2e8f0", "type": "color" },
+    "input":              { "value": "#e2e8f0", "type": "color" },
+    "inputBackground":    { "value": "#ffffff", "type": "color" },
+    "switchBackground":   { "value": "#cbd5e1", "type": "color" },
+    "ring":               { "value": "#1A7FD9", "type": "color" }
+  },
+
+  "radius": {
+    "base":   { "value": "0.625rem", "type": "borderRadius" },
+    "button": { "value": "0.625rem", "type": "borderRadius" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#f8fafc", "type": "color" },
+    "foreground":         { "value": "#1e293b", "type": "color" },
+    "primary":            { "value": "#1A7FD9", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "accent":             { "value": "#f1f5f9", "type": "color" },
+    "accentForeground":   { "value": "#1e293b", "type": "color" },
+    "border":             { "value": "#e2e8f0", "type": "color" },
+    "ring":               { "value": "#1A7FD9", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#1A7FD9", "type": "color" },
+    "2": { "value": "#9FB3BC", "type": "color" },
+    "3": { "value": "#f59e0b", "type": "color" },
+    "4": { "value": "#22c55e", "type": "color" },
+    "5": { "value": "#ef4444", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#BFDBFE", "type": "color" },
+    "to":   { "value": "#132943", "type": "color" }
+  },
+
+  "typography": {
+    "fontSans":           { "value": "Montserrat", "type": "fontFamilies" },
+    "letterSpacingBase":  { "value": "0.02em",  "type": "letterSpacing" }
+  }
+}

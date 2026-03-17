@@ -1,0 +1,58 @@
+{
+  "$description": "IRIS — Tenant. Dark mode overrides.",
+
+  "brand": {
+    "primary":            { "value": "#00B388", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#1a7a7a", "type": "color" },
+    "secondaryForeground":{ "value": "#f0fdfa", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#0a1a1a", "type": "color" },
+    "foreground":         { "value": "#f0fdfa", "type": "color" },
+    "card":               { "value": "#122a2a", "type": "color" },
+    "cardForeground":     { "value": "#f0fdfa", "type": "color" },
+    "popover":            { "value": "#122a2a", "type": "color" },
+    "popoverForeground":  { "value": "#f0fdfa", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#1a3a3a", "type": "color" },
+    "mutedForeground":    { "value": "#86b5a8", "type": "color" },
+    "accent":             { "value": "#1a3a3a", "type": "color" },
+    "accentForeground":   { "value": "#f0fdfa", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#1a3a3a", "type": "color" },
+    "input":              { "value": "#1a3a3a", "type": "color" },
+    "inputBackground":    { "value": "#1a3a3a", "type": "color" },
+    "switchBackground":   { "value": "#2a5050", "type": "color" },
+    "ring":               { "value": "#00B388", "type": "color" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#0a1a1a", "type": "color" },
+    "foreground":         { "value": "#f0fdfa", "type": "color" },
+    "primary":            { "value": "#00B388", "type": "color" },
+    "primaryForeground":  { "value": "#0a1a1a", "type": "color" },
+    "accent":             { "value": "#1a3a3a", "type": "color" },
+    "accentForeground":   { "value": "#f0fdfa", "type": "color" },
+    "border":             { "value": "#1a3a3a", "type": "color" },
+    "ring":               { "value": "#00B388", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#34d399", "type": "color" },
+    "2": { "value": "#2dd4bf", "type": "color" },
+    "3": { "value": "#fbbf24", "type": "color" },
+    "4": { "value": "#60a5fa", "type": "color" },
+    "5": { "value": "#f87171", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#0c2922", "type": "color" },
+    "to":   { "value": "#051511", "type": "color" }
+  }
+}

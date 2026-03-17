@@ -1,0 +1,58 @@
+{
+  "$description": "Eurocapital — Tenant. Dark mode overrides.",
+
+  "brand": {
+    "primary":            { "value": "#1A7FD9", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "secondary":          { "value": "#b8cad2", "type": "color" },
+    "secondaryForeground":{ "value": "#1e293b", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#0c1524", "type": "color" },
+    "foreground":         { "value": "#f1f5f9", "type": "color" },
+    "card":               { "value": "#162032", "type": "color" },
+    "cardForeground":     { "value": "#f1f5f9", "type": "color" },
+    "popover":            { "value": "#162032", "type": "color" },
+    "popoverForeground":  { "value": "#f1f5f9", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#1e3048", "type": "color" },
+    "mutedForeground":    { "value": "#94a3b8", "type": "color" },
+    "accent":             { "value": "#1e3048", "type": "color" },
+    "accentForeground":   { "value": "#f1f5f9", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#1e3048", "type": "color" },
+    "input":              { "value": "#1e3048", "type": "color" },
+    "inputBackground":    { "value": "#1e3048", "type": "color" },
+    "switchBackground":   { "value": "#334155", "type": "color" },
+    "ring":               { "value": "#1A7FD9", "type": "color" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#0c1524", "type": "color" },
+    "foreground":         { "value": "#f1f5f9", "type": "color" },
+    "primary":            { "value": "#1A7FD9", "type": "color" },
+    "primaryForeground":  { "value": "#ffffff", "type": "color" },
+    "accent":             { "value": "#1e3048", "type": "color" },
+    "accentForeground":   { "value": "#f1f5f9", "type": "color" },
+    "border":             { "value": "#1e3048", "type": "color" },
+    "ring":               { "value": "#1A7FD9", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#3b9eed", "type": "color" },
+    "2": { "value": "#b8cad2", "type": "color" },
+    "3": { "value": "#fbbf24", "type": "color" },
+    "4": { "value": "#4ade80", "type": "color" },
+    "5": { "value": "#f87171", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#0e1d34", "type": "color" },
+    "to":   { "value": "#060e1c", "type": "color" }
+  }
+}

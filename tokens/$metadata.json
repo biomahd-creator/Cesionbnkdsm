@@ -1,0 +1,15 @@
+{
+  "tokenSetOrder": [
+    "global",
+    "brands/cesionbnk",
+    "brands/cesionbnk-dark",
+    "brands/c-financia",
+    "brands/c-financia-dark",
+    "brands/eurocapital",
+    "brands/eurocapital-dark",
+    "brands/iris",
+    "brands/iris-dark",
+    "brands/lulo-empresas",
+    "brands/lulo-empresas-dark"
+  ]
+}

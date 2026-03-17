@@ -1,0 +1,182 @@
+[
+  {
+    "id": "cesionbnk-light",
+    "name": "CESIONBNK / Light",
+    "group": "CESIONBNK",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "enabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "cesionbnk-dark",
+    "name": "CESIONBNK / Dark",
+    "group": "CESIONBNK",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "source",
+      "brands/cesionbnk-dark":     "enabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "c-financia-light",
+    "name": "C-Financia / Light",
+    "group": "C-Financia",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "enabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "c-financia-dark",
+    "name": "C-Financia / Dark",
+    "group": "C-Financia",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "source",
+      "brands/c-financia-dark":    "enabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "eurocapital-light",
+    "name": "Eurocapital / Light",
+    "group": "Eurocapital",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "enabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "eurocapital-dark",
+    "name": "Eurocapital / Dark",
+    "group": "Eurocapital",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "source",
+      "brands/eurocapital-dark":   "enabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "iris-light",
+    "name": "IRIS / Light",
+    "group": "IRIS",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "enabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "iris-dark",
+    "name": "IRIS / Dark",
+    "group": "IRIS",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "source",
+      "brands/iris-dark":          "enabled",
+      "brands/lulo-empresas":      "disabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "lulo-light",
+    "name": "Lulo Empresas / Light",
+    "group": "Lulo Empresas",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "enabled",
+      "brands/lulo-empresas-dark": "disabled"
+    }
+  },
+  {
+    "id": "lulo-dark",
+    "name": "Lulo Empresas / Dark",
+    "group": "Lulo Empresas",
+    "selectedTokenSets": {
+      "global":                    "source",
+      "brands/cesionbnk":          "disabled",
+      "brands/cesionbnk-dark":     "disabled",
+      "brands/c-financia":         "disabled",
+      "brands/c-financia-dark":    "disabled",
+      "brands/eurocapital":        "disabled",
+      "brands/eurocapital-dark":   "disabled",
+      "brands/iris":               "disabled",
+      "brands/iris-dark":          "disabled",
+      "brands/lulo-empresas":      "source",
+      "brands/lulo-empresas-dark": "enabled"
+    }
+  }
+]

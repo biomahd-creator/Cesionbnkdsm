@@ -1,0 +1,82 @@
+{
+  "$description": "Global shared tokens — apply to ALL tenants. Override in brand files only when necessary.",
+
+  "spacing": {
+    "0":   { "value": "0px",    "type": "spacing" },
+    "1":   { "value": "4px",    "type": "spacing" },
+    "2":   { "value": "8px",    "type": "spacing" },
+    "3":   { "value": "12px",   "type": "spacing" },
+    "4":   { "value": "16px",   "type": "spacing" },
+    "5":   { "value": "20px",   "type": "spacing" },
+    "6":   { "value": "24px",   "type": "spacing" },
+    "8":   { "value": "32px",   "type": "spacing" },
+    "10":  { "value": "40px",   "type": "spacing" },
+    "12":  { "value": "48px",   "type": "spacing" },
+    "16":  { "value": "64px",   "type": "spacing" },
+    "20":  { "value": "80px",   "type": "spacing" },
+    "24":  { "value": "96px",   "type": "spacing" }
+  },
+
+  "fontSize": {
+    "xs":   { "value": "12px", "type": "fontSizes" },
+    "sm":   { "value": "14px", "type": "fontSizes" },
+    "base": { "value": "16px", "type": "fontSizes" },
+    "lg":   { "value": "18px", "type": "fontSizes" },
+    "xl":   { "value": "20px", "type": "fontSizes" },
+    "2xl":  { "value": "24px", "type": "fontSizes" },
+    "3xl":  { "value": "30px", "type": "fontSizes" },
+    "4xl":  { "value": "36px", "type": "fontSizes" }
+  },
+
+  "lineHeight": {
+    "tight":   { "value": "1.25", "type": "lineHeights" },
+    "snug":    { "value": "1.375", "type": "lineHeights" },
+    "normal":  { "value": "1.5",  "type": "lineHeights" },
+    "relaxed": { "value": "1.625", "type": "lineHeights" }
+  },
+
+  "fontWeight": {
+    "light":    { "value": "300", "type": "fontWeights" },
+    "regular":  { "value": "400", "type": "fontWeights" },
+    "medium":   { "value": "500", "type": "fontWeights" },
+    "semibold": { "value": "600", "type": "fontWeights" },
+    "bold":     { "value": "700", "type": "fontWeights" }
+  },
+
+  "kpi": {
+    "yellow":      { "value": "#eab308", "type": "color", "description": "KPI warning/pending" },
+    "yellowDark":  { "value": "#ca8a04", "type": "color" },
+    "yellowBg":    { "value": "#fef9c3", "type": "color" },
+    "orange":      { "value": "#f97316", "type": "color", "description": "KPI alert" },
+    "orangeDark":  { "value": "#ea580c", "type": "color" },
+    "orangeBg":    { "value": "#ffedd5", "type": "color" },
+    "blue":        { "value": "#3b82f6", "type": "color", "description": "KPI info/neutral" },
+    "blueDark":    { "value": "#2563eb", "type": "color" },
+    "blueBg":      { "value": "#dbeafe", "type": "color" },
+    "lime":        { "value": "#84cc16", "type": "color", "description": "KPI active/growth" },
+    "limeDark":    { "value": "#65a30d", "type": "color" },
+    "limeBg":      { "value": "#f7fee7", "type": "color" }
+  },
+
+  "semantic": {
+    "destructive":            { "value": "#ef4444", "type": "color", "description": "Errors, delete actions" },
+    "destructiveForeground":  { "value": "#ffffff", "type": "color" },
+    "success":                { "value": "#22c55e", "type": "color", "description": "Success states (default — may be overridden by tenant primary)" },
+    "successForeground":      { "value": "#ffffff", "type": "color" },
+    "warning":                { "value": "#f59e0b", "type": "color", "description": "Warnings, pending states" },
+    "warningForeground":      { "value": "#ffffff", "type": "color" },
+    "info":                   { "value": "#3b82f6", "type": "color", "description": "Informational (default — may be overridden by tenant primary)" },
+    "infoForeground":         { "value": "#ffffff", "type": "color" }
+  },
+
+  "borderRadius": {
+    "none": { "value": "0px",     "type": "borderRadius" },
+    "sm":   { "value": "4px",     "type": "borderRadius" },
+    "md":   { "value": "6px",     "type": "borderRadius" },
+    "base": { "value": "10px",    "type": "borderRadius", "description": "Default — 0.625rem. Lulo overrides to 24px" },
+    "lg":   { "value": "12px",    "type": "borderRadius" },
+    "xl":   { "value": "16px",    "type": "borderRadius" },
+    "2xl":  { "value": "24px",    "type": "borderRadius" },
+    "full": { "value": "9999px",  "type": "borderRadius" }
+  }
+}

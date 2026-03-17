@@ -1,0 +1,58 @@
+{
+  "$description": "Lulo Empresas — Tenant. Dark mode overrides.",
+
+  "brand": {
+    "primary":            { "value": "#00C4FF", "type": "color" },
+    "primaryForeground":  { "value": "#1C2A49", "type": "color" },
+    "secondary":          { "value": "#2d4166", "type": "color" },
+    "secondaryForeground":{ "value": "#f0f4fa", "type": "color" }
+  },
+
+  "surface": {
+    "background":         { "value": "#0c1425", "type": "color" },
+    "foreground":         { "value": "#f0f4fa", "type": "color" },
+    "card":               { "value": "#142038", "type": "color" },
+    "cardForeground":     { "value": "#f0f4fa", "type": "color" },
+    "popover":            { "value": "#142038", "type": "color" },
+    "popoverForeground":  { "value": "#f0f4fa", "type": "color" }
+  },
+
+  "neutral": {
+    "muted":              { "value": "#1e3050", "type": "color" },
+    "mutedForeground":    { "value": "#8a9cb8", "type": "color" },
+    "accent":             { "value": "#1e3050", "type": "color" },
+    "accentForeground":   { "value": "#f0f4fa", "type": "color" }
+  },
+
+  "form": {
+    "border":             { "value": "#1e3050", "type": "color" },
+    "input":              { "value": "#1e3050", "type": "color" },
+    "inputBackground":    { "value": "#1e3050", "type": "color" },
+    "switchBackground":   { "value": "#2d4166", "type": "color" },
+    "ring":               { "value": "#00C4FF", "type": "color" }
+  },
+
+  "sidebar": {
+    "background":         { "value": "#0c1425", "type": "color" },
+    "foreground":         { "value": "#f0f4fa", "type": "color" },
+    "primary":            { "value": "#00C4FF", "type": "color" },
+    "primaryForeground":  { "value": "#1C2A49", "type": "color" },
+    "accent":             { "value": "#1e3050", "type": "color" },
+    "accentForeground":   { "value": "#f0f4fa", "type": "color" },
+    "border":             { "value": "#1e3050", "type": "color" },
+    "ring":               { "value": "#00C4FF", "type": "color" }
+  },
+
+  "chart": {
+    "1": { "value": "#33d4ff", "type": "color" },
+    "2": { "value": "#4a6080", "type": "color" },
+    "3": { "value": "#fbbf24", "type": "color" },
+    "4": { "value": "#4ade80", "type": "color" },
+    "5": { "value": "#f87171", "type": "color" }
+  },
+
+  "gradient": {
+    "from": { "value": "#042025", "type": "color" },
+    "to":   { "value": "#010e11", "type": "color" }
+  }
+}
